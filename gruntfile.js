@@ -145,7 +145,7 @@ module.exports = grunt => {
                     '<%= dirs.dest %>/static-page.min.js': [
                         '<%= dirs.dest %>/core.min.js',
                         '<%= dirs.js %>/static-page.js',
-                    ]
+                    ],
 
                     // Index
                     '<%= dirs.dest %>/index-page.min.js': [
