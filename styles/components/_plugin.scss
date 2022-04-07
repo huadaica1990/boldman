@@ -1,0 +1,733 @@
+/*---------------------
+    Magnify
+    Error
+    Ilightbox
+    Swiper slider
+    Marquee
+    Owl slider
+
+    Select
+    Datetime picker
+----------------------*/
+
+/*#region Common*/
+    .error-lst {
+        margin-bottom: 2rem;
+    }
+    // Magnify
+    .magnify>.magnify-lens {
+        background-color: $white-color !important;
+    }
+    // Ilightbox
+    .ilightbox {
+        cursor: zoom-in;
+        display: block;
+        position: relative;
+        &:after {
+            @include animation();
+            color: $white-color;
+            content: '\e830';
+            font-family: "customize";
+            font-size: 30px;
+            line-height: 30px;
+            opacity: 0;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        &:hover {
+            &:after {
+                opacity: 1
+            }
+        }
+    }
+    // Swiper slider
+    .swiper {
+        position: relative;
+        >.swiper-container {
+            position: static;
+            >.swiper-pagination {
+                bottom: -4.5rem;
+            }
+        }
+    }
+    .swiper-pagination {
+        position: static;
+        margin-top: 1.5rem;
+        .swiper-pagination-bullet {
+            @include border($position: "all", $size:1px, $style: solid, $color: #d7d7d7);
+            background-color: transparent;
+            opacity: 1;
+            &:hover {
+                background-color: $lighter-color;
+                border-color: $lighter-color;
+            }
+        }
+        .swiper-pagination-bullet-active {
+            background-color: $primary-color;
+            border-color: $primary-color;
+        }
+    }
+    
+    .swiper-button {
+        &:after {
+            font-size: inherit;
+            font-family: 'ecs';
+        }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        @include animation($customize: true) {
+            -ms-transition: all .3s;
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s;
+        };
+        padding: 0;
+        z-index: 1;
+        border: none;
+        background-color: transparent;
+        width: auto;
+        height: auto;
+        line-height: 0;
+        margin-top: 0;
+        &.swiper-button-disabled {
+            color: $lighter-color;
+            cursor:not-allowed;
+            pointer-events: auto;
+        }
+    }
+    .swiper-button-next::after {
+        content: "\e913";
+    }
+    .swiper-button-prev::after {
+        content: "\e912";
+    }
+    .swiper-wrapper {
+        box-sizing: border-box;
+    }
+    .swiper-container:not(.swiper-container-initialized) {
+        .swiper-wrapper {
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+                flex-wrap: nowrap;
+            overflow: hidden;
+            width: auto;
+        }
+        .swiper-slide {
+            box-sizing: border-box;
+        }
+    }
+    .swiper-slide picture img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-container:not(.swiper-container-initialized) {
+        .swiper-wrapper.row {
+            width: calc(100% + 2rem);
+        }
+        .swiper-wrapper{
+            &.gutter-no {
+                width: 100%;
+            }
+            &.gutter-xs {
+                width: calc(100% + 2*#{get(base, _gutter-xs)});
+            }
+            &.gutter-sm {
+                width: calc(100% + 2*#{get(base, _gutter-sm)});
+            }
+            &.gutter-md {
+                width: calc(100% + 2*#{get(base, _gutter-md)});
+            }
+            &.gutter-lg {
+                width: calc(100% + 2*#{get(base, _gutter-lg)});
+            }
+        }
+    }
+    .swiper-theme {
+        .swiper-button-prev,
+        .swiper-button-next {
+            @include animation($customize: true) {
+                -ms-transition: all .3s ease;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            };
+            @include transform($args: translateY(-50%));
+            @include border-radius($val: 50%);
+            margin: 0;
+            width: 30px;
+            height: 30px;
+            font: {
+                size: 20px;
+                weight: 400;
+            }
+            color: $primary-color;
+            &:not(.swiper-button-disabled) {
+                &:hover,
+                &:active,
+                &:focus {
+                    color: $white-color;
+                    background-color: $primary-color;
+                    border-color: $primary-color;
+                }
+            }
+            &::after {
+                line-height:0;
+            }
+            &.swiper-button-disabled {
+                color: $lighter-color;
+                opacity: .6;
+            }
+        }
+        .swiper-button-prev {
+            left: -40px;
+        }
+        .swiper-button-next {
+            right: -40px;
+        }
+        >.swiper-pagination {
+            .swiper-pagination-bullet {
+                @include animation($customize: true) {
+                    -ms-transition: all .3s;
+                    -webkit-transition: all .3s;
+                    -moz-transition: all .3s;
+                    -o-transition: all .3s;
+                    transition: all .3s;
+                };
+                margin: 5px;
+            }
+            .swiper-pagination-bullet-active {
+                @include border-radius($val: 9rem);
+                width: 18px;
+            }
+        }
+    }
+    @include mq("1300px", "max") {
+        .swiper-theme {
+            .swiper-button-prev {
+                left: 20px;
+            }
+            .swiper-button-next {
+                right: 20px;
+            }
+        }
+    }
+    // Nav color
+    .nav-colored {
+        >.swiper-button-prev,
+        >.swiper-button-next {
+            background-color: $primary-color;
+            color:$white-color;
+        }
+    }
+    // Nav inner
+        .nav-inner {
+            >.swiper-button-prev,
+            >.swiper-button-next {
+                opacity: 0;
+                visibility: hidden;
+            }
+            >.swiper-button-prev {
+                left: 0;
+            }
+            >.swiper-button-next {
+                right: 0;
+            }
+            &:hover {
+                >.swiper-button-prev,
+                >.swiper-button-next {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                >.swiper-button-prev.swiper-button-disabled,
+                >.swiper-button-next.swiper-button-disabled {
+                    opacity: .6;
+                }
+                >.swiper-button-prev {
+                    left: 2rem;
+                }
+                >.swiper-button-next {
+                    right: 2rem;
+                }
+            }
+        }
+        .nav-show {
+            >.swiper-button-prev,
+            >.swiper-button-next {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+        }
+    // Nav Top
+        .nav-top {
+            > .swiper-button-next,
+            > .swiper-button-prev {
+                position: absolute;
+                width: 15px;
+                top: -5.3rem;
+                left: auto;
+                color: #777;
+                font: {
+                    size: 1.4rem;
+                    weight: $font-weight-bold;
+                }
+                &:not(.swiper-button-disabled) {
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        background-color: transparent;
+                        border-color: transparent;
+                        color: $primary-color;
+                    }
+                }
+                &.swiper-button-disabled {
+                    color: #666;
+                }
+            }
+            > .swiper-button-next {
+                @include transform($args:translateX(50%));
+                right: 3.7rem;
+            }
+            > .swiper-button-prev {
+                @include transform($args:translateX(-50%));
+                right: 3.5rem;
+            }
+        } 
+        .nav-right {
+            .swiper-button-prev,
+            .swiper-button-next {
+                position: absolute;
+                right: 3rem;
+                top: auto;
+                bottom: 2.8rem;
+                left: auto;
+            }
+            .swiper-button-prev{
+                right: 5.5rem;
+            }
+        }
+    .pg-white {
+        >.swiper-pagination .swiper-pagination-bullet {
+            background-color: $white-color;
+            border-color: $white-color;
+            opacity: .8;
+        }
+        >.swiper-pagination .swiper-pagination-bullet-active {
+            background-color : $primary-color;
+            border-color: $primary-color;
+            opacity: 1;
+        }
+    }
+    .pg-inner {
+        .swiper-pagination {
+            @include transform($args:translateX(-50%));
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+    }
+    .pg-right {
+        .swiper-pagination {
+            position: absolute;
+            bottom: 4.2rem;
+            right: 3rem;
+            left: auto;
+            width: unset;
+        }
+    }
+    .swiper-container {
+        .slide-animate {
+            @include transform($args: ranslate3d(0, 0, 0) scale(1));
+            will-change: filter, transform, opacity;
+            opacity: 0;
+            &.show-content {
+                opacity: 1;
+            }
+        }
+    }
+    .shadow-swiper {
+        margin: -20px;
+        padding: 20px;
+    }
+    @include mq("sm", "max") {
+        .shadow-swiper {
+            margin: -15px;
+            padding: 15px;
+        }
+    }
+    .swiper-container {
+        .swiper-lazy,.swiper-lazy-loading {
+            @include animation($type: "filter", $time: 0.2s, $effect: ease, $delay: .1s);
+            @include filter($val: blur(100px) opacity(0.5));
+        }
+        .swiper-lazy-loaded {
+            @include filter($val: blur(0px) opacity(1) !important);
+        }
+    }
+    // Marquee
+    .marquee {
+        @include flex($type: "center", $active: true, $get: "left");
+        width: 100%;
+        overflow: hidden;
+        i {
+            margin-right: .5rem;
+        }
+        > a {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+        }
+        a {
+            margin-right: 30px;
+            &:last-child {
+                margin-right:0;
+            }
+        }
+        .js-marquee-wrapper {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            .js-marquee {
+                -webkit-flex-shrink: 0;
+                -ms-flex-negative: 0;
+                flex-shrink: 0;
+            }
+        }
+    }
+    @include keyframes($animation-name: "wordSlider") {
+        $steps: -0%, -25%, -50%, -75%;
+        
+        @for $index from 0 to length($steps)-1 {
+          $next: $index+1;
+          $step: floor(100/(length($steps)-1));
+          $animation_step: floor($step*.2);
+        
+          #{$step*$index}%,
+          #{($step*$next) - $animation_step}% {
+            transform: translateY(nth($steps, $index+1));
+          }
+        }
+        100% {
+          transform: translateY(nth($steps, length($steps)));
+        }
+    }
+    .word-slider {
+        vertical-align: middle;
+        width: 100%;
+        @include use-keyframes($args: "wordSlider" 20s ease-out infinite);
+        > * {
+            white-space: nowrap;
+        }
+    }
+    //Lazysizes
+    .lazyload,.lazyloading {
+        @include animation($type: "filter", $time: 0.2s, $effect: ease, $delay: .1s);
+        @include filter($val: blur(100px) opacity(0.5));
+    }
+    .lazyloaded {
+        @include filter($val: blur(0px) opacity(1) !important);
+    }
+/*#endregion*/
+
+/*#region Select*/
+
+.custom-select {
+    position: relative;
+    width: 15.4rem;
+    max-width: 100%;
+    z-index: 2;
+
+    span {
+        @include overtext($row: 1, $h: auto);
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        padding: 10px 15px;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+            background: $primary-color;
+            color: $white-color;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            background-color: $grey-background;
+            color: $dark-color;
+        }
+    }
+
+    &-header {
+        @include animation($hover: true, $type: border-color, $time: 0.5s, $effect: ease, $delay: 0s);
+        @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+        @include border-radius($val: .5rem);
+        background-color: $white-color;
+        width: 100%;
+        padding: 0.75em 2.7rem 0.75em 1.4rem;
+        cursor: pointer;
+        font-size: 1.2rem;
+        position: relative;
+
+        &::before {
+            font-size: 1.1rem;
+            right: 1.2rem;
+            content: '\e910';
+            font-family: "ecs";
+            font-weight: 600;
+            line-height: 1;
+            position: absolute;
+            top: 13px;
+        }
+
+        &:hover, &:focus {
+            border-color: $primary-color;
+        }
+    }
+
+    &-body {
+        @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+        @include box-shadow($number: "1");
+        @include visible($active: false, $zindex: 9);
+        background-color: $white-color;
+        width: 100%;
+        position: absolute;
+        top: calc(100% + 5px);
+        width: 200px;
+        min-width: 100%;
+        right: 0;
+    }
+
+    &-search {
+        @include border($position: "bot", $size:2px, $style: solid, $color: $border-color);
+        background-color: $white-color;
+
+        input {
+            @include border-radius($val: .3rem);
+            min-height: 35px;
+            border: none;
+            padding: 10px 15px;
+        }
+
+        &-info {
+            padding: 10px 15px;
+            display: none;
+        }
+    }
+
+    &-backdrop {
+        @include visible($active: false, $zindex: 1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,.5);
+        content: '';
+    }
+
+    &:not(.custom-select-full) {
+        .custom-select-body {
+            max-height: calc(42.39px*6);
+            overflow: auto;
+        }
+    }
+
+    &.custom-select-full {
+        ul {
+            max-height: calc(42.39px*6);
+            overflow: auto;
+        }
+    }
+
+    &.active {
+        z-index: 10;
+
+        .custom-select-header {
+            border-color: $primary-color;
+
+            &::before {
+                @include transform($args: rotate(-180deg));
+            }
+        }
+
+        .custom-select-body {
+            @include visible($active: true, $zindex: 9);
+        }
+    }
+
+    &.disabled {
+        background-color: #eee;
+        opacity: .8;
+        cursor: no-drop;
+        pointer-events: auto;
+
+        * {
+            pointer-events: none;
+        }
+    }
+
+    select.error {
+        + .custom-select-header {
+            border-color: #cc0001 !important;
+        }
+    }
+}
+/*#endregion*/
+
+/*#region Datetime picker*/
+    .select2 {
+        .selection,.select2-selection,.select2-selection__rendered {
+            &:focus {
+            outline:none;
+            }
+        }
+        &:focus {
+            outline:none;
+        }
+    }
+    .select2-container--bootstrap.select2-container--focus .select2-selection,
+    .select2-container--bootstrap.select2-container--open .select2-selection {
+        border-color: $primary-color;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(173, 220, 209, 0.6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(173, 220, 209, 0.6);
+        outline: none;
+    }
+
+    .select2-container--bootstrap .select2-dropdown {
+        border-color: $primary-color;
+    }
+
+    .select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+        background: $primary-color;
+    }
+
+    .bootstrap-datetimepicker-widget .list-unstyled {
+        list-style: none;
+        padding-left: 0;
+    }
+/*#endregion*/
+
+/*#region Mobile responsive section styles*/
+    @include mq("md") {
+        .custom-select.custom-select-top .custom-select-body{
+            top: auto;
+            bottom: calc(100% + 5px);
+        }
+    }
+
+    @include mq("xs", "max") {
+        // Select
+        .custom-select {
+            .custom-select-body {
+                min-width: auto;
+                position: fixed;
+            }
+            li:hover {
+                background-color: transparent;
+                color: initial;
+            }
+            &:not(.custom-select-full) {
+                .custom-select-body {
+                    @include e-cen($type: "all", $option: translate(-50%, -50%));
+                    z-index: 2;
+                }
+            }
+            &.active {
+                z-index: 90;
+                .custom-select-backdrop {
+                    @include visible($active: true, $zindex: 1);
+                }
+            }
+            &.custom-select-full {
+                .custom-select-body {
+                    @include border-radius($val: 15px 15px 0 0);
+                    @include animation($customize: true) {
+                        -ms-transition: transform .5s;
+                        -webkit-transition: transform .5s;
+                        -moz-transition: transform .5s;
+                        -o-transition: transform .5s;
+                        transition: transform .5s;
+                    };
+                    @include transform($args: translateY(100%));
+                    width: 100%;
+                    top: auto;
+                    bottom: 0;
+                    padding-top: 1rem;
+                    padding-bottom: 30px;
+                    ul {
+                        height: calc(42.39px*11);
+                        max-height: initial;
+                        overflow: auto;
+                    }
+                    &:after {
+                        @include border-radius($val: 50px);
+                        @include e-cen($type: "left");
+                        position:absolute;
+                        content: '';
+                        top: -15px;
+                        width: 80px;
+                        height: 5px;
+                        background-color: $white-color;
+                        pointer-events: none;
+                    }
+                }
+                &.active {
+                    .custom-select-body {
+                        @include transform($args: translateY(0%));
+                        z-index: 2;
+                    }
+                    .custom-select-backdrop {
+                        @include visible($active: true, $zindex: 1);
+                    }
+                }
+            }
+        }
+        .fix-top.fixed {
+            .custom-select {
+                &:not(.custom-select-full) {
+                    .custom-select-body {
+                        @include transform($args: translate(-50%, -50%));
+                        top: 40vh;
+                        width: 50vw;
+                    }
+                }
+            }
+            .custom-select-backdrop {
+                width: 100vw;
+                height: 100vh;
+                top:-60px;
+            }
+        }
+        // Ilightbox
+        .ilightbox:after {
+            font-size: 20px;
+            line-height: 20px;
+            right: 5px;
+            top: 5px;
+        }
+    }
+/*#endregion*/
+
+/*#region Style fix all browser*/
+    /*#region Safari*/
+    @include only-for-retina {
+        // .custom-select.custom-select-full.active .custom-select-body {
+        //     padding-bottom: #{$nav-mobile_height-ios-bottom};
+        // }
+    }
+    /*#endregion*/
+/*#endregion*/

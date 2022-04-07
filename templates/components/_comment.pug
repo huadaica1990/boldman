@@ -1,0 +1,251 @@
+//- Var
+- let linkCmt = '@Url.Action("AddComment")';
+-
+    let cmtData = [
+        {
+            id:1,
+            avatar: 'H',
+            name: 'Lê Văn Hòa',
+            date: '25/03/2020',
+            job: null,
+            body: 'Máy k chơi game lướt web yên lặng thì nghe trong máy có tiếng sèo vậy bị j ( k chơi j cả rất yên lặng)',
+            listimg: [
+                {
+                    id:101,
+                    src: '/img/gallery1.jpg'
+                },
+                {
+                    id:102,
+                    src: '/img/gallery2.jpg'
+                },
+            ],
+            children: []
+        },
+        {
+            id:2,
+            avatar: 'T',
+            name: 'Tien',
+            date: '25/03/2020',
+            job: null,
+            body: 'Ss a51 mới mua dc 3 ngày thấy gần phím giảm âm lượng màn hinh bi khuyết 1 chút . Có phải bị lỗi k',
+            listimg: [
+                {
+                    id:201,
+                    src: '/img/gallery1.jpg'
+                },
+                {
+                    id:202,
+                    src: '/img/gallery2.jpg'
+                },
+            ],
+            children: [
+                {
+                    id:211,
+                    avatar: '/img/favicon.png',
+                    name: 'Hải Nam',
+                    date: '25/03/2020',
+                    job: 'Quản trị viên',
+                    body: 'Máy k chơi game lướt web yên lặng thì nghe trong máy có tiếng sèo vậy bị j ( k chơi j cả rất yên lặng)',
+                    listimg: null,
+                    children: []
+                },
+                {
+                    id:212,
+                    avatar: 'T',
+                    name: 'Tien',
+                    date: '25/03/2020',
+                    job: null,
+                    body: 'Nó nhu vay nè',
+                    listimg: [
+                        {
+                            id:2121,
+                            src: '/img/gallery1.jpg'
+                        },
+                        {
+                            id:2122,
+                            src: '/img/gallery2.jpg'
+                        },
+                    ],
+                    children: []
+                }
+            ]
+        }
+    ];
+
+#comment
+    .comments-header
+        h2.title.title-md.font-weight-bold.mt-5.mb-5 #{cmtData.length} bình luận Samsung Galaxy A51 (6GB/128GB)
+        form#addcommentform.comment-form(action=linkCmt onsubmit='return false; addComment()')
+            .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
+                .alert-test
+                    .alert-title.ecs-icon-times-circle
+                    =' '
+                    .
+                        Vui lòng điền họ và tên
+                .alert-test
+                    .alert-title.ecs-icon-times-circle
+                    =' '
+                    .
+                        Vui lòng điền số điện thoại
+            .row
+                .col-sm-6
+                    textarea.form-control.br-sm.h-100(name='Body' placeholder='Mời bạn để lại bình luận')
+                .col-sm-6.input-wrapper
+                    .custom-radio
+                        input#sex1-cmt.custom-control-input(type='radio' name='Gender' value='' checked)
+                        label.custom-control-label.round(for='sex1-cmt') Anh
+                    .custom-radio
+                        input#sex2-cmt.custom-control-input(type='radio' name='Gender' value='')
+                        label.custom-control-label.round(for='sex2-cmt') Chị
+                    input.form-control.br-sm(type='text' name='Name' placeholder='Họ và tên*')
+                    input.form-control.br-sm(type='email' name='Email' placeholder='Email*')
+                    input.form-control.br-sm(type='tel' name='Phone' placeholder='Số điện thoại')
+                    button.btn.btn-primary.br-sm(type='submit' onclick='addComment()') Gửi
+            .btn-container.mt-4
+                .d-flex
+                    .btn-upfile
+                        input.form-control(type='file' onchange="UpdateImage(this,'ListImage','comment','#addcommentform')")
+                        i.demo-icon.cus-camera.mr-2
+                        | Đính kèm ảnh
+                    a(href='' tagref='_blank') Quy định bình luận
+                .list-image.flex-container
+                    .img-item.br-sm
+                        a.img-cmt-js(href='javascript:')
+                            i.demo-icon.cus-cancel
+                        img(src='/img/gallery1.jpg' alt='' loading='lazy')
+                    .img-item.br-sm
+                        a.img-cmt-js(href='javascript:')
+                            i.demo-icon.cus-cancel
+                        img(src='/img/gallery2.jpg' alt='' loading='lazy')
+            input(type='hidden' name='Gender' value='')
+            input(type='hidden' name='ListImage' value='')
+            input(type='hidden' name='ProductId' value='')
+            input(type='hidden' name='Note' value='')
+    .comments-body.col-loadmore
+        each cmtItem in cmtData
+            if cmtItem.children.length > 0
+                .comment.have-rep(itemscope itemtype='http://schema.org/UserComments')
+                    .item--comment__header
+                        .avatar=cmtItem.avatar
+                        h3.h5.font-weight-semibold=cmtItem.name
+                    .des=cmtItem.body
+                    if cmtItem.listimg != null
+                        .img-list.flex-container
+                            each img in cmtItem.listimg
+                                a.review-image.br-sm
+                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
+                    .comment-action
+                        - var cmtItemId = '#formreplycontainer'+ cmtItem.id;
+                        a.btn-rep(href='javascript:' onclick="showreply('"+ cmtItemId +"')") trả lời
+                        span.date=cmtItem.date
+                    .item--comment__child
+                        each cmtItem_child in cmtItem.children
+                            .comment
+                                .item--comment__header
+                                    .avatar
+                                        if cmtItem_child.job != null
+                                            img(src=cmtItem_child.avatar alt='' width='25' height='25' loading='lazy')
+                                        else
+                                            =cmtItem_child.avatar
+                                    h3.h5.font-weight-semibold=cmtItem_child.name
+                                        if cmtItem_child.job != null
+                                            span.label=cmtItem_child.job
+                                .des=cmtItem_child.body
+                                .comment-action
+                                    - var cmtItem_childId = '#formreplycontainer'+ cmtItem_child.id;
+                                    a.btn-rep(href='javascript:' onclick="showreply('"+ cmtItem_childId +"')") trả lời
+                                    span.date=cmtItem_child.date
+                    form.comment-form.mt-2(action=linkCmt id=`formreply${cmtItem.id}` onsubmit='return false; addReplyComment(1,1)' style='display:none')
+                        .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
+                            .alert-test
+                                .alert-title.ecs-icon-times-circle
+                                =' '
+                                .
+                                    Vui lòng điền họ và tên
+                            .alert-test
+                                .alert-title.ecs-icon-times-circle
+                                =' '
+                                .
+                                    Vui lòng điền số điện thoại
+                        .row
+                            .col-sm-6
+                                textarea.form-control.br-sm.h-100(name='Body' placeholder='Mời bạn để lại bình luận')
+                            .col-sm-6.input-wrapper
+                                .custom-radio
+                                    input#sex1-cmt11.custom-control-input(type='radio' name='Gender1' value='')
+                                    label.custom-control-label.round(for='sex1-cmt1') Anh
+                                .custom-radio
+                                    input#sex2-cmt1.custom-control-input(type='radio' name='Gender1' value='')
+                                    label.custom-control-label.round(for='sex2-cmt1') Chị
+                                input.form-control.br-sm(type='text' name='Name' placeholder='Họ và tên*')
+                                input.form-control.br-sm(type='email' name='Email' placeholder='Email*')
+                                input.form-control.br-sm(type='tel' name='Phone' placeholder='Số điện thoại')
+                                button.btn.btn-primary.br-sm(type='submit' onclick='addComment()') Gửi
+                        .btn-container.mt-2
+                            .d-flex
+                                .btn-upfile
+                                    input.form-control(type='file' onchange="UpdateImage(this,'ListImage','comment','#addcommentform')")
+                                    i.demo-icon.cus-camera.mr-2
+                                    | Đính kèm ảnh
+                                a(href='' tagref='_blank') Quy định bình luận
+                            .list-image.flex-container
+                        input(type='hidden' name='Gender' value='')
+                        input(type='hidden' name='ListImage' value='')
+                        input(type='hidden' name='ProductId' value='')
+                        input(type='hidden' name='Note' value='')
+            else
+                .comment(itemscope itemtype='http://schema.org/UserComments')
+                    .item--comment__header
+                        .avatar=cmtItem.avatar
+                        h3.h5.font-weight-semibold=cmtItem.name
+                    .des=cmtItem.body
+                    if cmtItem.listimg != null
+                        .img-list.flex-container
+                            each img in cmtItem.listimg
+                                a.review-image.br-sm
+                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
+                    .comment-action
+                        - var cmtItemId = '#formreplycontainer'+ cmtItem.id;
+                        a.btn-rep(href='javascript:' onclick="showreply('"+ cmtItemId +"')") trả lời
+                        span.date=cmtItem.date
+                    form.comment-form.mt-2(action=linkCmt id=`formreply${cmtItem.id}` onsubmit='return false; addReplyComment(1,1)' style='display:none')
+                        .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
+                            .alert-test
+                                .alert-title.ecs-icon-times-circle
+                                =' '
+                                .
+                                    Vui lòng điền họ và tên
+                            .alert-test
+                                .alert-title.ecs-icon-times-circle
+                                =' '
+                                .
+                                    Vui lòng điền số điện thoại
+                        .row
+                            .col-sm-6
+                                textarea.form-control.br-sm.h-100(name='Body' placeholder='Mời bạn để lại bình luận')
+                            .col-sm-6.input-wrapper
+                                .custom-radio
+                                    input#sex1-cmt2.custom-control-input(type='radio' name='Gender2' value='')
+                                    label.custom-control-label.round(for='sex1-cmt2') Anh
+                                .custom-radio
+                                    input#sex2-cmt2.custom-control-input(type='radio' name='Gender2' value='')
+                                    label.custom-control-label.round(for='sex2-cmt2') Chị
+                                input.form-control.br-sm(type='text' name='Name' placeholder='Họ và tên*')
+                                input.form-control.br-sm(type='email' name='Email' placeholder='Email*')
+                                input.form-control.br-sm(type='tel' name='Phone' placeholder='Số điện thoại')
+                                button.btn.btn-primary.br-sm(type='submit' onclick='addComment()') Gửi
+                        .btn-container.mt-4.br-sm
+                            .d-flex
+                                .btn-upfile
+                                    input.form-control(type='file' onchange="UpdateImage(this,'ListImage','comment','#addcommentform')")
+                                    i.demo-icon.cus-camera.mr-2
+                                    | Đính kèm ảnh
+                                a(href='' tagref='_blank') Quy định bình luận
+                            .list-image.flex-container
+                        input(type='hidden' name='Gender' value='')
+                        input(type='hidden' name='ListImage' value='')
+                        input(type='hidden' name='ProductId' value='')
+                        input(type='hidden' name='Note' value='')
+    .comments-footer.mt-5
+        a#loadmorerating.btn.btn-primary.btn-outline.btn-sm.br-sm(href='javascript:' onclick='loadmorerating(this,1,1)') Xem thêm bình luận
+            i.demo-icon.cus-right-open-mini.ml-1

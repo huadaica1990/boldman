@@ -1,0 +1,96 @@
+/*--------------------------------
+    Pagniation
+---------------------------------*/
+
+.pagination {
+    @include flex($type: "container");
+    font-size: 1.2rem;
+    color: $grey-color;
+
+    > * {
+        font-size: 1.4rem;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    .page-item {
+        margin-right: 10px;
+
+        i {
+            font-weight: $font-weight-bold;
+        }
+
+        &:hover:not(.disabled) > a {
+            background-color: transparentize($color: $primary-color, $amount: 0.2);
+            color: $white-color;
+        }
+
+        &.active:not(.disabled) > a {
+            background-color: $primary-color;
+            color: $white-color;
+        }
+
+        &.disabled a {
+            cursor: not-allowed;
+            color: #aaa;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &-text {
+            &:hover:not(.disabled) > a,
+            > a {
+                background-color: transparent;
+                color: $dark-color;
+            }
+        }
+    }
+
+    .next {
+        i {
+            margin-left: 2px;
+        }
+    }
+}
+.page-link {
+    @include border-radius($val: 50%);
+    @include animation($customize: true) {
+        -ms-transition: background-color .4s, color .4s;
+        -webkit-transition: background-color .4s, color .4s;
+        -moz-transition: background-color .4s, color .4s;
+        -o-transition: background-color .4s, color .4s;
+        transition: background-color .4s, color .4s;
+    };
+    display:block;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    line-height: 30px;
+}
+.page-item-dots {
+    white-space: nowrap;
+    &::before {
+        content: '...';
+        display: inline-block;
+        vertical-align: middle;
+        font-size: .9rem;
+        font-weight: $font-weight-semibold;
+        margin-right: .1rem;
+        margin-top: -6px;
+    }
+}
+
+/*#region Style fix all browser*/
+    /*#region Safari*/
+    @include only-for-retina {
+        .page-link {
+            line-height: 32px;
+        }
+    }
+    /*#endregion*/
+/*#endregion*/

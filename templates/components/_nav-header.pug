@@ -1,0 +1,207 @@
+//-Var
+
+include ../elements/nav/_nav-mobile.pug
+header.d-none.d-lg-block.d-md-none
+    .header-header
+        .container.d-flex.justify-content-between.align-items-center
+            .header-header-left
+                p.welcome-msg ECS - Thiết Kế Website Bán Hàng Chuyên Nghiệp
+            .header-header-right.d-flex
+                if isLang
+                    .dropdown.lang-wrapper.p-relative
+                        a.text-uppercase(href='javascript:' title='' data-toggle='dropdown')
+                            img.dropdown-image(src='/img/flag-vn.png' alt='' loading='lazy' width='14' height='9')
+                            | VN
+                        .dropdown-box.dropdown-box-lang
+                            +lang-list
+                if isLogin
+                    .user.d-flex.p-relative
+                        if isAuthorise
+                            a.login.d-flex(href='' title='')
+                                img.avatar.br-50(src='/img/avatar.jpg' alt='' width='25' height='25' loading='lazy')
+                                span Xin chào Nguyễn Trọng Huy Nguyễn Trọng Huy
+                        else
+                            a.login.d-flex.sign-in.sign-in-ajax(href='/ajax/login.html' data-no-instant title="Login")
+                                i.ecs-icon-account
+                                | Đăng nhập
+                            a.login.d-flex.register.register-ajax(href='/ajax/login.html' data-no-instant title="Register") Đăng ký        
+    case menuStyle
+        when 'navsidebar'
+            .header-body.bb
+                .container.d-flex.justify-content-between.align-items-center
+                    .header-body-left.logo-wrapper
+                        a(href=logo[0].href title=logo[0].name)
+                            img(src=logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
+                    .header-body-center.search.search-pc.pre-search
+                        .search-container
+                            form.flex-center.search-border.bg-white.zindex-2(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
+                                input.form-control(type='search' name='keyword' placeholder=placeholderSearch[0])
+                                button.btn.btn-search.ecs-icon-search(type='submit')
+                            #search-result-pc.search-result.zindex-2
+                                a(href='')
+                                    picture
+                                        source(media='' srcset='' type='image/webp')
+                                        img(src='/img/menu/search0.jpg' alt='' loading='lazy' width='554' height='50')
+                                .search-result-step1
+                                    .search-result-history.toggler-wrap
+                                        each item in tag
+                                            a.toggler-item.demo-icon.cus-clock-1(href=item.href)
+                                                span.overtext=item.name
+                                        .toggler-wrap-btn
+                                                
+                                    .search-result-hotkey
+                                        .title.demo-icon.cus-stat Tìm Kiếm Phổ Biến
+                                        .search-result-hotkey-content.flex-container
+                                            each item in tag
+                                                a.item(href=item.href) 
+                                                    .img-container
+                                                        picture
+                                                            source(media='' srcset='' type='image/webp')
+                                                            img(src=item.src alt='' loading='lazy' width='45' height='45')
+                                                    .text-container=item.name
+                                    .search-result-cat
+                                        .title Danh mục nổi bật
+                                        .search-result-cat-content.flex-container
+                                            each item in productCat
+                                                a.item(href=item.href) 
+                                                    .img-container
+                                                        picture
+                                                            source(media='' srcset='' type='image/webp')
+                                                            img(src=item.src alt='' loading='lazy' width='100' height='100')
+                                                    | #{item.name}
+                                .search-result-step2
+                                    .search-result-history
+                                        each item in tag
+                                            a.demo-icon.cus-search(href=item.href)
+                                                span.overtext=item.name
+                            .search-overwrap
+                        .tag.mt-1
+                            each item in tag
+                                a.h6(href=item.href)=item.name
+                    .header-body-right.d-flex.justify-content-between.align-items-center
+                        .call.d-flex.justify-content-between.align-items-center.p-relative
+                            i.ecs-icon-call.icon
+                            .text
+                                a.mail(href='mailto:'+emailList[0]) Email
+                                =' '
+                                .
+                                    or:
+                                a.tell(href='tel'+phoneDefault)=phoneList[0]
+                        a.wishlist.label-down.text-center(href="")
+                            i.ecs-icon-heart
+                            span.label Yêu thích
+                        a.compare.label-down.text-center(href="")
+                            i.ecs-icon-compare
+                            span.label So sách
+                        if isCart
+                            .cart-wrapper.p-relative
+                                a.cart-link.label-down.text-center(href='') 
+                                    i.ecs-icon-cart
+                                    span.cart-count-txt 10
+                                    span.label Giỏ hàng
+                                .js-cart-info
+            .header-footer.sticky-content.fix-top.sticky-header.has-dropdown
+                .container.d-flex.nav-wrapper
+                    .header-footer-left
+                        include ../elements/nav/_nav-sidebar.pug
+                    .header-footer-center 
+                        include ../elements/nav/_nav-pc.pug
+                    .header-footer-right.d-flex.justify-content-between.align-items-center.ml-auto
+                        a.d-flex.justify-content-between.align-items-center(href='')
+                            i.ecs-icon-map-marker.mr-1
+                            | Đơn hàng
+                        a.d-flex.justify-content-between.align-items-center(href='')
+                            i.ecs-icon-sale.mr-1
+                            | Khuyến mãi
+        when 'landing'
+            .header-body.bb
+                .container.d-flex.justify-content-between.align-items-center
+                    .header-body-left.logo-wrapper
+                        a(href=logo[0].href title=logo[0].name)
+                            img(src=logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
+                    .header-body-right
+                        nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/SiteNavigationElement')
+                            ul.menu.nav-pc-body.nav.flex-container.menulanding
+                                each item in menuLanding
+                                    if item.isShow
+                                        li(data-id='' class=item.isActive ? 'active' : '' itemprop='name')
+                                            a(href=item.href itemprop='url' rel='m_PageScroll2id' data-ps2id-offset='100')=item.name 
+                            
+        default
+            .header-body.bb
+                .container.d-flex.justify-content-between.align-items-center
+                    .header-body-left.logo-wrapper
+                        a(href=logo[0].href title=logo[0].name)
+                            img(src=logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
+                    .header-body-center.search.search-pc.pre-search
+                        .search-container
+                            form.flex-center.search-border.bg-white.zindex-2(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
+                                input.form-control(type='search' name='keyword' placeholder=placeholderSearch[0])
+                                button.btn.btn-search.ecs-icon-search(type='submit')
+                            #search-result-pc.search-result.zindex-2
+                                a(href='')
+                                    picture
+                                        source(media='' srcset='' type='image/webp')
+                                        img(src='/img/menu/search0.jpg' alt='' loading='lazy' width='554' height='50')
+                                .search-result-step1
+                                    .search-result-history.toggler-wrap
+                                        each item in tag
+                                            a.toggler-item.demo-icon.cus-clock-1(href=item.href)
+                                                span.overtext=item.name
+                                        .toggler-wrap-btn
+                                                
+                                    .search-result-hotkey
+                                        .title.demo-icon.cus-stat Tìm Kiếm Phổ Biến
+                                        .search-result-hotkey-content.flex-container
+                                            each item in tag
+                                                a.item(href=item.href) 
+                                                    .img-container
+                                                        picture
+                                                            source(media='' srcset='' type='image/webp')
+                                                            img(src=item.src alt='' loading='lazy' width='45' height='45')
+                                                    .text-container=item.name
+                                    .search-result-cat
+                                        .title Danh mục nổi bật
+                                        .search-result-cat-content.flex-container
+                                            each item in productCat
+                                                a.item(href=item.href) 
+                                                    .img-container
+                                                        picture
+                                                            source(media='' srcset='' type='image/webp')
+                                                            img(src=item.src alt='' loading='lazy' width='100' height='100')
+                                                    | #{item.name}
+                                .search-result-step2
+                                    .search-result-history
+                                        each item in tag
+                                            a.demo-icon.cus-search(href=item.href)
+                                                span.overtext=item.name
+                            .search-overwrap
+                        .tag.mt-1
+                            each item in tag
+                                a.h6(href=item.href)=item.name
+                    .header-body-right.d-flex.justify-content-between.align-items-center
+                        .call.d-flex.justify-content-between.align-items-center.p-relative
+                            i.ecs-icon-call.icon
+                            .text
+                                a.mail(href='mailto:'+emailList[0]) Email
+                                =' '
+                                .
+                                    or:
+                                a.tell(href='tel'+phoneDefault)=phoneList[0]
+                        a.wishlist.label-down.text-center(href="")
+                            i.ecs-icon-heart
+                            span.label Yêu thích
+                        a.compare.label-down.text-center(href="")
+                            i.ecs-icon-compare
+                            span.label So sách
+                        if isCart
+                            .cart-wrapper.p-relative
+                                a.cart-link.label-down.text-center(href='') 
+                                    i.ecs-icon-cart
+                                    span.cart-count-txt 10
+                                    span.label Giỏ hàng
+                                .js-cart-info     
+            .header-footer.sticky-content.fix-top.sticky-header
+                .container.d-flex.nav-wrapper
+                    .header-footer-center 
+                        include ../elements/nav/_nav-pc.pug

@@ -1,0 +1,62 @@
+section.container.mb-4
+    h2.section-header.title.title-underline Sản phẩm đã xem
+    .section-body.swiper-container.swiper-theme.mb-8(data-swiper-options=`{
+                                                                            'spaceBetween': 20,
+                                                                            'breakpoints': {
+                                                                                '0': {
+                                                                                    'slidesPerView': 2
+                                                                                },
+                                                                                '768': {
+                                                                                    'slidesPerView': 3
+                                                                                },
+                                                                                '992': {
+                                                                                    'slidesPerView': 5
+                                                                                }
+                                                                            }
+                                                                        }`)
+        .swiper-wrapper.row.cols-xl-4.cols-lg-3.cols-2
+            each item in product
+                .swiper-slide.text-center.product-col
+                    .item-product.product(itemscope itemtype='http://schema.org/Product')
+                        figure.product-media
+                            if item.ver
+                                .img.product-images.img-fixed-height
+                                    each itemver in item.ver
+                                        picture
+                                            source.swiper-lazy(media='' data-srcset='' type='image/webp')
+                                            img.swiper-lazy(data-src=itemver.srcbig alt='' itemprop='thumbnail' width='234' height='263')
+                                        if itemver.id == 1
+                                            .swiper-lazy-preloader
+                            else
+                                .img.product-images.img-fixed-height
+                                    each itemimg in item.listimg
+                                        picture
+                                            source.swiper-lazy(media='' data-srcset='' type='image/webp')
+                                            img.swiper-lazy(data-src=itemimg.src alt='' itemprop='thumbnail' width='234' height='263')
+                                        if itemimg.id == 1
+                                            .swiper-lazy-preloader
+                            .product-label-group
+                                //- if item.percent
+                                //-     label.product-label.label-discount=item.percent
+                                if item.label
+                                    each itemlabel in item.label
+                                        label.product-label(style=`background-color: ${itemlabel.color}`)=itemlabel.name
+                        .product-details
+                            h3.product-title(itemprop='name')
+                                a(href='' itemprop='url')=item.name
+                            if (item.star > 0)
+                                .ratings-container
+                                    .ratings-full
+                                        .ratings(style=`width: ${item.star*100/5}%;`)
+                                    a.rating-reviews(href='') (#{item.count}<span class='ml-1'>đánh giá</span>)
+                            .product-price(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+                                if item.promoprice != null
+                                    ins.new-price.price-promoprice(itemprop='price' content='')=item.price
+                                    //- del.old-price=item.promoprice
+                                    if item.percent
+                                        label.product-label.label-discount
+                                            span=item.percent
+                                else
+                                    ins.new-price(itemprop='price' content='')=item.price
+                            if item.quantity == 0
+                                .product-quantity Đã hết hàng

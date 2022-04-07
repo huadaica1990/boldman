@@ -1,0 +1,41 @@
+/*------------------------------------
+    Blog
+        - Default
+        - List
+        - Widget
+------------------------------------*/
+
+// Variables
+@include set-default(
+    (
+        post: (
+            media:(),
+            details:(),
+            lg:(),
+            md:(),
+            sm:(),
+            xs:(),
+        )
+    )
+);
+
+// Default
+.post {
+
+}
+// List
+.post-list {
+    .post {
+
+    }
+}
+// Widget
+.post-widget {
+    .post {
+
+    }
+}
+
+.post.img-fixed-height {
+
+}

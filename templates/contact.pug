@@ -1,0 +1,113 @@
+extends layout.pug
+
+block title
+    - let title = 'Trang tĩnh';
+    title #{title}
+block style
+    - let css = '/release/static-page.min.css';
+    //- Default
+    link(rel='stylesheet' type='text/css' href='/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/release/main.min.css')
+
+block content
+    //- Var
+    - let idPage = 'static';
+    - let h1Title = '@ViewBag.MetaTitle';
+    //- Data
+    -
+        let breadcrumb = [
+            {
+                name: 'Trang chủ',
+                href: '/',
+                isActive: false,
+            },
+            {
+                name: 'Trang tĩnh',
+                href: '',
+                isActive: true,
+            },
+        ];
+    //- Content
+    main.page-wrapper.main(id=`${idPage}-page`)
+        h1.d-none=h1Title
+        
+        .breadcrumb.mb-10
+            .breadcrumb-header.bg-grey.d-flex.align-items-center.justify-content-center
+                .container.text-center.text-capitalize
+                    h2.breadcrumb-title=title
+                    p.breadcrumb-subtitle Page
+            .container
+                .breadcrumb-body
+                    +breadcrumb-list(breadcrumb)
+
+        section.container.static(id=`${idPage}`)
+            .section-header.mb-6.row
+                .col-sm-4.icon-box.text-center.icon-box-primary.mb-4
+                    span.icon-box-icon.icon-email.ecs-icon-envelop-closed
+                    .icon-box-content
+                        h4.icon-box-title Địa chỉ E-mail
+                        p
+                            each email in emailList
+                                a(href='mailto:'+email itemprop='email')=email
+                .col-sm-4.icon-box.text-center.icon-box-primary.mb-4
+                    span.icon-box-icon.icon-headphone.ecs-icon-headphone
+                    .icon-box-content
+                        h4.icon-box-title Điện thoại
+                        p
+                            each phone in phoneList
+                                a(href='tel:'+phone itemprop='telephone')=phone
+                .col-sm-4.icon-box.text-center.icon-box-primary.mb-4
+                    span.icon-box-icon.icon-map-marker.ecs-icon-map-marker
+                    .icon-box-content
+                        h4.icon-box-title Địa chỉ
+                        p
+                            a(href='https://www.google.com/maps/search/' target='_blank' rel='nofollow' itemprop='streetAddress')=address        
+            .section-body.mb-md-10.mb-5.map
+                iframe(src=map frameborder='0' style='border:0' allowfullscreen)
+            hr.divider.mb-md-10.mb-5
+            .section-footer.mb-10
+                .title.mb-3 Liên hệ với chúng tôi
+                form.contact-us-form(action='/aj/StaticPage/Contact' id='js-FormTheme1-form' method='post' onsubmit='return false;submitcontact()')
+                    .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
+                        .alert-test
+                            .alert-title.ecs-icon-times-circle
+                            =' '
+                            .
+                                Vui lòng điền họ và tên
+                        .alert-test
+                            .alert-title.ecs-icon-times-circle
+                            =' '
+                            .
+                                Vui lòng điền số điện thoại
+                    .flex-container
+                        .form-group
+                            label Họ và tên
+                            input.form-control.get-value(type='text' placeholder='Họ và tên*' name='name' data-required='required' data-alert='Họ và tên' data-type='0')
+                        .form-group
+                            label Email
+                            input.form-control.get-value(type='email' placeholder='Email*' name='email' data-required='required' data-alert='Email' data-type='2')
+                        .form-group
+                            label Số điện thoại
+                            input.form-control.get-value(type='tel' placeholder='Số điện thoại*' name='phonenumber' data-required='required' data-alert='Số điện thoại' data-type='1')
+                        .form-group
+                            label Nội dung
+                            textarea.form-control.get-value(placeholder='Nội dung*' name='body' data-required='required' data-alert='Nội dung' data-type='3')
+                    .btn-container
+                        button.btn.btn-primary.br-sm.w-sm-100(type='submit' onclick="submitcontact('#js-FormTheme1-form')") Gửi
+                    input(type='hidden' name='ContactType' value='3')
+                    input(type='hidden' name='Action' value='/aj/StaticPage/Contact')
+                    input(type='hidden' name='Title' value='[Liên hệ] Liên hệ từ trang liên hệ')
+                    input(type='hidden' name='Note' value='Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất')
+
+
+block script
+    - let js = '/release/static-page.min.js';
+    //- Default
+    script(type='text/javascript' src=`/release/default.min.js` defer)
+    //- Page
+
+    script.
+        addCSS('#{css}')
+        addScript('#{js}')
+        addScript('/release/layout-script.min.js')
+    

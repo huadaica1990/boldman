@@ -1,0 +1,208 @@
+/*---------------------
+    Dropdown
+        - Default
+        - Dropdown-expandex
+        - Cart Dropdown
+        - Category Dropdown
+----------------------*/
+
+.dropdown {
+    position: relative;
+    .dropdown-image {
+        max-width: 1.4rem;
+        margin-right: 0.6rem;
+        height: auto;
+    }
+    > a {
+        display:block;
+        &::after {
+            @include e-cen($type: "top");
+            margin-left: 6px;
+            content: '\e805';
+            font: {
+                family: "customize";
+                weight: 900;
+            }
+        }
+    }
+    &:not(.show):hover {
+        .dropdown-box {
+            @include visible($active: true, $zindex: 99);
+            top: 100%;
+        }
+    }
+}
+.dropdown-box {
+    @include shadow($val: 0 4px 20px -8px rgba(0,0,0,.3));
+    @include animation($type: "all", $time: 0.2s, $effect: "ease-out");
+    @include visible($active: false, $zindex: 99);
+    top:110%;
+    right:0;
+    position: absolute;
+    padding: 0.5rem 0;
+    background-color: $white-color;
+    a {
+        padding: 0.6rem 1rem;
+        font-size: inherit;
+        line-height: 1.1;
+        white-space: nowrap;
+        display: block;
+        img {
+            @include animation($type: "filter", $time: 0.3s, $effect: "ease");
+            @include filter($val: grayscale(100%));
+        }
+        &.active,&:hover {
+            img {
+                @include filter($val: grayscale(0));
+            }
+        }
+    }
+    
+    .dropdown-image {
+        max-width: 1.4rem;
+        margin-right: 0.6rem;
+        height: auto;
+    }
+    &::before {
+        top:-16px;
+        right:1rem;
+        content: "";
+        position: absolute;
+        border: 8px solid transparent;
+        border-bottom: 8px solid $white-color;
+        cursor: pointer;
+        pointer-events: none;
+    }
+}
+
+/*#region Mobile responsive section styles*/
+    @include mq("1024px", "max") {
+        #dropdown-mobile-wrapper {
+            @include animation($customize: true) {
+              -ms-transition: transform .5s ease;
+              -webkit-transition: transform .5s ease;
+              -moz-transition: transform .5s ease;
+              -o-transition: transform .5s ease;
+              transition: transform .5s ease;
+            };
+            @include transform($args: translateY(0%));
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-align-content: flex-end;
+            -ms-flex-line-pack: end;
+            align-content: flex-end;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            padding: 15px 15px 30px 15px;
+            z-index: 91;
+            .dropdown-box {
+                @include order(1);
+                @include visible($active: true, $zindex: 99);
+                padding: 0;
+                padding: 0;
+                width: 100%;
+                margin-top:auto;
+                position: static;
+                a {
+                    display: block;
+                    height: 50px;
+                    font-weight: $font-weight-semibold;
+                    line-height: 50px;
+                    font-size: 1.5rem;
+                    padding: 0 2rem;
+                    &:not(:last-child) {
+                      @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
+                    }
+                    &.active,&:hover {
+                        img {
+                            @include filter(grayscale(100%) brightness(.5))
+                        }
+                    }
+                }
+            }
+            .dropdown-remove {
+                @include border-radius($val: .5rem);
+                @include order(2);
+                background-color: $white-color;
+                display: block;
+                height: 50px;
+                font-weight: $font-weight-semibold;
+                line-height: 50px;
+                font-size: 1.5rem;
+                padding: 0 2rem;
+                width: 100%;
+                margin-top:2rem;
+                color: rgb(255, 66, 78);
+                text-align: center;
+            }
+            .dropdown-box-lang {
+                @include border-radius($val: .5rem);
+                .dropdown-image {
+                    max-width: 2.5rem;
+                }
+            }
+            .dropdown-box-des {
+                @include border-radius($val: .5rem);
+                background-color: $white-color;
+                width: 100%;
+                line-height: 1.4;
+                .coupon-des-content {
+                    max-height: 50vh;
+                    overflow:auto;
+                }
+                .coupon-des-item {
+                    @include flex($type: "container");
+                    @include flex-option($type: justify-content, $value: space-between);
+                    padding: 15px;
+                    font-size: 12px;
+                    color: $dark-color;
+                    ul {
+                      padding-left: 1.5rem;
+                    }
+                    li {
+                      list-style-type: disc;
+                      &:not(:last-child) {
+                        margin-bottom: .5rem;
+                      }
+                    }
+                    &:nth-child(2n + 1) {
+                      background-color: rgb(250, 250, 250);
+                    }
+                    > * {
+                      :first-child {
+                        color: #{get(cart, _greyColor)};
+                      }
+                    }
+                    &:last-child {
+                      > * {
+                        width: 100%;
+                        &:not(:last-child) {
+                          margin-bottom: 1rem;
+                        }
+                      }
+                    }
+                }
+            }
+        }
+        .dropdown:not(.show):hover .dropdown-box,
+        .dropdown.show:hover .dropdown-box,
+        .dropdown.show .dropdown-box {
+            @include visible($active: false, $zindex: 99);
+        }
+    }
+    @include mq("450px", "max") {
+        .dropdown-box-lang .dropdown-image,
+        .dropdown.lang-wrapper .dropdown-image {
+            margin-bottom:2px;
+        }
+    }
+/*#endregion*/

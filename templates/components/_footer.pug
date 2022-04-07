@@ -1,0 +1,208 @@
+//- Var
+- let chatZalo = false;
+- let chatFace = true;
+
+//- Start of Footer
+footer.footer.appear-animate(itemscope itemtype='http://schema.org/LocalBusiness' data-animation-options=`{'name': 'animate__fadeIn'}`)
+    .footer-newsletter.bg-primary.footer-header
+        .container
+            .row.justify-content-center.align-items-center
+                .col-xl-5.col-lg-6
+                    .icon-box.icon-box-side.text-white
+                        .icon-box-icon.d-inline-flex.ecs-icon-envelop3
+                        .icon-box-content
+                            .icon-box-title.text-white.text-uppercase.font-weight-bold Đăng ký bản tin của chúng tôi
+                            p.text-white Nhận tất cả thông tin mới nhất về Sự kiện, Bán hàng và Ưu đãi.
+                .col-xl-7.col-lg-6.col-md-9.mt-4.mt-lg-0
+                    form#js-email-form.input-wrapper.input-wrapper-inline.input-wrapper-rounded(action='/aj/StaticPage/Contact' method='post' onsubmit='return false;submitcontact()')
+                        input.form-control.mr-2.bg-white.get-value(type='email' placeholder='Địa chỉ email của bạn' data-required='required' data-alert='Email' data-type='2')
+                        button.btn.btn-dark.btn-rounded(type='submit' onclick="submitcontact('#js-email-form')") Gửi<i class='ecs-icon-long-arrow-right'></i>
+
+                        input.get-value(type='hidden' name='name' data-required='' data-alert='' data-type='0')
+                        input.get-value(type='hidden' name='phonenumber' data-required='' data-alert='' data-type='0')
+                        input.get-value(type='hidden' name='body' data-required='' data-alert='' data-type='0')
+                        input(type='hidden' name='ContactType' value='2')
+                        input(type='hidden' name='Action' value='/aj/StaticPage/Contact')
+                        input(type='hidden' name='Title' value='[Email] Đăng ký email')
+                        input(type='hidden' name='Note' value='Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất')
+
+    .container
+        .footer-body
+            .row
+                .col-lg-4.col-md-12.col-sm-6
+                    .widget.widget-about
+                        .logo-wrapper
+                            a(href=logo[2].href title=logo[2].name)
+                                img(src=logo[2].src alt=logo[2].name width='133' height='52' itemprop='logo' loading='lazy')
+                        .widget-body
+                            p.widget-about-title Liên hệ 24/7
+                            .widget-about-desc
+                                p.phone-list
+                                    i.ecs-icon-map-marker
+                                    a(href='https://www.google.com/maps/search/' target='_blank' rel='nofollow' itemprop='streetAddress')=address
+                                p.phone-list
+                                    i.ecs-icon-phone
+                                    each phone in phoneList
+                                        a(href='tel:'+phone itemprop='telephone')=phone
+                                p.phone-list
+                                    i.ecs-icon-envelop-closed
+                                    each email in emailList
+                                        a(href='mailto:'+email itemprop='email')=email
+                            p.widget-about-title MXH
+                            .widget-about-desc.social-icons.social-icons-colored
+                                +social-list
+                each item in menuFooter
+                    .col-lg-3.col-md-4
+                        .widget
+                            h3.widget-title=item.name
+                            if item.children != null
+                                ul.widget-body
+                                    each item_child in item.children
+                                        li
+                                            a(href=item_child.href)=item_child.name
+        .footer-footer
+            .footer-footer-left
+                p.copyright
+                    a(href=copyRight.href target="_blank")=copyRight.value
+            .footer-footer-right
+                span.payment-label.mr-lg-8 Phương thức thanh toán
+                figure.payment.flex-center
+                    img(src='/img/payment1.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src='/img/payment2.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src='/img/payment3.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src='/img/payment4.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src='/img/payment5.png' alt='payment' width='45' height='28' loading='lazy')
+
+//- Popup
+if popup
+    #newsletter-popup.newsletter-popup.newsletter.newsletter-img.fancybox-fade.fancybox-hide
+        .newsletter-body
+            a(href='' title='')
+                picture
+                    source(media='(max-width:450px)' srcset='' type='image/webp')
+                    source(media='(max-width:450px)' srcset=imgPopup.srcm)
+                    source(media='' srcset='' type='image/webp')
+                    img(src=imgPopup.src alt='' loading='lazy' width='1200' height='625')
+            .form-checkbox.d-flex.align-items-center.justify-content-end
+                input#hide-newsletter-popup.custom-checkbox(type='checkbox' name='hide-newsletter-popup')
+                label.font-size-sm(for='hide-newsletter-popup') Không hiện lại popup
+
+//- Modal
+#contact-modal.modal.modal-form.modal-popup.fancybox-fade.fancybox-hide
+    .modal-body
+        .title.h4 Hãy liên hệ với chúng tôi đễ được hỗ trợ nhanh chóng
+        form#js-contactmodal-form(action='/aj/StaticPage/Contact' method='post' novalidate='novalidate')
+        .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: none;')
+        .form-group-wrapper
+            .form-group
+                input.form-control(type='text' placeholder='Họ và tên*' name='name' required='')
+            .form-group
+                input.form-control(type='email' placeholder='Email*' name='email' required='')
+            .form-group
+                input.form-control(type='tel' placeholder='Số điện thoại' name='phonenumber')
+            .form-group
+                textarea.form-control(placeholder='Lời nhắn của bạn*' name='body' required='')
+        .btn-container.d-flex.justify-content-between
+            button.btn.btn-default.br-sm.d-block.d-lg-none.popup-close Đóng
+            button.btn.btn-primary.br-sm(type='submit') Gửi
+
+#product-contact-modal.modal.modal-form.modal-popup.fancybox-fade.fancybox-hide
+    .modal-body
+        .title.h4 Liên hê mua sản phẩm
+        form#js-productcontactmodal-form(action='' method='post' novalidate='novalidate')
+        .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: none;')
+        .form-group-wrapper
+            .form-group
+                input.form-control(type='text' placeholder='Họ và tên*' name='name' required='')
+            .form-group
+                input.form-control(type='email' placeholder='Email*' name='email' required='')
+            .form-group
+                input.form-control(type='tel' placeholder='Số điện thoại' name='phonenumber')
+            .form-group
+                textarea.form-control(placeholder='Lời nhắn của bạn*' name='body' required='')
+        .btn-container.d-flex.justify-content-between
+            button.btn.btn-default.br-sm.d-block.d-lg-none.popup-close Đóng
+            button.btn.btn-primary.br-sm(type='submit') Gửi
+
+#chat-scroll-block
+    .--body             
+        //- Start of Facebook
+        if chatFace
+            a.d-block.d-sm-none.facemess(href='https://m.me/' target='_blank' rel='nofollow')
+                span 1
+                div.background-icon
+                //- img.ishow(src='/img/messenger.svg' alt='')  
+        //- Start of Zalo
+        if chatZalo 
+            script(type='text/javascript' src='https://sp.zalo.me/plugins/sdk.js' async defer)
+            .zalo-chat-widget(data-oaid=chatZalo data-welcome-message='Ha Eva xin kính chào quý khách!' data-autopopup='0' data-width='350' data-height='420')
+        else
+            a.zalocall(href=`https://zalo.me/${phoneDefault}` target='_blank' rel='nofollow')
+                span
+                div.background-icon
+                //- img.ishow(src='/img/stick_zalo.png' alt='')  
+
+        //- Start of Call Now
+        a.callnow(href='tel:'+phoneDefault)
+            i.demo-icon.cus-phone-1
+            span.d-none.d-md-block.d-xs-none=phoneList[0]
+    a.d-block.d-sm-none.--header.btn-show-chat(href='javascript:')
+        i.ecs-icon-comments-solid
+//- Start of Scroll Top
+a#scroll-top.scroll-top.demo-icon.cus-up-open-big(href='#top' title='Top' role='button')
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+        <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35" r="34" style="stroke-dasharray: 214, 400;"></circle>
+    </svg>
+
+//- Error
+#error-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
+    .modal-body
+        .alert.alert-error.alert-bg.alert-button.alert-block.text-right
+            button.btn.btn-link.btn-close.popup-close(aria-label='button')
+                i.close-icon
+            .alert-title.text-left
+                i.ecs-icon-exclamation-triangle
+                | Thông báo lỗi
+            p.text-left Hệ thống gặp sự cố kỹ thuật vui lòng thử lại sau...
+            a.btn.btn-sm.btn-primary.btn-rounded.popup-close(href='javascript:') Đóng
+
+#success-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
+    .modal-body
+        .alert.alert-success.alert-bg.alert-button.alert-block.text-right
+            button.btn.btn-link.btn-close.popup-close(aria-label='button')
+                i.close-icon
+            .alert-title.text-left
+                i.demo-icon.cus-ok
+                | Thành công!!!
+            p.text-left Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất.
+            a.popup-close(href='javascript:') Đóng
+            span.text-grey hoặc 
+            a.text-lowercase.text-underline.text-primary(href='/') Quay về trang chủ
+
+#require-login-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
+    .modal-body
+        .alert.alert-error.alert-bg.alert-button.alert-block.text-right
+            button.btn.btn-link.btn-close.popup-close(aria-label='button')
+                i.close-icon
+            .alert-title.text-left
+                i.ecs-icon-exclamation-triangle
+                | Thông báo lỗi
+            p.text-left Vui lòng đăng nhập/đăng ký để sử dụng chức năng này.
+            a.btn.btn-sm.btn-default.btn-rounded.popup-close(href='javascript:') Đóng
+            a.btn.btn-sm.btn-primary.btn-rounded(href='@Url.RouteUrl(') Đăng nhập
+
+#confirm-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
+    .modal-body
+        .alert.alert-warning.alert-bg.alert-button.alert-block.text-right
+            button.btn.btn-link.btn-close.popup-close(aria-label='button')
+                i.close-icon
+            .alert-title.text-left
+                i.ecs-icon-exclamation-circle
+                | Xác nhận
+            p.text-left
+            a.btn.btn-sm.btn-default.btn-rounded.popup-close(href='javascript:') Đóng
+            a.btn.btn-sm.btn-warning.btn-rounded.popup-confirm(href='javascript:') Đồng ý
+
+//- Modal Product
+#product-popup.product.product-single.product-popup.fancybox-fade.fancybox-hide
+    #product-popup-ajax.shimmer-container

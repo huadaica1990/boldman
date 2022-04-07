@@ -1,0 +1,474 @@
+/*--------------------------------------
+    Buttons
+        - Button
+            - Default
+            - Primary
+            - Success
+            - Secondary
+        - Outline Button
+            - Primary
+            - Success
+            - Secondary
+        - Icon Button
+            - Icon Right, Left
+            - Reveal Right, Left
+        - Rounded
+        - Round
+        - Other Button Styles
+            - Slide Left, Right, Top, Bottom
+            - Infinite Loop
+--------------------------------------*/
+
+// Button 
+.btn {
+    @include animation($customize: true) {
+        -ms-transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+        -webkit-transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+        -moz-transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+        -o-transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+        transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+    };
+    @include border($position: "all", $size:2px, $style:solid, $color: $lighter-color);
+    @include border-radius($val: 0);
+    display: inline-block;
+    background-color: $white-color;
+    color: $grey-color;
+    outline: 0;
+    font: {
+        weight: $font-weight-semibold;
+        size: 1.4rem;
+    }
+    // Height 44px, Width 120px for default
+    padding: 0.93em 1.98em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $grey-color;
+        border-color: darken( $border-color , 7% );
+        background-color: darken( $border-color , 7% );  
+    }
+
+    i {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.6rem;
+        line-height: 0;
+        margin-bottom: .2rem;
+        &::before {
+            margin: 0;
+        }
+    }
+    &.btn-icon-right {
+        i {
+            margin-right: 0;
+            margin-left: .6rem;
+        }
+    }
+
+    &.btn-icon-left {
+        i {
+            margin-right: .6rem;
+            margin-left: 0;
+        }
+    }
+
+    svg {
+        @include animation($customize: true) {
+            -ms-transition: stroke .4s, fill .4s;
+            -webkit-transition: stroke .4s, fill .4s;
+            -moz-transition: stroke .4s, fill .4s;
+            -o-transition: stroke .4s, fill .4s;
+            transition: stroke .4s, fill .4s;
+        };
+        margin-right: .5rem;
+        stroke: $white-color;
+        stroke-width: 3px;
+        fill: $white-color;
+    }
+}
+
+// Outlined Button
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid;
+    &.light {
+        padding: .996em 2em;
+        border: 1px solid;
+    }
+}
+
+// // Icon Button
+// .btn-icon-left,
+// .btn-icon-right,
+// .btn-reveal-left,
+// .btn-reveal-right {
+//     i {
+//         line-height: 0;
+//     }
+// }
+
+// Reveal Button
+.btn-reveal-left {
+    i {
+        @include animation($customize: true) {
+            -ms-transition: transform .3s, opacity .3s, margin .3s;
+            -webkit-transition: transform .3s, opacity .3s, margin .3s;
+            -moz-transition: transform .3s, opacity .3s, margin .3s;
+            -o-transition: transform .3s, opacity .3s, margin .3s;
+            transition: transform .3s, opacity .3s, margin .3s;
+        };
+        @include transform($args: translate(.5em));
+        opacity: 0;
+        margin-left: -1em;
+        margin-right: 0;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        i {
+            @include transform($args: trnaslateX(0));
+            opacity: 1;
+            margin-left: 0;
+            margin-right: .7rem;
+
+        }
+    }
+}
+.btn-reveal-right {
+    i {
+        @include animation($customize: true) {
+            -ms-transition: transform .3s, opacity .3s, margin .3s;
+            -webkit-transition: transform .3s, opacity .3s, margin .3s;
+            -moz-transition: transform .3s, opacity .3s, margin .3s;
+            -o-transition: transform .3s, opacity .3s, margin .3s;
+            transition: transform .3s, opacity .3s, margin .3s;
+        };
+        @include transform($args: translateX(-.5em));
+        opacity: 0;
+        margin-right: -1em;
+        margin-left: 0;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        i {
+            @include transform($args: translateX(0));
+            opacity: 1;
+            margin-right: 0;
+            margin-right: .7rem;
+        }
+    }
+}
+
+// Simple Button
+.btn-simple {
+    &::after {
+        @include animation($customize: true) {
+            -ms-transition: transform .3s;
+            -webkit-transition: transform .3s;
+            -moz-transition: transform .3s;
+            -o-transition: transform .3s;
+            transition: transform .3s;
+        };
+        display: block;
+        margin-top: 3px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        border-top: 3px solid;
+        content: '';
+    }
+}
+
+// Linked Button
+.btn-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    @include only-for-ie() {
+        overflow: visible;
+    }
+
+    &:not(.btn-underline) {
+        padding-bottom: 3px;
+    }
+
+    &:hover,
+    &.active,
+    &:focus {
+        background: transparent;
+    }
+}
+
+// Shadow Button
+.btn-shadow {
+    @include shadow($val: 0 5px 15px 0px rgba(0,0,0,0.1));
+    &:hover,
+    &:active,
+    &:focus {
+        @include shadow($val: 0 17px 20px -7px rgba(0,0,0,.2));
+    }
+}
+
+// Underlined Button
+.btn-underline {
+    &:hover,
+    &:active,
+    &:focus {
+        &::after {
+            @include transform($args: scaleX(1));
+        }
+    }
+    &::after {
+        @include animation($customize: true) {
+            -ms-transition: transform .3s;
+            -webkit-transition: transform .3s;
+            -moz-transition: transform .3s;
+            -o-transition: transform .3s;
+            transition: transform .3s;
+        };
+        @include transform($args: scaleX(0));
+        display: block;
+        margin-top: 3px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        border-top: 2px solid;
+        content: '';
+    }
+    &.sm::after {
+        width: 46%;
+    }
+    &.lg::after {
+        margin-left: -16.5%;
+        margin-right: -16.5%;
+        width: 133%;
+    }
+}
+
+// Like Button
+.btn-like {
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding: .429em .874em;
+    border-radius: 3px;
+}
+
+// Colored Button Styles
+.btn-primary {
+    @include button-variant($primary-color);
+}
+.btn-secondary {
+    @include button-variant($secondary-color);
+}
+.btn-success {
+    @include button-variant($success-color);
+}
+.btn-dark {
+    @include button-variant($dark-color);
+}
+.btn-dark-light {
+    @include button-variant($body-color);
+}
+.btn-white {
+    @include button-variant($white-color);
+    color: $dark-color;
+    &.btn-outline:hover,
+    &.btn-outline:active,
+    &.btn-outline:focus {
+        color: $dark-color;
+        border-color: $white-color;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        color: $white-color;
+        background-color: $dark-color;
+        border-color: $dark-color;
+    }
+}
+.btn-warning {
+    @include button-variant($warning-color);
+}
+.btn-error {
+    @include button-variant($alert-color);
+}
+.btn-grey {
+    @include button-variant($grey-color);
+}
+
+.btn {
+    &.btn-rounded {
+        @include border-radius($val: 3px);
+    }
+    
+    &.btn-ellipse {
+        @include border-radius($val: 30px);
+    }
+
+    &.btn-block {
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -4px;
+        }
+    }
+
+    &.btn-sm {
+        font-size: 1.3rem;
+        padding: .77em 1.4em ;
+    }
+
+    &.btn-lg {
+        font-size: 1.8rem;
+        padding: 0.95em 1.835em;
+    }
+
+    &.btn-xl {
+        font-size: 2.4rem;
+        padding: 0.84em 1.8em;
+    }
+    &.disabled {
+        border-color: #eee;
+        background-color: #eee;
+        color: #666;
+        cursor: not-allowed;
+        opacity: .8;
+    }
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+// Search Button
+// .btn-search {
+//     padding: 0;
+//     &.btn-sm {
+//         padding: .4em .95em;
+//     }
+//     i {
+//         font-size: 1.8rem;
+//         transform: rotateZ(-95deg);
+//     }
+// }
+
+// Slide Button
+.btn-slide-left {
+    &:hover,
+    &:active,
+    &:focus {
+        i {
+            -webkit-animation: .5s ease slideLeft;
+            -moz-animation: .5s ease slideLeft;
+            -ms-animation: .5s ease slideLeft;
+            -o-animation: .5s ease slideLeft;
+            animation: .5s ease slideLeft;
+        }
+    }
+}
+.btn-slide-right {
+    &:hover,
+    &:active,
+    &:focus {
+        i {
+            -webkit-animation: .5s ease slideRight;
+            -moz-animation: .5s ease slideRight;
+            -ms-animation: .5s ease slideRight;
+            -o-animation: .5s ease slideRight;
+            animation: .5s ease slideRight;
+        }
+    }
+}
+.btn-slide-up {
+    &:hover,
+    &:active,
+    &:focus {
+        i {
+            -webkit-animation: .5s ease slideUp;
+            -moz-animation: .5s ease slideUp;
+            -ms-animation: .5s ease slideUp;
+            -o-animation: .5s ease slideUp;
+            animation: .5s ease slideUp;
+        }
+    }
+}
+.btn-slide-down {
+    &:hover,
+    &:active,
+    &:focus {
+        i {
+            -webkit-animation: .5s ease slideDown;
+            -moz-animation: .5s ease slideDown;
+            -ms-animation: .5s ease slideDown;
+            -o-animation: .5s ease slideDown;
+            animation: .5s ease slideDown;
+        }
+    }
+}
+.btn-infinite {
+    &:hover {
+        i {
+            -webkit-animation-iteration-count: infinite;
+               -moz-animation-iteration-count: infinite;
+                 -o-animation-iteration-count: infinite;
+                    animation-iteration-count: infinite;
+        }
+    }
+}
+
+// animations
+@include keyframes($animation-name: "slideLeft") {
+    0% {
+        @include transform($args: translateX(0));
+    }
+    50% {
+        @include transform($args: translateX(-.5em));
+    }
+    100% {
+        @include transform($args: translateX(0));
+    }
+}
+@include keyframes($animation-name: "slideRight") {
+    0% {
+        @include transform($args: translateX(0));
+    }
+    50% {
+        @include transform($args: translateX(.5em));
+    }
+    100% {
+        @include transform($args: translateX(0));
+    }
+}
+@include keyframes($animation-name: "slideUp") {
+    0% {
+        @include transform($args: translateY(0));
+    }
+    50% {
+        @include transform($args: translateY(-.5em));
+    }
+    100% {
+        @include transform($args: translateY(0));
+    }
+}
+@include keyframes($animation-name: "slideDown") {
+    0% {
+        @include transform($args: translateY(0));
+    }
+    50% {
+        @include transform($args: translateY(.5em));
+    }
+    100% {
+        @include transform($args: translateY(0));
+    }
+}

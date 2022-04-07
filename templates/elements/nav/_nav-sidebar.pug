@@ -1,0 +1,117 @@
+#nav-sidebar.category-dropdown.dropdown.has-border.nav-sidebar(data-visible='true')
+    a.nav-sidebar-header.category-toggle.d-flex.justify-content-between.align-items-center(href='javascript:' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true' data-display='static')
+        i.ecs-icon-category
+        span=menuSide[0].name
+    .nav-sidebar-body.dropdown-box
+        ul.vertical-menu.nav
+            each item in menuSide[0].children
+                if item.children == null
+                    if item.isShow
+                        li(class=item.isActive ? 'active' : '' data-id='')
+                            a(href=item.href)
+                                i(class=item.icon)
+                                =''
+                                .    
+                                    #{item.name}
+                else
+                    if item.isShow
+                        case item.type
+                            when 'mega-menu'
+                                li.has-submenu.mega-menu.level0(class=item.isActive ? 'active' : '' data-id='')
+                                    .d-none.d-xl-block.has-submenu-title
+                                        a(href=item.href)
+                                            i(class=item.icon)
+                                            =''
+                                            .    
+                                                #{item.name}
+                                    .d-xl-none.has-submenu-title
+                                        a(href='javascript:')
+                                            i(class=item.icon)
+                                            =''
+                                            .    
+                                                #{item.name}
+                                    if item.src != ''
+                                        .has-submenu-body.submenu
+                                            ul.nav
+                                                each item_children in item.children
+                                                    if item_children.children == null
+                                                        if item_children.isShow
+                                                            li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                a(href=item_children.href)=item_children.name
+                                                    else
+                                                        if item_children.isShow
+                                                            li.has-submenu(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                .has-submenu-title
+                                                                    a(href=item_children.href)=item_children.name
+                                                                hr
+                                                                ul.nav
+                                                                    each item_children_children in item_children.children
+                                                                        li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                            a(href=item_children_children.href)=item_children_children.name
+                                            a.img-menu(href='')
+                                                picture
+                                                    source(media='' srcset='' type='image/webp')
+                                                    img(src=item.src alt='' width='235' height='347' loading='lazy')
+                                    else
+                                        .has-submenu-body.no-img.submenu
+                                            ul.nav
+                                                each item_children in item.children
+                                                    if item_children.children == null
+                                                        if item_children.isShow
+                                                            li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                a(href=item_children.href)=item_children.name
+                                                    else
+                                                        if item_children.isShow
+                                                            li.has-submenu(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                .has-submenu-title
+                                                                    a(href=item_children.href)=item_children.name
+                                                                hr
+                                                                ul.nav
+                                                                    each item_children_children in item_children.children
+                                                                        li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                            a(href=item_children_children.href)=item_children_children.name
+                                            .imgs-menu.flex-container
+                                                a(href='')
+                                                    picture
+                                                        source(media='' srcset='' type='image/webp')
+                                                        img.br-xs(src=item.children[0].src alt='' width='410' height='123' loading='lazy')                         
+                                                a(href='')
+                                                    picture
+                                                        source(media='' srcset='' type='image/webp')
+                                                        img.br-xs(src=item.children[1].src alt='' width='410' height='123' loading='lazy') 
+                            default
+                                li.has-submenu.level0(class=item.isActive ? 'active' : '' data-id='')
+                                    .d-none.d-xl-block.has-submenu-title
+                                        a(href=item.href)
+                                            i(class=item.icon)
+                                            =''
+                                            .    
+                                                #{item.name}
+                                    .d-xl-none.has-submenu-title
+                                        a(href='javascript:')
+                                            i(class=item.icon)
+                                            =''
+                                            .    
+                                                #{item.name}
+                                    ul.nav.submenu
+                                        each item_children in item.children
+                                            if item_children.children == null
+                                                if item_children.isShow
+                                                    li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                        a(href=item_children.href)=item_children.name
+                                            else
+                                                if item_children.isShow
+                                                    li.has-submenu.level1(class=item_children.isActive ? 'active' : '' data-id='')
+                                                        .d-none.d-xl-block.has-submenu-title
+                                                            a(href=item_children.href)=item_children.name
+                                                        .d-xl-none.has-submenu-title
+                                                            a(href=item_children.href)=item_children.name
+                                                        ul.nav.submenu
+                                                            each item_children_children in item_children.children
+                                                                li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                    a(href=item_children_children.href)=item_children_children.name
+            
+            li
+                a.font-weight-bold.text-primary.text-uppercase.ls-25 Xem tất cả<i class='ecs-icon-angle-right'></i>
+
+                                                            

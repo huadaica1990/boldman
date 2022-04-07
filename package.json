@@ -1,0 +1,44 @@
+{
+  "name": "BoldManHtml",
+  "version": "2.0.0",
+  "description": "Template by BoldMan",
+  "main": "index.js",
+  "directories": {
+    "document": "document"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BoldMan",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.2.1",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-pug": "^3.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "load-grunt-tasks": "^5.1.0"
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "@fancyapps/ui": "^4.0.11",
+    "animate.css": "^4.1.1",
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.0",
+    "imagesloaded": "^4.1.4",
+    "isotope-layout": "^3.0.6",
+    "jquery-validation": "^1.19.3",
+    "jquery-zoom": "^1.7.21",
+    "jquery.marquee": "^1.6.0",
+    "kbw-countdown": "^2.1.1",
+    "load-script": "^1.0.0",
+    "magnific-popup": "^1.1.0",
+    "owl.carousel": "^2.3.4",
+    "page-scroll-to-id": "^1.6.8",
+    "readmore-js": "^2.2.1",
+    "skrollr": "^0.6.26",
+    "swiper": "^6.8.0"
+  }
+}

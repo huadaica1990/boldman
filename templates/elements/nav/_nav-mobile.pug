@@ -1,0 +1,454 @@
+//-Var
+- let bgBody =  'bg-white';
+- let preSearch = true;
+- let isTool = true;
+-
+    let msg = [
+        {
+            id: 1,
+            name: 'Chính phủ đồng ý mua bổ sung gần 20 triệu liều vaccine Pfizer',
+            href: ''
+        },
+        {
+            id: 2,
+            name: 'Phản ứng trái ngược của Messi khi Icardi và Mbappe tỏa sáng',
+            href: ''
+        },
+        {
+            id: 3,
+            name: 'Real thắng đậm ở trận ra quân La Liga',
+            href: ''
+        },
+    ];
+
+#nav-mobile.d-block.d-lg-none
+    .nav-msg.container.d-flex.align-items-center
+        .--left.word-slider-wrapper
+            .word-slider
+                each item in msg
+                    a(href=item.href)=item.name
+                a(href=msg[0].href)=msg[0].name
+            //- marquee(behavior='' direction='left' scrollamonunt='30' onmouseover='this.stop();' onmouseout='this.start();')
+            //-     ul
+            //-         each item in msg
+            //-             li
+            //-                 a(href=item.href)=item.name
+        .--right
+            if isLang
+                .dropdown.lang-wrapper
+                    a.text-uppercase(href='javascript:' data-toggle='dropdown')
+                        img.dropdown-image(src='/img/flag-vn.png' alt='' loading='lazy')
+                        .
+                            VN
+                    .dropdown-box.dropdown-box-lang
+                        +lang-list
+    .nav-header.pt-2.pb-2.sticky-content.fix-top.sticky-header-mobile.nav-hidden(class=bgBody)
+        .container.flex-container
+            .--left.d-flex.align-items-center.justify-content-start
+                a.mobile-menu-toggle.mobile-menu-btn
+                    span
+                .logo
+                    a(href=logo[1].href title=logo[1].name)
+                        img(src=logo[1].src alt=logo[1].name width='133' height='52' loading='lazy')
+            .--right.flex-center
+                if isLogin
+                    if isAuthorise
+                        a.user(href='')
+                            img.avatar(src='/img/avatar.jpg' alt='' width='25' height='25' loading='lazy')
+                    else
+                        a.user.ecs-icon-user.login.sign-in(href='/ajax/login.html')
+                if isCart
+                    a.wishlist.ecs-icon-heart(href='')
+                    a.compare.ecs-icon-compare(href='')
+                    .cart-wrapper
+                        a.cart-link.ecs-icon-cart(href='')
+                            span.cart-count-txt 10
+            .--center.search
+                a.ecs-icon-home.search-icon(href='/' title='')
+                .form-control.mobile-search-toggle(onclick='getSearchFocus("input-search-mobile")')
+                    .mobile-search-placeholder=placeholderSearch[0]
+                    i.ecs-icon-search
+
+#nav-mobile-search.pre-search.search-mobile.d-block.d-lg-none
+    .--header.bg-primary.flex-center(action='')
+        a.mobile-search-toggle-close.ecs-icon-angle-left(href='javascript:')
+        a.mobile-menu-btn.mobile-menu-open(href='javascript:')
+            span
+        form.input-wrap(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
+            input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword')
+            button.btn.ecs-icon-search(type='search')
+        if isCart
+            a.cart-wrapper.ecs-icon-cart(href='')
+                span.cart-count-txt 10
+    #search-result-mobile.--body.search-result.zindex-max.scrollable
+        a(href='')
+            picture
+                source(media='' srcset='' type='image/webp')
+                img(src='/img/menu/search0.jpg' alt='' width='400' height='35' loading='lazy')
+        .search-result-step1
+            .search-result-history.toggler-wrap
+                each item in tag
+                    a.toggler-item.demo-icon.cus-clock-1(href=item.href)
+                        span.overtext=item.name
+                .toggler-wrap-btn
+            .search-result-hotkey
+                .title.demi-icon.cus-stat Tìm Kiếm Phổ Biến
+                .search-result-hotkey-content.flex-container
+                    each item in tag
+                        a.item(href=item.href) 
+                            .img-container
+                                picture
+                                    source(media='' srcset='' type='image/webp')
+                                    img(src=item.src alt='' width='45' height='45' loading='lazy')
+                            .text-container=item.name
+            .search-result-cat
+                .title Danh mục nổi bật
+                .search-result-cat-content.flex-container
+                    each item in productCat
+                        a.item(href=item.href) 
+                            .img-container
+                                picture
+                                    source(media='' srcset='' type='image/webp')
+                                    img(src=item.src alt='' width='133' height='80' loading='lazy')
+                            .text-container=item.name
+        .search-result-step2
+            .search-result-history
+                each item in tag
+                    a.demo-icon.cus-search(href=item.href)
+                        span.overtext=item.name
+
+#nav-mobile-content.d-block.d-lg-none
+    .flex-container
+        .--header.bg-primary.flex-center
+            a.mobile-menu-btn.mobile-menu-close.text-white(href='javascript:')
+                span
+            a.ecs-icon-home.search-icon(href='/' title='')
+            .form-control.mobile-search-toggle.text-dark.bg-white(onclick='getSearchFocus("input-search-mobile")')
+                .mobile-search-placeholder=placeholderSearch[0]
+                i.ecs-icon-search
+            if isCart
+                a.cart-wrapper.ecs-icon-cart(href='')
+                    span.cart-count-txt 10
+        .--body
+            nav
+                if isLogin
+                    ul.vertical-menu.nav.mobile-menu
+                        li.label Thông tin tài khoản
+                        if isAuthorise
+                            li(data-id='')
+                                a.login.font-weight-normal(href='')
+                                    img.avatar(src='/img/avatar.jpg' alt='' width='25' height='25' loading='lazy')
+                                    span Xin chào Nguyễn Trọng Huy Nguyễn Trọng Huy
+                        else
+                            li(data-id='')
+                                a.login.sign-in(href='/ajax/login.html')
+                                    i(class='ecs-icon-user')
+                                    | Đăng nhập & đăng ký
+                
+                case menuStyle
+                    when 'landing'
+                        ul.vertical-menu.nav.mobile-menu.menulanding
+                            each item in menuLanding
+                                if item.isShow
+                                    li(class=item.isActive ? 'active' : '' data-id='')
+                                        a(href=item.href rel='m_PageScroll2id' data-ps2id-offset='100')
+                                            if item.icon
+                                                i(class=item.icon)
+                                                | #{item.name}
+                                            else
+                                                =item.name
+
+                    default
+                        ul.vertical-menu.nav.mobile-menu
+                            each item in menu
+                                if item.children == null
+                                    if item.isShow
+                                        li(class=item.isActive ? 'active' : '' data-id='')
+                                            a(href=item.href)
+                                                if item.icon
+                                                    i(class=item.icon)
+                                                    | #{item.name}
+                                                else
+                                                    =item.name
+                                else
+                                    if item.isShow
+                                        case item.type
+                                            when 'mega-menu'
+                                                li.has-submenu.mega-menu.level0(class=item.isActive ? 'active' : '' data-id='')
+                                                    .has-submenu-title
+                                                        a(href=item.href)
+                                                            if item.icon
+                                                                i(class=item.icon)
+                                                                | #{item.name}
+                                                            else
+                                                                =item.name
+                                                        .submenu-btn.demo-icon.cus-right-open-mini
+                                                    ul.nav.submenu
+                                                        li.back-wrap.bg-grey
+                                                            a.submenu-btn-close(href='javascript:')
+                                                                i.ecs-icon-long-arrow-left
+                                                                span=item.name
+                                                        each item_children in item.children
+                                                            if item_children.children == null
+                                                                if item_children.isShow
+                                                                    li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                        a(href=item_children.href)
+                                                                            if item_children.icon
+                                                                                i(class=item_children.icon)
+                                                                                | #{item_children.name}
+                                                                            else
+                                                                                =item_children.name
+                                                            else
+                                                                if item_children.isShow
+                                                                    li.has-submenu.level1(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                        .has-submenu-title
+                                                                            a(href=item_children.href)
+                                                                                if item_children.icon
+                                                                                    i(class=item_children.icon)
+                                                                                    | #{item_children.name}
+                                                                                else
+                                                                                    =item_children.name
+                                                                            .submenu-btn.demo-icon.cus-right-open-mini
+                                                                        ul.nav.submenu
+                                                                            li.back-wrap.bg-grey
+                                                                                a.submenu-btn-close(href='javascript:')
+                                                                                    i.ecs-icon-long-arrow-left
+                                                                                    span=item_children.name
+                                                                            each item_children_children in item_children.children
+                                                                                if item_children_children.children == null
+                                                                                    if item_children_children.isShow
+                                                                                        li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                                            a(href=item_children_children.href)
+                                                                                                if item_children_children.icon
+                                                                                                    i(class=item_children_children.icon)
+                                                                                                    | #{item_children_children.name}
+                                                                                                else
+                                                                                                    =item_children_children.name
+                                                                                else
+                                                                                    if item_children_children.isShow
+                                                                                        li.has-submenu.level2(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                                            .has-submenu-title
+                                                                                                a(href=item_children_children.href)
+                                                                                                    if item_children_children.icon
+                                                                                                        i(class=item_children_children.icon)
+                                                                                                        | #{item_children_children.name}
+                                                                                                    else
+                                                                                                        =item_children_children.name
+                                                                                                .submenu-btn.demo-icon.cus-right-open-mini
+                                                                                            ul.nav.submenu
+                                                                                                li.back-wrap.bg-grey
+                                                                                                    a.submenu-btn-close(href='javascript:')
+                                                                                                        i.ecs-icon-long-arrow-left
+                                                                                                        span=item_children_children.name
+                                                                                                each item_children_children_children in item_children_children.children
+                                                                                                    if item_children_children_children.isShow
+                                                                                                        li(class=item_children_children_children.isActive ? 'active' : '' data-id='')
+                                                                                                            a(href=item_children_children_children.href)
+                                                                                                                if item_children_children_children.icon
+                                                                                                                    i(class=item_children_children_children.icon)
+                                                                                                                    | #{item_children_children_children.name}
+                                                                                                                else
+                                                                                                                    =item_children_children_children.name
+                
+                                            when 'collapse-menu'
+                                                li.has-submenu.collapse-menu.level0(class=item.isActive ? 'active' : '' data-id='')
+                                                        .has-submenu-title
+                                                            a(href=item.href)
+                                                                if item.icon
+                                                                    i(class=item.icon)
+                                                                    | #{item.name}
+                                                                else
+                                                                    =item.name
+                                                            .toggle-btn.demo-icon.cus-right-open-mini
+                                                        ul.nav.submenu
+                                                            each item_children in item.children
+                                                                if item_children.children == null
+                                                                    if item_children.isShow
+                                                                        li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                            a(href=item_children.href)
+                                                                                if item_children.icon
+                                                                                    i(class=item_children.icon)
+                                                                                    | #{item_children.name}
+                                                                                else
+                                                                                    =item_children.name
+                                                                else
+                                                                    if item_children.isShow
+                                                                        li.has-submenu.collapse-menu.level1(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                            .has-submenu-title
+                                                                                a(href=item_children.href)
+                                                                                    if item_children.icon
+                                                                                        i(class=item_children.icon)
+                                                                                        | #{item_children.name}
+                                                                                    else
+                                                                                        =item_children.name
+                                                                                .toggle-btn.demo-icon.cus-right-open-mini
+                                                                            ul.nav.submenu
+                                                                                each item_children_children in item_children.children
+                                                                                    if item_children_children.children == null
+                                                                                        if item_children_children.isShow
+                                                                                            li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                                                a(href=item_children_children.href)
+                                                                                                    if item_children_children.icon
+                                                                                                        i(class=item_children_children.icon)
+                                                                                                        | #{item_children_children.name}
+                                                                                                    else
+                                                                                                        =item_children_children.name
+                                                                                    else
+                                                                                        if item_children_children.isShow
+                                                                                            li.has-submenu.collapse-menu.level2(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                                                .has-submenu-title
+                                                                                                    a(href=item_children_children.href)
+                                                                                                        if item_children_children.icon
+                                                                                                            i(class=item_children_children.icon)
+                                                                                                            | #{item_children_children.name}
+                                                                                                        else
+                                                                                                            =item_children_children.name
+                                                                                                    .toggle-btn.demo-icon.cus-right-open-mini
+                                                                                                ul.nav.submenu
+                                                                                                    each item_children_children_children in item_children_children.children
+                                                                                                        if item_children_children_children.isShow
+                                                                                                            li(class=item_children_children_children.isActive ? 'active' : '' data-id='')
+                                                                                                                a(href=item_children_children_children.href)
+                                                                                                                    if item_children_children_children.icon
+                                                                                                                        i(class=item_children_children_children.icon)
+                                                                                                                        | #{item_children_children_children.name}
+                                                                                                                    else
+                                                                                                                        =item_children_children_children.name
+
+                                                                                
+                                            
+                                            default
+                                                li.has-submenu.level0(class=item.isActive ? 'active' : '' data-id='')
+                                                    .has-submenu-title
+                                                        a(href=item.href)
+                                                            if item.icon
+                                                                i(class=item.icon)
+                                                                | #{item.name}
+                                                            else
+                                                                =item.name
+                                                        .submenu-btn.demo-icon.cus-right-open-mini
+                                                    ul.nav.submenu
+                                                        //- li.back-wrapy.flex-center
+                                                        //-     a.submenu-btn-close.ecs-icon-angle-left(href='javascript:')
+                                                        //-     .form-control.mobile-search-toggle.text-dark.bg-white(onclick='getSearchFocus("input-search-mobile")')
+                                                        //-         .typewrite(data-typewriter-value=`[${typeWriter}]` data-typewriter-options=`{'period': 5000}`)
+                                                        //-         i.ecs-icon-search
+                                                        //-     if isCart
+                                                        //-         a.cart.ecs-icon-cart(href='')
+                                                        //-                 span.cart-count-txt 10
+                                                        li.back-wrap.bg-grey
+                                                            a.submenu-btn-close(href='javascript:')
+                                                                i.ecs-icon-long-arrow-left
+                                                                span=item.name
+                                                        each item_children in item.children
+                                                            if item_children.children == null
+                                                                if item_children.isShow
+                                                                    li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                        a(href=item_children.href)
+                                                                            if item_children.icon
+                                                                                i(class=item_children.icon)
+                                                                                | #{item_children.name}
+                                                                            else
+                                                                                =item_children.name
+                                                            else
+                                                                if item_children.isShow
+                                                                    li.has-submenu.level1(class=item_children.isActive ? 'active' : '' data-id='')
+                                                                        .has-submenu-title
+                                                                            a(href=item_children.href)
+                                                                                if item_children.icon
+                                                                                    i(class=item_children.icon)
+                                                                                    | #{item_children.name}
+                                                                                else
+                                                                                    =item_children.name
+                                                                            .submenu-btn.demo-icon.cus-right-open-mini
+                                                                        ul.nav.submenu
+                                                                            li.back-wrap.bg-grey
+                                                                                a.submenu-btn-close(href='javascript:')
+                                                                                    i.ecs-icon-long-arrow-left
+                                                                                    span=item_children.name
+                                                                            each item_children_children in item_children.children
+                                                                                if item_children_children.children == null
+                                                                                    if item_children_children.isShow
+                                                                                        li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                                            a(href=item_children_children.href)
+                                                                                                if item_children_children.icon
+                                                                                                    i(class=item_children_children.icon)
+                                                                                                    | #{item_children_children.name}
+                                                                                                else
+                                                                                                    =item_children_children.name
+                                                                                else
+                                                                                    if item_children_children.isShow
+                                                                                        li.has-submenu.level2(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                                            .has-submenu-title
+                                                                                                a(href=item_children_children.href)
+                                                                                                    if item_children_children.icon
+                                                                                                        i(class=item_children_children.icon)
+                                                                                                        | #{item_children_children.name}
+                                                                                                    else
+                                                                                                        =item_children_children.name
+                                                                                                .submenu-btn.demo-icon.cus-right-open-mini
+                                                                                            ul.nav.submenu
+                                                                                                li.back-wrap.bg-grey
+                                                                                                    a.submenu-btn-close(href='javascript:')
+                                                                                                        i.ecs-icon-long-arrow-left
+                                                                                                        span=item_children_children.name
+                                                                                                each item_children_children_children in item_children_children.children
+                                                                                                    if item_children_children_children.isShow
+                                                                                                        li(class=item_children_children_children.isActive ? 'active' : '' data-id='')
+                                                                                                            a(href=item_children_children_children.href)
+                                                                                                                if item_children_children_children.icon
+                                                                                                                    i(class=item_children_children_children.icon)
+                                                                                                                    | #{item_children_children_children.name}
+                                                                                                                else
+                                                                                                                    =item_children_children_children.name
+
+                                                                            
+        
+        .--footer
+            .footer-item
+                .label Mạng xã hội
+                .social-icons.social-icons-colored
+                    +social-list
+
+#nav-mobile-footer.d-block.d-lg-none.sticky-footer
+    ul.--header.nav
+        li.item.active
+            a
+                i.ecs-icon-home
+                p Trang chủ
+        li.item.call
+            a
+                i.ecs-icon-call
+                p 24/7
+        //- li.item
+        //-     a
+        //-         i.ecs-icon-envelop-closed
+        //-         p Email
+        //- li.item
+        //-     a
+        //-         i.ecs-icon-comment
+        //-         p SMS
+        li.item
+            a
+                i.ecs-icon-category
+                p Danh mục
+        if isLogin
+            li.item
+                a
+                    i.ecs-icon-account
+                    p Tài khoản
+        //- li.item
+        //-     a
+        //-         i.ecs-icon-map-marker
+        //-         p Liên hệ
+        if isCart
+            li.item.cart-wrapper
+                a
+                    i.ecs-icon-cart
+                    p Giỏ hàng
+                    span.cart-count-txt 10
+
+.js-cart-info.d-block.d-lg-none.cart-info-m
+
+
+

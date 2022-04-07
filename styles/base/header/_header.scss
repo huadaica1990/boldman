@@ -1,0 +1,395 @@
+/*--------------------------------
+    Header
+        -Header
+--------------------------------*/
+// Set variables
+@include set-default(
+    (
+        header: (
+			_linkColor: $dark-color,
+			_linkColorHover: $primary-color,
+			_lineColor: $grey-color,
+            font-family: $font-family-primary,
+            background: $white-color,
+            color: $dark-color,
+			// Header header
+			header: (
+				_marginRight:2rem,
+				background-color:$grey-background,
+				font-size:1.1rem,
+				text-transform:capitalize,
+				welcomeMsg: (
+					_padding:10px 0
+				),
+				avatar: (
+					_height:25px
+				),
+				icon: (
+					margin-right: 0.6rem,
+					font-size: 1.5rem
+				)
+			),
+			// Header body
+			body: (
+				_marginRight: 2.3rem,
+				_padding: 3.2rem,
+				font-size:1.2rem,
+				logo: (
+					_width:133px,
+				),
+				icon: (
+					_fontSize: 2.7rem,
+				)
+			),
+			// Header footer
+			footer: (
+				_fontWeight: $font-weight-semibold,
+				_marginRight: 3rem,
+				_linkFontWeight: $font-weight-bold,
+				background-color: $white-color,
+				font-size: 1.4rem,
+				icon: (
+					_fontSize: 2.2rem,
+				),
+				1024: (
+					_marginRight: 2rem,
+				),
+				// 768: (),
+				// 450: (),
+				// 360: (),
+			),
+			// Cart
+			cartIcon: (
+				position: absolute,
+				font-size: 1.1rem,
+				line-height: 1.9rem,
+				background: $primary-color,
+				color: $white-color,
+				text-align: center,
+				width: 1.9rem,
+				height: 1.9rem,
+				z-index: 1,
+				right: 8px,
+				top: -5px,
+			)
+        )
+    )
+);
+
+/*#region nav*/
+	@import "nav-pc";
+	@import "nav-sidebar";
+	@import "nav-moblie";
+/*#endregion*/
+
+/*#region header*/
+	.cart-info {
+		@include border-radius($val: 5px);
+		@include shadow($val: 1px 1px 15px #b3b3b3);
+		@include visible($active: false, $zindex: 89);
+		position: absolute;
+		top:calc(100% + 15px);
+		right: 0px;
+		padding: 15px;
+		background-color: $white-color;
+		p {
+			@include flex($type: "center", $active: true, $get: "left");
+			color: $dark-color;
+			font-size: 13px;
+			white-space: nowrap;
+			margin-bottom: 0;
+		}
+		i {
+			color:#4caf50;
+			margin-right: 4px;
+			font-size: 19px
+		}
+		a.btn {
+			@include border-radius($val: 4px);
+			border:none;
+			display: block;
+			margin-top: 10px;
+			color: $white-color;
+			font-size: 14px;
+			padding: 11.5px 0;
+			text-align: center;
+			white-space: nowrap;
+			background-color: #ff3945;
+			font-weight: $font-weight-normal;
+			text-transform: none;
+			width: 240px;
+			&:hover {
+				opacity: 0.95;
+			}
+		}
+		.close {
+			cursor: pointer;
+			position: absolute;
+			top: 4px;
+			right: 4px;
+			padding: 5px;
+			color: #9b9b9b;
+			font-size: 14px;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 100%;
+			right: 15px;
+			border-width: 8px;
+			border-style: solid;
+			border-color: transparent transparent $white-color;
+			border-image: initial;
+		}
+		&:not(.cart-info-m).show {
+			@include visible($active: true, $zindex: 89);
+		}
+	}
+	
+	.cart-info-backdrop {
+		@include visible($active: false, $zindex: 88);
+		position:fixed;
+		top:0;
+		left:0;
+		height: 100%;
+		width: 100%;
+		background:rgba(0,0,0,0);
+		&.show {
+			@include visible($active: true, $zindex: 88);
+		}
+	}
+	
+	header {
+		@include print_css(header);
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		a {
+			@include animation($type: color, $time: 0.3s, $effect: ease);
+			color: #{get(header, _linkColor)};
+			i {
+				@include animation($customize: true) {
+					-ms-transition: inherit;
+					-webkit-transition: inherit;
+					-moz-transition: inherit;
+					-o-transition: inherit;
+					transition: inherit;
+				};
+			}
+			&:hover {
+				color: #{get(header, _linkColorHover)};
+				i {
+					color: inherit;
+				}
+			}
+		}
+	}
+
+
+	.header-header {
+		@include print_css(header, header);
+		&-right {
+			> * {
+				height: 100%;
+				
+				&:not(:last-child) {
+					margin-right: #{get(header, header, _marginRight)};
+					padding-right: #{get(header, header, _marginRight)};
+					&:after {
+						@include e-cen($type: "top");
+						right: -.5px;
+						background-color: #{get(header, _lineColor)};
+						position: absolute;
+						content: '';
+						width: 1px;
+						height: 20px;
+					}
+				}
+			}
+		}
+		.welcome-msg {
+			padding: #{get(header, header, welcomeMsg, _padding)};
+			white-space: nowrap;
+			text-transform: uppercase;
+		}
+		.user {
+			> *:not(:last-child) {
+				position:relative;
+				&:after {
+					content: "/";
+					margin: 0 0.3rem;
+					color: #{get(header, _lineColor)};
+				}
+			}
+			i {
+				@include transform($args: translateY(-1px));
+				@include print_css(header, header, icon);
+			}
+			.avatar {
+				height: #{get(header, header, avatar, _height)};
+				margin-right:  0.6rem;
+			}
+			.login {
+				span {
+					@include overtext($row: 1, $h: auto);
+					max-width: 180px;
+                    line-height:2;
+				}
+			}
+		}
+		.dropdown:not(.show):hover .dropdown-box {
+			top:calc(100% + 5px);
+			right: 5px;
+		}
+	}
+
+	.header-body {
+		@include print_css(header, body);
+		&-left {
+			padding-top: #{get(header, body, _padding)};
+			padding-bottom: #{get(header, body, _padding)};
+		}
+		&-right {
+			> * {
+				
+				i {
+					font-size: #{get(header, body, icon, _fontSize)};
+				}
+				&:not(:last-child) {
+					margin-right: #{get(header, body, _marginRight)};
+				}
+			}
+		}
+		.call {
+			color: $light-color;
+			font-size: 1.3rem;
+			padding-right: #{get(header, body, _marginRight)};
+			.icon {
+				margin-right:0.6rem;
+				font-size: 3rem;
+			}
+			.tell {
+				font-size: 2rem;
+				line-height: 1;
+				font-weight: $font-weight-bold;
+			}
+			a {
+				&:last-child {
+					display: block;
+				}
+			}
+			&:not(:last-child):after {
+				@include e-cen($type: "top");
+				right:-.5px;
+				position: absolute;
+				content: "";
+				width: 1px;
+				height:100%;
+				background-color: $border-color-light;
+			}
+		}
+		.label-down {
+			> * {
+				display: block;
+			}
+			.label {
+				margin-top: 0.3rem;
+				line-height: 1;
+			}
+		}
+		.cart-wrapper {
+			.cart-count-txt {
+				@include print_css(header, cartIcon);
+				@include border-radius($val: 50%);
+			}
+		}
+		.logo-wrapper {
+			width:#{get(header, body, logo, _width)};
+			a,img {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+	.header-footer {
+		@include print_css(header, footer);
+		
+		&-center {
+			&:last-child {
+				width: 100%;
+			}
+		}
+		&-right {
+			font-weight: #{get(header,footer, _linkFontWeight)};
+			a {
+				
+				i {
+					@include transform($args: translateY(-3px));
+					font-size: #{get(header, footer, icon, _fontSize)};
+				}
+				&:not(:last-child) {
+					margin-right: #{get(header, footer, _marginRight)};
+				}
+			}
+		}
+	}
+/*#endregion*/
+
+/*#region Mobile responsive section styles*/
+	@include mq(xl, 'max') {
+		.header-footer-right a {
+			margin-right: #{get(header, footer, 1024, _marginRight)};
+			i {
+				margin-right: 0;
+			}
+			span {
+				display: none;
+			}
+		}
+	}
+	
+	@include mq(sm,'max') {
+		.cart-info-m .cart-info {
+			@include shadow($val: none);
+			@include border-radius($val: 0%);
+			position: fixed;
+			top: auto;
+			bottom: 0;
+			width: 100%;
+	
+			a.btn {
+				width: 100%;
+			}
+	
+			.close {
+				@include e-cen($type: "left");
+				@include border-radius($val: 50px);
+				padding: 0;
+				width: 80px;
+				height: 5px;
+				background-color: $white-color;
+				display: inline-block;
+				position: absolute;
+				top: -15px;
+	
+				&::before {
+					display: none;
+				}
+			}
+	
+			&::before {
+				display:none;
+			}
+	
+			&.show {
+				@include visible($active: true, $zindex: 90);
+			}
+		}
+	}
+
+/*#endregion*/

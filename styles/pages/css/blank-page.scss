@@ -1,0 +1,78 @@
+/* 1. Config */
+@import '../../config/variables';
+
+/* 2. Mixins */
+@import '../../mixins/breakpoint';
+@import '../../mixins/core';
+@import '../../mixins/buttons';
+@import '../../mixins/mixins';
+
+
+/*#region components,elements*/
+/*#endregion*/
+
+/*#region .item-*/
+/*#endregion*/
+
+// Set variables
+@include set-default(
+  (
+    blank: (
+      _linkColor:rgb(13, 92, 182),
+      _greyColor: rgb(120, 120, 120),
+      _redColor: rgb(255, 66, 78),
+      _borderColor:  rgb(221, 221, 221),
+      _greenColor: rgb(8, 145, 72),
+      _widthItem: calc(100% - 70px - 31px),
+      1920: (),
+      1440: (),
+      1366: (),
+      1280: (),
+      1024: (),
+      768: (),
+      450: (),
+      360: (),
+    ),
+  )
+);
+
+/*--------------------------------------------
+    Blank Page
+----------------------------------------------*/
+
+/*#region Mobile responsive section styles*/
+  @include mq("1920px") {}
+  @include mq("1440px", "max") {}
+  @include mq("1366px", "max") {}
+  @include mq("1280px", "max") {}
+  @include mq("1024px", "max") {}
+  @include mq("768px", "max") {}
+  @include mq("450px", "max") {}
+  @include mq("360px", "max") {}
+/*#endregion*/
+
+/*#region Style fix all browser*/
+  /*#region Firefox*/
+    @-moz-document url-prefix() {}
+  /*#endregion*/
+
+  /*#region Internet Explorer 10, 11*/
+    @include only-for-ie(){}
+    // @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {}
+  /*#endregion*/
+
+  /*#region Edge*/
+    @include only-for-edge(){}
+    // @-moz-document url-prefix() {}
+  /*#endregion*/
+
+  /*#region Safari*/
+    @include only-for-retina($pixel-ratio : 1.5){}
+    // @media not all and (min-resolution:.001dpcm) {
+    //     @supports (-webkit-appearance:none) {
+    //         @media screen and (max-width: 450px) {
+    //         }
+    //     }
+    // }
+  /*#endregion*/
+/*#endregion*/

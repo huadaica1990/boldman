@@ -1,0 +1,193 @@
+/*-------------------------------------
+    Widget
+-------------------------------------*/ 
+@include set-default(
+    (
+        widget: (
+            title: (
+                margin-bottom: 2rem,
+                padding: 1.1rem 0,
+                font-size: 1.5rem,
+                font-weight: $font-weight-bold,
+                text-transform: uppercase,
+                line-height: 1.7,
+                letter-spacing: false,
+            )
+        )
+    )
+);
+
+.widget-title {
+    @include print_css( widget, title );
+}
+
+.widget-products {
+    .widget-title {
+        font-size: 1.4rem;
+        font-weight: $font-weight-semibold;
+        // letter-spacing: -.025em;
+        padding-bottom: .8rem;
+    }
+    .widget-body {
+        padding: 0 2rem;
+    }
+    &.widget-products-bordered {
+        .widget-body {
+            @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+        }
+        .product-widget:not(:last-child) {
+            @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
+        }
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: -1.7rem;
+        right: -1rem;
+        border: 0;
+        color: #747474;
+        font-weight: $font-weight-normal;
+        width: 15px;
+        height: 15px;
+        &:not(.swiper-button-disabled) {
+            &:hover,
+            &:focus,
+            &:active {
+                background: transparent;
+                border: 0;
+                color: $primary-color;
+            }
+        }
+    }
+    .swiper-button-prev {
+        @include transform($args: translateX(-50%));
+}
+    .swiper-button-next {
+        @include transform($args: translateX(50%));
+    }
+}
+
+.widget {
+    .widget-title {
+        @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
+        position: relative;
+        margin: 0;
+        padding: 0 2.5rem 0 0;
+        font-weight: $font-weight-semibold;
+        font-size: 1.6rem;
+        color: $dark-color;
+        text-transform: capitalize;
+        &:not(.collapsible-title) {
+            cursor: pointer;
+            span {
+                @include overtext($row: 1, $h: auto);
+            }
+
+        }
+        .label span {
+            padding: 1rem 0;
+        }
+        a {
+            color: $dark-color;
+        }
+    }
+    .widget-body {
+        @include animation($customize: true) {
+            -ms-transition:  opacity .3s;
+            -webkit-transition:  opacity .3s;
+            -moz-transition:  opacity .3s;
+            -o-transition:  opacity .3s;
+            transition:  opacity .3s;
+        };
+        padding: .7rem 0 1rem;
+        opacity: 1;
+        color: $dark-color;
+    }
+}
+
+// Collapsible Widget
+.widget-collapsible {
+    .widget-title,.collapsible-title {
+        position:relative;
+        .label {
+            max-width: calc(100% - 2.5rem);
+            span {
+                @include overtext($row: 1, $h: auto);
+            }
+        }
+    }
+    .toggle-btn {
+        @include e-cen($type: "top");
+        position:absolute;
+        width: 2.5rem;
+        height: 2.5rem;
+        right: 0;
+        cursor: cell;
+        &::before,
+		&::after {
+            @include animation($customize: true) {
+                -ms-transition:transform .3s;
+                -webkit-transition:transform .3s;
+                -moz-transition:transform .3s;
+                -o-transition:transform .3s;
+                transition:transform .3s;
+            };
+            @include border($position: "top", $size:2px, $style: solid, $color: $grey-color);
+            @include e-cen($type: "all", $option: translate(-50%, -50%));
+			content: '';
+			position: absolute;
+			width: 12px;
+		}
+    }
+    .collapsible-body {
+        @include animation($customize: true) {
+            -ms-transition: opacity .1s;
+            -webkit-transition: opacity .1s;
+            -moz-transition: opacity .1s;
+            -o-transition: opacity .1s;
+            transition: opacity .1s;
+        };
+        opacity: 1;
+    }
+    .collapsed .toggle-btn::before {
+        @include transform($args: translate(-50%, -50%) rotate(90deg));
+    }
+    .collapsed .toggle-btn::after {
+        @include transform($args: translate(-50%, -50%) rotate(180deg));
+    }
+    .collapsed + .collapsible-body,
+    .collapsed + .widget-body {
+        display: none;
+    }
+    .collapsed  ~ .collapsible-body, 
+    .collapsed  ~ .widget-body {
+        opacity: .1;
+    }
+}
+
+
+/*#region Style fix all browser*/
+    /*#region Safari*/
+    @include only-for-retina($pixel-ratio : 1.5){
+        #chat-scroll-block {
+            .--header {
+                line-height: 43px;
+            }
+            .--body {
+                .callnow i {
+                    line-height: 55px;
+                }
+                .facemess i {
+                    line-height: 45px;
+                }
+            }
+        }
+        .widget-collapsible {
+            .widget-title,.collapsible-title {
+                .label:after {
+                    bottom: 0rem;
+                }
+            }
+        }
+    }
+    /*#endregion*/
+/*#endregion*/

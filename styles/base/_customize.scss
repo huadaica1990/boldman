@@ -1,0 +1,422 @@
+/*#region 1. Formatting style*/
+    b,strong {
+        font-weight: $font-weight-bold;
+    }
+    .embed-responsive {
+        position: relative;
+        display: block;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        .embed-responsive-item, 
+        embed, 
+        iframe, 
+        object, 
+        video {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        &.embed-responsive-16by9 {
+            padding-bottom: 56.25%;
+        }
+    }
+    .img-white {
+        @include filter($val: brightness(100) contrast(100) grayscale(100%));
+    }
+    // input::placeholder {color: #00C851;}
+    // input::-webkit-input-placeholder {color: #00C851;}
+    // input::-moz-placeholder {color: #00C851;}
+    // input:-ms-input-placeholder {color: #00C851;}
+    // input:-moz-placeholder {color: #00C851;}
+    .blog-content {
+        font-size: 1.4rem;
+        margin-bottom:2rem;
+        @import "../components/blogcontent";
+    }
+    .timer-fix-width {
+        -webkit-font-feature-settings: "tnum";
+        -moz-font-feature-settings: "tnum";
+             font-feature-settings: "tnum";
+             font-variant-numeric: tabular-nums;
+    }
+    .padding {
+        &-right-container {
+            padding-right: calc(50% - #{$container-width/2});
+            padding-left: 15px;
+        }
+        &-left-container {
+            padding-right: calc(50% - #{$container-width/2});
+            padding-right: 15px;
+        }
+    }
+    .box-shadow {
+        @include box-shadow();
+        &--1 {
+            @include box-shadow($number: "1");
+        }
+        &--2 {
+            @include box-shadow($number: "2");
+        }
+        &--3 {
+            @include box-shadow($number: "3");
+        }
+        &--4 {
+            @include box-shadow($number: "4");
+        }
+        &--5 {
+            @include box-shadow($number: "5");
+        }
+        &--6 {
+            @include box-shadow($number: "6");
+        }
+    }
+    .clearfix {
+        @include clearfix($active: true);
+    }
+    .unclearfix {
+        @include clearfix($active: false);
+    }
+    [data-toggle~="collapse"],
+    [data-toggle~="modal"] {
+        cursor: pointer;
+    }
+    [class^="cus-"]:before,
+    [class*=" cus-"]:before {
+        line-height: normal;
+        margin-left: 0;
+        margin-right: 0;
+        width: auto;
+    }
+    .lazy-wiget {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .disabled {
+        cursor: no-drop;
+        pointer-events:none;
+    }
+    .progress {
+        cursor: progress
+    }
+    .fb-comments {
+        width: 100%;
+        >span {
+            width: 100% !important;
+            iframe {
+                width: 100% !important;
+            }
+        }
+    }
+    .backdrop {
+        position: fixed;
+        background-color: rgba(0,0,0,.5);
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 90;
+        pointer-events: auto;
+    }
+    .background-icon {
+        background-image: url(/img/css_sprites.png);
+    }
+
+.recommend {
+    &-title {
+        line-height: 1.6;
+        margin-bottom: 1.7rem;
+    }
+
+    &-wrap {
+        h4.recommend-title {
+            line-height: 1.6;
+            margin-bottom: 1.7rem;
+        }
+
+        li {
+            line-height: 2;
+        }
+
+        a {
+            color: $body-color;
+            text-decoration: none;
+            border-bottom: none;
+            &:hover {
+                color:$primary-color;
+            }
+        }
+    }
+}
+/*#endregion*/
+
+/*#region 2. Tool*/
+    .overtext {
+        @include overtext();
+    }
+    .masonry-css {
+        @include masonry($col: 4, $gap: 15px);
+    }
+    .phone-list {
+        a {
+            margin-right: 10px;
+            position: relative;
+            &:after {
+                content: '-';
+                position: absolute;
+                right: -9px;
+                line-height: 0;
+                top:55%;
+            }
+            &:last-child {
+                margin-right: 0;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+    marquee {
+        ul {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        li {
+            display: block;
+            margin-right: 30px;
+            font-size: inherit;
+            a {
+                display:block
+            }
+        }
+    }
+    @include keyframes($animation-name: "blinkcaret") {      
+        from, to {
+            border-color: transparent
+        }
+
+        50% {
+            border-color: $primary-color
+        }
+    }
+    .typewrite {
+        display: inline-block;
+        position: relative;
+        min-width: 1px;
+
+        .wrap {
+            color: $dark-color;
+        }
+
+        &:after {
+            @include border($position: "right", $size:1px, $style: solid, $color: $primary-color);
+            @include use-keyframes($args: "blinkcaret" .75s step-end infinite);
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            right: -5px;
+            content: "";
+            width: 2px;
+            height: 80%;
+        }
+    }
+    
+    [data-toggle="dropdown"] {
+        pointer-events: none;
+    }
+    // Icon Close
+    .close-icon {
+        @include transform($args: rotateZ(45deg));
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+
+        &::before,
+        &::after {
+            display: block;
+            position: absolute;
+            background-color: $lighter-color;
+            content: '';
+        }
+
+        &::before {
+            @include transform($args: translateY(-50%));
+            height: 2px;
+            width: 100%;
+            left: 0;
+            top: 50%;
+        }
+
+        &::after {
+            @include transform($args: translateX(-50%));
+            height: 100%;
+            width: 2px;
+            top: 0;
+            left: 50%;
+        }
+    }
+/*#endregion*/
+
+/*#region Plugin Style*/
+    //html,
+    // div,
+    // textarea,
+    // ul {
+    //     @include custom-scrollbar;
+    // }
+    .parallax {
+        > * {
+            position: relative;
+        }
+    }
+    .emmty-wrapper {
+        @include border($position: "all", $size:1px, $style: dashed, $color: $border-color);
+        padding: 2rem 15px;
+        img {
+            width: 200px;
+        }
+    }
+    .el-message-box {
+        max-width: 100%;
+        max-width: calc(100% - 30px);
+    }
+    .scroll-tab-item {
+        display: block !important;
+        overflow: auto;
+        width: 100%;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        -webkit-scroll-snap-type: x mandatory;
+            -ms-scroll-snap-type: x mandatory;
+                scroll-snap-type: x mandatory;
+        >* {
+            scroll-snap-align: start;
+            display: inline-block;
+            // display: table-cell;
+        }
+    }
+/*#endregion*/
+
+/*#region Mobile responsive section styles*/
+    @include mq(xl, "max") {
+        [data-toggle="dropdown"] {
+            pointer-events: auto;
+        }
+        .scroll-tab-item-xl {
+            display: block !important;
+            overflow: auto;
+            white-space: nowrap;
+            overscroll-behavior-x: contain;
+            -webkit-scroll-snap-type: x mandatory;
+                -ms-scroll-snap-type: x mandatory;
+                    scroll-snap-type: x mandatory;
+            >* {
+                scroll-snap-align: start;
+                display: inline-block;
+                // display: table-cell;
+            }
+        }
+    }
+    @include mq(lg, "max") {
+        body {
+            padding-bottom: $nav-mobile-footer_height;
+        }
+        .padding {
+            &-right-container {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            &-left-container {
+                padding-right: 15px;
+                padding-right: 15px;
+            }
+        }
+        .scroll-tab-item-lg {
+            display: block !important;
+            overflow: auto;
+            white-space: nowrap;
+            overscroll-behavior-x: contain;
+            -webkit-scroll-snap-type: x mandatory;
+                -ms-scroll-snap-type: x mandatory;
+                    scroll-snap-type: x mandatory;
+            >* {
+                scroll-snap-align: start;
+                display: inline-block;
+                // display: table-cell;
+            }
+        }
+    }
+    @include mq(md, "max") {
+        .scroll-tab-item-md {
+            display: block !important;
+            overflow: auto;
+            white-space: nowrap;
+            overscroll-behavior-x: contain;
+            -webkit-scroll-snap-type: x mandatory;
+                -ms-scroll-snap-type: x mandatory;
+                    scroll-snap-type: x mandatory;
+            >* {
+                scroll-snap-align: start;
+                display: inline-block;
+                // display: table-cell;
+            }
+        }
+    }
+    @include mq(sm, "max") {
+        .flex-center {
+            &.flex-col-xs {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                   -moz-box-orient: vertical;
+                   -moz-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+            }
+        }
+        .scroll-tab {
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 10px;
+            -ms-scroll-chaining: chained;
+            -ms-scroll-snap-points-x: snapInterval(0%, 100%);
+            -ms-scroll-snap-type: mandatory;
+            .scroll-tab-container {
+                display: block;
+                white-space: nowrap;
+                width: 100%;
+                scroll-behavior: smooth;
+                >* {
+                    display: table-cell;
+                }
+            }
+        }
+        .embed-responsive {
+            width: 100%;
+        }
+    }
+/*#endregion*/
+
+/*#region Style fix all browser*/
+    /*#region Internet Explorer 10, 11*/
+        @include only-for-ie(){
+            .masonry-css>* {
+                display: inline;
+            }
+            .flex-container {
+                @include flex-option($type: justify-content, $value: flex-start);
+            }
+        }
+    /*#endregion*/
+/*#endregion*/

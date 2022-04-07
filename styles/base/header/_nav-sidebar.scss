@@ -1,0 +1,425 @@
+/*--------------------------------
+    Nav side bar
+        -Default
+--------------------------------*/
+// Set variables
+@include set-default(
+    (
+        navSide: (
+            _minWidth:28rem,
+            nav: (
+                _padding: 1rem,
+                _linkPadding: 1.3rem 1rem,
+            ),
+            subMenu: (
+                background-color: $white-color,
+            ),
+            megaMenu: (
+                _minWidth:68.5rem,
+                _minWidth1:88rem,
+                nav: (
+                    _marginTop:2.2rem,
+                    _padding: .75rem 0,
+                ),
+            ),
+            icon: (
+                line-height: 0,
+                font-size: 1.7rem,
+                width: 1.7rem,
+            ),
+            category: (
+                toggle: (
+                    _linkColor: $dark-color,
+                    _linkColorHover: $white-color,
+                    _backgroundColor: $white-color,
+                    _backgroundColorHover: $primary-color,
+                    position: relative,
+                    padding: 1.5rem 2rem,
+                    text-transform: uppercase,
+                    icon: (
+                        font-size: 1.7rem,
+                        line-height: 0,
+                    ),
+                )
+            )
+        )
+    )
+);
+
+// Nav sidebar
+#nav-sidebar {
+    position: relative;
+    margin-right: #{get(header, footer, _marginRight)};
+    .nav-sidebar-header {
+        @include animation($customize: true) {
+            -ms-transition: none;
+            -webkit-transition: none;
+            -moz-transition: none;
+            -o-transition: none;
+            transition: none;
+        };
+        @include print_css(navSide, category, toggle);
+        min-width: #{get(navSide, _minWidth)};
+        font-weight: #{get(header, footer, _fontWeight)};
+        background-color: #{get(navSide, category, toggle, _backgroundColor)};
+        i {
+            @include print_css(navSide, category, toggle, icon);
+            @include animation($customize: true) {
+                -ms-transition: none;
+                -webkit-transition: none;
+                -moz-transition: none;
+                -o-transition: none;
+                transition: none;
+            };
+        }
+        span {
+            @include overtext($row: 1, $h: auto);
+            margin-left: 0.7rem;
+        }
+        &::after {
+            font-family: "ecs";
+            content: "\e910";
+            font-weight: $font-weight-bold;
+            font-size: 0.9rem;
+            margin-left:auto;
+            padding-left: 5px;
+        }
+        &:hover i {
+            color: inherit;
+        }
+    }
+    
+    .nav-sidebar-body {
+        @include shadow($val: 0 2px 10px rgba(0,0,0,.1));
+        @include css(background-color, navSide, subMenu, background-color);
+        font-size: 1.3rem;
+        line-height: 1.1;
+        position: absolute;
+        padding: 0;
+        width: 100%;
+        color: $dark-color;
+        z-index: 99;
+        .has-submenu-body {
+            @include css(background-color, navSide, subMenu, background-color);
+        }
+        .nav {
+            @include css(background-color, navSide, subMenu, background-color);
+            li {
+                &:hover,
+                &.active {
+                    > .has-submenu-title > a,
+                    > a {
+                        color: #{get(header, _linkColorHover)};
+                    }
+                }
+                &:last-child {
+                    > a, .has-submenu-title > a {
+                        border-bottom:none !important;
+                    }
+                }
+            }
+        }
+        > ul {
+            //padding: #{get(navPc, nav, _width)} 0;
+            > li {
+                margin-right: 0;
+                padding: 0 #{get(navPc, nav, _padding)};
+                > .has-submenu-title > a,
+                > a {
+                    @include border($position: "bot");
+                    @include flex($type: "center", $get: "left");
+                    padding: #{get(navSide, nav, _linkPadding)};
+                    font-weight: #{get(header, footer, _fontWeight)};
+                    text-transform: capitalize;
+                    i {
+                        @include print_css(navSide, icon);
+                        display: block;
+                        margin-right: 0.7rem;
+                    }
+                }
+                // &:first-child {
+                //     > .nav,> .has-submenu-body {
+                //         top:-#{get(navPc, nav, _width)};
+                //     }
+                // }
+                &:last-child {
+                    > a i.ecs-icon-angle-right {
+                        margin: 0 0 0 0.4rem;
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+            
+            .has-submenu  {
+                position: relative;
+                &.top {
+                    position: static;
+                }
+                > .has-submenu-title > a {
+                    position: relative;
+                    &::after {
+                        @include e-cen($type: "top");
+                        @include animation($type: right, $time: 0.3s, $effect: ease);
+                        @include print_css(navPc, icon);
+                        right: #{get(navPc, nav, _padding)};
+                        position: absolute;
+                        content: "\e807";
+                    }
+                }
+                .nav li {
+                    a {
+                        display: block;
+                        padding: 0.7rem 0 0.8rem 0;
+                    }
+                }
+                > .nav, > .has-submenu-body {
+                    @include animation($type: all, $time: 0.3s, $effect: ease-out);
+                    @include visible($active: false, $zindex: 10);
+                    @include shadow($val: 0 2px 35px rgba(0,0,0,.1));
+                    @include transform($args: translateX(-#{get(navPc, _translate)}));
+                    @include css(width, navPc, subMenu, min-width);
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    .nav {
+                        @include visible($active: false, $zindex: 10);
+                    }
+                }
+                &:hover {
+                    > .has-submenu-title > a::after {
+                        right:0.5rem;
+                    }
+                    > .nav, > .has-submenu-body  {
+                        @include visible($active: true, $zindex: 10);
+                        @include transform($args: translateX(0rem));
+                    }
+                }
+                &:not(.mega-menu) {
+                    .nav {
+                        li {
+                            padding:0 #{get(navSide, nav, _padding)};
+                            a {
+                                @include border($position: "bot");
+                                padding: #{get(navSide, nav, _linkPadding)};
+                            }
+                        }
+                    }
+                }
+                &.mega-menu {
+                    hr {
+                        @include border();
+                        @include print_css(navPc, hr);
+                    }
+                    .img-menu {
+                        -webkit-box-flex: 1;
+                        -webkit-flex: 1;
+                        -moz-box-flex: 1;
+                        -ms-flex: 1;
+                        flex: 1;
+                        max-width: calc(100%/3);
+                        display: block;
+                        margin-left: auto;
+                        img {
+                            height:100%;
+                        }
+                    }
+                    .nav .has-submenu-title > a {
+                        position: static;
+                        &::after {
+                            display:none;
+                        }
+                    }
+                    > .has-submenu-body {
+                        @include flex($type: "container");
+                        min-width: #{get(navSide, megaMenu, _minWidth)};
+                        > .nav {
+                            @include flex($type: "container");
+                            opacity: inherit;
+                            visibility: inherit;
+                            pointer-events: inherit;
+                            z-index: inherit;
+                            -webkit-box-flex: 2;
+                            -webkit-flex: 2;
+                            -moz-box-flex: 2;
+                            -ms-flex: 2;
+                            flex: 2;
+                            max-width: calc((100% - 1px)/3*2);
+                            @include css(padding, navPc, megaMenu, padding);
+                            > li {
+                                width: calc((100% - #{get(navPc, megaMenu, nav, _marginRight)} - 1px)/2);
+                                margin-right: #{get(navPc, megaMenu, nav, _marginRight)};
+                                margin-top: #{get(navSide, megaMenu, nav, _marginTop)};
+                                .has-submenu-title {
+                                    > a {
+                                        padding:0;
+                                        font-weight: $font-weight-bold;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                                &:nth-child(1),
+                                &:nth-child(2) {
+                                    margin-top: 0;
+                                }
+                                &:nth-child(2n) {
+                                    margin-right: 0;
+                                }
+                            }
+                            .has-submenu {
+                                position:static;
+                                .nav {
+                                    @include transform($args: translateX(0rem));
+                                    opacity: inherit;
+                                    visibility: inherit;
+                                    pointer-events: inherit;
+                                    z-index: inherit;
+                                    box-shadow: none;
+                                    position:static;
+                                    li {
+                                        padding:0;
+                                        a {
+                                            padding: #{get(navSide, megaMenu, nav,  _padding)};
+                                            border-bottom: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        &.no-img {
+                            min-width: #{get(navSide, megaMenu, _minWidth1)};
+                            > .nav {
+                                max-width: 100%;
+                                width: 100%;
+                                -webkit-box-flex:1;
+                                -webkit-flex:1;
+                                -moz-box-flex:1;
+                                -ms-flex:1;
+                                flex:1;
+                                > li {
+                                    width: calc((100% - #{get(navPc, megaMenu, nav, _marginRight)}*3 - 1px)/4);
+                                    margin-top:  #{get(navSide, megaMenu, nav, _marginTop)};
+                                    &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4) {
+                                        margin-top:0
+                                    }
+                                    &:nth-child(2n) {
+                                        margin-right: #{get(navPc, megaMenu, nav, _marginRight)};
+                                    }
+                                    &:nth-child(4n) {
+                                        margin-right: 0rem;
+                                    }
+                                }
+                            }
+                            .imgs-menu {
+                                @include css(padding, navPc, megaMenu, padding);
+                                padding-top: 0;
+                               a {
+                                   display: block;
+                                   width: calc((100% - #{get(navPc, megaMenu, nav, _marginRight)} - 1px)/2);
+                                   margin-right: #{get(navPc, megaMenu, nav, _marginRight)};
+                                   img {
+                                       width: 100%;
+                                       height:100%;
+                                   }
+                                   &:nth-child(2n) {
+                                       margin-right:0;
+                                   }
+                               }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// Dropdown
+#nav-sidebar {
+    .dropdown-box {
+        @include animation($customize: true) {
+            -ms-transition: transform .3s, opacity .3s;
+            -webkit-transition: transform .3s, opacity .3s;
+            -moz-transition: transform .3s, opacity .3s;
+            -o-transition: transform .3s, opacity .3s;
+            transition: transform .3s, opacity .3s;
+        }
+
+        ;
+        @include transform($args: translate3d( 0, 1rem, 0 ));
+        @include visible($active: false, $zindex: 99);
+        top: 100%;
+        left: 0;
+
+        a {
+            white-space: normal;
+        }
+
+        &:before {
+            display: none;
+        }
+    }
+
+    &.dropdown {
+        > a::after {
+            @include transform($args: none);
+            top: auto;
+        }
+
+        &.show, &:hover {
+            .dropdown-box {
+                @include shadow($val: 0 2px 10px rgba(0,0,0,0.1));
+                @include transform($args: translate3d(0, 0, 0));
+                @include visible($active: true, $zindex: 99);
+                // transition: z-index .3s, transform .3s;
+            }
+        }
+    }
+
+    &.menu-fixed {
+        .dropdown-box {
+            @include visible($active: true, $zindex: 99);
+        }
+    }
+
+    &.has-border {
+        .category-toggle {
+            border-left: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+        }
+    }
+
+    &.show-dropdown .dropdown-box {
+        border-radius: .5rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 1.7rem;
+            border: 10px solid transparent;
+            border-bottom: 10px solid $grey-color-light;
+        }
+
+        .category-menu {
+            background-color: $grey-color-light;
+            border-radius: .5rem;
+        }
+    }
+
+    &:hover,
+    &.show {
+        > a {
+            @include css( color, navSide, category, toggle, _linkColorHover );
+            background-color: #{get(navSide, category, toggle, _backgroundColorHover)};
+        }
+    }
+}
+
+.sticky-header:not(.fixed) {
+    #nav-sidebar {
+        > a {
+            background-color: #{get(navSide, category, toggle, _backgroundColorHover)};
+            color: #{get(navSide, category, toggle, _linkColorHover)}
+        }
+    }
+}

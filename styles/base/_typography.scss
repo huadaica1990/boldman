@@ -1,0 +1,109 @@
+/* Typography */
+@include set-default (
+	(
+		typography: (
+			list-circle: (
+				icon: (
+					font-size: 1.1rem
+				)
+			)
+		)
+	)
+);
+
+/* 1. Default */
+h1,.h1,
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5,
+h6,.h6,
+p,.h {
+	font-weight: $font-weight-normal;
+	margin: 0 0 2rem;
+	&:last-child:not(.title) {
+		margin-bottom: 0;
+	}
+}
+
+h1,.h1,
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5,
+h6,.h6 {
+	font-family: $font-family-primary;
+	font-weight: $font-weight-bold;
+	line-height: $line-height;
+	color: $dark-color;
+	letter-spacing: 0;
+}
+
+h1,.h1 {
+	font-size: 4rem;
+}
+h2,.h2 {
+	font-size: 3rem;
+}
+h3,.h3 {
+	font-size: 2.4rem;
+}
+h4,.h4 {
+	font-size: 1.8rem;
+}
+h5,.h5 {
+	font-size: 1.5rem;
+}
+h6,.h6 {
+	font-size: 1.3rem;
+}
+p,.h {
+	font-size: 1.4rem;
+	line-height: $line-height;
+}
+
+blockquote {
+	margin: 0;  
+}
+
+/* 2. Customize */
+.list {
+	&-style-none {
+		list-style: none;
+	}
+	&-type-check {
+		li {
+			position: relative;
+			padding-left: 2rem;
+			line-height: 2;
+			&::before {
+				position: absolute;
+				display: block;
+				left: 0;
+				top: 1px;
+				content: '\e969';
+				font: {
+					family: "ecs";
+					weight: 600;
+					size: 1.3rem;
+				}
+			}
+		}
+	}
+	&-circle {
+		li {
+			padding-left: 1rem;
+			margin-bottom: 1rem;
+		}
+		i {
+			margin-right: 1.2rem;
+			width: 4rem;
+			height: 4rem;
+			border: 1px solid #e1e1e1;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 3.8rem;
+			@include print_css(typography, list-circle, icon);
+		}
+	}
+}

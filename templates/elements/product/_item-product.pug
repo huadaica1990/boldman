@@ -1,0 +1,54 @@
+.item-product.product(itemscope itemtype='http://schema.org/Product')
+    figure.product-media
+        if item.ver
+            .img.product-images.img-fixed-height
+                each itemver in item.ver
+                    picture
+                        source(media='' srcset='' type='image/webp')
+                        img(src=itemver.srcbig alt='' itemprop='thumbnail' loading='lazy' width='234' height='263')
+        else
+            .img.product-images.img-fixed-height
+                each itemimg in item.listimg
+                    picture
+                        source(media='' srcset='' type='image/webp')
+                        img(src=itemimg.src alt='' itemprop='thumbnail' loading='lazy' width='234' height='263')
+        .product-label-group
+            //- if item.percent
+            //-     label.product-label.label-discount=item.percent
+            if item.label
+                each itemlabel in item.label
+                    label.product-label(style=`background-color: ${itemlabel.color}`)=itemlabel.name
+        .product-action-vertical
+            a.btn-product-icon.btn-cart.ecs-icon-cart(href='javascript:' title='Add to cart')
+            a.btn-product-icon.btn-wishlist.ecs-icon-heart(href='javascript:' title='Wishlist')
+            a.btn-product-icon.btn-compare.ecs-icon-compare(href='javascript:' title='Compare')
+            a.btn-product-icon.btn-quickview.ecs-icon-search(href='javascript:' title='Quick View')
+        if item.promodate != null
+            //- Y-D-H 'Years', 'Months', 'Weeks', 'Days', 'Hours', 'Minutes', 'Seconds'
+            .product-countdown-container
+                .product-countdown.countdown-compact(data-until=item.promodate data-format='DHMS' data-compact='false' data-labels-short='Năm, Tháng, Tuần, Ngày, Giờ, Phút, Giây')
+    .product-details
+        if item.ver
+            .product-variations.mb-1
+                each itemver in item.ver
+                    a.image.lazyload-bg(class=itemver.isActive ? 'active' : '' class=itemver.isShow ? '' : 'disabled'  href='javascript:' data-bg=itemver.src data-src=itemver.srcbig)
+        .product-cat
+            a(href='')=item.cat
+        h3.product-title(itemprop='name')
+            a(href='' itemprop='url')=item.name
+        if (item.star > 0)
+            .ratings-container
+                .ratings-full
+                    .ratings(style=`width: ${item.star*100/5}%;`)
+                a.rating-reviews(href='') (#{item.count}<span class='ml-1'>đánh giá</span>)
+        .product-price(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+            if item.promoprice != null
+                ins.new-price.price-promoprice(itemprop='price' content='')=item.price
+                //- del.old-price=item.promoprice
+                if item.percent
+                    label.product-label.label-discount
+                        span=item.percent
+            else 
+                ins.new-price(itemprop='price' content='')=item.price
+        if item.quantity == 0
+            .product-quantity Đã hết hàng

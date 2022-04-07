@@ -1,0 +1,316 @@
+-
+    let filter = [
+        {
+            id: 1,
+            name: 'Giá',
+            url: 'price',
+            listval: [
+                {
+                    id: 'price1',
+                    name: 'Dưới 80.000đ',
+                    isActive: true
+                },
+                {
+                    id: 'price2',
+                    name: 'Từ 80.000đ đến 200.000đ',
+                    isActive: true
+                },
+                {
+                    id: 'price3',
+                    name: 'Từ 200.000đ đến 380.000đ',
+                    isActive: false
+                },
+                {
+                    id: 'price4',
+                    name: 'Trên 380.000đ',
+                    isActive: false
+                }
+            ]
+        },
+        {
+            id: 2,
+            name: 'Thương hiệu',
+            url: 'brand',
+            listval: [
+                {
+                    id: 'brand1',
+                    name: 'LQ luxury',
+                    isActive: false
+                },
+                {
+                    id: 'brand2',
+                    name: 'Áo Hạnh Phúc',
+                    isActive: false
+                },
+                {
+                    id: 'brand3',
+                    name: 'Everest',
+                    isActive: false
+                },
+                {
+                    id: 'brand4',
+                    name: 'T&D',
+                    isActive: false
+                },
+                {
+                    id: 'brand5',
+                    name: 'Chipxinhxk',
+                    isActive: false
+                },
+                {
+                    id: 'brand6',
+                    name: 'Haint Boutique',
+                    isActive: false
+                },
+                {
+                    id: 'brand7',
+                    name: 'VinaBoss',
+                    isActive: false
+                },
+                {
+                    id: 'brand8',
+                    name: 'Atlan',
+                    isActive: false
+                },
+                {
+                    id: 'brand9',
+                    name: 'Jinrinteen',
+                    isActive: false
+                },
+                {
+                    id: 'brand10',
+                    name: 'NIU24',
+                    isActive: false
+                },
+                {
+                    id: 'brand11',
+                    name: 'ARCTIC HUNTER',
+                    isActive: false
+                },
+                {
+                    id: 'brand12',
+                    name: 'Lamer',
+                    isActive: false
+                }
+            ]
+        },
+        {
+            id: 3,
+            name: 'Chất liệu',
+            url: 'material',
+            listval: [
+                {
+                    id: 'material1',
+                    name: 'Cotton',
+                    isActive: false
+                },
+                {
+                    id: 'material2',
+                    name: 'Lụa',
+                    isActive: false
+                },
+                {
+                    id: 'material3',
+                    name: 'Voan',
+                    isActive: false
+                },
+                {
+                    id: 'material4',
+                    name: 'Jeans',
+                    isActive: false
+                },
+                {
+                    id: 'material5',
+                    name: 'Len',
+                    isActive: false
+                }
+            ]
+        },
+        {
+            id: 4,
+            name: 'Màu sắc',
+            url: 'color',
+            listval: [
+                {
+                    id: 'color1',
+                    name: 'Đen',
+                    isActive: false
+                },
+                {
+                    id: 'color2',
+                    name: 'Trắng',
+                    isActive: false
+                },
+                {
+                    id: 'color3',
+                    name: 'Xanh',
+                    isActive: false
+                },
+                {
+                    id: 'color4',
+                    name: 'Hồng',
+                    isActive: false
+                },
+                {
+                    id: 'color5',
+                    name: 'Vàng',
+                    isActive: false
+                }
+            ]
+        },
+        {
+            id: 5,
+            name: 'Kích cỡ',
+            url: 'size',
+            listval: [
+                {
+                    id: 'size1',
+                    name: 'M',
+                    isActive: false
+                },
+                {
+                    id: 'size2',
+                    name: 'L',
+                    isActive: false
+                },
+                {
+                    id: 'size3',
+                    name: 'S',
+                    isActive: false
+                },
+                {
+                    id: 'size4',
+                    name: 'XL',
+                    isActive: false
+                },
+                {
+                    id: 'size5',
+                    name: 'XXL',
+                    isActive: false
+                }
+            ]
+        }
+    ];
+
+
+if sideIcon
+    .widget.widget-icon-box
+        .widget-body
+            each item in iconBox
+                .icon-box.icon-box-side
+                    .icon-box-icon.text-dark
+                        i(class=item.img)
+                    .icon-box-content
+                        h4.icon-box-title=item.name
+                        .icon-box-des
+                            p=item.des
+
+if sideBarCat
+    .widget.widget-collapsible.widget-category.collapsible
+        h4.widget-title.collapsible-title.text-uppercase.title-2underline
+            a.label(href='javascript:')
+                span Danh mục
+            span.toggle-btn
+        ul.widget-body.nav.collapsible-body
+            each item in menu
+                if item.children == null
+                    if item.isShow
+                        li(data-id='' class=item.isActive ? 'active' : '')
+                            a(href=item.href)=item.name
+                else
+                    if item.isShow
+                        li.collapsible(data-id='' class=item.isActive ? 'active' : '')
+                            .collapsible-title.collapsed
+                                a.label(href='') 
+                                    span=item.name
+                                span.toggle-btn
+                            ul.nav.collapsible-body(style='display: none')
+                                each item_child in item.children
+                                    if item_child.children == null
+                                        if item.isShow
+                                            li(data-id='' class=item_child.isActive ? 'active' : '')
+                                                a(href=item_child.href)=item_child.name
+                                    else
+                                        if item_child.isShow
+                                            li.collapsible(data-id='' class=item_child.isActive ? 'active' : '')
+                                                .collapsible-title.collapsed
+                                                    a.label(href='')
+                                                        span=item_child.name
+                                                    span.toggle-btn
+                                                ul.nav.collapsible-body(style='display: none')
+                                                    each item_child_child in item_child.children
+                                                        if item_child_child.isShow
+                                                            li(data-id='' class=item_child_child.isActive ? 'active' : '')
+                                                                a(href=item_child_child.href)=item_child_child.name
+
+if sideBarProduct
+    .widget.widget-products
+        h4.widget-title.text-uppercase.title-2underline
+            a.label(href='javascript:')
+                span Sản phẩm nổi bật
+        .widget-body
+            - for (var i = 0; i < 3; i++)
+                a.product.item-product.product-widget.mb-4(href='' title='')
+                    figure.product-media
+                        .img
+                            picture 
+                                source(media='' srcset='' type='image/webp')
+                                img(src=product[i].listimg[0].src alt='' width='80' height='90' loading='lazy')
+                    .product-details
+                        h4.product-title=product[i].name
+                        .ratings-container
+                            .ratings-full
+                                .ratings(style=`width: ${product[i].star*100/5}%;`)
+                        .product-price
+                            ins.new-price(itemprop='price' content='')=product[i].price
+                            if product[i].promoprice != null
+                                del.old-price=product[i].promoprice
+
+if sideBarBlog  
+    .widget.widget-blogs
+        h4.widget-title.text-uppercase.title-2underline
+            a.label(href='javascript:')
+                span Tin tức nổi bật
+        .widget-body.swiper
+            .swiper-container.swiper-theme.nav-top(data-swiper-options=`{
+                                    'spaceBetween': 20,
+                                    'slidesPerView': 1,
+                                    'slidesPerColumn': 3,
+                                    'slidesPerColumnFill': 'row'
+                                }`)
+                .swiper-wrapper.row.cols-1
+                    each item in blog
+                        .swiper-slide.widget-col
+                            a.post.item-blog.post-widget(href='' title='')
+                                figure.post-media.br-sm
+                                    .img
+                                        picture
+                                            source(media='' srcset='' type='image/webp')
+                                            img(src=item.src alt='' width='80' height='80' loading='lazy')
+                                .post-details
+                                    .post-meta #{item.day}/#{item.month}/#{item.year}
+                                    h3.post-title.text-bold=item.name
+                button.swiper-button.swiper-button-next
+                button.swiper-button.swiper-button-prev
+
+if sideBarFilter
+    each item in filter
+        .widget.widget-collapsible.widget-category.collapsible
+            h4.widget-title.collapsible-title.text-uppercase.title-2underline
+                a.label
+                    span=item.name
+                span.toggle-btn
+            .widget-body.collapsible-body.toggler-wrap
+                each itemval in item.listval
+                    +checkbox('checkbox', itemval, ' filter-item toggler-item')
+                div.toggler-wrap-btn
+
+if sideBarTag  
+    .widget.widget-tag.tags
+        h4.widget-title.text-uppercase.title-2underline 
+            a.label
+                span Tags
+        .widget-body
+            each item in tag
+                a.tag(href=item.href)=item.name
+

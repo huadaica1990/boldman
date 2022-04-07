@@ -1,0 +1,89 @@
+/* 1. Config */
+@import 'config/variables';
+
+/* 2. Mixins */
+@import 'mixins/breakpoint';
+@import 'mixins/core';
+@import 'mixins/buttons';
+@import 'mixins/mixins';
+
+
+/*#region _customize.scss*/
+    iframe {
+        object-fit: initial;
+    }
+/*#endregion*/
+
+/*#region _nav-mobile.scss*/
+    .cart-info-m .cart-info,
+    #nav-mobile-content,
+    #nav-mobile-content .mobile-menu .has-submenu:not(.collapse-menu) .submenu {
+        padding-bottom: #{$nav-mobile_height-ios-bottom};
+    }
+    #nav-mobile-content .--body {
+        height:calc(100vh - 60px - 98px - #{$nav-mobile_height-ios-bottom});
+    }
+    #nav-mobile .cart .cart-count-txt,
+    #nav-mobile-search .cart .cart-count-txt,
+    #nav-mobile-content .cart .cart-count-txt {
+        line-height:17px;
+    }
+    #nav-mobile-footer .cart .cart-count-txt {
+        line-height: 20px;
+    }
+    #nav-mobile-content .vertical-menu {
+        li>a>span,
+        .has-submenu>.has-submenu-title>a>span {
+            transform: translateY(2px);
+        }
+        li.back-wrap a span {
+            transform: translateY(1px);
+        }
+    }
+    .mobile-search-toggle {
+        .typewrite,
+        &:after {
+            top:53%;
+        }
+    }
+/*#endregion*/
+
+/*#region _addon.scss*/
+    .callnow span {
+        padding: 7px 10px 0px 15px;
+        height: 32px;
+    }
+/*#endregion*/
+
+/*#region _item-product.scss*/
+    .product-label span {
+        @include transform($args: translateY(1.5px));
+        display: block;
+    }
+/*#endregion*/
+
+/*#region account-page.scss*/
+    .account-page .widget li img {
+        @include transform($args: translateY(-2px));
+    }
+/*#endregion*/
+
+/*#region _addon.scss*/
+    @include mq(sm, 'max') {
+        #chat-scroll-block {
+            .--body .callnow {
+                i::before {
+                    @include transform($args: translateY(2px));
+                }
+                span {
+                    padding: 7px 15px 0px 10px;
+                }
+            }
+            .--header i {
+                @include transform($args: translateY(10px));
+                display: block; 
+            }
+        }
+    }
+/*#endregion*/
+

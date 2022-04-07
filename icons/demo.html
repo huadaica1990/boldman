@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta charset="UTF-8">
+  <style>
+    html {
+      font-size: 100%;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    a:focus {
+      outline: thin dotted #333;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+    a:hover,
+    a:active {
+      outline: 0;
+    }
+    input {
+      margin: 0;
+      font-size: 100%;
+      vertical-align: middle;
+      *overflow: visible;
+      line-height: normal;
+    }
+    input::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333;
+      background-color: #fff;
+    }
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #005580;
+      text-decoration: underline;
+    }
+    .row {
+      margin-left: -20px;
+      *zoom: 1;
+    }
+    .row:before,
+    .row:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    .row:after {
+      clear: both;
+    }
+    .span3 {
+      float: left;
+      min-height: 1px;
+      margin-left: 20px;
+      width: 220px;
+    }
+    .container {
+      width: 940px;
+      margin-right: auto;
+      margin-left: auto;
+      *zoom: 1;
+    }
+    .container:before,
+    .container:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    .container:after {
+      clear: both;
+    }
+    small {
+      font-size: 85%;
+    }
+    h1 {
+      margin: 10px 0;
+      font-family: inherit;
+      font-weight: bold;
+      line-height: 20px;
+      color: inherit;
+      text-rendering: optimizelegibility;
+      line-height: 40px;
+      font-size: 38.5px;
+    }
+    h1 small {
+      font-weight: normal;
+      line-height: 1;
+      color: #999;
+      font-size: 24.5px;
+    }
+
+    body {
+      margin-top: 90px;
+    }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      margin-left: -480px;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding-top: 10px;
+      z-index: 10;
+    }
+    .footer {
+      color: #ddd;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .footer a {
+      color: #ccc;
+      text-decoration: underline;
+    }
+    .the-icons {
+      font-size: 14px;
+      line-height: 24px;
+    }
+    .switch {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      color: #666;
+    }
+    .switch input {
+      margin-right: 0.3em;
+    }
+    .codesOn .i-name {
+      display: none;
+    }
+    .codesOn .i-code {
+      display: inline;
+    }
+    .i-code {
+      display: none;
+    }
+    @font-face {
+      font-family: 'customize';
+      src: url('customize.eot?22174585');
+      src: url('customize.eot?22174585#iefix') format('embedded-opentype'),
+           url('customize.woff?22174585') format('woff'),
+           url('customize.ttf?22174585') format('truetype'),
+           url('customize.svg?22174585#customize') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .demo-icon {
+      font-family: "customize";
+      font-style: normal;
+      font-weight: normal;
+      speak: never;
+     
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      margin-right: .2em;
+      text-align: center;
+      /* opacity: .8; */
+     
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+     
+      /* fix buttons height, for twitter bootstrap */
+      line-height: 1em;
+     
+      /* Animation center compensation - margins should be symmetric */
+      /* remove if not needed */
+      margin-left: .2em;
+     
+      /* You can be more comfortable with increased icons size */
+      /* font-size: 120%; */
+     
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+     
+      /* Uncomment for 3D effect */
+      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    }
+    </style>
+    <link rel="stylesheet" href="css/animation.css"><!--[if IE 7]><link rel="stylesheet" href="css/" + font.fontname + "-ie7.css"><![endif]-->
+    <script>
+      function toggleCodes(on) {
+        var obj = document.getElementById('icons');
+      
+        if (on) {
+          obj.className += ' codesOn';
+        } else {
+          obj.className = obj.className.replace(' codesOn', '');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container header">
+      <h1>customize <small>font demo</small></h1>
+      <label class="switch">
+        <input type="checkbox" onclick="toggleCodes(this.checked)">show codes
+      </label>
+    </div>
+    <div class="container" id="icons">
+      <div class="row">
+        <div class="span3" title="Code: 0xe102">
+          <i class="demo-icon cus-globe">&#xe102;</i> <span class="i-name">cus-globe</span><span class="i-code">0xe102</span>
+        </div>
+        <div class="span3" title="Code: 0xe800">
+          <i class="demo-icon cus-down-dir">&#xe800;</i> <span class="i-name">cus-down-dir</span><span class="i-code">0xe800</span>
+        </div>
+        <div class="span3" title="Code: 0xe801">
+          <i class="demo-icon cus-up-dir">&#xe801;</i> <span class="i-name">cus-up-dir</span><span class="i-code">0xe801</span>
+        </div>
+        <div class="span3" title="Code: 0xe802">
+          <i class="demo-icon cus-left-dir">&#xe802;</i> <span class="i-name">cus-left-dir</span><span class="i-code">0xe802</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe803">
+          <i class="demo-icon cus-up-open-mini">&#xe803;</i> <span class="i-name">cus-up-open-mini</span><span class="i-code">0xe803</span>
+        </div>
+        <div class="span3" title="Code: 0xe804">
+          <i class="demo-icon cus-right-dir">&#xe804;</i> <span class="i-name">cus-right-dir</span><span class="i-code">0xe804</span>
+        </div>
+        <div class="span3" title="Code: 0xe805">
+          <i class="demo-icon cus-down-open-mini">&#xe805;</i> <span class="i-name">cus-down-open-mini</span><span class="i-code">0xe805</span>
+        </div>
+        <div class="span3" title="Code: 0xe806">
+          <i class="demo-icon cus-left-open-mini">&#xe806;</i> <span class="i-name">cus-left-open-mini</span><span class="i-code">0xe806</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe807">
+          <i class="demo-icon cus-right-open-mini">&#xe807;</i> <span class="i-name">cus-right-open-mini</span><span class="i-code">0xe807</span>
+        </div>
+        <div class="span3" title="Code: 0xe808">
+          <i class="demo-icon cus-cancel">&#xe808;</i> <span class="i-name">cus-cancel</span><span class="i-code">0xe808</span>
+        </div>
+        <div class="span3" title="Code: 0xe809">
+          <i class="demo-icon cus-ok">&#xe809;</i> <span class="i-name">cus-ok</span><span class="i-code">0xe809</span>
+        </div>
+        <div class="span3" title="Code: 0xe80a">
+          <i class="demo-icon cus-th-large">&#xe80a;</i> <span class="i-name">cus-th-large</span><span class="i-code">0xe80a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe80b">
+          <i class="demo-icon cus-tags">&#xe80b;</i> <span class="i-name">cus-tags</span><span class="i-code">0xe80b</span>
+        </div>
+        <div class="span3" title="Code: 0xe80c">
+          <i class="demo-icon cus-ok-1">&#xe80c;</i> <span class="i-name">cus-ok-1</span><span class="i-code">0xe80c</span>
+        </div>
+        <div class="span3" title="Code: 0xe80d">
+          <i class="demo-icon cus-down-open-big">&#xe80d;</i> <span class="i-name">cus-down-open-big</span><span class="i-code">0xe80d</span>
+        </div>
+        <div class="span3" title="Code: 0xe80e">
+          <i class="demo-icon cus-left-open-big">&#xe80e;</i> <span class="i-name">cus-left-open-big</span><span class="i-code">0xe80e</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe80f">
+          <i class="demo-icon cus-right-open-big">&#xe80f;</i> <span class="i-name">cus-right-open-big</span><span class="i-code">0xe80f</span>
+        </div>
+        <div class="span3" title="Code: 0xe810">
+          <i class="demo-icon cus-up-open-big">&#xe810;</i> <span class="i-name">cus-up-open-big</span><span class="i-code">0xe810</span>
+        </div>
+        <div class="span3" title="Code: 0xe811">
+          <i class="demo-icon cus-tag">&#xe811;</i> <span class="i-name">cus-tag</span><span class="i-code">0xe811</span>
+        </div>
+        <div class="span3" title="Code: 0xe812">
+          <i class="demo-icon cus-home">&#xe812;</i> <span class="i-name">cus-home</span><span class="i-code">0xe812</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe813">
+          <i class="demo-icon cus-calendar">&#xe813;</i> <span class="i-name">cus-calendar</span><span class="i-code">0xe813</span>
+        </div>
+        <div class="span3" title="Code: 0xe814">
+          <i class="demo-icon cus-location">&#xe814;</i> <span class="i-name">cus-location</span><span class="i-code">0xe814</span>
+        </div>
+        <div class="span3" title="Code: 0xe815">
+          <i class="demo-icon cus-mail">&#xe815;</i> <span class="i-name">cus-mail</span><span class="i-code">0xe815</span>
+        </div>
+        <div class="span3" title="Code: 0xe816">
+          <i class="demo-icon cus-phone">&#xe816;</i> <span class="i-name">cus-phone</span><span class="i-code">0xe816</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe817">
+          <i class="demo-icon cus-th">&#xe817;</i> <span class="i-name">cus-th</span><span class="i-code">0xe817</span>
+        </div>
+        <div class="span3" title="Code: 0xe818">
+          <i class="demo-icon cus-th-list">&#xe818;</i> <span class="i-name">cus-th-list</span><span class="i-code">0xe818</span>
+        </div>
+        <div class="span3" title="Code: 0xe819">
+          <i class="demo-icon cus-comment">&#xe819;</i> <span class="i-name">cus-comment</span><span class="i-code">0xe819</span>
+        </div>
+        <div class="span3" title="Code: 0xe81a">
+          <i class="demo-icon cus-chat">&#xe81a;</i> <span class="i-name">cus-chat</span><span class="i-code">0xe81a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe81b">
+          <i class="demo-icon cus-plus">&#xe81b;</i> <span class="i-name">cus-plus</span><span class="i-code">0xe81b</span>
+        </div>
+        <div class="span3" title="Code: 0xe81c">
+          <i class="demo-icon cus-minus">&#xe81c;</i> <span class="i-name">cus-minus</span><span class="i-code">0xe81c</span>
+        </div>
+        <div class="span3" title="Code: 0xe81d">
+          <i class="demo-icon cus-star-empty">&#xe81d;</i> <span class="i-name">cus-star-empty</span><span class="i-code">0xe81d</span>
+        </div>
+        <div class="span3" title="Code: 0xe81e">
+          <i class="demo-icon cus-ok-circled">&#xe81e;</i> <span class="i-name">cus-ok-circled</span><span class="i-code">0xe81e</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe81f">
+          <i class="demo-icon cus-ok-circled2">&#xe81f;</i> <span class="i-name">cus-ok-circled2</span><span class="i-code">0xe81f</span>
+        </div>
+        <div class="span3" title="Code: 0xe820">
+          <i class="demo-icon cus-star">&#xe820;</i> <span class="i-name">cus-star</span><span class="i-code">0xe820</span>
+        </div>
+        <div class="span3" title="Code: 0xe821">
+          <i class="demo-icon cus-info-circled">&#xe821;</i> <span class="i-name">cus-info-circled</span><span class="i-code">0xe821</span>
+        </div>
+        <div class="span3" title="Code: 0xe822">
+          <i class="demo-icon cus-basket">&#xe822;</i> <span class="i-name">cus-basket</span><span class="i-code">0xe822</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe823">
+          <i class="demo-icon cus-help-circled">&#xe823;</i> <span class="i-name">cus-help-circled</span><span class="i-code">0xe823</span>
+        </div>
+        <div class="span3" title="Code: 0xe824">
+          <i class="demo-icon cus-attention">&#xe824;</i> <span class="i-name">cus-attention</span><span class="i-code">0xe824</span>
+        </div>
+        <div class="span3" title="Code: 0xe825">
+          <i class="demo-icon cus-play-circled2">&#xe825;</i> <span class="i-name">cus-play-circled2</span><span class="i-code">0xe825</span>
+        </div>
+        <div class="span3" title="Code: 0xe826">
+          <i class="demo-icon cus-attention-circled">&#xe826;</i> <span class="i-name">cus-attention-circled</span><span class="i-code">0xe826</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe827">
+          <i class="demo-icon cus-cancel-1">&#xe827;</i> <span class="i-name">cus-cancel-1</span><span class="i-code">0xe827</span>
+        </div>
+        <div class="span3" title="Code: 0xe828">
+          <i class="demo-icon cus-play">&#xe828;</i> <span class="i-name">cus-play</span><span class="i-code">0xe828</span>
+        </div>
+        <div class="span3" title="Code: 0xe829">
+          <i class="demo-icon cus-eye">&#xe829;</i> <span class="i-name">cus-eye</span><span class="i-code">0xe829</span>
+        </div>
+        <div class="span3" title="Code: 0xe82a">
+          <i class="demo-icon cus-cancel-circled">&#xe82a;</i> <span class="i-name">cus-cancel-circled</span><span class="i-code">0xe82a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe82b">
+          <i class="demo-icon cus-cancel-circled2">&#xe82b;</i> <span class="i-name">cus-cancel-circled2</span><span class="i-code">0xe82b</span>
+        </div>
+        <div class="span3" title="Code: 0xe82c">
+          <i class="demo-icon cus-dot-3">&#xe82c;</i> <span class="i-name">cus-dot-3</span><span class="i-code">0xe82c</span>
+        </div>
+        <div class="span3" title="Code: 0xe82d">
+          <i class="demo-icon cus-eye-off">&#xe82d;</i> <span class="i-name">cus-eye-off</span><span class="i-code">0xe82d</span>
+        </div>
+        <div class="span3" title="Code: 0xe82e">
+          <i class="demo-icon cus-phone-1">&#xe82e;</i> <span class="i-name">cus-phone-1</span><span class="i-code">0xe82e</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe82f">
+          <i class="demo-icon cus-globe-2">&#xe82f;</i> <span class="i-name">cus-globe-2</span><span class="i-code">0xe82f</span>
+        </div>
+        <div class="span3" title="Code: 0xe830">
+          <i class="demo-icon cus-checked">&#xe830;</i> <span class="i-name">cus-checked</span><span class="i-code">0xe830</span>
+        </div>
+        <div class="span3" title="Code: 0xe831">
+          <i class="demo-icon cus-arrow-right-round">&#xe831;</i> <span class="i-name">cus-arrow-right-round</span><span class="i-code">0xe831</span>
+        </div>
+        <div class="span3" title="Code: 0xe832">
+          <i class="demo-icon cus-arrow-left-round">&#xe832;</i> <span class="i-name">cus-arrow-left-round</span><span class="i-code">0xe832</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe833">
+          <i class="demo-icon cus-arrow-left-full">&#xe833;</i> <span class="i-name">cus-arrow-left-full</span><span class="i-code">0xe833</span>
+        </div>
+        <div class="span3" title="Code: 0xe834">
+          <i class="demo-icon cus-arrow-right-full">&#xe834;</i> <span class="i-name">cus-arrow-right-full</span><span class="i-code">0xe834</span>
+        </div>
+        <div class="span3" title="Code: 0xe835">
+          <i class="demo-icon cus-mail-1">&#xe835;</i> <span class="i-name">cus-mail-1</span><span class="i-code">0xe835</span>
+        </div>
+        <div class="span3" title="Code: 0xe836">
+          <i class="demo-icon cus-cart-pack">&#xe836;</i> <span class="i-name">cus-cart-pack</span><span class="i-code">0xe836</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe837">
+          <i class="demo-icon cus-paper-plane-1">&#xe837;</i> <span class="i-name">cus-paper-plane-1</span><span class="i-code">0xe837</span>
+        </div>
+        <div class="span3" title="Code: 0xe838">
+          <i class="demo-icon cus-play-button">&#xe838;</i> <span class="i-name">cus-play-button</span><span class="i-code">0xe838</span>
+        </div>
+        <div class="span3" title="Code: 0xe839">
+          <i class="demo-icon cus-shopping-cart-1">&#xe839;</i> <span class="i-name">cus-shopping-cart-1</span><span class="i-code">0xe839</span>
+        </div>
+        <div class="span3" title="Code: 0xe83a">
+          <i class="demo-icon cus-shopping-bag">&#xe83a;</i> <span class="i-name">cus-shopping-bag</span><span class="i-code">0xe83a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe83b">
+          <i class="demo-icon cus-shopping-cart">&#xe83b;</i> <span class="i-name">cus-shopping-cart</span><span class="i-code">0xe83b</span>
+        </div>
+        <div class="span3" title="Code: 0xe83c">
+          <i class="demo-icon cus-shopping-cart-add-button">&#xe83c;</i> <span class="i-name">cus-shopping-cart-add-button</span><span class="i-code">0xe83c</span>
+        </div>
+        <div class="span3" title="Code: 0xe83d">
+          <i class="demo-icon cus-shopping-cart-2">&#xe83d;</i> <span class="i-name">cus-shopping-cart-2</span><span class="i-code">0xe83d</span>
+        </div>
+        <div class="span3" title="Code: 0xe83e">
+          <i class="demo-icon cus-user-avatar">&#xe83e;</i> <span class="i-name">cus-user-avatar</span><span class="i-code">0xe83e</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe83f">
+          <i class="demo-icon cus-user-border">&#xe83f;</i> <span class="i-name">cus-user-border</span><span class="i-code">0xe83f</span>
+        </div>
+        <div class="span3" title="Code: 0xe840">
+          <i class="demo-icon cus-search-1">&#xe840;</i> <span class="i-name">cus-search-1</span><span class="i-code">0xe840</span>
+        </div>
+        <div class="span3" title="Code: 0xe841">
+          <i class="demo-icon cus-maximize">&#xe841;</i> <span class="i-name">cus-maximize</span><span class="i-code">0xe841</span>
+        </div>
+        <div class="span3" title="Code: 0xe842">
+          <i class="demo-icon cus-cross-out">&#xe842;</i> <span class="i-name">cus-cross-out</span><span class="i-code">0xe842</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe843">
+          <i class="demo-icon cus-left-quote">&#xe843;</i> <span class="i-name">cus-left-quote</span><span class="i-code">0xe843</span>
+        </div>
+        <div class="span3" title="Code: 0xe844">
+          <i class="demo-icon cus-cog">&#xe844;</i> <span class="i-name">cus-cog</span><span class="i-code">0xe844</span>
+        </div>
+        <div class="span3" title="Code: 0xe845">
+          <i class="demo-icon cus-right-quote">&#xe845;</i> <span class="i-name">cus-right-quote</span><span class="i-code">0xe845</span>
+        </div>
+        <div class="span3" title="Code: 0xe846">
+          <i class="demo-icon cus-zalo">&#xe846;</i> <span class="i-name">cus-zalo</span><span class="i-code">0xe846</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe847">
+          <i class="demo-icon cus-logout">&#xe847;</i> <span class="i-name">cus-logout</span><span class="i-code">0xe847</span>
+        </div>
+        <div class="span3" title="Code: 0xe848">
+          <i class="demo-icon cus-camera">&#xe848;</i> <span class="i-name">cus-camera</span><span class="i-code">0xe848</span>
+        </div>
+        <div class="span3" title="Code: 0xe849">
+          <i class="demo-icon cus-admin-with-cogwheels">&#xe849;</i> <span class="i-name">cus-admin-with-cogwheels</span><span class="i-code">0xe849</span>
+        </div>
+        <div class="span3" title="Code: 0xe84a">
+          <i class="demo-icon cus-medical-history">&#xe84a;</i> <span class="i-name">cus-medical-history</span><span class="i-code">0xe84a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe84b">
+          <i class="demo-icon cus-clock">&#xe84b;</i> <span class="i-name">cus-clock</span><span class="i-code">0xe84b</span>
+        </div>
+        <div class="span3" title="Code: 0xe84c">
+          <i class="demo-icon cus-download">&#xe84c;</i> <span class="i-name">cus-download</span><span class="i-code">0xe84c</span>
+        </div>
+        <div class="span3" title="Code: 0xe84d">
+          <i class="demo-icon cus-add">&#xe84d;</i> <span class="i-name">cus-add</span><span class="i-code">0xe84d</span>
+        </div>
+        <div class="span3" title="Code: 0xe84e">
+          <i class="demo-icon cus-copy">&#xe84e;</i> <span class="i-name">cus-copy</span><span class="i-code">0xe84e</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe84f">
+          <i class="demo-icon cus-arrow-long-right-round">&#xe84f;</i> <span class="i-name">cus-arrow-long-right-round</span><span class="i-code">0xe84f</span>
+        </div>
+        <div class="span3" title="Code: 0xe850">
+          <i class="demo-icon cus-arrow-long-left-round">&#xe850;</i> <span class="i-name">cus-arrow-long-left-round</span><span class="i-code">0xe850</span>
+        </div>
+        <div class="span3" title="Code: 0xe851">
+          <i class="demo-icon cus-search">&#xe851;</i> <span class="i-name">cus-search</span><span class="i-code">0xe851</span>
+        </div>
+        <div class="span3" title="Code: 0xe852">
+          <i class="demo-icon cus-shopping-cart-3">&#xe852;</i> <span class="i-name">cus-shopping-cart-3</span><span class="i-code">0xe852</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe853">
+          <i class="demo-icon cus-messenger">&#xe853;</i> <span class="i-name">cus-messenger</span><span class="i-code">0xe853</span>
+        </div>
+        <div class="span3" title="Code: 0xe854">
+          <i class="demo-icon cus-stat">&#xe854;</i> <span class="i-name">cus-stat</span><span class="i-code">0xe854</span>
+        </div>
+        <div class="span3" title="Code: 0xe855">
+          <i class="demo-icon cus-shopee">&#xe855;</i> <span class="i-name">cus-shopee</span><span class="i-code">0xe855</span>
+        </div>
+        <div class="span3" title="Code: 0xe856">
+          <i class="demo-icon cus-trash">&#xe856;</i> <span class="i-name">cus-trash</span><span class="i-code">0xe856</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe857">
+          <i class="demo-icon cus-coupon_icon">&#xe857;</i> <span class="i-name">cus-coupon_icon</span><span class="i-code">0xe857</span>
+        </div>
+        <div class="span3" title="Code: 0xe864">
+          <i class="demo-icon cus-mail-line">&#xe864;</i> <span class="i-name">cus-mail-line</span><span class="i-code">0xe864</span>
+        </div>
+        <div class="span3" title="Code: 0xe875">
+          <i class="demo-icon cus-zalo-icon">&#xe875;</i> <span class="i-name">cus-zalo-icon</span><span class="i-code">0xe875</span>
+        </div>
+        <div class="span3" title="Code: 0xe876">
+          <i class="demo-icon cus-check">&#xe876;</i> <span class="i-name">cus-check</span><span class="i-code">0xe876</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe88a">
+          <i class="demo-icon cus-clock-1">&#xe88a;</i> <span class="i-name">cus-clock-1</span><span class="i-code">0xe88a</span>
+        </div>
+        <div class="span3" title="Code: 0xe88b">
+          <i class="demo-icon cus-calendar-1">&#xe88b;</i> <span class="i-name">cus-calendar-1</span><span class="i-code">0xe88b</span>
+        </div>
+        <div class="span3" title="Code: 0xf099">
+          <i class="demo-icon cus-twitter">&#xf099;</i> <span class="i-name">cus-twitter</span><span class="i-code">0xf099</span>
+        </div>
+        <div class="span3" title="Code: 0xf09a">
+          <i class="demo-icon cus-facebook">&#xf09a;</i> <span class="i-name">cus-facebook</span><span class="i-code">0xf09a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf0b0">
+          <i class="demo-icon cus-filter">&#xf0b0;</i> <span class="i-name">cus-filter</span><span class="i-code">0xf0b0</span>
+        </div>
+        <div class="span3" title="Code: 0xf0c9">
+          <i class="demo-icon cus-menu">&#xf0c9;</i> <span class="i-name">cus-menu</span><span class="i-code">0xf0c9</span>
+        </div>
+        <div class="span3" title="Code: 0xf0d5">
+          <i class="demo-icon cus-gplus">&#xf0d5;</i> <span class="i-name">cus-gplus</span><span class="i-code">0xf0d5</span>
+        </div>
+        <div class="span3" title="Code: 0xf0e0">
+          <i class="demo-icon cus-mail-alt">&#xf0e0;</i> <span class="i-name">cus-mail-alt</span><span class="i-code">0xf0e0</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf0e1">
+          <i class="demo-icon cus-linkedin">&#xf0e1;</i> <span class="i-name">cus-linkedin</span><span class="i-code">0xf0e1</span>
+        </div>
+        <div class="span3" title="Code: 0xf0e5">
+          <i class="demo-icon cus-comment-empty">&#xf0e5;</i> <span class="i-name">cus-comment-empty</span><span class="i-code">0xf0e5</span>
+        </div>
+        <div class="span3" title="Code: 0xf0e6">
+          <i class="demo-icon cus-chat-empty">&#xf0e6;</i> <span class="i-name">cus-chat-empty</span><span class="i-code">0xf0e6</span>
+        </div>
+        <div class="span3" title="Code: 0xf100">
+          <i class="demo-icon cus-angle-double-left">&#xf100;</i> <span class="i-name">cus-angle-double-left</span><span class="i-code">0xf100</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf101">
+          <i class="demo-icon cus-angle-double-right">&#xf101;</i> <span class="i-name">cus-angle-double-right</span><span class="i-code">0xf101</span>
+        </div>
+        <div class="span3" title="Code: 0xf102">
+          <i class="demo-icon cus-angle-double-up">&#xf102;</i> <span class="i-name">cus-angle-double-up</span><span class="i-code">0xf102</span>
+        </div>
+        <div class="span3" title="Code: 0xf103">
+          <i class="demo-icon cus-angle-double-down">&#xf103;</i> <span class="i-name">cus-angle-double-down</span><span class="i-code">0xf103</span>
+        </div>
+        <div class="span3" title="Code: 0xf10b">
+          <i class="demo-icon cus-mobile">&#xf10b;</i> <span class="i-name">cus-mobile</span><span class="i-code">0xf10b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf128">
+          <i class="demo-icon cus-help">&#xf128;</i> <span class="i-name">cus-help</span><span class="i-code">0xf128</span>
+        </div>
+        <div class="span3" title="Code: 0xf129">
+          <i class="demo-icon cus-info">&#xf129;</i> <span class="i-name">cus-info</span><span class="i-code">0xf129</span>
+        </div>
+        <div class="span3" title="Code: 0xf12a">
+          <i class="demo-icon cus-attention-alt">&#xf12a;</i> <span class="i-name">cus-attention-alt</span><span class="i-code">0xf12a</span>
+        </div>
+        <div class="span3" title="Code: 0xf144">
+          <i class="demo-icon cus-play-circled">&#xf144;</i> <span class="i-name">cus-play-circled</span><span class="i-code">0xf144</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf15d">
+          <i class="demo-icon cus-sort-name-up">&#xf15d;</i> <span class="i-name">cus-sort-name-up</span><span class="i-code">0xf15d</span>
+        </div>
+        <div class="span3" title="Code: 0xf15e">
+          <i class="demo-icon cus-sort-name-down">&#xf15e;</i> <span class="i-name">cus-sort-name-down</span><span class="i-code">0xf15e</span>
+        </div>
+        <div class="span3" title="Code: 0xf160">
+          <i class="demo-icon cus-sort-alt-up">&#xf160;</i> <span class="i-name">cus-sort-alt-up</span><span class="i-code">0xf160</span>
+        </div>
+        <div class="span3" title="Code: 0xf161">
+          <i class="demo-icon cus-sort-alt-down">&#xf161;</i> <span class="i-name">cus-sort-alt-down</span><span class="i-code">0xf161</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf162">
+          <i class="demo-icon cus-sort-number-up">&#xf162;</i> <span class="i-name">cus-sort-number-up</span><span class="i-code">0xf162</span>
+        </div>
+        <div class="span3" title="Code: 0xf163">
+          <i class="demo-icon cus-sort-number-down">&#xf163;</i> <span class="i-name">cus-sort-number-down</span><span class="i-code">0xf163</span>
+        </div>
+        <div class="span3" title="Code: 0xf167">
+          <i class="demo-icon cus-youtube">&#xf167;</i> <span class="i-name">cus-youtube</span><span class="i-code">0xf167</span>
+        </div>
+        <div class="span3" title="Code: 0xf16a">
+          <i class="demo-icon cus-youtube-play">&#xf16a;</i> <span class="i-name">cus-youtube-play</span><span class="i-code">0xf16a</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf16d">
+          <i class="demo-icon cus-instagram">&#xf16d;</i> <span class="i-name">cus-instagram</span><span class="i-code">0xf16d</span>
+        </div>
+        <div class="span3" title="Code: 0xf173">
+          <i class="demo-icon cus-tumblr">&#xf173;</i> <span class="i-name">cus-tumblr</span><span class="i-code">0xf173</span>
+        </div>
+        <div class="span3" title="Code: 0xf175">
+          <i class="demo-icon cus-down">&#xf175;</i> <span class="i-name">cus-down</span><span class="i-code">0xf175</span>
+        </div>
+        <div class="span3" title="Code: 0xf176">
+          <i class="demo-icon cus-up">&#xf176;</i> <span class="i-name">cus-up</span><span class="i-code">0xf176</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf177">
+          <i class="demo-icon cus-left">&#xf177;</i> <span class="i-name">cus-left</span><span class="i-code">0xf177</span>
+        </div>
+        <div class="span3" title="Code: 0xf178">
+          <i class="demo-icon cus-right">&#xf178;</i> <span class="i-name">cus-right</span><span class="i-code">0xf178</span>
+        </div>
+        <div class="span3" title="Code: 0xf1d9">
+          <i class="demo-icon cus-paper-plane-empty">&#xf1d9;</i> <span class="i-name">cus-paper-plane-empty</span><span class="i-code">0xf1d9</span>
+        </div>
+        <div class="span3" title="Code: 0xf1de">
+          <i class="demo-icon cus-sliders">&#xf1de;</i> <span class="i-name">cus-sliders</span><span class="i-code">0xf1de</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf1e0">
+          <i class="demo-icon cus-share">&#xf1e0;</i> <span class="i-name">cus-share</span><span class="i-code">0xf1e0</span>
+        </div>
+        <div class="span3" title="Code: 0xf1f0">
+          <i class="demo-icon cus-cc-visa">&#xf1f0;</i> <span class="i-name">cus-cc-visa</span><span class="i-code">0xf1f0</span>
+        </div>
+        <div class="span3" title="Code: 0xf1f1">
+          <i class="demo-icon cus-cc-mastercard">&#xf1f1;</i> <span class="i-name">cus-cc-mastercard</span><span class="i-code">0xf1f1</span>
+        </div>
+        <div class="span3" title="Code: 0xf1f2">
+          <i class="demo-icon cus-cc-discover">&#xf1f2;</i> <span class="i-name">cus-cc-discover</span><span class="i-code">0xf1f2</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf1f4">
+          <i class="demo-icon cus-cc-paypal">&#xf1f4;</i> <span class="i-name">cus-cc-paypal</span><span class="i-code">0xf1f4</span>
+        </div>
+        <div class="span3" title="Code: 0xf231">
+          <i class="demo-icon cus-pinterest">&#xf231;</i> <span class="i-name">cus-pinterest</span><span class="i-code">0xf231</span>
+        </div>
+        <div class="span3" title="Code: 0xf232">
+          <i class="demo-icon cus-whatsapp">&#xf232;</i> <span class="i-name">cus-whatsapp</span><span class="i-code">0xf232</span>
+        </div>
+        <div class="span3" title="Code: 0xf278">
+          <i class="demo-icon cus-map-o">&#xf278;</i> <span class="i-name">cus-map-o</span><span class="i-code">0xf278</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xf279">
+          <i class="demo-icon cus-map">&#xf279;</i> <span class="i-name">cus-map</span><span class="i-code">0xf279</span>
+        </div>
+        <div class="span3" title="Code: 0x1f30e">
+          <i class="demo-icon cus-link">&#x1f30e;</i> <span class="i-name">cus-link</span><span class="i-code">0x1f30e</span>
+        </div>
+      </div>
+    <div class="container footer">Generated by <a href="https://fontello.com">fontello.com</a></div>
+  </body>
+</html>

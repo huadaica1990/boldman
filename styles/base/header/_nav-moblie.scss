@@ -1,0 +1,1137 @@
+/*--------------------------------
+    Nav pc
+        -Default
+--------------------------------*/
+// Set variables
+@include set-default( 
+    ( 
+        navMoible: ( 
+            _heightLogo: 40px, 
+            header: ( 
+                font-size: 1.1rem, 
+                msg: ( 
+                    _backgroundColor: $grey-background, 
+                ), 
+                btnMenu: ( 
+                    _width: 30px, 
+                ) 
+            ),
+            // footer
+            footer: ( 
+                _fontWeight: $font-weight-semibold, 
+                _marginRight: 1rem, 
+                background-color: $white-color, 
+                font-size: 1.4rem, 
+                icon: ( 
+                    _fontSize: 2.2rem, 
+                ) 
+            ), 
+            mobileContent: ( 
+                _navHeight: calc(100vh - 60px - 98px), 
+                _backgroundColor:$white-color, 
+                _linkPadding: 1.5rem, 
+                icon: ( 
+                    line-height: 0, 
+                    font-size: 1.7rem, 
+                    font-weight:$font-weight-bold, 
+                ), 
+                avatar: ( 
+                    _height:25px 
+                ), 
+                label: ( 
+                    padding:1.3rem 1.5rem 0 1.5rem, 
+                ) 
+            ), 
+            input: ( 
+                position:relative, 
+                min-height: 4rem, 
+                padding: .85px 12px, 
+                font-size: 1.2rem, 
+                line-height: 2 
+            ), 
+            search: (
+                // Efect
+                //width: calc(100% - 45px - 35px),
+                margin-left: 40px, 
+                margin-right: 30px, 
+                header: ( 
+                    _color:$white-color, 
+                    _inputWidth:calc(100% - 35px*3 - 1px - 10px*4), 
+                ) 
+            ), 
+            cartBtn: ( 
+                position: absolute, 
+                font-size: 1.1rem, 
+                line-height: 1.8rem, 
+                background: $primary-color, 
+                color: $white-color, 
+                text-align: center, 
+                width: 1.9rem, 
+                height: 1.9rem, 
+                z-index: 1, 
+                right: -7px, 
+                top: -5px, 
+                margin-top: 0, 
+            ) 
+        ) 
+    ) 
+);
+
+// Default
+#nav-mobile {
+    .nav-msg {
+        background-color: #{get(navMoible, header, msg, _backgroundColor)};
+
+        > *:not(:last-child) {
+            margin-right: 15px
+        }
+
+        .dropdown {
+            white-space: nowrap;
+            width: 60px;
+
+            > a {
+                padding: 10px 0;
+            }
+        }
+    }
+
+    .marquee-wrapper {
+        @include flex();
+        width: 100%;
+
+        a {
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: 1.5;
+            height: auto;
+            padding: 10.7px 0;
+            display: inline-block;
+        }
+
+        &.--left {
+            width: calc(100% - 75px);
+        }
+    }
+
+    .word-slider-wrapper {
+        overflow: hidden;
+        height: 42.38px;
+        vertical-align: middle;
+
+        a {
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: 1.5;
+            height: auto;
+            padding: 10.7px 0;
+            display: inline-block;
+        }
+
+        &.--left {
+            width: calc(100% - 75px);
+        }
+    }
+
+    .nav-header {
+        .--left {
+
+            > *:not(:last-child) {
+                margin-right: 15px;
+            }
+        }
+
+        .--center {
+            // @include animation($customize: true) {
+            //     -ms-transition: margin-left .3s, margin-right .3s;
+            //     -webkit-transition: margin-left .3s, margin-right .3s;
+            //     -moz-transition: margin-left .3s, margin-right .3s;
+            //     -o-transition: margin-left .3s, margin-right .3s;
+            //     transition: margin-left .3s, margin-right .3s;
+            // };
+            margin-top: 1rem;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            background-color: $white-color;
+
+            .search-icon {
+                @include visible($active: false, $zindex: 1);
+                position: absolute;
+                pointer-events: auto;
+                display: block;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                text-align: center;
+                font-size: 30px;
+                line-height: 37px;
+            }
+        }
+
+        .--right {
+            margin-left: auto;
+
+            a:not(.btn) {
+                @include flex($type: "center");
+                font-size: #{get(navMoible, footer, icon, _fontSize)};
+            }
+
+            > * {
+                margin-right: #{get(navMoible, footer, _marginRight)};
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .cart-info {
+                &::before {
+                    right: 5px;
+                }
+
+                a {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .user {
+            img {
+                @include border-radius($val: 50%);
+                height: 30px;
+                width: 30px;
+            }
+        }
+
+        &.fixed {
+            .search {
+                @include print_css(navMoible, search);
+                margin-top: -#{get(navMoible, _heightLogo)};
+
+                .mobile-search-toggle {
+                    width: calc(100% - 45px);
+                    margin-left: 45px;
+                }
+
+                .search-icon {
+                    @include visible($active: true, $zindex: 1);
+                }
+            }
+        }
+    }
+
+    .logo {
+        height: #{get(navMoible, _heightLogo)};
+
+        a {
+            display: block;
+            height: 100%
+        }
+
+        img {
+            height: auto;
+            max-height: 100%;
+            width: auto;
+        }
+    }
+
+    .cart-wrapper {
+        position: relative;
+
+        .cart-count-txt {
+            @include border-radius($val: 50%);
+            @include print_css(navMoible, cartBtn);
+        }
+    }
+}
+
+#nav-mobile-content {
+    @include animation($customize: true) {
+        -ms-transition: transform .3s, visibility .3s;
+        -webkit-transition: transform .3s, visibility .3s;
+        -moz-transition: transform .3s, visibility .3s;
+        -o-transition: transform .3s, visibility .3s;
+        transition: transform .3s, visibility .3s;
+    }
+
+    ;
+    @include transform($args: translateX(-100%));
+
+    > .flex-container {
+        @include flex-option($type: flex-direction, $value: column);
+        min-height: 100%;
+
+        > * {
+            width: 100%;
+        }
+    }
+    //opacity: 0;
+    height: 100vh;
+    z-index: 91;
+    pointer-events: none;
+    visibility: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #{get(navMoible, mobileContent, _backgroundColor)};
+
+    .--header {
+        padding: 1rem 0 1rem 10px;
+        pointer-events: none;
+        color: #{get(navMoible, search, header, _color)};
+
+        > * {
+            margin-right: 10px;
+            pointer-events: auto;
+        }
+
+        .mobile-search-toggle {
+            @include print_css(navMoible, input);
+            border: none;
+            width: calc(100% - 35px*3 - 1px - 10px*4);
+        }
+
+        a {
+            @include flex($type: "center", $get: "center");
+            border-bottom: none;
+            font-size: #{get(navMoible, footer, icon, _fontSize)};
+            width: 35px;
+            height: 35px;
+            color: #{get(navMoible, search, header, _color)};
+            font-weight: $font-weight-normal;
+        }
+
+        .ecs-icon-home {
+            font-size: 30px;
+            line-height: 37px;
+        }
+
+        .mobile-menu-btn {
+            span {
+                @include animation($type: all, $time: 0.22s, $effect: cubic-bezier(.215,.61,.355,1), $delay: .12s);
+                @include transform($args:rotate(225deg));
+
+                &:before {
+                    top: 0;
+
+                    @include animation($customize: true) {
+                        transition: top .1s ease-out,opacity .1s ease-out .12s;
+                        -webkit-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                        -moz-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                        -ms-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                        -o-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                    }
+
+                    opacity: 0;
+                }
+
+                &:after {
+                    bottom: 0;
+
+                    @include animation($customize: true) {
+                        transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                        -webkit-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                        -moz-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                        -ms-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                        -o-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                    }
+
+                    @include transform($args: rotate(-90deg));
+                }
+            }
+        }
+
+        .cart-wrapper .cart-count-txt {
+            top: 1px;
+        }
+    }
+
+    .--body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: #{get(navMoible, mobileContent, _navHeight)};
+    }
+
+    .--footer {
+        @include border($position: "top", $size:.5rem, $style: solid, $color: $grey-background);
+        margin-top: auto;
+
+        .footer-item {
+            > *:not(.label) {
+                padding: #{get(navMoible, mobileContent, _linkPadding)};
+            }
+        }
+    }
+
+    .vertical-menu {
+        @include border($position: "bot", $size:.5rem, $style: solid, $color: $grey-background);
+        font-size: 1.3rem;
+        line-height: 1.1;
+        width: 100%;
+        color: $dark-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        li {
+            > a {
+                @include border($position: "bot");
+            }
+
+            a {
+                @include flex($type: "center", $get: "left");
+                padding: #{get(navMoible, mobileContent, _linkPadding)};
+                font-weight: #{get(header, footer, _fontWeight)};
+                text-transform: capitalize;
+                width: 100%;
+
+                i {
+                    @include print_css(navSide, icon);
+                    display: block;
+                    margin-right: 0.7rem;
+                }
+            }
+
+            &.back-wrap {
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                pointer-events: none;
+
+                > * {
+                    pointer-events: auto;
+                }
+
+                a {
+                    border-bottom: none;
+                    font-weight: $font-weight-bold;
+                    color: $primary-color;
+
+                    i {
+                        display: none;
+
+                        &.ecs-icon-long-arrow-left {
+                            display: block;
+                            font-weight: $font-weight-bold;
+                        }
+                    }
+
+                    span {
+                        @include overtext($row: 1, $h: auto);
+                        line-height: 1.5
+                    }
+                }
+            }
+
+            &:last-child {
+                > a, > .has-submenu-title {
+                    border-bottom: none;
+                }
+            }
+        }
+
+        .has-submenu {
+            > .has-submenu-title {
+                @include border($position: "bot");
+                @include flex($type: "container", $get: "space-between");
+
+                > a {
+                    padding: #{get(navMoible, mobileContent, _linkPadding)};
+                    font-weight: #{get(header, footer, _fontWeight)};
+                    text-transform: capitalize;
+                    width: calc(100% - 45px);
+                }
+
+                > .submenu-btn, > .toggle-btn {
+                    @include print_css(navMoible, mobileContent, icon);
+                    position: relative;
+                    @include flex($type: "center");
+                    width: 45px;
+                    height: auto;
+                    // i {
+                    //     display: block;
+                    // }
+                    &::before {
+                        @include animation($type: transform, $time: 0.3s, $effect: ease);
+                    }
+
+                    &:after {
+                        @include e-cen($type: "top");
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        width: 1px;
+                        height: 80%;
+                        background-color: $border-color;
+                    }
+                }
+
+                > .toggle-btn {
+                    &:before {
+                        @include transform($args: rotate(90deg));
+                    }
+
+                    &.show:before {
+                        @include transform($args: rotate(270deg));
+                    }
+                }
+            }
+
+            > .nav, > .has-submenu-body {
+                @include animation($customize: true) {
+                    -ms-transition: transform .3s, visibility .3s;
+                    -webkit-transition: transform .3s, visibility .3s;
+                    -moz-transition: transform .3s, visibility .3s;
+                    -o-transition: transform .3s, visibility .3s;
+                    transition: transform .3s, visibility .3s;
+                }
+
+                ;
+                @include transform($args: translateX(100%));
+                pointer-events: none;
+                visibility: hidden;
+                position: fixed;
+                z-index: 91;
+                width: 100%;
+                bottom: 0px;
+                left: 0;
+                height: calc(100vh - 60px);
+                background-color: #{get(navMoible, mobileContent, _backgroundColor)};
+                overflow: hidden;
+
+                .nav {
+                    pointer-events: none;
+                    visibility: hidden;
+                    position: fixed;
+                    z-index: 91;
+                }
+            }
+
+            &.show {
+                > .has-submenu-title > .submenu-btn i {
+                    @include transform($args: translateX(.5rem));
+                }
+
+                > .nav, > .has-submenu-body {
+                    @include transform($args: translateX(0));
+                    pointer-events: auto;
+                    visibility: visible;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                }
+                // &.collapse-menu {
+                //     > .nav, > .has-submenu-body  {
+                //         @include transform($args: none);
+                //         visibility: initial;
+                //         //display: block;
+                //     }
+                // }
+            }
+
+            &.collapse-menu {
+                > .nav, > .has-submenu-body {
+                    @include animation($customize: true) {
+                        -ms-transition: none;
+                        -webkit-transition: none;
+                        -moz-transition: none;
+                        -o-transition: none;
+                        transition: none;
+                    }
+
+                    ;
+                    @include transform($args: none);
+                    padding-left: 15px;
+                    display: none;
+                    pointer-events: initial;
+                    visibility: initial;
+                    position: static;
+                    top: auto;
+                    left: auto;
+                    height: auto;
+
+                    .nav {
+                        display: none;
+                        pointer-events: initial;
+                        visibility: initial;
+                        position: static;
+                    }
+                }
+
+                li:last-child {
+                    > a, > .has-submenu-title {
+                        @include border($position: "bot");
+                    }
+                }
+            }
+        }
+    }
+
+    .label {
+        @include print_css(navMoible, mobileContent, label);
+        font-size: 1rem;
+        font-weight: $font-weight-semibold;
+        color: $lighter-color;
+    }
+
+    .login {
+        @include flex($type: "center", $get: "left");
+        padding: .95rem 1.5rem;
+
+        span {
+            @include overtext($row: 1, $h: auto);
+            max-width: 100%;
+            line-height: #{get(navMoible, mobileContent, avatar, _height)};
+        }
+    }
+
+    .avatar {
+        @include border-radius($val: 50%);
+        height: #{get(navMoible, mobileContent, avatar, _height)};
+        margin-right: 0.6rem;
+    }
+
+    .cart-wrapper {
+        position: relative;
+
+        .cart-count-txt {
+            @include border-radius($val: 50%);
+            @include print_css(navMoible, cartBtn);
+            background-color: $white-color;
+            color: $primary-color;
+            right: 0px;
+            top: 0;
+        }
+    }
+}
+
+#nav-mobile-search {
+    @include animation($customize: true) {
+        -ms-transition: transform .5s, visibility .5s;
+        -webkit-transition: transform .5s, visibility .5s;
+        -moz-transition: transform .5s, visibility .5s;
+        -o-transition: transform .5s, visibility .5s;
+        transition: transform .5s, visibility .5s;
+    }
+
+    ;
+    @include transform($args: translateX(100%));
+    //opacity: 0;
+    z-index: 99;
+    // pointer-events: none;
+    // visibility: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    background-color: $white-color;
+
+    .--header {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        position: relative;
+        pointer-events: none;
+        color: #{get(navMoible, search, header, _color)};
+
+        > * {
+            margin-right: 10px;
+            pointer-events: auto;
+        }
+
+        .mobile-menu-btn {
+            span, span::after, span::before {
+                background-color: $white-color;
+            }
+        }
+
+        a {
+            @include flex($type: "center");
+            font-size: #{get(navMoible, footer, icon, _fontSize)};
+            width: 35px;
+            height: 35px;
+            color: #{get(navMoible, search, header, _color)};
+        }
+    }
+
+    .--body {
+        background-color: $white-color;
+        max-height: calc(100vh - 60px);
+    }
+
+    .input-wrap {
+        position: relative;
+        width: #{get(navMoible, search, header, _inputWidth)};
+
+        .ecs-icon-search {
+            position: absolute;
+            font-size: 1.6rem;
+            line-height: 0;
+            left: 0px;
+            color: $dark-color;
+            height: 100%;
+            width: auto;
+            background: transparent;
+            border: none;
+            padding: 0 0 0 10px;
+            top: 0;
+        }
+    }
+
+    input[type="search"] {
+        @include border-radius($val: 0);
+        @include print_css(navMoible, input);
+        color: $dark-color;
+        padding-left: 35px;
+        border-color: transparent;
+        background-color: $white-color;
+
+        &:focus {
+            border-color: transparent;
+        }
+    }
+
+    .cart-wrapper {
+        position: relative;
+
+        .cart-count-txt {
+            @include border-radius($val: 50%);
+            @include print_css(navMoible, cartBtn);
+            background-color: $white-color;
+            color: $primary-color;
+            right: 0px;
+            top: 2px;
+        }
+    }
+}
+
+#nav-mobile-product {
+    display: none;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    pointer-events: none;
+
+    .btn-nav-product {
+        @include border-radius($val: 50%);
+        pointer-events: auto;
+        width: 35px;
+        height: 35px;
+        background-color: rgba(36, 36, 36, 0.5);
+        color: $white-color;
+        padding: 0;
+        text-align: center;
+        border: none;
+        font-size: 30px;
+        line-height: 0;
+        font-weight: $font-weight-light;
+
+        &:before {
+            line-height: 35px
+        }
+
+        &.ecs-icon-home {
+            font-size: 20px;
+
+            &:before {
+                line-height: 30px;
+            }
+        }
+    }
+
+    .cart-wrapper {
+        position: relative;
+    }
+
+    .btn-cart {
+        position: relative;
+        line-height: 0;
+
+        &::before {
+            font-size: 20px;
+            line-height: 35px;
+            font-weight: $font-weight-light;
+        }
+
+        span {
+            @include border-radius($val: 50%);
+            position: absolute;
+            top: -1px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            font-size: 11px;
+            line-height: 16px;
+            background-color: rgb(253, 130, 10);
+            text-align: center;
+        }
+    }
+
+    .cart-info::before {
+        right: 10px;
+    }
+
+    .btn-more {
+        font-size: 22px;
+    }
+
+    .dropdown > a::after {
+        display: none;
+    }
+
+    .dropdown-box {
+        @include border-radius($val: .5rem);
+        padding: 5px 15px;
+        background-color: transparentize($color: #222, $amount: 0.4);
+        top: calc(100% + 10px);
+        width: 200px;
+
+        a {
+            @include flex($type: "center", $get: "left");
+            color: $white-color;
+            padding: 10px 0;
+            line-height: 0;
+            font-size: 12px;
+        }
+
+        img {
+            @include filter($val: inherit);
+            height: 24px;
+            margin-right: 1rem
+        }
+
+        &::before {
+            border-bottom: 8px solid rgba(0,0,0,.5);
+        }
+    }
+
+    &.fixed {
+        background-color: transparentize($color: $white-color, $amount: 0.2);
+
+        .btn {
+            background-color: $primary-color;
+        }
+    }
+}
+
+@include keyframes($animation-name: "phone") {
+    0% {
+        @include transform($args: rotate(0) scale(1) skew(1deg));
+    }
+
+    10% {
+        @include transform($args: rotate(-25deg) scale(1) skew(1deg));
+    }
+
+    20% {
+        @include transform($args: rotate(25deg) scale(1) skew(1deg));
+    }
+
+    30% {
+        @include transform($args: rotate(-25deg) scale(1) skew(1deg));
+    }
+
+    40% {
+        @include transform($args: rotate(25deg) scale(1) skew(1deg));
+    }
+
+    50% {
+        @include transform($args: rotate(0) scale(1) skew(1deg));
+    }
+
+    100% {
+        @include transform($args: rotate(0) scale(1) skew(1deg));
+    }
+}
+
+#nav-mobile-footer {
+    position: fixed;
+    bottom: -1px;
+    width: 100%;
+    z-index: 89;
+
+    .--header {
+        @include flex($type: "center", $get: "space-between");
+        @include box-shadow($number:"3");
+        background-color: $white-color;
+        padding: 0 .5px;
+
+        .item {
+            max-width: calc(100%/5);
+            -webkit-box-flex: 1;
+            -webkit-flex-grow: 1;
+            -moz-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            text-align: center;
+            padding: .9rem 0 .8rem;
+            color: $grey-color;
+            position: relative;
+
+            i {
+                font-size: 2.3rem;
+                display: inline-block;
+            }
+
+            p {
+                @include overtext($row: 1, $h: auto);
+                margin-bottom: 0;
+                font-size: .8rem;
+                line-height: 1.5;
+                text-transform: uppercase;
+            }
+
+            &:before {
+                @include border-radius($val: 0 0 5px 5px);
+                position: absolute;
+                top: 0;
+                left: 2.5%;
+                content: '';
+                width: 95%;
+                background-color: transparent;
+                height: 2px;
+            }
+
+            &.active {
+                a {
+                    color: $primary-color;
+                }
+
+                p {
+                    font-weight: $font-weight-bold;
+                }
+
+                &:before {
+                    background-color: $primary-color;
+                }
+            }
+        }
+    }
+
+    .call {
+        i {
+            @include use-keyframes($args: "phone" 1s infinite ease-in-out);
+        }
+    }
+
+    .cart-wrapper {
+        position: relative;
+
+        .cart-count-txt {
+            @include border-radius($val: 50%);
+            @include print_css(navMoible, cartBtn);
+            position: absolute;
+            top: 5px;
+            right: 24%;
+        }
+    }
+}
+// Button
+.mobile-menu-btn {
+    @include flex-option($type: flex-direction, $value: "column");
+    @include flex($type: "center", $get: "bot");
+    width: #{get(navMoible, header, btnMenu, _width)};
+    height: #{get(navMoible, header, btnMenu, _width)};
+
+    span {
+        @include border-radius($val:4px);
+        @include animation($type: all, $time: 0.22s, $effect: cubic-bezier(.55,.055,.675,.19), $delay: 0s);
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: $dark-color;
+
+        &:before, &:after {
+            @include border-radius($val:4px);
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            background-color: $dark-color;
+        }
+
+        &:before {
+            @include animation($customize: true) {
+                transition: top .1s ease-in .25s,opacity .1s ease-in;
+                -webkit-transition: top .1s ease-in .25s,opacity .1s ease-in;
+                -moz-transition: top .1s ease-in .25s,opacity .1s ease-in;
+                -ms-transition: top .1s ease-in .25s,opacity .1s ease-in;
+                -o-transition: top .1s ease-in .25s,opacity .1s ease-in;
+            }
+
+            top: -10px;
+        }
+
+        &:after {
+            @include animation($customize: true) {
+                transition: bottom .1s ease-in .25s,transform .22s cubic-bezier(.55,.055,.675,.19);
+                -webkit-transition: bottom .1s ease-in .25s,transform .22s cubic-bezier(.55,.055,.675,.19);
+                -moz-transition: bottom .1s ease-in .25s,transform .22s cubic-bezier(.55,.055,.675,.19);
+                -ms-transition: bottom .1s ease-in .25s,transform .22s cubic-bezier(.55,.055,.675,.19);
+                -o-transition: bottom .1s ease-in .25s,transform .22s cubic-bezier(.55,.055,.675,.19);
+            }
+
+            bottom: -10px;
+        }
+    }
+
+    &.text-white {
+        span {
+            background-color: $white-color;
+
+            &:before, &:after {
+                background-color: $white-color;
+            }
+        }
+    }
+
+    &.show {
+        span {
+            @include animation($type: all, $time: 0.22s, $effect: cubic-bezier(.215,.61,.355,1), $delay: .12s);
+            @include transform($args:rotate(225deg));
+
+            &:before {
+                top: 0;
+
+                @include animation($customize: true) {
+                    transition: top .1s ease-out,opacity .1s ease-out .12s;
+                    -webkit-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                    -moz-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                    -ms-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                    -o-transition: top .1s ease-out,opacity .1s ease-out .12s;
+                }
+
+                opacity: 0;
+            }
+
+            &:after {
+                bottom: 0;
+
+                @include animation($customize: true) {
+                    transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                    -webkit-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                    -moz-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                    -ms-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                    -o-transition: bottom .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                }
+
+                @include transform($args: rotate(-90deg));
+            }
+        }
+    }
+}
+
+.mobile-search-toggle {
+    @include print_css(navMoible, input);
+
+    .mobile-search-placeholder {
+        @include e-cen($type: "top");
+        position: absolute;
+        content: attr(data-placeholder);
+        left: 35px;
+        color: $grey-color;
+    }
+
+    .typewrite {
+        @include e-cen($type: "top");
+        position: absolute;
+        content: attr(data-placeholder);
+        left: 35px;
+        color: $grey-color;
+
+        .wrap {
+            display: block;
+        }
+    }
+
+    &:after {
+        @include e-cen($type: "top");
+        position: absolute;
+        content: attr(data-placeholder);
+        line-height: 0;
+        left: 35px;
+    }
+
+    i {
+        @include e-cen($type: "top");
+        position: absolute;
+        font-size: 1.6rem;
+        line-height: 0;
+    }
+}
+// Effect
+.sticky-header-mobile.sticky-content.fixed.fix-top {
+    @include use-keyframes($args: inherit);
+}
+
+body.mmenu-active {
+    #nav-mobile-content {
+        @include transform($args: translateX(0%));
+        // opacity: 1;
+        // z-index: 99;
+        pointer-events: auto;
+        visibility: visible;
+    }
+}
+
+body.msearch-active {
+    #nav-mobile-search {
+        @include transform($args: translateX(0%));
+        // opacity: 1;
+        // z-index: 99;
+        pointer-events: auto;
+        visibility: visible;
+    }
+}
+
+.hide-menu-mobile {
+    #nav-mobile, #nav-mobile-footer {
+        display: none !important;
+    }
+
+    #nav-mobile-product {
+        display: block;
+    }
+}
+
+/*#region Style fix all browser*/
+/*#region Safari*/
+@include only-for-retina {
+    // #nav-mobile-content,
+    // #nav-mobile-content .mobile-menu .has-submenu:not(.collapse-menu) .submenu {
+    //     padding-bottom: #{$nav-mobile_height-ios-bottom};
+    // }
+    // #nav-mobile-content .--body {
+    //     height:calc(#{get(navMoible, mobileContent, _nav-height)} - #{$nav-mobile_height-ios-bottom});
+    // }
+    // #nav-mobile .cart .cart-count-txt,
+    // #nav-mobile-search .cart .cart-count-txt,
+    // #nav-mobile-content .cart .cart-count-txt {
+    //     line-height:17px;
+    // }
+    // #nav-mobile-footer .cart .cart-count-txt {
+    //     line-height: 20px;
+    // }
+    // #nav-mobile-content .vertical-menu {
+    //     li>a>span,
+    //     .has-submenu>.has-submenu-title>a>span {
+    //         transform: translateY(2px);
+    //     }
+    //     li.back-wrap a span {
+    //         transform: translateY(1px);
+    //     }
+    // }
+    // .mobile-search-toggle {
+    //     .typewrite,
+    //     &:after {
+    //         top:53%;
+    //     }
+    // }
+}
+/*#endregion*/
+/*#endregion*/

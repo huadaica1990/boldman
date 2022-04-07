@@ -1,0 +1,528 @@
+/*------------------------
+    Form
+        - Form Control
+        - Input Wrapper
+-------------------------*/
+
+@include set-default(
+    (
+        form: (
+            inputGroup: (
+                height: 4.4rem,
+                color: $body-color,
+                border-color: $lighter-color
+            )
+        )
+    )
+);
+
+.form .form-control {
+    margin-bottom: 2rem;
+}
+input:-internal-autofill-selected {
+    background-color: $white-color !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+input[type=password]::-webkit-credentials-auto-fill-button {
+    display: none !important;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    min-height: 4.7rem;
+    padding: .85rem 2rem;
+    border: 1px solid $border-color;
+    font-size: 1.4rem;
+    font-family: $font-family-primary;
+    line-height: 1.5;
+    font-weight: $font-weight-normal;
+    color: $grey-color;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+
+    &[required="required"] {
+        color: $dark-color;
+
+        &::placeholder {
+            color: $light-color;
+        }
+    }
+
+    &::placeholder {
+        color: inherit;
+        font-family: inherit;
+    }
+
+    &::-webkit-input-placeholder {
+        color: inherit;
+    }
+
+    &::-moz-placeholder {
+        color: inherit;
+    }
+
+    &.form-solid {
+        background-color: $white-color;
+        border: 0;
+        color: #8d8d8d;
+    }
+
+    &.form-control-md {
+        font-size: 1.3rem;
+        min-height: 4.4rem;
+    }
+
+    &.form-control-sm {
+        font-size: 1.2rem;
+        min-height: 4rem;
+    }
+
+    &:focus {
+        //@include shadow($val: 0 0 0 0.25rem rgba(13,110,253, .25));
+        border-color: $primary-color;
+        outline: 0;
+    }
+}
+
+textarea {
+    font-family: inherit;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.input-date {
+    position: relative;
+
+    input[type=date] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .input-date-icon {
+        @include e-cen($type: "top");
+        position: absolute;
+        right: 27px;
+        pointer-events: none;
+    }
+}
+// Select Box, Select Menu
+.select-box,
+.select-menu {
+    position: relative;
+
+    select {
+        position: relative;
+        max-width: 14.6rem;
+        min-height: auto;
+        width: 100%;
+        height: 100%;
+        padding-left: 9px;
+        padding-right: 27px;
+        border: 1px solid #e3e3e3;
+        color: inherit;
+        background-color: transparent;
+        font-size: 1.2rem;
+        font-family: inherit;
+        letter-spacing: inherit;
+        z-index: 1;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &::before {
+        @include transform($args: translateY(-50%));
+        content: '\e910';
+        font-family: "ecs";
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 1;
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+    }
+}
+
+.select-box option {
+    font-size: 1.2rem;
+}
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    select::-ms-expand { display: none }
+    select:focus::-ms-value { background: transparent; color: currentColor }
+}
+// Input Wrapper
+.input-wrapper {
+    input {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        min-width: 40px;
+        font-size: 1.4rem;
+        font-family: $font-family-primary;
+        border-width: 1px 0 1px 1px;
+    }
+}
+.input-wrapper-inline {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    max-width: 67.5rem;
+    width: 100%;
+    .btn {
+        line-height: 1;
+    }
+}
+.input-wrapper-rounded {
+    .form-control {
+        @include border-radius($val: .4rem);
+    }
+}
+.input-wrapper-round {
+    .form-control {
+        @include border-radius($val: 3rem);
+        position: relative;
+    }
+    .btn {
+        @include border-radius($val: 3rem);
+        line-height: 1;
+    }
+    .form-control {
+        @include border-radius($val: 3rem 0 0 3rem);
+    }
+    .btn {
+        @include border-radius($val: 0 3rem 3rem 0);
+    }
+}
+
+// Input Group
+.input-group {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    @include css(height, form, inputGroup, height);
+    position: relative;
+    //width: 18rem;
+    width: 100%;
+    .form-control {
+        flex: 1;
+        font-size: 1.3rem;
+        padding: 0 1.4rem 0 1.8rem;
+        height: inherit;
+        min-height: auto;
+        max-width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        // -webkit-appearance: textfield;
+        @if ( get(form, inputGroup, border-color) ) {
+            border: solid get(form, inputGroup, border-color);
+            border-width: 1px;
+        }
+        @include css(color, form, inputGroup, color);
+        &:hover, &:focus {
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+        }
+        &:focus {
+            //@include shadow($val: 0 0 0 0.25rem rgba(13,110,253, .25));
+            border-color: $primary-color;
+            outline: 0;
+        }
+    }
+    button {
+        @include transform($args: translateY(-50%));
+        @include border-radius($val: 50%);
+        position: absolute;
+        top: 50%;
+        right: 1.5rem;
+        padding: 0;
+        width: 2.4rem;
+        height: 2.4rem;
+        background-color: $border-color;
+        color: $grey-color;
+        font-size: 1.4rem;
+        border: none;
+        + button {
+            margin-right: 3.3rem;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+// Custom Radio
+.custom-radio {
+    position: relative;
+    .custom-control-input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+    .custom-control-label {
+        padding-left: 3rem;
+        cursor: pointer;
+        &::after {
+            @include transform($args: translateY(-50%));
+            @include animation($customize: true) {
+                -ms-transition: color .3s, background-color .3s, content .3s, border .3s;
+                -webkit-transition: color .3s, background-color .3s, content .3s, border .3s;
+                -moz-transition: color .3s, background-color .3s, content .3s, border .3s;
+                -o-transition: color .3s, background-color .3s, content .3s, border .3s;
+                transition: color .3s, background-color .3s, content .3s, border .3s;
+            };
+            @include border-radius($val: 2px);
+            content: '';
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            left: 0;
+            top: 50%;
+            border: 1px solid;
+            color: $light-color;
+            font-family: "customize";
+            font-size: 1rem;
+            font-weight: 900;
+            width: 1.8rem;
+            height: 1.8rem;
+            cursor: pointer;
+        }
+        &.round {
+            &::after {
+                @include border-radius($val: 50%);
+            }
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-label {
+        &::after {
+            content: '\e809';
+            background-color: $primary-color;
+            color: $white-color;
+            border: 2px solid $primary-color;
+            padding-left: 3px;
+        }
+        &.color-dark {
+            &::after {
+                background-color: $dark-color;
+                border-color: $dark-color;
+            }
+        }
+    }
+    &:hover {
+        color:$primary-color;
+        .custom-control-label::after {
+            border-color: $primary-color;
+        }
+    }
+}
+
+// Custom Checkbox
+.custom-checkbox {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+
+    & + label {
+        display: inline-block;
+        position: relative;
+        padding-left: 2.5rem;
+        cursor: pointer;
+
+        &::before {
+            @include border($position: "all", $size:1px, $style: solid, $color: $lighter-color);
+            @include transform($args: translateY(-50%));
+            @include border-radius($val: 2px);
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            line-height: 15px;
+
+            @include only-for-ie() {
+                line-height: 14px;
+            }
+        }
+    }
+    &:checked + label::before,
+    &.checked + label::before {
+        content: '\e809';
+        border-color: #222;
+        background: #222;
+        color: $white-color;
+        font-size: 9px;
+        font-weight: $font-weight-semibold;
+        font-family: "customize";
+        text-align: center;
+    }
+}
+
+.custom-input {
+    position: relative;
+    padding: 1rem 2rem;
+
+    [hidden] {
+        display: none;
+        visibility: hidden;
+    }
+
+    label {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 2;
+
+        span {
+            background: $white-color;
+            padding: 0 12px;
+        }
+    }
+
+    &:after {
+        @include border-radius($val:.5rem);
+        @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 14px - 1rem);
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .file-input__input {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+
+    .input__left {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .input__choose {
+        @include border-radius($val:.5rem);
+        font-weight: $font-weight-semibold;
+        margin-right: 1rem;
+        color: $white-color;
+        background: $primary-color;
+        white-space: nowrap;
+        border: none;
+    }
+
+    .chip__container {
+        padding-right: 1.5rem;
+    }
+
+    .chip {
+        @include border-radius($val:17.5px);
+        font-size: 1.3rem;
+        padding: .69em 1.4em;
+        background-color: #fafafa;
+        border: rgba(0, 0, 0, 0.12) solid 1px;
+        white-space: nowrap;
+        display: inline-flex;
+        line-height: 1;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .input__remove {
+        @include border-radius($val:50%);
+        background-color: rgba(0, 0, 0, 0.56);
+        color: $white-color;
+        width: 25px;
+        height: 25px;
+        border: none;
+        margin-top: 4px;
+        text-align:center;
+        cursor:pointer;
+    }
+}
+
+    .btn-absolute {
+        input.form-control {
+            width: 100%;
+            padding-left: 2rem;
+            color: $light-color;
+            font-size: 1.4rem
+        }
+
+        .btn {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            min-width: 4.4rem;
+            right: 0;
+            font-size: 1.3rem;
+
+            &:hover {
+                color: $primary-color
+            }
+        }
+    }
+
+    label.required {
+        &:after {
+            content: "*";
+            color: #cc0001;
+        }
+    }
+
+    .form-control.error {
+        border-color: #cc0001 !important;
+        border-width: 1px;
+        &:focus {
+            border-color: #cc0001
+        }
+    }

@@ -1,0 +1,262 @@
+//- Var
+- let linkRate = '@Url.Action("AddRating")';
+-
+    let rateData = [
+        {
+            id:1,
+            name: 'Định Nguyễn',
+            date: '25/03/2020',
+            job: null,
+            rate:1,
+            body: 'Máy mua được 3th dùng cũng ok, nhưng có lúc cũng lag, pin thù dùng tạm, sạc qua đêm tầm 6.7h máy thấy hơi ấm, củ sạc cũng như vậy...vậy có giảm chất lượng máy không?',
+            listimg: [
+                {
+                    id:101,
+                    src: '/img/gallery1.jpg'
+                },
+                {
+                    id:102,
+                    src: '/img/gallery2.jpg'
+                },
+            ],
+            children: [
+                {
+                    id:111,
+                    name: 'Richard',
+                    date: '25/03/2020',
+                    job: 'Quản trị viên',
+                    rate: null,
+                    body: 'Máy bắt wifi, 4G quá kém, thường xuyên bị rớt mạng. Camera 64mb nhưng chụp hình nhòe, chất lượng k rõ nét khi zoom out, chỉ chụp gần, chụp xa thì k thấy gì luôn. Nói chung mất mớ tiền lãng phí. Giảm nửa giá bán tầm 4tr thì hợp lí',
+                    listimg: null,
+                    children: null
+                },
+                {
+                    id:112,
+                    name: 'Trần Duy Quang',
+                    date: '25/03/2020',
+                    job: null,
+                    rate: null,
+                    body: 'Tui mua bên tgdd và đag sài ss a51 theo cảm nhận của tui màng hình ,camerra tốt phù hợp cho học sinh ,sv.những ng sử dụng ứng dụng nhẹ ,nhược điểm thì mau tụt pin,nhìu chức năng còn hạn chế,chiến game còn yếu thỉnh thoảng đơ ,sóng ănten ko đc mạnh,giá thì hơi cao so vs chất lượng đáng 6tr đổ xuống',
+                    listimg: null,
+                    children: null
+                },
+            ]
+        },
+        {
+            id:2,
+            name: 'Lâm Văn Tình',
+            date: '25/03/2020',
+            job: null,
+            rate:5,
+            body: 'Đã mua hôm qua 24/04/2020. Trải nghiệm ko vừa ý. Pin tụt quá nhanh. Màn hình khi chơi game giật trong khi máy cũ J7 prime lại mượt. Mình muốn đổi máy khác hoặc là đổi sang A71 dc ko vậy. Mong dc rep sớm.',
+            listimg: [
+                {
+                    id:201,
+                    src: '/img/gallery1.jpg'
+                },
+                {
+                    id:202,
+                    src: '/img/gallery2.jpg'
+                },
+            ],
+            children: []
+        },
+        {
+            id:3,
+            name: 'Trần Duy Quang',
+            date: '25/03/2020',
+            job: null,
+            rate:4,
+            body: 'Tui mua bên tgdd và đag sài ss a51 theo cảm nhận của tui màng hình ,camerra tốt phù hợp cho học sinh ,sv.những ng sử dụng ứng dụng nhẹ ,nhược điểm thì mau tụt pin,nhìu chức năng còn hạn chế,chiến game còn yếu thỉnh thoảng đơ ,sóng ănten ko đc mạnh,giá thì hơi cao so vs chất lượng đáng 6tr đổ xuống',
+            listimg:null,
+            children: []
+        },
+    ];
+
+
+#rate
+    .rates-header
+        h2.title.title-md.font-weight-bold.mt-5.mb-5 #{rateData.length} đánh giá Samsung Galaxy A51 (6GB/128GB)
+        .rates-header-border.border.br-sm
+            .flex-center
+                .avg-rating-container.flex-center
+                    .rate-mark.font-weight-bold.mb-0 3.1
+                    .rate-rating
+                        .ratings-container
+                            .ratings-full.mr-0
+                                .ratings(style='width: 70%;')
+                        p 1345 Nhận xét                 
+                .ratings-list
+                    .flex-center
+                        .ratings-container
+                            .ratings-full
+                                .ratings(style='width: 100%;')
+                        .line
+                            .line-bg(style='width: 28%')
+                        span.text 119
+                    .flex-center
+                        .ratings-container
+                            .ratings-full
+                                .ratings(style='width: 80%;')
+                        .line
+                            .line-bg(style='width: 14%')
+                        span.text 61
+                    .flex-center
+                        .ratings-container
+                            .ratings-full
+                                .ratings(style='width: 60%;')
+                        .line
+                            .line-bg(style='width: 16%')
+                        span.text 69
+                    .flex-center
+                        .ratings-container
+                            .ratings-full
+                                .ratings(style='width: 40%;')
+                        .line
+                            .line-bg(style='width: 13%')
+                        span.text 56
+                    .flex-center
+                        .ratings-container
+                            .ratings-full
+                                .ratings(style='width: 20%;')
+                        .line
+                            .line-bg(style='width: 28%')
+                        span.text 118
+                a.btn.btn-primary.br-sm(href='javascript:' onclick="$('#addratingform').slideToggle()") Gửi đánh giá của bạn
+            form#addratingform.pt-4.comment-form(action=linkRate onsubmit='return false; addRating()')
+                .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
+                    .alert-test
+                        .alert-title.ecs-icon-times-circle
+                        =' '
+                        .
+                            Vui lòng điền họ và tên
+                    .alert-test
+                        .alert-title.ecs-icon-times-circle
+                        =' '
+                        .
+                            Vui lòng điền số điện thoại
+                .rating-form
+                    label Chọn đánh giá của bạn
+                    span.rating-stars
+                        a.star-1
+                        a.star-2
+                        a.star-3
+                        a.star-4
+                        a.star-5
+                    //- select(name='rating' id='rating')
+                    //-     option(value='') Rate…
+                    //-     option(value='') Perfect
+                    //-     option(value='') Good
+                    //-     option(value='') Average
+                    //-     option(value='') Not that bad
+                    //-     option(value='') Very poor
+                .row
+                    .col-sm-6
+                        textarea.form-control(name='Body' placeholder='Nhập đánh giá của bạn về sản phẩm (tối thiểu 80 ký tự)')
+                        .btn-upfile
+                            input.form-control(type='file' onchange="UpdateImage(this,'ListImage','comment','#addratingform')")
+                            i.demo-icon.cus-camera.mr-2
+                            | Đính kèm ảnh
+                    .col-sm-6.input-wrapper
+                        .custom-radio
+                            input#sex1-rate.custom-control-input(type='radio' name='Gender' value='' checked)
+                            label.custom-control-label.round(for='sex1-rate') Anh
+                        .custom-radio
+                            input#sex1-rate.custom-control-input(type='radio' name='Gender' value='')
+                            label.custom-control-label.round(for='sex2-rate') Chị
+                        input.form-control.br-sm(type='text' name='Name' placeholder='Họ và tên*')
+                        input.form-control.br-sm(type='email' name='Email' placeholder='Email*')
+                        input.form-control.br-sm(type='tel' name='Phone' placeholder='Số điện thoại')
+                        button.btn.btn-primary.br-sm.d-block(type='submit' onclick='addRating()') Gửi đánh giá
+                .list-image.flex-container
+                    .img-item.br-sm
+                        a.img-cmt-js(href='javascript:')
+                            i.demo-icon.cus-cancel
+                        img(src='/img/gallery1.jpg' alt='' loading='lazy')
+                    .img-item.br-sm
+                        a.img-cmt-js(href='javascript:')
+                            i.demo-icon.cus-cancel
+                        img(src='/img/gallery2.jpg' alt='' loading='lazy')
+                input(type='hidden' name='Gender' value='')
+                input(type='hidden' name='ListImage' value='')
+                input(type='hidden' name='ProductId' value='')
+                input(type='hidden' name='Note' value='')
+    .rates-body.col-loadmore
+        each rateItem in rateData
+            .comment
+                h3.item--comment__header.h.font-weight-semibold.mb-0=rateItem.name
+                .des
+                    .star
+                        .ratings-container
+                            case rateItem.rate
+                                when 1
+                                    .ratings-full
+                                        .ratings(style='width: 20%;')
+                                when 2
+                                    .ratings-full
+                                        .ratings(style='width: 40%;')
+                                when 3
+                                    .ratings-full
+                                        .ratings(style='width: 60%;')
+                                when 4
+                                    .ratings-full
+                                        .ratings(style='width: 80%;')
+                                when 5
+                                    .ratings-full
+                                        .ratings(style='width: 100%;')
+                                default
+                                    .ratings-full
+                                        .ratings(style='width: 0%;')
+                    | #{rateItem.body}
+                    if rateItem.listimg != null
+                        .img-list.flex-container.review-image-wrap
+                            each img in rateItem.listimg
+                                a.review-image.br-sm
+                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
+                    .comment-action
+                        - var rateItemId = '#formreplycontainer'+ rateItem.id;
+                        a.btn-rep(href='javascript:' onclick="showreply('"+ rateItemId +"')") #{rateItem.children.length} trả lời
+                        span.date=rateItem.date
+                    .reply-wrap(id=`formreplycontainer${rateItem.id}`)
+                        form.comment-form.formreply(action=linkRate id=`formreply${rateItem.id}` onsubmit='return false; addReplyComment(1,1)')
+                            .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
+                                .alert-test
+                                    .alert-title.ecs-icon-times-circle
+                                    =' '
+                                    .
+                                        Vui lòng điền họ và tên
+                                .alert-test
+                                    .alert-title.ecs-icon-times-circle
+                                    =' '
+                                    .
+                                        Vui lòng điền số điện thoại
+                            .row
+                                .col-sm-6
+                                    textarea.form-control.br-sm.h-100(name='Body' placeholder='Nhập đánh giá của bạn về sản phẩm (tối thiểu 80 ký tự)')
+                                .col-sm-6.input-wrapper
+                                    .custom-radio
+                                        input#sex1-rate1.custom-control-input(type='radio' name='Gender' value='' checked)
+                                        label.custom-control-label.round(for='sex1-rate1') Anh
+                                    .custom-radio
+                                        input#sex2-rate1.custom-control-input(type='radio' name='Gender' value='')
+                                        label.custom-control-label.round(for='sex2-rate1') Chị
+                                    input.form-control.br-sm(type='text' name='Name' placeholder='Họ và tên*')
+                                    input.form-control.br-sm(type='email' name='Email' placeholder='Email*')
+                                    input.form-control.br-sm(type='tel' name='Phone' placeholder='Số điện thoại')
+                                    button.btn.btn-primary.br-sm(type='submit' onclick='addRating()') Gửi
+                            input(type='hidden' name='Gender' value='')
+                            input(type='hidden' name='ListImage' value='')
+                            input(type='hidden' name='ProductId' value='')
+                            input(type='hidden' name='Note' value='')
+                        if rateItem.children.length > 0
+                            each rateItem_child in rateItem.children
+                                .comment.child
+                                    h3.item--comment__header.h.font-weight-semibold.mb-0=rateItem_child.name
+                                        if(rateItem_child.job != null)
+                                            span.h6.label=rateItem_child.job
+                                    .des=rateItem_child.body
+                                    .comment-action
+                                        .date=rateItem_child.date
+    .rate-footers.mt-5
+        a#loadmorerating.btn.btn-primary.btn-outline.btn-sm.br-sm(href='javascript:' onclick='loadmorerating(this,1,1)') Xem thêm đánh giá
+            i.demo-icon.cus-right-open-mini.ml-1

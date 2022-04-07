@@ -1,0 +1,118 @@
+/**
+ * @Description: source css by TheBoldMan.
+ * @Version: v2.00
+ * @Author: tronghuy2208@gmail.com
+ *
+ * @Summary:
+ *
+ *
+ */
+ 
+ /*--------------------------------
+    Image effect
+        -Scale
+--------------------------------*/
+
+// Set variables
+@include set-default(
+  (
+    nameEle: (
+
+      1920: (),
+      1440: (),
+      1366: (),
+      1280: (),
+      1024: (),
+      768: (),
+      450: (),
+      360: (),
+    ),
+  )
+);
+/*----------------------------
+    Overlay
+-----------------------------*/
+// Overlay Dark
+.overlay-dark,
+.overlay-light {
+    figure, .banner {
+        position: relative;
+    }
+
+    figure::after,
+    figure > a::after,
+    &.banner::after {
+        @include animation($customize: true) {
+          -ms-transition: opacity .3s, background .3s, transform .3s;
+          -webkit-transition: opacity .3s, background .3s, transform .3s;
+          -moz-transition: opacity .3s, background .3s, transform .3s;
+          -o-transition: opacity .3s, background .3s, transform .3s;
+          transition: opacity .3s, background .3s, transform .3s;
+        };
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: $dark-color;
+        opacity: 0;
+    }
+
+    &:hover figure::after,
+    &:hover figure > a::after,
+    &.banner:hover::after {
+        opacity: .1;
+    }
+
+    &.banner-fixed::after,
+    &.post > figure::after {
+        content: none;
+    }
+    &.post > figure > a::after {
+        z-index: 1;
+    }
+}
+
+.overlay-light figure::after,
+.banner.overlay-light::after {
+    background: $border-color-light;
+}
+
+// Overlay Zoom
+.overlay-zoom figure {
+    overflow: hidden;
+}
+.overlay-zoom {
+    .img:not(.img-fixed-height) {
+        @include animation($customize: true) {
+          -ms-transition:transform .35s;
+          -webkit-transition:transform .35s;
+          -moz-transition:transform .35s;
+          -o-transition:transform .35s;
+          transition:transform .35s;
+        }
+        display: block;
+        &:hover {
+            @include transform($args: scale(1.08));
+        }
+    }
+
+}
+
+// Overlay Rotate
+.overlay-rotate {
+    overflow: hidden;
+    img {
+        @include animation($customize: true) {
+          -ms-transition:transform .35s;
+          -webkit-transition:transform .35s;
+          -moz-transition:transform .35s;
+          -o-transition:transform .35s;
+          transition:transform .35s;
+        }
+    }
+    &:hover {
+        @include transform($args: rotateZ(3deg) scale(1.08));
+    }
+}
