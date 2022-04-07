@@ -1,0 +1,312 @@
+/*---------------------
+    Alert
+        - Default
+        - Alert Success
+        - Alert Primary
+        - Alert Warning
+        - Alert Error
+        - Alert Dark 
+        - Alert Inline
+        - Alert Icon
+        - Alert Button
+        - Alert Block
+        - Alert Cart Product 
+----------------------*/
+
+// Default
+.alert {
+    @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
+    @include border-radius($val: .4rem);
+    position: relative;
+    padding: 1.4rem 3.5rem 1.4rem 2rem;
+    font-size: 1.4rem;
+    font-family: $font-family-primary;
+    line-height: 1.75;
+    .close-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        vertical-align: middle;
+        &::before {
+            height: 1px;
+        }
+        &::after {
+            width: 1px;
+        }
+    }
+    ul {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+        padding-left: 3.9rem;
+        list-style-type: none;
+        li {
+            position: relative;
+            line-height: 1.9;
+            &::before {
+                @include transform($args:translateY( -50% ));
+                position: absolute;
+                content: '\e969';
+                font-family: "ecs";
+                font-weight: 600;
+                font-size: 1.3rem;
+                left: -1.9rem;
+                top: 50%;
+                margin-top: .1rem;
+            }
+        }
+        a {
+            color: inherit;
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+    .btn-primary {
+        color: $white-color;
+        border-color: #336699;
+        background-color: #336699;
+        &:hover, &:active, &:focus {
+            color: $white-color;
+            border-color: #3c78b4;
+            background-color: #3c78b4;
+        }
+    }
+}
+.alert-title {
+    font-size: 1.4rem;
+    color: inherit;
+    line-height: inherit;
+    margin-bottom: 0;
+    font-weight: $font-weight-semibold;
+}
+
+// Close Button
+.btn-close {
+    .close-icon {
+        &::before,
+        &::after {
+            @include animation($customize: true) {
+                -ms-transition: background-color .3s;
+                -webkit-transition: background-color .3s;
+                -moz-transition: background-color .3s;
+                -o-transition: background-color .3s;
+                transition: background-color .3s;
+            };
+        }
+    }
+    &:hover {
+        .close-icon::before,
+        .close-icon::after {
+            background-color: #000;
+        }
+    }
+}
+
+// Alert Success
+.alert-success {
+    border-color: $success-color-light;
+    color: $success-color;
+    &.alert-bg {
+        background-color: $success-color-light;
+    }
+}
+
+// Alert Primary
+.alert-primary {
+    border-color: #d7e8f8;
+    color: #336699;
+    &.alert-bg {
+        background-color: #d7e8f8;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: #336699;
+        }
+    }
+}
+
+// Alert Warning
+.alert-warning {
+    border-color: #f7e5e5;
+    color: $warning-color;
+    &.alert-bg {
+        background-color: #fff1d7;
+        border-color: #fff1d7;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: #6d1a17;
+        }
+    }
+}
+
+// Alert Error
+.alert-error {
+    border-color: #f7e5e5;
+    color: $alert-color;
+    &.alert-bg {
+        background-color: #f7e5e5;
+        color: #a94442;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: $alert-color;
+        }
+    }
+}
+
+// Alert Dark 
+.alert-dark {
+    border-color: $dark-color;
+    color: $white-color;
+    &.alert-bg {
+        background-color: $dark-color;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: $white-color;
+        }
+        &:hover {
+            &::before,
+            &::after {
+                background-color: $white-color;
+            }
+
+        }
+    }
+}
+
+// Alert Inline
+.alert-inline {
+    .alert-title {
+        display: inline-block;
+    }
+    &.alert-block {
+        padding-top: 1.5rem;
+        padding-bottom: 1.2rem;
+        .alert-title {
+            margin-right: 1rem;
+            i {
+                font-size: 1.6rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+// Alert Icon
+.alert-icon {
+    padding: 1.4rem 2.2rem 1.4rem 1.9rem;
+    i {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 .8rem 0 .1rem;
+        font-size: 1.8rem;
+        line-height: 1;
+        &.w-icon-cog { margin: 0 .8rem 0rem 0.1rem; }
+        &.fas,
+        &.far {
+            margin-bottom: .3rem;
+            margin-left: .1rem;
+        }
+        &.w-icon-exclamation-triangle { font-size: 1.8rem; }
+    }
+}
+
+// Alert Button
+.alert-button {
+    padding: 1.2rem 1.9rem 1.9rem;
+    .btn:not(:last-child) {
+        margin-right: .6rem;
+    }
+    &:not(.alert-block) {
+        //padding: 1rem 2.2rem 1rem 1rem;
+        .btn {
+            margin-right: 1.5rem;
+            
+        }
+    }
+    p {
+        max-width: 49rem;
+        margin-bottom: 2.2rem;
+        font-size: 1.3rem;
+    }
+    .alert-title {
+        margin-bottom: 0.6rem;
+    }
+    &.alert-block .btn-rounded {
+        padding-left: 1.9em;
+        padding-right: 1.9em;
+    }
+    .btn-error {
+        background-color: $white-color;
+        border-color: $white-color;
+        color: $alert-color;
+    }
+}
+
+@include mq("sm", "max") {
+    .alert-button {
+        > .btn:first-child {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: .6rem;
+        }
+        &:not(.alert-block) {
+            //padding: 1rem 2.2rem 1rem 1rem;
+            > .btn:first-child {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}
+
+// Alert Block
+.alert-block {
+    display: block;
+    .btn-close {
+        position: absolute;
+        top: 1.9rem;
+        right: 1.9rem;
+    }
+    &.alert-bg {
+        .alert-title i {
+            margin-right: .8rem;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+// Alert Cart Product 
+.alert-cart-product {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 1rem;
+    border-style: dashed;
+    .btn-success {
+        padding: 0.86em 1.37em;
+        margin-right: 1.9rem;
+    }
+    .btn-close.btn-link {
+        margin: 0 1rem 0 auto;
+        padding-bottom: 0;
+        i {
+            &::after, &::before {
+                background-color: $success-color;
+            }
+        }
+    }
+}

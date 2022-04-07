@@ -1,0 +1,327 @@
+/**
+ * @Description: source css by TheBoldMan.
+ * @Version: v2.00
+ * @Author: tronghuy2208@gmail.com
+ *
+ * @Summary:
+ *
+ *
+ */
+
+/*--------------------------------
+    Toolbox
+        -SubName
+          - SubName
+--------------------------------*/
+
+// Set variables
+@include set-default( 
+    ( 
+        toolBox: ( 
+            1920: (), 
+            1440: (), 
+            1366: (), 
+            1280: (), 
+            1024: (), 
+            768: (), 
+            450: (), 
+            360: (), 
+        ), 
+    ) 
+);
+
+
+// Toolbox
+.toolbox,
+.toolbox-right,
+.toolbox-left,
+.toolbox-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    label {
+        font-weight: $font-weight-semibold;
+        margin-right: 1rem;
+        line-height: 1.5;
+    }
+}
+
+.toolbox-right {
+    margin-left: auto;
+}
+
+.toolbox {
+    .showing-info {
+        font-size: 1.3rem;
+        color: #aaa;
+
+        span {
+            margin: 0 .9rem;
+            color: #333;
+        }
+    }
+
+    .select-box {
+        color: #333;
+
+        &::before {
+            font-size: 1.1rem;
+            right: 1.2rem;
+            //margin-top: -.2rem;
+        }
+    }
+
+    select {
+        @include border-radius($val: .3rem);
+        max-width: none;
+        width: 15.4rem;
+        padding: .75em 2.7rem .75em 1.4rem;
+        cursor: pointer;
+        border: 1px solid #d7d7d7;
+    }
+
+    .toolbox-show select {
+        padding-left: 1.3rem;
+        padding-right: 2.8rem;
+        width: 9.4rem;
+    }
+
+    .item-found {
+        color: #a9a9a9;
+        font-size: 1.4rem;
+        letter-spacing: 0;
+
+        span {
+            color: #333;
+            margin-right: .4rem;
+        }
+    }
+
+    .left-sidebar-toggle,
+    .right-sidebar-toggle {
+        //padding: 0.78em 1.05em;
+        position: relative;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        margin-right: 20px;
+
+        i {
+            margin-right: .7rem;
+            margin-left: .3rem;
+            font-size: 1.4rem;
+        }
+
+        svg {
+            margin-right: 6px;
+        }
+
+        .text {
+            color: $grey-color;
+            text-transform: none;
+            line-height: 18px;
+        }
+
+        &:after {
+            @include e-cen($type: "top", $option: translate(-50%, -50%));
+            position: absolute;
+            content: '';
+            width: 2px;
+            height: 100%;
+            background-color: $border-color;
+            right: -10px;
+        }
+    }
+    // .left-sidebar-toggle {
+    //     margin: 0 2rem 1rem 0;
+    // }
+    // .right-sidebar-toggle {
+    //     margin-left: 2rem;
+    // }
+}
+
+
+.sticky-toolbox.fixed {
+    @include animation($customize: true) {
+        -ms-transition: opacity .2s;
+        -webkit-transition: opacity .2s;
+        -moz-transition: opacity .2s;
+        -o-transition: opacity .2s;
+        transition: opacity .2s;
+    }
+
+    ;
+    @include border($position: "top", $size:1px, $style: solid, $color: $border-color);
+    @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
+    @include shadow($val: none);
+    background: $white-color;
+    padding: .5rem 2rem !important;
+    pointer-events: auto;
+
+    &.fix-top {
+        @include use-keyframes($args: inherit);
+    }
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+// Selected Items
+.selected-items {
+    display: none;
+
+    .toolbox + & {
+        font-size: 1.2rem;
+    }
+
+    > * {
+        display: inline-block;
+        margin: 0 .8rem .5rem 0;
+    }
+
+    .filter-clean {
+        margin-left: 1.2rem;
+    }
+}
+
+.selected-item {
+    line-height: 1;
+    letter-spacing: 0;
+    background-color: $grey-color-light;
+    color: $grey-color;
+    padding: 8px 1rem;
+
+    i {
+        margin-left: 1.1rem;
+    }
+}
+
+// Toolbox Layout
+.toolbox-layout {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 1.9rem;
+}
+
+// Layout button
+.btn-layout {
+    line-height: 1;
+    color: #dadada;
+    transition: color .4s;
+
+    & + & {
+        margin-left: 1rem;
+    }
+
+    i {
+        font-size: 1.9rem;
+        color: inherit;
+    }
+
+    &.active,
+    &:hover {
+        color: $dark-color;
+    }
+}
+/*#region #sad*/
+/*#endregion*/
+
+/*#region Mobile responsive section styles*/
+@include mq("lg", "max") {
+    // Shop Sidebar with Toolbox
+    .toolbox {
+        .sidebar-fixed {
+            margin-right: 0;
+        }
+
+        .sidebar-content {
+            display: block;
+        }
+    }
+}
+
+@include mq("sm", "max") {
+    .toolbox-left label,
+    .toolbox-right label,
+    .toolbox-right .toolbox-layout {
+        display: none;
+    }
+
+    .toolbox-right .toolbox-item.toolbox-show {
+        margin-right: 0;
+    }
+
+    .toolbox-pagination {
+        flex-direction: column;
+    }
+
+    .toolbox .left-sidebar-toggle,
+    .toolbox .right-sidebar-toggle {
+        //padding: 0.79em .83em;
+        i {
+            margin: 0;
+        }
+        // span {
+        //     display: none;
+        // }
+    }
+}
+
+@include mq('xs', 'max') {
+    .sticky-toolbox.fixed {
+        padding-right: 1.5rem !important;
+        padding-left: 1.5rem !important;
+    }
+
+    .toolbox {
+        // .left-sidebar-toggle {
+        //     margin-right: 1rem;
+        // }
+        select {
+            max-width: 13.6rem;
+        }
+
+        &-right {
+            @include flex-option($type: justify-content, $value: space-between);
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+
+    .selected-items {
+        @include border($position: "top", $size:1px, $style: solid, $color: $border-color);
+        padding-top: 1rem;
+
+        .filter-clean {
+            @include border($position: "all", $size:1px, $style: solid, $color: #ff424e);
+            @include border-radius($val: .3rem);
+            display: block;
+            width: 100%;
+            padding: 4px 12px;
+            text-align: center;
+            color: #ff424e !important;
+            background-color: transparent;
+            margin: .5rem 0 0 0;
+        }
+    }
+}
+/*#endregion*/

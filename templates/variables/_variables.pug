@@ -1,0 +1,3755 @@
+
+- const address = '111 Nguyễn Hữu Cảnh, P.22, Quận Bình Thạnh, Tp.HCM';
+- const map = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.020016297093!2d105.8524770149327!3d21.031885085996713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abc0462d982f%3A0x6ddde94c2316ef89!2zODUgTmd1eeG7hW4gSOG7r3UgSHXDom4sIEjDoG5nIELhuqFjLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1533779347721';
+- const phoneList = ['090 2726 571','090 2726 572'];
+- const phoneDefault = toPhone(phoneList[0]);
+- const emailList = ['tronghuy2208@gmail.com','ecsgroup.com.vn@gmail.com'];
+- const placeholderSearch = ['Tìm kiếm trên trang website','Free ship cho đơn hàng 500k', 'Giao nhanh 24h/7'];
+- const typeWriter = '"Tìm kiếm trên trang website","Free ship cho đơn hàng 500k","Giao nhanh 24h/7"';
+- const copyRight = {href:'https://boldman.vn/',value:'Copyright © 2019 BoldMan. All Right Reserved.'};
+- const imgPopup = {src:'/img/popup.jpg',srcm:'/img/popup-m.jpg'};
+- const urlsearch = '@Url.RouteUrl("tim-kiem")';
+- const cartLink = "@Url.RouteUrl('gio-hang')";
+- const isLogin = true;
+- const isAuthorise = false;
+- const isCart = true;
+- const isLang = true;
+- const linkJs = '/styles/plugins/';
+- const menuStyle = 'default'; //- navsidebar, landing
+- const popup = true;
+
+- 
+    const logo = [
+        {
+            name: 'logo pc',
+            src: '/img/logo.png',
+            href: '/'
+        },
+        {
+            name: 'logo mobile',
+            src: '/img/logo.png',
+            href: '/'
+        },
+        {
+            name: 'logo footer',
+            src: '/img/logo.png',
+            href: '/'
+        }
+    ]
+
+-
+    const iconBox = [
+        {
+            id: 1,
+            name: 'Giao hàng & Trả hàng Miễn phí',
+            des: 'Đối với tất cả các đơn đặt hàng trên 1tr',
+            href: '',
+            img: 'ecs-icon-truck'
+        },
+        {
+            id: 2,
+            name: 'Thanh toán an toàn',
+            des: 'Chúng tôi đảm bảo thanh toán an toàn',
+            href: '',
+            img: 'ecs-icon-bag'
+        },
+        {
+            id: 3,
+            name: 'Hoàn tiền dễ dàng',
+            des: 'Trả hàng trong vòng 30 ngày',
+            href: '',
+            img: 'ecs-icon-money'
+        },
+        {
+            id: 4,
+            name: 'Hỗ trợ khách hàng',
+            des: 'Gọi hoặc gửi email cho chúng tôi 24/7',
+            href: '',
+            img: 'ecs-icon-chat'
+        }
+    ]
+
+-
+    const tag = [
+        {
+            id: 1,
+            name: 'túi nam',
+            src: '/img/menu/product1-mini.jpg',
+            href: ''
+        },
+        {
+            id: 2,
+            name: 'thời trang nữ',
+            src: '/img/menu/product2-mini.jpg',
+            href: ''
+        },
+        {
+            id: 3,
+            name: 'túi nữ',
+            src: '/img/menu/product3-mini.jpg',
+            href: ''
+        },
+        {
+            id: 4,
+            name: 'giày nam',
+            src: '/img/menu/product4-mini.jpg',
+            href: ''
+        },
+        {
+            id: 5,
+            name: 'giày nữ',
+            src: '/img/menu/product5-mini.jpg',
+            href: ''
+        },
+        {
+            id: 6,
+            name: 'thời trang nam',
+            src: '/img/menu/product6-mini.jpg',
+            href: ''
+        },
+    ];
+
+-
+    const brand = [
+        {
+            id: 1,
+            name: 'Sterling Capital Group',
+            href: '',
+            src: '/img/brand/brand-1.png',
+        },
+        {
+            id: 2,
+            name: 'Green Grass disign',
+            href: '',
+            src: '/img/brand/brand-2.png',
+        },
+        {
+            id: 3,
+            name: 'NS8',
+            href: '',
+            src: '/img/brand/brand-3.png',
+        },
+        {
+            id: 4,
+            name: 'Kinova',
+            href: '',
+            src: '/img/brand/brand-4.png',
+        },
+        {
+            id: 5,
+            name: 'Galaaxy Cretive Agency',
+            href: '',
+            src: '/img/brand/brand-5.png',
+        },
+        {
+            id: 6,
+            name: 'Sass',
+            href: '',
+            src: '/img/brand/brand-6.png',
+        },
+        {
+            id: 7,
+            name: 'Skysuite Technoiogies',
+            href: '',
+            src: '/img/brand/brand-7.png',
+        },
+        {
+            id: 8,
+            name: 'Elegant Auto Group',
+            href: '',
+            src: '/img/brand/brand-8.png',
+        },
+        {
+            id: 9,
+            name: 'RED',
+            href: '',
+            src: '/img/brand/brand-9.png',
+        },
+        {
+            id: 10,
+            name: 'Node JS',
+            href: '',
+            src: '/img/brand/brand-10.png',
+        },
+        {
+            id: 11,
+            name: 'RightCheck',
+            href: '',
+            src: '/img/brand/brand-11.png',
+        },
+        {
+            id: 12,
+            name: 'SkillStar',
+            href: '',
+            src: '/img/brand/brand-12.png',
+        }
+    ];
+
+-
+    const testimonials = [
+        {
+            id: 1,
+            name: 'Trần Vân Cam',
+            des: '<p>“Tôi rất ấn tượng bởi hiệu quả của dịch vụ và chính sách hoàn trả xuất sắc của bạn. Nó rất dễ chịu để đối phó với một trang web tập trung vào khách hàng như vậy.”</p>',
+            job: 'Nhân viên văn phòng',
+            rate: 4,
+            src: '/img/testimonial/feebback1.jpg',
+        },
+        {
+            id: 2,
+            name: 'Nguyễn Văn Hậu',
+            des: '<p>“Đừng bận tâm bất cứ điều gì mà bất cứ ai nói với bạn về bất cứ ai khác. Đánh giá mọi người và mọi thứ cho chính bạn.”</p>',
+            job: 'Giám đốc',
+            rate: 5,
+            src: '/img/testimonial/feebback2.jpg',
+        },
+        {
+            id: 3,
+            name: 'Cẩm Ly',
+            des: '<p>“Điều khó khăn nhất là quyết định hành động, phần còn lại chỉ là sự kiên trì. Nỗi sợ hãi là hổ giấy. Bạn có thể làm bất cứ điều gì bạn quyết định làm. Bạn có thể hành động để thay đổi và kiểm soát cuộc sống của bạn; và thủ tục, quá trình này là phần thưởng của riêng nó.”</p>',
+            job: 'Ca sỹ',
+            rate: 3,
+            src: '/img/testimonial/feebback3.jpg',
+        },
+        {
+            id: 4,
+            name: 'Lê Văn Lâm',
+            des: '<p>“Tôi yêu bạn nhiều hơn trong đó tôi tin rằng bạn đã thích tôi vì lợi ích của riêng tôi và không có gì khác.”</p>',
+            job: 'Nội trợ',
+            rate: 1,
+            src: '/img/testimonial/feebback4.jpg',
+        },
+    ];
+
+-
+    const blog = [
+        {
+            id: 1,
+            name: 'Tác động của Covid-19 đến thị trường BĐS toàn cầu',
+            href: '/blogdetail.html',
+            des: '<p>Thiết kế, giá và tiêu chí lựa chọn là những yếu tố của thị trường BĐS toàn cầu chịu tác động của đại dịch Covid-19.</p>',
+            day: '23',
+            month: '10',
+            year: '2020',
+            cmt: '0',
+            cat: 'Kinh tế',
+            author: 'Thu Hằng',
+            src: '/img/blog/blog1.jpg',
+        },
+        {
+            id: 2,
+            name: 'Đề xuất hỗ trợ cho 2.000 nghệ sĩ và gần 27.000 hướng dẫn viên du lịch',
+            href: '/blogdetail.html',
+            des: '<p>Theo Bộ Văn hoá, Thể thao và Du lịch, đội ngũ nghệ sĩ hoạt động nghệ thuật biểu diễn và hướng dẫn viên du lịch là đối tượng bị ảnh hưởng nặng nề do tác động của dịch Covid-19.</p>',
+            day: '01',
+            month: '04',
+            year: '2020',
+            cmt: '11',
+            cat: 'Thể thao',
+            author: 'Duy Hiệu',
+            src: '/img/blog/blog2.jpg',
+        },
+        {
+            id: 3,
+            name: 'Salon kín khách, thợ tóc vỉa hè kiếm tiền triệu ngày đầu mở lại',
+            href: '/blogdetail.html',
+            des: '<p>Người Hà Nội kéo nhau đi cắt tóc, gội đầu vào sáng 22/6. Salon kín lịch đặt chỗ, khách đến phải xếp hàng ngồi đợi, thợ cắt tóc vỉa hè kiếm tiền triệu trong ngày đầu dịch vụ mở lại.</p>',
+            day: '20',
+            month: '05',
+            year: '2021',
+            cmt: '123',
+            cat: 'Văn hóa',
+            author: 'Hoài Thu',
+            src: '/img/blog/blog3.jpg',
+        },
+        {
+            id: 4,
+            name: 'Vàng trong nước đắt hơn thế giới trên 7 triệu đồng/lượng',
+            href: '/blogdetail.html',
+            des: '<p>Việc giá vàng thế giới ở dưới 1.800 USD/ounce trong khi giá trong nước vẫn duy trì tại vùng 57 triệu/lượng khiến chênh lệch giữa 2 thị trường lên cao nhất trong 2 tháng.</p>',
+            day: '01',
+            month: '06',
+            year: '2021',
+            cmt: '1245',
+            cat: 'BDS',
+            author: 'Thu Hằng',
+            src: '/img/blog/blog4.jpg',
+        },
+        {
+            id: 5,
+            name: 'BĐS ven biển - xu hướng sống của giới nhà giàu',
+            href: '/blogdetail.html',
+            des: '<p>Mức sống cao hơn cùng áp lực ngày càng tăng tạo nên những xu hướng mới trên thị trường BĐS. Nhiều người tìm kiếm ngôi nhà thứ hai ven biển nhằm nâng cao chất lượng sống.</p>',
+            day: '12',
+            month: '06',
+            year: '2021',
+            cmt: '12356',
+            cat: 'Thời trang',
+            author: 'Admin',
+            src: '/img/blog/blog5.jpg',
+        },
+        {
+            id: 6,
+            name: 'Gỡ nút thắt vốn vay cho doanh nghiệp xuất nhập khẩu',
+            href: '/blogdetail.html',
+            des: '<p>Trong bối cảnh thích ứng an toàn, linh hoạt, kiểm soát hiệu quả dịch Covid-19, tình hình xuất nhập khẩu được đánh giá “sáng dần” về cuối năm.</p>',
+            day: '01',
+            month: '08',
+            year: '2021',
+            cmt: '12',
+            cat: 'Kinh tế',
+            author: 'Admin',
+            src: '/img/blog/blog6.jpg',
+        },
+        {
+            id: 7,
+            name: 'Vinamilk và 45 năm bền bỉ vì một thế hệ trẻ em Việt Nam khỏe mạnh',
+            href: '/blogdetail.html',
+            des: '<p>Trải qua 45 năm đồng hành cùng sự phát triển của đất nước, Vinamilk luôn đặt mục tiêu chăm sóc dinh dưỡng cho trẻ em Việt Nam lên hàng đầu.</p>',
+            day: '12',
+            month: '12',
+            year: '2021',
+            cmt: '0',
+            cat: 'Hình ảnh',
+            author: 'Admin',
+            src: '/img/blog/blog7.jpg',
+        },
+    ];
+-
+    const blogDetail = {
+        id: 1,
+        name: 'Tác động của Covid-19 đến thị trường BĐS toàn cầu',
+        href: '/blogdetail.html',
+        des: '<p>Thiết kế, giá và tiêu chí lựa chọn là những yếu tố của thị trường BĐS toàn cầu chịu tác động của đại dịch Covid-19.</p>',
+        day: '23',
+        month: '10',
+        year: '2020',
+        cmt: '0',
+        cat: 'Kinh tế',
+        author: 'Thu Hằng',
+        src: '/img/blog/blog1.jpg',
+    }
+    
+-
+    const productCat = [
+        {
+            id: 1,
+            name: 'Đồ chơi - mẹ & bé',
+            src: '/img/menu/cat1.jpg',
+            srchome: '/img/productcat/cat1.jpg',
+            bgsrc: '/img/productcat/bgcat1.jpg',
+            icon: 'ecs-icon-tshirt',
+            count: '200',
+            href: ''
+        },
+        {
+            id: 2,
+            name: 'Thực phẩm tươi sống',
+            src: '/img/menu/cat2.jpg',
+            srchome: '/img/productcat/cat2.jpg',
+            bgsrc: '/img/productcat/bgcat2.jpg',
+            icon: 'ecs-icon-sofa',
+            count: '5',
+            href: ''
+        },
+        {
+            id: 3,
+            name: 'Điện thoại - máy tính bảng',
+            src: '/img/menu/cat3.jpg',
+            srchome: '/img/productcat/cat3.jpg',
+            bgsrc: '/img/productcat/bgcat3.jpg',
+            icon: 'ecs-icon-basketball',
+            count: '3000',
+            href: ''
+        },
+        {
+            id: 4,
+            name: 'Làm đẹp - sức khỏe',
+            src: '/img/menu/cat4.jpg',
+            srchome: '/img/productcat/cat4.jpg',
+            bgsrc: '/img/productcat/bgcat1.jpg',
+            icon: 'ecs-icon-bow',
+            count: '20',
+            href: ''
+        },
+        {
+            id: 5,
+            name: 'Điện gia dụng',
+            src: '/img/menu/cat5.jpg',
+            srchome: '/img/productcat/cat5.jpg',
+            bgsrc: '/img/productcat/bgcat2.jpg',
+            icon: 'ecs-icon-camera',
+            count: '0',
+            href: ''
+        },
+        {
+            id: 6,
+            name: 'Thời trang nữ',
+            src: '/img/menu/cat6.jpg',
+            srchome: '/img/productcat/cat6.jpg',
+            bgsrc: '/img/productcat/bgcat3.jpg',
+            icon: 'ecs-icon-gamepad',
+            count: '12355',
+            href: ''
+        }
+    ];
+-
+    const product = [
+        {
+            id: 1,
+            name: 'Balo khoá scrunchies',
+            href: '/productdetail.html',
+            sku: 'BL120',
+            brand: null,
+            quantity: 10,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Balo kiểu dáng đơn giản, khóa scrunchies nổi bật. Bên trong có một ngăn lớn rộng, đựng được nhiều vận dụng cần thiết và phối khóa kéo tiện dụng. Chất liệu da tổng hợp cao cấp bền đẹp, dễ vệ sinh, sử dụng nhiều dịp: đi làm, dạo phố</p>',
+            listimg: ['https://tinyurl.com/rkutmt82','https://tinyurl.com/ykr7h5aj'],
+            price: '839.000₫',
+            promoprice: '539.000₫',
+            percent: '10%',
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 5,
+            count: 19834,
+            label: [
+                {
+                    id: 1,
+                    name: 'new',
+                    color: '#336699'
+                },
+                {
+                    id: 2,
+                    name: 'sale',
+                    color: '#cc0001'
+                }
+            ],
+            ver: [
+                {
+                    id: 1,
+                    listimg: ['https://tinyurl.com/rkutmt82','https://tinyurl.com/ykr7h5aj'],
+                    src: 'https://tinyurl.com/3x9zbvas',
+                    isActive: true,
+                    isShow: true
+                },
+                {
+                    id: 2,
+                    listimg: ['https://tinyurl.com/2p8u8n66','https://tinyurl.com/2p838wtw'],
+                    src: 'https://tinyurl.com/2jbndv8c',
+                    isActive: false,
+                    isShow: false
+                }
+            ]
+        },
+        {
+            id: 2,
+            name: 'Túi xách trung the maze',
+            href: '/productdetail.html',
+            sku: 'TXT244',
+            brand: null,
+            quantity: 10,
+            cat: 'Túi cỡ trung',
+            des: '<p>Túi xách trung kiểu dáng sang trọng. Nắp phối viền màu và gắn thêm charm mang lại sự nổi bật và bắt mắt. Chất liệu da tổng hợp cao cấp, phù hợp với đi làm, đi chơi và đi dự tiệc.</p>',
+            listimg: ['https://tinyurl.com/2p8vs5nf','https://tinyurl.com/3kspvtpn'],
+            price: '839.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 4,
+            count: 1273,
+            label: null,
+            ver: null
+        },
+        {
+            id: 3,
+            name: 'Túi Xách Nhỏ Phối Màu Color-Block',
+            href: '/productdetail.html',
+            sku: 'TXN458',
+            brand: null,
+            quantity: 0,
+            cat: 'Túi cỡ trung',
+            des: '<p>Túi xách nhỏ phối màu color block. Thiết kế với một ngăn lớn đựng đồ cùng vẻ ngoài sang trọng, phù hợp cho môi trường công sở đi lam, đi chơi và tham dự tiệc. Chất liệu da tổng hợp cao cấp, phối màu tinh tế.</p>',
+            listimg: ['https://tinyurl.com/mwwpxmy3','https://tinyurl.com/mk9mhzm8'],
+            price: '741.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 3,
+            count: 140,
+            label: null,
+            ver: null
+        },
+        {
+            id: 4,
+            name: 'Túi Xách Nhỏ Multi-Bag Nắp Tuck-In',
+            href: '/productdetail.html',
+            sku: 'TXN460',
+            brand: null,
+            quantity: 5,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi xách theo xu hướng Double Bag với nắp khóa cách điệu lạ mắt. Chiếc túi với phom dáng thể thao năng động. Phần dây đeo đính kèm túi mini có thể tháo rời. Túi có 3 sự lựa chọn về màu sắc, dễ sử dụng và phối đồ. Bên trong gồm 1 ngăn lớn có khóa kéo và 2 ngăn nhỏ. Túi kèm dây đeo da có thể điều chỉnh độ dài. Chất liệu da tổng hợp cao cấp, phù hợp mang nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
+            listimg: ['https://tinyurl.com/8yh6tx8a','https://tinyurl.com/ywkuhjv7'],
+            price: '682.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 2,
+            count: 34,
+            label: null,
+            ver: null
+        },
+        {
+            id: 5,
+            name: 'Túi Xách Nhỏ Nhỏ Nắp Tuck-In',
+            href: '/productdetail.html',
+            sku: 'TXN461',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi xách nhỏ nắp cách điệu lạ mắt. Chiếc túi độc đáo với kiểu dáng mới dễ sử dụng. Nắp túi được cách điệu vô cùng thú vị. Túi có 3 sự lựa chọn về màu sắc, dễ phối đồ. Bên trong gồm 1 ngăn lớn và 1 ngăn có khóa kéo. Túi kèm dây đeo da có thể điều chỉnh độ dài. Chất liệu da tổng hợp cao cấp, phù hợp mang nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
+            listimg: ['https://tinyurl.com/642ty5yy','https://tinyurl.com/8pw8y46h'],
+            price: '643.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 1,
+            count: 2,
+            label: null,
+            ver: null
+        },
+        {
+            id: 6,
+            name: 'Túi Xách Nhỏ Tay Cầm Cách Điệu',
+            href: '/productdetail.html',
+            sku: 'TXN384',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi hộp hình học phối khóa vân đá lạ mắt, thanh lịch. Thiết kế tối giản nên rất dễ phối đồ. Bên trong gồm 01 ngăn lớn rộng rãi kèm khóa kéo tiện dụng. Đi kèm với quai bản vừa duyên dáng, hiện đại để đeo chéo. Chất liệu da tổng hợp cao cấp. Túi phù hợp để đi làm, dạo phố hay đi tiệc</p>',
+            listimg: ['https://tinyurl.com/yckzjtbn','https://tinyurl.com/2p9x49t3'],
+            price: '741.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 1,
+            count: 2,
+            label: null,
+            ver: null
+        },
+        {
+            id: 7,
+            name: 'Túi Xách Trung Gắn Khóa Trang Trí',
+            href: '/productdetail.html',
+            sku: 'TXT231',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi xách trung khóa uốn lượn độc quyền, thời thượng. Bề mặt tối giản phối màu đậm nhạt. Điểm nhấn khóa tròn dạng xoắn lạ mắt. Bên trong gồm 01 ngăn lớn có khóa kéo. Tặng kèm dây đeo dài. Chất liệu da tổng hợp cao cấp, phù hợp mang nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
+            listimg: ['https://tinyurl.com/mufa6kxr','https://tinyurl.com/2dnp62hf'],
+            price: '741.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 0,
+            count: 0,
+            label: null,
+            ver: null
+        },
+        {
+            id: 8,
+            name: 'Túi Xách Trung Tote Trung Nắp Cách Điệu',
+            href: '/productdetail.html',
+            sku: 'TXT235',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ lớn',
+            des: '<p>Túi xách cỡ trung nắp cách điệu ấn tượng. Với bề ngoài đơn giản về màu sắc toát lên vẻ thanh lịch, túi xách còn có 3 sự lựa chọn về màu sắc phổ biến, dễ sử dụng. Điểm nhấn nằm ở phần tay cầm có nắp cách điệu ấn tượng, lạ mắt. Bên trong gồm 1 ngăn lớn có khóa kéo. Tặng kèm dây da có thể điều chỉnh độ dài. Chất liệu da tổng hợp cao cấp, phù hợp nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
+            listimg: ['https://tinyurl.com/37ycfaxk','https://tinyurl.com/5ntkxwtb'],
+            price: '839.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 0,
+            count: 0,
+            label: null,
+            ver: null
+        },
+        {
+            id: 9,
+            name: 'Túi Xách Nhỏ Cắt Lazer Charm Trang Trí',
+            href: '/productdetail.html',
+            sku: 'TXN539',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi xách nhỏ nắp gập, họa tiết cắt lazer charm trang trí xinh xắn, nổi bật. Thiết kế túi kèm dây đeo tiện dụng, bên trong có một ngăn lớn cho bạn thoải mái mang theo đồ cần thiết. Có nhiều sự lựa chọn về màu sắc để nàng thoải mái phối đồ và tạo phong cách mới</p>',
+            listimg: ['https://tinyurl.com/bdfucu5p','https://tinyurl.com/2p85nhh4'],
+            price: '682.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 0,
+            count: 0,
+            label: null,
+            ver: null
+        },
+        {
+            id: 10,
+            name: 'Túi Xách Nhỏ Khóa Marble',
+            href: '/productdetail.html',
+            sku: 'TXN547',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi xách nhỏ nắp gập khóa marble nổi bật, sang trọng. Thiết kế túi kèm dây đeo tiện dụng, bên trong có 01 ngăn lớn cho bạn thoải mái mang theo đồ cần thiết. Có nhiều sự lựa chọn về màu sắc để nàng thoải mái phối đồ và tạo phong cách mới</p>',
+            listimg: ['https://tinyurl.com/54vkzddv'],
+            price: '741.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 0,
+            count: 0,
+            label: null,
+            ver: null
+        },
+        {
+            id: 11,
+            name: 'Túi Xách Nhỏ Snapshot Cắt Lazer Charm Trang Trí',
+            href: '/productdetail.html',
+            sku: 'TXN538',
+            brand: null,
+            quantity: 98,
+            cat: 'Túi cỡ nhỏ',
+            des: '<p>Túi xách nhỏ dáng hộp xinh xắn, họa tiết cắt lazer và phối charm trang trí tạo điểm nhấn nổi bật. Thiết kế túi kèm dây đeo tiện dụng, có 02 ngăn lớn cho bạn thoải mái mang theo đồ cần thiết. Có nhiều sự lựa chọn về màu sắc để nàng thoải mái phối đồ và tạo phong cách mới</p>',
+            listimg: ['https://tinyurl.com/4tns8nsb','https://tinyurl.com/3t8m246m'],
+            price: '741.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 0,
+            count: 0,
+            label: null,
+            ver: null
+        },
+        {
+            id: 12,
+            name: 'Ví Phối Hiệu Ứng',
+            href: '/productdetail.html',
+            sku: 'VI138',
+            brand: null,
+            quantity: 98,
+            cat: 'Ví - Clutch',
+            des: '<p>Ví và túi xách nhỏ 2 trong 1 thời thượng. Điểm nhấn khóa kim loại sang trọng. Quai dài dạng xích mảnh đi kèm theo ví để nàng có thể phối hợp đeo chéo hay gập đôi đeo sát nách như một chiếc túi nhỏ. Ngoài ra, nàng có thể tháo quai, cầm tay như ví đi tiệc. Chất liệu da tổng hợp cao cấp. Ví dùng như ví tiền hàng ngày hoặc biến tấu thành túi dạo phố, clutch đi tiệc</p>',
+            listimg: ['https://tinyurl.com/4a7kmm26','https://tinyurl.com/ysvxv6jj'],
+            price: '486.000₫',
+            promoprice: null,
+            percent: null,
+            //- Y,M,D
+            //promodate: '2022, 1, 10',
+            promodate: null,
+            star: 0,
+            count: 0,
+            label: null,
+            ver: null
+        }
+    ];
+-
+    const productDetail = {
+        id: 1,
+        name: 'Túi Dập Hiệu Ứng Princess Diamond',
+        sku: 'TXT226',
+        brand: null,
+        quantity: 10,
+        cat: 'Túi cỡ nhỏ',
+        des: '<p>Túi xách dáng hộp dập nổi hình kim cương thanh lịch, sang trọng. Bề mặt phối hai màu trẻ trung. Bên trong có 1 ngăn lớn kèm khóa kéo tiện dụng và ngăn nhỏ. Tặng kèm quai đeo dài. Chất liệu da tổng hợp cao cấp, phù hợp với dịp đi làm, dạo phố hay đi tiệc</p>',
+        listimg: ['/img/product/product_detail1.jpg','/img/product/product_detail2.jpg','/img/product/product_detail3.jpg','/img/product/product_detail4.jpg','/img/product/product_detail5.jpg','/img/product/product_detail6.jpg','/img/product/product_detail7.jpg','/img/product/product_detail8.jpg'],
+        price: '780.000₫',
+        promoprice: '539.000₫',
+        percent: '-10%',
+        //- Y,M,D
+        //promodate: '2022, 1, 10',
+        promodate: null,
+        star: 4,
+        count: 1983,
+        label: [
+            {
+                id: 1,
+                name: 'new',
+                color: '#336699'
+            },
+            {
+                id: 2,
+                name: 'sale',
+                color: '#cc0001'
+            }
+        ],
+        ver: [
+            {
+                name: 'Color',
+                listatt: [
+                    {
+                        id: 1,
+                        name: 'Yellow',
+                        value: '#ffcc01',
+                        src: '/img/product/product_detail_sku1.jpg',
+                        isActive: true,
+                        isShow: true
+                    },
+                    {
+                        id: 2,
+                        name: 'Brown',
+                        value: '#ca6d00',
+                        src: '/img/product/product_detail_sku2.jpg',
+                        isActive: false,
+                        isShow: true
+                    },
+                    {
+                        id: 3,
+                        name: 'Blue',
+                        value: '#1c93cb',
+                        src: '/img/product/product_detail_sku3.jpg',
+                        isActive: false,
+                        isShow: false
+                    }
+                ]
+            },
+            {
+                name: 'Size',
+                listatt: [
+                    {
+                        id: 1,
+                        name: 'Small',
+                        value: 'S',
+                        isActive: true,
+                        isShow: true
+                    },
+                    {
+                        id: 2,
+                        name: 'Medium',
+                        value: 'M',
+                        isActive: false,
+                        isShow: true
+                    },
+                    {
+                        id: 3,
+                        name: 'Large',
+                        value: 'L',
+                        isActive: false,
+                        isShow: true
+                    },
+                    {
+                        id: 4,
+                        name: 'Extra Large',
+                        value: 'XL',
+                        isActive: false,
+                        isShow: true
+                    }
+                ]
+            }
+        ]
+    };
+
+
+-
+    const menu = [
+        {
+            id:1,
+            name: 'Trang chủ',
+            href: '/',
+            isActive: false,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-home',
+            children: null
+        },
+        {
+            id:2,
+            name: 'Sản phẩm',
+            href: '',
+            isActive: true,
+            isShow: true,
+            type: 'mega-menu',
+            icon: 'ecs-icon-category',
+            children: [
+                {
+                    id:21,
+                    name: 'Shop pages',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:211,
+                            name: 'Banner With Sidebar',
+                            href: '',
+                            isActive: true,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:212,
+                            name: 'Boxed Banner',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:213,
+                            name: 'Full Width Banner',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:214,
+                            name: 'Horizontal Filter',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:215,
+                            name: 'Off Canvas Sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:216,
+                            name: 'Infinite Ajax Scroll',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:217,
+                            name: 'Right Sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:218,
+                            name: 'Both Sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:22,
+                    name: 'Shop layouts',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:221,
+                            name: '3 Columns Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:223,
+                            name: '4 Columns Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:224,
+                            name: '5 Columns Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:225,
+                            name: '6 Columns Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:226,
+                            name: '7 Columns Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:227,
+                            name: '8 Columns Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:228,
+                            name: 'List Mode',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:229,
+                            name: 'List Mode With Sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:23,
+                    name: 'Product pages',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:231,
+                            name: 'Variable Product',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:232,
+                            name: 'Featured & Sale',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:233,
+                            name: 'Data In Accordion',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:234,
+                            name: 'Data In Sections',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:235,
+                            name: 'Image Swatch',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:236,
+                            name: 'Extended Info',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:237,
+                            name: 'Without Sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:238,
+                            name: '360° & Video',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:24,
+                    name: 'Product layouts',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:241,
+                            name: 'Default',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:242,
+                            name: 'Vertical Thumbs',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:243,
+                            name: 'Grid Images',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:244,
+                            name: 'Masonry',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:245,
+                            name: 'Gallery',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:246,
+                            name: 'Sticky Info',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:247,
+                            name: 'Sticky Thumbs',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:248,
+                            name: 'Sticky Both',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            id:3,
+            name: 'Đối tác',
+            href: '',
+            isActive: true,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-bag',
+            children: [
+                {
+                    id:31,
+                    name: 'Store Listing',
+                    href: '',
+                    isActive: true,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:311,
+                            name: 'Store listing 1',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:312,
+                            name: 'Store listing 2',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:313,
+                            name: 'Store listing 3',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:314,
+                            name: 'Store listing 4',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+
+                    ]
+                },
+                {
+                    id:32,
+                    name: 'Vendor Store',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:321,
+                            name: 'Vendor Store 1',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:322,
+                            name: 'Vendor Store 2',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:323,
+                            name: 'Vendor Store 3',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:324,
+                            name: 'Vendor Store 4',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            id:4,
+            name: 'Tin tức',
+            href: '',
+            isActive: true,
+            isShow: false,
+            type: null,
+            icon: 'ecs-icon-comment',
+            children: [
+                {
+                    id:41,
+                    name: 'Classic',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:42,
+                    name: 'Listing',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:43,
+                    name: 'Grid',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:431,
+                            name: 'Grid 2 columns',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:432,
+                            name: 'Grid 3 columns',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:433,
+                            name: 'Grid 4 columns',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:434,
+                            name: 'Grid sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:44,
+                    name: 'Masonry',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:441,
+                            name: 'Masonry 2 columns',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:442,
+                            name: 'Masonry 3 columns',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:443,
+                            name: 'Masonry 4 columns',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:444,
+                            name: 'Masonry sidebar',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:45,
+                    name: 'Mask',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: [
+                        {
+                            id:451,
+                            name: 'Blog mask grid',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:452,
+                            name: 'Blog mask masonry',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:46,
+                    name: 'Single Post',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                }
+            ]
+        },
+        {
+            id:5,
+            name: 'Trang tĩnh',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-cog2',
+            children: [
+                {
+                    id:51,
+                    name: 'About Us',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: 'ecs-icon-cog2',
+                    children: 
+                    [
+                        {
+                            id:511,
+                            name: 'Coming Soon',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: 'ecs-icon-cog2',
+                            children: [
+                                {
+                                    id:5111,
+                                    name: 'Compare',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    icon: 'ecs-icon-cog2',
+                                    children: null
+                                },
+                            ]
+                        },
+                        {
+                            id:512,
+                            name: 'Wishlist',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:513,
+                            name: 'Cart',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:514,
+                            name: 'Checkout',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:515,
+                            name: 'My Account',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        }
+                    ]
+                },
+                {
+                    id:52,
+                    name: 'Become A Vendor',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:53,
+                    name: 'Contact Us',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:54,
+                    name: 'FAQs',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:55,
+                    name: 'Error 404',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                }
+            ]
+        },
+        {
+            id:6,
+            name: 'Hỗ trợ',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: 'collapse-menu',
+            icon: 'ecs-icon-headphone',
+            children: [
+                {
+                    id:61,
+                    name: 'Accordions',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: 'ecs-icon-envelop2',
+                    children: [
+                        {
+                            id:611,
+                            name: 'Products',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: 'ecs-icon-envelop2',
+                            children: [
+                                {
+                                    id:6111,
+                                    name: 'Titles',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    icon: 'ecs-icon-envelop2',
+                                    children: null
+                                },
+                                {
+                                    id:6112,
+                                    name: 'Typography',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    icon: null,
+                                    children: null
+                                },
+                                {
+                                    id:6113,
+                                    name: 'Vendors',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    icon: null,
+                                    children: null
+                                },
+                            ]
+                        },
+                        {
+                            id:612,
+                            name: 'Tabs',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                        {
+                            id:613,
+                            name: 'Testimonials',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            icon: null,
+                            children: null
+                        },
+                    ]
+                },
+                {
+                    id:62,
+                    name: 'Alert & Notification',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:63,
+                    name: 'Blog Posts',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:64,
+                    name: 'Buttons',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:65,
+                    name: 'Call to Action',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:66,
+                    name: 'Icons',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:67,
+                    name: 'Icon Boxes',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:68,
+                    name: 'Instagrams',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+                {
+                    id:69,
+                    name: 'Product Category',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    icon: null,
+                    children: null
+                },
+            ]
+        },
+        {
+            id:7,
+            name: 'Liên hệ',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-envelop2',
+            children: null
+        },
+    ];
+-
+    const menuFooter = [
+        {
+            id:1,
+            name: 'Về công ty',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: null,
+            children: [
+                {
+                    id:11,
+                    name: 'About Us',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:12,
+                    name: 'Team Member',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:13,
+                    name: 'Career',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:14,
+                    name: 'Contact Us',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:15,
+                    name: 'Affilate',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:16,
+                    name: 'Order History',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+            ]
+        },
+        {
+            id:2,
+            name: 'Tài khoản',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: null,
+            children: [
+                {
+                    id:21,
+                    name: 'Track My Order',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:22,
+                    name: 'View Cart',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:23,
+                    name: 'Sign In',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:24,
+                    name: 'Help',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:25,
+                    name: 'My Wishlist',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:26,
+                    name: 'Privacy Policy',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+            ]
+        },
+        {
+            id:3,
+            name: 'Hỗ trợ',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: null,
+            children: [
+                {
+                    id:31,
+                    name: 'Payment Methods',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:32,
+                    name: 'Money-back guarantee!',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:33,
+                    name: 'Product Returns',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:34,
+                    name: 'Support Center',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:35,
+                    name: 'Shipping',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:36,
+                    name: 'Term and Conditions',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+            ]
+        },
+    ];
+-
+    const menuLanding = [
+        {
+            id:1,
+            name: 'Trang chủ',
+            href: '/',
+            isActive: true,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-home',
+            children: null
+        },
+        {
+            id:2,
+            name: 'Sản phẩm',
+            href: '#section1',
+            isActive: false,
+            isShow: true,
+            type: 'mega-menu',
+            icon: 'ecs-icon-category',
+            children: null
+        },
+        {
+            id:3,
+            name: 'Đối tác',
+            href: '#section2',
+            isActive: false,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-bag',
+            children: null
+        },
+        {
+            id:4,
+            name: 'Tin tức',
+            href: '#section3',
+            isActive: false,
+            isShow: false,
+            type: null,
+            icon: 'ecs-icon-comment',
+            children: null
+        },
+        {
+            id:5,
+            name: 'Trang tĩnh',
+            href: '#section4',
+            isActive: false,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-cog2',
+            children: null
+        },
+        {
+            id:6,
+            name: 'Hỗ trợ',
+            href: '#section5',
+            isActive: false,
+            isShow: true,
+            type: 'collapse-menu',
+            icon: 'ecs-icon-headphone',
+            children: null
+        },
+        {
+            id:7,
+            name: 'Liên hệ',
+            href: '#section6',
+            isActive: false,
+            isShow: true,
+            type: null,
+            icon: 'ecs-icon-envelop2',
+            children: null
+        }
+    ];
+-
+    const menuSide = [
+        {
+            id:1,
+            name: 'Danh mục sản phẩm',
+            icon: '',
+            src: '',
+            href: '',
+            isActive: false,
+            isShow: true,
+            type: 'null',
+            children: [
+                {
+                    id:11,
+                    name: 'Thời trang',
+                    icon: 'ecs-icon-tshirt2',
+                    src: '/img/menu/ads.jpg',
+                    href: '',
+                    isActive: true,
+                    isShow: true,
+                    type: 'mega-menu',
+                    children: 
+                    [
+                        {
+                            id:111,
+                            name: 'Women',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1111,
+                                    name: 'New Arrivals',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: true,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1112,
+                                    name: 'Best Sellers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1113,
+                                    name: 'Trending',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1114,
+                                    name: 'Clothing',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1115,
+                                    name: 'Shoes',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1116,
+                                    name: 'Bags',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1117,
+                                    name: 'Accessories',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1118,
+                                    name: 'Jewlery & Watches',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1119,
+                                    name: 'Sale',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:112,
+                            name: 'Men',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1121,
+                                    name: 'New Arrivals',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1122,
+                                    name: 'Best Sellers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1123,
+                                    name: 'Trending',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1124,
+                                    name: 'Clothing',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1125,
+                                    name: 'Shoes',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1126,
+                                    name: 'Bags',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1127,
+                                    name: 'Accessories',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1128,
+                                    name: 'Jewlery & Watches',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id:12,
+                    name: 'Nhà & vườn',
+                    icon: 'ecs-icon-home',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: 
+                    [
+                        {
+                            id:121,
+                            name: 'Bedroom',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1211,
+                                    name: 'Beds, Frames & Bases',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1212,
+                                    name: 'Dressers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1213,
+                                    name: 'Nightstands',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1214,
+                                    name: 'Kid\'s Beds & Headboards',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1215,
+                                    name: 'Armoires',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:122,
+                            name: 'Living room',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1221,
+                                    name: 'Coffee Tables',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1222,
+                                    name: 'Chairs',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1223,
+                                    name: 'Tables',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1224,
+                                    name: 'Futons & Sofa Beds',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1225,
+                                    name: 'Cabinets & Chests',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:123,
+                            name: 'Office',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1231,
+                                    name: 'Office Chairs',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1232,
+                                    name: 'Desks',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1233,
+                                    name: 'Bookcases',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1234,
+                                    name: 'File Cabinets',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1235,
+                                    name: 'Breakroom Tables',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:124,
+                            name: 'Kitchen & dining',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1241,
+                                    name: 'Dining Sets',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1242,
+                                    name: 'Kitchen Storage Cabinets',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1243,
+                                    name: 'Bashers Racks',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1244,
+                                    name: 'Dining Chairs',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1245,
+                                    name: 'Dining Room Tables',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1246,
+                                    name: 'Bar Stools',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id:13,
+                    name: 'Thiết bị điện tử',
+                    icon: 'ecs-icon-electronics',
+                    src: '/img/menu/ads1.jpg',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: 'mega-menu',
+                    children: [
+                        {
+                            id:131,
+                            name: 'Laptops & computers',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1311,
+                                    name: 'Desktop Computers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1312,
+                                    name: 'Monitors',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1313,
+                                    name: 'Laptops',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1314,
+                                    name: 'Hard Drives & Storage',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1315,
+                                    name: 'Computer Accessories',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:132,
+                            name: 'Tv & video',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1321,
+                                    name: 'TVs',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1322,
+                                    name: 'Home Audio Speakers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1323,
+                                    name: 'Projectors',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1324,
+                                    name: 'Media Streaming Devices',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:133,
+                            name: 'Digital cameras',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1331,
+                                    name: 'Digital SLR Cameras',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1332,
+                                    name: 'Sports & Action Cameras',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1333,
+                                    name: 'Camera Lenses',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1334,
+                                    name: 'Photo Printer',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1335,
+                                    name: 'Digital Memory Cards',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:134,
+                            name: 'Cell phones',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1341,
+                                    name: 'Carrier Phones',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1342,
+                                    name: 'Unlocked Phones',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1343,
+                                    name: 'Phone & Cellphone Cases',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1344,
+                                    name: 'Cellphone Chargers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id:14,
+                    name: 'Đồ nội thất',
+                    icon: 'ecs-icon-furniture',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: 'mega-menu',
+                    children: [
+                        {
+                            id:141,
+                            name: 'Furniture',
+                            icon: '',
+                            src: '/img/menu/ads2.jpg',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1411,
+                                    name: 'Sofas & Couches',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1412,
+                                    name: 'Armchairs',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1413,
+                                    name: 'Bed Frames',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1414,
+                                    name: 'Beside Tables',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1415,
+                                    name: 'Dressing Tables',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:142,
+                            name: 'Lighting',
+                            icon: '',
+                            src: '/img/menu/ads3.jpg',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1421,
+                                    name: 'Light Bulbs',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1422,
+                                    name: 'Lamps',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1423,
+                                    name: 'Celling Lights',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1424,
+                                    name: 'Wall Lights',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1425,
+                                    name: 'Bathroom Lighting',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:143,
+                            name: 'Home accessories',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1431,
+                                    name: 'Decorative Accessories',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1432,
+                                    name: 'Candals & Holders',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1433,
+                                    name: 'Home Fragrance',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1434,
+                                    name: 'Mirrors',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1435,
+                                    name: 'Clocks',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                        {
+                            id:144,
+                            name: 'Garden & outdoors',
+                            icon: '',
+                            src: '',
+                            href: '',
+                            isActive: false,
+                            isShow: true,
+                            type: null,
+                            children: [
+                                {
+                                    id:1441,
+                                    name: 'Garden Furniture',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1442,
+                                    name: 'Lawn Mowers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1443,
+                                    name: 'Pressure Washers',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1444,
+                                    name: 'All Garden Tools',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                },
+                                {
+                                    id:1445,
+                                    name: 'Outdoor Dining',
+                                    icon: '',
+                                    src: '',
+                                    href: '',
+                                    isActive: false,
+                                    isShow: true,
+                                    type: null,
+                                    children: null
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id:15,
+                    name: 'Khỏe & Đẹp',
+                    icon: 'ecs-icon-heartbeat',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:16,
+                    name: 'Quà tặng',
+                    icon: 'ecs-icon-gift',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:17,
+                    name: 'Đồ chơi',
+                    icon: 'ecs-icon-gamepad',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:18,
+                    name: 'Nấu ăn',
+                    icon: 'ecs-icon-ice-cream',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:19,
+                    name: 'Điện thoại',
+                    icon: 'ecs-icon-ios',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:19,
+                    name: 'Máy ảnh',
+                    icon: 'ecs-icon-camera',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                },
+                {
+                    id:20,
+                    name: 'Phụ kiện',
+                    icon: 'ecs-icon-ruby',
+                    src: '',
+                    href: '',
+                    isActive: false,
+                    isShow: true,
+                    type: null,
+                    children: null
+                }
+            ]
+        }
+    ];
+
+-
+    const provinceList = [
+        {
+            id: 0,
+            name: 'Chọn tỉnh/thành',
+            isActive: true,
+            isShow: true,
+        },
+        {
+            id: 1,
+            name: 'An Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 2,
+            name: 'Bà Rịa - Vũng Tàu',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 3,
+            name: 'Bắc Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 4,
+            name: 'Bắc Kạn',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 5,
+            name: 'Bạc Liêu',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 6,
+            name: 'Bắc Ninh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 7,
+            name: 'Bến Tre',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 8,
+            name: 'Bình Ðịnh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 9,
+            name: 'Bình Dương',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 10,
+            name: 'Bình Phước',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 11,
+            name: 'Bình Thuận',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 12,
+            name: 'Cà Mau',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 13,
+            name: 'Cần Thơ',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 14,
+            name: 'Cao Bằng',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 15,
+            name: 'Đà Nẵng',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 16,
+            name: 'Đăk Lăk',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 17,
+            name: 'Đăk Nông',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 18,
+            name: 'Điện Biên',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 19,
+            name: 'Đồng Nai',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 20,
+            name: 'Đồng Tháp',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 21,
+            name: 'Gia Lai',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 22,
+            name: 'Hà Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 23,
+            name: 'Hà Nam',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 24,
+            name: 'Hà Nội',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 25,
+            name: 'Hà Tĩnh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 26,
+            name: 'Hải Dương',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 27,
+            name: 'Hải Phòng',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 28,
+            name: 'Hậu Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 29,
+            name: 'Hồ Chí Minh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 30,
+            name: 'Hòa Bình',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 31,
+            name: 'Hưng Yên',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 32,
+            name: 'Khánh Hòa',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 33,
+            name: 'Kiên Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 34,
+            name: 'Kon Tum',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 35,
+            name: 'Lai Châu',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 36,
+            name: 'Lâm Ðồng',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 37,
+            name: 'Lạng Sơn',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 37,
+            name: 'Lào Cai',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 38,
+            name: 'Long An',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 39,
+            name: 'Nam Ðịnh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 40,
+            name: 'Nghệ An',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 41,
+            name: 'Ninh Bình',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 42,
+            name: 'Ninh Thuận',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 43,
+            name: 'Phú Thọ',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 44,
+            name: 'Phú Yên',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 45,
+            name: 'Quảng Bình',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 46,
+            name: 'Quảng Nam',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 47,
+            name: 'Quảng Ngãi',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 48,
+            name: 'Quảng Ninh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 49,
+            name: 'Quảng Trị',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 50,
+            name: 'Sóc Trăng',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 51,
+            name: 'Sơn La',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 52,
+            name: 'Tây Ninh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 53,
+            name: 'Thái Bình',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 54,
+            name: 'Thái Nguyên',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 55,
+            name: 'Thanh Hóa',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 56,
+            name: 'Thừa Thiên - Huế',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 57,
+            name: 'Tiền Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 58,
+            name: 'Trà Vinh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 59,
+            name: 'Tuyên Quang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 60,
+            name: 'Vĩnh Long',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 61,
+            name: 'Vĩnh Phúc',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 62,
+            name: 'Yên Bái',
+            isActive: false,
+            isShow: true,
+        }
+    ]
+-
+    const districtList = [
+        {
+            id: 0,
+            name: 'Chọn quận/huyện',
+            isActive: true,
+            isShow: true,
+        },
+        {
+            id: 1,
+            name: 'Quận 1',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 2,
+            name: 'Quận 2',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 3,
+            name: 'Quận 3',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 4,
+            name: 'Quận 4',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 5,
+            name: 'Quận 5',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 6,
+            name: 'Quận 6',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 7,
+            name: 'Quận 7',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 8,
+            name: 'Quận 8',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 9,
+            name: 'Quận 9',
+            isActive: false,
+            isShow: false,
+        },
+        {
+            id: 10,
+            name: 'Quận 10',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 11,
+            name: 'Quận 11',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 12,
+            name: 'Quận 12',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 13,
+            name: 'Quận Gò Vấp',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 14,
+            name: 'Quận Bình Thạnh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 15,
+            name: 'Quận Tân Bình',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 16,
+            name: 'Quận Phú Nhuận',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 17,
+            name: 'Quận Bình Tân',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 18,
+            name: 'Quận Thủ Đức',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 19,
+            name: 'Huyện Củ Chi',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 20,
+            name: 'Huyện Hóc Môn',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 21,
+            name: 'Huyện Bình Chánh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 22,
+            name: 'Huyện Nhà Bè',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 23,
+            name: 'Huyện Cần Giờ',
+            isActive: false,
+            isShow: true,
+        },
+    ];    
+-
+    const wardList = [
+        {
+            id: 0,
+            name: 'Chọn phường/xá',
+            isActive: true,
+            isShow: true,
+        },
+        {
+            id: 1,
+            name: 'Phường Tân Định',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 2,
+            name: 'Phường Đa Kao',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 3,
+            name: 'Phường Bến Nghé',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 4,
+            name: 'Phường Bến Thành',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 5,
+            name: 'Phường Nguyễn Thái Bình',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 6,
+            name: 'Phường Phạm Ngũ Lão',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 7,
+            name: 'Phường Cầu Ông Lãnh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 8,
+            name: 'Phường Cô Giang',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 9,
+            name: 'Phường Nguyễn Cư Trinh',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 10,
+            name: 'Phường Cầu Kho',
+            isActive: false,
+            isShow: true,
+        }
+    ]

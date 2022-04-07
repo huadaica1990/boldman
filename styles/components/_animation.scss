@@ -1,0 +1,300 @@
+/*----------------------------------------
+    Animation
+        - Sticky Content
+-----------------------------------------*/
+
+.appear-animate {
+    visibility: hidden;
+    opacity: 0;
+}
+.appear-animation-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+// Sticky Content
+@include keyframes($animation-name: "fixedTopContent") {
+    from {
+        @include transform($args: translateY(-100%));
+        @include transform-origin($args: center top 0px);
+    }
+    to {
+        @include transform($args: translateY(0));
+    }
+}
+
+@include keyframes($animation-name: "fixedBottomContent") {
+    from {
+        @include transform($args: translateY(100%));
+        @include transform-origin($args: center top 0px);
+    }
+    to {
+        @include transform($args: translateY(0));
+    }
+
+}
+
+// Welcome Msg
+@include keyframes($animation-name: "showMsgFirst") {
+    from {
+        @include transform($args: translateX(0%));
+    }
+    to {
+        @include transform($args: translateX(-100%));
+    }
+}
+@include keyframes($animation-name: "showMsg") {
+    from {
+        @include transform($args: translateX(100%));
+    }
+    to {
+        @include transform($args: translateX(-100%));
+    }
+}
+
+// Nav Arrow Animation
+@include keyframes($animation-name: "navItemArrow") { 
+    0% {
+        position: relative;
+        left: -3px; 
+    }
+    50% {
+        position: relative;
+        left: 2px; 
+    }
+    100% {
+        position: relative;
+        left: -3px; 
+    } 
+}
+
+// Fade in Left
+@include keyframes($animation-name: "fadeInLeftShorter") { 
+    from {
+        @include transform($args: translate(50px, 0));
+        @include transform-origin($args: (0, 0));
+        opacity: 0;
+    }
+    to {
+        @include transform($args: none);
+        opacity: 1;
+    }
+}
+.fadeInLeftShorter {
+    -webkit-animation-name: fadeInLeftShorter;
+       -moz-animation-name: fadeInLeftShorter;
+         -o-animation-name: fadeInLeftShorter;
+            animation-name: fadeInLeftShorter;
+}
+
+// Fade in Right
+@include keyframes($animation-name: "fadeInRightShorter") { 
+    from {
+        @include transform($args: translate(-50px, 0));
+        @include transform-origin($args: (0, 0));
+        opacity: 0;
+    }
+    to {
+        @include transform($args: none);
+        opacity: 1;
+    }
+}
+.fadeInRightShorter {
+    -webkit-animation-name: fadeInRightShorter;
+       -moz-animation-name: fadeInRightShorter;
+         -o-animation-name: fadeInRightShorter;
+            animation-name: fadeInRightShorter;
+}
+
+// Fade in up shorter
+@include keyframes($animation-name: "fadeInUpShorter") { 
+    from {
+        @include transform($args: translate(0, 50px));
+        @include transform-origin($args: (0, 0));
+        opacity: 0;
+    }
+    to {
+        @include transform($args: none);
+        opacity: 1;
+    }
+}
+.fadeInUpShorter {
+    -webkit-animation-name: fadeInUpShorter;
+       -moz-animation-name: fadeInUpShorter;
+         -o-animation-name: fadeInUpShorter;
+            animation-name: fadeInUpShorter;
+}
+// Fade in up
+@include keyframes($animation-name: "fadeInUp") { 
+    from {
+        @include transform($args: translate(0, 100%));
+        @include transform-origin($args: (0, 0));
+        opacity: 0;
+    }
+    to {
+        @include transform($args: none);
+        opacity: 1;
+    }
+}
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+       -moz-animation-name: fadeInUp;
+         -o-animation-name: fadeInUp;
+            animation-name: fadeInUp;
+}
+
+// Fade out down
+@include keyframes($animation-name: "fadeOutDown") { 
+    from {
+        @include transform($args: none);
+        @include transform-origin($args: (0, 0));
+        opacity: 1;
+    }
+    to {
+        @include transform($args: translate(0, 100%));
+        opacity: 0;
+    }
+} 
+.fadeInDown {
+    -webkit-animation-name: fadeOutDown;
+       -moz-animation-name: fadeOutDown;
+         -o-animation-name: fadeOutDown;
+            animation-name: fadeOutDown;
+}
+
+// Fade in down shorter
+@include keyframes($animation-name: "fadeInDownShorter") { 
+    from {
+        @include transform($args: translate(0, -50px));
+        @include transform-origin($args: (0, 0));
+        opacity: 0;
+    }
+    to {
+        @include transform($args: none);
+        opacity: 1;
+    }
+} 
+.fadeInDownShorter {
+    -webkit-animation-name: fadeInDownShorter;
+       -moz-animation-name: fadeInDownShorter;
+         -o-animation-name: fadeInDownShorter;
+            animation-name: fadeInDownShorter;
+}
+
+@include keyframes($animation-name: "flipInY") { 
+    from {
+        animation-timing-function: ease-in;
+        @include transform($args: perspective(400px) rotateY(90deg));
+        opacity: 0;
+    }
+    to {
+        @include transform($args: perspective(400px));
+    }
+}
+.flipInY {
+    -webkit-animation-name: flipInY;
+       -moz-animation-name: flipInY;
+         -o-animation-name: flipInY;
+            animation-name: flipInY;
+}
+
+@include keyframes($animation-name: "flipOutY") { 
+    from {
+        animation-timing-function: ease-out;
+        @include transform($args: perspective(400px));
+    }
+    to {
+        @include transform($args: perspective(400px) rotateY(90deg));
+        opacity: 0;
+    }
+}
+
+@include keyframes($animation-name: "blurIn") { 
+    from {
+        @include filter($val: blur(20px));
+        @include transform($args: scale(1.2));
+        opacity: 0;
+    }
+    to {
+        @include filter($val: blur(0px));
+        @include transform($args: none);
+        opacity: 1;
+    }
+}
+.blurIn {
+    -webkit-animation-name: blurIn;
+       -moz-animation-name: blurIn;
+         -o-animation-name: blurIn;
+            animation-name: blurIn;
+}
+
+@include keyframes($animation-name: "grayOut") { 
+    from {
+        @include filter($val: grayscale(0));
+        opacity: 1;
+    }
+    15% {
+        @include filter($val: grayscale(100%));
+    }
+    to {
+        @include filter($val: grayscale(100%));
+        opacity: 0;
+    }
+}
+.grayOut {
+    -webkit-animation-name: grayOut;
+       -moz-animation-name: grayOut;
+         -o-animation-name: grayOut;
+            animation-name: grayOut;
+}
+
+@include keyframes($animation-name: "brightIn") { 
+    from {
+        -webkit-animation-timing-function: ease-in;
+           -moz-animation-timing-function: ease-in;
+             -o-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        @include filter($val: brightness(0%));
+    }
+    to {
+        @include filter($val: brightness(100%));
+    }
+}
+.brightIn {
+    -webkit-animation-name: brightIn;
+       -moz-animation-name: brightIn;
+         -o-animation-name: brightIn;
+            animation-name: brightIn
+}
+
+@include keyframes($animation-name: "zoomIn") { 
+    from {
+        @include transform($args: scale3d(.3,.3,.3));
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@include keyframes($animation-name: "slideX") {
+    0% {
+        @include transform($args: none);
+        left: 100%;
+    }
+    100% {
+        @include transform($args: translateX( -100% ));
+        left: 0;
+    }
+}
+.use-keyframes-slidex {
+    @include use-keyframes($args: slideX 60s linear 1s infinite);
+    white-space: nowrap;
+    display: block;
+    &:hover {
+        -webkit-animation-play-state: paused;
+        -moz-animation-play-state: paused;
+        -o-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+}

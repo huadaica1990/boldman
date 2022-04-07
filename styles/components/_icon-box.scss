@@ -1,0 +1,123 @@
+/**
+ * @Description: source css by TheBoldMan.
+ * @Version: v2.00
+ * @Author: tronghuy2208@gmail.com
+ *
+ * @Summary:
+ *
+ *
+ */
+ 
+ /*--------------------------------
+    Icon Box
+        - Default
+        - Icon box side
+--------------------------------*/
+
+// Set variables
+@include set-default(
+  (
+    iconBox: (),
+  )
+);
+
+/*#region icon-box*/
+  .icon-box-wrapper {
+    @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+    padding:2.2rem 0 0;
+    .icon-box-side {
+      margin-bottom: 2.2rem;
+      padding:0 2rem;
+    }
+  }
+  .icon-box {
+    .icon-box-title {
+        font-size: 1.4rem;
+        //font-weight: 700;
+        text-transform: capitalize;
+        margin-bottom: 0rem;
+    }
+    .icon-box-des {
+        font-size: 1.3rem;
+        word-break: break-word;
+        margin: 0;
+        line-height: 1.5;
+        color: $grey-color;
+        min-height: 40px;
+        > * {
+          font-size: 1.3rem;
+        }
+    }
+    .icon-box-content {
+        text-align: center;
+    }
+  }
+  .icon-box-side {
+    @include flex($type: "center");
+    @include flex-option($type: justify-content, $value:flex-start);
+    .icon-box-title {
+      font-size: 1.3rem;
+    }
+    .icon-box-des {
+      font-size: 1.3rem;
+    }
+    .icon-box-content {
+        text-align: left;
+    }
+    .icon-box-icon {
+        margin-right: 1.5rem;
+        margin-bottom: 0;;
+    }
+    i { 
+        display: inline-block;
+        vertical-align: middle;
+    }
+  }
+  .icon-box-icon {
+    display: inline-block;
+    margin-bottom: 1.4rem;
+    .icon-box-primary & i { color: $primary-color; }
+    .icon-box-secondary & i { color: $secondary-color; }
+    .icon-box-white & {
+        svg {
+            fill: $white-color;
+        }
+        i {
+            color: $white-color;
+        }
+    }
+    .icon-box-light & {
+        svg {
+            fill: $light-color;
+        }
+    }
+  
+    i {
+        font-size: 2.9rem;
+        font-weight: 400;
+        line-height: 1;
+        &.ecs-icon-truck { font-size: 3.9rem; }
+        &.ecs-icon-bag { 
+            font-size: 3.7rem; 
+        }
+        &.ecs-icon-money { font-size: 3.5rem; }
+        &.ecs-icon-chat { font-size: 4.4rem; }
+    }
+    .icon-box-lg & {
+        i {
+            font-size: 6rem;
+        }
+    }
+  }
+/*#endregion*/
+
+/*#region Mobile responsive section styles*/
+  @media screen and (max-width: 1024px) and (min-width: 770px) {
+    .icon-box-wrapper .icon-box-side {
+      padding:0 1rem;
+    }
+    .icon-box-side .icon-box-title {
+      font-size: 1.1rem;
+    }
+  }
+/*#endregion*/

@@ -1,0 +1,23 @@
+article.post.item-blog(itemprop='liveBlogUpdate' itemscope itemtype='http://schema.org/BlogPosting')
+    figure.post-media.br-sm
+        a.img(href=item.href title='')
+            picture
+                source(media='' srcset='' type='image/webp')
+                img(src=item.src alt='' itemprop='thumbnail' width='300' height='210' loading='lazy')
+        .post-calendar
+            span.post-day=item.day
+            span.post-month T #{item.month}
+    .post-details
+        .post-cats
+            a(href='/blogcat.html')=item.cat 
+        h3.post-title.text-bold(itemprop='headline')
+            a(href=item.href itemprop='url' title='')=item.name
+        .post-content(itemprop='description')!=item.des
+        .post-meta by
+            a.post-author(href='')=item.author
+            =' - '
+            a.post-date(href='' itemprop='datePublished' content='') #{item.day}.#{item.month}.#{item.year}
+            =' '
+            a.post-comment(href='')
+                i.ecs-icon-comments
+                span=item.cmt

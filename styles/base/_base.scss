@@ -1,0 +1,581 @@
+/** Base */
+
+// Set variables
+@include set-default(
+    (
+        base: (
+            // max-width of '.container'
+            _container-width: $container-width,
+            // max-width of '.container-fluid'
+            _container-fluid-width: $container-fluid-width,
+            // grid spaces
+            _gutter-lg: 15px,
+            _gutter-md: 10px,
+            _gutter-sm: 5px,
+            _gutter-xs: 1px,
+            // Body
+            body: (
+                font-family: $font-family-primary,
+                font-size: $font-size,
+                line-height: $line-height,
+                color: $body-color,
+            ),
+            page-wrapper: (
+                margin-left: false,
+                margin-right: false
+            ),
+        )
+    )
+);
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    font-size-adjust: 100%;
+    font-weight: $font-weight-normal;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    @include print_css( base, body );
+    margin: 0;
+    overflow-x: hidden;
+    font-weight: $font-weight-normal;
+    /* Disables pull-to-refresh but allows overscroll glow effects. */
+    //overscroll-behavior-y: contain;   
+    &.right-sidebar-active,
+    &.left-sidebar-active,
+    &.sidebar-active,
+    &.msearch-active,
+    &.mmenu-active,
+    &.dropdown-active  {
+        height: 0vh;
+        overflow-y: hidden;
+        pointer-events: none;
+    }
+}
+.sticky-content-wrapper {
+    pointer-events: auto;
+}
+main {
+    display: block;
+    position: relative;
+}
+
+body:not(.loaded) * {
+    @include animation($customize: true) {
+        -ms-transition: all 0s !important;
+        -webkit-transition: all 0s !important;
+        -moz-transition: all 0s !important;
+        -o-transition: all 0s !important;
+        transition: all 0s !important;
+    };
+}
+
+.page-wrapper {
+    @include print_css( base, page-wrapper );
+    @include animation($customize: true) {
+        -ms-transition: margin .4s, opacity .5s;
+        -webkit-transition: margin .4s, opacity .5s;
+        -moz-transition: margin .4s, opacity .5s;
+        -o-transition: margin .4s, opacity .5s;
+        transition: margin .4s, opacity .5s;
+    }
+    position: relative;
+    .loaded > & {
+        opacity: 1;
+    }
+}
+
+
+ul {
+    padding-left: 1.5em;
+}
+.menu, .menu ul,
+.mobile-menu, .mobile-menu ul,
+.nav, .nav ul,
+.breadcrumb ul,
+.breadcrumb ol,
+.widget-body, .widget-body ul,
+.dropdown-box,
+.pagination,
+.nav-filters,
+.shipping-methods,
+.shipping-methods ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+// For Safari
+input, .btn {
+    margin: 0;
+}
+
+// anchor
+a {
+    @include animation($type: color, $time: 0.3s, $effect: ease);
+    text-decoration: none;
+    -webkit-text-decoration-skip: objects;
+    cursor: pointer;
+    color: $body-color;
+    &:hover {
+        color: $primary-color;
+    }
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+        text-decoration: none
+    }
+    &.disabled {
+        cursor: not-allowed;
+    }
+}
+:focus {
+    outline: 0;
+}
+.readmore-js {
+    position: relative;
+    pointer-events: none;
+    .btn-readmore-js {
+        @include border($position: "all", $size:1px, $style: solid, $color: $primary-color);
+        @include border-radius($val: 4px);
+        display: block;
+        width: 229px;
+        height: 39px;
+        margin: 0px auto;
+        color: $primary-color;
+        font-size: 13px;
+        font-weight: $font-weight-light;
+        line-height: 39px;
+        text-align: center;
+        pointer-events: auto;
+
+    }
+    &:after {
+        pointer-events: none;
+        content: "";
+        width: 100%;
+        position: absolute;
+        top: -200px;
+        left: 0px;
+        width: 100%;
+        height: 200px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgb(255, 255, 255)));
+        background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+        background-image: -moz-linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+        background-image: -o-linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+    }
+    &.close {
+        .btn-readmore-js {
+            margin-top:2rem;
+        }
+        &::after {
+            display: none;
+        }
+    }
+}
+figure {
+    margin: 0;
+}
+hr {
+    margin: .5rem 0 1.5rem;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+img,iframe {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: middle;
+}
+code,
+mark {
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 1.2em;
+    color: $primary-color;
+    background-color: rgba(51, 102, 153, 0.06);
+}
+code + code {
+    margin-left: .5em;
+}
+mark {
+    background: yellow;
+    font-weight: 700;
+}
+pre {
+    max-height: 30rem;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    background: #f5f7f9;
+    font-size: 1.2em;
+    overflow: auto;
+
+    code,
+    mark {
+        border: 1px solid #e1e1e1;
+        font-size: 1em;
+    }
+}
+
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 0;
+}
+.table {
+    margin-bottom: 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+// .table {
+//     margin-bottom: 3rem;
+
+//     th,
+//     td {
+//         border: 1px solid $border-color;
+//         padding: .5rem 1rem;
+//         min-height: 3.3rem;
+//     }
+//     th {
+//         text-align: left;
+//         padding: 1rem;
+//         background-color:  $grey-background;
+//     }
+// }
+
+// @include mq("xs", "max") {
+//     .table {
+//         tr {
+//             display: block;
+//             margin-bottom: 2rem;
+//             td {
+//                 display: block;
+//                 width: 100%;
+//                 border: 1px solid #e1e1e1;
+//                 &:first-child {
+//                     background: #e1e1e1;
+//                 }
+//                 &:not(:last-child) {
+//                     border-bottom: 0;
+//                 }
+//             }
+//         }
+//         th {
+//             display: none;
+//         }
+//     }
+// }
+.scrollnotable {
+    overflow: hidden !important;
+}
+.scrollable {
+    -webkit-overflow-scrolling: touch;
+    -ms-scroll-chaining: none;
+        overscroll-behavior: contain;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        height: 7px;
+        width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        margin-right: 2px;
+        background: rgba(0,0,0,0.25);
+        border-radius: 5px;
+        cursor: pointer;
+        // -webkit-transition: background-color 0.3s;
+        // transition: background-color 0.3s;
+    }
+   
+}
+
+.scrollable-light::-webkit-scrollbar-thumb {
+    background: rgba($white-color,0.2);
+}
+
+.scrollable:hover::-webkit-scrollbar-thumb {
+//.sidebar-content:hover::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.25);
+}
+
+// Sticky Content
+.sticky-content {
+    &.fix-top {
+        top: 0;
+    }
+
+    &.fix-bottom {
+        bottom: 0;
+    }
+
+    &.fixed {
+        @include transform($args: translateY(0));
+        @include shadow($val:  0 0 10px 1px rgba(0,0,0,.1));
+        position: fixed;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        z-index: 90;
+        &.fix-top {
+            @include use-keyframes($args: fixedTopContent .4s);
+        }
+        &.fix-bottom {
+            @include use-keyframes($args: fixedBottomContent .4s);
+        }
+    }
+}
+.nav-hidden {
+    @include animation($customize: true) {
+        -ms-transition: transform .3s;
+        -webkit-transition: transform .3s;
+        -moz-transition: transform .3s;
+        -o-transition: transform .3s;
+        transition: transform .3s;
+    };
+    -webkit-animation: inherit;
+    -moz-animation: inherit;
+    -ms-animation: inherit;
+    -o-animation: inherit;
+    animation: inherit;
+    &.hidden {
+        @include transform($args:translateY(-100%));
+    }
+}
+// Load more icon animation (new)
+.preload-container {
+    position: relative;
+    .pre-load {
+        background-color: $white-color;
+        //display: none;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+
+        .flex-center {
+            width: 100%;
+            height: 100%;
+        }
+
+        .loader {
+            @include use-keyframes($args: preloadpage 1s linear infinite);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border-top: 2px solid $primary-color;
+            border-right: 2px solid transparent;
+        }
+    }
+}
+@include keyframes($animation-name: "shimmerpreload") {
+    from {
+        background-position: 1000px 0;
+    }
+
+    to {
+        background-position: -1000px 0;
+    }
+}
+
+.shimmer-container {
+    [class*="media"], [class*="gallery"] {
+        @include use-keyframes($args: shimmerpreload 3s infinite);
+        background: -webkit-gradient(linear, left top, right top, color-stop(5%, #e6e6e6), color-stop(25%, #cccccc), color-stop(35%, #e6e6e6));
+        background: -webkit-linear-gradient(left, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        background: -moz-linear-gradient(left, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        background: -o-linear-gradient(left, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        -webkit-background-size: 1000px 100%;
+        -moz-background-size: 1000px 100%;
+        -o-background-size: 1000px 100%;
+        background-size: 1000px 100%;
+
+        * {
+            opacity: 0 !important;
+        }
+    }
+    .product-form,
+    .product-variations * {
+        opacity: 0;
+    }
+
+    [class*="details"] > * {
+        @include use-keyframes($args: shimmerpreload 3s infinite);
+        background: -webkit-gradient(linear, left top, right top, color-stop(5%, #e6e6e6), color-stop(25%, #cccccc), color-stop(35%, #e6e6e6));
+        background: -webkit-linear-gradient(left, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        background: -moz-linear-gradient(left, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        background: -o-linear-gradient(left, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+        -webkit-background-size: 1000px 100%;
+        -moz-background-size: 1000px 100%;
+        -o-background-size: 1000px 100%;
+        background-size: 1000px 100%;
+        text-indent: -99999px;
+        color:transparent !important;
+    }
+}
+/* Animations */
+@include keyframes($animation-name: "preloadpage") {
+    to {
+        @include transform($args: rotate(360deg));
+    }
+}
+#loading {
+    background-color: rgba(227, 228, 232, .8);
+    //display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    .loading-content {
+        @include flex($type: "center");
+        @include flex-option($type: flex-direction, $value:"column");
+        height: 100%;
+        width: 100%;
+    }
+    .loader {
+        @include use-keyframes($args: preloadpage 1s linear infinite);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border-top: 2px solid $primary-color;
+        border-right: 2px solid transparent;
+    }
+}
+@include keyframes($animation-name: "spin") {
+    0% { @include transform($args:rotate(0deg));}
+    100% { @include transform($args:rotate(359deg));}
+}
+.loading {
+    pointer-events: none;
+}
+.loading:not(.load-more-overlay),
+.load-more-overlay.loading::after {
+    @include border-radius($val: 32px);
+    @include use-keyframes($args: "spin" 650ms infinite linear);
+    border: 2px solid transparent;
+    border-top: 2px solid rgba($primary-color,1) !important;
+    border-right: 2px solid rgba($primary-color,0.4) !important;
+    border-bottom: 2px solid rgba($primary-color,1) !important;
+    border-left: 2px solid rgba($primary-color,0.4) !important;
+    content: "";
+    display: block;
+    height: 20px;
+    top: 50%;
+    margin-top: -10px;
+    left: 50%;
+    margin-left: -10px;
+    right: auto;
+    position: absolute;
+    width: 20px;
+}
+.load-more-overlay {
+    position: relative;
+
+    &.loading::after {
+        content: '';
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: $white-color;
+        opacity: .8;
+    }
+}
+// Product Rating
+.ratings-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+      -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    line-height: 1;
+    margin-bottom: .6rem;
+    font-size: 1.2rem;
+}
+.ratings-full,
+.ratings {
+    position: relative;
+    font-family: 'ecs';
+    letter-spacing: .2em;
+}
+.ratings-full {
+    cursor: pointer;
+    margin-right: .5rem;
+    &::before {
+        content: "\e986" "\e986" "\e986" "\e986" "\e986";
+        color: rgb(199, 199, 199);
+        white-space: nowrap;
+    }
+    &:hover {
+        .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+.ratings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &::before {
+        content: "\e986" "\e986" "\e986" "\e986" "\e986";
+        color: rgb(253, 216, 54);
+    }
+}
+.rating-reviews {
+    margin: 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: #aaa;
+    span {
+        text-transform: capitalize;
+    }
+    &:hover {
+        color: $primary-color;
+    }
+}
+
+/*#region Mobile responsive section styles*/
+@include mq("xs", "max") {
+    body {
+        &.select-active  {
+            height: 0vh;
+            overflow-y: hidden;
+            pointer-events: none;
+        }
+    }
+}
+/*#endregion*/

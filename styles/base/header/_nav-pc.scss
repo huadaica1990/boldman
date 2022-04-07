@@ -1,0 +1,238 @@
+/*--------------------------------
+    Nav pc
+        -Default
+--------------------------------*/
+// Set variables
+@include set-default(
+    (
+        navPc: (
+            _translate: 1.5rem,
+            _border:.5rem,
+            _padding: 1.5rem 0,
+            hr: (
+                border-color:#eeeeee,
+                border-bottom: 0px,
+                margin: 0.5rem 0 1rem,
+            ),
+            nav:(
+                _padding: 1rem,
+            ),
+            subMenu: (
+                _linkPadding: .75rem 2rem,
+                background-color: $white-color,
+                min-width: 21.5rem,
+            ),
+            megaMenu: (
+                padding: 2.2rem 2rem,
+                nav: (
+                    _marginRight: 2rem,
+                    _linkPadding: .75rem 0,
+                ),
+            ),
+            icon: (
+                display: inline-block,
+                font-family: "customize",
+                line-height: 0,
+                font-size: 1.2rem,
+                font-weight:$font-weight-bold,
+            )
+        )
+    )
+);
+// Default
+#nav-pc {
+    height: 100%;
+    position: relative;
+    font-size: 1.4rem,;
+    .nav-pc-body {
+        height: inherit;
+        li {
+            a {
+                @include flex($type: "center", $get: "left");
+            }
+            &:hover,
+            &.active {
+                > .has-submenu-title > a,
+                > a {
+                    color: #{get(header, _linkColorHover)};
+                }
+            }
+        }
+        > li {
+            height: inherit;
+            margin-right: #{get(header, footer, _marginRight)};
+            > .has-submenu-title {
+                height: inherit;
+                > a {
+                    &::after {
+                        @include print_css(navPc, icon);
+                        @include e-cen($type: "top");
+                        @include animation($type: right, $time: 0.3s, $effect: ease);
+                        margin-left: 1rem;
+                        content: "\e805";
+                    }
+                }
+            }
+            > .has-submenu-title > a,
+            > a {
+                height: inherit;
+                padding: #{get(navPc, _padding)};
+                font-weight: #{get(header, footer, _fontWeight)};
+
+            }
+            &.active,&:hover {
+                color: #{get(header, _linkColorHover)};
+            }
+            // &:last-child {
+            //     margin-right:0;
+            // }
+        }
+        .has-submenu  {
+            position: relative;
+            > .nav {
+                @include print_css(navPc, subMenu);
+                @include animation($type: all, $time: 0.3s, $effect: ease-out);
+                @include shadow($val: 0 2px 35px rgba(0,0,0,.1));
+                @include transform($args: translateY(#{get(navPc, _translate)}));
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                z-index: 10;
+                position: absolute;
+                top: 100%;
+                left: 0%;
+            }
+            &:hover {
+                > .has-submenu-title > a::after {
+                    right:0.5rem;
+                }
+                > .nav  {
+                    @include visible($active: true, $zindex: 10);
+                    @include transform($args: translateY(0rem));
+                }
+            }
+            &:not(.mega-menu) {
+                .nav {
+                    padding:#{get(navPc, nav, _padding)} 0;
+                    li {
+                        a {
+                            padding: #{get(navPc, subMenu, _linkPadding)};
+                        }
+                    }
+                }
+                > .nav.right {
+                    left:auto;
+                    right:0;
+                    .level3  {
+                        @include transform($args: translateX(#{get(navPc, _translate)}));
+                        left:-100%;
+                    }
+                }
+                .has-submenu {
+                    > .has-submenu-title {
+                        > a {
+                            &::after {
+                                @include print_css(navPc, icon);
+                                @include e-cen($type: "top");
+                                @include animation($type: margin-right, $time: 0.3s, $effect: ease);
+                                content: "\e807";
+                                margin-left: auto;
+                            }
+                        }
+                    }
+                    > .nav {
+                        @include transform($args: translateX(-#{get(navPc, _translate)}));
+                        top:0;
+                        left:100%;
+                    }
+                    &:first-child {
+                        > .nav {
+                            top: -#{get(navPc, nav, _padding)};
+                        }
+                    }
+                    &:hover {
+                        > .has-submenu-title > a::after {
+                            margin-right:-0.5rem;
+                        }
+                        > .nav {
+                            @include transform($args: translateX(0rem));
+                        }
+                    }
+                }
+            }
+            &.mega-menu {
+                position:static;
+                hr {
+                    @include print_css(navPc, hr);
+                    @include border();
+                }
+                .nav {
+                    padding:0;
+                    .has-submenu-title > a {
+                        position: static;
+                        &::after {
+                            display:none;
+                        }
+                    }
+                }
+                > .nav {
+                    @include print_css(navPc, megaMenu);
+                    @include flex($type: "container");
+                    min-width: 100%;
+                    > li {
+                        flex: 1;
+                        width: calc((100% - #{get(navPc, megaMenu, nav, _marginRight)}*3 - 1px)/4);
+                        margin-right: #{get(navPc, megaMenu, nav, _marginRight)};
+                        .has-submenu-title {
+                            > a {
+                                padding:0;
+                                font-weight: $font-weight-bold;
+                                text-transform: uppercase;
+                            }
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                    .has-submenu {
+                        position:static;
+                        .nav {
+                            @include transform($args: translateX(0rem));
+                            @include visible($active: true, $zindex: 10);
+                            box-shadow: none;
+                            position:static;
+                            min-width: auto;
+                            li {
+                                a {
+                                    padding: #{get(navPc, megaMenu, nav,  _linkPadding)};
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .has-submenu.mega-menu > .nav {
+            // @include border-radius($val: 0 0 #{get(navPc, _border)} #{get(navPc, _border)});
+            .has-submenu .nav {
+                opacity: inherit;
+                visibility: inherit;
+                pointer-events: inherit;
+                z-index: inherit;
+            }
+        }
+    }
+}
+
+/*#region Mobile responsive section styles*/
+	@include mq(xl, 'max') {
+        #nav-pc {
+            .nav-pc-body {
+                > li {
+                    margin-right: #{get(header, footer, 1024, _marginRight)};
+                }
+            }
+        }
+    }
+/*#endregion*/

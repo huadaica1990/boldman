@@ -1,0 +1,179 @@
+
+-
+    const socialList = [
+        {
+            name: 'Facebook',
+            icon: 'ecs-icon-facebook',
+            href: '',
+            linkshare: '//www.facebook.com/sharer.php?u=@Request.Url',
+            class: 'social-icon social-facebook ecs-icon-facebook'
+        },
+        {
+            name: 'Twitter',
+            icon: 'ecs-icon-twitter',
+            href: '',
+            linkshare: '//twitter.com/share?url=@Request.Url',
+            class: 'social-icon social-twitter ecs-icon-twitter'
+        },
+        {
+            name: 'Youtube',
+            icon: 'ecs-icon-youtube',
+            href: '',
+            linkshare: '',
+            class: 'social-icon social-youtube ecs-icon-youtube'
+        },
+        {
+            name: 'Instagram',
+            icon: 'ecs-icon-instagram',
+            href: '',
+            linkshare: '',
+            class: 'social-icon social-instagram ecs-icon-instagram'
+        },
+        {
+            name: 'Pinterest',
+            icon: 'ecs-icon-pinterest',
+            href: '',
+            linkshare: '//pinterest.com/pin/create/button/?url=@Request.Url&description=@name',
+            class: 'social-icon social-pinterest ecs-icon-pinterest'
+        },
+        {
+            name: 'Zalo',
+            icon: 'demo-icon cus-zalo-icon',
+            href: '',
+            linkshare: '',
+            class: 'social-icon social-zalo demo-icon cus-zalo-icon'
+        },
+    ];
+mixin social-list(social = socialList)
+    each item in social
+        a(href=item.href target='_blank' rel='nofollow' class=item.class)
+            //- i(class=item.icon)
+
+mixin share-social-list(social = socialList)
+    each item in social
+        if item.linkshare != ''
+            a(class=item.class href=item.linkshare data-label=item.name onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px'); return false;" rel='nofollow' target='_blank' title=item.name)
+                //- i(class=item.icon)
+
+-
+    const langList = [
+        {
+            name: 'Việt Nam',
+            isActive: true,
+            icon: '/img/flag-vn.png',
+        },
+        {
+            name: 'English',
+            isActive: false,
+            icon: '/img/flag-usa.png',
+        },
+    ];
+mixin lang-list
+    each item in langList
+        a(href='javascript:' title=item.name class=item.isActive ? 'active' : '' onclick='')
+            img.dropdown-image(src=item.icon alt=''  loading='lazy' width='14' height='9')
+            .
+                #{item.name}
+            
+-
+    const breadcrumbList = [
+        {
+            name: 'Trang chủ',
+            href: '/',
+            isActive: false,
+        },
+        {
+            name: 'Danh mục',
+            href: '',
+            isActive: true,
+        },
+    ];
+mixin breadcrumb-list(breadcrumb = breadcrumbList)
+    ol(itemscope itemtype='https://schema.org/BreadcrumbList')
+        each item,index in breadcrumb
+            li(itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem' class=item.isActive ? 'active' : '')
+                a(itemscope itemtype='https://schema.org/WebPage'  itemprop='item' href=item.href itemid=item.href)
+                    span(itemprop='name')=item.name
+                meta(itemprop='position' content=index+1)
+
+mixin loading()
+    //- div(class='preload-container')
+    div.pre-load
+        div.flex-center
+            div.loader
+
+mixin pagination
+    .pagination-container
+        ul.pagination
+            li.page-item.prev.disabled
+                a.page-link.ecs-icon-angle-left(aria-label='Previous')
+            //- li.disabled.PagedList-ellipses
+            //-     a …
+            li.page-item
+                a.page-link 2
+            li.page-item
+                a.page-link 3
+            li.page-item.active
+                a.page-link 4
+            li.page-item
+                a.page-link 5
+            li.page-item
+                a.page-link 6
+            li.page-item.next
+                a.page-link.ecs-icon-angle-right(aria-label='Next')
+
+-
+    const selectList = [
+        {
+            id: 1,
+            name: 'Mặc định',
+            isActive: true,
+            isShow: true,
+        },
+        {
+            id: 2,
+            name: 'Giá từ thấp tới cao',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 3,
+            name: 'Giá từ cao tới thấp',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 4,
+            name: 'Tên từ A - Z',
+            isActive: false,
+            isShow: true,
+        },
+        {
+            id: 5,
+            name: 'Tên từ Z - A',
+            isActive: false,
+            isShow: false,
+        },
+    ];
+mixin select(select = selectList, classlst, isActive = true, id = 'select1')
+    .custom-select(data-id=id class=isActive ? '' : 'disabled' class=classlst)
+        select.d-none(id=id)
+            each item in select
+                option(value=item.id selected=item.isActive==true disabled=item.isShow==false)=item.name
+        .custom-select-header(data-id=id)
+            span
+        .custom-select-body
+            if select.length > 5
+                .custom-select-search
+                    input.form-control(placeholder='Tìm từ khóa...')
+            ul
+                each item in select
+                    li(data-value=item.id)=item.name
+            if select.length > 5
+                .custom-select-search-info Không có kết quả phù hợp...        
+        .custom-select-backdrop
+
+mixin checkbox(typebox = 'checkbox', item, classlst, url)
+    .custom-radio(class=classlst)
+        input.custom-control-input(type=typebox name=typebox=='checkbox' ? item.id : url id=item.id value='' checked=item.isActive==true)
+        label.custom-control-label(for=item.id)=item.name

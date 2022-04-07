@@ -1,0 +1,172 @@
+{
+	// Place your 0_Blank_Theme workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"New section": {
+		"scope": "pug,jade",
+		"prefix": "pug-sec",
+		"body": [
+			"//- blank",
+			"section(id='blank')",
+			"	.section-header",
+			"	.section-body",
+			"	.section-footer",
+			"//- end blank"
+		],
+		"description": "Tạo mới section"
+	},
+	"New item": {
+		"scope": "pug,jade",
+		"prefix": "pug-item",
+		"body": [
+			".item",
+			"	figure.item-media",
+			"		picture",
+			"			source.swiper-lazy(media='' data-srcset='' type='image/webp')",
+			"			img.swiper-lazy.lazyload(data-src='' src='' alt='')",
+			"		.swiper-lazy-preloader",
+			"	.item-details",
+			"		.item-title",
+			"			a(href='' title='') NAME",
+			"		.item-content DES",
+			"		.btn-container",
+			"			a.btn(href='' title='') BUTTON"
+		],
+		"description": "Tạo mới item"
+	},
+	"Picture tag": {
+		"scope": "pug,jade",
+		"prefix": "pug-pic",
+		"body": [
+			"figure",
+			"	picture",
+			"		source.swiper-lazy(media='(max-width:450px)' srcset='' type='image/webp')",
+			"		source.swiper-lazy(media='(max-width:450px)' srcset='')",
+			"		source.swiper-lazy(media='' data-srcset='' type='image/webp')",
+			"		img.swiper-lazy.lazyload(data-src='' src='' alt='')",
+			"	.swiper-lazy-preloader",
+		],
+		"description": "Tạo mới picture"
+	},
+	"Youtube img": {
+		"scope": "pug,jade",
+		"prefix": "pug-yputube_img",
+		"body": [
+			"img.swiper-lazy.lazyload(data-src='https://img.youtube.com/vi/S2bmkVMkRA/maxresdefault.jpg' src='' alt='')"
+		],
+		"description": "Tạo mới youtube thumb"
+	},
+	"Star container": {
+		"scope": "pug,jade",
+		"prefix": "pug-star",
+		"body": [
+			".ratings-container",
+			"	.ratings-full",
+			"		span.ratings(style=\"width: 10%;\")"
+		],
+		"description": "Tạo mới rating"
+	},
+	"Checkbox container": {
+		"scope": "pug,jade",
+		"prefix": "pug-check",
+		"body": [
+			".custom-radio",
+			"	input.custom-control-input(type='checkbox' name='check1' id='check1' value='')",
+			"	label.custom-control-label(for='check1') NAME"
+		],
+		"description": "Tạo mới checkbox"
+	},
+	"Sidebar container": {
+		"scope": "pug,jade",
+		"prefix": "pug-side",
+		"body": [
+			".container",
+			"	.row",
+			"		.main-content",
+			"		aside#sidebar.sidebar.sidebar-fixed.sticky-sidebar-wrapper.right-sidebar",
+            "        .sidebar-overlay"
+            "            a.sidebar-close(href='javascript:')",
+            "               i.close-icon",
+            "       	a.sidebar-toggle(href='javascript:')",
+            "           	i.demo-icon.cus-filter",
+            "       	- let sideIcon = false",
+            "       	- let sideBarCat = true;",
+            "       	- let sideBarProduct = false;",
+            "       	- let sideBarBlog = false;",
+            "       	- let sideBarTag = true;",
+            "       	- let sideBarFilter = true;",
+            "       	include components/_sidebar.pug"
+		],
+		"description": "Tạo mới sidebar"
+	},
+	"Modal": {
+		"scope": "pug,jade",
+		"prefix": "pug-modal",
+		"body": [
+			"a.btn.btn-primary(data-toggle='modal' href='#info|noti|popup|registration|-modal') OPEN MODAL"
+		],
+		"description": "Tạo mới modal"
+	},
+	"Swiper slider": {
+		"scope": "pug,jade",
+		"prefix": "pug-swiper",
+		"body": [
+			".swiper-container.swiper-theme",
+			"	.swiper-wrapper",
+			"		.swiper-slide",
+			"			figure",
+			"				a.item(href='' title='')",
+			"					picture",
+			"						source.swiper-lazy(media='(max-width:450px)' srcset='' type='image/webp')",
+			"						source.swiper-lazy(media='(max-width:450px)' srcset='')",
+			"						source.swiper-lazy(media='' data-srcset='' type='image/webp')",
+			"						img.swiper-lazy(data-src='' alt='')",
+			"					.swiper-lazy-preloader",
+			"	//- Add Arrows",
+			"	button.swiper-button-next.swiper-button",
+			"	button.swiper-button-prev.swiper-button",
+			"	.swiper-pagination"
+		],
+		"description": "Tạo mới slider"
+	},
+	"From contact": {
+		"scope": "pug,jade",
+		"prefix": "pug-form",
+		"body": [
+			"form#js-contact-form.flex-container(action='/aj/StaticPage/Contact' method='post' onsubmit='return false;submitcontact()')",
+			"	.error-lst.alert-danger(style='display: none')",
+			"		ul",
+			"	input.form-control.get-value(type='text' name='name' placeholder='Họ và tên*' data-required='required' data-alert='Họ và tên' data-type='0')",
+			"	input.form-control.get-value(type='email' name='email' placeholder='Email*' data-required='required' data-alert='Email' data-type='0')",
+			"	input.form-control.get-value(type='tel' name='phonenumber' placeholder='Số điện thoại*' data-required='required' data-alert='Số điện thoại' data-type='0')",
+			"	textarea.form-control.get-value(name='body' placeholder='Nội dung*' data-required='required' data-alert='Nội dung' data-type='3')",
+			"	button.btn.btn-primary.btn-big.btn-loading.m20--top(type='submit' onclick="submitcontact('#js-contact-form')") Gửi",
+			"	input(type='hidden' name='ContactType' value='0')",
+			"	input(type='hidden' name='Action' value='/aj/StaticPage/Contact')",
+			"	input(type='hidden' name='Title' value='Liên hệ từ trang liên hệ')",
+			"	input(type='hidden' name='Note' value='Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất')"
+		],
+		"description": "Form liên hệ"
+	},
+	"Tabs": {
+		"scope": "pug,jade",
+		"prefix": "pug-tab",
+		"body": [
+			".tab-nav-underline.tab-nav-boxed.nav.tab-js.nav-tabs(role='tablist')",
+			"	li.nav-item",
+			"		a.nav-link.active(href='#tab1')",
+			"			span Tab1",
+			"	li.nav-item",
+			"		a.nav-link(href='#tab2')",
+			"			span Tab2",
+			".tab-content",
+			"	#tab1.tab-pane.active",
+			"	#tab2.tab-pane"
+		],
+		"description": "Tạo tabs"
+	},
+}

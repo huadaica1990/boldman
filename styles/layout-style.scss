@@ -1,0 +1,188 @@
+/**
+ * @Description: source css by TheBoldMan.
+ * @Version: v2.00
+ * @Author: tronghuy2208@gmail.com
+ *
+ * @Summary:
+ *  Rootfolder
+ *  |_ fonts // Contains all fonts use
+ *  |_ icons // Contains all icon fonts use
+ *  |_ img // Contains all img use
+ *  |_ styles // Contains all resources to package
+ *  | |_ base // Contains all the base style in theme
+ *  |   |_ footer // The style for footer
+ *  |   |_ header // The style for header
+ *  | |_ components // Contains all the components style in theme (Ex: style index_page, product_page...)
+ *  | |_ config // Contains all the variables, data in theme
+ *  | |_ elements // Contains all style for elements in theme (Ex: style button, form...)
+ *  | |_ mixins // Contains all mixins, functions in theme
+ *  | |_ pages // Contains all main style pages in theme
+ *  |   |_ css // Contains all main style pages in theme
+ *  |   |_ scripts // Contains all main style pages in theme
+ *  | |_ plugins // Contains all plugins in theme
+ *  | | core.js // core js in theme
+ *  | | layout-script.js // customize global js in theme
+ *  | | layout-style.scss // global css in theme
+ */
+/* 1. Config */
+@import 'config/variables';
+
+/* 2. Mixins */
+@import 'mixins/breakpoint';
+@import 'mixins/core';
+@import 'mixins/buttons';
+@import 'mixins/mixins';
+
+//@import 'config/cus_config';
+
+/* 3. Base */
+@import 'base/base';
+@import 'base/layout';
+@import 'base/grid';
+@import 'base/spacing';
+@import 'base/typography';
+@import 'base/helper';
+@import 'base/customize';
+
+/* 3. Component */
+@import 'components/accordion';
+@import 'components/alert';
+@import 'components/animation';
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/minipopup';
+@import 'components/popup';
+@import 'components/social-icons';
+@import 'components/tab';
+@import 'components/titles';
+@import 'components/tooltip';
+@import 'components/dropdown';
+@import 'components/widget';
+
+@import 'components/image';
+@import 'components/plugin';
+@import 'components/breadcrumb';
+@import 'components/search';
+@import 'components/addon';
+@import 'components/toolbox';
+
+/* 5. Header */
+@import 'base/header/header';
+
+/* 4. Footer */
+@import 'base/footer/footer';
+
+/*#region Height ele*/
+  // Product
+    .product-media {
+        min-height: 290px;
+    }
+    .cols-xl-5 .product-media,
+    .swiper-slide .product-media {
+        min-height: 240px;
+    }
+    .sidebar .product-widget .product-media { 
+        min-height: 90px;
+    }
+    .product-sticky-content .product-media {
+        min-height: 80px;
+    }
+    @include mq("1024px", "max") {
+      .product-media {
+          min-height: 300px;
+      }
+      .cols-xl-5 .product-media {
+          min-height: 260px;
+      }
+      .swiper-slide .product-media {
+          min-height: 200px;
+      }
+    }
+    @include mq("768px", "max") {
+      .product-media,
+      .cols-xl-5 .product-media,
+      .swiper-slide .product-media {
+          min-height: 300px;
+      }
+    }
+    @include mq("450px", "max") {
+      .product-media,
+      .cols-xl-5 .product-media,
+      .swiper-slide .product-media {
+          min-height: 210px;
+      }
+    }
+  // Blog
+    .related-blog .post-media {
+      min-height: 160px;
+    }
+    .post-wrapper  .post-media {
+      min-height: 160px;
+    }
+    .post-widget .post-media {
+        @include center-img($hover: false, $type: "scale");
+        height:80px;
+    }
+    @include mq("1024px", "max") {
+      .related-blog .post-media {
+        min-height: 180px;
+      }
+      .post-wrapper .post-media {
+        min-height: 130px;
+      }
+    }
+    @include mq("768px", "max") {
+      .related-blog .post-media {
+        min-height: 130px;
+      }
+    }
+    @include mq("450px", "max") {
+      .related-blog .post-media {
+        min-height: 190px;
+      }
+      .post-wrapper .post-media {
+        min-height: 190px;
+      }
+    }
+/*#endregion*/
+
+
+/*#region Mobile responsive section styles*/
+  @include mq("1920px") {}
+  @include mq("1440px", "max") {}
+  @include mq("1366px", "max") {}
+  @include mq("1280px", "max") {}
+  @include mq("1024px", "max") {}
+  @include mq("768px", "max") {}
+  @include mq("450px", "max") {}
+  @include mq("360px", "max") {}
+/*#endregion*/
+
+/*#region Style fix all browser*/
+  /*#region Firefox*/
+    @-moz-document url-prefix() {}
+  /*#endregion*/
+
+  /*#region Internet Explorer 10, 11*/
+    @include only-for-ie(){}
+    // @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {}
+  /*#endregion*/
+
+  /*#region Edge*/
+    @include only-for-edge(){}
+    // @-moz-document url-prefix() {}
+  /*#endregion*/
+
+  /*#region Safari*/
+    @include only-for-retina($pixel-ratio : 1.5){}
+    // @media not all and (min-resolution:.001dpcm) {
+    //     @supports (-webkit-appearance:none) {
+    //         @media screen and (max-width: 450px) {
+    //         }
+    //     }
+    // }
+  /*#endregion*/
+/*#endregion*/
+
+
+//@import 'config/cus_custom';

@@ -1,0 +1,900 @@
+/*---------------------------------
+    Popup
+        - Popup
+        - Popup Close
+        - Popup Arrow
+        - Popup Content
+        - Popup - Login
+        - Popup - Fancybox
+-----------------------------------*/
+
+// Popup
+
+.mfp-wrap {
+    z-index: 2500;
+    height:100vh !important;
+    position: fixed !important;
+    top: 0 !important;
+    pointer-events: auto;
+}
+.mfp-bg {
+    @include animation($customize: true) {
+        -ms-transition: opactiy .3s ease-out;
+        -webkit-transition: opactiy .3s ease-out;
+        -moz-transition: opactiy .3s ease-out;
+        -o-transition: opactiy .3s ease-out;
+        transition: opactiy .3s ease-out;
+    }
+    z-index: 2500;
+    background: #000;
+    opacity: 0.4;
+    pointer-events: auto;
+    height:100vh !important;
+    position: fixed !important;
+    &.mfp-ready.mfp-fade {
+        opacity: .4;
+    }
+    &.mfp-remove {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+.mfp-container {
+    padding: 4rem 2rem;
+}
+
+// Popup content 
+.mfp-content > * {
+    @include animation($hover: true, $customize: false, $type: all, $time: 0.3s, $effect: ease, $delay: 0s);
+    @include shadow($val: 5px 5px 20px rgba(0,0,0,.1));
+    position: relative;
+    margin: auto;
+    background: $white-color;
+    opacity: 0;
+
+    .mfp-ready & {
+        opacity: 1;
+    }
+    .mfp-remove & {
+        opacity: 0;
+    }
+}
+
+// Popup Arrow
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+    @include animation($customize: true) {
+        -ms-transition: opacity .3s;
+        -webkit-transition: opacity .3s;
+        -moz-transition: opacity .3s;
+        -o-transition: opacity .3s;
+        transition: opacity .3s;
+    };
+    color: $white-color;
+    font-size: 1.6rem;
+    font-weight: $font-weight-semibold;
+    font-family: "ecs";
+    border: 0;
+    opacity: .5;
+    right: 10%; 
+}
+.pswp__ui > button {
+    &::before {
+        background: transparent;
+        position: static;
+        font-size: 6rem;
+    }
+    &:hover {
+        opacity: 1;
+    }
+}
+.pswp__button--arrow--right::before {
+    content: '\e913';
+}
+.pswp__button--arrow--left {
+    left: 10%;
+
+    &::before {
+        content: '\e912';
+    }
+}
+
+// Product Image Popup - Fancybox
+
+.fancybox-hide {
+    display: none;
+}
+
+.fancybox-wrapper .fancybox__backdrop {
+    background-color:rgba(0,0,0,.4);
+}
+.fancybox__carousel, .fancybox__thumbs {
+    pointer-events: auto;
+}
+.fancybox__thumbs .carousel__slide .fancybox__thumb::after {
+    border-width: 2px;
+    border-color: $primary-color;
+}
+.fancybox__content :focus:not(.carousel__button.is-close) {
+    outline: none;
+}
+.fancybox-fadeInUp {
+    -webkit-animation: 0.25s ease both fancybox-zoomIn;
+    -moz-animation: 0.25s ease both fancybox-zoomIn;
+    -o-animation: 0.25s ease both fancybox-zoomIn;
+    animation: 0.25s ease both fancybox-zoomIn;
+}
+.fancybox-fadeOutDown {
+    -webkit-animation: 0.15s ease both fancybox-zoomOut;
+    -moz-animation: 0.15s ease both fancybox-zoomOut;
+    -o-animation: 0.15s ease both fancybox-zoomOut;
+    animation: 0.15s ease both fancybox-zoomOut;
+}
+@include keyframes($animation-name: "fancybox-zoomIn") {
+
+    from {
+        @include transform($args: scale(0.75));
+        opacity: 0;
+    }
+
+    to {
+        @include transform($args: scale(1));
+        opacity: 1;
+    }
+}
+@include keyframes($animation-name: "fancybox-zoomOut ") {
+    to {
+        @include transform($args:scale(0));
+        opacity: 0;
+        transform: scale(1.25);
+    }
+}
+// Modal
+.modal {
+    background-color: $white-color;
+    width: 500px;
+    max-width: 100%;
+    padding: 5rem 2rem;
+
+    .btn {
+        width: 100%;
+    }
+
+    &-form {
+        .form-group {
+            label {
+                color: $dark-color;
+                line-height: 2;
+            }
+
+            .form-control {
+                @include border-radius($val: .3rem);
+                margin-bottom: 1.4rem;
+                min-height: 4.6rem;
+
+                *:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            textarea.form-control {
+                margin-bottom: 2.1rem;
+                height: 150px;
+                resize: none;
+            }
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+
+            &:last-child {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    }
+
+    &-error {
+        @include border-radius($val: .5rem);
+        padding: 0;
+        max-width: calc(100% - 30px);
+        .alert .close-icon::before,
+        .alert .close-icon::after {
+            background-color: $dark-color;
+        }
+
+        p {
+            color: $dark-color;
+        }
+
+        .alert.alert-bg {
+            background-color: transparent;
+        }
+
+        .mfp-close {
+            display: none;
+        }
+
+        .btn {
+            width: auto;
+        }
+
+        .carousel__button.is-close {
+            display: none;
+        }
+    }
+}
+// Popup - Newsletter modal
+.newsletter-popup {
+    @include border-radius($val: 1rem);
+    /*display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;*/
+    max-width: 78rem;
+    padding: 8.1rem 4.8rem;
+    margin: auto 15px;
+    background-position: center;
+    background-size: cover;
+    .popup-media {
+        margin-bottom: 1.7rem;
+    }
+    
+    h4 {
+        margin-bottom: .2rem;
+        font-size: 2rem;
+        span {
+            display: inline-block;
+            margin-left: 0.4rem;
+            font-weight: 800;
+        }
+    }
+
+    .h2 {
+        margin-bottom: 1.1rem;
+        font-weight: 800;
+        font-size: 2.8rem;
+        line-height: 1.2;
+    }
+    
+    p {
+        margin-bottom: 2.3rem;
+        line-height: 1.75
+    }
+    
+    .input-wrapper-inline {
+        max-width: 34rem;
+        margin-bottom: 3rem;
+    
+        .form-control {
+            min-height: 4.4rem;
+            border-color: $border-color;
+            color: $grey-color;
+        }
+        .btn {
+            padding-top: .9em;
+            padding-bottom: .9em;
+        }
+    }
+    label {
+        padding-left: 2.7rem;
+        &::before {
+            border-color: $border-color;
+        }
+    }
+    &.newsletter-img {
+        padding:0;
+        max-width: -webkit-max-content;
+        max-width: -moz-max-content;
+        max-width: max-content;
+        min-height: auto;
+        .newsletter-body {
+            @include border-radius($val: 1rem);
+            overflow: hidden;
+        } 
+        .form-checkbox {
+            padding:10px;
+        }
+    }
+}
+
+.newsletter-content {
+    max-width: 36rem;
+}
+
+// Popup - Product 
+.mfp-product {
+    .mfp-container {
+        padding: 4rem 3rem 2rem;
+    }
+    .mfp-content {
+        max-width: 88rem;
+        margin: auto;
+    }
+    .product-popup {
+        display: block;
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+    .product-details {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+
+.fancybox-product-popup {
+    .fancybox__slide {
+        padding: 4rem 3rem 2rem;
+    }
+
+    .fancybox__content {
+        width: 88rem;
+        max-width:100%;
+        margin: auto;
+    }
+
+    .product-popup {
+        display: block !important;
+        padding: 2rem;
+    }
+
+    .product-details {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+#product-popup-ajax {
+    color: initial;
+}
+// Popup Login
+.login-popup {
+    width: 50rem;
+    max-width: 100%;
+    padding: 3.3rem 5rem 2.6rem;
+
+    .btn-showpass {
+        position: absolute;
+        right: 0;
+        top: 27.38px;
+        width: 43.99px;
+        height: 43.99px;
+        line-height: 43.99px;
+        text-align: center;
+    }
+
+    input[type=password] {
+        padding-right: 43.99px;
+    }
+
+    .nolabel {
+        .btn-showpass {
+            top: 0;
+        }
+    }
+
+    .btn-back {
+        font-size: 30px;
+        position: absolute;
+        top: 32px;
+        left: 8px;
+        font-weight: $font-weight-semibold;
+    }
+
+    .login-pane {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .social {
+        &-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 25px;
+            line-height: 43px;
+        }
+
+        &-google, &-facebook {
+            font-size: 20px;
+        }
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            margin-bottom: .5rem;
+        }
+    }
+
+    .form-control {
+        min-height: 4.4rem;
+    }
+
+    .form-checkbox {
+        margin-top: 2.2rem;
+        margin-bottom: 2.3rem;
+
+        a {
+            font-size: 1.2rem;
+            color: #a94442;
+        }
+    }
+
+    .btn {
+        display: block;
+    }
+
+    .text-link {
+        margin-bottom: 0;
+        font-size: 12px;
+
+        a {
+            color: rgb(13, 92, 182);
+        }
+    }
+
+    .text-line {
+        position: relative;
+
+        span {
+            background-color: $white-color;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        &:after {
+            @include e-cen($type: "top");
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: 0;
+            content: '';
+            background-color: $border-color;
+        }
+    }
+}
+.login-page {
+
+}
+.fancybox-login-popup {
+    .fancybox__content {
+        padding: 0;
+        max-width:100%;
+    }
+}
+@include mq("md") {
+    .product-popup .product-details {
+        position: absolute;
+        overflow-y: auto;
+        top: 0;
+        left: 2rem;
+        width: calc(100% - 3rem);
+        height: 100%;
+    }
+}
+// Close button
+.mfp-close {
+    @include transform($args: rotateZ(45deg) scale(1));
+    @include animation($customize: true) {
+        -ms-transition: transform .3s;
+        -webkit-transition: transform .3s;
+        -moz-transition: transform .3s;
+        -o-transition: transform .3s;
+        transition: transform .3s;
+    };
+    width: 18px;
+    height: 18px;
+    top: -2.7rem;
+    right: 0;
+    opacity: 1;
+    span {
+        display: none;
+    }
+    &:active {
+        top: -2.7rem;
+    }
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        top: 0;
+        left: calc(50% - 1px);
+        background-color: $white-color;
+    }
+    &::after {
+        width: 100%;
+        height: 2px;
+        top: calc(50% - 1px);
+        left: 0;
+    }
+    &:hover {
+        @include transform($args: rotateZ(135deg) scale(1.5));
+    }
+}
+.carousel__button {
+    @include transform($args: rotateZ(0deg) scale(1));
+    @include animation($customize: true) {
+        -ms-transition: transform .3s;
+        -webkit-transition: transform .3s;
+        -moz-transition: transform .3s;
+        -o-transition: transform .3s;
+        transition: transform .3s;
+    };
+    @include shadow($val: none);
+    &:focus {
+        @include shadow($val: none);
+    }
+    &.is-close:hover,
+    &.fancybox__button--close:hover {
+        @include transform($args: rotateZ(90deg) scale(1.5));
+    }
+    svg {
+        @include filter($val: none);
+    }
+}
+body:not(.is-using-mouse) .fancybox__container :focus {
+    @include shadow($val: none);
+}
+// Popup Zoom effect
+.mfp-ready.mfp-zoom-popup .mfp-content {
+    @include transform($args: scale(1));
+}
+.mfp-zoom-popup .mfp-content, .mfp-removing.mfp-zoom-popup .mfp-content {
+    @include animation($type: all, $time: 0.4s, $effect: ease-in-out, $delay: 0s);
+    @include transform($args: scale(.8));
+}
+
+
+// Popup fade effect
+.mfp-ready.mfp-fadein-popup .mfp-content {
+    -webkit-animation-duration: .4s;
+       -moz-animation-duration: .4s;
+         -o-animation-duration: .4s;
+            animation-duration: .4s;
+    -webkit-animation-name: "fadeIn";
+       -moz-animation-name: "fadeIn";
+         -o-animation-name: "fadeIn";
+            animation-name: "fadeIn";
+}
+.mfp-fadein-popup .mfp-content,
+.mfp-removing.mfp-fadein-popup .mfp-content {
+    -webkit-animation-duration: .4s;
+       -moz-animation-duration: .4s;
+         -o-animation-duration: .4s;
+            animation-duration: .4s;
+    -webkit-animation-name: "fadeOut";
+       -moz-animation-name: "fadeOut";
+         -o-animation-name: "fadeOut";
+            animation-name: "fadeOut";
+}
+
+// Popup video
+.mfp-video-popup {
+    .mfp-content {
+        max-width: 100rem;
+    }
+    video {
+        width: 100%;
+    }
+    .mfp-close {
+        top: 2rem;
+        right: 2rem;
+    }
+}
+
+@include mq("md") {
+    .mfp-product {
+        .product-popup {
+            padding: 3rem;
+
+            .product-form-group {
+                display: block;
+            }
+
+            .action-group {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .fancybox-product-popup {
+        .product-popup {
+            padding: 3rem;
+
+            .product-form-group {
+                display: block;
+            }
+
+            .action-group {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@include mq("md", "max") {
+    .newsletter-popup {
+        /*@include flex-option($type: align-items, $value: "center");*/
+        max-width: 40rem;
+        min-height: 40rem;
+        padding: 0rem 2rem;
+        //background-image: url(../../assets/images/newsletter-2.jpg);
+        text-align: center;
+        .form-checkbox {
+            @include flex-option($type: justify-content, $value: "center");
+        }
+        .input-wrapper-inline {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@include mq("xs", "max") {
+    .mfp-product .mfp-container,
+    .fancybox-product-popup .fancybox__slide {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .login-popup {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/*#region Mobile responsive section styles*/
+@include mq("sm", "max") {
+
+    .fancybox-fadeInUp {
+        -webkit-animation: 0.25s ease both fadeInUp;
+        -moz-animation: 0.25s ease both fadeInUp;
+        -o-animation: 0.25s ease both fadeInUp;
+        animation: 0.25s ease both fadeInUp;
+    }
+
+    .fancybox-fadeOutDown {
+        -webkit-animation: 0.15s ease both fadeOutDown;
+        -moz-animation: 0.15s ease both fadeOutDown;
+        -o-animation: 0.15s ease both fadeOutDown;
+        animation: 0.15s ease both fadeOutDown;
+    }
+
+    .mfp-container {
+        padding-bottom: #{$nav-mobile_height-ios-bottom};
+    }
+
+    .login-popup {
+        @include border-radius($val: 15px 15px 0 0);
+        padding: 2rem 0 0 0;
+
+        .btn-back {
+            position: static;
+            font-size: 20px;
+        }
+
+        .login-pane {
+            padding: 0 15px 15px 15px;
+            max-height: 70vh;
+            overflow-y: auto;
+
+            > *:last-child {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .login-page {
+        @include border-radius($val: 0);
+        padding: 2rem 0;
+
+        .login-pane {
+            padding: 0 15px;
+            height: auto;
+            max-height: initial;
+        }
+    }
+
+    .modal {
+        &.modal-error {
+            .alert-button > .btn:first-child {
+                width: auto;
+                margin-bottom: 0;
+                top: 1.5rem
+            }
+        }
+
+        &:not(.modal-error) {
+            @include border-radius($val: 15px 15px 0 0);
+            padding: 2rem 0 0 0;
+
+            .btn {
+                width: 49%;
+            }
+
+            .modal-body {
+                padding: 0 15px 30px 15px;
+                max-height: 70vh;
+                overflow-y: auto;
+
+                > *:last-child {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+
+    .mfp-modal {
+        .mfp-container {
+            padding: 0;
+        }
+
+        .mfp-content {
+            vertical-align: bottom;
+        }
+
+        .modal:not(.modal-address) {
+            .mfp-close {
+                @include transform($args: none);
+                @include e-cen($type: "left");
+                width: 80px;
+                top: -20px;
+
+                &:after {
+                    display: none;
+                }
+
+                &:before {
+                    @include border-radius($val: 50px);
+                    position: static;
+                    width: 80px;
+                    height: 5px;
+                    background-color: $white-color;
+                }
+            }
+        }
+
+        &.mfp-ready.mfp-fadein-popup .mfp-content {
+            -webkit-animation-duration: .4s;
+            -moz-animation-duration: .4s;
+            -o-animation-duration: .4s;
+            animation-duration: .4s;
+            -webkit-animation-name: "fadeInUp";
+            -moz-animation-name: "fadeInUp";
+            -o-animation-name: "fadeInUp";
+            animation-name: "fadeInUp";
+        }
+
+        &.mfp-fadein-popup .mfp-content,
+        &.mfp-removing.mfp-fadein-popup .mfp-content {
+            -webkit-animation-duration: .4s;
+            -moz-animation-duration: .4s;
+            -o-animation-duration: .4s;
+            animation-duration: .4s;
+            -webkit-animation-name: "fadeOutDown";
+            -moz-animation-name: "fadeOutDown";
+            -o-animation-name: "fadeOutDown";
+            animation-name: "fadeOutDown";
+        }
+    }
+
+    .fancybox-login-popup {
+        .fancybox__content {
+            @include border-radius($val: 15px 15px 0 0);
+            margin-top: auto;
+        }
+    }
+
+    .fancybox-modal-popup {
+        padding: 0;
+
+        .fancybox__slide {
+            padding: 0;
+        }
+
+        .fancybox__slide::after,
+        .fancybox__slide::before {
+            display: none;
+        }
+
+        .modal-popup:not(.modal-error) {
+            margin: auto 0 0 0;
+        }
+
+        .modal-error {
+            margin: auto 15px;
+        }
+    }
+
+    .fancybox-modal-close .carousel__button.is-close {
+        @include border-radius($val: 50px);
+        @include e-cen($type: "left");
+        width: 80px;
+        height: 5px;
+        background-color: $white-color;
+        top: -20px;
+
+        svg {
+            display: none;
+        }
+    }
+
+    .fancybox-product-popup {
+        .carousel__button {
+
+            svg {
+                display: none;
+            }
+
+            &.is-close {
+                position: absolute;
+                @include border-radius($val: 0);
+                @include transform($args: none);
+                width: 100%;
+                height: 55px;
+                top: 0;
+                left: 0;
+                background-color: $primary-color;
+
+                &::before {
+                    @include e-cen($type: "top", $option: translate(-50%, -50%));
+                    position: absolute;
+                    font-size: 28px;
+                    left: 20px;
+                    content: '\e806';
+                    color: $white-color;
+                    font-family: customize;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: never;
+                    display: inline-block;
+                    text-decoration: inherit;
+                    width: auto;
+                    text-align: center;
+                    font-variant: normal;
+                    text-transform: none;
+                    height: auto;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    background-color: transparent;
+                }
+            }
+        }
+
+        .product-details {
+            overflow-y: hidden;
+            height: auto;
+        }
+
+        .product-popup {
+            @include border-radius($val: 0);
+            padding: 0 !important;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .fancybox__content {
+            margin: 0;
+        }
+
+        #product-popup-ajax {
+            /*#{$nav-mobile_height-ios-bottom}*/
+            width: 100%;
+            padding: calc(55px + 2rem) 15px 30px  15px;
+            height: auto;
+            overflow-y: initial;
+        }
+    }
+}
+/*#endregion*/

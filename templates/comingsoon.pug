@@ -1,0 +1,52 @@
+extends layout_blank.pug
+
+block title
+    - let title = 'Coming Soon';
+    title #{title}
+block style
+    - let css = '/release/comingsoon-page.min.css';
+    //- Default
+    link(rel='stylesheet' type='text/css' href='/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/release/main.min.css')
+
+block content
+    //- Var
+    - let idPage = 'comingsoon';
+    - let h1Title = '@ViewBag.MetaTitle';
+    //- Data
+    -
+        let breadcrumb = [
+            {
+                name: 'Trang chủ',
+                href: '/',
+                isActive: false,
+            },
+            {
+                name: 'Coming Soon',
+                href: '',
+                isActive: true,
+            },
+        ];
+    //- Content
+    main.page-wrapper.main(id=`${idPage}-page`)
+        h1.d-none=h1Title
+        section.flex-center(id=`${idPage}`)
+            .logo-container
+                a(href='/')
+                    img(src='/img/logo.png' alt='' loading='lazy' width='133' height='52')
+            .container.text-center
+                h2.coming-title Coming Soon
+                .countdown.countdown-coming(data-until='+10d' data-format='DHMS' data-compact='false' data-labels-short='Năm, Tháng, Tuần, Ngày, Giờ, Phút, Giây' data-relative='true')
+            .social-icons.social-icons-colored.w-100.flex-center
+                +social-list
+block script
+    - let js = '/release/comingsoon-page.min.js';
+    //- Default
+    script(type='text/javascript' src=`/release/default.min.js` defer)
+    //- Page
+
+    script.
+        addCSS('#{css}')
+        addScript('#{js}')
+        addScript('/release/layout-script.min.js')
+    

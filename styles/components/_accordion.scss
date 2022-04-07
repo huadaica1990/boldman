@@ -1,0 +1,257 @@
+/*----------------------------------------
+    Accordion
+        - Default
+        - Accoridion with Gutter
+        - Accordion Boxed
+        - Accordion with colored header
+        - Accordion Simple
+        - Accordion with Plus Icon
+        - Accordion with border
+        - Accordion with Icon
+-----------------------------------------*/
+// Default
+.accordion {
+    overflow: hidden;
+    .collapsed,
+    .expanding {
+        display: none;
+    }
+}
+.accordion-header {
+    color: $dark-color;
+    font-size: 1.6rem;
+    font-weight: $font-weight-semibold;
+    line-height: 1.5;
+
+    a {
+        @include flex($type: "center");
+        @include flex-option($type: justify-content, $value:flex-start);
+        @include animation($customize: true) {
+            -ms-transition: background-color .4s;
+            -webkit-transition: background-color .4s;
+            -moz-transition: background-color .4s;
+            -o-transition: background-color .4s;
+            transition: background-color .4s;
+        };
+        position: relative;
+        color: inherit;
+        padding: 1.4rem 5rem 1.4rem 2rem;
+        span {
+            @include overtext($row: 1, $h: auto);
+        }
+        &.collapse {
+            @include flex-option($type: align-items, $value:flex-start);
+            color: $primary-color;
+            span {
+                display: block;
+            }
+            i {
+                margin-top: .4rem;
+            }
+        }
+        &::after,&::before {
+            position: absolute;
+            top: 50%;
+            //transform: translateY(-50%);
+            right: 2rem;
+            margin-top: -.1rem;
+            font: {
+                family: "ecs";
+                size: 1.2rem;
+                weight: 400;
+            }
+            color: $dark-color;
+        }
+        &:hover {
+            color: $primary-color;
+            &::after {
+                color: $primary-color;
+            }
+        }
+    }
+}
+.accordion-body {
+    padding: 1.2rem 2rem;
+    p {
+        font-size: 1.3rem;
+        line-height: 2;
+    }
+}
+.expand, .collapse {
+    &::after {
+        @include animation($customize: true) {
+            -ms-transition: transform .3s;
+            -webkit-transition: transform .3s;
+            -moz-transition: transform .3s;
+            -o-transition: transform .3s;
+            transition: transform .3s;
+        };
+        content: '\e910';
+    }
+}
+.expand::after {
+    @include transform($args: translateY(-50%) rotate(0deg));
+}
+.collapse::after {
+    @include transform($args: translateY(-50%) rotate(180deg));
+}
+// Accoridion with Gutter
+.accordion-gutter-md {
+    .accordion-item {
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+// Accordion Boxed
+.accordion-boxed {
+    .accordion-header a {
+        padding-bottom: 1.6rem;
+    }
+    .accordion-item {
+        @include border($position: "top", $size:1px, $style:solid, $color: $border-color);
+        border-bottom: 0;
+        &:last-child {
+            @include border($position: "bot", $size:1px, $style:solid, $color: $border-color);
+        }
+    }
+    .accordion-body {
+        padding-top: .5rem;
+        padding-bottom: 1.1rem;
+    }
+    &.accordion-gutter-md {
+        .accordion-item {
+            @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
+        }
+    }
+    &.accordion-plus {
+        .expand, .collapse {
+            &::after, &::before {
+                background-color: $dark-color;
+            }
+        }
+    }
+}
+
+// Accordion with colored header
+.accordion-bg {
+    .accordion-header {
+        a {
+            background-color: $grey-color-light;
+        }
+    }
+
+    &.accordion-primary {
+        .accordion-header a {
+            background-color: $primary-color;
+            color: $white-color;
+            &::after {
+                color: $white-color;
+            }
+        }
+        .accordion-body {
+            background-color: #f8f8f8;
+        }
+    }
+    &.accordion-plus {
+        .expand, .collapse {
+            &::before, &::after {
+                background-color: $white-color;
+            }
+        }
+    }
+}
+
+// Accordion Simple
+.accordion-simple {
+    .accordion-item {
+        @include border($position: "top", $size:1px, $style:solid, $color: $border-color);
+        &:last-child {
+            @include border($position: "bot", $size:1px, $style:solid, $color: $border-color);
+        }
+    }
+    .accordion-body {
+        padding-top: 0;
+    }
+}
+
+// Accordion with Plus Icon
+.accordion-plus {
+    .expand, .collapse {
+        &::before {
+            @include animation($customize: true) {
+                -ms-transition: transform .3s, background-color .3s;
+                -webkit-transition: transform .3s, background-color .3s;
+                -moz-transition: transform .3s, background-color .3s;
+                -o-transition: transform .3s, background-color .3s;
+                transition: transform .3s, background-color .3s;
+            };
+            content: '';
+            width: 1px;
+            height: 1rem;
+            right: 2.4rem;
+        }
+        &::after {
+            @include animation($customize: true) {
+                -ms-transition: transform .3s;
+                -webkit-transition: transform .3s;
+                -moz-transition: transform .3s;
+                -o-transition: transform .3s;
+                transition: transform .3s;
+            };
+            content: '';
+            width: 1rem;
+            height: 1px;
+        }
+    }
+    .expand {
+        &::before {
+            @include transform($args: translateY(-50%) rotate(-180deg));
+            background-color: $dark-color;
+        }
+        &::after {
+            @include transform($args: translateY(-50%) rotate(-180deg));
+        }
+    }
+    .collapse {
+        &::before {
+            @include transform($args: translateY(-50%) rotate(180deg));
+            background-color: transparent !important;
+        }
+        &::after {
+            @include transform($args: translateY(-50%) rotate(180deg));
+        }
+    }
+    .expand::after, .collapse::after {
+        font-size: 1.6rem;
+        right: 2rem;
+        background-color: $dark-color;
+    }
+}
+
+// Accordion with border
+.accordion-border {
+    .accordion-body {
+        @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
+        border-top: 0;
+    }
+}
+
+// Accordion with Icon
+.accordion-icon {
+    .accordion-header {
+        i {
+            font-size: 1.7rem;
+            margin: 0 .8rem 0 0;
+        }
+    }
+    .accordion-body {
+        padding-top: .3rem;
+        padding-bottom: 1.2rem;
+    }
+    &.accordion a { 
+        padding: 1.8rem 5rem 1.8rem 2rem;
+        word-break: break-word;
+    }
+}

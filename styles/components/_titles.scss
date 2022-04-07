@@ -1,0 +1,494 @@
+/*----------------------------
+    Titles
+        - Default
+        - Simple
+            - Link icon
+            - Tab boxed
+            - Tab link
+        - Center
+-----------------------------*/
+
+// Variables
+@include set-default(
+    (
+        base: ( 
+            title: (
+                font-size: 2rem,
+                font-weight: $font-weight-semibold,
+                line-height: 1.2,
+                // letter-spacing: 0,
+                //color: #333333,
+                border: (
+                    color: $border-color,
+                    _width: 2px,
+                    _active-color: $primary-color,
+                    line-height: 2.8
+                ),
+                desc: (
+                    font-size: 1.3rem,
+                    font-family: false,
+                    font-weight: false,
+                    color: $grey-color,
+                    line-height: 2,
+                    letter-spacing: 0
+                ),
+                underline: (
+                    _line-color: $border-color
+                )
+            ),
+            title-link: (
+                margin-bottom: 1.3rem,
+                _wrap-line: $border-color,
+                title: (
+                    margin-bottom: .8rem,
+                    padding: .8rem 0
+                ),
+                link: (
+                    margin-bottom: .7rem,
+                    margin-left: auto,
+                    text-transform: capitalize
+                ),
+                icon: (
+                    margin-left: 0.5rem,
+                    font-size: 1.35rem
+                )
+            ),
+            title-tab: (
+                _item-gap: 2rem,
+                nav-link: (
+                    font-size: 1.3rem,
+                    font-weight: $font-weight-light,
+                    letter-spacing: 0,
+                    color: #333,
+                    text-transform: capitalize,
+                    padding: 0
+                ),
+                tab-nav-box: (
+                    padding: .3rem 0,
+                    nav-link: (
+                        padding: 0.85em 1.42em,
+                        font-weight: $font-weight-semibold,
+                        text-transform: uppercase,
+                        _border-color: $lighter-color
+                    )
+                ),
+                tab-nav-link: (
+                    padding: 1.6rem 2rem .6rem,
+                    background: $grey-color-light,
+                )
+            )
+        )
+    )
+);
+
+/*  Default */ 
+.title {
+    margin-bottom: 1.7rem;
+    color: $dark-color;
+    &.title-link::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 3px;
+        left: 0;
+        bottom: -.8rem;
+        background-color: $primary-color;
+        z-index: 1;
+    }
+    &:not(.h1):not(.h2):not(.h3):not(.h4):not(.h5):not(.h6):not(.h) {
+        @include print_css( base, title );
+        // Title-Small
+        &.title-sm {
+            font-size: 1.6rem;
+        }
+    
+        // Title Medium
+        &.title-md {
+            font-size: 2rem;
+        }
+    
+        // Title Large
+        &.title-lg {
+            font-size: 3rem;
+        }
+    }
+}
+
+// // Line
+// .title-line {
+//     &::before {
+//         content: none;
+//     }
+// }
+
+/* Simple */
+// Title Underline
+.title-underline {
+    position: relative;
+    padding-bottom: 1.6rem;
+    &::before {
+        content: none;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        margin-left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #{ get(base, title, underline, _line-color) };
+    }
+}
+
+// Title Cross
+.title-cross {
+    &::before,
+    &::after {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -moz-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        content: '';
+        @include css( height, base, title, border, _width );
+        @include css( background-color, base, title, border, color );
+    }
+
+    &::before {
+        margin-right: 3rem;
+    }
+
+    &::after {
+        margin-left: 3rem;
+    }
+}
+
+@include mq("xs", "max") {
+    .title-cross {
+        &::before {
+            margin-right: 1.5rem;
+        }
+        &::after {
+            margin-left: 1.5rem;
+        }
+    }
+}
+
+// Title Link icon
+.title-link-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+           -moz-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    position: relative;
+    @include css( margin-bottom, base, title-link, margin-bottom );
+    .title {
+        position: relative;
+        @include print_css( base, title-link, title );
+    }
+    a {
+        @include print_css( base, title-link, link );
+        &:hover {
+            color: $primary-color;
+        }
+        i {
+            vertical-align: middle;
+            @include print_css( base, title-link, icon );
+        }
+    }
+    &::after {
+        @include border($position: "bot", $size:1px, $style: solid, $color: #{ get( base, title-link, _wrap-line )});
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    &.no-link {
+        .title-link {
+            margin-bottom: .8rem;
+        }
+    }
+}
+
+// Tab 
+.tab-with-title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+       -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    .nav-tabs {
+        border-bottom: 0;
+    }
+    .nav-item:not(:last-child) {
+        @include css( margin-right, base, title-tab, _item-gap );  
+    }
+    .nav-link {
+        @include print_css( base, title-tab, nav-link );
+    }
+    // tab boxed
+    &.tab-nav-boxed {
+        @include print_css( base, title-tab, tab-nav-box );
+        .title {
+            margin-bottom: 0;
+            margin-right: 2rem;
+        }
+        .nav-item {
+            &:not(:last-child) {
+                margin-right: 1rem;
+            }
+            &:last-child {
+                margin: 0;
+            }
+        }
+        .nav-link {
+            @include border-radius($val:.3rem);
+            @include border($position: "all", $size:1px, $style: solid, $color: #{ get( base, title-tab, tab-nav-box, nav-link, _border-color )});
+            @include print_css( base, title-tab, tab-nav-box, nav-link );
+            &.active,
+            &:hover {
+                border-color: $primary-color;
+            }
+        }
+    }
+    // tab link
+    &.tab-nav-link {
+        @include print_css( base, title-tab, tab-nav-link );
+        .title, .nav-link {
+            margin-bottom: 1rem;
+        }
+        .title {
+            margin-right: 2rem;
+        }
+    }
+    &.tab-nav-underline {
+        .nav-link::after {
+            bottom: -1px;
+        }
+    }
+    .nav-item.show .nav-link,
+    .nav-item .nav-link.active,
+    .nav-item:hover .nav-link {
+        color: $primary-color;
+    }   
+}
+
+// Title Separator
+.title-separator {
+    margin: 0 .5rem;
+}
+
+/* Center */
+.title-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.tab-with-title.tab-nav-center {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    .nav-tabs {
+        margin: 0;
+    }
+    .nav-item {
+        margin: 0 1rem;
+    }
+    .nav-link {
+        padding: .8rem 0;
+        &::after {
+            bottom: 0;
+            height: .3rem;
+            border: none;
+            background-color: $primary-color;
+        }
+    }
+}
+
+// Title Filter
+.filter-with-title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    .title {
+        margin-bottom: .5rem;
+    }
+}
+
+// Title Section
+.title-section {
+    p {
+        @include print_css( base, title, desc );
+    }
+}
+
+// .title-simple {
+//     margin-bottom: 1rem;
+//     padding-bottom: 1.5rem;
+//     border-bottom: 1px solid $border-color;
+//     &::before,
+//     &::after {
+//         content: none;
+//     }
+// }
+
+// @include mq('lg') {
+//     .heading-flex {
+//         flex-direction: row;
+//         align-items: center;
+//         text-align: left;
+//     }
+// }
+@include mq("lg", "max") {
+    .tab-with-title {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        .nav-tabs {
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        &.tab-nav-boxed {
+            .title {
+                margin-bottom: 1rem;
+                margin-right: 0;
+            }
+            .nav-item {
+                margin-left: .5rem !important;
+                margin-right: .5rem !important;
+            }
+            .nav-link {
+                margin-bottom: .5rem;
+            }
+        }
+        &.tab-nav-link {
+            .nav-item {
+                margin: 0 1rem !important;
+            }
+            .title {
+                margin-right: 0;
+            }
+        }
+    }
+    .filter-with-title {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        .title {
+            margin-bottom: 1rem;
+        }   
+        .nav-filters {
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -moz-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+            li {
+                margin: 0 1.5rem;
+            }
+        }
+    }
+}
+
+@include mq("sm", "max") {
+    .title-link-wrapper {
+        // -webkit-box-orient: vertical;
+        // -webkit-box-direction: normal;
+        // -webkit-flex-direction: column;
+        // -moz-box-orient: vertical;
+        // -moz-box-direction: normal;
+        // -ms-flex-direction: column;
+        // flex-direction: column;
+        // -webkit-box-align: start;
+        // -webkit-align-items: flex-start;
+        // -moz-box-align: start;
+        // -ms-flex-align: start;
+        // align-items: flex-start;
+        .title-link {
+            margin-bottom: 2rem;
+        }
+        // a {
+        //     margin-left: 0;
+        // }
+    }
+}
+
+.widget-title.title-2underline {
+    @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
+    line-height: 0;
+    .label {
+        line-height: 1.7;
+        position: relative;
+        display: inline-block;
+        span {
+            @include overtext($row: 1, $h: auto);
+        }
+        &:after {
+            position: absolute;
+            content: '';
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            height: 2px;
+            background-color: $body-color;
+        }
+    }
+}
+/*#region Style fix all browser*/
+    /*#region Safari*/
+    @include only-for-retina($pixel-ratio : 1.5){}
+    /*#endregion*/
+/*#endregion*/

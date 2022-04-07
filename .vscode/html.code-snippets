@@ -1,0 +1,285 @@
+{
+	// Place your 0_Blank_Theme workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"New section": {
+		"scope": "html",
+		"prefix": "html-sec",
+		"body": [
+			"<!-- blank -->",
+			"<section id=\"blank\">",
+			"	<div class=\"section-header\"></div>",
+			"	<div class=\"section-body\"></div>",
+			"	<div class=\"section-footer\"></div>",
+			"</section>",
+			"<!-- /#blank -->"
+		],
+		"description": "Tạo mới section"
+	},
+	"New item": {
+		"scope": "html",
+		"prefix": "html-item",
+		"body": [
+			"<div class=\"item\">",
+			"	<div class=\"img-container\">",
+			"		<picture>",
+			"			<source media=\"\" srcset=\"\" type=\"image/webp\" class=\"swiper-lazy lazy\">",
+			"			<img data-src=\"url\" src=\"\" alt=\"\" class=\"swiper-lazy lazy\">",
+			"		</picture>",
+			"	</div>",
+			"	<div class=\"text-container\">",
+			"		<div class=\"title\"><a href=\"\" title=\"\">Name</a></div>",
+			"		<div class=\"des\">Des</div>",
+			"		<div class=\"btn-container\">",
+			"			<a href=\"\" title=\"\" class=\"btn\">Button</a>",
+			"		</div>",
+			"	</div>",
+			"</div>"
+		],
+		"description": "Tạo mới section"
+	},
+	"Picture tag": {
+		"scope": "html",
+		"prefix": "html-pic",
+		"body": [
+			"<picture>",
+			"	<source media=\"(max-width:450px)\" type=\"image/webp\" srcset=\"\" class=\"swiper-lazy lazy\">",
+			"	<source media=\"(max-width:450px)\" srcset=\"\" class=\"swiper-lazy lazy\">",
+			"	<source media=\"\" srcset=\"\" type=\"image/webp\" class=\"swiper-lazy lazy\">",
+			"	<img data-src=\"\" src=\"\" alt=\"\" class=\"swiper-lazy lazy\">",
+			"</picture>"
+		],
+		"description": "Tạo mới picture"
+	},
+	"Youtube img": {
+		"scope": "html",
+		"prefix": "html-yputube_img",
+		"body": [
+			"<img data-src=\"https://img.youtube.com/vi/S2bmkVMkRA/maxresdefault.jpg\" src=\"\" class=\"lazy\" alt=\"\" />"
+		],
+		"description": "Tạo mới youtube thumb"
+	},
+	"Star container": {
+		"scope": "html",
+		"prefix": "html-star",
+		"body": [
+			"<div class=\"star-container\">",
+			"	<span class=\"label\">Đánh giá của bạn:</span>",
+			"	<span class=\"star-cb-group\">",
+			"		<input type=\"radio\" id=\"star5\" name=\"star\" value=\"5\" /><label for=\"star5\">5</label>",
+			"		<input type=\"radio\" id=\"star4\" name=\"star\" value=\"4\" checked=\"checked\" /><label for=\"star4\">4</label>",
+			"		<input type=\"radio\" id=\"star3\" name=\"star\" value=\"3\" /><label for=\"star3\">3</label>",
+			"		<input type=\"radio\" id=\"star2\" name=\"star\" value=\"2\" /><label for=\"star2\">2</label>",
+			"		<input type=\"radio\" id=\"star1\" name=\"star\" value=\"1\" /><label for=\"star1\">1</label>",
+			"		<input type=\"radio\" id=\"star0\" name=\"star\" value=\"0\" class=\"star-cb-clear\" /><label for=\"star0\">0</label>",
+			"	</span>",
+			"</div>"
+		],
+		"description": "Tạo mới rating"
+	},
+	"Checkbox container": {
+		"scope": "html",
+		"prefix": "html-check",
+		"body": [
+			"<div class=\"checkbox-container\">",
+			"	<input type=\"checkbox\" name=\"check\" id=\"check1\">",
+			"	<label for=\"check1\">name</label>",
+			"</div>"
+		],
+		"description": "Tạo mới checkbox"
+	},
+	"Sidebar container": {
+		"scope": "html",
+		"prefix": "html-side",
+		"body": [
+			"<div class=\"col col-sm-8 col-lg-9\">",
+			"	<article id=\"\">",
+			"	</article>",
+			"</div>",
+			"<div class=\"col col-sm-4 col-lg-3\">",
+			"	<aside id=\"sidebar\">",
+			"	</aside>",
+			"</div>"
+		],
+		"description": "Tạo mới sidebar"
+	},
+	"Modal": {
+		"scope": "html",
+		"prefix": "html-modal",
+		"body": [
+			"<a data-toggle=\"modal\" href=\"#info|noti|popup|registration|-modal\" class=\"btn btn-primary\">info model</a>",
+		],
+		"description": "Tạo mới modal"
+	},
+	"Swiper slider": {
+		"scope": "html",
+		"prefix": "html-swiper",
+		"body": [
+			"<div class=\"swiper-container\" id=\"\">",
+			"	<div class=\"swiper-wrapper\">",
+			"		<div class=\"swiper-slide\">",
+			"			<a href=\"\" class=\"item\">",
+			"				<picture>",
+			"					<source media=\"(max-width:450px)\" srcset=\"\" type=\"image/webp\" class=\"swiper-lazy\">",
+			"					<source media=\"(max-width:450px)\" srcset=\"\" class=\"swiper-lazy\">",
+			"					<source media=\"\" srcset=\"\" type=\"image/webp\" class=\"swiper-lazy\">",
+			"					<img data-src=\"\" alt=\"\" class=\"swiper-lazy\">",
+			"				</picture>",
+			"				<div class=\"swiper-lazy-preloader\"></div>",
+			"			</a>",
+			"		</div>",
+			"	</div>",
+            "    <!-- Add Arrows -->",
+			"	<div class=\"swiper-button-next\"></div>",
+			"	<div class=\"swiper-button-prev\"></div>",
+			"	<!-- Add Pagination -->",
+			"	<div class=\"swiper-pagination\"></div>",
+			"</div>",
+		],
+		"description": "Tạo mới slider"
+	},
+	"Breadcrumb": {
+		"scope": "html",
+		"prefix": "html-breadcrumb",
+		"body": [
+			"<ol itemscope itemtype=\"https://schema.org/BreadcrumbList\">",
+			"  <li itemprop=\"itemListElement\" itemscope itemtype=\"https://schema.org/ListItem\">",
+			"    <a itemprop=\"item\" href=\"URL\">",
+			"      <span itemprop=\"name\">NAME</span>",
+			"    </a>",
+			"    <meta itemprop=\"position\" content=\"1\" />",
+			"  </li>",
+			"  <li class=\"active\" itemprop=\"itemListElement\" itemscope itemtype=\"https://schema.org/ListItem\">",
+			"    <a itemscope itemtype=\"https://schema.org/WebPage\" itemprop=\"item\" itemid=\"URL\" href=\"URL\">",
+			"      <span itemprop=\"name\">NAME</span>",
+			"    </a>",
+			"    <meta itemprop=\"position\" content=\"2\" />",
+			"  </li>",
+			"</ol>",
+		],
+		"description": "Tạo mới Breadcrumb"
+	},
+	"Pagination": {
+		"scope": "html",
+		"prefix": "html-pagination",
+		"body": [
+			"<div class=\"section-footer m40--top text-center\">",
+			"  <div class=\"pagination-container\">",
+			"    <ul class=\"pagination\">",
+			"      <li class=\"PagedList-skipToPrevious\"><a href=\"/en/tim-kiem.html?category=Bikini&amp;page=3\" rel=\"prev\"><i class=\"demo-icon ecs-left-open-big\" aria-hidden=\"true\"></i></a></li>",
+			"      <li class=\"disabled PagedList-ellipses\"><a>…</a></li>",
+			"      <li><a href=\"/en/tim-kiem.html?category=Bikini&amp;page=2\">2</a></li>",
+			"      <li><a href=\"/en/tim-kiem.html?category=Bikini&amp;page=3\">3</a></li>",
+			"      <li class=\"active\"><a>4</a></li>",
+			"      <li><a href=\"/en/tim-kiem.html?category=Bikini&amp;page=5\">5</a></li>",
+			"      <li><a href=\"/en/tim-kiem.html?category=Bikini&amp;page=6\">6</a></li>",
+			"      <li class=\"PagedList-skipToNext\"><a href=\"/en/tim-kiem.html?category=Bikini&amp;page=5\" rel=\"next\"><i class=\"demo-icon ecs-right-open-big\" aria-hidden=\"true\"></i></a></li>",
+			"    </ul>",
+			"  </div>",
+			"</div>",	
+		],
+		"description": "Tạo mới phân trang"
+	},
+	"Item news": {
+		"scope": "html",
+		"prefix": "html-news",
+		"body": [
+			"<div class=\"item-blog\" itemprop=\"liveBlogUpdate\" itemscope itemtype=\"http://schema.org/BlogPosting\">"
+			"  <a href=\"\" class=\"img-container\">",
+			"    <picture>",
+			"      <source media=\"\" srcset=\"\" type=\"image/webp\" class=\"swiper-lazy lazy\">",
+			"      <img data-src=\"\" alt=\"\" class=\"swiper-lazy lazy\" src=\"\" itemprop=\"thumbnail\">",
+			"    </picture>",
+			"    <div class=\"swiper-lazy-preloader\"></div>",
+			"  </a>"
+			"  <div class=\"text-container\">",
+			"    <h3 class=\"title\"><a href=\"@Url.RouteUrl(\"tin-chi-tiet\",new{url = Model.Url})\" itemprop=\"headline\">NAME</a></h3>",
+			"    <div class=\"des\" itemprop=\"description\">DES</div>",
+			"    <div class=\"date\" itemprop=\"datePublished\" content=\"@Model.CreatedDate.ToString(\"yyyy-MM-dd hh:mm:ss\")\">DATE</div>",
+			"  </div>",
+			"</div>",
+		],
+		"description": "Tạo mới item news"
+	},
+	"Item product": {
+		"scope": "html",
+		"prefix": "html-product",
+		"body": [
+			"<div class=\"item-product\" itemscope itemtype=\"http://schema.org/Product\">",
+			"      <div class=\"img-container\">",
+			"        <a href=\"URL\" itemprop=\"url\">",
+			"            <picture>",
+			"                <source media=\"\" srcset=\"PIC\" type=\"image/webp\" class=\"lazy swiper-lazy\">",
+			"                <img data-src=\"PIC\" alt=\"\" class=\"lazy swiper-lazy\" src=\"\" itemprop=\"image\">",
+			"            </picture>"
+			"            <div class=\"swiper-lazy-preloader\"></div>",
+			"        </a>",
+			"    </div>",
+			"    <div class=\"text-container\">",
+			"        <div class=\"text-content\">",
+			"            <h3 class=\"title\"><a href=\"URL\" itemprop=\"name\">NAME</a></h3>",
+			"            <div class=\"price\" itemprop=\"offers\" itemscope itemtype=\"http://schema.org/Offer\">",
+			"                <div class=\"new-price\" itemprop=\"price\" content=\"\">PRICE</div>",
+			"                <div class=\"old-price\">PRICE</div>",
+			"            </div>",
+			"            <div itemprop=\"description\">DES</div>",
+			"        </div>",
+			"    </div>",
+			"</div>",
+		],
+		"description": "Tạo mới item news"
+	},
+	//Class
+	"Padding right container": {
+		"scope": "html",
+		"prefix": "cl-pad_r",
+		"body": [
+			"padding-right-container"
+		],
+		"description": "Padding right container"
+	},
+	"Padding left container": {
+		"scope": "html",
+		"prefix": "cl-pad_l",
+		"body": [
+			"padding-left-container"
+		],
+		"description": "Padding left container"
+	},
+	"Masonry": {
+		"scope": "html",
+		"prefix": "cl-mas",
+		"body": [
+			"masonry-css"
+		],
+		"description": "Masonry css"
+	},
+	"Social background": {
+		"scope": "html",
+		"prefix": "cl-social_bg",
+		"body": [
+			"social-background"
+		],
+		"description": "Social background"
+	},
+	"Phone list": {
+		"scope": "html",
+		"prefix": "cl-phone_list",
+		"body": [
+			"phone-list"
+		],
+		"description": "Phone list"
+	},
+	"Ilightbox": {
+		"scope": "html",
+		"prefix": "cl-ilightbox",
+		"body": [
+			"ilightbox"
+		],
+		"description": "Ilightbox"
+	},
+}

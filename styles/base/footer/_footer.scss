@@ -1,0 +1,343 @@
+/*-------------------------------------
+    Footer
+        - Footer top
+        - Footer middle
+        - Footer bottom
+        - Copyright
+        - Widget newsletter
+        - Sticky Footer
+--------------------------------------*/
+
+// Variables
+@include set-default(
+    (
+        footer: (
+            _linkColor: $body-color,
+            _linkColorHover: $primary-color,
+            _logoWidth:133px,
+            font-family: $font-family-primary,
+            font-size: 1.3rem,
+            background: #f8f8f8,
+            color: $dark-color,
+            body: (
+                padding: 6.8rem 0 .8rem,
+                border-bottom: 1px solid $border-color,
+                background: false,
+            ),
+            footer: (
+                padding: 1rem 0,
+                background: false,
+                color: $body-color
+            ),
+            logo: (
+                margin-bottom: 1rem
+            ),
+            widget: (
+                margin-bottom:4rem,
+                title: (
+                    padding: 0,
+                    margin-bottom: 2rem,
+                    font-size: 1.4rem,
+                    font-weight: $font-weight-semibold,
+                    line-height: normal,
+                    text-transform: uppercase,
+                    color: $dark-color,
+                    border-bottom:0
+                ),
+                body: (
+                    padding: 0,
+                    color: $body-color,
+                ),
+                listItem: (
+                    line-height: 1.2,
+                    margin-bottom: 1.5rem
+                )
+            ),
+            copyRight: (
+                font-family: false,
+                font-size: 1.3rem,
+                font-weight: false,
+                color: false,
+                letter-spacing: false,
+                line-height: 1.92
+            )
+        )
+    )
+);
+
+// Footer
+#js-mail-form {
+    position: relative;
+
+    label.error {
+        position: absolute;
+        left: 0;
+        top: -22px;
+        color: $white-color;
+    }
+}
+.footer {
+    @include print_css( footer );
+
+    a {
+        @include css(color, footer, _linkColor);
+
+        &:hover,
+        &:active,
+        &.active {
+            @include css(color, footer, _linkColorHover);
+        }
+    }
+
+    p {
+        font-size: inherit;
+    }
+
+    .social-icons-colored .social-icon {
+        color: $white-color;
+    }
+
+    .logo-footer {
+        width: #{get(footer, _logoWidth)};
+
+        a, img {
+            display: block;
+        }
+    }
+}
+
+// Footer Newsletter
+.footer-newsletter {
+    padding: 2.8rem 0;
+    input {
+        border-color: transparent;
+        &:focus {
+            border-color: transparent;
+        }
+    }
+    .icon-box-side {
+        @include flex($type: "center", $active: true, $get: "left");
+    }
+    .icon-box-title { 
+        margin-bottom: .2rem;
+        font-size: 1.6rem; 
+    }
+    .icon-box-icon {
+        margin-right: 2rem;
+        font-size: 4.7rem;
+    }
+    .icon-box-content p {
+        line-height: 1.6;
+    }
+    .input-wrapper-inline { max-width: 100%; }
+    .btn {
+        padding: 0.93em 1.85em;
+        i {
+            margin: -.2rem 0 0 .9rem;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+// Footer Body
+.footer-body {
+    @include print_css( footer, body );
+    .widget {
+        @include print_css( footer, widget );
+        &-title {
+            @include print_css( footer, widget, title );
+        }
+        &-body {
+            @include print_css( footer, widget, body );
+            li {
+                @include print_css( footer, widget, listItem );
+                &:last-child {
+                    margin-bottom:0;
+                }
+            }
+        }
+    }
+}
+
+// Widget Footer
+.footer-footer {
+    @include print_css( footer, footer );
+
+    &,
+    .container,
+    .container-fluid {
+        @include flex-option($type: align-items, $value: "center");
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    &-left,
+    &-right {
+        @include flex-option($type: align-items, $value: "center");
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    &-right {
+        @include flex-option($type: justify-content, $value: "flex-end");
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
+    }
+    .payment {
+        img {
+            @include border();
+            @include border-radius($val: 4px);
+            display: block;
+            width: 45px;
+            margin: 0 4px 4px 0;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .payment-label {
+        margin-right: 2rem;
+    }
+}
+
+// Widget About
+.footer .widget-about {
+    .logo-wrapper {
+        @include print_css( footer, logo );
+    }
+
+    &-title {
+        line-height: 2.1;
+        margin-bottom: 1rem;
+        color: $dark-color;
+        font-weight: $font-weight-semibold;
+    }
+
+    &-call {
+        display: block;
+        @include print_css( footer, about, call );
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    &-desc {
+        line-height: 2.1;
+        margin-bottom: 2.1rem;
+        p {
+            overflow: hidden;
+            line-height:inherit;
+            margin-bottom: 0;
+            i {
+                margin-right: 1rem;
+                color: $primary-color;
+            }
+        }
+        &:last-child {
+            margin-bottom: 0
+        }
+
+    }
+}
+
+// Copyright
+.footer .copyright {
+    @include print_css( footer, copyRight );
+    margin-bottom: 0;
+    text-align: center;
+}
+
+
+// Responsive 
+@include mq("lg") {
+    .footer-body .col-lg-3 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 20%;
+           -moz-box-flex: 0;
+            -ms-flex: 0 0 20%;
+                flex: 0 0 20%;
+        max-width: 20%;
+        &:nth-child(2) {
+            margin-left:auto;
+        }
+    }
+}
+
+@include mq("lg", "max") {
+    .footer-body {
+        padding-bottom: 2.7rem;
+    }
+    .footer-newsletter .icon-box-side {
+        @include flex-option($type: justify-content, $value: "center");
+    }   
+}
+
+@include mq("md", "max") {
+    .footer-newsletter .icon-box-icon {
+        margin-right: 0;
+    }
+    .footer-footer {
+        &,
+        > .container {
+            display: block;
+        }
+        &-left,
+        &-right {
+            @include flex-option($type: justify-content, $value: "center");
+            
+        }
+
+        &-left {
+            margin-bottom: .2rem;
+        }
+        &-right {
+            @include flex-option($type: flex-direction, $value: "column");
+        }
+        &-label {
+            margin: 0 0 1rem 0;
+        }
+    }
+}
+
+@include mq("xs", "max") {
+    .footer-newsletter {
+        .icon-box-side {
+            @include flex-option($type: flex-direction, $value: "column");
+            .icon-box-icon { margin: 0 0 1.5rem; }
+            .icon-box-content { text-align: center; }
+        }
+        .form-control { text-align: center; }
+        .input-wrapper-inline {
+            display: block;
+            text-align: center;
+        }
+        .btn { margin-top: 2rem; }
+    }
+}
+/*#region Mobile responsive section styles*/
+    @include mq("768px", "max") { 
+        .footer .logo-wrapper {
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .footer-body {
+            .col-md-12 {
+                text-align: center;
+                .logo-wrapper img{
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+/*#endregion*/

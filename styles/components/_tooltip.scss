@@ -1,0 +1,42 @@
+/*-----------------------------
+    Tooltip
+-----------------------------*/
+.tooltiptext-container {
+	.tooltiptext {
+		@include transform($args: translateX(-50%));
+		@include animation($customize: true) {
+			-ms-transition: opacity .3s;
+			-webkit-transition: opacity .3s;
+			-moz-transition: opacity .3s;
+			-o-transition: opacity .3s;
+			transition: opacity .3s;
+
+		};
+		position: absolute;
+		padding: 1rem .7rem;
+		bottom: 125%;
+		left : 50%;
+		background-color: $dark-background;
+		color: $white-color;
+		font: 400 1.3rem $font-family-primary;
+		letter-spacing : 0.01em;
+		text-align: center;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 1;
+	}
+	.tooltip-top::after {
+		content: "";
+		position: absolute;
+		top: 96%;
+		left: 50%;
+		margin-left: -6px;
+		border-width: 6px;
+		border-style: solid;
+		border-color: #333 transparent transparent transparent;
+	}
+	&:hover .tooltiptext{
+		visibility: visible;
+		opacity: 1;
+	}
+}

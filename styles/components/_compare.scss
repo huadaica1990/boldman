@@ -1,0 +1,437 @@
+/**
+ * @Description: source css by TheBoldMan.
+ * @Version: v2.00
+ * @Author: tronghuy2208@gmail.com
+ *
+ * @Summary:
+ *
+ *
+ */
+
+/*--------------------------------
+    Compare
+        -Table
+        -Popup
+--------------------------------*/
+
+// Set variables
+@include set-default( ( compare: ( 1920: (), 1440: (), 1366: (), 1280: (), 1024: (), 768: (), 450: (), 360: (), ), ) );
+
+/*#region #sad*/
+// Compare Popup
+.compare-popup {
+    @include animation($customize: true) {
+        -ms-transition: transform 0.3s;
+        -webkit-transition: transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.3s;
+    }
+
+    ;
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 2rem 0;
+    background: $white-color;
+    z-index: 10000;
+
+    .container {
+        @include flex($type: "center");
+        padding-top: 2.1rem;
+        padding-bottom: 3.1rem;
+    }
+
+    .btn-clean {
+        margin-right: 1.8rem;
+        padding: 0;
+        border: none;
+        text-transform: capitalize;
+        font-weight: $font-weight-light;
+
+        &:hover, &:active, &:focus {
+            color: $primary-color;
+            background-color: $white-color;
+        }
+    }
+
+    &.show {
+        @include transform($args: translateY(-99%));
+
+        & + .compare-popup-overlay {
+            @include animation($customize: true) {
+                -ms-transition: opacity 0.3s;
+                -webkit-transition: opacity 0.3s;
+                -moz-transition: opacity 0.3s;
+                -o-transition: opacity 0.3s;
+                transition: opacity 0.3s;
+            }
+
+            ;
+            opacity: 0.7;
+            visibility: visible;
+        }
+    }
+}
+
+.compare-title {
+    margin-top: .8rem;
+
+    .title {
+        margin-bottom: .3rem;
+        font-size: 2.4rem;
+        font-weight: $font-weight-bold;
+        white-space: nowrap;
+    }
+}
+
+.compare-product-list {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    @include flex-option($type: justify-content, $value: center);
+    margin: .9rem 2rem 0;
+    padding: 0;
+
+    li {
+        position: relative;
+        width: 8vw;
+        max-width: 138px;
+        min-height: 8vw;
+
+        &:not(:first-child) {
+            margin-left: 3rem;
+        }
+
+        &:empty::before {
+            @include border-radius($val: 50%);
+            @include transform($args: translate(-50%,-50%));
+            @include shadow($val: 2px 4px 15px rgba(0,0,0,0.12));
+            content: "+";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            text-align: center;
+            line-height: 5rem;
+            font-size: 3rem;
+            color: $lighter-color;
+            width: 5rem;
+            height: 5rem;
+        }
+
+        &::after {
+            @include border();
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    }
+
+    .btn-remove {
+        @include border-radius($val: 50%);
+        @include shadow($val: 0 2px 6px 0 rgba(0,0,0,0.4));
+        position: absolute;
+        padding: 0;
+        right: -1rem;
+        top: -1rem;
+        line-height: 1.2;
+        width: 20px;
+        height: 20px;
+        font-size: 1.5rem;
+        border: none;
+        overflow: hidden;
+
+        i {
+            font-size: 1.2rem;
+            font-weight: $font-weight-semibold;
+            margin-bottom: 0;
+        }
+
+        &:hover, &:active, &:focus {
+            background-color: $white-color;
+        }
+    }
+}
+
+.compare-popup-overlay {
+    @include animation($customize: true) {
+        -ms-transition: opacity 0.3s,visibility 0.3s;
+        -webkit-transition: opacity 0.3s,visibility 0.3s;
+        -moz-transition: opacity 0.3s,visibility 0.3s;
+        -o-transition: opacity 0.3s,visibility 0.3s;
+        transition: opacity 0.3s,visibility 0.3s;
+    }
+
+    ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+}
+
+// Compare Table
+.compare-table {
+    overflow-x: auto;
+
+    > div:nth-child(2n) .compare-col {
+        background-color: #fbfbfb;
+    }
+
+    .compare-row {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+}
+
+.compare-product .product-media {
+    border: 1px solid $grey-color-light;
+}
+
+.compare-col {
+    padding: 2.5rem 0 2.5rem 2rem;
+
+    &.compare-product {
+        text-align: center;
+    }
+
+    &.compare-field {
+        @include flex($type: "center", $get: "right");
+        text-align: right;
+        padding-right: 5rem;
+        font-weight: 400;
+        color: $light-color;
+    }
+
+    &.compare-value {
+        padding-right: 1rem;
+    }
+
+    .remove-product {
+        margin-bottom: 2.4rem;
+        padding: 0;
+        border: none;
+        color: $dark-color;
+
+        i {
+            font-size: 2.2rem;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: transparent;
+            color: $primary-color;
+        }
+    }
+
+    .product-details {
+        padding: 1.6rem 0 .7rem;
+    }
+
+    .product-price {
+        font-size: 1.4rem;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+
+    .new-price {
+        margin-right: 0;
+        color: $primary-color;
+    }
+
+    .old-price {
+        color: $light-color;
+    }
+}
+
+.compare-availability .compare-value {
+    color: #ffa800;
+}
+
+.compare-description {
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        color: $dark-color;
+        line-height: 1.6;
+
+        &::before {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.compare-rating {
+    display: flex;
+
+    .ratings-container {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 1.4rem;
+    }
+}
+
+.compare-category,
+.compare-meta,
+.compare-size,
+.compare-brand {
+    .compare-value {
+        color: $dark-color;
+    }
+}
+
+.compare-color .swatch {
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+@include mq("1921px") {
+    .compare-product-list li {
+        max-height: 15.5rem;
+        max-width: none;
+
+        figure, img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@include mq("lg", "max") {
+    .compare-popup .container {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .compare-product-list {
+        @include flex-option($type: justify-content, $value: center);
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100%;
+        -moz-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        margin: 2rem 0;
+
+        li {
+            width: 18vw;
+            min-height: 11rem;
+        }
+    }
+}
+
+@media (max-width: 991px) and (min-width: 480px) {
+    .compare-title {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+@include mq("md", "max") {
+    .compare-col.compare-field {
+        max-width: 15rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+@include mq("sm", "max") {
+    .compare-product-list li {
+        min-height: 6rem;
+
+        &:not(:first-child) {
+            margin-left: 1.5rem;
+        }
+    }
+}
+
+@include mq("xs", "max") {
+    .compare-product-list {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        -webkit-scroll-snap-type: x mandatory;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+
+        li {
+            width: calc((100% - 1.6rem) / 2);
+            max-width: inherit;
+            margin-top: 0;
+            scroll-snap-align: start;
+            display: inline-block;
+        }
+
+        li:empty {
+            display: none;
+        }
+
+        li:empty::before {
+            width: 3.5rem;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            font-size: 2rem;
+        }
+
+        .btn-remove {
+            top: .5rem;
+            right: .5rem;
+        }
+    }
+
+    .compare-popup .btn-clean,
+    .compare-popup .btn-dark {
+        width: calc((100% - 1.6rem) / 2);
+        margin-right: 1.5rem;
+        padding: .93em 0em;
+        text-align: center;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+/*#endregion*/

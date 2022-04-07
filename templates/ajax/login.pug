@@ -1,0 +1,77 @@
+#login-popup.login-popup.modal.load-more-overlay.loading
+    #sign-in.signin.login-pane.active.sign-in
+        .login-header.mb-5
+            .h4.login-title.font-weight-semibold.mb-0 Đăng nhập bằng email
+            .login-des Nhập email và mật khẩu tài khoản
+        form#login-form.login-body.mb-5(action='' method='post' novalidate='novalidate' autocomplete='off')
+            .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display:none')
+            .form-group
+                input.form-control(type='text' name='Phone' placeholder='Nhập email hay số điện thoại' autocomplete='off' required='' data-name='Nhập email hay số điện thoại')
+            .form-group.nolabel
+                input.form-control(type='password' name='Password' placeholder='Mật khẩu' autocomplete='off' required='' data-name='Mật khẩu')
+                a.demo-icon.cus-eye.btn-showpass(href='javascript:')
+            button.btn.btn-primary.mt-5.w-100.popup-submit(type='submit' onclick="validateLogin(this,'#login-form',window.location.href)") Đăng nhập
+            button.btn.btn-default.mt-2.w-100.popup-close(type='button') Đóng
+        p.text-link
+            a.showhidetab-js(href='javascript:' data-target='#forgot-pass' data-back='#sign-in')  Quên mật khẩu?
+        p.text-link Chưa có tài khoản? <a href="javascript:" class="showhidetab-js" data-target="#sign-up" data-back="#sign-in">Tạo tài khoản</a>
+        p.text-center.text-line.mt-2.mb-2
+            span Hoặc tiếp tục bằng
+        .social-icons.social-icon-border-color.d-flex.justify-content-center
+            a.social-icon.social-facebook.ecs-icon-facebook(href='' title='Login by facebook')
+            a.social-icon.social-google.ecs-icon-google(href='' title='Login by google')
+    #sign-up.signup.login-pane.sign-up
+        a.btn-back.ecs-icon-angle-left(href='javascript:' data-orig-tabindex='null' tabindex='-1')  
+        .login-header.mb-5
+            .h4.login-title.font-weight-semibold.mb-0 Tạo tài khoản
+            .login-des Vui lòng điền đầy đủ thông tin
+        form#signup-form.login-body.mb-5(action='/dang-ky' method='post' novalidate='novalidate' autocomplete='off')
+            .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display:none')
+            .form-group
+                label.required Họ và tên
+                input.form-control(type='text' name='Name' required='' data-name='Họ và tên' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+            .form-group
+                label.required Số điện thoại
+                input.form-control(type='tel' name='Phone' required='' data-name='Số điện thoại' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+            .form-group
+                label.required Ngày sinh
+                .input-date
+                    input.form-control(type='date' name='BirthDate' max='2022-03-26' required='' data-name='Ngày sinh' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+                    i.demo-icon.cus-calendar.input-date-icon
+            .form-group.require
+                label Email
+                input.form-control(type='email' name='Email' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+            .form-group
+                label.required Mật khẩu
+                input.form-control(type='password' name='Password' required='' data-name='Mật khẩu' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+                a.demo-icon.cus-eye.btn-showpass(href='javascript:' data-orig-tabindex='null' tabindex='-1')
+            .form-group
+                label.required Xác nhận mật khẩu
+                input.form-control(type='password' name='ConfirmPassword' required='' data-name='Xác nhận mật khẩu' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+                a.demo-icon.cus-eye.btn-showpass(href='javascript:' data-orig-tabindex='null' tabindex='-1')
+            button.btn.btn-primary.mt-5.w-100.popup-submit(type='submit' onclick="validateLogin(this,'#signup-form', window.location.href)" data-orig-tabindex='null' tabindex='-1') Đăng ký
+            button.btn.btn-default.mt-2.w-100.popup-close(type='button' data-form='#signup-form' data-orig-tabindex='null' tabindex='-1') Đóng
+        p.text-link Có tài khoản? <a href="javascript:" class="showhidetab-js" data-target="#sign-in" data-orig-tabindex="null" tabindex="-1">Đăng nhập</a>
+
+
+    #forgot-pass.forgot.login-pane.forgot-pass
+        a.btn-back.ecs-icon-angle-left(href='javascript:' data-orig-tabindex='null' tabindex='-1')  
+        .login-header.mb-5
+            .h4.login-title.font-weight-semibold.mb-0 Quên mật khẩu
+            .login-des Vui lòng nhập thông tin tài khoản để lấy lại mật khẩu
+        form#forgot-form.login-body.mb-5(action='/quen-mat-khau' method='post' novalidate='novalidate' autocomplete='off')
+            .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display:none')
+            .form-group
+                label.required Email
+                input.form-control(type='email' name='Email' data-name='Email' required='' autocomplete='off' data-orig-tabindex='null' tabindex='-1')
+            button.btn.btn-primary.mt-5.w-100.popup-submit(type='submit' onclick="validateLogin(this,'#forgot-form',window.location.href)" data-orig-tabindex='null' tabindex='-1') Lấy lại mật khẩu
+            button.btn.btn-default.mt-2.w-100.popup-close(type='button' data-orig-tabindex='null' tabindex='-1') Đóng
+        p.text-link Có tài khoản? <a href="javascript:" class="showhidetab-js" data-target="#sign-in" data-orig-tabindex="null" tabindex="-1">Đăng nhập</a>
+        p.text-link Chưa có tài khoản? <a href="javascript:" class="showhidetab-js" data-target="#sign-up" data-back="#forgot-pass" data-orig-tabindex="null" tabindex="-1">Tạo tài khoản</a>
+        p.text-center.text-line.mt-2.mb-2
+            span Hỗ trợ
+        p.text-link.text-center
+            a(href='tel:' title='' data-orig-tabindex='null' tabindex='-1') 090 xxxx xxx
+            |  hoặc gửi email
+            a(href='mailto:' title='' data-orig-tabindex='null' tabindex='-1') ecsgroup.com.vn@gmail.com
+            |  cho chúng tôi

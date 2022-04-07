@@ -1,0 +1,307 @@
+{
+	// Place your 0_Blank_Theme workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Note: $active(boolean) phủ định lại tất cả thuộc tính
+	//    $hover(boolean) hover element
+	// Example:
+	"Breakpoint responsive": {
+		"scope": "scss",
+		"prefix": "css-breakpoint_responsive",
+		"body": [
+			"@include mq($$value,\"max\"){}"
+		],
+		"description": "Tạo nhanh responsive(value: xs|sm|md|lg|xl|xxl|xlst;"
+	},
+	"Media screen": {
+		"scope": "scss",
+		"prefix": "css-media_screen",
+		"body": [
+			"@include media-screen($$type: \"all\", $$min: $$mobile450, $$max: $$desktop1920);"
+		],
+		"description": "Tạo nhanh responsive($type: all|1920|1440|1366|1280|1024|768|450);"
+	},
+	"Font size": {
+		"scope": "scss",
+		"prefix": "css-fontsize",
+		"body": [
+			"@include fontsize($$value:);"
+		],
+		"description": "Chỉnh font size"
+	},
+	"Border": {
+		"scope": "scss",
+		"prefix": "css-border",
+		"body": [
+			"@include border($$position: \"all\", $$size:1px, $$style: solid, $$color: $$border-color);"
+		],
+		"description": "Tạo nhanh border(type: all|left|right|top|bottom)"
+	},
+	"Animation": {
+		"scope": "scss",
+		"prefix": "css-animation",
+		"body": [
+			"@include animation($$hover: true, $$customize: false, $$type: \"all\", $$time: 0.5s, $$effect: $$cubic, $$delay: 0s) {",
+			"	-ms-transition: ;",
+			"	-webkit-transition: ;",
+			"	-moz-transition: ;",
+			"	-o-transition: ;",
+			"	transition: ;",
+			"};"
+		],
+		"description": "Tạo nhanh animation"
+	},
+	"Transform": {
+		"scope": "scss",
+		"prefix": "css-transform",
+		"body": [
+			"@include transform($$args:);"
+		],
+		"description": "Tạo nhanh transform"
+	},
+	"Transform origin": {
+		"scope": "scss",
+		"prefix": "css-transform-origin",
+		"body": [
+			"@include transform-origin($$args:);"
+		],
+		"description": "Tạo nhanh transform origin"
+	},
+	"Use keyframes": {
+		"scope": "scss",
+		"prefix": "css-use_keyframes",
+		"body": [
+			"@include use-keyframes($$args: name duration timingFunction delay iterationCount direction fillMode playState);"
+		],
+		"description": "Gọi keyframes"
+	},
+	"Keyframes": {
+		"scope": "scss",
+		"prefix": "css-keyframes",
+		"body": [
+			"@include keyframes($$animation-name: \"Name\")"
+		],
+		"description": "Tạo nhanh keyframes"
+	},
+	"Placeholder": {
+		"scope": "scss",
+		"prefix": "css-placeholder",
+		"body": [
+			"@include placeholder($$color:#000000,$$target:\"input\");"
+		],
+		"description": "Text placeholder"
+	},
+	"Text style": {
+		"scope": "scss",
+		"prefix": "css-text",
+		"body": [
+			"@include text($$size: $$font-size, $$family : $$font-family-primary, $$height: $$lh-0, $$color: $$body-color, $$transform: $$text-normal);"
+		],
+		"description": "Tạo nhanh text style"
+	},
+	"Visible element": {
+		"scope": "scss",
+		"prefix": "css-visible",
+		"body": [
+			"@include visible($$active: true, $$zindex: 99);"
+		],
+		"description": "Ẩn hiện element"
+	},
+	"Box shadow": {
+		"scope": "scss",
+		"prefix": "css-box_shadow",
+		"body": [
+			"@include box-shadow($$number: 0);"
+		],
+		"description": "Tạo box shadow($number: 0|1|2|3|4|5|6)"
+	},
+	"Shadow": {
+		"scope": "scss",
+		"prefix": "css-shadow",
+		"body": [
+			"@include shadow($$val:);"
+		],
+		"description": "Tạo box shadow tùy chọn"
+	},
+	"Filter": {
+		"scope": "scss",
+		"prefix": "css-filter",
+		"body": [
+			"@include filter($$val:);"
+		],
+		"description": "Tạo filter tùy chọn"
+	},
+	"Border radius": {
+		"scope": "scss",
+		"prefix": "css-border_radius",
+		"body": [
+			"@include border-radius($$val:);"
+		],
+		"description": "Tạo border radius"
+	},
+	"Gradient": {
+		"scope": "scss",
+		"prefix": "css-gradient",
+		"body": [
+			"@include gradient($$key: \"background\");"
+		],
+		"description": "Tạo gradient"
+	},
+	"Background mask": {
+		"scope": "scss",
+		"prefix": "css-bg_mask",
+		"body": [
+			"@include bg-mask($$value: rgba(0,0,0,.5));"
+		],
+		"description": "Tạo background mask"
+	},
+	"Center img": {
+		"scope": "scss",
+		"prefix": "css-img_center",
+		"body": [
+			"@include center-img($$hover: true, $$type: \"scale\");"
+		],
+		"description": "Canh giữa image với các hiệu ứng mặc định($type: scale|slow|opacity|rotate)"
+	},
+	"Element center": {
+		"scope": "scss",
+		"prefix": "css-center",
+		"body": [
+			"@include e-cen($$type: \"all\", $$option: translate(-50%, -50%));"
+		],
+		"description": "Canh giữa element($type: all|top|left|cus)"
+	},
+	"Flex": {
+		"scope": "scss",
+		"prefix": "css-flex",
+		"body": [
+			"@include flex($$type: \"container\", $$active: true, $$get: \"basic\");"
+		],
+		"description": "Tạo nhanh flex($type: container|center|left|right, $get: get thêm các định dạng con)"
+	},
+	"Flex option": {
+		"scope": "scss",
+		"prefix": "css-flex_option",
+		"body": [
+			"@include flex-option($$type: flex-direction|justify-content|align-items, $$value);"
+		],
+		"description": "Tạo nhanh flex option($type: flex-direction|justify-content|align-items, $value: column|column-reverse|row|row-reverse center|flex-start|flex-end|space-around|space-between|space-evenly|baseline)"
+	},
+	"Vertical element": {
+		"scope": "scss",
+		"prefix": "css-vertical",
+		"body": [
+			"@include v-ele($type: \"height\");"
+		],
+		"description": "Tạo nhanh vertical element($type: height|mid|top|bot)"
+	},
+	"Masonry": {
+		"scope": "scss",
+		"prefix": "css-masonry",
+		"body": [
+			"@include masonry($$col:4, $$gap: 15px);"
+		],
+		"description": "Tạo masonry layout"
+	},
+	"Col item": {
+		"scope": "scss",
+		"prefix": "css-col",
+		"body": [
+			"@include col-item($$number:5, $$top: 10px, $$right: 10px);"
+		],
+		"description": "Tạo col item"
+	},
+	"Cut text": {
+		"scope": "scss",
+		"prefix": "css-cut",
+		"body": [
+			"@include overtext($$row: 1, $$h: auto);"
+		],
+		"description": "Cut text($row: cột, $h: chiều cao)"
+	},
+	"Css plguin": {
+		"scope": "scss",
+		"prefix": "css-css",
+		"body": [
+			"@include css(value, ele, ele1, valueEle);"
+		],
+		"description": "Lấy giá trị css default"
+	},
+	"Print css plguin": {
+		"scope": "scss",
+		"prefix": "css-print_css",
+		"body": [
+			"@include print_css(ele, ele1);"
+		],
+		"description": "Lấy giá trị khối css default"
+	},
+	"Get css plguin": {
+		"scope": "scss",
+		"prefix": "css-get_css",
+		"body": [
+			"#{get(ele, ele1, _value)}"
+		],
+		"description": "Lấy giá trị css single default"
+	},
+	"Make list prefix": {
+		"scope": "scss",
+		"prefix": "css-prefix",
+		"body": [
+			"@include prefix($$text: ',', $$margin: 5px, $$center: true);"
+		],
+		"description": "Tạo prefix cho danh sách item"
+	},
+	//Variables
+	"Primary color": {
+		"scope": "scss",
+		"prefix": "css-pri_cl",
+		"body": [
+			"$$primary-color"
+		],
+		"description": "Màu primary"
+	},
+	"Primary color hover": {
+		"scope": "scss",
+		"prefix": "css-pri_cl_h",
+		"body": [
+			"$$primary-color-hover"
+		],
+		"description": "Màu primary hover"
+	},
+	"Second color": {
+		"scope": "scss",
+		"prefix": "css-sec_cl",
+		"body": [
+			"$$second-color"
+		],
+		"description": "Màu second"
+	},
+	"Second color hover": {
+		"scope": "scss",
+		"prefix": "css-sec_cl_h",
+		"body": [
+			"$$second-color-hover"
+		],
+		"description": "Màu second"
+	},
+	"Primary font": {
+		"scope": "scss",
+		"prefix": "css-pri_f",
+		"body": [
+			"$$font-family-primary;"
+		],
+		"description": "Font chữ primary"
+	},
+	"Second font": {
+		"scope": "scss",
+		"prefix": "css-sec_f",
+		"body": [
+			"$$font-family-second;"
+		],
+		"description": "Font chữ second"
+	},
+	
+}

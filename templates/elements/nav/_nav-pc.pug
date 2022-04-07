@@ -1,0 +1,77 @@
+nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/SiteNavigationElement')
+    ul.menu.nav-pc-body.nav.flex-container
+        each item in menu
+            case item.type
+                when 'mega-menu'
+                    if item.children == null
+                        if item.isShow
+                            li(data-id='' class=item.isActive ? 'active' : '' itemprop='name')
+                                a(href=item.href itemprop='url')=item.name 
+                    else
+                        if item.isShow
+                            li.mega-menu.has-submenu(class=item.isActive ? 'active' : '' data-id='' itemprop='name')
+                                .d-none.d-xl-block.has-submenu-title
+                                    a(href=item.href itemprop='url')=item.name
+                                .d-xl-none.has-submenu-title
+                                    a(href='javascript:')=item.name
+                                ul.nav.megamenu
+                                    each item_children in item.children
+                                        if item_children.children == null
+                                            if item_children.isShow
+                                                li(class=item_children.isActive ? 'active' : '' data-id='')
+                                                    a(href=item_children.href)=item_children.name
+                                        else
+                                            if item_children.isShow
+                                                li.has-submenu(class=item_children.isActive ? 'active' : '' data-id='')
+                                                    .d-none.d-xl-block.has-submenu-title
+                                                        a(href=item_children.href)=item_children.name
+                                                    .d-xl-none.has-submenu-title
+                                                        a(href=item_children.href)=item_children.name
+                                                    hr
+                                                    ul.nav
+                                                        each item_children_children in item_children.children
+                                                            li(class=item_children_children.isActive ? 'active' : '' data-id='')
+                                                                a(href=item_children_children.href)=item_children_children.name
+                default
+                    if item.children == null
+                        if item.isShow
+                            li(data-id='' class=item.isActive ? 'active' : '' itemprop='name')
+                                a(href=item.href itemprop='url')=item.name 
+                    else
+                        if item.isShow
+                            li.has-submenu(data-id='' class=item.isActive ? 'active' : '' itemprop='name')
+                                .d-none.d-xl-block.has-submenu-title
+                                    a(href=item.href itemprop='url')=item.name
+                                .d-xl-none.has-submenu-title
+                                    a(href='javascript:')=item.name
+                                ul.nav.level1
+                                    each item_child in item.children
+                                        if item_child.children == null
+                                            if item_child.isShow
+                                                li(data-id='' class=item_child.isActive ? 'active' : '')
+                                                    a(href=item_child.href)=item_child.name
+                                        else
+                                            if item_child.isShow
+                                                li.has-submenu(data-id='' class=item_child.isActive ? 'active' : '')
+                                                    .d-none.d-xl-block.has-submenu-title
+                                                        a(href=item_child.href itemprop='url')=item_child.name
+                                                    .d-xl-none.has-submenu-title
+                                                        a(href='javascript:')=item_child.name
+                                                    ul.nav.level2
+                                                        each item_child_child in item_child.children
+                                                            if item_child_child.children == null
+                                                                if item_child_child.isShow
+                                                                    li(data-id='' class=item_child_child.isActive ? 'active' : '')
+                                                                        a(href=item_child_child.href)=item_child_child.name
+                                                            else
+                                                                if item_child_child.isShow
+                                                                    li.has-submenu(data-id='' class=item_child_child.isActive ? 'active' : '')
+                                                                        .d-none.d-xl-block.has-submenu-title
+                                                                            a(href=item_child_child.href itemprop='url')=item_child_child.name
+                                                                        .d-xl-none.has-submenu-title
+                                                                            a(href='javascript:')=item_child_child.name
+                                                                        ul.nav.level3
+                                                                            each item_child_child_child in item_child_child.children
+                                                                                li(data-id='' class=item_child_child_child.isActive ? 'active' : '')
+                                                                                    a(href=item_child_child_child.href)=item_child_child_child.name
+                
