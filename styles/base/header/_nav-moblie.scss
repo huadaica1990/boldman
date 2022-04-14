@@ -290,7 +290,7 @@
         .mobile-search-toggle {
             @include print_css(navMoible, input);
             border: none;
-            width: calc(100% - 35px*3 - 1px - 10px*4);
+            width: #{get(navMoible, search, header, _inputWidth)};
         }
 
         a {

@@ -569,7 +569,7 @@ window.Ecsgroup = {};
     }
 
     /**
-     * Coyp content
+     * Copy content
      *
      * @param {String} selector
      * @param {Object} event
@@ -595,7 +595,31 @@ window.Ecsgroup = {};
                     '</div>',
             });
         });
-    }
+    };
+
+    
+    /**
+     * Open Share Product
+     *
+     * @param {String} class
+     */
+    Ecsgroup.shareUrl = function(selector) {
+        Ecsgroup.$body.on('click', selector, function(e) {
+            e.preventDefault();
+            var $this = $(e.currentTarget);
+            if (navigator.share) { 
+                navigator.share({
+                    title: $this.attr('title'),
+                    url: $this.attr('href')
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                .catch((error) => console.log('Sharing failed', error));
+            } else {
+                alert('Trình duyệt không hõ trợ');
+            }
+        });
+    };
 
     /**
      * appearAnimate
@@ -650,12 +674,12 @@ window.Ecsgroup = {};
     Ecsgroup.init = function () {
         // do something later...
         Ecsgroup.appearAnimate('.appear-animate');                              // Run appear animation
-        Ecsgroup.setTab('.nav-tabs-js');                                           // Initialize Tab
+        Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
             maxWidth: 768,
         });
-        Ecsgroup.scrollDirection('.sticky-header-mobile', 'hidden');          // Initialize Scroll Direction                    
+        Ecsgroup.scrollDirection('.sticky-header-mobile', 'hidden');            // Initialize Scroll Direction                    
         Ecsgroup.stickyContent('.sticky-header');                               // Initialize Sticky Content
         // Ecsgroup.stickyContent('.sticky-footer', {         
         //     minWidth: 0,
@@ -672,16 +696,16 @@ window.Ecsgroup = {};
         Ecsgroup.menu.init();                                                   // Initialize Menu
         Ecsgroup.initScrollTopButton();                                         // Initialize scroll top button
         //Ecsgroup.shop.init();                                                 // Initialize Shop
-        //Ecsgroup.alert('.alert')                                             // Initialize Alert
-        Ecsgroup.accordion('.accordion-header > a')                               // Initialize Accordion
+        //Ecsgroup.alert('.alert')                                              // Initialize Alert
+        Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar
         // Ecsgroup.sidebar('right-sidebar');                                   // Initialize Right Sidebar
         //Ecsgroup.productSingle('.single-product-item');                       // Initialize all single products
         //Ecsgroup.initProductSinglePage();                                     // Initialize Single Product Page
-        //Ecsgroup.initQtyInput('.quantity');                                     // Initialize Quantity Input
+        //Ecsgroup.initQtyInput('.quantity');                                   // Initialize Quantity Input
         //Ecsgroup.initNavFilter('.nav-filters .nav-filter')                    // Initialize Isotope Navigation Filters
         //Ecsgroup.calendar('.calendar-container');                             // Initialize Calendar
-        //Ecsgroup.countDown('.product-countdown');                 // Initialize CountDown
+        //Ecsgroup.countDown('.product-countdown');                             // Initialize CountDown
         Ecsgroup.initPopup();                                                   // Initialize Popup
         Ecsgroup.showHide();                                                    // Initialize Show Hide
         //Ecsgroup.initNotificationAlert();                                     // Initialize Notification Alert
