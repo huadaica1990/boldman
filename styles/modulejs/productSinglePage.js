@@ -7,25 +7,6 @@
  * @instance single
  */
 (function ($) {
-    // Open Share Product
-    function shareProduct(e) {
-        e.preventDefault();
-
-        var $this = $(e.currentTarget);
-            
-        if (navigator.share) { 
-            navigator.share({
-                title: $this.attr('title'),
-                url: $this.attr('href')
-            }).then(() => {
-                console.log('Thanks for sharing!');
-            })
-            .catch((error) => console.log('Sharing failed', error));
-        } else {
-            alert('Trình duyệt không hõ trợ');
-        }
-    }
-
     // Open Image Gallery
     function openImageGallery(e) {
         e.preventDefault();
@@ -238,8 +219,6 @@
                     }
                 })
                 .on('click', '.rating-form .rating-stars > a', clickRatingForm)
-                /*.on('click', '.product-single:not(.product-popup) .btn-cart', onAddToCartSingle)*/
-                .on('click', '.share-button', shareProduct)
                 .on('click', '.product-checkbox', ProductSinglePage.recommendItems);
         },
         recommendItems: function (e) {

@@ -22,13 +22,13 @@ block content
                 isActive: false,
             },
             {
-                name: 'Trang tĩnh',
+                name: title,
                 href: '',
                 isActive: true,
             },
         ];
     //- Content
-    main.page-wrapper.main(id=`${idPage}-page`)
+    main.page-wrapper.main(class=`${idPage}-page`)
         h1.d-none=h1Title
         
         .breadcrumb.mb-10

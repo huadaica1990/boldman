@@ -265,12 +265,6 @@ p.first-cap:first-letter {
       display: -webkit-box;
   }
   .blog-img {
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
     img[loading="lazy"] {
         margin: 0 auto;
     }
@@ -343,7 +337,6 @@ p.first-cap:first-letter {
       margin-bottom:0;
       table {
           margin:0;
-          width:100% !important;
       }
       & + * {
           margin-top: 2rem
@@ -395,10 +388,6 @@ p.first-cap:first-letter {
             @include border($position: "top", $size:1px, $style: solid, $color: $border-color);
             td {
                 text-align: left;
-                
-                &:first-child {
-                    min-width:150px;
-                }
             }
             &:hover {
                 background: $grey-background;
@@ -516,14 +505,34 @@ p + [data-component-item]:nth-of-type(3n) {
         font-size: 1.6rem;
         font-weight: $font-weight-bold;
         color: $dark-color;
-
         .label {
-            padding: 6px 2.5rem;
-            display: block;
-            max-width: none;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+               -moz-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
 
+            -webkit-box-pack: start;
+            -webkit-justify-content: flex-start;
+                -moz-box-pack: start;
+                -ms-flex-pack: start;
+                    justify-content: flex-start;
+            padding: 6px 2.5rem;
+            max-width: 100%;
+            width: 100%;
             &:after {
                 display: none;
+            }
+            svg {
+                height: 25px;
+                margin-right: 10px;
+                fill:#666;
             }
         }
     }
@@ -562,14 +571,16 @@ p + [data-component-item]:nth-of-type(3n) {
                 position: absolute;
                 right: 0.5rem;
                 font-size: 14px;
-                line-height: 1.5;
+                line-height: 1.8;
             }
         }
     }
 
     .toggle-btn {
         width: 100%;
-
+        svg {
+            display: none;
+        }
         &:after, &:before {
             @include transform($args: translateY(-50%));
             left: auto;
@@ -597,30 +608,40 @@ p + [data-component-item]:nth-of-type(3n) {
     }
 }
   #widget-toc-fixed {
+      @include border-radius($val: 5px);
+      @include shadow($val: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)));
+      @include border();
+      overflow: hidden;
       @include transform($args: translateX(-55px));
       display: none;
       z-index: 91;
-      border: none;
       .widget-toc {
         border: none;
         width: auto;
       }
       .toc-title {
-        width: 40px;
         height: 40px;
-        background-color:transparent;
         .label {
             display: none;
         }
+        &.collapsed {
+            width: 40px;
+        }
       }
       .widget-collapsible .toggle-btn {
-          display: block;
           @include transform($args: none);
+          display: block;
           position: static;
-          background-color: transparentize($color: #336699, $amount: 0.2);
           width: 100%;
           height: 100%;
           cursor: pointer;
+          padding: 8px;
+          svg {
+              display: block;
+              height: 100%;
+              fill: #666;
+              margin-right: 0;
+          }
           &:before {
             @include e-cen($type: "all", $option: translate(-50%, -50%));
             font-family: "ecs";
@@ -632,18 +653,14 @@ p + [data-component-item]:nth-of-type(3n) {
             height: auto;
             right: auto;
             color:$white-color;
+            display: none;
           }
           &:after {
               display: none;
           }
-          &:hover {
-            background-color: transparentize($color: #336699, $amount: 0);
-
-          }
       }
       .collapsible-body {
-          @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
-          @include box-shadow($number: "1");
+          @include border($position: "top");
           background-color:$white-color;
           width: 400px;
           max-height: 400px;

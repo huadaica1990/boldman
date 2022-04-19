@@ -237,7 +237,7 @@
             >.swiper-button-next {
                 right: 0;
             }
-            &:hover {
+            &:not(.nav-show):hover {
                 >.swiper-button-prev,
                 >.swiper-button-next {
                     visibility: visible;
@@ -261,7 +261,12 @@
                 opacity: 1;
                 visibility: visible;
             }
-            
+            >.swiper-button-prev {
+                left: 1rem;
+            }
+            >.swiper-button-next {
+                right: 1rem;
+            }
         }
     // Nav Top
         .nav-top {

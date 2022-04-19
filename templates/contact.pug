@@ -1,7 +1,7 @@
 extends layout.pug
 
 block title
-    - let title = 'Trang tĩnh';
+    - let title = 'Liên hệ';
     title #{title}
 block style
     - let css = '/release/static-page.min.css';
@@ -11,7 +11,7 @@ block style
 
 block content
     //- Var
-    - let idPage = 'static';
+    - let idPage = 'contact';
     - let h1Title = '@ViewBag.MetaTitle';
     //- Data
     -
@@ -22,13 +22,13 @@ block content
                 isActive: false,
             },
             {
-                name: 'Trang tĩnh',
+                name: title,
                 href: '',
                 isActive: true,
             },
         ];
     //- Content
-    main.page-wrapper.main(id=`${idPage}-page`)
+    main.page-wrapper.main.static-page(id=`${idPage}-page`)
         h1.d-none=h1Title
         
         .breadcrumb.mb-10
