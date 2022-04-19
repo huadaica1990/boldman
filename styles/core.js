@@ -110,7 +110,7 @@ window.Ecsgroup = {};
      */
     Ecsgroup.mq = function (fn, mq) {
         if (document.documentElement.clientWidth > mq) {
-            fn;
+            fn();
         }
     }
 

@@ -294,6 +294,34 @@
             }
         }
     }
+
+    @include mq("xl") {
+        .d {
+            &-xl-block {
+                display: block !important;
+            }
+
+            &-xl-flex {
+                display: -webkit-box !important;
+                display: -webkit-flex !important;
+                display: -moz-box !important;
+                display: -ms-flexbox !important;
+                display: flex !important;
+            }
+
+            &-xl-inline-flex {
+                display: -webkit-inline-box !important;
+                display: -webkit-inline-flex !important;
+                display: -moz-inline-box !important;
+                display: -ms-inline-flexbox !important;
+                display: inline-flex !important;
+            }
+
+            &-xl-none {
+                display: none !important;
+            }
+        }
+    }
     
     @include mq("xl", 'max') {
         .d-xl-show {

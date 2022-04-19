@@ -10,7 +10,7 @@ nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/Si
                     else
                         if item.isShow
                             li.mega-menu.has-submenu(class=item.isActive ? 'active' : '' data-id='' itemprop='name')
-                                .d-none.d-xl-block.has-submenu-title
+                                .d-xl-show.has-submenu-title
                                     a(href=item.href itemprop='url')=item.name
                                 .d-xl-none.has-submenu-title
                                     a(href='javascript:')=item.name
@@ -23,7 +23,7 @@ nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/Si
                                         else
                                             if item_children.isShow
                                                 li.has-submenu(class=item_children.isActive ? 'active' : '' data-id='')
-                                                    .d-none.d-xl-block.has-submenu-title
+                                                    .d-xl-show.has-submenu-title
                                                         a(href=item_children.href)=item_children.name
                                                     .d-xl-none.has-submenu-title
                                                         a(href=item_children.href)=item_children.name
@@ -40,7 +40,7 @@ nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/Si
                     else
                         if item.isShow
                             li.has-submenu(data-id='' class=item.isActive ? 'active' : '' itemprop='name')
-                                .d-none.d-xl-block.has-submenu-title
+                                .d-xl-show.has-submenu-title
                                     a(href=item.href itemprop='url')=item.name
                                 .d-xl-none.has-submenu-title
                                     a(href='javascript:')=item.name
@@ -53,7 +53,7 @@ nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/Si
                                         else
                                             if item_child.isShow
                                                 li.has-submenu(data-id='' class=item_child.isActive ? 'active' : '')
-                                                    .d-none.d-xl-block.has-submenu-title
+                                                    .d-xl-show.has-submenu-title
                                                         a(href=item_child.href itemprop='url')=item_child.name
                                                     .d-xl-none.has-submenu-title
                                                         a(href='javascript:')=item_child.name
@@ -66,7 +66,7 @@ nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/Si
                                                             else
                                                                 if item_child_child.isShow
                                                                     li.has-submenu(data-id='' class=item_child_child.isActive ? 'active' : '')
-                                                                        .d-none.d-xl-block.has-submenu-title
+                                                                        .d-xl-show.has-submenu-title
                                                                             a(href=item_child_child.href itemprop='url')=item_child_child.name
                                                                         .d-xl-none.has-submenu-title
                                                                             a(href='javascript:')=item_child_child.name
