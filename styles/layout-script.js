@@ -25,12 +25,25 @@ function updateRateCount(targetId, viewname, action) {
 }
 
 // Search
+function getViewedSearch() {
+    $.ajax({
+        url: '/aj/Search/GetViewedSearch',
+        type: 'GET',
+        beforeSend: function () { },
+        success: function (result) {
+            if (result.Ok) $('.js-viewed-search').html(result.Data.viewsrc);
+        },
+        error: function () { }
+    });
+}
 function search(value) {
     $.ajax({
         url: '/aj/Search/PreSearch',
         type: 'GET',
         data: { keyword: value },
-        beforeSend: function () { },
+        beforeSend: function () {
+            $('.search-result-step2 .search-result-history').html('<a href="javascript:"><div class="loading"></div></a>');
+        },
         success: function (result) {
             if (!result.Ok) {
                 $('#error-modal p').text(result.msg);
