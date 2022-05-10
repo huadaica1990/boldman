@@ -42,15 +42,15 @@
         }
     }
     // Swiper slider
-    .swiper {
-        position: relative;
-        >.swiper-container {
-            position: static;
-            >.swiper-pagination {
-                bottom: -4.5rem;
-            }
-        }
-    }
+    // .swiper {
+    //     position: relative;
+    //     >.swiper-container {
+    //         position: static;
+    //         >.swiper-pagination {
+    //             bottom: -4.5rem;
+    //         }
+    //     }
+    // }
     .swiper-pagination {
         position: static;
         margin-top: 1.5rem;
@@ -217,7 +217,7 @@
         }
     }
     // Nav color
-    .nav-colored {
+    .nav-color {
         >.swiper-button-prev,
         >.swiper-button-next {
             background-color: $primary-color;

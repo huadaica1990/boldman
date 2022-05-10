@@ -36,12 +36,13 @@ Ecsgroup.scrollDirection = function (selector, classname) {
         }
         else if (currentTop - previousTop > scrollDelta && currentTop > scrollOffset) {
             //if scrolling down...
+            $this.addClass(elClassHidden);
             if (currentTop + wHeight + 200 >= dHeight && $this.hasClass(elClassHidden)) {
                 $this.removeClass(elClassHidden);
             }
-            else {
-                $this.addClass(elClassHidden);
-            }
+            // else {
+            //     $this.addClass(elClassHidden);
+            // }
         }
     }
 }
