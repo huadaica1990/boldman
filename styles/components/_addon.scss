@@ -328,7 +328,15 @@
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/
-  @include mq("450px", "max") {
+  @include mq('lg', 'max') {
+    .callnow {
+      bottom: calc(15px + 58px);
+    }
+    .zalocall {
+      bottom: calc(50px + 30px + 58px);
+    }
+  }
+  @include mq('md', 'max') {
     #scroll-top {
       display: none;
     }
