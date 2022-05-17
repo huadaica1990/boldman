@@ -1627,19 +1627,37 @@ function validateForm(btn, idform) {
     });
 }
 function validateFormMini(btn, idform) {
+    var submitted = true;
     var form = $(idform).validate({
         focusInvalid: true,
-        rules: {
-            email: {
-                required: true,
+        rules: {},
+        messages: {},
+        showErrors: function (errorMap, errorList) {
+            if (submitted) {
+                var summary = '';
+                $.each(errorList, function () {
+                    summary += this.message + $(this.element).data('name') + '</br>';
+                })
+                $('#error-modal p').html(summary);
+                submitted = false;
             }
+            //this.defaultShowErrors();
         },
-        messages: {
-            email: {
-                required: "Vui lòng điền đầy đủ thông tin ở trường email.",
+        invalidHandler: function (event, validator) {
+            // 'this' refers to the form
+            if (validator.numberOfInvalids()) {
+                Ecsgroup.popup(
+                    [{
+                        src: '#error-modal',
+                        type: "inline"
+                    }],
+                    {}, 'error');
+            } else {
             }
+            submitted = true;
         },
         submitHandler: function (form) {
+            submitted = false;
             //var modal = {
             //    name: $(idform).find("*[name='name']").val(),
             //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
@@ -1702,13 +1720,14 @@ function validateFormMini(btn, idform) {
         }
     });
 }
+
 function sendMail(targetId, action) {
     $.ajax({
         url: action,
         type: 'GET',
         data: { id: targetId },
         beforeSend: function () { },
-        success: function () { },
-        error: function () { }
+        success: function () {},
+        error: function () {}
     });
 }
