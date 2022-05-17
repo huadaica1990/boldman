@@ -34,7 +34,7 @@
     // input:-ms-input-placeholder {color: #00C851;}
     // input:-moz-placeholder {color: #00C851;}
     .blog-content {
-        font-size: 1.4rem;
+        font-size: $font-size;
         margin-bottom:2rem;
         @import "../components/blogcontent";
     }
