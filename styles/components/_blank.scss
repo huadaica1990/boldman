@@ -18,7 +18,7 @@
 @include set-default(
   (
     nameEle: (
-      
+      // _linkColor:rgb(13, 92, 182),
       1920: (),
       1440: (),
       1366: (),
@@ -35,14 +35,9 @@
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/
-  @include mq("1920px") {}
-  @include mq("1440px", "max") {}
-  @include mq("1366px", "max") {}
-  @include mq("1280px", "max") {}
-  @include mq("1024px", "max") {}
-  @include mq("768px", "max") {}
-  @include mq("450px", "max") {}
-  @include mq("360px", "max") {}
+  @include mq(xl, 'max') {}
+  @include mq(lg, 'max') {}
+  @include mq(md, 'max') {}
 /*#endregion*/
 
 /*#region Style fix all browser*/

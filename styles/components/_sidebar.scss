@@ -779,6 +779,7 @@
 .sidebar {
     .widget {
         .widget-title {
+            margin-bottom: 1rem;
             cursor: default;
             font-size: 13px;
         }
@@ -794,11 +795,6 @@
         &:last-child .widget-body {
             margin-bottom: 1rem;
         }
-
-        .widget-title {
-            margin-bottom: 1rem;
-        }
-
         .nav-top {
             .swiper-button-next, .swiper-button-prev {
                 top: -3.1rem;
