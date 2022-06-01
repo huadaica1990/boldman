@@ -7,6 +7,25 @@
  * @instance single
  */
 (function ($) {
+    // Open Share Product
+    function shareProduct(e) {
+        e.preventDefault();
+
+        var $this = $(e.currentTarget);
+            
+        if (navigator.share) { 
+            navigator.share({
+                title: $this.attr('title'),
+                url: $this.attr('href')
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            })
+            .catch((error) => console.log('Sharing failed', error));
+        } else {
+            alert('Trình duyệt không hõ trợ');
+        }
+    }
+
     // Open Image Gallery
     function openImageGallery(e) {
         e.preventDefault();
@@ -145,8 +164,8 @@
     function stickyProduct(selector) {
 
         var $this = $(selector),
-            $product = $this.closest('#productdetail'),
-            src = $product.find('.product-gallery img').eq(0).attr('src'),
+            $product = $this.closest('.product-single'),
+            src = $product.find('.product-gallery img').eq(0).attr('data-src'),
             name = $product.find('.product-details .product-title').text(),
             newPrice = $product.find('.new-price').text(),
             oldPrice = $product.find('.old-price').text(),
@@ -203,7 +222,7 @@
         },
         initSinglePage: function () {
             // Zoom Image for grid type
-            Ecsgroup.zoomImage('#productdetail .product-gallery .product-image');
+            Ecsgroup.zoomImage('.product-detail .product-gallery .product-image');
 
             stickyProduct('.product-sticky-content');
             // Register events
@@ -219,6 +238,8 @@
                     }
                 })
                 .on('click', '.rating-form .rating-stars > a', clickRatingForm)
+                /*.on('click', '.product-single:not(.product-popup) .btn-cart', onAddToCartSingle)*/
+                .on('click', '.share-button', shareProduct)
                 .on('click', '.product-checkbox', ProductSinglePage.recommendItems);
         },
         recommendItems: function (e) {
@@ -236,7 +257,7 @@
                     else {
                         saleprice += $this.data('price');
                     }
-                    var cartItem = { ProductId: parseInt($this.val()), Quantity: parseInt(1) };
+                    var cartItem = { ProductId: parseInt($this.val()), Quantity: parseInt(1), Type: $this.data('producttype')};
                     listproduct.push(cartItem);
                     number += 1;
                 }

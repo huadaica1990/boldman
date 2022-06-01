@@ -25,25 +25,12 @@ function updateRateCount(targetId, viewname, action) {
 }
 
 // Search
-function getViewedSearch() {
-    $.ajax({
-        url: '/aj/Search/GetViewedSearch',
-        type: 'GET',
-        beforeSend: function () { },
-        success: function (result) {
-            if (result.Ok) $('.js-viewed-search').html(result.Data.viewsrc);
-        },
-        error: function () { }
-    });
-}
 function search(value) {
     $.ajax({
         url: '/aj/Search/PreSearch',
         type: 'GET',
         data: { keyword: value },
-        beforeSend: function () {
-            $('.search-result-step2 .search-result-history').html('<a href="javascript:"><div class="loading"></div></a>');
-        },
+        beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
                 $('#error-modal p').text(result.msg);
@@ -465,13 +452,14 @@ function removecmtimg(obj) {
 // Cart
 updateCart();
 function addToCart(selector, quantityclass, url) {
-    var cartList = new Array();
+    var cartList = new Array()
     if (window.localStorage.getItem("cartlist") != null) cartList = JSON.parse(window.localStorage.getItem("cartlist"));
     var $this = $(selector),
         productid = $this.data('id'),
         oldtext = $this.data('current-text'),
         loadingtext = $this.data('loading-text'),
         loadingdot = $this.data('loading-dot'),
+        producttype = $this.data('producttype'),
         quantity = $this.parent().find(quantityclass).val();
     $this.addClass('load-more-overlay loading').text(loadingdot);
 
@@ -480,7 +468,7 @@ function addToCart(selector, quantityclass, url) {
     });
     if (cartListUpdate != null) cartListUpdate.quantity += parseInt(quantity);
     else {
-        var cartItem = { id: productid, quantity: parseInt(quantity), displayorder: cartList.length + 1 };
+        var cartItem = { id: productid, quantity: parseInt(quantity), type: producttype, displayorder: cartList.length + 1 };
         cartList.push(cartItem);
     }
     window.localStorage.setItem('cartlist', JSON.stringify(cartList));
@@ -513,7 +501,7 @@ function addToCartList(obj, listid, url) {
         });
         if (cartListUpdate != null) cartListUpdate.quantity += parseInt(elem.Quantity);
         else {
-            var cartItem = { id: elem.ProductId, quantity: parseInt(elem.Quantity), displayorder: cartList.length + 1 };
+            var cartItem = { id: elem.ProductId, quantity: parseInt(elem.Quantity), type: elem.Type, displayorder: cartList.length + 1 };
             cartList.push(cartItem);
         }
     });
@@ -1627,37 +1615,19 @@ function validateForm(btn, idform) {
     });
 }
 function validateFormMini(btn, idform) {
-    var submitted = true;
     var form = $(idform).validate({
         focusInvalid: true,
-        rules: {},
-        messages: {},
-        showErrors: function (errorMap, errorList) {
-            if (submitted) {
-                var summary = '';
-                $.each(errorList, function () {
-                    summary += this.message + $(this.element).data('name') + '</br>';
-                })
-                $('#error-modal p').html(summary);
-                submitted = false;
+        rules: {
+            email: {
+                required: true,
             }
-            //this.defaultShowErrors();
         },
-        invalidHandler: function (event, validator) {
-            // 'this' refers to the form
-            if (validator.numberOfInvalids()) {
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
-            } else {
+        messages: {
+            email: {
+                required: "Vui lòng điền đầy đủ thông tin ở trường email.",
             }
-            submitted = true;
         },
         submitHandler: function (form) {
-            submitted = false;
             //var modal = {
             //    name: $(idform).find("*[name='name']").val(),
             //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
@@ -1720,14 +1690,13 @@ function validateFormMini(btn, idform) {
         }
     });
 }
-
 function sendMail(targetId, action) {
     $.ajax({
         url: action,
         type: 'GET',
         data: { id: targetId },
         beforeSend: function () { },
-        success: function () {},
-        error: function () {}
+        success: function () { },
+        error: function () { }
     });
 }
