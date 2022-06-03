@@ -34,7 +34,7 @@
     // input:-ms-input-placeholder {color: #00C851;}
     // input:-moz-placeholder {color: #00C851;}
     .blog-content {
-        font-size: 1.4rem;
+        font-size: $font-size;
         margin-bottom:2rem;
         @import "../components/blogcontent";
     }
@@ -50,7 +50,7 @@
             padding-left: 15px;
         }
         &-left-container {
-            padding-right: calc(50% - #{$container-width/2});
+            padding-left: calc(50% - #{$container-width/2});
             padding-right: 15px;
         }
     }
@@ -326,10 +326,8 @@
             }
         }
     }
-    @include mq(lg, "max") {
-        body {
-            padding-bottom: $nav-mobile-footer_height;
-        }
+
+    @include mq(xl, "max") {
         .padding {
             &-right-container {
                 padding-right: 15px;
@@ -339,6 +337,11 @@
                 padding-right: 15px;
                 padding-right: 15px;
             }
+        }
+    }
+    @include mq(lg, "max") {
+        body {
+            padding-bottom: $nav-mobile-footer_height;
         }
         .scroll-tab-item-lg {
             display: block !important;
