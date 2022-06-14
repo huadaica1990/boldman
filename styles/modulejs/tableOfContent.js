@@ -6,7 +6,7 @@
  Ecsgroup.tableOfContent = function() {
     var domTableOfContent = Ecsgroup.byId('widget-toc-fixed'),
         stickyHeader = $('.sticky-header').height() + 30;
-    if($('.widget-toc').length > 0 || domTableOfContent != null) {
+    if($('.widget-toc').length != false || domTableOfContent != null) {
         var refreshTableOfContent = function () {
             if($('.readmore-js.open').length > 0) {
                 domTableOfContent.classList.remove('show');

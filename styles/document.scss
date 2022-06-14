@@ -133,7 +133,7 @@
             border-radius: 4px;
             padding: 2px 5px;
             font-size: 1.2em;
-            color: $primary-color;
+            color: #000;
             background-color: rgba(51, 102, 153, 0.06);
         }
         code + code {
@@ -243,7 +243,7 @@
             }
             li.show {
                 a {
-                    color: $primary-color;
+                    color: #000;
                     font-weight: bold;
                 }
             }

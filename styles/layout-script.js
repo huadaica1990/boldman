@@ -452,13 +452,14 @@ function removecmtimg(obj) {
 // Cart
 updateCart();
 function addToCart(selector, quantityclass, url) {
-    var cartList = new Array();
+    var cartList = new Array()
     if (window.localStorage.getItem("cartlist") != null) cartList = JSON.parse(window.localStorage.getItem("cartlist"));
     var $this = $(selector),
         productid = $this.data('id'),
         oldtext = $this.data('current-text'),
         loadingtext = $this.data('loading-text'),
         loadingdot = $this.data('loading-dot'),
+        producttype = $this.data('producttype'),
         quantity = $this.parent().find(quantityclass).val();
     $this.addClass('load-more-overlay loading').text(loadingdot);
 
@@ -467,7 +468,7 @@ function addToCart(selector, quantityclass, url) {
     });
     if (cartListUpdate != null) cartListUpdate.quantity += parseInt(quantity);
     else {
-        var cartItem = { id: productid, quantity: parseInt(quantity), displayorder: cartList.length + 1 };
+        var cartItem = { id: productid, quantity: parseInt(quantity), type: producttype, displayorder: cartList.length + 1 };
         cartList.push(cartItem);
     }
     window.localStorage.setItem('cartlist', JSON.stringify(cartList));
@@ -500,7 +501,7 @@ function addToCartList(obj, listid, url) {
         });
         if (cartListUpdate != null) cartListUpdate.quantity += parseInt(elem.Quantity);
         else {
-            var cartItem = { id: elem.ProductId, quantity: parseInt(elem.Quantity), displayorder: cartList.length + 1 };
+            var cartItem = { id: elem.ProductId, quantity: parseInt(elem.Quantity), type: elem.Type, displayorder: cartList.length + 1 };
             cartList.push(cartItem);
         }
     });

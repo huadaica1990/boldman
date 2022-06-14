@@ -74,76 +74,7 @@
 
 /*#region Height ele*/
   // Product
-    .product-media {
-        min-height: 290px;
-    }
-    .cols-xl-5 .product-media,
-    .swiper-slide .product-media {
-        min-height: 240px;
-    }
-    .sidebar .product-widget .product-media { 
-        min-height: 90px;
-    }
-    .product-sticky-content .product-media {
-        min-height: 80px;
-    }
-    @include mq("1024px", "max") {
-      .product-media {
-          min-height: 300px;
-      }
-      .cols-xl-5 .product-media {
-          min-height: 260px;
-      }
-      .swiper-slide .product-media {
-          min-height: 200px;
-      }
-    }
-    @include mq("768px", "max") {
-      .product-media,
-      .cols-xl-5 .product-media,
-      .swiper-slide .product-media {
-          min-height: 300px;
-      }
-    }
-    @include mq("450px", "max") {
-      .product-media,
-      .cols-xl-5 .product-media,
-      .swiper-slide .product-media {
-          min-height: 210px;
-      }
-    }
   // Blog
-    .related-blog .post-media {
-      min-height: 160px;
-    }
-    .post-wrapper  .post-media {
-      min-height: 160px;
-    }
-    .post-widget .post-media {
-        @include center-img($hover: false, $type: "scale");
-        height:80px;
-    }
-    @include mq("1024px", "max") {
-      .related-blog .post-media {
-        min-height: 180px;
-      }
-      .post-wrapper .post-media {
-        min-height: 130px;
-      }
-    }
-    @include mq("768px", "max") {
-      .related-blog .post-media {
-        min-height: 130px;
-      }
-    }
-    @include mq("450px", "max") {
-      .related-blog .post-media {
-        min-height: 190px;
-      }
-      .post-wrapper .post-media {
-        min-height: 190px;
-      }
-    }
 /*#endregion*/
 
 

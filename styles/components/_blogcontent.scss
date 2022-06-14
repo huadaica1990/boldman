@@ -265,6 +265,10 @@ p.first-cap:first-letter {
       display: -webkit-box;
   }
   .blog-img {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto 2rem auto;
     img[loading="lazy"] {
         margin: 0 auto;
     }
@@ -457,7 +461,7 @@ p.first-cap:first-letter {
     }
 }
 .component-item {
-    width: calc((100%-31px)/3);
+    width: calc((100% - 31px)/3);
     margin-right: 15px;
     display: inline-block;
 

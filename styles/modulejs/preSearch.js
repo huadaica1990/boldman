@@ -9,6 +9,7 @@ function preSearchEcs (selector) {
     $search.find('input[type="search"]')
         .on('focusin', function (e) {
             $search.addClass('show');
+            getViewedSearch();
             $('.search-overwrap').addClass('show');
         })
         // .on('focusout', function (e) {
