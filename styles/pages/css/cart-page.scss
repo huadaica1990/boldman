@@ -168,10 +168,10 @@
 
     .btn-buy-confirm {
         @include border($position: "all", $size:1px, $style: solid, $color: rgb(172, 34, 39));
-        padding: 4px 12px;
+        padding: 0px 12px;
         width: 360px;
         height: 50px;
-        line-height: 2;
+        line-height: 50px;
         color: rgb(255, 255, 255);
         font-size: 18px;
         outline-color: rgb(204, 204, 204);
