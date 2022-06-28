@@ -38,7 +38,6 @@
     ),
   )
 );
-background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190, 229) 9.56%, rgb(56, 86, 243) 73.79%) repeat scroll 0% 0%;
 /*--------------------------------------------
     Cart Page
 ----------------------------------------------*/
@@ -361,7 +360,7 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
 
                     &:last-child {
                         text-align: right;
-                        width: calc(100% - 80px);
+                        width: calc(100% - 85px);
 
                         > * {
                             display: block;
@@ -511,7 +510,7 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
                 font-size: 12px;
                 color: $dark-color;
 
-                ul {
+                ul,ol {
                     padding-left: 1.5rem;
                 }
 
@@ -831,9 +830,20 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
         }
 
         &-title {
-            @include overtext($row: 2, $h: auto);
             width: #{get(cart, _widthItem)};
-            white-space: initial;
+            a {
+                @include overtext($row: 2, $h: auto);
+                white-space: initial;
+            }
+        }
+
+        &-point {
+            @include border-radius($val:4px);
+            background: rgb(242, 240, 254) none repeat scroll 0% 0%;
+            padding: 2px 6px;
+            color: rgb(64, 45, 161);
+            font-size: 11px;
+            font-weight: $font-weight-semibold;
         }
 
         &-price {
@@ -863,10 +873,85 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
         padding: 2rem 15px;
     }
 
+    .section-promogift {
+        padding: 2rem 15px;
+
+        &-title {
+            label {
+                position: relative;
+                overflow: hidden;
+                display: inline-block;
+                padding: 2px 0;
+
+                span {
+                    @include border-radius($val: 4px);
+                    @include border($color: rgb(13, 92, 182));
+                    background: rgb(230, 238, 247);
+                    padding: 2px 10px;
+
+                    &:after, &:before {
+                        @include border-radius($val: 50%);
+                        @include border($color: rgb(13, 92, 182));
+                        @include e-cen($type: "top", $option: translate(-50%, -50%));
+                        content: "";
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        background-color: $white-color;
+                    }
+
+                    &:before {
+                        left: -5px;
+                    }
+
+                    &:after {
+                        right: -5px;
+                    }
+                }
+            }
+        }
+
+        &-body {
+            ul {
+                padding: 0;
+                margin: 0;
+            }
+
+            .promogift-thumbnail {
+                @include center-img($hover: false, $type: "scale");
+                height: 70px;
+                width: 60px;
+            }
+
+            .promogift-price {
+                margin-left: auto;
+                font-size: 1.2rem;
+                line-height: normal;
+                color: $dark-color;
+                font-weight: $font-weight-semibold;
+
+                .new-price {
+                    text-decoration: none;
+
+                    &:not(:last-child) {
+                        margin-right: .5rem;
+                    }
+                }
+
+                .old-price {
+                    font-weight: $font-weight-light;
+                    color: #aaa;
+                }
+            }
+        }
+    }
+
     .points {
         a {
             color: #{get(cart,_linkColor)}
-        };
+        }
+
+        ;
 
         p {
             margin-left: 3.5rem;
@@ -1483,7 +1568,7 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
             }
 
             &:nth-child(2) {
-                margin-top: -40px;
+                margin-top: -35px;
                 pointer-events: none;
                 width: #{get(cart, _widthItem)};
                 padding-left: 23px;
@@ -1491,7 +1576,6 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
             }
 
             &:nth-child(3) {
-                margin-top: -5px;
                 margin-left: calc(70px + 31px + 10px);
             }
         }
@@ -1535,6 +1619,11 @@ background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190,
 
         .product {
             &-title {
+                text-align: right;
+
+                a {
+                    text-align: left;
+                }
             }
 
             &-price .new-price,
