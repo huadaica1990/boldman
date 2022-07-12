@@ -724,6 +724,7 @@ window.Ecsgroup = {};
         // Ecsgroup.slideContent('.coupon-toggle');
         // Ecsgroup.slideContent('.checkbox-toggle');   
         // Ecsgroup.initLoginVendor('.user-checkbox');                          // Initialize Vendor's Login
+        // Ecsgroup.notiCustomer(100, new Array(20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000)); // Initialize Noti Customer
 
     };
 })(jQuery);
