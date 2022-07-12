@@ -179,6 +179,15 @@
                 }
             }
         }
+        &.comma {
+            a {
+                margin-right: 5px;
+                &:after {
+                    position: static;
+                    content: ',';
+                }
+            }
+        }
     }
     marquee {
         ul {
