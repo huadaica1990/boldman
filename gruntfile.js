@@ -109,7 +109,8 @@ module.exports = grunt => {
                         '<%= dirs.mainjs %>/modulejs/productSinglePage.js',
                         '<%= dirs.mainjs %>/modulejs/uploadFile.js',
                         '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
-                        '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js'
+                        '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js',
+                        '<%= dirs.mainjs %>/modulejs/notiCustomer.js'
                     ],
                     // Default all page
                     '<%= dirs.dest %>/default.min.js': [

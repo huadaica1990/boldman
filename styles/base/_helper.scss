@@ -627,16 +627,19 @@
         }
 
         .b {
-            &t {
+            &-a {
+                border: 1px solid $border-color !important;
+            }
+            &-t {
                 border-top: 1px solid $border-color !important;
             }
-            &b {
+            &-b {
                 border-bottom: 1px solid $border-color !important;
             }
-            &l {
+            &-l {
                 border-left: 1px solid $border-color !important;
             }
-            &r {
+            &-r {
                 border-right: 1px solid $border-color !important;
             }
         }

@@ -30,6 +30,7 @@
     &-box {
         @include shadow($val: 0 10px 30px rgba(0,0,0,0.1));
         @include transform($args: translateY(-100%));
+
         @include animation($customize: true) {
             -ms-transition: opacity .3s, left .3s ease-out, transform .3s;
             -webkit-transition: opacity .3s, left .3s ease-out, transform .3s;
@@ -37,6 +38,7 @@
             -o-transition: opacity .3s, left .3s ease-out, transform .3s;
             transition: opacity .3s, left .3s ease-out, transform .3s;
         }
+
         position: absolute;
         left: -8rem;
         width: 300px;
@@ -44,16 +46,17 @@
         background-color: $white-color;
         opacity: 0;
         z-index: 3000;
-    
+
         &.show {
             opacity: 1;
             left: 0;
         }
-    
+
         &.focus {
             @include transform($args: scale(.98) translateY(-100%));
         }
     }
+
     &-center {
         @include transform($args: none);
         position: fixed;
@@ -62,6 +65,7 @@
         top: 0 !important;
         left: 0 !important;
         background-color: rgba(0,0,0,.5);
+
         .minipopup-body {
             @include e-cen($type: "all", $option: translate(-50%, -50%));
             @include border-radius($val: .3rem);
@@ -69,22 +73,28 @@
             background-color: $white-color;
             padding: 2rem;
         }
+
         .minipopup-content {
             text-align: center;
+
             i {
                 display: block;
+
                 &::before {
                     font-size: 30px;
                 }
             }
         }
+
         &.focus {
             @include transform($args: none);
         }
     }
+
     .product {
         @include flex($type: "center");
         margin-bottom: 1.5rem;
+
         .product-name {
             font-size: 1.4rem;
             line-height: 1.4;
@@ -96,11 +106,43 @@
         padding: 0 0 0 1.2rem;
     }
 
+    &-noti-customer {
+        width: 310px;
+        .minipopup-meida {
+            @include border-radius($val: 50%);
+            @include center-img($hover: false);
+            width: 50px;
+            height: 50px;
+        }
+
+        .minipopup-detais {
+            width: calc(100% - 51px);
+            padding-left: 10px;
+        }
+        .minipopup-title {
+            font-weight:$font-weight-semibold;
+        }
+        .minipopup-subtitle {
+            font-size:1.2rem;
+            font-style:italic;
+            color:$grey-color
+        }
+        .minipopup-content {
+            a {
+                color:$link-color;
+            }
+            *:not(:last-child) {
+                margin-bottom:5px;
+            }
+        }
+    }
+
     p {
         margin-bottom: 0;
         font-size: 1.3rem;
         color: $body-color;
         line-height: 1.4;
+
         i {
             @include transform($args: translateY(2px));
             margin-right: .5rem;
@@ -115,18 +157,19 @@
             padding-left: 1.9em;
             padding-right: 1.9em;
         }
+
         .btn-view-cart {
             background-color: rgb(255, 57, 69);
-            color:$white-color;
+            color: $white-color;
             text-transform: none;
-            border:0;
+            border: 0;
             width: 100%;
+
             &:hover, &:focus, &:active {
                 opacity: .95;
             }
         }
     }
-    
 }
 @include mq("xs", "max") {
     .minipopup-area {
