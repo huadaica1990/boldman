@@ -257,7 +257,7 @@
                     else {
                         saleprice += $this.data('price');
                     }
-                    var cartItem = { ProductId: parseInt($this.val()), Quantity: parseInt(1), Type: $this.data('producttype')};
+                    var cartItem = { ProductId: parseInt($this.val()), Quantity: parseInt(1), Type: $this.data('type')};
                     listproduct.push(cartItem);
                     number += 1;
                 }
