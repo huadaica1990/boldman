@@ -461,7 +461,7 @@ function addToCart(selector, quantityclass, url) {
         loadingdot = $this.data('loading-dot'),
         producttype = $this.data('producttype'),
         quantity = $this.parent().find(quantityclass).val();
-    $this.addClass('load-more-overlay loading').text(loadingdot);
+    $this.addClass('load-more-overlay loading').html(loadingdot);
 
     var cartListUpdate = cartList.find((elem, index) => {
         return elem.id === productid;
@@ -478,7 +478,7 @@ function addToCart(selector, quantityclass, url) {
     else {
         updateCart();
         setTimeout(function () {
-            $this.text(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
+            $this.html(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
             showCartInfo();
         }, 1000);
         setTimeout(function () {
@@ -494,7 +494,7 @@ function addToCartList(obj, listid, url) {
         loadingtext = $this.data('loading-text'),
         loadingdot = $this.data('loading-dot'),
         listProduct = JSON.parse($(listid).val());
-    $this.addClass('load-more-overlay loading').text(loadingdot);
+    $this.addClass('load-more-overlay loading').html(loadingdot);
     listProduct.forEach(function (elem) {
         var cartListUpdate = cartList.find((item, index) => {
             return item.id === elem.ProductId;
@@ -512,7 +512,7 @@ function addToCartList(obj, listid, url) {
     else {
         updateCart();
         setTimeout(function () {
-            $this.text(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
+            $this.html(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
         }, 1000);
         setTimeout(function () {
             $this.html(oldtext).css('pointer-events', 'auto');
