@@ -1038,6 +1038,12 @@
     }
 
     &-content {
+        .short-desc {
+            i {
+                @include transform($args:translateY(-2px));
+                margin-right: .5rem;
+            }
+        }
         .bg-white {
             position: relative;
             z-index: 2;
@@ -1045,6 +1051,13 @@
     }
 
     &-info {
+        .btn {
+            border-width: 1px;
+        }
+        .btn-error {
+            background-color: #{get(cart, _redColor)};
+            border-color: #{get(cart, _redColor)};
+        }
         a:not(.btn) {
             color: #{get(cart, _linkColor)};
             text-decoration: underline;
