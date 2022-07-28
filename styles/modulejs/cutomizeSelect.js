@@ -136,12 +136,12 @@ selectEcs.searchText = function (el, elparent) {
         li = ul.find('li'),
         count = 0,
         filter, a, i, txtValue;
-    filter = cleanUnicode(input.val());
+    filter = selectEcs.cleanUnicode(input.val());
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
         a = li[i];
         txtValue = a.textContent || a.innerText;
-        if (cleanUnicode(txtValue).indexOf(filter) > -1) {
+        if (selectEcs.cleanUnicode(txtValue).indexOf(filter) > -1) {
             a.style.display = '';
             count += 1;
         } else {
