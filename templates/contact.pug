@@ -67,7 +67,7 @@ block content
             hr.divider.mb-md-10.mb-5
             .section-footer.mb-10
                 .title.mb-3 Liên hệ với chúng tôi
-                form.contact-us-form(action='/aj/StaticPage/Contact' id='js-FormTheme1-form' method='post' onsubmit='return false;submitcontact()')
+                form.contact-us-form(action='/aj/Shared/Contact' id='js-FormTheme1-form' method='post' onsubmit='return false;submitcontact()')
                     .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: block;')
                         .alert-test
                             .alert-title.ecs-icon-times-circle
@@ -95,7 +95,7 @@ block content
                     .btn-container
                         button.btn.btn-primary.br-sm.w-sm-100(type='submit' onclick="submitcontact('#js-FormTheme1-form')") Gửi
                     input(type='hidden' name='ContactType' value='3')
-                    input(type='hidden' name='Action' value='/aj/StaticPage/Contact')
+                    input(type='hidden' name='Action' value='/aj/Shared/Contact')
                     input(type='hidden' name='Title' value='[Liên hệ] Liên hệ từ trang liên hệ')
                     input(type='hidden' name='Note' value='Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất')
 

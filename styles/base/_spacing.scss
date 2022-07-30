@@ -89,44 +89,44 @@
 	.m {
 		&-last {
 			> *:last-child {
-				margin-bottom: 0 !important;;
+				margin-bottom: 0 !important;
 			}
 		}
 		&-first {
 			> *:first-child {
-				margin-top: 0 !important;;
+				margin-top: 0 !important;
 			}
 		}
 		&-right {
 			> *:last-child {
-				margin-right: 0 !important;;
+				margin-right: 0 !important;
 			}
 		}
 		&-left {
 			> *:last-child {
-				margin-left: 0 !important;;
+				margin-left: 0 !important;
 			}
 		}
 	}
 	.p {
 		&-last {
 			> *:last-child {
-				padding-bottom: 0 !important;;
+				padding-bottom: 0 !important;
 			}
 		}
 		&-first {
 			> *:first-child {
-				padding-top: 0 !important;;
+				padding-top: 0 !important;
 			}
 		}
 		&-right {
 			> *:last-child {
-				padding-right: 0 !important;;
+				padding-right: 0 !important;
 			}
 		}
 		&-left {
 			> *:last-child {
-				padding-left: 0 !important;;
+				padding-left: 0 !important;
 			}
 		}
 	}

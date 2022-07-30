@@ -137,7 +137,7 @@
 		"scope": "pug,jade",
 		"prefix": "pug-form",
 		"body": [
-			"form#js-contact-form.flex-container(action='/aj/StaticPage/Contact' method='post' onsubmit='return false;submitcontact()')",
+			"form#js-contact-form.flex-container(action='/aj/Shared/Contact' method='post' onsubmit='return false;submitcontact()')",
 			"	.error-lst.alert-danger(style='display: none')",
 			"		ul",
 			"	input.form-control.get-value(type='text' name='name' placeholder='Họ và tên*' data-required='required' data-alert='Họ và tên' data-type='0')",
@@ -146,7 +146,7 @@
 			"	textarea.form-control.get-value(name='body' placeholder='Nội dung*' data-required='required' data-alert='Nội dung' data-type='3')",
 			"	button.btn.btn-primary.btn-big.btn-loading.m20--top(type='submit' onclick="submitcontact('#js-contact-form')") Gửi",
 			"	input(type='hidden' name='ContactType' value='0')",
-			"	input(type='hidden' name='Action' value='/aj/StaticPage/Contact')",
+			"	input(type='hidden' name='Action' value='/aj/Shared/Contact')",
 			"	input(type='hidden' name='Title' value='Liên hệ từ trang liên hệ')",
 			"	input(type='hidden' name='Note' value='Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất')"
 		],
