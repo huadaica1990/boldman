@@ -1583,7 +1583,7 @@ function validateForm(btn, idform) {
                         formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
                     }
                     else {
-                        sendMail(result.Data.id, '/aj/staticpage/SendEmail');
+                        sendMail(result.Data.id, '/aj/Shared/SendEmail');
                         formError.hide();
                         $('#success-modal p').text(note);
                         Ecsgroup.popup(
@@ -1659,7 +1659,7 @@ function validateFormMini(btn, idform) {
                             {}, 'error');
                     }
                     else {
-                        sendMail(result.Data.id, '/aj/staticpage/SendEmail');
+                        sendMail(result.Data.id, '/aj/Shared/SendEmail');
                         Ecsgroup.Minipopup.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
