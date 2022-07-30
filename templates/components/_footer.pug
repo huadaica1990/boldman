@@ -14,7 +14,7 @@ footer.footer.appear-animate(itemscope itemtype='http://schema.org/LocalBusiness
                             .icon-box-title.text-white.text-uppercase.font-weight-bold Đăng ký bản tin của chúng tôi
                             p.text-white Nhận tất cả thông tin mới nhất về Sự kiện, Bán hàng và Ưu đãi.
                 .col-xl-7.col-lg-6.col-md-9.mt-4.mt-lg-0
-                    form#js-email-form.input-wrapper.input-wrapper-inline.input-wrapper-rounded(action='/aj/StaticPage/Contact' method='post' onsubmit='return false;submitcontact()')
+                    form#js-email-form.input-wrapper.input-wrapper-inline.input-wrapper-rounded(action='/aj/Shared/Contact' method='post' onsubmit='return false;submitcontact()')
                         input.form-control.mr-2.bg-white.get-value(type='email' placeholder='Địa chỉ email của bạn' data-required='required' data-alert='Email' data-type='2')
                         button.btn.btn-dark.btn-rounded(type='submit' onclick="submitcontact('#js-email-form')") Gửi<i class='ecs-icon-long-arrow-right'></i>
 
@@ -22,7 +22,7 @@ footer.footer.appear-animate(itemscope itemtype='http://schema.org/LocalBusiness
                         input.get-value(type='hidden' name='phonenumber' data-required='' data-alert='' data-type='0')
                         input.get-value(type='hidden' name='body' data-required='' data-alert='' data-type='0')
                         input(type='hidden' name='ContactType' value='2')
-                        input(type='hidden' name='Action' value='/aj/StaticPage/Contact')
+                        input(type='hidden' name='Action' value='/aj/Shared/Contact')
                         input(type='hidden' name='Title' value='[Email] Đăng ký email')
                         input(type='hidden' name='Note' value='Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất')
 
@@ -91,7 +91,7 @@ if popup
 #contact-modal.modal.modal-form.modal-popup.fancybox-fade.fancybox-hide
     .modal-body
         .title.h4 Hãy liên hệ với chúng tôi đễ được hỗ trợ nhanh chóng
-        form#js-contactmodal-form(action='/aj/StaticPage/Contact' method='post' novalidate='novalidate')
+        form#js-contactmodal-form(action='/aj/Shared/Contact' method='post' novalidate='novalidate')
             .error-lst.alert.alert-icon.alert-error.alert-bg.alert-inline.list-mb-1(style='display: none;')
             .form-group-wrapper
                 .form-group
