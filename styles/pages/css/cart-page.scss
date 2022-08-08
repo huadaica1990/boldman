@@ -133,6 +133,24 @@
     }
 }
 
+#js-addaddressinline-form {
+    .form-control {
+        @include border-radius($val: .5rem);
+        padding: 0.75em 2.7rem 0.75em 1.4rem;
+        font-size: 1.2rem;
+        line-height: normal;
+        min-height: auto;
+    }
+
+    .form-group-wrapper {
+        .form-group:nth-child(1) {
+            .custom-control-label {
+                padding-left: 2.5rem;
+            }
+        }
+    }
+}
+
 .cart-page {
 
     .address-label {
