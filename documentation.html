@@ -391,6 +391,7 @@
                 <code>w-80</code>
                 <code>w-50</code>
                 <code>h-100</code>
+                <code>h-auto</code>
                 <code>x-50</code>
                 <code>y-50</code>
                 <code>xy-50</code>
@@ -433,10 +434,11 @@
         </tr>
         <tr>
             <td>
-                <code>bt</code>
-                <code>bb</code>
-                <code>bl</code>
-                <code>br</code>
+                <code>b-a</code>
+                <code>b-t</code>
+                <code>b-b</code>
+                <code>b-l</code>
+                <code>b-r</code>
                 <code>__-sm-no</code>
             </td>
             <td>Border helper</td>
@@ -2203,11 +2205,18 @@ Ecsgroup.popup(
             '992': {
                 'slidesPerView': 4
             }
+        },
+        'navigation': {
+            'nextEl': '.swiper-button-next',
+            'prevEl': '.swiper-button-prev',
         }
     }`)
     .swiper-wrapper.row.cols-2.cols-md-3.cols-lg-4
         .swiper-slide
         ...
+    button.swiper-button.swiper-button-prev
+    button.swiper-button.swiper-button-next
+    .swiper-pagination
 </pre>
 <h6>Helper classes</h6>
 <table class="table">
