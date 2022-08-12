@@ -110,10 +110,12 @@ module.exports = grunt => {
                         '<%= dirs.mainjs %>/modulejs/uploadFile.js',
                         '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
                         '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js',
-                        '<%= dirs.mainjs %>/modulejs/notiCustomer.js'
+                        '<%= dirs.mainjs %>/modulejs/notiCustomer.js',
+                        '<%= dirs.mainjs %>/modulejs/draggAble.js'
                     ],
                     // Default all page
                     '<%= dirs.dest %>/default.min.js': [
+                        '<%= dirs.plugin %>/draggabilly/draggabilly.pkgd.min.js',
                         '<%= dirs.plugin %>/jquery-validation/jquery.validate.min.js',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
                         '<%= dirs.plugin %>/swiper/swiper.min.js',

@@ -719,6 +719,7 @@ window.Ecsgroup = {};
         //Ecsgroup.marquee('.marquee')                                          // Initialize Marquee
         Ecsgroup.typeWriter('.typewrite');                                      // Initialize TypeWriter
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
+        Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
         // Ecsgroup.initVendor('.store');                                       // Initialize Vendor 
         // Ecsgroup.slideContent('.login-toggle');                              // Initialize Slide Content
         // Ecsgroup.slideContent('.coupon-toggle');
