@@ -137,13 +137,19 @@ if popup
             script(type='text/javascript' src='https://sp.zalo.me/plugins/sdk.js' async defer)
             .zalo-chat-widget(data-oaid=chatZalo data-welcome-message='Ha Eva xin kính chào quý khách!' data-autopopup='0' data-width='350' data-height='420')
         else
-            a.zalocall(href=`https://zalo.me/${phoneDefault}` target='_blank' rel='nofollow')
+            a.zalocall.draggable-pc(href=`https://zalo.me/${phoneDefault}` target='_blank' rel='nofollow' data-draggabilly-options=`{
+                                                                                                                                        'containment': 'body',
+                                                                                                                                        'autoLock': true
+                                                                                                                                    }`)
                 span
                 div.background-icon
                 //- img.ishow(src='/img/stick_zalo.png' alt='')  
 
         //- Start of Call Now
-        a.callnow(href='tel:'+phoneDefault)
+        a.callnow.draggable-pc(href='tel:'+phoneDefault data-draggabilly-options=`{
+                                                                                    'containment': 'body',
+                                                                                    'autoLock': true
+                                                                                  }`)
             i.demo-icon.cus-phone-1
             span.d-none.d-md-block.d-xs-none=phoneList[0]
     a.d-block.d-sm-none.--header.btn-show-chat(href='javascript:')
