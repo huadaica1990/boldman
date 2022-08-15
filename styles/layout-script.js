@@ -1700,31 +1700,3 @@ function sendMail(targetId, action) {
         error: function () { }
     });
 }
-
-// var $draggable = $('.draggable-pc').draggabilly({
-//     containment: 'body'
-// });
-// var dragXDefault = $draggable.data('draggabilly').position.x;
-// console.log($draggable.data('draggabilly'));
-// // jQuery
-// function listener(/* parameters */) {
-// // get Draggabilly instance
-//     var draggie = $(this).data('draggabilly'),
-//         withContainer = $('body').width()/2;
-//         console.log(draggie);
-//     if(draggie.position.x > withContainer) {
-//         $draggable.draggabilly( 'setPosition', 0, draggie.position.y );
-//         $(this).css({
-//             left: 'auto',
-//             right: dragXDefault
-//         });
-//     }
-//     else {
-//         $draggable.draggabilly( 'setPosition', dragXDefault, draggie.position.y );
-//         $(this).css({
-//             right: 'auto'
-//         });
-//     }
-//     console.log( 'eventName happened', draggie.position.x, draggie.position.y );
-// }
-//   $draggable.on( 'dragEnd', listener );

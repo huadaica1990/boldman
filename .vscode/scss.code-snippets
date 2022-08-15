@@ -90,7 +90,7 @@
 		"scope": "scss",
 		"prefix": "css-placeholder",
 		"body": [
-			"@include placeholder($$color:#000000,$$target:\"input\");"
+			"@include placeholder($$target:\"input\");"
 		],
 		"description": "Text placeholder"
 	},
