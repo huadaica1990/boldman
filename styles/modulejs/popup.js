@@ -17,11 +17,17 @@ Popup.defaults = {
             $('.mfp-wrap').css('overflow', 'hidden auto');
             $('.sticky-header.fixed').css('padding-right', window.innerWidth - document.body.clientWidth);
         },
+        done: () => {
+            if (document.documentElement.clientWidth < 800) {
+                $("#fb-root").hide();
+            }
+        },
         destroy: () => {
             $('html').css('overflow-y', '');
             $('body').css('overflow-x', 'hidden');
             $('.mfp-wrap').css('overflow', '');
             $('.sticky-header.fixed').css('padding-right', '');
+            $("#fb-root").show();
         }
     }
     //removalDelay: 300,

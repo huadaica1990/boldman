@@ -24,7 +24,7 @@ function notiCustomerEcs(pagesize, timeNewArray) {
             ajaxGet(pagesize);
         }
         notiList = JSON.parse(window.localStorage.getItem("notiList"));
-        if (notiList.length == 1) {
+        if (notiList.length <= 1) {
             ajaxGet(pagesize);
             notiList = JSON.parse(window.localStorage.getItem("notiList"));
         }

@@ -1089,12 +1089,12 @@
 		font-size: calculateRem($size);
 	}
 
-	@mixin placeholder($color:#000000,$target:'input') {
-		#{$target}::placeholder {color: $color;}
-		#{$target}::-webkit-input-placeholder {color: $color;}
-		#{$target}::-moz-placeholder {color: $color;}
-		#{$target}:-ms-input-placeholder {color: $color;}
-		#{$target}:-moz-placeholder {color: $color;}
+	@mixin placeholder($target:'input') {
+		#{$target}::placeholder {@content;}
+		#{$target}::-webkit-input-placeholder {@content;}
+		#{$target}::-moz-placeholder {@content;}
+		#{$target}:-ms-input-placeholder {@content;}
+		#{$target}:-moz-placeholder {@content;}
 	}
 	@mixin prefix($text: ',', $margin: 5px, $center: true) {
 		@if $center {
