@@ -30,7 +30,7 @@ function fancyBoxEcs (selector) {
                     };
                 }).get();
             }
-            $this.find('[data-fancybox-target]').on('click', function (event) {
+            Ecsgroup.$body.on('click', selector + ' [data-fancybox-target]', function (event) {
                 event.preventDefault();
                 position = $(this).data('fancybox-pos');
                 var fancybox = Fancybox.show(images, settings);
@@ -45,6 +45,8 @@ function fancyBoxEcs (selector) {
                 // var fancybox = new Fancybox(images, settings);
                 // fancybox.getInstance().jumpTo(position);
             });
+            // $this.find('[data-fancybox-target]').on('click', function (event) {
+            // });
         });
     }
 };
