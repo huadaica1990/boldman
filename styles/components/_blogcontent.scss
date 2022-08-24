@@ -767,7 +767,7 @@ p + [data-component-item]:nth-of-type(3n) {
             }
         }
         #widget-toc-fixed  {
-            width: 100%;
+            max-width: 100%;
         }
         .component-item {
             width: calc((100% - 8px) / 2);
