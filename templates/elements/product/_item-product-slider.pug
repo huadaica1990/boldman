@@ -1,21 +1,11 @@
 .item-product.product(itemscope itemtype='http://schema.org/Product')
     figure.product-media
-        if item.ver
-            .img.product-images.img-fixed-height
-                each itemver in item.ver
-                    picture
-                        source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                        img.swiper-lazy(data-src=itemver.srcbig alt='' itemprop='thumbnail' width='234' height='263')
-                    if itemver.id == 1
-                        .swiper-lazy-preloader
-        else
-            .img.product-images.img-fixed-height
-                each itemimg in item.listimg
-                    picture
-                        source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                        img.swiper-lazy(data-src=itemimg.src alt='' itemprop='thumbnail' width='234' height='263')
-                    if itemimg.id == 1
-                        .swiper-lazy-preloader
+        a.img.product-images.img-fixed-height(href=item.href title='')
+            each img in item.listimg
+                picture
+                    source.swiper-lazy(media='' data-srcset='' type='image/webp')
+                    img.swiper-lazy(data-src=img alt='' itemprop='thumbnail' width='' height='')
+            .swiper-lazy-preloader
         .product-label-group
             //- if item.percent
             //-     label.product-label.label-discount=item.percent

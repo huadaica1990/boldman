@@ -25,7 +25,38 @@
 
 // Default
 .product {
-    &-media {}
+    &-media {
+        position:relative;
+        picture {
+            display: block;
+            width: 100%;
+            height: auto;
+            @include animation($customize: true) {
+                -ms-transition: opacity .4s;
+                -webkit-transition: opacity .4s;
+                -moz-transition: opacity .4s;
+                -o-transition: opacity .4s;
+                transition: opacity .4s;
+            };
+            &:nth-of-type(2) {
+                opacity: 0;
+                img {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    top: 0;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                }
+            }
+        }
+        .product-images:hover {
+            picture:nth-of-type(2) {
+                opacity: 1;
+            }
+        }
+    }
     &-details {}
     &-label {
         &-group {}
