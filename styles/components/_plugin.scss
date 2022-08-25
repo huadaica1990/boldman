@@ -42,15 +42,15 @@
         }
     }
     // Swiper slider
-    // .swiper {
-    //     position: relative;
-    //     >.swiper-container {
-    //         position: static;
-    //         >.swiper-pagination {
-    //             bottom: -4.5rem;
-    //         }
-    //     }
-    // }
+    .swiper {
+        position: relative;
+        >.swiper-container {
+            position: static;
+            >.swiper-pagination {
+                bottom: -4.5rem;
+            }
+        }
+    }
     .swiper-pagination {
         position: static;
         margin-top: 1.5rem;
