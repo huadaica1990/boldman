@@ -52,7 +52,8 @@ selectEcs.init = function (el) {
         'position': 'absolute',
         'visibility': 'hidden',
         'opacity': 0,
-        'z-index': -99
+        'z-index': -99,
+        'width': 0
     });
     // pre theme
     if ($(target).find('.custom-select-header').length == 0) {
