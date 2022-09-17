@@ -20,7 +20,7 @@
 		"scope": "scss",
 		"prefix": "css-media_screen",
 		"body": [
-			"@include media-screen($$type: \"all\", $$min: $$mobile450, $$max: $$desktop1920);"
+			"@include media-screen($$type: \"all\", $$min: $$mobile450, $$max: $$desktop1920)"
 		],
 		"description": "Tạo nhanh responsive($type: all|1920|1440|1366|1280|1024|768|450);"
 	},
@@ -28,7 +28,7 @@
 		"scope": "scss",
 		"prefix": "css-fontsize",
 		"body": [
-			"@include fontsize($$value:);"
+			"@include fontsize($$value:)"
 		],
 		"description": "Chỉnh font size"
 	},
@@ -36,7 +36,7 @@
 		"scope": "scss",
 		"prefix": "css-border",
 		"body": [
-			"@include border($$position: \"all\", $$size:1px, $$style: solid, $$color: $$border-color);"
+			"@include border($$position: \"all\", $$size:1px, $$style: solid, $$color: $$border-color)"
 		],
 		"description": "Tạo nhanh border(type: all|left|right|top|bottom)"
 	},
@@ -50,7 +50,7 @@
 			"	-moz-transition: ;",
 			"	-o-transition: ;",
 			"	transition: ;",
-			"};"
+			"}"
 		],
 		"description": "Tạo nhanh animation"
 	},
@@ -58,7 +58,7 @@
 		"scope": "scss",
 		"prefix": "css-transform",
 		"body": [
-			"@include transform($$args:);"
+			"@include transform($$args:)"
 		],
 		"description": "Tạo nhanh transform"
 	},
@@ -66,7 +66,7 @@
 		"scope": "scss",
 		"prefix": "css-transform-origin",
 		"body": [
-			"@include transform-origin($$args:);"
+			"@include transform-origin($$args:)"
 		],
 		"description": "Tạo nhanh transform origin"
 	},
@@ -74,7 +74,7 @@
 		"scope": "scss",
 		"prefix": "css-use_keyframes",
 		"body": [
-			"@include use-keyframes($$args: name duration timingFunction delay iterationCount direction fillMode playState);"
+			"@include use-keyframes($$args: name duration timingFunction delay iterationCount direction fillMode playState)"
 		],
 		"description": "Gọi keyframes"
 	},
@@ -90,7 +90,7 @@
 		"scope": "scss",
 		"prefix": "css-placeholder",
 		"body": [
-			"@include placeholder($$target:\"input\");"
+			"@include placeholder($$target:\"input\")"
 		],
 		"description": "Text placeholder"
 	},
@@ -98,7 +98,7 @@
 		"scope": "scss",
 		"prefix": "css-text",
 		"body": [
-			"@include text($$size: $$font-size, $$family : $$font-family-primary, $$height: $$lh-0, $$color: $$body-color, $$transform: $$text-normal);"
+			"@include text($$size: $$font-size, $$family : $$font-family-primary, $$height: $$lh-0, $$color: $$body-color, $$transform: $$text-normal)"
 		],
 		"description": "Tạo nhanh text style"
 	},
@@ -106,7 +106,7 @@
 		"scope": "scss",
 		"prefix": "css-visible",
 		"body": [
-			"@include visible($$active: true, $$zindex: 99);"
+			"@include visible($$active: true, $$zindex: 99)"
 		],
 		"description": "Ẩn hiện element"
 	},
@@ -114,7 +114,7 @@
 		"scope": "scss",
 		"prefix": "css-box_shadow",
 		"body": [
-			"@include box-shadow($$number: 0);"
+			"@include box-shadow($$number: 0)"
 		],
 		"description": "Tạo box shadow($number: 0|1|2|3|4|5|6)"
 	},
@@ -122,7 +122,7 @@
 		"scope": "scss",
 		"prefix": "css-shadow",
 		"body": [
-			"@include shadow($$val:);"
+			"@include shadow($$val:)"
 		],
 		"description": "Tạo box shadow tùy chọn"
 	},
@@ -130,7 +130,7 @@
 		"scope": "scss",
 		"prefix": "css-filter",
 		"body": [
-			"@include filter($$val:);"
+			"@include filter($$val:)"
 		],
 		"description": "Tạo filter tùy chọn"
 	},
@@ -138,7 +138,7 @@
 		"scope": "scss",
 		"prefix": "css-border_radius",
 		"body": [
-			"@include border-radius($$val:);"
+			"@include border-radius($$val:)"
 		],
 		"description": "Tạo border radius"
 	},
@@ -146,7 +146,7 @@
 		"scope": "scss",
 		"prefix": "css-gradient",
 		"body": [
-			"@include gradient($$key: \"background\");"
+			"@include gradient($$key: \"background\")"
 		],
 		"description": "Tạo gradient"
 	},
@@ -154,7 +154,7 @@
 		"scope": "scss",
 		"prefix": "css-bg_mask",
 		"body": [
-			"@include bg-mask($$value: rgba(0,0,0,.5));"
+			"@include bg-mask($$value: rgba(0,0,0,.5))"
 		],
 		"description": "Tạo background mask"
 	},
@@ -162,7 +162,7 @@
 		"scope": "scss",
 		"prefix": "css-img_center",
 		"body": [
-			"@include center-img($$hover: true, $$type: \"scale\");"
+			"@include center-img($$hover: true, $$type: \"scale\")"
 		],
 		"description": "Canh giữa image với các hiệu ứng mặc định($type: scale|slow|opacity|rotate)"
 	},
@@ -170,7 +170,7 @@
 		"scope": "scss",
 		"prefix": "css-center",
 		"body": [
-			"@include e-cen($$type: \"all\", $$option: translate(-50%, -50%));"
+			"@include e-cen($$type: \"all\", $$option: translate(-50%, -50%))"
 		],
 		"description": "Canh giữa element($type: all|top|left|cus)"
 	},
@@ -178,7 +178,7 @@
 		"scope": "scss",
 		"prefix": "css-flex",
 		"body": [
-			"@include flex($$type: \"container\", $$active: true, $$get: \"basic\");"
+			"@include flex($$type: \"container\", $$active: true, $$get: \"basic\")"
 		],
 		"description": "Tạo nhanh flex($type: container|center|left|right, $get: get thêm các định dạng con)"
 	},
@@ -186,15 +186,23 @@
 		"scope": "scss",
 		"prefix": "css-flex_option",
 		"body": [
-			"@include flex-option($$type: flex-direction|justify-content|align-items, $$value);"
+			"@include flex-option($$type: flex-direction|justify-content|align-items, $$value)"
 		],
 		"description": "Tạo nhanh flex option($type: flex-direction|justify-content|align-items, $value: column|column-reverse|row|row-reverse center|flex-start|flex-end|space-around|space-between|space-evenly|baseline)"
+	},
+	"Order": {
+		"scope": "scss",
+		"prefix": "css-order",
+		"body": [
+			"@include order($$value:1)"
+		],
+		"description": "Sắp xếp phần tử trong flex"
 	},
 	"Vertical element": {
 		"scope": "scss",
 		"prefix": "css-vertical",
 		"body": [
-			"@include v-ele($type: \"height\");"
+			"@include v-ele($type: \"height\")"
 		],
 		"description": "Tạo nhanh vertical element($type: height|mid|top|bot)"
 	},
@@ -202,7 +210,7 @@
 		"scope": "scss",
 		"prefix": "css-masonry",
 		"body": [
-			"@include masonry($$col:4, $$gap: 15px);"
+			"@include masonry($$col:4, $$gap: 15px)"
 		],
 		"description": "Tạo masonry layout"
 	},
@@ -210,7 +218,7 @@
 		"scope": "scss",
 		"prefix": "css-col",
 		"body": [
-			"@include col-item($$number:5, $$top: 10px, $$right: 10px);"
+			"@include col-item($$number:5, $$top: 10px, $$right: 10px)"
 		],
 		"description": "Tạo col item"
 	},
@@ -218,7 +226,7 @@
 		"scope": "scss",
 		"prefix": "css-cut",
 		"body": [
-			"@include overtext($$row: 1, $$h: auto);"
+			"@include overtext($$row: 1, $$h: auto)"
 		],
 		"description": "Cut text($row: cột, $h: chiều cao)"
 	},
@@ -226,7 +234,7 @@
 		"scope": "scss",
 		"prefix": "css-css",
 		"body": [
-			"@include css(value, ele, ele1, valueEle);"
+			"@include css(value, ele, ele1, valueEle)"
 		],
 		"description": "Lấy giá trị css default"
 	},
@@ -234,7 +242,7 @@
 		"scope": "scss",
 		"prefix": "css-print_css",
 		"body": [
-			"@include print_css(ele, ele1);"
+			"@include print_css(ele, ele1)"
 		],
 		"description": "Lấy giá trị khối css default"
 	},
@@ -250,7 +258,7 @@
 		"scope": "scss",
 		"prefix": "css-prefix",
 		"body": [
-			"@include prefix($$text: ',', $$margin: 5px, $$center: true);"
+			"@include prefix($$text: ',', $$margin: 5px, $$center: true)"
 		],
 		"description": "Tạo prefix cho danh sách item"
 	},
@@ -291,7 +299,7 @@
 		"scope": "scss",
 		"prefix": "css-pri_f",
 		"body": [
-			"$$font-family-primary;"
+			"$$font-family-primary"
 		],
 		"description": "Font chữ primary"
 	},
@@ -299,7 +307,7 @@
 		"scope": "scss",
 		"prefix": "css-sec_f",
 		"body": [
-			"$$font-family-second;"
+			"$$font-family-second"
 		],
 		"description": "Font chữ second"
 	},

@@ -46,6 +46,8 @@ body {
     margin: 0;
     overflow-x: hidden;
     font-weight: $font-weight-normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing: antialiased;
     /* Disables pull-to-refresh but allows overscroll glow effects. */
     //overscroll-behavior-y: contain;   
     &.right-sidebar-active,
@@ -308,6 +310,19 @@ table {
 .scrollable:hover::-webkit-scrollbar-thumb {
 //.sidebar-content:hover::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,0.25);
+}
+.scrollable-visible {
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        box-shadow: none !important;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
 }
 
 // Sticky Content

@@ -191,6 +191,11 @@
         opacity: 0;
     }
 }
+.img {
+    &-white {
+        @include filter($val: brightness(0) invert(1));
+    }
+}
 /*#endregion*/
 
 /*#region 2. Tool*/
