@@ -28,7 +28,7 @@
 		"scope": "scss",
 		"prefix": "css-fontsize",
 		"body": [
-			"@include fontsize($$value:);"
+			"@include fontsize($$value:)"
 		],
 		"description": "Chỉnh font size"
 	},
@@ -50,7 +50,7 @@
 			"	-moz-transition: ;",
 			"	-o-transition: ;",
 			"	transition: ;",
-			"};"
+			"}"
 		],
 		"description": "Tạo nhanh animation"
 	},
@@ -82,7 +82,7 @@
 		"scope": "scss",
 		"prefix": "css-keyframes",
 		"body": [
-			"@include keyframes($$animation-name: \"Name\")"
+			"@include keyframes($$animation-name: \"Name\");"
 		],
 		"description": "Tạo nhanh keyframes"
 	},
@@ -190,6 +190,14 @@
 		],
 		"description": "Tạo nhanh flex option($type: flex-direction|justify-content|align-items, $value: column|column-reverse|row|row-reverse center|flex-start|flex-end|space-around|space-between|space-evenly|baseline)"
 	},
+	"Order": {
+		"scope": "scss",
+		"prefix": "css-order",
+		"body": [
+			"@include order($$value:1);"
+		],
+		"description": "Sắp xếp phần tử trong flex"
+	},
 	"Vertical element": {
 		"scope": "scss",
 		"prefix": "css-vertical",
@@ -291,7 +299,7 @@
 		"scope": "scss",
 		"prefix": "css-pri_f",
 		"body": [
-			"$$font-family-primary;"
+			"$$font-family-primary"
 		],
 		"description": "Font chữ primary"
 	},
@@ -299,7 +307,7 @@
 		"scope": "scss",
 		"prefix": "css-sec_f",
 		"body": [
-			"$$font-family-second;"
+			"$$font-family-second"
 		],
 		"description": "Font chữ second"
 	},
