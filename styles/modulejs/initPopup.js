@@ -101,8 +101,8 @@ function popupEcs (options, preset) {
             if (title != null) $(modalId).find('input[name="Title"]').val(title);
             if (document.documentElement.clientWidth < 576 && $(modalId).find('form') != null) {
                 $(modalId).toggleClass('fancybox-hide').toggleClass('fancybox-show');
-                $('html').append('<div class="fancyboxshow__backdrop"></div>').css('overflow', 'hidden');
-                
+                $('html').append('<div class="fancyboxshow__backdrop"></div>').css('overflow-y', 'hidden');
+                $("#fb-root").hide();
             }
             else {
                 Ecsgroup.popup(
@@ -120,12 +120,16 @@ function popupEcs (options, preset) {
             else {
                 $('.fancyboxshow__backdrop').remove();
                 $(".fancybox-show").addClass('fancybox-hide').removeClass('fancybox-show');
+                $('html').removeAttr('style');
+                $("#fb-root").show();
             }
         });
         $(document).on('click', '.fancyboxshow__backdrop', function(e) {
             e.preventDefault();
             $('.fancyboxshow__backdrop').remove();
             $('.fancybox-show').addClass('fancybox-hide').removeClass('fancybox-show');
+            $('html').removeAttr('style');
+            $("#fb-root").show();
         });
 
         Ecsgroup.confirmDialog = function (message, func, value) {
