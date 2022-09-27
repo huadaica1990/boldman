@@ -47,11 +47,9 @@
     .padding {
         &-right-container {
             padding-right: calc(50% - #{$container-width/2});
-            padding-left: 15px;
         }
         &-left-container {
             padding-left: calc(50% - #{$container-width/2});
-            padding-right: 15px;
         }
     }
     .box-shadow {
@@ -383,11 +381,9 @@
         .padding {
             &-right-container {
                 padding-right: 15px;
-                padding-left: 15px;
             }
             &-left-container {
-                padding-right: 15px;
-                padding-right: 15px;
+                padding-left: 15px;
             }
         }
     }

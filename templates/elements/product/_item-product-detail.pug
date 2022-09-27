@@ -1,0 +1,253 @@
+//- Var
+-
+    let productSingleDetail = {
+            id: 1,
+            name: 'Máy Khuếch Tán Tinh Dầu MKT-011',
+            des: '<p>Máy khuếch tán MKT011 được thiết kế theo hình dáng của một lọ hoa, họa tiết giả vân gỗ với những đường cong tinh tế cho cảm giác thanh lịch, sang trọng, phù hợp với mọi không gian nội thất.</p>',
+            star: 4,
+            count: 40,
+            sku: 'MS46891340',
+            price: '439.000₫',
+            quantity: 0,
+            promoprice: '630.000₫',
+            promodate: '2021, 12, 23',
+            percent: '-25%',
+            cat: {
+              name: 'Đồ Chơi - Mẹ & Bé',
+              src: '/img/brand/brand-1.jpg'
+            },
+            listimg: [
+                {
+                    id: 1,
+                    src: '/img/product/product-big1.jpg',
+                    alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
+                },
+                {
+                    id: 2,
+                    src: '/img/product/product-big2.jpg',
+                    alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
+                },
+                {
+                    id: 3,
+                    src: '/img/product/product-big3.jpg',
+                    alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
+                },
+                {
+                    id: 4,
+                    src: '/img/product/product-big4.jpg',
+                    alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
+                },
+                {
+                    id: 5,
+                    src: '/img/product/product-big5.jpg',
+                    alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
+                },
+                {
+                    id: 6,
+                    src: '/img/product/product-big6.jpg',
+                    alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
+                }
+            ],
+            label: [
+                {
+                    id: 1,
+                    name: 'new',
+                    color: '#336699'
+                },
+                {
+                    id: 2,
+                    name: 'sale',
+                    color: '#cc0001'
+                }
+            ],
+            version: [
+                {
+                    name: 'Color',
+                    listatt: [
+                        {
+                            name: 'Yellow',
+                            value: '#ffcc01',
+                            isActive: true,
+                            isShow: true,
+                        },
+                        {
+                            name: 'Brown',
+                            value: '#ca6d00',
+                            isActive: false,
+                            isShow: true,
+                        },
+                        {
+                            name: 'Blue',
+                            value: '#1c93cb',
+                            isActive: false,
+                            isShow: false,
+                        },
+                        {
+                            name: 'Grey',
+                            value: '#ccc',
+                            isActive: false,
+                            isShow: true,
+                        },
+                        {
+                            name: 'Black',
+                            value: '#333',
+                            isActive: false,
+                            isShow: false,
+                        }
+                    ]
+                },
+                {
+                    name: 'Size',
+                    listatt: [
+                        {
+                            name: 'Small',
+                            value: 'S',
+                            isActive: true,
+                            isShow: true,
+                        },
+                        {
+                            name: 'Medium',
+                            value: 'M',
+                            isActive: false,
+                            isShow: true,
+                        },
+                        {
+                            name: 'Large',
+                            value: 'L',
+                            isActive: false,
+                            isShow: false,
+                        },
+                        {
+                            name: 'Extra Large',
+                            value: 'XL',
+                            isActive: false,
+                            isShow: true,
+                        }
+                    ]
+                }
+            ]
+        }
+.product.product-single.row
+    .col-md-6.mb-4.mb-md-8
+      .product-gallery.product-gallery-sticky
+        .swiper-container.product-single-swiper.swiper-theme.nav-inner(data-swiper-options=`{
+                                                                            'navigation': {
+                                                                                'nextEl': '.swiper-button-next',
+                                                                                'prevEl': '.swiper-button-prev'
+                                                                            }
+                                                                        }`)
+            .swiper-wrapper.row.cols-1.gutter-no
+                each item in productSingleDetail.listimg
+                    .swiper-slide
+                        figure.product-image
+                            picture
+                                source.swiper-lazy(media='' data-srcset='' type='image/webp')
+                                img.swiper-lazy(data-src=item.src data-zoom-image=item.src alt=item.alt width='800' height='900' itemprop='image')
+                            .swiper-lazy-preloader
+            //- Add Arrows
+            button.swiper-button.swiper-button-next
+            button.swiper-button.swiper-button-prev
+            .product-gallery-btn-wrap
+                a.product-gallery-btn.product-video-viewer.ecs-icon-movie(href='javascript:' data-src='https://www.youtube.com/watch?v=ATd0zK5yRxQ')
+                a.product-gallery-btn.product-image-full.ecs-icon-zoom(href='javascript:')
+        .product-thumbs-wrap.swiper-container(data-swiper-options=`{
+                                                'slidesPerView': 5,
+                                                'navigation': {
+                                                    'nextEl': '.swiper-button-next',
+                                                    'prevEl': '.swiper-button-prev'
+                                                }
+                                            }`)
+            .product-thumbs.swiper-wrapper.row.cols-4.gutter-sm
+                each item in productSingleDetail.listimg
+                    .product-thumb.swiper-slide
+                        picture
+                            source.swiper-lazy(media='' data-srcset='' type='image/webp')
+                            img.swiper-lazy(data-src=item.src alt='' width='103' height='116')
+                        .swiper-lazy-preloader
+            button.swiper-button.swiper-button-next
+            button.swiper-button.swiper-button-prev
+        .product-label-group
+            //- if productSingleDetail.percent
+            //-     label.product-label.label-discount=productSingleDetail.percent
+            if productSingleDetail.label
+                each itemlabel in productSingleDetail.label
+                    label.product-label(style=`background-color: ${itemlabel.color}`)=itemlabel.name
+    .col-md-6.mb-6.mb-md-8
+        .product-details(data-sticky-options=`{'minWidth': 767}`)
+            h2.product-title(itemprop='name')=productSingleDetail.name
+            .product-bm-wrapper
+                figure.brand
+                    img(src=productSingleDetail.cat.src alt='Brand' width='102' height='48' loading='lazy')
+                .product-meta
+                    .product-categories
+                        | Danh mục: 
+                        span.product-category
+                            a(href='#')=productSingleDetail.cat.name
+                    .product-sku
+                        | SKU: 
+                        span(itemprop='sku')=productSingleDetail.sku
+            hr.product-divider
+            .product-price.product-variation-price(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+                ins.new-price(itemprop='price' content='')=productSingleDetail.price
+                del.old-price(itemprop='price' content='')=productSingleDetail.promoprice
+                if productSingleDetail.percent
+                    label.product-label.label-discount
+                        span=productSingleDetail.percent
+            .product-countdown-container
+                label.mr-2 Kết thúc sau
+                .product-countdown.countdown-compact(data-until=productSingleDetail.promodate data-compact='true' data-format='DHMS' data-compact-labels=" y| m| w| ngày, ")
+            .ratings-container
+                .ratings-full
+                    span.ratings(style=`width: ${productSingleDetail.star*100/5}%;`)
+                a.rating-reviews(href='#') (#{productSingleDetail.star} Đánh giá)
+            .product-short-desc(itemprop='description')!=productSingleDetail.des
+            hr.product-divider
+            each item in productSingleDetail.version
+                if item.name == 'Color'
+                    .product-form.product-variation-form.product-color-swatch
+                        label.mb-1 #{item.name}:
+                        .d-flex.align-items-center.product-variations
+                            each itemver in item.listatt
+                                a.color(href='#' style=`background-color: ${itemver.value}` class=itemver.isActive ? 'active' : '' class=itemver.isShow ? '' : 'disabled')
+                else
+                    .product-form.product-variation-form
+                        label.mb-1 #{item.name}:
+                        .flex-wrap.d-flex.align-items-center.product-variations
+                            each itemver in item.listatt
+                                a(href='#' class=itemver.isActive ? 'active' : '' class=itemver.isShow ? '' : 'disabled')=itemver.name
+            hr.product-divider
+            .fix-bottom.product-sticky-content.sticky-content     
+                .product-form.container
+                    .product-qty-form
+                        .input-group
+                            input.quantity.form-control.quantitydetail(type='number' min='1' max='10000000')
+                            button.quantity-plus.ecs-icon-plus
+                            button.quantity-minus.ecs-icon-minus
+                    if productSingleDetail.quantity > 0
+                        button.btn.btn-primary.btn-cart
+                            i.ecs-icon-cart
+                            span Mua ngay
+                    else
+                        button.btn.btn-primary.btn-contact(data-modal='' data-target='#contact-modal')
+                            i.ecs-icon-phone
+                            span Liên hệ
+            .social-links-wrapper
+                .social-links.d-none.d-lg-block.d-md-none
+                    .social-icons.social-no-color.border-thin
+                        a.social-icon.social-facebook.ecs-icon-facebook(href='#')
+                        a.social-icon.social-twitter.ecs-icon-twitter(href='#')
+                        a.social-icon.social-instagram.ecs-icon-instagram(href='#')
+                        a.social-icon.social-youtube.ecs-icon-youtube(href='#')
+                        a.social-icon.social-pinterest.ecs-icon-pinterest(href='#')
+                .share-links.d-block.d-lg-none
+                    .social-icons.social-no-color.border-thin
+                        a.social-icon.social-copy.demo-icon.cus-link.copy-button(href='https://demohtml.ecsgroup.com.vn/' title='Máy Khuếch Tán Tinh Dầu MKT-011')
+                        a.social-icon.social-share.demo-icon.cus-share.share-button(href='https://demohtml.ecsgroup.com.vn/' title='Máy Khuếch Tán Tinh Dầu MKT-011')
+                span.divider
+                .product-link-wrapper.d-flex
+                    a.btn-product-icon.btn-wishlist.ecs-icon-heart(href='#')
+                    a.btn-product-icon.btn-compare.btn-icon-left.ecs-icon-compare(href='#')
+            .tags.tags-link
+                label.text-dark Tags:
+                each item in tag
+                    a.tag(href='')=item.name 
