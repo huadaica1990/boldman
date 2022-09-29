@@ -86,7 +86,7 @@ function popupEcs (options, preset) {
                             },
                             shouldClose: () => {
                                 if ($('#sign-up').hasClass('active') == true) {
-                                    var message = 'Bạn có chắc chắn muốn rời khỏi hộp hội thoại này ngay bây giờ không';
+                                    var message = core3;
                                     if (!confirm(message)) return false;
                                 }
                             },

@@ -50,13 +50,13 @@
                     '<div class="compare-popup">\
                             <div class="container">\
                                 <div class="compare-title">\
-                                    <h4 class="title title-center">So sánh sản phẩm</h4>\
+                                    <h4 class="title title-center">'+core4+'</h4>\
                                 </div>\
                                 <ul class="compare-product-list list-style-none">\
                                     <li></li><li></li><li></li><li></li>\
                                 </ul>\
-                                <a href="javascript:" class="btn btn-clean">Xóa tất cả</a>\
-                                <a href="'+ Ecsgroup.linkCompare +'" class="btn btn-dark btn-rounded">So sánh ngay !</a>\
+                                <a href="javascript:" class="btn btn-clean">'+core5+'</a>\
+                                <a href="'+ Ecsgroup.linkCompare +'" class="btn btn-dark btn-rounded">'+core6+'</a>\
                             </div>\
                       </div>\
                       <div class="compare-popup-overlay"></div>';
@@ -196,7 +196,7 @@
             }
         
             function compareCount() {
-                $compare.find('.title').after('<p class="compare-count text-center text-light mb-0">(' + productCount + ' Sản phẩm)</p>');
+                $compare.find('.title').after('<p class="compare-count text-center text-light mb-0">(' + productCount + core9 +')</p>');
                 if ($compare.find('.compare-count').length > 1) {
                     $compare.find('p:last-child').remove();
                 }

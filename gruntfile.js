@@ -66,6 +66,11 @@ module.exports = grunt => {
                     // '<%= dirs.dest %>/updateFile.js': [
                     //     '<%= dirs.mainjs %>/modulejs/updateFile.js'
                     // ],
+                    // Lang
+                    '<%= dirs.dest %>/lang.min.js': [
+                        '<%= dirs.plugin %>/multilanguage/multilang.min.js',
+                        '<%= dirs.mainjs %>/multilang.js'
+                    ],
                     // Core
                     '<%= dirs.dest %>/core.min.js': [
                         '<%= dirs.mainjs %>/core.js',

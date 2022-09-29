@@ -5,7 +5,7 @@
  * @requires readmore-js
  * @param {String} selector
  */
-Ecsgroup.readMore = function (selector, text1 = 'Xem thêm nội dung', text2 = 'Thu gọn nội dung', maxHeight = 200) {
+Ecsgroup.readMore = function (selector, text1 = core7, text2 = core8, maxHeight = 200) {
     var link = '<div class="readmore-js open"></div>',
         moreLink = '<a href="javascript:" class="btn-readmore-js">' + text1 + '</a>',
         lessLink = '<a href="javascript:" class="btn-readmore-js">' + text2 + '</a>';
