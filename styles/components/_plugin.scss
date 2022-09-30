@@ -107,7 +107,7 @@
     .swiper-wrapper {
         box-sizing: border-box;
     }
-    .swiper-container:not(.swiper-container-initialized) {
+    .swiper-container:not(.swiper-initialized) {
         .swiper-wrapper {
             -webkit-flex-wrap: nowrap;
             -ms-flex-wrap: nowrap;
@@ -124,7 +124,7 @@
         width: 100%;
         height: 100%;
     }
-    .swiper-container:not(.swiper-container-initialized) {
+    .swiper-container:not(.swiper-initialized) {
         .swiper-wrapper.row {
             width: calc(100% + 2rem);
         }
