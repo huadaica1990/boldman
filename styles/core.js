@@ -236,6 +236,13 @@ window.Ecsgroup = {};
             x + o.width >= a &&
             x <= a + window.innerWidth;
     }
+    // Ecsgroup.isOnScreen = new IntersectionObserver(function(entries) {
+    //     if(entries[0].isIntersecting === true) {}
+    // }, { threshold: [0] });
+
+    // Ecsgroup.isVisible = new IntersectionObserver(function(entries) {
+    //     if(entries[0].isIntersecting === true) {}
+    // }, { threshold: [1] });
 
     /**
      * Do appear animations.
