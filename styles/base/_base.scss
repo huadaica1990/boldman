@@ -31,7 +31,10 @@
 *, ::after, ::before {
     box-sizing: inherit;
 }
-
+::selection {
+    background-color: $primary-color;
+    color: #fff;
+}
 html {
     font-size: 62.5%;
     font-size-adjust: 100%;
