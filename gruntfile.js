@@ -116,7 +116,9 @@ module.exports = grunt => {
                         '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
                         '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js',
                         '<%= dirs.mainjs %>/modulejs/notiCustomer.js',
-                        '<%= dirs.mainjs %>/modulejs/draggAble.js'
+                        '<%= dirs.mainjs %>/modulejs/draggAble.js',
+                        '<%= dirs.mainjs %>/modulejs/ezParallax.js',
+                        '<%= dirs.mainjs %>/modulejs/mouseFollow.js'
                     ],
                     // Default all page
                     '<%= dirs.dest %>/default.min.js': [
