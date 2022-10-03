@@ -354,6 +354,14 @@
             // display: table-cell;
         }
     }
+    [data-cursor] {
+        position: relative;
+        z-index: 2;
+        > * {
+            pointer-events: none;
+            z-index: 1;
+        }
+    }
     .cursor{
         @include border-radius($val: 50%);
         @include animation($customize: true) {
