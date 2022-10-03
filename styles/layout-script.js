@@ -72,7 +72,7 @@ function addRating(btn, idform) {
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                var summary = '<div>Có ' + this.numberOfInvalids() + ' lỗi, xem chi tiết bên dưới.</div>';
+                var summary = '<div>'+ text1 + this.numberOfInvalids() + text2 +'</div>';
                 $.each(errorList, function () {
                     summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
                 });
@@ -194,7 +194,7 @@ function addComment(btn, idform) {
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                var summary = '<div>Có ' + this.numberOfInvalids() + ' lỗi, xem chi tiết bên dưới.</div>';
+                var summary = '<div>'+ text1 + this.numberOfInvalids() + text2 +'</div>';
                 $.each(errorList, function () {
                     summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
                 });
@@ -329,7 +329,7 @@ function removecmtimg(obj) {
         if (files.length > 0) {
             for (var i = 0; i < files.length; i++) {
                 if (files[i].size > 1024 * 1024 * 5) {
-                    alert('File ảnh không được quá 5MB');
+                    alert(text3);
                     return -1;
                 } else {
                     data.append('HelpSectionImages' + i, files[i]);
@@ -391,7 +391,7 @@ function removecmtimg(obj) {
         if (files.length > 0) {
             for (var i = 0; i < files.length; i++) {
                 if (files[i].size > 1024 * 1024 * 5) {
-                    alert('File ảnh không được quá 5MB');
+                    alert(text3);
                     return -1;
                 } else {
                     data.append('HelpSectionImages' + i, files[i]);
@@ -571,7 +571,7 @@ function updateCart() {
     //$('.cart-money').text(result.Data.TotalAmount);
 }
 function showCartInfo() {
-    var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> Thêm vào giỏ hàng thành công</p><a class="ishow btn" href="/gio-hang" title= "Thêm vào giỏ hàng thành công">Xem giỏ hàng và thanh toán</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
+    var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> '+ text5 +'</p><a class="ishow btn" href="'+Ecsgroup.cartLink+'" title= "'+ text5 +'">'+ text6 +'</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
     $('.js-cart-info').html(cartInfo);
     $('body').append('<div class="cart-info-backdrop cart-info-close show"></div>');
     Ecsgroup.$body.on('click', '.cart-info-close', function (e) {
@@ -1212,7 +1212,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
         $("#btn-near-location").addClass('active');
     } else {
-        $('#error-modal p').text('Vị trí địa lý không được trình duyệt này hỗ trợ');
+        $('#error-modal p').text(text4);
         Ecsgroup.popup(
             [{
                 src: '#error-modal',
@@ -1495,23 +1495,23 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
 }
 // Contact
 $.extend($.validator.messages, {
-    required: "Vui lòng điền đầy đủ thông tin ở trường ",
-    remote: "Vui lòng sửa phạm vi này.",
-    email: "Vui lòng nhập một địa chỉ email hợp lệ ở trường ",
-    url: "Vui lòng nhập một URL hợp lệ.",
-    date: "Vui lòng nhập một ngày hợp lệ.",
-    dateISO: "Vui lòng nhập ngày hợp lệ (ISO).",
-    number: "Vui lòng nhập một số hợp lệ.",
-    digits: "Vui lòng chỉ nhập các chữ số.",
-    creditcard: "Vui lòng nhập số thẻ tín dụng hợp lệ.",
-    equalTo: "Vui lòng nhập lại cùng một giá trị.",
-    accept: "Vui lòng nhập giá trị có phần mở rộng hợp lệ.",
-    maxlength: $.validator.format("Vui lòng nhập không quá {0} ký tự ở trường "),
-    minlength: $.validator.format("Vui lòng nhập ít nhất {0} ký tự ở trường "),
-    rangelength: $.validator.format("Vui lòng nhập một giá trị có độ dài từ {0} đến {1} ký tự ở trường "),
-    range: $.validator.format("Vui lòng nhập giá trị từ {0} đến {1} ở trường "),
-    max: $.validator.format("Vui lòng nhập giá trị nhỏ hơn hoặc bằng {0} ở trường "),
-    min: $.validator.format("Vui lòng nhập giá trị lớn hơn hoặc bằng {0} ở trường ")
+    required: validate1,
+    remote: validate2,
+    email: validate3,
+    url: validate4,
+    date: validate5,
+    dateISO: validate6,
+    number: validate7,
+    digits: validate8,
+    creditcard: validate9,
+    equalTo: validate10,
+    accept: validate11,
+    maxlength: $.validator.format(validate12),
+    minlength: $.validator.format(validate13),
+    rangelength: $.validator.format(validate14),
+    range: $.validator.format(validate15),
+    max: $.validator.format(validate16),
+    min: $.validator.format(validate17)
 });
 function validateForm(btn, idform) {
     var submitted = true,
@@ -1522,7 +1522,7 @@ function validateForm(btn, idform) {
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                var summary = '<div>Có ' + this.numberOfInvalids() + ' lỗi, xem chi tiết bên dưới.</div>';
+                var summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
                 $.each(errorList, function () {
                     summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
                 });
@@ -1627,7 +1627,7 @@ function validateFormMini(btn, idform) {
         },
         messages: {
             email: {
-                required: "Vui lòng điền đầy đủ thông tin ở trường email.",
+                required: validate18,
             }
         },
         submitHandler: function (form) {
@@ -1703,31 +1703,3 @@ function sendMail(targetId, action) {
         error: function () { }
     });
 }
-
-// var $draggable = $('.draggable-pc').draggabilly({
-//     containment: 'body'
-// });
-// var dragXDefault = $draggable.data('draggabilly').position.x;
-// console.log($draggable.data('draggabilly'));
-// // jQuery
-// function listener(/* parameters */) {
-// // get Draggabilly instance
-//     var draggie = $(this).data('draggabilly'),
-//         withContainer = $('body').width()/2;
-//         console.log(draggie);
-//     if(draggie.position.x > withContainer) {
-//         $draggable.draggabilly( 'setPosition', 0, draggie.position.y );
-//         $(this).css({
-//             left: 'auto',
-//             right: dragXDefault
-//         });
-//     }
-//     else {
-//         $draggable.draggabilly( 'setPosition', dragXDefault, draggie.position.y );
-//         $(this).css({
-//             right: 'auto'
-//         });
-//     }
-//     console.log( 'eventName happened', draggie.position.x, draggie.position.y );
-// }
-//   $draggable.on( 'dragEnd', listener );

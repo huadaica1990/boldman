@@ -6,8 +6,8 @@
  Ecsgroup.togglerMake = function(selector) {
     let targetParent = $(selector).find('.toggler-wrap'),
         limit = 5,
-        hidenews = "Thu gọn <i class=\"demo-icon cus-up-open-mini\"></i>",
-        shownews = "Xem thêm <i class=\"demo-icon cus-down-open-mini\"></i>";
+        hidenews = core10+' <i class=\"demo-icon cus-up-open-mini\"></i>',
+        shownews = core11+' <i class=\"demo-icon cus-down-open-mini\"></i>';
     targetParent.each(function () {
         if ($(this).find('.toggler-item').length > 5) {
             let btn = $(this).find('.toggler-wrap-btn'),

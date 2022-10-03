@@ -354,6 +354,73 @@
             // display: table-cell;
         }
     }
+    .cursor{
+        @include border-radius($val: 50%);
+        @include animation($customize: true) {
+            -ms-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
+            -webkit-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
+            -moz-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
+            -o-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
+            transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
+        }
+        position: fixed;
+        z-index: 99;
+        pointer-events: none;
+        will-change: transform;
+        top: 0;
+        left: 0;
+        //mix-blend-mode: difference;
+        &-shape {
+            //@include border($position: "all", $size:6px, $style: solid, $color: $primary-color);
+            @include animation($customize: true) {
+                -ms-transition:transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
+                -webkit-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
+                -moz-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
+                -o-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
+                transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
+            }
+            @include border-radius($val: 50%);
+            @include transform($args: scale(.1667));
+            background-color: $primary-color;
+            width: 90px;
+            height: 90px;
+            opacity: 0;
+            will-change: transform;
+        }
+        &-text {
+            @include animation($customize: true) {
+                -ms-transition: opacity .2s ease;
+                -webkit-transition: opacity .2s ease;
+                -moz-transition: opacity .2s ease;
+                -o-transition: opacity .2s ease;
+                transition: opacity .2s ease;
+            }
+            position: absolute;
+            opacity: 0;
+            @include e-cen($type: "all", $option: translate(-50%, -50%));
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: $white-color;
+            white-space: nowrap
+        }
+        &.active {
+            position: absolute;
+            .cursor-text,
+            .cursor-shape {
+                opacity: 1;
+            }
+            .cursor-shape {
+                @include transform($args: scale(1));
+            }
+        }
+    }
+    .cursor-hover {
+        cursor: pointer;
+        iframe {
+            pointer-events: none;
+        }
+    }
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/

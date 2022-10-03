@@ -69,7 +69,7 @@ module.exports = grunt => {
                     // Lang
                     '<%= dirs.dest %>/lang.min.js': [
                         '<%= dirs.plugin %>/multilanguage/multilang.min.js',
-                        '<%= dirs.dest %>/multilang.js',
+                        '<%= dirs.mainjs %>/multilang.js'
                     ],
                     // Core
                     '<%= dirs.dest %>/core.min.js': [
@@ -116,14 +116,16 @@ module.exports = grunt => {
                         '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
                         '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js',
                         '<%= dirs.mainjs %>/modulejs/notiCustomer.js',
-                        '<%= dirs.mainjs %>/modulejs/draggAble.js'
+                        '<%= dirs.mainjs %>/modulejs/draggAble.js',
+                        '<%= dirs.mainjs %>/modulejs/ezParallax.js',
+                        '<%= dirs.mainjs %>/modulejs/mouseFollow.js'
                     ],
                     // Default all page
                     '<%= dirs.dest %>/default.min.js': [
                         '<%= dirs.plugin %>/draggabilly/draggabilly.pkgd.min.js',
                         '<%= dirs.plugin %>/jquery-validation/jquery.validate.min.js',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
-                        '<%= dirs.plugin %>/swiper/swiper.min.js',
+                        '<%= dirs.plugin %>/swiper/swiper-bundle.js',
                     ],
                     '<%= dirs.dest %>/layout-script.min.js': [
                         '<%= dirs.mainjs %>/layout-script.js',
@@ -195,7 +197,7 @@ module.exports = grunt => {
                     // Default all page
                     '<%= dirs.dest %>/default.min.css': [
                         '<%= dirs.plugin %>/fancybox/fancybox.min.css',
-                        '<%= dirs.plugin %>/swiper/swiper.min.css',
+                        '<%= dirs.plugin %>/swiper/swiper-bundle.css',
                     ],
                     // Documentation
                     '<%= dirs.dest %>/document.min.css': [

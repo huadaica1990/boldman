@@ -30,10 +30,12 @@ window.Ecsgroup = {};
  * Ecsgroup Base
  */
 (function ($) {
+    Ecsgroup.popupPause = false;
     Ecsgroup.domain = 'localhost:3000';
     Ecsgroup.linkWishList = '/san-pham-yeu-thich';
     Ecsgroup.linkCompare = '/so-sanh';
-    Ecsgroup.popupPause = false;
+    Ecsgroup.accInfo = '/thong-tin-tai-khoan';
+    Ecsgroup.cartLink = '/gio-hang';
     // $ = jQuery;
     /**
      * jQuery Window Handle
@@ -62,15 +64,6 @@ window.Ecsgroup = {};
      * @var string Status
      */
     Ecsgroup.status = '';
-
-    /**
-     * Lang
-     * 
-     * @var string Lang
-     */
-    // Ecsgroup.lang = 'en';
-    // Ecsgroup.langFile = new MultiLang('/release/languages.json');
-    // Ecsgroup.langFile.setLanguage(Ecsgroup.lang);
 
     /**
      * Check if the browser is internet explorer.
@@ -243,6 +236,13 @@ window.Ecsgroup = {};
             x + o.width >= a &&
             x <= a + window.innerWidth;
     }
+    // Ecsgroup.isOnScreen = new IntersectionObserver(function(entries) {
+    //     if(entries[0].isIntersecting === true) {}
+    // }, { threshold: [0] });
+
+    // Ecsgroup.isVisible = new IntersectionObserver(function(entries) {
+    //     if(entries[0].isIntersecting === true) {}
+    // }, { threshold: [1] });
 
     /**
      * Do appear animations.
@@ -587,7 +587,7 @@ window.Ecsgroup = {};
             temp.remove();
             Ecsgroup.Minipopup.open({
                 productClass: ' success minipopup-center',
-                message: '<p><i class="demo-icon cus-ok-circled"></i>Copy thành công</p>',
+                message: '<p><i class="demo-icon cus-ok-circled"></i>'+core1+'</p>',
                 template:
                     '<div class="minipopup-box {{productClass}}">' +
                     '<div class="minipopup-body">' +
@@ -617,7 +617,7 @@ window.Ecsgroup = {};
                 })
                 .catch((error) => console.log('Sharing failed', error));
             } else {
-                alert('Trình duyệt không hõ trợ');
+                alert(core2);
             }
         });
     };
@@ -785,6 +785,5 @@ window.Ecsgroup = {};
         Ecsgroup.status = 'complete';
         Ecsgroup.$window.trigger('Ecsgroup_complete');
         Ecsgroup.hideLoading();
-        //console.log(Ecsgroup.langFile.get('langdesc'));
     }
 })(jQuery);

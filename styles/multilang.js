@@ -15,12 +15,19 @@ function getCookieLang (name) {
 var ECSLanguage = getCookieLang('ECSLanguage') ?? 'vi';
 var ECSLanguageFile = new MultiLang('/release/languages.json');
 ECSLanguageFile.setLanguage(ECSLanguage);
+console.log(ECSLanguageFile.get('langdesc'));
+
 var core1 = 'Copy thành công',
     core2 = 'Trình duyệt không hỗ trợ',
     core3 = 'Bạn có chắc chắn muốn rời khỏi hộp hội thoại này ngay bây giờ không',
     core4 = 'So sánh sản phẩm',
     core5 = 'Xóa tất cả',
     core6 = 'So sánh ngay!',
+    core7 = 'Xem thêm nội dung',
+    core8 = 'Thu gọn nội dung',
+    core9 = ' Sản phẩm',
+    core10 = 'Thu gọn',
+    core11 = 'Xem thêm',
 
     err1 = 'Dữ liệu bị xóa không thể phục hồi, bạn có muốn xóa?',
     err2 = 'Cảnh báo',
@@ -32,6 +39,7 @@ var core1 = 'Copy thành công',
     err8 = 'Thông báo',
     err9 = 'Giỏ hàng hết hiệu lực',
     err10 = 'Vui lòng điền mã khuyến mãi',
+    err11 = 'Thành công',
 
     text1 = 'Có ',
     text2 = ' lỗi, xem chi tiết bên dưới.',
@@ -69,6 +77,11 @@ setTimeout(function () {
     core4 = ECSLanguageFile.get('core4'),
     core5 = ECSLanguageFile.get('core5'),
     core6 = ECSLanguageFile.get('core6'),
+    core7 = ECSLanguageFile.get('core7'),
+    core8 = ECSLanguageFile.get('core8'),
+    core9 = ECSLanguageFile.get('core9'),
+    core10 = ECSLanguageFile.get('core10'),
+    core11 = ECSLanguageFile.get('core11'),
 
     err1 = ECSLanguageFile.get('err1'),
     err2 = ECSLanguageFile.get('err2'),
@@ -80,6 +93,7 @@ setTimeout(function () {
     err8 = ECSLanguageFile.get('err8'),
     err9 = ECSLanguageFile.get('err9'),
     err10 = ECSLanguageFile.get('err10'),
+    err11 = ECSLanguageFile.get('err11'),
 
     text1 = ECSLanguageFile.get('text1'),
     text2 = ECSLanguageFile.get('text2'),
