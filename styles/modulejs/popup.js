@@ -57,7 +57,7 @@ Popup.presets = {
     },
     'video': {
         type: 'iframe',
-        mainClass: "mfp-fade",
+        mainClass: "fancybox-video",
         preloader: false,
         closeBtnInside: false
     },
