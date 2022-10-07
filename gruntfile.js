@@ -109,6 +109,7 @@ module.exports = grunt => {
                         '<%= dirs.mainjs %>/modulejs/quantityInput.js',
                         '<%= dirs.mainjs %>/modulejs/initSelectMenu.js',
                         '<%= dirs.mainjs %>/modulejs/initCheckBoxMenu.js',
+                        '<%= dirs.mainjs %>/modulejs/initSelectSideBar.js',
                         '<%= dirs.mainjs %>/modulejs/wishlistAction.js',
                         '<%= dirs.mainjs %>/modulejs/productSingle.js',
                         '<%= dirs.mainjs %>/modulejs/productSinglePage.js',

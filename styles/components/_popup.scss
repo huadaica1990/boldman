@@ -662,7 +662,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
         -o-animation: 0.25s ease both fadeInUp;
         animation: 0.25s ease both fadeInUp;
         display: block;
-        position: fixed;
+        position: fixed !important;
         bottom: 0;
         z-index: 1050;
         &::before {
