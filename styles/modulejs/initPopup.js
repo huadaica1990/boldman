@@ -34,13 +34,11 @@ function popupEcs (options, preset) {
         Ecsgroup.$body.on('click', '.btn-iframe', function (e) {
             e.preventDefault();
             Ecsgroup.popupPause = true;
-            Ecsgroup.popup({
-                items: {
-                    src: '<video src="' + $(e.currentTarget).attr('href') + '" autoplay loop controls>',
-                    type: 'inline'
-                },
-                mainClass: 'mfp-video-popup'
-            }, 'video')
+            Ecsgroup.popup(
+                [{
+                    src: $(e.currentTarget).attr('href'),
+                    type: 'iframe'
+                }], 'video')
         });
 
         // Login popup

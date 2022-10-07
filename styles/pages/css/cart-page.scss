@@ -1319,11 +1319,14 @@
 
         .mfp-close {
             @include transform($args: none);
+            position:absolute;
+            top:0;
             width: 100%;
             height: 55px;
             top: 0;
             left: 0;
             background-color: $primary-color;
+            border:0;
 
             &::after {
                 display: none;
@@ -1332,6 +1335,7 @@
             &::before {
                 @include e-cen($type: "top", $option: translate(-50%, -50%));
                 left: 20px;
+                font-size: 28px;
                 content: '\e806';
                 color: $white-color;
                 font-family: customize;
