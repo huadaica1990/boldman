@@ -362,40 +362,43 @@
             z-index: 1;
         }
     }
+
     .cursor{
         @include border-radius($val: 50%);
         @include animation($customize: true) {
-            -ms-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
-            -webkit-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
-            -moz-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
-            -o-transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
-            transition: opacity .33s ease, transform .4s cubic-bezier(.25,1,.5,1);
+            -ms-transition: opacity .5s ease;
+            -webkit-transition: opacity .5s ease;
+            -moz-transition: opacity .5s ease;
+            -o-transition: opacity .5s ease;
+            transition: opacity .5s ease;
         }
         position: fixed;
         z-index: 99;
         pointer-events: none;
         will-change: transform;
+        opacity: 0;
         top: 0;
         left: 0;
         //mix-blend-mode: difference;
         &-shape {
             //@include border($position: "all", $size:6px, $style: solid, $color: $primary-color);
             @include animation($customize: true) {
-                -ms-transition:transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
-                -webkit-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
-                -moz-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
-                -o-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
-                transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease, opacity .2s ease;
+                -ms-transition:transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease;
+                -webkit-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease;
+                -moz-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease;
+                -o-transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease;
+                transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .2s ease;
             }
+            @include border($position: "all", $size:1px, $style: solid, $color: transparent);
             @include border-radius($val: 50%);
             @include transform($args: scale(.1667));
             background-color: $primary-color;
-            width: 90px;
-            height: 90px;
-            opacity: 0;
+            width: 20px;
+            height: 20px;
             will-change: transform;
         }
         &-text {
+            @include e-cen($type: "all", $option: translate(-50%, -50%));
             @include animation($customize: true) {
                 -ms-transition: opacity .2s ease;
                 -webkit-transition: opacity .2s ease;
@@ -404,23 +407,68 @@
                 transition: opacity .2s ease;
             }
             position: absolute;
-            opacity: 0;
-            @include e-cen($type: "all", $option: translate(-50%, -50%));
             line-height: 1.2;
             text-transform: uppercase;
             letter-spacing: .2em;
             color: $white-color;
             white-space: nowrap
         }
+        &.video {
+            .cursor-shape {
+                width: 90px;
+                height: 90px;
+            }
+        }
+        &.small {
+            .cursor-text {
+                display: none;
+            }
+        }
+        &.border {
+            .cursor-shape {
+                width: 20px;
+                height: 20px;
+                border-color: $white-color;
+            }
+        }
+        &.plus {
+            .cursor-shape {
+                width: 40px;
+                height: 40px;
+                &:before {
+                    @include e-cen();
+                }
+                &:before, &:after {
+                    content:'';
+                    width: 50%;
+                    height: 2px;
+                    background-color:$white-color;
+                    position: absolute;
+                }
+                &:after {
+                    -webkit-transform-origin: center center;
+                    -moz-transform-origin: center center;
+                    -ms-transform-origin: center center;
+                    -o-transform-origin: center center;
+                    transform-origin: center center;
+                    @include transform($args: rotate(90deg));
+                    top: 18px;
+                    left: 9px;
+                }
+            }
+        }
         &.active {
             position: absolute;
-            .cursor-text,
-            .cursor-shape {
-                opacity: 1;
-            }
+            opacity:1;
             .cursor-shape {
                 @include transform($args: scale(1));
             }
+        }
+    }
+    .cursor-hover {
+        cursor: pointer;
+        iframe {
+            pointer-events: none;
         }
     }
     .cursor-hover {
