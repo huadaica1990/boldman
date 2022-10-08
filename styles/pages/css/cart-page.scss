@@ -133,7 +133,7 @@
     }
 }
 
-#js-addaddressinline-form {
+.js-addaddressinline-form {
     .form-control {
         @include border-radius($val: .5rem);
         padding: 0.75em 2.7rem 0.75em 1.4rem;
