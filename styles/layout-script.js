@@ -1620,15 +1620,41 @@ function validateForm(btn, idform) {
 function validateFormMini(btn, idform) {
     var form = $(idform).validate({
         focusInvalid: true,
-        rules: {
-            email: {
-                required: true,
+        errorPlacement: function (error, element) { return false; },
+        //rules: {
+        //    email: {
+        //        required: true,
+        //    }
+        //},
+        //messages: {
+        //    email: {
+        //        required: validate18,
+        //    }
+        //},
+        showErrors: function (errorMap, errorList) {
+            if (submitted) {
+                var summary = text1 + this.numberOfInvalids() + text2 + '<br>';
+                $.each(errorList, function () {
+                    summary += this.message + $(this.element).data('name') + '<br>';
+                });
+                $('#error-modal p').html(summary);
+                submitted = false;
             }
+            this.defaultShowErrors();
         },
-        messages: {
-            email: {
-                required: validate18,
+        invalidHandler: function (event, validator) {
+            // 'this' refers to the form
+            if (validator.numberOfInvalids()) {
+                Ecsgroup.popup(
+                    [{
+                        src: '#error-modal',
+                        type: "inline"
+                    }],
+                    {}, 'error');
+            } else {
+                Fancybox.getInstance().close();
             }
+            submitted = true;
         },
         submitHandler: function (form) {
             //var modal = {
@@ -1693,6 +1719,7 @@ function validateFormMini(btn, idform) {
         }
     });
 }
+
 function sendMail(targetId, action) {
     $.ajax({
         url: action,

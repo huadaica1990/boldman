@@ -32,9 +32,8 @@ function mouseFollowEcs(selector, speedVal = 0.1) {
             let $this = event.target,
                 className = $this.getAttribute('data-class');
             $('.cursor').addClass('active');
-            if (className !== null) {
-                $('.cursor').addClass(className);
-            };
+            cursor.lastChild.innerHTML = '';
+            if (className !== null) $('.cursor').addClass(className);
             cursorH = cursor.clientHeight;
             cursorW = cursor.clientWidth;
             mouseX = event.pageX;
