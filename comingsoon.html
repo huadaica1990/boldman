@@ -37,6 +37,7 @@ if (document.documentElement.clientWidth > 1100) {
 }
 document.addEventListener("DOMContentLoaded", function () {
     var lazyBackgrounds = [].slice.call(document.querySelectorAll(".lazyload-bg"));
+    var lazyIframe = [].slice.call(document.querySelectorAll(".lazyload-iframe"));
     if ("IntersectionObserver" in window) {
         let lazyBackgroundObserver = new IntersectionObserver(function (entries, observer) {
             entries.forEach(function (entry) {
@@ -48,9 +49,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
+        let lazyIframeObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
+                    entry.target.classList.remove("lazyload-iframe");
+                    entry.target.classList.add("ls-is-cached", "lazyloaded");
+                    lazyIframeObserver.unobserve(entry.target);
+                }
+            });
+        });
 
         lazyBackgrounds.forEach(function (lazyBackground) {
             lazyBackgroundObserver.observe(lazyBackground);
+        });
+        lazyIframe.forEach(function (lazyIframe) {
+            lazyIframeObserver.observe(lazyIframe);
         });
     }
 });</script><script type="text/javascript" src="/release/default.min.js" defer></script><script>addCSS('/release/comingsoon-page.min.css')

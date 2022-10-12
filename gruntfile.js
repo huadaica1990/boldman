@@ -25,6 +25,7 @@ module.exports = grunt => {
                 files: {
                     'ajax/login.html': ['<%= dirs.html %>/ajax/login.pug'],
                     'documentation.html': ['<%= dirs.html %>/documentation.pug'],
+                    'documentationcms.html': ['<%= dirs.html %>/documentationcms.pug'],
                     'example.html': ['<%= dirs.html %>/example.pug'],
                     '404.html': ['<%= dirs.html %>/404.pug'],
                     'comingsoon.html': ['<%= dirs.html %>/comingsoon.pug'],

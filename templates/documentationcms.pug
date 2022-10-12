@@ -1,0 +1,2392 @@
+extends layout_blank.pug
+
+block title
+    - let title = 'Documentation';
+    title #{title}
+block style
+    - let css = '/release/document.min.css';
+    //- Default
+    
+    link(rel='stylesheet' type='text/css' href='/styles/plugins/fontawesome-free/css/all.min.css')
+    link(rel='stylesheet' type='text/css' href='/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/release/main.min.css')
+
+block content
+    //- Var
+    - let idPage = 'documentation';
+    - let h1Title = '@ViewBag.MetaTitle';
+    //- Data
+    //- Content
+    main.page-wrapper.main(id=`${idPage}-page`)
+        .page-header(style='background-image: url(/img/documentation-header.jpg);')
+            .container
+                h1.page-title EcsGroup Docs
+                p How Can We Help You?
+                .widget-search
+                    input.form-control.input-search(type='text' name='search' autocomplete='off' placeholder='Search ...')
+                    button.btn.btn-search(type='submit')
+                        i.ecs-icon-search
+        .page-content.pt-10
+            .container
+                .row.gutter-lg.main-content-wrap
+                    aside.col-lg-3.sidebar
+                        .sidebar-content
+                            .widget
+                                h3.widget-title Getting Started
+                                ul.widget-body.search-ul
+                                    li.show
+                                        a.document-link(href='#template-welcome' data-title='Getting Started') Welcome
+                                    li
+                                        a.document-link(href='#template-features' data-title='Getting Started') Features
+                                    li
+                                        a.document-link(href='#template-structure' data-title='Getting Started') Files Structure
+                                        
+                            .widget
+                                h3.widget-title Stylesheets
+                                ul.widget-body.search-ul
+                                    li
+                                        a.document-link(href='#template-css-overview' data-title='Stylesheets') Overview
+                                    li
+                                        a.document-link(href='#template-css-mixins' data-title='Stylesheets') Mixins
+                                    li
+                                        a.document-link(href='#template-css-configuration' data-title='Stylesheets') Configuration
+                                    li
+                                        a.document-link(href='#template-css-variables' data-title='Stylesheets') Variables
+                            
+                            .widget
+                                h3.widget-title Javascripts
+                                ul.widget-body.search-ul
+                                    li
+                                        a.document-link(href='#template-js-overview' data-title='Javascripts') Overview
+                                    li
+                                        a.document-link(href='#template-js-plugins' data-title='Javascripts') Plugins
+
+                            .widget
+                                h3.widget-title Components
+                                ul.widget-body.search-ul
+                                    li
+                                        a.document-link(href='#template-com-item' data-title='Components') Item blank
+                                    li
+                                        a.document-link(href='#template-com-blog' data-title='Components') Blog
+                                    li
+                                        a.document-link(href='#template-com-product' data-title='Components') Product
+                                    li
+                                        a.document-link(href='#template-com-accordion' data-title='Components') Accordion
+                                    li
+                                        a.document-link(href='#template-com-tabs' data-title='Components') Tabs
+                                    li
+                                        a.document-link(href='#template-com-alert' data-title='Components') Alert
+                                    li
+                                        a.document-link(href='#template-com-button' data-title='Components') Button
+                                    li
+                                        a.document-link(href='#template-com-grid' data-title='Components') Grid
+                                    li
+                                        a.document-link(href='#template-com-icon' data-title='Components') Icon
+                                    li
+                                        a.document-link(href='#template-com-iconbox' data-title='Components') Icon Box
+                                    li
+                                        a.document-link(href='#template-com-popup' data-title='Components') Popup
+                                    li
+                                        a.document-link(href='#template-com-sidebar' data-title='Components') Sidebar
+                                    li
+                                        a.document-link(href='#template-com-slider' data-title='Components') Slider
+                                   
+                    .col-lg-9.main-content
+                        h2#document-title.title Getting Started
+                        script#template-welcome(type='text/html').
+                            <h5>Welcome to Ecsgroup HTML</h5>
+            
+                            <p>Thank you for choosing  HTML!<br>We are very pleased that you have chosen Ecsgroup for your website and you will not be disappointed with your choice.</p>
+
+                            <ul class="list list-circle list-style-none pl-0 mb-4 ml-0">
+                                <li><i class="fas fa-shopping-cart"></i>Ecsgroup is specifically designed for <b>Marketplace</b> site.</li>
+                                <li><i class="fas fa-rocket"></i>Ecsgroup is the most <b>powerful and fastest responsive</b> theme with tons of marketplace features and trends of designs.</li>
+                                <li><i class="fas fa-check"></i>Ecsgroup is based on <b>HTML5</b> and <b>CSS3</b>, and works perfectly fine in <b>all browsers</b>.</li>
+                                <li><i class="fas fa-layer-group"></i>Ecsgroup includes <b>17 elegant home pages</b> and <b>96 featured pages.</b></li>
+                            </ul>
+
+                            <p>Please read our documentation before you get started, and if you are unable to find your answer, pls don't hesitate to contact us through the themeforest support page. We will be always with you.</p>
+                            <p>We hope you enjoy using Ecsgroup HTML!</p>
+                            <p>Best Regards. -Ecsgroup Team-</p>
+
+                        script#template-features(type='text/html').
+                            <h5>Features</h5>
+
+                            <div class="row cols-sm-2 cols-md-3 cols-xl-4 pt-4">
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="ecs-icon-shopify"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">Marketplace</h4>
+                                        <p>Ecsgroup helps you to build Marketplace site quickly and perfectly.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="ecs-icon-display"></i>
+                                        <i class="ecs-icon-mobile"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">Responsive Design</h4>
+                                        <p>Everything in Ecsgroup is perfectly responsive on any device.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="far fa-edit"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">Fully Customizable</h4>
+                                        <p>Ecsgroup helps you to implement your idea easily.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="fas fa-layer-group"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">Limitless Components</h4>
+                                        <p>Ecsgroup provides a huge collection of UI/UX trending components.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="fab fa-sass"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">Configurable Sass</h4>
+                                        <p>To optimize css, Ecsgroup provides a powerful sass configuration.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">High Performance</h4>
+                                        <p>Ecsgroup provides an optimized way to show layouts and to run javascript.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="ecs-icon-honour"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">Qualified Code</h4>
+                                        <p>Anyone can easily understand Ecsgroup and quickly start projects.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-solid text-center mb-8">
+                                    <span class="icon-box-icon">
+                                        <i class="ecs-icon-orders"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-normal">All Featured Pages</h4>
+                                        <p>17 homepages, 32 shop pages, 12&nbsp;product pages, 13 blog pages, 15&nbsp;element pages, 11 subpages.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        script#template-structure(type='text/html').
+                            <h5>Files Structure</h5>
+                            <p>ECSGroup has so simple structure of files that everyone can understand easily.<br>This section will explain ECSGroup's entire files structure.</p>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Path</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>ajax</code></td>
+                                        <td>Ajax content.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>fonts</code></td>
+                                        <td>Fonts.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>icons</code></td>
+                                        <td>Icons to be used by theme: ecs, customize.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>img</code></td>
+                                        <td>Image files.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>styles</code></td>
+                                        <td>Folder include file: style, script, plugin...</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>----<code>base</code></td>
+                                        <td>Base stylesheets.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>--------<code>footer</code></td>
+                                        <td>Footer stylesheets.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>--------<code>header</code></td>
+                                        <td>Header stylesheets: nav desktop, mobile, sidebar...</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>----<code>components</code></td>
+                                        <td>Component stylesheets.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>config</code></td>
+                                        <td>Default configuration for colors, fonts and media breakpoints.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>mixins</code></td>
+                                        <td>Mixins for media breakpoints and configuration of variables.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>modulejs</code></td>
+                                        <td>Component javascripts.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>----<code>pages</code></td>
+                                        <td>Page stylesheets & javascripts.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-------<code>css</code></td>
+                                        <td>Page stylesheets.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-------<code>scripts</code></td>
+                                        <td>Page javascripts.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>plugins</code></td>
+                                        <td>3rd-party libraries that are included in the theme.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>core.js</code></td>
+                                        <td>Base javascripts.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>layout-script.js</code></td>
+                                        <td>Your javascripts.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>layout-style.scss</code></td>
+                                        <td>Your stylesheets.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>----<code>safari.scss</code></td>
+                                        <td>IOS stylesheets.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>templates</code></td>
+                                        <td>Folder include file: <a href="https://pugjs.org/api/getting-started.html" target="_blank">pug<a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>gruntfile</code></td>
+                                        <td><a href="https://gruntjs.com/getting-started" target="_blank">Link document.</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        script#template-css-overview(type='text/html').
+                            <h5>Overview</h5>
+
+                            <p>Ecsgroup uses <a href="https://sass-lang.com/" target="_blank">SASS</a> as css processor, the most powerful professional grade CSS extension language.</p>
+
+                            <h6 class="mb-1">Helper Classes</h6>
+                            <p>Ecsgroup defines useful helper classes for free customization.</p>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:70%">Class</th>
+                                        <th style="width:30%">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>                     
+                                    <tr>
+                                        <td>
+                                            <code>h0~6</code>
+                                        </td>
+                                        <td>Typography helper</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <code>text-left</code>
+                                            <code>text-center</code>
+                                            <code>text-right</code>
+                                            <code>text-justify</code>
+                                        </td>
+                                        <td>Text align helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>text-uppercase</code>
+                                            <code>text-lowercase</code>
+                                            <code>text-capitalize</code>
+                                            <code>text-normal</code>
+                                        </td>
+                                        <td>Text transform helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>text-italic</code>
+                                            <code>text-line-through</code>
+                                            <code>text-underline</code>
+                                        </td>
+                                        <td>Text style</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>font-primary</code>
+                                            <code>font-secondary</code>
+                                        </td>
+                                        <td>Font family helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>font-weight-black</code>
+                                            <code>font-weight-extrabold</code>
+                                            <code>font-weight-bold</code>
+                                            <code>font-weight-semibold</code>
+                                            <code>font-weight-normal</code>
+                                            <code>font-weight-light</code>
+                                        </td>
+                                        <td>Font weight helper</td>
+                                    </tr>   
+                                    <tr>
+                                        <td>
+                                            <code>font-size-md</code>
+                                            <code>font-size-sm</code>
+                                            <code>font-size-normal</code>
+                                            <code>font-size-lg</code>
+                                            <code>font-size-xl</code>
+                                        </td>
+                                        <td>Font size helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>text-white</code>
+                                            <code>text-grey</code>
+                                            <code>text-light</code>
+                                            <code>text-lighter</code>
+                                            <code>text-dark</code>
+                                            <code>text-default</code>
+                                            <code>text-default</code>
+                                            <code>text-alert</code>
+                                            <code>text-warning</code>
+                                            <code>text-primary</code>
+                                            <code>text-secondary</code>
+                                        </td>
+                                        <td>Text color helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>text-hover-underline</code></td>
+                                        <td>Text hover effect helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>ls-0</code>
+                                            <code>ls-10</code>
+                                            <code>ls-15</code>
+                                            <code>ls-25</code>
+                                            <code>ls-50</code>
+                                        </td>
+                                        <td>Letter spacing helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>lh-0</code>
+                                            <code>lh-1</code>
+                                            <code>lh-1_5</code>
+                                            <code>lh-2</code>
+                                        </td>
+                                        <td>Line height helper</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <code>d-none</code>
+                                            <code>d-block</code>
+                                            <code>d-flex</code>
+                                            <code>d-inline-flex</code>
+                                            <code>d-inline-block</code>
+
+                                            <code>d-xs-none</code>
+                                            <code>d-xs-show</code>
+                                            <code>d-xs-block</code>
+                                            <code>d-xs-inline-block</code>
+                                            
+                                            <code>d-md-none</code>
+                                            <code>d-md-block</code>
+                                            <code>d-md-flex</code>
+                                            <code>d-md-inline-flex</code>
+
+                                            <code>d-lg-none</code>
+                                            <code>d-lg-block</code>
+                                            <code>d-lg-flex</code>
+                                            <code>d-lg-inline-flex</code>
+
+                                            <code>d-xl-none</code>
+                                            <code>d-xl-block</code>
+                                            <code>d-xl-flex</code>
+                                            <code>d-xl-inline-flex</code>
+
+                                            <code>d-xl-show</code>
+                                            <code>d-lg-show</code>
+                                            <code>d-md-show</code>
+                                            <code>d-sm-show</code>
+
+                                            <code>d-none-des</code>
+                                            <code>d-invisible</code>
+                                            <code>d-visible</code>
+                                        </td>
+                                        <td>Display helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>justify-content-center</code>
+                                            <code>justify-content-start</code>
+                                            <code>justify-content-end</code>
+                                            <code>justify-content-between</code>
+
+                                            <code>align-items-start</code>
+                                            <code>align-items-center</code>
+                                            <code>align-items-end</code>
+
+                                            <code>flex-column</code>
+                                            <code>flex-wrap</code>
+                                            <code>flex-xl-wrap</code>
+                                            <code>flex-lg-wrap</code>
+                                            <code>flex-sm-wrap</code>
+                                            <code>flex-1</code>
+
+                                            <code>flex-container</code>
+                                            <code>flex-center</code>
+                                            <code>flex-between</code>
+                                        </td>
+                                        <td>Flex helper</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <code>w-100</code>
+                                            <code>w-80</code>
+                                            <code>w-50</code>
+                                            <code>h-100</code>
+                                            <code>h-auto</code>
+                                            <code>x-50</code>
+                                            <code>y-50</code>
+                                            <code>xy-50</code>
+                                        </td>
+                                        <td>Width, height, position helper</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>bg-white</code>
+                                            <code>bg-grey</code>
+                                            <code>bg-dark</code>
+                                            <code>bg-primary</code>
+                                            <code>bg-primary-light</code>
+                                            <code>bg-secondary</code>
+                                            <code>bg-secondary-light</code>
+                                            <code>bg-gradient</code>
+                                            <code>bg-image</code>
+                                            <code>bg-parallax</code>
+                                            <code>bg-pos-cc</code>
+                                            <code>bg-pos-l</code>
+                                            <code>bg-pos-r</code>
+                                            <code>bg-pos-t</code>
+                                            <code>bg-pos-b</code>
+                                            <code>bg-mask</code>
+                                        </td>
+                                        <td>Background color & image helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>br</code>
+                                            <code>br-50</code>
+                                            <code>br-lg</code>
+                                            <code>br-sm</code>
+                                            <code>br-xs</code>
+                                            <code>__-sm-0</code>
+                                        </td>
+                                        <td>Border radius helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>b-a</code>
+                                            <code>b-t</code>
+                                            <code>b-b</code>
+                                            <code>b-l</code>
+                                            <code>b-r</code>
+                                            <code>__-sm-no</code>
+                                        </td>
+                                        <td>Border helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>order-reverse</code></td>
+                                        <td>Order helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>overflow-hidden</code></td>
+                                        <td>Overflow helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>zindex-99</code>
+                                            <code>zindex-30</code>
+                                            <code>zindex-20</code>
+                                            <code>zindex-10</code>
+                                            <code>zindex-0</code>
+                                        </td>
+                                        <td>z-index helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>p-relative</code>
+                                            <code>p-absolute</code>
+                                            <code>p-static</code>
+                                            <code>p-sticky</code>
+                                            <code>p-fixed</code>
+                                            <code>_-sm-relative|static</code>
+                                        </td>
+                                        <td>Position helper</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <code>after-none</code>
+                                            <code>before-none</code>
+                                        </td>
+                                        <td>After &amp; Before helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>column-count-3</code>
+                                            <code>column-count-2</code>
+                                        </td>
+                                        <td>Column (masonry) helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>table-responsive</code>
+                                            <code>embed-responsive embed-responsive-16by9</code>
+                                            <code>img-white</code>
+                                            <code>overtext</code>
+                                            <code class="more-info">phone-list<span>style like text - text</span></code>
+                                        </td>
+                                        <td>Order helper</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h6>Spacing Classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:70%">Class</th>
+                                        <th style="width:30%">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <code>mt-1~10</code>
+                                            <code>mb-1~10</code>
+                                            <code>ml-1~10</code>
+                                            <code>mr-1~10</code>
+                                            <code>__sm|md|lg|xl-1~10</code>
+
+                                            <code>list-mt-1~10</code>
+                                            <code>list-mb-1~10</code>
+                                            <code>list-ml-1~10</code>
+                                            <code>list-mr-1~10</code>
+                                            
+                                            <code>mt-auto</code>
+                                            <code>mb-auto</code>
+                                            <code>ml-auto</code>
+                                            <code>__-lg|md-auto</code>
+                                            <code>mr-auto</code>
+                                            <code>__-lg|md-auto</code>
+                                            <code>mx-auto</code>
+                                            <code>__-lg|md-auto</code>
+                                            
+                                            <code class="more-info">m-first<span>margin top first-child 0</span></code>
+                                            <code class="more-info">m-last<span>margin bottom last-child 0</span></code>
+                                            <code class="more-info">m-right<span>margin right last-child 0</span></code>
+                                            <code class="more-info">m-left<span>margin left last-child 0</span></code>
+                                        </td>
+                                        <td>Margin helper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>pt-1~10</code>
+                                            <code>pb-1~10</code>
+                                            <code>pl-1~10</code>
+                                            <code>pr-1~10</code>
+                                            <code>__sm|md|lg|xl-1~10</code>
+
+                                            <code class="more-info">p-first<span>padding top first-child 0</span></code>
+                                            <code class="more-info">p-last<span>padding bottom last-child 0</span></code>
+                                            <code class="more-info">p-right<span>padding right last-child 0</span></code>
+                                            <code class="more-info">p-left<span>padding left last-child 0</span></code>
+                                        </td>
+                                        <td>Padding helper</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        script#template-css-mixins(type='text/html').
+                            <h5>Mixins</h5>
+                            
+                            <p>Ecsgroup supports several mixins for responsiveness, compatibility with some browsers and retina display. Ex: @include name</p>
+                            <p>These are written in <code>/styles/mixins/_mixins.scss</code></p>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:70%">Mixins</th>
+                                        <th style="width:30%">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <code>mq($mq-breakpoint, $mq-width: 'min-width', $mq-breakpoints: $breakpoints)</code>
+                                        </td>
+                                        <td>
+                                            @include mq(lg, 'max') for max-width or @include mq(lg)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>breakpoint($mq01: 0, $mq2: false, $maxmin: max-width)</code>
+                                        </td>
+                                        <td>
+                                            @include breakpoint(md, lg) for min-width to max-width or @include breakpoint(md,false,'max-width')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>animation($hover: true, $customize: false, $type: all, $time: 0.5s, $effect: $cubic, $delay: 0s)</code>
+                                        </td>
+                                        <td>
+                                            $hover = true &amp; $customize = true use @content<br>
+                                            $hover = true &amp; $customize = false use patent<br>
+                                            $hover = false animation disable
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>border ($position: "all|top|bot|left|right", $size:1px, $style:solid, $color: $border-color)</code>
+                                        </td>
+                                        <td>
+                                            Generate border, border-top, border-bottom, border-left, border-right.
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code>text($size: $font-size, $family : $font-family-primary, $height: $lh-0, $color: $body-color, $transform: $text-normal)</code>
+                                        </td>
+                                        <td>
+                                            Generate style of text.
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code class="more-info">keyframes($animation-name)<span>use @content</span></code>
+                                            <code>use-keyframes($args)</code>
+                                        </td>
+                                        <td>
+                                            Generate keyframes and use @content.
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code>e-cen ($type: "all|cus|top|left", $option: translate(-50%, -50%))</code>
+                                        </td>
+                                        <td>
+                                            $type = center is mean element center<br/>
+                                            $type = cus is mean element use $option to positon of element<br/>
+                                            $type = top is mean center of vertical<br/>
+                                            $type = left is mean center of horizontal
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code>gradient ($key: "background")</code>
+                                        </td>
+                                        <td>
+                                            $key = text is gradient text effect
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code>bg-mask ($value: rgba(0,0,0,.5))</code>
+                                        </td>
+                                        <td>
+                                            Generate background mask in element.
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code>center-img ($hover: true, $type: "scale|slow|opacity|rotate|tranX")</code>
+                                        </td>
+                                        <td>
+                                            Generate center image in element.<br/>
+                                            patent item: .item &gt; .img &gt; picture|img<br/>
+                                            $hover = true use effect img
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td>
+                                            <code>col-item ($number: 1~5, $top: 11px, $right: 11px)</code>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>prefix($text: ',', $margin: 5px, $center: true)</code></td>
+                                        <td>
+                                            Generate prefix element.<br/>
+                                            $center = true prefix is center element
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>only-for-ie</code></td>
+                                        <td>Generate css for only Internet Explorer.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>only-for-edge</code></td>
+                                        <td>Generate css for only Edge.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>only-for-retina($pixel-ratio)</code></td>
+                                        <td>Generate css for retina display.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>filter($val)</code><br/>
+                                            <code>transform($args)</code><br/>
+                                            <code>transform-origin($args)</code><br/>
+                                            <code>use-keyframes($args)</code><br/>
+                                            <code>clearfix($active: true)</code><br/>
+                                            <code>overtext ($row: 1, $h: auto)</code><br/>
+                                            <code>visible($active: false, $zindex: 99)</code><br/>
+                                            <code>box-shadow($number: 0~6)</code><br/>
+                                            <code>shadow($val: 0 0 10px 0 rgba(0,0,0,.1))</code><br/>
+                                            <code>border-radius($val: 5px)</code><br/>
+                                            <code>masonry($col:4, $gap:15px)</code><br/>
+                                            <code>placeholder($color:#000000,$target:'input')</code>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        script#template-css-configuration(type='text/html').
+                            <h5>Configuration</h5>
+                            
+                            <p>Ecsgroup uses some predefined colors, fonts, media breakpoints. These are written in <code>/styles/mixins/_variable.scss</code></p>
+                            
+                            <h6>Predefined colors</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Default value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>$primary-color</code></td><td style="background: #499D44; color: #fff">#499D44</td></tr>
+                                    <tr><td><code>$primary-color-light</code></td><td style="background: #A4C53A; color: #222">#A4C53A</td></tr>
+                                    <tr><td><code>$secondary-color</code></td><td style="background: #f93; color: #fff">#f93</td></tr>
+                                    <tr><td><code>$secondary-color-light</code></td><td style="background: #ffcc6d; color: #fff">#ffcc6d</td></tr>
+
+                                    <tr><td><code>$grey-color</code></td><td style="background: #666; color: #fff">#666</td></tr>
+                                    <tr><td><code>$grey-color-light</code></td><td style="background: #f5f5f5; color: #222">#f5f5f5</td></tr>
+
+                                    <tr><td><code>$success-color</code></td><td style="background: #799b5a; color: #fff">#799b5a</td></tr>
+                                    <tr><td><code>$success-color-light</code></td><td style="background: #c4df9b; color: #fff">#c4df9b</td></tr>
+                                    <tr><td><code>$alert-color</code></td><td style="background: #6d1a17; color: #fff">#6d1a17</td></tr>
+                                    <tr><td><code>$wraning-color</code></td><td style="background: #ffa800; color: #fff">#ffa800</td></tr>
+                                    <tr><td><code>$dark-color</code></td><td style="background: #333; color: #fff">#333</td></tr>
+                                    <tr><td><code>$white-color</code></td><td style="background: #ffffff; color: #222">#fff</td></tr>
+                                    <tr><td><code>$link-color</code></td><td style="background: #1914fe; color: #fff">#1914fe</td></tr>
+                                    <tr><td><code>$light-color</code></td><td style="background: #999; color: #222">#999</td></tr>
+                                    <tr><td><code>$lighter-color</code></td><td style="background: #ccc; color: #222">#ccc</td></tr>
+                                    
+                                    <tr><td><code>$body-color</code></td><td style="background: #666; color: #fff">#666</td></tr>
+
+                                </tbody>
+                            </table>
+
+                            <h6>Background, border colors</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Default value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>$dark-background</code></td><td style="background: #212121; color: #fff">#212121</td></tr>
+                                    <tr><td><code>$dark-background-light</code></td><td style="background: #5e6271; color: #fff">#5e6271</td></tr>
+
+                                    <tr><td><code>$grey-background</code></td><td style="background: #F0F2F5; color: #222">#F0F2F5</td></tr>
+                                    <tr><td><code>$grey-background-light</code></td><td style="background: #E4E6E8; color: #222">#E4E6E8</td></tr>
+                                    <tr><td><code>$grey-background-lighter</code></td><td style="background: #f2f2f2; color: #222">#f2f2f2</td></tr>
+
+                                    <tr><td><code>$border-color</code></td><td style="background: #eee; color: #222">#eee</td></tr>
+                                    <tr><td><code>$border-color-light</code></td><td style="background: #ccc; color: #222">#ccc</td></tr>
+                                </tbody>
+                            </table>
+
+                            <h6>Predefined font</h6>
+
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Variable</th><th>Default value</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>$alt-font-family</code></td><td>sans-serif</td></tr>
+                                    <tr><td><code>$font-family-primary</code></td><td>'SVN-Poppins', $alt-font-family</td></tr>
+                                    <tr><td><code>$second-font-family</code></td><td>'iCielFesterSemiCondensed', $alt-font-family</td></tr>
+                                </tbody>
+                            </table>
+
+                            <h6>Predefined breakpoints</h6>
+
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Breakpoint</th><th>Min value</th><th>Max value</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>xs</code></td><td>480px</td><td>479px</td></tr>
+                                    <tr><td><code>sm</code></td><td>576px</td><td>575px</td></tr>
+                                    <tr><td><code>md</code></td><td>768px</td><td>767px</td></tr>
+                                    <tr><td><code>lg</code></td><td>992px</td><td>991px</td></tr>
+                                    <tr><td><code>xl</code></td><td>1200px</td><td>1199px</td></tr>
+                                    <tr><td><code>xml</code></td><td>1366px</td><td>1365px</td></tr>
+                                    <tr><td><code>xxl</code></td><td>1440px</td><td>1439px</td></tr>
+                                    <tr><td><code>xlst</code></td><td>1920px</td><td></td></tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div style="max-width: 50%;-webkit-box-flex: 0 0 50%;-webkit-flex: 0 0 50%;-moz-box-flex: 0 0 50%;-ms-flex: 0 0 50%;flex: 0 0 50%;margin-bottom: 4rem;">
+                                    <p>When you want min-width media query</p>
+                                    <pre>
+                            @include mq(xs) {
+                                h1 {
+                                    font-size: 3rem;
+                                }
+                            }
+                                    </pre>
+                                    <p>Then the codes are compiled to:</p>
+                                    <pre>
+                            @media (min-width: 480px) {
+                                h1 {
+                                    font-size: 3rem;
+                                }
+                            }
+                                    </pre>
+                                </div>
+                                <div style="max-width: 50%;-webkit-box-flex: 0 0 50%;-webkit-flex: 0 0 50%;-moz-box-flex: 0 0 50%;-ms-flex: 0 0 50%;flex: 0 0 50%;margin-bottom: 4rem;">
+                                    <p>When you want max-width media query</p>
+                                    <pre>
+                            @include mq(xs, max) {
+                                h1 {
+                                    font-size: 3rem;
+                                }
+                            }
+                                    </pre>
+                                    <p>Then the codes are compiled to:</p>
+                                    <pre>
+                            @media (max-width: 479px) {
+                                h1 {
+                                    font-size: 3rem;
+                                }
+                            }
+                                    </pre>
+                                </div>
+                            <div>
+                        
+                        script#template-css-variables(type='text/html').
+                            <h5>Variables</h5>
+                            <p>Ecsgroup has the most advanced sass configuration, sass variables can be reset easily to reduce css and selector's depth without modifying source code.</p>
+    
+                            <h6>Example: header's base config</h6>
+                            <p>Default variables for header is in <code>/styles/base/_header.scss</code>.</p>
+                            <pre>
+                                @include set-default(
+                                    (
+                                        header: (
+                                            _link-color: $dark-color,
+                                            _link-active-color: $primary-color,
+                                            _link-font-weight: $font-weight-bold,
+                                            _line-color: $grey-color,
+                                            font-family: $font-family-primary,
+                                            background: $white-color,
+                                            color: $dark-color,
+                                            // Header header
+                                            header: (
+                                                _margin-left:2rem,
+                                                background-color:$grey-background,
+                                                font-size:1.1rem,
+                                                text-transform:capitalize,
+                                                welcomeMsg: (
+                                                    _padding:10px 0
+                                                ),
+                                                avatar: (
+                                                    _height:25px
+                                                ),
+                                                icon: (
+                                                    margin-right: 0.6rem,
+                                                    font-size: 1.5rem
+                                                )
+                                            ),
+                                            // Header body
+                                            body: (
+                                                _margin-right: 2.3rem,
+                                                font-size:1.2rem,
+                                                logo: (
+                                                    _padding: 3.2rem,
+                                                    _width:133px,
+                                                ),
+                                                icon: (
+                                                    _font-size: 2.7rem,
+                                                )
+                                            ),
+                                            // Header footer
+                                            footer: (
+                                                _font-weight: $font-weight-semibold,
+                                                _margin-right: 3rem,
+                                                background-color: $white-color,
+                                                font-size: 1.4rem,
+                                                icon: (
+                                                    _font-size: 2.2rem,
+                                                ),
+                                                1024: (
+                                                    _margin-right: 2rem,
+                                                ),
+                                                // 768: (),
+                                                // 450: (),
+                                                // 360: (),
+                                            ),
+                                            // Cart
+                                            cartIcon: (
+                                                position: absolute,
+                                                font-size: 1.1rem,
+                                                line-height: 1.9rem,
+                                                background: $primary-color,
+                                                color: $white-color,
+                                                text-align: center,
+                                                width: 1.9rem,
+                                                height: 1.9rem,
+                                                z-index: 1,
+                                                right: 8px,
+                                                top: -5px,
+                                            )
+                                        )
+                                    )
+                                );
+                            </pre>
+
+                            <h6>Example: customize header</h6>
+                            <p>Below is used to customize config <code>/styles/config/_cus_config.scss</code>.</p>
+                            <ul>
+                                <li>If you want to override config, please use <code>set</code> mixin and write variable.</li>
+                                <li>If you want to remove unnecessary css code, please set <code>false</code> value.</li>
+                            </ul>
+                            <pre>
+                                /* Custom Variables*/
+                                @include set (
+                                    (
+                                        base: (
+                                            _container-width: 1420px,
+                                            title-link: (
+                                                title: (
+                                                    margin-bottom: .7rem
+                                                ),
+                                                link: (
+                                                    margin-bottom: .2rem,
+                                                    font-weight: 600,
+                                                    letter-spacing: -.025em,
+                                                    color: $dark-color
+                                                ),
+                                                icon: (
+                                                    position: relative,
+                                                    top: -0.1rem,
+                                                    margin-left: .8rem,
+                                                    font-size: 1.5rem,
+                                                    font-weight: 600
+                                                )
+                                            )
+                                        ),
+                                        header: (
+                                            top: (
+                                                background: $primary-color,
+                                                color: #fff,
+                                                border-bottom: 1px solid,
+                                                border-color: rgba(238, 238, 238, 0.2)
+                                            ),
+                                            middle: (
+                                                background: $primary-color,
+                                                color: #fff,
+                                                border-bottom: 0
+                                            ),
+                                            bottom: (
+                                                border: 1px solid $border-color
+                                            ),
+                                            search: (
+                                                _border-color: #fff,
+                                                expanded: (
+                                                    width: 69.6rem
+                                                )
+                                            ),
+                                            cart: (
+                                                count: (
+                                                    background: $secondary-color
+                                                )
+                                            ),
+                                            wishlist: (
+                                                label: (
+                                                    color: #eee
+                                                )
+                                            ),
+                                            compare: (
+                                                label: (
+                                                    color: #eee
+                                                )
+                                            ),
+                                            category: (
+                                                toggle: (
+                                                    padding: 1.8rem 1.8rem 1.8rem 2rem
+                                                )
+                                            )
+                                        ),
+                                        menu: (
+                                            ancestor: (
+                                                padding: 1.8rem 0
+                                            )
+                                        ),
+                                        category-menu: (
+                                            padding: 1rem 0 0.8rem,
+                                            ancestor: (
+                                                _split-line: 1px solid #e1e1e1
+                                            )
+                                        ),
+                                        product-single: (
+                                            ratings: (
+                                                margin-bottom: 1.8rem,
+                                                _star-color: $secondary-color,
+                                                font-size: 1.3rem
+                                            ),
+                                            old-price: (
+                                                margin-right: 1rem,
+                                                font-size: 1.8rem,
+                                                color: $light-color
+                                            )
+                                        ),
+                                        post: (
+                                            body: (
+                                                padding: 1.5rem 0 2.3rem
+                                            ),
+                                            title: (
+                                                margin-bottom: 1.9rem,
+                                                font-size: 1.6em,
+                                                line-height: 1.5
+                                            ),
+                                            btn: (
+                                                font-weight: 400,
+                                                text-transform: lowercase,
+                                                _icon-gap: .6rem
+                                            )
+                                        ),
+                                        footer: (
+                                            background: #f5f5f5,
+                                            top: (
+                                                padding: 5.8rem 0 0.7rem,
+                                                border-top: 1px solid #e5e5e5
+                                            ),
+                                            bottom: (
+                                                padding: 3.1rem 0 3rem,
+                                                background: #222,
+                                                color: $light-color
+                                            ),
+                                            about: (
+                                                call: (
+                                                    margin-bottom: .8rem
+                                                ),
+                                                logo: (
+                                                    margin-bottom: 1.1rem
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            </pre>
+
+                        script#template-js-overview(type='text/html').
+                            <h5>Overview</h5>
+                            <p>The below table shows how to initialize Ecsgroup and its functions.</p>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Funciton</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td colspan="2" class="bg-primary text-white">Initialize Ecsgroup</td></tr>
+                                    <tr><td><code>Ecsgroup.prepare()</code></td><td>Initialize method while document is being loaded.</td></tr>
+                                    <tr><td><code>Ecsgroup.initLayout();</code></td><td>Initialize method while document is interactive.</td></tr>
+                                    <tr><td><code>Ecsgroup.init();</code></td><td>Initialize method after document has been loaded.</td></tr>
+                                    <tr><td><code>Ecsgroup.initPage();</code></td><td>Initialize method after document in every page single has been loaded.</td></tr>
+
+                                    <tr><td colspan="2" class="bg-primary text-white">Call functions for layouts (in <code class="text-white font-weight-bolder">initLayout</code> function)</td></tr>
+                                    <tr><td><code>Ecsgroup.isotopes(selector, options);</code></td><td>Show masonry grid by using isotopes.</td></tr>
+                                    <tr><td><code>Ecsgroup.stickySidebar(selector);</code></td><td>Initialize sticky sidebar.</td></tr>
+
+                                    <tr><td colspan="2" class="bg-primary text-white">Call functions (in <code class="text-white font-weight-bolder">init</code> function)</td></tr>
+                                    
+                                    <tr><td colspan="2">Function default</td></tr>
+                                    <tr><td><code>Ecsgroup.popup(items, options, preset);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.ratingTooltip(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.setProgressBar(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.wishlistAction(function);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.zoomImage(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.backToUrl(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.showPassword(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.showLoading(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.hideLoading(selector);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.showHide(obj, selector, classname);</code></td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.copyUrl(selector);</code></td><td></td></tr>
+
+                                    <tr><td colspan="2">Function core</td></tr>
+                                    <tr><td>---Initialize menu---</td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.menu.init();</code></td><td>Initialize menu.</td></tr>
+                                    <tr><td><code>Ecsgroup.preSearch(selector);</code></td><td>Initialize suggest search.</td></tr>
+                                    <tr><td><code>Ecsgroup.scrollDirection(selector, classname);</code></td><td>Initialize scroll direction.</td></tr>
+                                    <tr><td><code>Ecsgroup.stickyContent(selector); </code></td><td>Initialize sticky element.</td></tr>
+                                    <tr><td>---Initialize layout---</td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.accordion(selector);</code></td><td>Initialize accordions.</td></tr>
+                                    <tr><td><code>Ecsgroup.cutomizeSelect(element);</code></td><td>Initialize select.</td></tr>
+                                    <tr><td><code>Ecsgroup.initDropdownAction(selector);</code></td><td>Initialize dropdown.</td></tr>
+                                    <tr><td><code>Ecsgroup.initPopup();</code></td><td>Initialize popups: login, register, play video, newsletter popup</td></tr>
+                                    <tr><td><code>Ecsgroup.initScrollTopButton();</code></td><td>Initialize scroll top button.</td></tr>
+                                    <tr><td><code>Ecsgroup.Minipopup.init();</code></td><td>Initialize Minipopup.</td></tr>
+                                    <tr><td><code>Ecsgroup.setTab(selector);</code></td><td>Initialize tabs.</td></tr>
+                                    <tr><td><code>Ecsgroup.slider(selector);</code></td><td>Initialize sliders.</td></tr>
+
+                                    <tr><td >Function optional</td></tr>
+                                    <tr><td>---Initialize feature product---</td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.shop.init();</code></td><td>Initialize shop functions.</td></tr>
+                                    <tr><td><code>Ecsgroup.productSingle(selector);</code></td><td>Initialize all single products.</td></tr>
+                                    <tr><td><code>Ecsgroup.productSinglePage();</code></td><td>Initialize Single Product Page.</td></tr>
+                                    <tr><td><code>Ecsgroup.quantityInput(selector);</code></td><td>Initialize quantity input.</td></tr>
+                                    <tr><td><code>Ecsgroup.countDown(selector);</code></td><td>Initialize countdown.</td></tr>
+                                    <tr><td>---Initialize effect---</td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.typeWriter(selector); </code></td><td>Initialize type writer.</td></tr>
+                                    <tr><td><code>Ecsgroup.countTo(selector);</code></td><td>Initialize countTo.</td></tr>
+                                    <tr><td><code>Ecsgroup.fancyBox(selector);</code></td><td>Initialize fancyBox.</td></tr>
+                                    <tr><td><code>Ecsgroup.initFloatingParallax(selector);</code></td><td>Initialize Floating Parallax.</td></tr>
+                                    <tr><td><code>Ecsgroup.marquee(selector);</code></td><td>Initialize marquee.</td></tr>
+                                    <tr><td><code>Ecsgroup.pageScrollToId(selector);</code></td><td>Initialize page to scroll id.</td></tr>
+                                    <tr><td>---Initialize function use in category page---</td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.sidebar(selector);</code></td><td>Initialize left sidebar.</td></tr>
+                                    <tr><td><code>Ecsgroup.togglerMake(selector); </code></td><td>Initialize toggler.</td></tr>
+                                    <tr><td><code>Ecsgroup.initCheckBoxMenu(function);</code></td><td>Initialize filter use by checkbox.</td></tr>
+                                    <tr><td><code>Ecsgroup.initSelectMenu();</code></td><td>Initialize filter use by select.</td></tr>
+                                    <tr><td><code>Ecsgroup.initNavFilter(selector);</code></td><td>Initialize navigation filters for blog, products.</td></tr>
+                                    <tr><td><code>Ecsgroup.initScrollLoad(selector, function);</code></td><td>Initialize scroll to load item</td></tr>
+                                    <tr><td><code>Ecsgroup.fakeLoadMore(container, pagesize);</code></td><td>Initialize fake loadmore.</td></tr>
+                                    <tr><td>---Initialize function use in detail, static page---</td><td></td></tr>
+                                    <tr><td><code>Ecsgroup.readMore(selector, text1, text2);</code></td><td>Initialize readmore for content.</td></tr>
+                                    <tr><td><code>Ecsgroup.tableOfContent(); </code></td><td>Initialize table of content.</td></tr>
+                                    <tr><td><code>Ecsgroup.uploadFile(selector); </code></td><td>Initialize upload file.</td></tr>
+                                </tbody>
+                            </table>
+
+                        script#template-js-plugins(type='text/html').
+                            <h5>Plugins</h5>
+                            <p>The below table shows all plugins.</p>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Name</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>animate</code></td>
+                                        <td><a href="https://animate.style" target="_blank">Version - 4.1.1</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>fancybox</code></td>
+                                        <td><a href="https://fancyapps.com" target="_blank">Version - 4.0.11</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>file-saver</code></td>
+                                        <td><a href="https://github.com/eligrey/FileSaver.js" target="_blank">Version - 2.0.5</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>floating-parallax</code></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>html2canvas</code></td>
+                                        <td><a href="https://html2canvas.hertzen.com" target="_blank">Version - 1.4.0</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>imagesloaded</code></td>
+                                        <td><a href="https://github.com/desandro/imagesloaded" target="_blank">Version - 4.1.4</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>instantpage</code></td>
+                                        <td><a href="https://instant.page" target="_blank">Version - 5.1.0</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isotope-layout</code></td>
+                                        <td><a href="https://isotope.metafizzy.co" target="_blank">Version - 3.0.6</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>jquery-marquee</code></td>
+                                        <td><a href="http://aamirafridi.com/jquery/jquery-marquee-plugin" target="_blank">Version - 1.6.0</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>jquery-validation</code></td>
+                                        <td><a href="https://jqueryvalidation.org" target="_blank">Version - 1.19.3</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>jquery-zoom</code></td>
+                                        <td><a href="http://www.jacklmoore.com/zoom" target="_blank">Version - 1.7.21</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>kbw-countdown</code></td>
+                                        <td><a href="http://keith-wood.name/countdown.html" target="_blank">Version - 2.1.1</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>page-scroll-to-id</code></td>
+                                        <td><a href="http://manos.malihu.gr/page-scroll-to-id" target="_blank">Version - 1.6.8</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>parallax</code></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sticky</code></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sticky-sidebar</code></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>swiper</code></td>
+                                        <td><a href="https://swiperjs.com" target="_blank">Version - 6.8.0</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        script#template-com-item(type='text/html').
+                            <h5>Item blank</h5>
+                            <p>Ecsgroup provides several attractive types to showcase item blank.</p>
+                            <p>Use below codes to display item common.</p>
+                            <p>Rule of name: .ele-wrap &gt; .ele-wrapper &gt; .ele-container &gt; .ele &gt; ...</p>
+                            <pre>
+                            .item
+                                figure.post-media
+                                    a.img(href='' title='')
+                                        picture
+                                            source(media='' srcset='' type='image/webp')
+                                            img(src='' alt='' itemprop='thumbnail' width='' height='' loading='lazy')
+                                .item-details
+                                    h3.item-title
+                                        a(href='' title='') Name
+                                    .post-content Description
+                            </pre>
+                        
+                        script#template-com-blog(type='text/html').
+                            <h5>Blog</h5>
+                            <p>Ecsgroup provides a very elegant way to showcase your blog. Using blog is very simple.</p>
+                            <p>Use below codes to display blog.</p>
+                            <pre>
+                            article.post.post-item(itemprop='liveBlogUpdate' itemscope itemtype='http://schema.org/BlogPosting')
+                                figure.post-media
+                                    a.img(href='' title='')
+                                        picture
+                                            source(media='' srcset='' type='image/webp')
+                                            img(src='' alt='' itemprop='thumbnail' width='' height='' loading='lazy')
+                                    .post-calendar
+                                        span.post-day Day
+                                        span.post-month Month
+                                    .post-label-group
+                                        label.post-label Label
+                                        label.post-label Label
+                                .post-details
+                                    .post-cats
+                                        a(href='' title='') Category
+                                    h3.post-title(itemprop='headline')
+                                        a(href='' title='' itemprop='url') Name
+                                    .post-content(itemprop='description') Description
+                                    .post-meta
+                                        | By
+                                        a.post-author(href='' title='') Author
+                                        =' - '
+                                        a.post-date(href='' title='' itemprop='datePublished' content='') Date
+                                        a.post-comment(href='' title='')
+                                            i.ecs-icon-comments
+                                            span NumberComments
+                            </pre>
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>post-list</code></td><td>List type</td></tr>
+                                    <tr><td><code>post-widget</code></td><td>Widget type</td></tr>
+                                </tbody>
+                            </table>
+                        
+                        script#template-com-product(type='text/html').
+                            <h5>Product</h5>
+                            <p>Wolmart provides several attractive types to showcase products. Please check products styles in <a href="element-products.html" target="_blank">element-products page</a>.</p>
+                            <ul class="list list-type-number mb-4">
+                                <li><a href="element-products.html">Default style</a></li>
+                                <li><a href="element-products.html">Classic style</a></li>
+                                <li><a href="element-products.html">Popup style</a></li>
+                                <li><a href="element-products.html">List style</a></li>
+                                <li><a href="element-products.html">Widget style</a></li>
+                            </ul>
+                            <p>Use below codes to display default product.</p>
+                            <pre>
+                            .item-product.product(itemscope itemtype='http://schema.org/Product')
+                                figure.product-media
+                                    .img.product-images
+                                        picture
+                                            source(media='' srcset='' type='image/webp')
+                                            img(src='' alt='' itemprop='thumbnail' loading='lazy' width='' height='')
+                                        picture
+                                            source(media='' srcset='' type='image/webp')
+                                            img(src='' alt='' itemprop='thumbnail' loading='lazy' width='' height='')
+                                    .product-label-group
+                                        label.product-label Label
+                                        ...
+                                    .product-action.vertical
+                                        a.btn-product-icon.btn-cart.ecs-icon-cart(href='javascript:' title='Add to cart')
+                                        a.btn-product-icon.btn-wishlist.ecs-icon-heart(href='javascript:' title='Wishlist')
+                                        a.btn-product-icon.btn-compare.ecs-icon-compare(href='javascript:' title='Compare')
+                                        a.btn-product-icon.btn-quickview.ecs-icon-search(href='javascript:' title='Quick View')
+                                    .product-countdown-container
+                                        .product-countdown.countdown-compact(data-until='' data-format='DHMS' data-compact='false' data-labels-short='Năm, Tháng, Tuần, Ngày, Giờ, Phút, Giây')
+                                .product-details
+                                    .product-variations.mb-1
+                                        a.image.lazyload-bg(data-bg='' data-src='[]')
+                                    .product-cat
+                                        a(href='') Cat
+                                    h3.product-title(itemprop='name')
+                                        a(href='' itemprop='url') Name
+                                    .ratings-container
+                                        .ratings-full
+                                            .ratings(style='width: 50%;')
+                                        a.rating-reviews(href='') (Count<span class='ml-1'>đánh giá</span>)
+                                    .product-price(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+                                        ins.new-price(itemprop='price' content='') Price
+                                        del.old-price Promoprice
+                                        label.product-label.label-discount
+                                            span Percent
+                                    .product-status Status 
+                            </pre>
+
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>product</code></td><td>Default style</td></tr>
+                                    <tr><td><code>product-simple</code></td><td>Classic style</td></tr>
+                                    <tr><td><code>product-list</code></td><td>List style</td></tr>
+                                    <tr><td><code>product-widget</code></td><td>Widget style</td></tr>
+                                </tbody>
+                            </table>
+                        
+                        script#template-com-accordion(type='text/html').
+                            <h5>Accordion</h5>
+                            <p>Use the below code to display accordion.</p>
+                            <pre>
+                            .accordion.accordion-bg.accordion-gutter-md.accordion-border
+                                .accordion-item
+                                    .accordion-header
+                                        a.collapse(href='#collapse1-1') Title 1
+                                    #collapse1-1.accordion-body.expanded
+                                        p Description 1
+                                .accordion-item
+                                    .accordion-header
+                                        a.expand(href='#collapse1-2') Title 2
+                                    #collapse1-2.accordion-body.collapsed
+                                        p Description 2
+                                .accordion-item
+                                    .accordion-header
+                                        a.expand(href='#collapse1-3') Title 3
+                                    #collapse1-3.accordion-body.collapsed
+                                        p Description 3
+                            </pre>
+                            
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>accordion-gutter-md</code></td><td>Medium gutter between cards.</td></tr>
+                                    <tr><td><code>accordion-boxed</code></td><td>Boxed style.</td></tr>
+                                    <tr><td><code>accordion-bg</code></td><td>Stacked style</td></tr>
+                                    <tr><td><code>accordion-simple</code></td><td>Simple style.</td></tr>
+                                    <tr><td><code>accordion-border</code></td><td>Framed style.</td></tr>
+                                    <tr><td><code>accordion-icon</code></td><td>Icon style.</td></tr>
+                                    <tr><td><code>accordion-plus</code></td><td>Use plus and minus as toggle icon.</td></tr>                                    
+                                </tbody>
+                            </table>
+                        
+                        script#template-com-tabs(type='text/html').
+                            <h5>Tabs</h5>
+                            <p>Use the below code to display accordion.</p>
+                            <pre>
+                            .tab
+                                ul.nav.tab-js.nav-tabs
+                                    li.nav-item
+                                        a.nav-link.active(href='#tab1' title='') Tab 1
+                                    li.nav-item
+                                        a.nav-link(href='#tab2' title='') Tab 2
+                                .tab-content
+                                    #tab1.tab-pane.active
+                                        ...
+                                    #tab2.tab-pane
+                                        ...
+                            </pre>
+                            
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>tab-nav-boxed</code></td><td></td></tr>
+                                    <tr><td><code>tab-nav-solid</code></td><td></td></tr>
+                                    <tr><td><code>tab-nav-outline</code></td><td></td></tr>
+                                    <tr><td><code>tab-nav-underline</code></td><td></td></tr>
+                                    <tr><td><code>--type2</code></td><td></td></tr>
+                                    <tr><td><code>tab-nav-solid2</code></td><td></td></tr>
+                                    <tr><td><code>tab-nav-center</code></td><td></td></tr>
+                                    <tr><td><code>tab-vertical</code></td><td></td></tr>
+                                    <tr><td><code>tab-nav-outline3</code></td><td></td></tr>
+                                    <tr><td><code>tab-line-grow</code></td><td></td></tr>                                    
+                                </tbody>
+                            </table>
+                        
+
+                        script#template-com-alert(type='text/html').
+                            <h5>Alert</h5>
+                            <p>Use the below code to display alert.</p>
+                            <pre>
+                            .alert.alert-success.alert-simple.alert-inline
+                                h4.alert-title Title
+                                | Description.
+                            </pre>
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>alert-success</code></td><td>Success skin</td></tr>
+                                    <tr><td><code>alert-primary</code></td><td>Primary skin</td></tr>
+                                    <tr><td><code>alert-warning</code></td><td>Warning skin</td></tr>
+                                    <tr><td><code>alert-error</code></td><td>Error skin</td></tr>
+                                    <tr><td><code>alert-dark</code></td><td>Dark skin</td></tr>
+                                    <tr><td><code>alert-inline</code></td><td>Inline style</td></tr>
+                                    <tr><td><code>alert-icon</code></td><td>Icon style</td></tr>
+                                    <tr><td><code>alert-button</code></td><td>Buttons style</td></tr>
+                                    <tr><td><code>alert-block</code></td><td>Block style</td></tr>
+                                </tbody>
+                            </table>
+                        
+                        script#template-com-button(type='text/html').
+                            <h5>Button</h5>
+                            <p>
+                                To make buttons, please use following:<br>
+                                <code>&lt;a href="#" class="btn"&gt;Button&lt;/a&gt;</code><br>
+                                <code>&lt;button class="btn"&gt;Button&lt;/button&gt;</code>
+                            </p>
+
+                            <h6>Button Type</h6>
+                            <ul>
+                                <li><code>btn-underline</code> - Underline type button.</li>
+                                <li><code>btn-link</code> - Link type button.</li>
+                                <li><code>btn-simple</code> - Simple type button.</li>
+                                <li><code>btn-outline</code> - Outline type button.</li>
+                            </ul>
+
+                            <h6>Button With Icon</h6>
+                            <ul>
+                                <li><code>btn-icon-left</code>, <code>btn-icon-right</code> - Icon Button</li>
+                                <li><code>btn-reveal-left</code>, <code>btn-reveal-right</code> -  Reveal Button</li>
+                                <li><code>btn-slide-left</code>, <code>btn-slide-right</code>, <code>btn-slide-up</code>, <code>btn-slide-down</code> - Slide Button</li>
+                            </ul>
+                            <h6>Button Size</h6>
+                            <ul>
+                                <li><code>btn-xl</code>, <code>btn-lg</code>, <code>btn-sm</code> for any button.</li>
+                            </ul>
+                            <h6>Button Color Skin</h6>
+                            <ul>
+                                <li><code>btn-primary</code> - Primary color skin button.</li>
+                                <li><code>btn-secondary</code> - Secondary color skin button.</li>
+                                <li><code>btn-dark</code> - Dark color skin button.</li>
+                                <li><code>btn-dark-light</code> - Body color skin button.</li>
+                                <li><code>btn-white</code> - White color skin button.</li>
+                                <li><code>btn-grey</code> - White color skin button.</li>
+                                <li><code>btn-error</code> - Error color skin button.</li>
+                                <li><code>btn-success</code> - Success color skin button.</li>
+                                <li><code>btn-warning</code> - Ưarning color skin button.</li>
+                            </ul>
+                            <h6>Button With Box shadow</h6>
+                            <ul>
+                                <li><code>btn-shadow</code> - Box Shadow styled button.</li>                                      
+                            </ul>
+
+                        script#template-com-grid(type='text/html').
+                            <h5>Grid</h5>
+                            <p class="mb-0">
+                                Ecsgroup provides the most advanced way to implement responsive grid layout.<br>
+                                All grid items are wrapped with <code>row</code> class. If you want to know more about breakpoints, please go to <a href="#template-css-configuration" class="document-link">configuration</a> section.</p>
+                            </p>
+                            <ul>
+                                <li><code>breakpoint</code> can be <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>.</li>
+                                <li><code>size</code> can be 1 ~ 8 for cols, and 1 ~ 12 for col.</li>
+                            </ul>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Classes</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <code>gutter-lg</code>
+                                            <code>gutter-md</code>
+                                            <code>gutter-sm</code>
+                                            <code>gutter-xs</code>
+                                            <code>gutter-no</code>
+                                        </td>
+                                        <td>Gutter size between items.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>col-[breakpoint]-[1 ~ 8]</code>
+                                        </td>
+                                        <td>Self column's responsive size.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>cols-[breakpoint]-[1 ~ 12]</code>
+                                        </td>
+                                        <td>Children's columns' responsive size.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>col-xl-5col</code>
+                                            <code>col-xl-5col2</code>
+                                            <code>col-xl-5col3</code>
+                                            <code>col-xl-5col4</code>
+                                        </td>
+                                        <td>Column Size 1/5, 2/5, 3/5, 4/5</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <code>order-first</code>
+                                            <code>order-last</code>
+                                            
+                                            <code>order-lg-auto</code>
+                                            <code>order-lg-first</code>
+                                            <code>order-lg-last</code>
+                                            
+                                            <code>order-md-auto</code>
+                                            <code>order-md-first</code>
+                                            <code>order-md-last</code>
+
+                                            <code>order-sm-auto</code>
+                                            <code>order-sm-first</code>
+                                            <code>order-sm-last</code>
+                                        </td>
+                                        <td>Order classes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>Following code means children are shown as 4 columns above 768px(as default), as 3 columns above 576px, and show as 2 columns below than 575px with large gutter size (default is 30px).</p>
+
+                            <pre>
+                            .row.cols-2.cols-sm-3.cols-md-4.gutter-lg
+                                div ...
+                                div ...
+                                div ...
+                                div ...
+                                div ...
+                                ...
+                            </pre>
+                            <p>Layouts like Bootstrap will could be shown by using col classes.</p>
+                            <pre>
+                            .row.gutter-lg
+                                .col-6.col-sm-4.col-md-3 ...
+                                .col-6.col-sm-4.col-md-3 ...
+                                .col-6.col-sm-4.col-md-3 ...
+                                .col-6.col-sm-4.col-md-3 ...
+                                .col-6.col-sm-4.col-md-3 ...
+                                ...
+                            </pre>
+                        
+                        script#template-com-icon(type='text/html').
+                            <h5>Icon</h5>
+                            <p>
+                                With Ecsgroup, important information or notification can be shown with icon box easily.<br>
+                                Use below code to display simple icon box.
+                            </p>
+                            <div class="row ecsgroup-icons">
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-shipping"></i>
+                                    <span class="icon-name">ecs-icon-shipping</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-truck"></i>
+                                    <span class="icon-name">ecs-icon-truck</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-truck2"></i>
+                                    <span class="icon-name">ecs-icon-truck2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-comments-solid"></i>
+                                    <span class="icon-name">ecs-icon-comments-solid</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-heart-full"></i>
+                                    <span class="icon-name">ecs-icon-heart-full</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-instagram"></i>
+                                    <span class="icon-name">ecs-icon-instagram</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-youtube"></i>
+                                    <span class="icon-name">ecs-icon-youtube</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-pinterest"></i>
+                                    <span class="icon-name">ecs-icon-pinterest</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-pinterest-p"></i>
+                                    <span class="icon-name">ecs-icon-pinterest-p</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-google"></i>
+                                    <span class="icon-name">ecs-icon-google</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-twitter"></i>
+                                    <span class="icon-name">ecs-icon-twitter</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-facebook"></i>
+                                    <span class="icon-name">ecs-icon-facebook</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-minus"></i>
+                                    <span class="icon-name">ecs-icon-minus</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-plus"></i>
+                                    <span class="icon-name">ecs-icon-plus</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-angle-down"></i>
+                                    <span class="icon-name">ecs-icon-angle-down</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-angle-up"></i>
+                                    <span class="icon-name">ecs-icon-angle-up</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-angle-left"></i>
+                                    <span class="icon-name">ecs-icon-angle-left</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-angle-right"></i>
+                                    <span class="icon-name">ecs-icon-angle-right</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-hamburger" aria-label="menu-toggle"></i>
+                                    <span class="icon-name">ecs-icon-hamburger</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-star-square-full"></i>
+                                    <span class="icon-name">ecs-icon-star-square-full</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-exclamation-triangle"></i>
+                                    <span class="icon-name">ecs-icon-exclamation-triangle</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-times-circle"></i>
+                                    <span class="icon-name">ecs-icon-times-circle</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-cog"></i>
+                                    <span class="icon-name">ecs-icon-cog</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-cog2"></i>
+                                    <span class="icon-name">ecs-icon-cog2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-star-square"></i>
+                                    <span class="icon-name">ecs-icon-star-square</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-exclamation-circle"></i>
+                                    <span class="icon-name">ecs-icon-exclamation-circle</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-check-solid"></i>
+                                    <span class="icon-name">ecs-icon-check-solid</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-check"></i>
+                                    <span class="icon-name">ecs-icon-check</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-comments"></i>
+                                    <span class="icon-name">ecs-icon-comments</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-envelop"></i>
+                                    <span class="icon-name">ecs-icon-envelop</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-envelop2"></i>
+                                    <span class="icon-name">ecs-icon-envelop2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-youtube-solid"></i>
+                                    <span class="icon-name">ecs-icon-youtube-solid</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-times-solid"></i>
+                                    <span class="icon-name">ecs-icon-times-solid</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-call"></i>
+                                    <span class="icon-name">ecs-icon-call</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-call2"></i>
+                                    <span class="icon-name">ecs-icon-call2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-cart"></i>
+                                    <span class="icon-name">ecs-icon-cart</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-cart2"></i>
+                                    <span class="icon-name">ecs-icon-cart2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-category"></i>
+                                    <span class="icon-name">ecs-icon-category</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-bars"></i>
+                                    <span class="icon-name">ecs-icon-bars</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-compare"></i>
+                                    <span class="icon-name">ecs-icon-compare</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-computer"></i>
+                                    <span class="icon-name">ecs-icon-computer</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-electronics"></i>
+                                    <span class="icon-name">ecs-icon-electronics</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-tshirt"></i>
+                                    <span class="icon-name">ecs-icon-tshirt</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-tshirt2"></i>
+                                    <span class="icon-name">ecs-icon-tshirt2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-account"></i>
+                                    <span class="icon-name">ecs-icon-account</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-android"></i>
+                                    <span class="icon-name">ecs-icon-android</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-ios"></i>
+                                    <span class="icon-name">ecs-icon-ios</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-art-class"></i>
+                                    <span class="icon-name">ecs-icon-art-class</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-bag"></i>
+                                    <span class="icon-name">ecs-icon-bag</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-basketball"></i>
+                                    <span class="icon-name">ecs-icon-basketball</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-bathtub"></i>
+                                    <span class="icon-name">ecs-icon-bathtub</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-bed"></i>
+                                    <span class="icon-name">ecs-icon-bed</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-birthday-cake"></i>
+                                    <span class="icon-name">ecs-icon-birthday-cake</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-bow"></i>
+                                    <span class="icon-name">ecs-icon-bow</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-bridge-lamp"></i>
+                                    <span class="icon-name">ecs-icon-bridge-lamp</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-calendar"></i>
+                                    <span class="icon-name">ecs-icon-calendar</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-camera"></i>
+                                    <span class="icon-name">ecs-icon-camera</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-dots-circle"></i>
+                                    <span class="icon-name">ecs-icon-dots-circle</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-chat"></i>
+                                    <span class="icon-name">ecs-icon-chat</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-desktop"></i>
+                                    <span class="icon-name">ecs-icon-desktop</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-dish"></i>
+                                    <span class="icon-name">ecs-icon-dish</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-display"></i>
+                                    <span class="icon-name">ecs-icon-display</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-download"></i>
+                                    <span class="icon-name">ecs-icon-download</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-envelop-closed"></i>
+                                    <span class="icon-name">ecs-icon-envelop-closed</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-fax"></i>
+                                    <span class="icon-name">ecs-icon-fax</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-furniture"></i>
+                                    <span class="icon-name">ecs-icon-furniture</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-gamepad"></i>
+                                    <span class="icon-name">ecs-icon-gamepad</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-gift"></i>
+                                    <span class="icon-name">ecs-icon-gift</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-gift2"></i>
+                                    <span class="icon-name">ecs-icon-gift2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-grid"></i>
+                                    <span class="icon-name">ecs-icon-grid</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-headphone"></i>
+                                    <span class="icon-name">ecs-icon-headphone</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-heartbeat"></i>
+                                    <span class="icon-name">ecs-icon-heartbeat</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-home"></i>
+                                    <span class="icon-name">ecs-icon-home</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-honour"></i>
+                                    <span class="icon-name">ecs-icon-honour</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-hotline"></i>
+                                    <span class="icon-name">ecs-icon-hotline</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-ice-cream"></i>
+                                    <span class="icon-name">ecs-icon-ice-cream</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-list"></i>
+                                    <span class="icon-name">ecs-icon-list</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-mobile"></i>
+                                    <span class="icon-name">ecs-icon-mobile</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-money"></i>
+                                    <span class="icon-name">ecs-icon-money</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-motocycle"></i>
+                                    <span class="icon-name">ecs-icon-motocycle</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-net-world"></i>
+                                    <span class="icon-name">ecs-icon-net-world</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-orders"></i>
+                                    <span class="icon-name">ecs-icon-orders</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-orders2"></i>
+                                    <span class="icon-name">ecs-icon-orders2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-phone"></i>
+                                    <span class="icon-name">ecs-icon-phone</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-rice-cooker"></i>
+                                    <span class="icon-name">ecs-icon-rice-cooker</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-ruby"></i>
+                                    <span class="icon-name">ecs-icon-ruby</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-search"></i>
+                                    <span class="icon-name">ecs-icon-search</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-search-minus"></i>
+                                    <span class="icon-name">ecs-icon-search-minus</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-search-plus"></i>
+                                    <span class="icon-name">ecs-icon-search-plus</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-search2"></i>
+                                    <span class="icon-name">ecs-icon-search2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-service"></i>
+                                    <span class="icon-name">ecs-icon-service</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-shopify"></i>
+                                    <span class="icon-name">ecs-icon-shopify</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-sofa"></i>
+                                    <span class="icon-name">ecs-icon-sofa</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-sport"></i>
+                                    <span class="icon-name">ecs-icon-sport</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-star"></i>
+                                    <span class="icon-name">ecs-icon-star</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-star-full"></i>
+                                    <span class="icon-name">ecs-icon-star-full</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-table"></i>
+                                    <span class="icon-name">ecs-icon-table</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-table2"></i>
+                                    <span class="icon-name">ecs-icon-table2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-user"></i>
+                                    <span class="icon-name">ecs-icon-user</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-wallet"></i>
+                                    <span class="icon-name">ecs-icon-wallet</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-wallet2"></i>
+                                    <span class="icon-name">ecs-icon-wallet2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-heart"></i>
+                                    <span class="icon-name">ecs-icon-heart</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-heart2"></i>
+                                    <span class="icon-name">ecs-icon-heart2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-dashboard"></i>
+                                    <span class="icon-name">ecs-icon-dashboard</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-power-off"></i>
+                                    <span class="icon-name">ecs-icon-power-off</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-products"></i>
+                                    <span class="icon-name">ecs-icon-products</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-reports"></i>
+                                    <span class="icon-name">ecs-icon-reports</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-return"></i>
+                                    <span class="icon-name">ecs-icon-return</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-return2"></i>
+                                    <span class="icon-name">ecs-icon-return2</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-reviews"></i>
+                                    <span class="icon-name">ecs-icon-reviews</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-return3"></i>
+                                    <span class="icon-name">ecs-icon-return3</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-ship-station"></i>
+                                    <span class="icon-name">ecs-icon-ship-station</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-social"></i>
+                                    <span class="icon-name">ecs-icon-social</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-store-seo"></i>
+                                    <span class="icon-name">ecs-icon-store-seo</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-store"></i>
+                                    <span class="icon-name">ecs-icon-store</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-support"></i>
+                                    <span class="icon-name">ecs-icon-support</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-tools"></i>
+                                    <span class="icon-name">ecs-icon-tools</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-vendor-store"></i>
+                                    <span class="icon-name">ecs-icon-vendor-store</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-verification"></i>
+                                    <span class="icon-name">ecs-icon-verification</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-visit"></i>
+                                    <span class="icon-name">ecs-icon-visit</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-withdraw"></i>
+                                    <span class="icon-name">ecs-icon-withdraw</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-rotate-3d"></i>
+                                    <span class="icon-name">ecs-icon-rotate-3d</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-movie"></i>
+                                    <span class="icon-name">ecs-icon-movie</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-prev"></i>
+                                    <span class="icon-name">ecs-icon-prev</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-play"></i>
+                                    <span class="icon-name">ecs-icon-play</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-next"></i>
+                                    <span class="icon-name">ecs-icon-next</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-map-marker"></i>
+                                    <span class="icon-name">ecs-icon-map-marker</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-long-arrow-down"></i>
+                                    <span class="icon-name">ecs-icon-long-arrow-down</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-long-arrow-left"></i>
+                                    <span class="icon-name">ecs-icon-long-arrow-left</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-long-arrow-right"></i>
+                                    <span class="icon-name">ecs-icon-long-arrow-right</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-long-arrow-up"></i>
+                                    <span class="icon-name">ecs-icon-long-arrow-up</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-comment"></i>
+                                    <span class="icon-name">ecs-icon-comment</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-envelop3"></i>
+                                    <span class="icon-name">ecs-icon-envelop3</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-logout"></i>
+                                    <span class="icon-name">ecs-icon-logout</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-envelop4"></i>
+                                    <span class="icon-name">ecs-icon-envelop4</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-quote"></i>
+                                    <span class="icon-name">ecs-icon-quote</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-sale"></i>
+                                    <span class="icon-name">ecs-icon-sale</span>
+                                </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-4">
+                                    <i class="ecs-icon-zoom"></i>
+                                    <span class="icon-name">ecs-icon-zoom</span>
+                                </div>
+                            </div>
+
+                        script#template-com-iconbox(type='text/html').
+                            <h5>Icon Box</h5>
+                            <p>
+                                With Ecsgroup, important information or notification can be shown with icon box easily.<br>
+                                Use below code to display simple icon box.
+                            </p>
+                            <pre>
+                            .icon-box.icon-box-side.icon-box-primary
+                                .icon-box-icon
+                                    i
+                                .icon-box-content
+                                    h4.icon-box-title.font-weight-bold Name
+                                    .icon-box-des
+                                        p Description
+                            </pre>
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>icon-box</code></td><td>Cneter Align style</td></tr>
+                                    <tr><td><code>icon-box-side</code></td><td>Left align style</td></tr>
+                                </tbody>
+                            </table>
+
+                        script#template-com-popup(type='text/html').
+                            <h5>Popup</h5>
+                            <p>To display popup dialog box, following function can be used.<br><code>Ecsgroup.popup(presetName, option);</code></p>
+                            <ul>
+                                <li><code>option</code> - Magnific popup options.</li>
+                                <li><code>preset</code> - Name for preset options</li>
+                            </ul>
+                            <p>It depends on <a href="https://fancyapps.com/docs/ui/quick-start" target="_blank">/styles/plugins/fancybox/fancybox.min.js</a> plugin.</p>
+                            <h6>Example: login dialog box</h6>
+                            <pre>
+                            Ecsgroup.popup(
+                                [{
+                                    src: '#newsletter-popup',
+                                    type: 'inline',
+                                }],
+                                {
+                                    mainClass: 'fancybox-modal-popup fancybox-wrapper',
+                                    on: {
+                                        closing: function () {
+                                            // if "do not show" is checked
+                                            $('#hide-newsletter-popup')[0].checked && Ecsgroup.setCookie('EcsHidePopup', true, 7);
+                                        }
+                                    },
+                                }
+                            );
+                            </pre>
+                        
+                        script#template-com-sidebar(type='text/html').
+                            <h5>Sidebar</h5>
+                            <p>Wolmart supports a very simple way to implement sidebar, left and right sidebar is already defined. A new sidebar can be defined.</p>
+                            <h6>Classes for left and right sidebar</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>HTML element</th><th>Left sidebar</th><th>Right sidebar</th><th>New sidebar (custom)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>aside</code> tag</td><td><code>sidebar</code></td><td><code>right-sidebar</code></td><td><code>new-sidebar</code></td></tr>
+                                    <tr><td><code>body</code> tag if active</td><td><code>sidebar-active</code></td><td><code>right-sidebar-active</code></td><td><code>new-sidebar-active</code></td></tr>
+                                    <tr><td>Toggle button</td><td><code>left-sidebar-toggle</code></td><td><code>right-sidebar-toggle</code></td><td><code>new-sidebar-toggle</code></td></tr>
+                                </tbody>
+                            </table>
+                            <p>
+                                If you want to add a sidebar named "new", please add <code>new-sidebar</code> class to <code>aside</code> tag.<br>
+                                This sidebar opens when <code>new-sidebar-active</code> class is added to <code>body</code> tag.<br>
+                                <code>new-sidebar-toggle</code> class will be used to toggle buttons for this sidebar.
+                            </p>
+
+                            <h6>Sticky sidebar</h6>
+                            <p class="mb-0">If you want to make sidebar sticky:</p>
+                            <ul class="mt-0">
+                                <li>Please include <code>vendor/sticky.js</code>.</li>
+                                <li>Please add <code>sticky-sidebar-wrapper</code> class to sticky area.</li>
+                                <li>Please add <code>sticky-sidebar</code> class to sidebar content's inner element.</li>
+                            </ul>
+                            <pre>
+                                aside.sticky-sidebar-wrapper
+                                    ...
+                                    .sidebar-content
+                                        .sticky-sidebar(data-sticky-options=`{'top': 10}`)
+                                            .widget
+                                                h4.widget-title
+                                                .widget-body
+                                            ...
+                            </pre>
+                            <h6>Useful classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>sidebar-show</code></td><td>Show side bar</td></tr>
+                                </tbody>
+                            </table>
+
+                        script#template-com-slider(type='text/html').
+                            <h5>Slider</h5>
+                            <p>Wolmart provides a powerful slider component, using <a href="https://swiperjs.com/swiper-api" target="_blank">Swiper</a>, the famous touch enabled, fast &amp; responsive jQuery plugin. Before using it, we recommend to read <a href="#template-com-grid" class="document-link">grid spacing</a>, in order to perform <b>first paint</b> earlier, we display non-interactive carousel with css. It becomes interactive after javascript is executed.</p>
+                            <h6>Example: Products slider in 4 columns</h6>
+                            <p>Custom swiper options could be given in <code>data-swiper-options</code> attribute in html  .</p>
+                            <pre>
+                            .swiper-container swiper-theme(data-swiper-options=`
+                                {
+                                    'slidesPerView': 2,
+                                    'loop': false,          // Here, we display slider with <code>row</code> <code>cols-2</code> <code>cols-md-3</code>
+                                    'spaceBetween': 20,     // <code>cols-lg-4</code> classes at first, these classes will be
+                                    'breakpoints': {        // removed when slider is initialized by javascript.
+                                        '768': {
+                                            'slidesPerView': 3
+                                        },
+                                        '992': {
+                                            'slidesPerView': 4
+                                        }
+                                    },
+                                    'navigation': {
+                                        'nextEl': '.swiper-button-next',
+                                        'prevEl': '.swiper-button-prev',
+                                    }
+                                }`)
+                                .swiper-wrapper.row.cols-2.cols-md-3.cols-lg-4
+                                    .swiper-slide
+                                    ...
+                                button.swiper-button.swiper-button-prev
+                                button.swiper-button.swiper-button-next
+                                .swiper-pagination
+                            </pre>
+                            <h6>Helper classes</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Class</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>nav-inner</code><code>nav-top</code></td><td>Place nav inner, top.</td></tr>
+                                    <tr><td><code>pg-white</code><code>pg-grey</code></td><td>Make pagination bullets white or grey.</td></tr>
+                                    <tr><td><code>pg-inner</code></td><td>Place pagination inner.</td></tr>
+                                    <tr><td><code>shadow-swiper</code></td><td>Allow slider to show items' shadow.</td></tr>
+                                </tbody>
+                            </table>
+                        //- script#template-js-plugins(type='text/html').
+                        //-     <h5>Plugins</h5>
+                        //-     <p>The below table shows all plugins.</p>
+                        //-     <table class="table">
+                        //-         <thead>
+                        //-             <tr><th>Funciton</th><th>Description</th></tr>
+                        //-         </thead>
+                        //-         <tbody>
+                        //-             <tr><td><code>Ecsgroup.prepare()</code></td><td>Initialize method while document is being loaded.</td></tr>
+                        //-         </tbody>
+                        //-     </table>
+                        
+                        #document-view.document-content.mb-10
+                            h5.Welcome to Ecsgroup HTML
+                            p Thank you for choosing  HTML!<br>We are very pleased that you have chosen Ecsgroup for your website and you will not be disappointed with your choice.</p>
+                            ul.list.list-circle.list-style-none.pl-0.mb-4.ml-0
+                                li  <i class="fas fa-shopping-cart"></i>Ecsgroup is specifically designed for <b>Marketplace</b> site.
+                                li  <i class="fas fa-rocket"></i>Ecsgroup is the most <b>powerful and fastest responsive</b> theme with tons of marketplace features and trends of designs.
+                                li  <i class="fas fa-check"></i>Ecsgroup is based on <b>HTML5</b> and <b>CSS3</b>, and works perfectly fine in <b>all browsers</b>.
+                                li  <i class="fas fa-layer-group"></i>Ecsgroup includes <b>17 elegant home pages</b> and <b>96 featured pages.</b>
+                            p Please read our documentation before you get started, and if you are unable to find your answer, pls don't hesitate to contact us through the themeforest support page. We will be always with you.
+                            p We hope you enjoy using Ecsgroup HTML!
+                            p Best Regards. -Ecsgroup Team-
+
+block script
+    - let js = '/release/document.min.js';
+    //- Default
+    script(type='text/javascript' src=`/release/default.min.js` defer)
+    //- Page
+
+    script.
+        addCSS('#{css}')
+        addScript('#{js}')
+    
