@@ -44,7 +44,7 @@ header.d-none.d-lg-block.d-md-none
                                         img(src='/img/menu/search0.jpg' alt='' loading='lazy' width='554' height='50')
                                 .search-result-step1
                                     .search-result-history.toggler-wrap.js-viewed-search
-                                        each item in tag
+                                        each item in tags
                                             a.toggler-item.demo-icon.cus-clock-1(href=item.href)
                                                 span.overtext=item.name
                                         .toggler-wrap-btn
@@ -52,7 +52,7 @@ header.d-none.d-lg-block.d-md-none
                                     .search-result-hotkey
                                         .title.demo-icon.cus-stat Tìm Kiếm Phổ Biến
                                         .search-result-hotkey-content.flex-container
-                                            each item in tag
+                                            each item in tags
                                                 a.item(href=item.href) 
                                                     .img-container
                                                         picture
@@ -62,7 +62,7 @@ header.d-none.d-lg-block.d-md-none
                                     .search-result-cat
                                         .title Danh mục nổi bật
                                         .search-result-cat-content.flex-container
-                                            each item in productCat
+                                            each item in productCats
                                                 a.item(href=item.href) 
                                                     .img-container
                                                         picture
@@ -71,12 +71,12 @@ header.d-none.d-lg-block.d-md-none
                                                     | #{item.name}
                                 .search-result-step2
                                     .search-result-history
-                                        each item in tag
+                                        each item in tags
                                             a.demo-icon.cus-search(href=item.href)
                                                 span.overtext=item.name
                             .search-overwrap
                         .tag.mt-1
-                            each item in tag
+                            each item in tags
                                 a.h6(href=item.href)=item.name
                     .header-body-right.d-flex.justify-content-between.align-items-center
                         .call.d-flex.justify-content-between.align-items-center.p-relative
@@ -145,7 +145,7 @@ header.d-none.d-lg-block.d-md-none
                                         img(src='/img/menu/search0.jpg' alt='' loading='lazy' width='554' height='50')
                                 .search-result-step1
                                     .search-result-history.toggler-wrap.js-viewed-search
-                                        each item in tag
+                                        each item in tags
                                             a.toggler-item.demo-icon.cus-clock-1(href=item.href)
                                                 span.overtext=item.name
                                         .toggler-wrap-btn
@@ -153,7 +153,7 @@ header.d-none.d-lg-block.d-md-none
                                     .search-result-hotkey
                                         .title.demo-icon.cus-stat Tìm Kiếm Phổ Biến
                                         .search-result-hotkey-content.flex-container
-                                            each item in tag
+                                            each item in tags
                                                 a.item(href=item.href) 
                                                     .img-container
                                                         picture
@@ -163,7 +163,7 @@ header.d-none.d-lg-block.d-md-none
                                     .search-result-cat
                                         .title Danh mục nổi bật
                                         .search-result-cat-content.flex-container
-                                            each item in productCat
+                                            each item in productCats
                                                 a.item(href=item.href) 
                                                     .img-container
                                                         picture
@@ -172,12 +172,12 @@ header.d-none.d-lg-block.d-md-none
                                                     | #{item.name}
                                 .search-result-step2
                                     .search-result-history
-                                        each item in tag
+                                        each item in tags
                                             a.demo-icon.cus-search(href=item.href)
                                                 span.overtext=item.name
                             .search-overwrap
                         .tag.mt-1
-                            each item in tag
+                            each item in tags
                                 a.h6(href=item.href)=item.name
                     .header-body-right.d-flex.justify-content-between.align-items-center
                         .call.d-flex.justify-content-between.align-items-center.p-relative
