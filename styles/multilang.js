@@ -10,9 +10,9 @@ function getCookieLang (name) {
             return c.substring(n.length, c.length);
         }
     }
-    return "";
+    return "vi";
 }
-var ECSLanguage = getCookieLang('ECSLanguage') ?? 'vi';
+var ECSLanguage = getCookieLang('ECSLanguage');
 var ECSLanguageFile = new MultiLang('/release/languages.json');
 ECSLanguageFile.setLanguage(ECSLanguage);
 console.log(ECSLanguageFile.get('langdesc'));

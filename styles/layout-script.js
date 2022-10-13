@@ -1730,3 +1730,130 @@ function sendMail(targetId, action) {
         error: function () { }
     });
 }
+// Contact Api
+function validateFormApi(btn, idform, source) {
+    var submitted = true,
+        emailto = 'tronghuy2208@gmail.com',
+        exelApi = 'https://script.google.com/macros/s/AKfycbytuo2Pld01GVJjZrvlAMywFd6UJsN5Yy9-6SI90tGS9m1nR6aDhOy3yHJOppdo9QEHUg/exec', // https://github.com/levinunnink/html-form-to-google-sheet
+        formError = $(idform).find('.error-lst');
+    var form = $(idform).validate({
+        focusCleanup: true,
+        focusInvalid: false,
+        errorPlacement: function (error, element) { return false; },
+        showErrors: function (errorMap, errorList) {
+            if (submitted) {
+                var summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
+                $.each(errorList, function () {
+                    summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
+                });
+                formError.html(summary);
+                submitted = false;
+            }
+            this.defaultShowErrors();
+        },
+        invalidHandler: function (event, validator) {
+            // 'this' refers to the form
+            if (validator.numberOfInvalids()) {
+                formError.show();
+            } else {
+                formError.hide();
+            }
+            submitted = true;
+        },
+        submitHandler: function (form) {
+            submitted = true;
+            var note = $(idform).find('*[name="Note"]').val(),
+                arr = [];
+            $(idform).find('.get-value').each(function (e) {
+                var check = $(this).attr('name');
+                var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
+                if (!arrayCheck.includes(check)) {
+                    var type = $(this).data('type');
+                    var title = $(this).data('name');
+                    var val = $(this).val();
+                    var code = $(this).prop('name');
+                    if (type === 7 || type === 8) {
+                        if ($(this).is(':checked') === false) {
+                            val = null;
+                        }
+                    }
+                    arr.push({ "Name": title, "Value": val, "Tag": type, "Code": code });
+                }
+            });
+
+            //var modal = {
+            //    name: $(idform).find("*[name='name']").val(),
+            //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
+            //    email: $(idform).find("*[name='email']").val(),
+            //    body: $(idform).find("*[name='body']").val(),
+            //    file: $(idform).find("*[name='file']").val(),
+            //    Title: $(idform).find("*[name='Title']").val(),
+            //    ContactType: $(idform).find("*[name='ContactType']").val(),
+            //    Action: $(idform).find("*[name='Action']").val()
+            //};
+            if (exelApi != '') {
+                $.ajax({
+                    url: exelApi,
+                    method: "POST",
+                    data: $(idform).serialize(),
+                    beforeSend: function () {},
+                    success: function (result) {},
+                    error: function (result) {}
+                });
+            }
+            $.ajax({
+                url: 'https://boldman.vn/aj/StaticPage/ContactApi',
+                dataType: "json",
+                method: "POST",
+                /*data: { modal: modal, extentionfield: arr },*/
+                data: $(idform).serialize() + '&extentionfield=' + JSON.stringify(arr),
+                beforeSend: function () {
+                    $(btn).addClass('load-more-overlay loading');
+                },
+                success: function (result) {
+                    $(btn).removeClass('load-more-overlay loading');
+                    if (!result.Ok) {
+                        formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
+                    }
+                    else {
+                        sendMailApi(result.Data.id, 'https://boldman.vn/aj/staticpage/SendEmailApi', emailto);
+                        formError.hide();
+                        $('#success-modal p').text(note);
+                        Ecsgroup.popup(
+                            [{
+                                src: '#success-modal',
+                                type: "inline"
+                            }],
+                            {}, 'error');
+                        $(idform).trigger('reset');
+                        if (typeof fileCurrent !== 'undefined') {
+                            fileCurrent._removeChips()
+                        }
+                    }
+                    return false;
+                },
+                error: function (result) {
+                    $(btn).removeClass('load-more-overlay loading');
+                    $('#error-modal p').text(result.Msg);
+                    Ecsgroup.popup(
+                        [{
+                            src: '#error-modal',
+                            type: "inline"
+                        }],
+                        {}, 'error');
+                    return false;
+                }
+            });
+        }
+    });
+}
+function sendMailApi(targetId, action, emailto) {
+    $.ajax({
+        url: action,
+        type: 'GET',
+        data: { id: targetId, emailTo: emailto },
+        beforeSend: function () { },
+        success: function () { },
+        error: function () { }
+    });
+}
