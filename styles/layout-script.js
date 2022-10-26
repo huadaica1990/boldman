@@ -1700,7 +1700,6 @@ function validateFormMini(btn, idform) {
                                 '</div>',
                         });
                         $(idform).trigger('reset');
-                        Fancybox.getInstance().close();
                     }
                     return false;
                 },
