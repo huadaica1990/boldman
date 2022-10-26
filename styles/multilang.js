@@ -10,12 +10,12 @@ function getCookieLang (name) {
             return c.substring(n.length, c.length);
         }
     }
-    return "";
+    return "vi";
 }
-var ECSLanguage = getCookieLang('ECSLanguage') ?? 'vi';
+var ECSLanguage = getCookieLang('ECSLanguage');
 var ECSLanguageFile = new MultiLang('/release/languages.json');
 ECSLanguageFile.setLanguage(ECSLanguage);
-console.log(ECSLanguageFile.get('langdesc'));
+console.log(ECSLanguage,ECSLanguageFile.get('langdesc'));
 
 var core1 = 'Copy thành công',
     core2 = 'Trình duyệt không hỗ trợ',
@@ -70,57 +70,59 @@ var core1 = 'Copy thành công',
     validate18 = 'Vui lòng điền đầy đủ thông tin ở trường email.';
 
 setTimeout(function () {
-    console.log(ECSLanguageFile.get('langdesc'));
-    core1 = ECSLanguageFile.get('core1'),
-    core2 = ECSLanguageFile.get('core2'),
-    core3 = ECSLanguageFile.get('core3'),
-    core4 = ECSLanguageFile.get('core4'),
-    core5 = ECSLanguageFile.get('core5'),
-    core6 = ECSLanguageFile.get('core6'),
-    core7 = ECSLanguageFile.get('core7'),
-    core8 = ECSLanguageFile.get('core8'),
-    core9 = ECSLanguageFile.get('core9'),
-    core10 = ECSLanguageFile.get('core10'),
-    core11 = ECSLanguageFile.get('core11'),
+    console.log(ECSLanguage, ECSLanguageFile.get('langdesc'));
+    if (ECSLanguageFile.get('langdesc') != 'langdesc') {
+        core1 = ECSLanguageFile.get('core1'),
+        core2 = ECSLanguageFile.get('core2'),
+        core3 = ECSLanguageFile.get('core3'),
+        core4 = ECSLanguageFile.get('core4'),
+        core5 = ECSLanguageFile.get('core5'),
+        core6 = ECSLanguageFile.get('core6'),
+        core7 = ECSLanguageFile.get('core7'),
+        core8 = ECSLanguageFile.get('core8'),
+        core9 = ECSLanguageFile.get('core9'),
+        core10 = ECSLanguageFile.get('core10'),
+        core11 = ECSLanguageFile.get('core11'),
 
-    err1 = ECSLanguageFile.get('err1'),
-    err2 = ECSLanguageFile.get('err2'),
-    err3 = ECSLanguageFile.get('err3'),
-    err4 = ECSLanguageFile.get('err4'),
-    err5 = ECSLanguageFile.get('err5'),
-    err6 = ECSLanguageFile.get('err6'),
-    err7 = ECSLanguageFile.get('err7'),
-    err8 = ECSLanguageFile.get('err8'),
-    err9 = ECSLanguageFile.get('err9'),
-    err10 = ECSLanguageFile.get('err10'),
-    err11 = ECSLanguageFile.get('err11'),
+        err1 = ECSLanguageFile.get('err1'),
+        err2 = ECSLanguageFile.get('err2'),
+        err3 = ECSLanguageFile.get('err3'),
+        err4 = ECSLanguageFile.get('err4'),
+        err5 = ECSLanguageFile.get('err5'),
+        err6 = ECSLanguageFile.get('err6'),
+        err7 = ECSLanguageFile.get('err7'),
+        err8 = ECSLanguageFile.get('err8'),
+        err9 = ECSLanguageFile.get('err9'),
+        err10 = ECSLanguageFile.get('err10'),
+        err11 = ECSLanguageFile.get('err11'),
 
-    text1 = ECSLanguageFile.get('text1'),
-    text2 = ECSLanguageFile.get('text2'),
-    text3 = ECSLanguageFile.get('text3'),
-    text4 = ECSLanguageFile.get('text4'),
-    text5 = ECSLanguageFile.get('text5'),
-    text6 = ECSLanguageFile.get('text6'),
-    text7 = ECSLanguageFile.get('text7'),
-    text8 = ECSLanguageFile.get('text8'),
+        text1 = ECSLanguageFile.get('text1'),
+        text2 = ECSLanguageFile.get('text2'),
+        text3 = ECSLanguageFile.get('text3'),
+        text4 = ECSLanguageFile.get('text4'),
+        text5 = ECSLanguageFile.get('text5'),
+        text6 = ECSLanguageFile.get('text6'),
+        text7 = ECSLanguageFile.get('text7'),
+        text8 = ECSLanguageFile.get('text8'),
 
-    validate1 = ECSLanguageFile.get('validate1'),
-    validate2 = ECSLanguageFile.get('validate2'),
-    validate3 = ECSLanguageFile.get('validate3'),
-    validate4 = ECSLanguageFile.get('validate4'),
-    validate5 = ECSLanguageFile.get('validate5'),
-    validate6 = ECSLanguageFile.get('validate6'),
-    validate7 = ECSLanguageFile.get('validate7'),
-    validate8 = ECSLanguageFile.get('validate8'),
-    validate9 = ECSLanguageFile.get('validate9'),
-    validate10 = ECSLanguageFile.get('validate10'),
-    validate11 = ECSLanguageFile.get('validate11'),
-    validate12 = ECSLanguageFile.get('validate12'),
-    validate13 = ECSLanguageFile.get('validate13'),
-    validate14 = ECSLanguageFile.get('validate14'),
-    validate15 = ECSLanguageFile.get('validate15'),
-    validate16 = ECSLanguageFile.get('validate16'),
-    validate17 = ECSLanguageFile.get('validate17'),
-    validate18 = ECSLanguageFile.get('validate18');
-}, 100);
+        validate1 = ECSLanguageFile.get('validate1'),
+        validate2 = ECSLanguageFile.get('validate2'),
+        validate3 = ECSLanguageFile.get('validate3'),
+        validate4 = ECSLanguageFile.get('validate4'),
+        validate5 = ECSLanguageFile.get('validate5'),
+        validate6 = ECSLanguageFile.get('validate6'),
+        validate7 = ECSLanguageFile.get('validate7'),
+        validate8 = ECSLanguageFile.get('validate8'),
+        validate9 = ECSLanguageFile.get('validate9'),
+        validate10 = ECSLanguageFile.get('validate10'),
+        validate11 = ECSLanguageFile.get('validate11'),
+        validate12 = ECSLanguageFile.get('validate12'),
+        validate13 = ECSLanguageFile.get('validate13'),
+        validate14 = ECSLanguageFile.get('validate14'),
+        validate15 = ECSLanguageFile.get('validate15'),
+        validate16 = ECSLanguageFile.get('validate16'),
+        validate17 = ECSLanguageFile.get('validate17'),
+        validate18 = ECSLanguageFile.get('validate18');
+    }
+}, 500);
 

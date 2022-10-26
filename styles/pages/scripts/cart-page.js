@@ -2,9 +2,7 @@
     Ecsgroup.initLayout = function () {
         // do something later...
         // Side bar
-        Ecsgroup.$window.on('resize', function () {
-            Ecsgroup.mq(Ecsgroup.stickySidebar('.sticky-sidebar'), 992);
-        });
+        Ecsgroup.mq(Ecsgroup.stickySidebar('.sticky-sidebar'), 992);
     };
     Ecsgroup.initPage = function () {
       // Page
