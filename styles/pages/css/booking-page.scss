@@ -424,24 +424,47 @@
 .booking {
   .section-header {
     background-color:$white-color;
-    .item {
+    .nav-item {
       width: calc(100% / 3);
-      padding:12px 15px;
-      cursor: pointer;
+      margin-right: 0;
       &:not(:last-child) {
         @include border($position: "right", $size:1px, $style: solid, $color: $border-color);
       }
-      &-icon {
-        @include transform($args: translateY(-3px));
-        font-size: 2rem;
+      .nav-link {
+        padding:12px 15px;
+        text-transform: none;
+        text-align: left;
+        &.active {
+          background-color: $primary-color;
+          color: $white-color;
+        }
+      }
+      .item-icon {
+        font-size: 2.5rem;
         margin-right: 1rem;
       }
       b {
         font-size: 1.2rem;
-        line-height: 1;
+        line-height: 1.6;
         font-weight: $font-weight-semibold;
       }
     }
+    .tab-pane {
+        padding:12px 15px;
+    }
+  }
+  #booking-tab1 {
+    label {
+        width: 80px;
+    }
+    .input-group {
+        width: 200px;
+        margin-left: 1rem;
+    }
+    .info {
+        margin-left: 1rem;
+    }
+
   }
 }
 /*#region Mobile responsive section styles*/
