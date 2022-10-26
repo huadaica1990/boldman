@@ -159,7 +159,7 @@
     height: 70px;
     background: $social-youtube;
     &:after {
-        @include use-keyframes($args: pulsePlayBorder 1500ms ease-out 0 infinite);
+        @include use-keyframes($args: pulsePlayBorder 1500ms ease-out infinite);
         @include e-cen();
         @include border-radius($val: 50%);
         content: "";

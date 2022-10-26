@@ -34,6 +34,7 @@ module.exports = grunt => {
 
                     'index.html': ['<%= dirs.html %>/menu.pug'],
                     'home.html': ['<%= dirs.html %>/home.pug'],
+                    'booking.html': ['<%= dirs.html %>/booking.pug'],
                 }
             }
         },
@@ -55,6 +56,7 @@ module.exports = grunt => {
                     '<%= dirs.dest %>/static-page.css': '<%= dirs.css %>/static-page.scss',
 
                     '<%= dirs.dest %>/index-page.css': '<%= dirs.css %>/index-page.scss',
+                    '<%= dirs.dest %>/booking-page.css': '<%= dirs.css %>/booking-page.scss',
                 }
             }
         },
@@ -163,6 +165,11 @@ module.exports = grunt => {
                     '<%= dirs.dest %>/index-page.min.js': [
                         '<%= dirs.dest %>/core.min.js',
                         '<%= dirs.js %>/index-page.js',
+                    ],
+                    '<%= dirs.dest %>/booking-page.min.js': [
+                        '<%= dirs.plugin %>/sticky/sticky.min.js',
+                        '<%= dirs.dest %>/core.min.js',
+                        '<%= dirs.js %>/booking-page.js',
                     ]
                 }
             },
@@ -226,6 +233,9 @@ module.exports = grunt => {
                     // Index
                     '<%= dirs.dest %>/index-page.min.css': [
                         '<%= dirs.dest %>/index-page.css',
+                    ],
+                    '<%= dirs.dest %>/booking-page.min.css': [
+                        '<%= dirs.dest %>/booking-page.css',
                     ]
                 }]
             }
