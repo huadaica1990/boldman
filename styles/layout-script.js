@@ -1856,3 +1856,16 @@ function sendMailApi(targetId, action, emailto) {
         error: function () { }
     });
 }
+
+function choselang(lang) {
+    $.post("/aj/shared/CreateCookie",
+        { lang: lang },
+        function (data) {
+            if (!data.Ok) {
+                location.reload();
+            }
+            else {
+                alert("Lỗi");
+            }
+        });
+}
