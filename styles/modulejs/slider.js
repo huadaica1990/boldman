@@ -35,7 +35,7 @@
         var onTranslated = function (e) {
             Ecsgroup.$window.trigger('appear.check');
 
-            // Video Play	
+            // Video Play   
             var $el = $(e.currentTarget),
                 $activeVideos = $el.find('.swiper-slide.active video');
 
@@ -179,11 +179,12 @@
             this.next = 0;
             this.container = $el[0];
             this.wrapperEl = $el.children()[0];
-            var $navigationNext = $el.children('.swiper-button-next'),
+            var $numberSlide = $el.find('.swiper-slide').length,
+                $navigationNext = $el.children('.swiper-button-next'),
                 $navigationPrev = $el.children('.swiper-button-prev'),
                 $pagination = $el.children('.swiper-pagination'),
+                $numbercontainer = $el.find('.swiper-number'),
                 $dotscontainer = $el.children('.custom-dots');
-    
             if ($el.data('slider')) {
                 return;
             }
@@ -262,6 +263,18 @@
                         $slider.slideTo(index);
                         $this.addClass('active').siblings().removeClass('active');
                     }
+                });
+            }
+            // if slider has custom number container
+            
+            if ($numbercontainer.length) {
+                var numberCurent = $numbercontainer.children('.swiper-nummber-curent'),
+                    numberTotal = $numbercontainer.children('.swiper-nummber-total');
+                numberTotal.text(('0' + $numberSlide).slice(-2));
+                numberCurent.text('01');
+                this.slider.on('slideChange', function () {
+                    var curIndex = this.realIndex + 1;
+                    numberCurent.text(('0' + curIndex).slice(-2));
                 });
             }
         }

@@ -15,6 +15,7 @@ var hideMobileSubMenu = function (e) {
 var hideMobileSearch = function (e) {
     $(this).removeClass('show');
     $("#fb-root").show();
+    $('.search-overwrap').removeClass('show');
     Ecsgroup.$body.removeClass('msearch-active');
 };
 var hideChat = function (e) {
@@ -33,6 +34,7 @@ var toggleMobileMenu = function (e) {
     hideMobileAllSubMenu();
     hideMobileSearch();
     Ecsgroup.$body.toggleClass('mmenu-active');
+    $("#fb-root").hide();
     e.preventDefault();
 };
 var hideMobileMenu = function (e) {
