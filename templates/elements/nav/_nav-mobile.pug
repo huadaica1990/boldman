@@ -26,8 +26,8 @@
         .--left.word-slider-wrapper
             .word-slider
                 each item in msg
-                    a(href=item.href)=item.name
-                a(href=msg[0].href)=msg[0].name
+                    a(href=item.href) <span>#{item.name}</span>
+                a(href=msg[0].href) <span>#{msg[0].name}</span>
             //- marquee(behavior='' direction='left' scrollamonunt='30' onmouseover='this.stop();' onmouseout='this.start();')
             //-     ul
             //-         each item in msg
