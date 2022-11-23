@@ -126,6 +126,9 @@
             height: auto;
             padding: 10.7px 0;
             display: inline-block;
+            span {
+                @include overtext($row: 1, $h: auto);
+            }
         }
 
         &.--left {
