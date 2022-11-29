@@ -165,7 +165,7 @@
 
         var $this = $(selector),
             $product = $this.closest('.product-single'),
-            src = $product.find('.product-gallery img').eq(0).attr('data-src'),
+            src = $product.find('.product-gallery img').eq(0).attr('data-src') ? $product.find('.product-gallery img').eq(0).attr('data-src') : $product.find('.product-gallery img').eq(0).attr('src'),
             name = $product.find('.product-details .product-title').text(),
             newPrice = $product.find('.new-price').text(),
             oldPrice = $product.find('.old-price').text(),
