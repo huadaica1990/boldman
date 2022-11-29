@@ -3,6 +3,13 @@ var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class
     cartWishList = true,
     cartCountDown = true,
     cartCompare = true;
+// Effect
+$('.input-group-effect input').focus(function(event) {
+    $(this).parent().addClass('focus');
+}).blur(function(event) {
+    if($(this).val() === '') $(this).parent().removeClass('focus');
+});
+
 // View count
 function updateViewCount(targetId, action) {
     $.ajax({

@@ -268,8 +268,8 @@
             // if slider has custom number container
             
             if ($numbercontainer.length) {
-                var numberCurent = $numbercontainer.children('.swiper-nummber-curent'),
-                    numberTotal = $numbercontainer.children('.swiper-nummber-total');
+                var numberCurent = $numbercontainer.children('.swiper-number-current'),
+                    numberTotal = $numbercontainer.children('.swiper-number-total');
                 numberTotal.text(('0' + $numberSlide).slice(-2));
                 numberCurent.text('01');
                 this.slider.on('slideChange', function () {
