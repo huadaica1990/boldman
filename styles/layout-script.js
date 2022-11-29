@@ -1552,7 +1552,7 @@ function validateForm(btn, idform) {
                     var title = $(this).data('name');
                     var val = $(this).val();
                     var code = $(this).prop('name');
-                    if (type === 7 || type === 8) {
+                    if (type === 6 || type === 7) {
                         if ($(this).is(':checked') === false) {
                             val = null;
                         }
@@ -1771,7 +1771,7 @@ function validateFormApi(btn, idform, source) {
                     var title = $(this).data('name');
                     var val = $(this).val();
                     var code = $(this).prop('name');
-                    if (type === 7 || type === 8) {
+                    if (type === 6 || type === 7) {
                         if ($(this).is(':checked') === false) {
                             val = null;
                         }
