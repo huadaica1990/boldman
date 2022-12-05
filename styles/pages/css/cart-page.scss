@@ -133,6 +133,10 @@
     }
 }
 
+#cart-page {
+    background-color: rgb(245, 245, 250) !important;
+}
+
 .js-addaddressinline-form {
     .form-control {
         @include border-radius($val: .5rem);
