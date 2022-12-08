@@ -695,14 +695,21 @@ window.Ecsgroup = {};
 
     // Initialize Method after document has been loaded
     Ecsgroup.init = function () {
-        // do something later...
+    // Do something later...
+        Ecsgroup.initPopup();                                                   // Initialize Popup
+        Ecsgroup.showHide();                                                    // Initialize Show Hide
+        Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
         Ecsgroup.appearAnimate('.appear-animate');                              // Run appear animation
         Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
+        Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
+        Ecsgroup.Minipopup.init();                                              // Initialize minipopup
+        Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect    
+    // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
             maxWidth: 768,
         });
-        Ecsgroup.scrollDirection('.sticky-header-mobile', 'hidden');            // Initialize Scroll Direction                    
+        Ecsgroup.scrollDirection('.sticky-header-mobile', 'hidden');            // Initialize Scroll Direction
         Ecsgroup.stickyContent('.sticky-header');                               // Initialize Sticky Content
         // Ecsgroup.stickyContent('.sticky-footer', {         
         //     minWidth: 0,
@@ -711,44 +718,40 @@ window.Ecsgroup = {};
         //     hide: true,
         //     max_index: 2100
         // });                                                                  // Initialize Sticky Footer
-        // Ecsgroup.stickyContent( '.sticky-toolbox', Ecsgroup.stickyToolboxOptions );
-        // Ecsgroup.stickyContent('.product-sticky-content', Ecsgroup.stickyProductOptions );
-        //Ecsgroup.parallax('.parallax');                                       // Initialize Parallax
-        // Ecsgroup.skrollrParallax();                                          // Initialize Skrollr Parallax
-        // Ecsgroup.initFloatingParallax();                                     // Initialize Floating Parallax
+        // Ecsgroup.stickyContent('.sticky-toolbox', Ecsgroup.stickyToolboxOptions);
+        // Ecsgroup.stickyContent('.product-sticky-content', Ecsgroup.stickyProductOptions);
         Ecsgroup.menu.init();                                                   // Initialize Menu
         Ecsgroup.initScrollTopButton();                                         // Initialize scroll top button
-        //Ecsgroup.shop.init();                                                 // Initialize Shop
-        //Ecsgroup.alert('.alert')                                              // Initialize Alert
-        Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
+    // Side bar
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar
         // Ecsgroup.sidebar('right-sidebar');                                   // Initialize Right Sidebar
-        //Ecsgroup.productSingle('.single-product-item');                       // Initialize all single products
-        //Ecsgroup.initProductSinglePage();                                     // Initialize Single Product Page
-        //Ecsgroup.initQtyInput('.quantity');                                   // Initialize Quantity Input
-        //Ecsgroup.initNavFilter('.nav-filters .nav-filter')                    // Initialize Isotope Navigation Filters
-        //Ecsgroup.calendar('.calendar-container');                             // Initialize Calendar
-        //Ecsgroup.countDown('.product-countdown');                             // Initialize CountDown
-        Ecsgroup.initPopup();                                                   // Initialize Popup
-        Ecsgroup.showHide();                                                    // Initialize Show Hide
-        //Ecsgroup.initNotificationAlert();                                     // Initialize Notification Alert
-        //Ecsgroup.countTo('.count-to');                                        // Initialize CountTo
-        Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
-        //Ecsgroup.initCartAction('.cart-offcanvas .cart-toggle');              // Initialize Product Cart
-        Ecsgroup.Minipopup.init();                                              // Initialize minipopup
-        //Ecsgroup.headerToggleSearch('.hs-toggle');                            // Initialize Header toggle search
+    // Product
+        // Ecsgroup.shop.init();                                                // Initialize Shop
+        // Ecsgroup.productSingle('.single-product-item');                      // Initialize all single products
+        // Ecsgroup.initProductSinglePage();                                    // Initialize Single Product Page
+        // Ecsgroup.initQtyInput('.quantity');                                  // Initialize Quantity Input
+    // Plugin
         Ecsgroup.preSearch('.pre-search');                                      // Initialize Pre search
-        //Ecsgroup.marquee('.marquee')                                          // Initialize Marquee
         Ecsgroup.typeWriter('.typewrite');                                      // Initialize TypeWriter
-        Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
         Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
-        // Ecsgroup.initVendor('.store');                                       // Initialize Vendor 
+        // Ecsgroup.parallax('.parallax');                                      // Initialize Parallax
+        // Ecsgroup.skrollrParallax();                                          // Initialize Skrollr Parallax
+        // Ecsgroup.initFloatingParallax();                                     // Initialize Floating Parallax
+        // Ecsgroup.alert('.alert')                                             // Initialize Alert
+        // Ecsgroup.initNavFilter('.nav-filters .nav-filter')                   // Initialize Isotope Navigation Filters
+        // Ecsgroup.calendar('.calendar-container');                            // Initialize Calendar
+        // Ecsgroup.countDown('.product-countdown');                            // Initialize CountDown
+        // Ecsgroup.initNotificationAlert();                                    // Initialize Notification Alert
+        // Ecsgroup.countTo('.count-to');                                       // Initialize CountTo
+        // Ecsgroup.initCartAction('.cart-offcanvas .cart-toggle');             // Initialize Product Cart
+        // Ecsgroup.headerToggleSearch('.hs-toggle');                           // Initialize Header toggle search
+        // Ecsgroup.marquee('.marquee')                                         // Initialize Marquee
+        // Ecsgroup.initVendor('.store');                                       // Initialize Vendor
         // Ecsgroup.slideContent('.login-toggle');                              // Initialize Slide Content
         // Ecsgroup.slideContent('.coupon-toggle');
         // Ecsgroup.slideContent('.checkbox-toggle');   
         // Ecsgroup.initLoginVendor('.user-checkbox');                          // Initialize Vendor's Login
-        // Ecsgroup.notiCustomer(100, new Array(20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000)); // Initialize Noti Customer
-
+        // Ecsgroup.notiCustomer(100, new Array(20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000));  // Initialize Noti Customer
     };
 })(jQuery);
 

@@ -418,6 +418,8 @@
     }
     .xy-50 {
         @include transform($args: translate( -50%, -50%) !important);
+        left: 50% !important;
+        top: 50% !important;
     }
 /*#endregion*/
 
