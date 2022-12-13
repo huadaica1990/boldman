@@ -256,9 +256,7 @@
         -moz-transition: transform .3s, visibility .3s;
         -o-transition: transform .3s, visibility .3s;
         transition: transform .3s, visibility .3s;
-    }
-
-    ;
+    };
     @include transform($args: translateX(-100%));
 
     > .flex-container {
@@ -606,6 +604,22 @@
             color: $primary-color;
             right: 0px;
             top: 0;
+        }
+    }
+    
+    .lang-wrapper {
+        a {
+            margin: 0 10px 2px 0;
+            &:last-child {
+                margin-right: 0;
+            }
+            img {
+                height: 34px;
+                width: auto;
+            }
+            &:not(.active) {
+                @include filter($val: grayscale(1));
+            }
         }
     }
 }
