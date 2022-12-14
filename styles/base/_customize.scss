@@ -24,6 +24,12 @@
         &.embed-responsive-16by9 {
             padding-bottom: 56.25%;
         }
+        &.embed-responsive-4by3 {
+            padding-bottom: 75%;
+        }
+        &.embed-responsive-1by1 {
+            padding-bottom: 100%;
+        }
     }
     .img-white {
         @include filter($val: brightness(100) contrast(100) grayscale(100%));
@@ -206,13 +212,9 @@
     .phone-list {
         a {
             margin-right: 10px;
-            position: relative;
             &:after {
                 content: '-';
-                position: absolute;
-                right: -9px;
-                line-height: 0;
-                top:55%;
+                margin-left: 10px;
             }
             &:last-child {
                 margin-right: 0;
@@ -225,7 +227,7 @@
             a {
                 margin-right: 5px;
                 &:after {
-                    position: static;
+                    margin-left: 0;
                     content: ',';
                 }
             }
