@@ -26,8 +26,8 @@
         .--left.word-slider-wrapper
             .word-slider
                 each item in msg
-                    a(href=item.href)=item.name
-                a(href=msg[0].href)=msg[0].name
+                    a(href=item.href) <span>#{item.name}</span>
+                a(href=msg[0].href) <span>#{msg[0].name}</span>
             //- marquee(behavior='' direction='left' scrollamonunt='30' onmouseover='this.stop();' onmouseout='this.start();')
             //-     ul
             //-         each item in msg
@@ -401,14 +401,25 @@
                                                                                                                     | #{item_children_children_children.name}
                                                                                                                 else
                                                                                                                     =item_children_children_children.name
-
-                                                                            
-        
         .--footer
-            .footer-item
-                .label Mạng xã hội
-                .social-icons.social-icons-colored
-                    +social-list
+            if isLang
+                .d-flex.justify-content-between
+                    .footer-item
+                        .label Mạng xã hội
+                        .social-icons.social-icons-colored
+                            +social-list
+                    .footer-item
+                        .label Ngôn ngữ
+                        .lang-wrapper.ml-auto
+                            a.active(href='javascript:' title='Việt Nam' onclick='')
+                                img(src='/img/flag-vn.png' alt='' loading="lazy" width='14' height='9')
+                            a(href='javascript:' title='English' onclick='')
+                                img(src='/img/flag-usa.png' alt='' loading="lazy" width='14' height='9')
+            else
+                .footer-item
+                    .label Mạng xã hội
+                    .social-icons.social-icons-colored
+                        +social-list
 
 #nav-mobile-footer.d-block.d-lg-none.sticky-footer
     ul.--header.nav

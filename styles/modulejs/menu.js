@@ -14,6 +14,8 @@ var hideMobileSubMenu = function (e) {
 };
 var hideMobileSearch = function (e) {
     $(this).removeClass('show');
+    $("#fb-root").show();
+    $('.search-overwrap').removeClass('show');
     Ecsgroup.$body.removeClass('msearch-active');
 };
 var hideChat = function (e) {
@@ -24,6 +26,7 @@ var showMobileMenu = function (e) {
     hideMobileAllSubMenu();
     hideMobileSearch();
     Ecsgroup.$body.addClass('mmenu-active');
+    $("#fb-root").hide();
     e.preventDefault();
 };
 var toggleMobileMenu = function (e) {
@@ -31,6 +34,7 @@ var toggleMobileMenu = function (e) {
     hideMobileAllSubMenu();
     hideMobileSearch();
     Ecsgroup.$body.toggleClass('mmenu-active');
+    $("#fb-root").hide();
     e.preventDefault();
 };
 var hideMobileMenu = function (e) {
@@ -38,6 +42,7 @@ var hideMobileMenu = function (e) {
     $('.mobile-menu-btn').removeClass('show');
     $('#nav-mobile-content .show').removeClass('show');
     $('#nav-mobile-content .collapse-menu > .submenu').slideUp('300');
+    $("#fb-root").show();
     setTimeout(function () {
         Ecsgroup.$body.removeClass('mmenu-active');
     }, 150);
@@ -53,6 +58,7 @@ var showMobileSearch = function (e) {
     $(this).addClass('show');
     $('.mobile-menu-btn').removeClass('show');
     Ecsgroup.$body.addClass('msearch-active');
+    $("#fb-root").hide();
     e.preventDefault();
     // setTimeout(function(){
     //     $('#nav-mobile-search input[type="search"]').focus();

@@ -655,6 +655,22 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 
 /*#region Mobile responsive section styles*/
+@include breakpoint("xl", "xxl") {
+    .newsletter-popup.newsletter-img {
+        height: 100%;
+        .newsletter-body {
+            height: 100%;
+        }
+        a {
+            display: block;
+            height: calc(100% - 40px);
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+}
 @include mq("sm", "max") {
     .fancybox-show {
         -webkit-animation: 0.25s ease both fadeInUp;

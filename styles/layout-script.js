@@ -3,6 +3,13 @@ var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class
     cartWishList = true,
     cartCountDown = true,
     cartCompare = true;
+// Effect
+$('.input-group-effect input').focus(function(event) {
+    $(this).parent().addClass('focus');
+}).blur(function(event) {
+    if($(this).val() === '') $(this).parent().removeClass('focus');
+});
+
 // View count
 function updateViewCount(targetId, action) {
     $.ajax({
@@ -465,7 +472,7 @@ function addToCart(selector, quantityclass, url) {
         producttype = $this.data('producttype'),
         quantity = $this.parent().find(quantityclass).val();
     $this.addClass('load-more-overlay loading').html(loadingdot);
-
+    cartList.splice(cartList.findIndex(e => e.quantity <= 0), 1);
     var cartListUpdate = cartList.find((elem, index) => {
         return elem.id === productid;
     });
@@ -1552,7 +1559,7 @@ function validateForm(btn, idform) {
                     var title = $(this).data('name');
                     var val = $(this).val();
                     var code = $(this).prop('name');
-                    if (type === 7 || type === 8) {
+                    if (type === 6 || type === 7) {
                         if ($(this).is(':checked') === false) {
                             val = null;
                         }
@@ -1771,7 +1778,7 @@ function validateFormApi(btn, idform, source) {
                     var title = $(this).data('name');
                     var val = $(this).val();
                     var code = $(this).prop('name');
-                    if (type === 7 || type === 8) {
+                    if (type === 6 || type === 7) {
                         if ($(this).is(':checked') === false) {
                             val = null;
                         }
@@ -1855,4 +1862,17 @@ function sendMailApi(targetId, action, emailto) {
         success: function () { },
         error: function () { }
     });
+}
+
+function choselang(lang) {
+    $.post("/aj/shared/CreateCookie",
+        { lang: lang },
+        function (data) {
+            if (!data.Ok) {
+                location.reload();
+            }
+            else {
+                alert("Lỗi");
+            }
+        });
 }

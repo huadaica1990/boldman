@@ -9,6 +9,8 @@
             _translate: 1.5rem,
             _border:.5rem,
             _padding: 1.5rem 0,
+            _fontWeight: $font-weight-semibold,
+            _marginRight: 3rem,
             hr: (
                 border-color:#eeeeee,
                 border-bottom: 0px,
@@ -35,6 +37,9 @@
                 line-height: 0,
                 font-size: 1.2rem,
                 font-weight:$font-weight-bold,
+            ),
+            xl: (
+                _marginRight: 2rem,
             )
         )
     )
@@ -60,7 +65,7 @@
         }
         > li {
             height: inherit;
-            margin-right: #{get(header, footer, _marginRight)};
+            margin-right: #{get(navPc, _marginRight)};
             > .has-submenu-title {
                 height: inherit;
                 > a {
@@ -77,7 +82,7 @@
             > a {
                 height: inherit;
                 padding: #{get(navPc, _padding)};
-                font-weight: #{get(header, footer, _fontWeight)};
+                font-weight: #{get(navPc, _fontWeight)};
 
             }
             &.active,&:hover {
@@ -230,7 +235,7 @@
         #nav-pc {
             .nav-pc-body {
                 > li {
-                    margin-right: #{get(header, footer, 1024, _marginRight)};
+                    margin-right: #{get(navPc, xl, _marginRight)};
                 }
             }
         }
