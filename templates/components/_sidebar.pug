@@ -255,16 +255,16 @@ if sideBarProduct
                         .img
                             picture 
                                 source(media='' srcset='' type='image/webp')
-                                img(src=product[i].listimg[0].src alt='' width='80' height='90' loading='lazy')
+                                img(src=products[i].listimg[0].src alt='' width='80' height='90' loading='lazy')
                     .product-details
-                        h4.product-title=product[i].name
+                        h4.product-title=products[i].name
                         .ratings-container
                             .ratings-full
-                                .ratings(style=`width: ${product[i].star*100/5}%;`)
+                                .ratings(style=`width: ${products[i].star*100/5}%;`)
                         .product-price
-                            ins.new-price(itemprop='price' content='')=product[i].price
-                            if product[i].promoprice != null
-                                del.old-price=product[i].promoprice
+                            ins.new-price(itemprop='price' content='')=products[i].price
+                            if products[i].promoprice != null
+                                del.old-price=products[i].promoprice
 
 if sideBarBlog  
     .widget.widget-blogs
@@ -279,7 +279,7 @@ if sideBarBlog
                                     'slidesPerColumnFill': 'row'
                                 }`)
                 .swiper-wrapper.row.cols-1
-                    each item in blog
+                    each item in blogs
                         .swiper-slide.widget-col
                             a.post.item-blog.post-widget(href='' title='')
                                 figure.post-media.br-sm

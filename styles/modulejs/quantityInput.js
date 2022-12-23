@@ -30,11 +30,12 @@
         self.min = parseInt($el.attr('min'));
         self.max = parseInt($el.attr('max'));
 
-        self.min || ($el.attr('min', self.min = QuantityInput.min));
-        self.max || ($el.attr('max', self.max = QuantityInput.max));
+        self.min || ($el.attr('min', self.min = self.min ? QuantityInput.min : self.min));
+        self.max || ($el.attr('max', self.max = self.max ? QuantityInput.max : self.max));
 
         // Add DOM elements and event listeners
-        self.$value = $el.val(self.value = QuantityInput.value);
+        if ($el.attr('value') != null) self.$value = $el.val(self.value = $el.attr('value'));
+        else self.$value = $el.val(self.value = QuantityInput.value);
 
         self.$minus = $el.parent().find('.quantity-minus')
             .on('mousedown', function (e) {

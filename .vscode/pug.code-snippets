@@ -26,8 +26,8 @@
 			".item",
 			"	figure.item-media",
 			"		picture",
-			"			source.swiper-lazy(media='' data-srcset='' type='image/webp')",
-			"			img.swiper-lazy.lazyload(data-src='' src='' alt='' loading='lazy')",
+			"			source.swiper-lazy(media='' data-srcset='?w=&h=&decoder=webp' type='image/webp')",
+			"			img.swiper-lazy.lazyload(data-src=`${item}?w=&h=` src='' alt='' loading='lazy' style='scale: 1.01')",
 			"		.swiper-lazy-preloader",
 			"	.item-details",
 			"		.item-title",
@@ -46,8 +46,8 @@
 			"	picture",
 			"		source.swiper-lazy(media='(max-width:450px)' srcset='' type='image/webp')",
 			"		source.swiper-lazy(media='(max-width:450px)' srcset='')",
-			"		source.swiper-lazy(media='' data-srcset='' type='image/webp')",
-			"		img.swiper-lazy.lazyload(data-src='' src='' alt='' loading='lazy')",
+			"		source.swiper-lazy(media='' data-srcset='?w=&h=&decoder=webp' type='image/webp')",
+			"		img.swiper-lazy.lazyload(data-src=`${item}?w=&h=` src='' alt='' loading='lazy')",
 			"	.swiper-lazy-preloader",
 		],
 		"description": "Tạo mới picture"
@@ -115,7 +115,7 @@
 		"scope": "pug,jade",
 		"prefix": "pug-swiper",
 		"body": [
-			".swiper-container.swiper-theme.swiper(data-swiper-options=`{'breakpoints': {'0': {'slidesPerView': 1,'spaceBetween': 20},'768': {'slidesPerView': 2,'spaceBetween': 20},'992': {'slidesPerView': 3,'spaceBetween': 20},'1200': {'slidesPerView': 4,'spaceBetween': 20}}}`)",
+			".swiper.swiper-container.swiper-theme.swiper(data-swiper-options=`{'breakpoints': {'0': {'slidesPerView': 1,'spaceBetween': 20},'768': {'slidesPerView': 2,'spaceBetween': 20},'992': {'slidesPerView': 3,'spaceBetween': 20},'1200': {'slidesPerView': 4,'spaceBetween': 20}}}`)",
 			"	.swiper-wrapper",
 			"		.swiper-slide",
 			"			figure",
@@ -123,8 +123,8 @@
 			"					picture",
 			"						source.swiper-lazy(media='(max-width:450px)' srcset='' type='image/webp')",
 			"						source.swiper-lazy(media='(max-width:450px)' srcset='')",
-			"						source.swiper-lazy(media='' data-srcset='' type='image/webp')",
-			"						img.swiper-lazy(data-src='' alt='' loading='lazy')",
+			"						source.swiper-lazy(media='' data-srcset='?w=&h=&decoder=webp' type='image/webp')",
+			"						img.swiper-lazy(data-src=`${item}?w=&h=` alt='' loading='lazy' style='scale: 1.01')",
 			"					.swiper-lazy-preloader",
 			"	//- Add Arrows",
 			"	button.swiper-button-next.swiper-button",
@@ -168,6 +168,18 @@
 			"	#tab2.tab-pane"
 		],
 		"description": "Tạo tabs"
+	},
+	"Fancybox": {
+		"scope": "pug,jade",
+		"prefix": "pug-fancybox",
+		"body": [
+			".item.figure",
+            "   a.img(data-fancybox='gallery' data-src='' data-caption='')",
+            "       picture",
+            "           source(media='' srcset=`${item}?w=&h=&decoder=webp` type='image/webp')",
+            "           img(src=`${item}?w=&h=` alt='' loading='lazy')"
+		],
+		"description": "Tạo Fancy Box"
 	},
 	"Select filter": {
 		"scope": "pug,jade",

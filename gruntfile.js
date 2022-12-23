@@ -33,7 +33,7 @@ module.exports = grunt => {
                     'contact.html': ['<%= dirs.html %>/contact.pug'],
 
                     'index.html': ['<%= dirs.html %>/menu.pug'],
-                    'home.html': ['<%= dirs.html %>/home.pug'],
+                    'home.html': ['<%= dirs.html %>/home.pug']
                 }
             }
         },
@@ -54,7 +54,7 @@ module.exports = grunt => {
                     '<%= dirs.dest %>/comingsoon-page.css': '<%= dirs.css %>/comingsoon-page.scss',
                     '<%= dirs.dest %>/static-page.css': '<%= dirs.css %>/static-page.scss',
 
-                    '<%= dirs.dest %>/index-page.css': '<%= dirs.css %>/index-page.scss',
+                    '<%= dirs.dest %>/index-page.css': '<%= dirs.css %>/index-page.scss'
                 }
             }
         },
@@ -74,38 +74,34 @@ module.exports = grunt => {
                     ],
                     // Core
                     '<%= dirs.dest %>/core.min.js': [
+                    // core
                         '<%= dirs.mainjs %>/core.js',
                         '<%= dirs.mainjs %>/modulejs/setTab.js',
                         '<%= dirs.mainjs %>/modulejs/initDropdownAction.js',
                         '<%= dirs.mainjs %>/modulejs/initScrollTopButton.js',
                         '<%= dirs.mainjs %>/modulejs/stickyContent.js',
                         '<%= dirs.mainjs %>/modulejs/scrollDirection.js',
-                        // '<%= dirs.mainjs %>/modulejs/marquee.js',
-                        '<%= dirs.mainjs %>/modulejs/typeWriter.js',
-                        '<%= dirs.mainjs %>/modulejs/initFloatingParallax.js',
-                        '<%= dirs.mainjs %>/modulejs/isotopes.js',
-                        '<%= dirs.mainjs %>/modulejs/initNavFilter.js',
-                        '<%= dirs.mainjs %>/modulejs/ratingTooltip.js',
                         '<%= dirs.mainjs %>/modulejs/cutomizeSelect.js',
-                        '<%= dirs.mainjs %>/modulejs/setProgressBar.js',
                         '<%= dirs.mainjs %>/modulejs/accordion.js',
-                        '<%= dirs.mainjs %>/modulejs/countDown.js',
                         '<%= dirs.mainjs %>/modulejs/stickySidebar.js',
                         '<%= dirs.mainjs %>/modulejs/zoomImage.js',
                         '<%= dirs.mainjs %>/modulejs/fancyBox.js',
                         '<%= dirs.mainjs %>/modulejs/popup.js',
                         '<%= dirs.mainjs %>/modulejs/initPopup.js',
-                        '<%= dirs.mainjs %>/modulejs/countTo.js',
-                        '<%= dirs.mainjs %>/modulejs/togglerMake.js',
                         '<%= dirs.mainjs %>/modulejs/miniPopup.js',
+                        '<%= dirs.mainjs %>/modulejs/togglerMake.js',
                         '<%= dirs.mainjs %>/modulejs/scrollTo.js',
-                        // '<%= dirs.mainjs %>/modulejs/pageScrollToId.js',
-                        '<%= dirs.mainjs %>/modulejs/preSearch.js',
-                        '<%= dirs.mainjs %>/modulejs/readMore.js',
-                        '<%= dirs.mainjs %>/modulejs/tableOfContent.js',
                         '<%= dirs.mainjs %>/modulejs/menu.js',
                         '<%= dirs.mainjs %>/modulejs/slider.js',
                         '<%= dirs.mainjs %>/modulejs/sideBar.js',
+                        '<%= dirs.mainjs %>/modulejs/draggAble.js',
+                    // Acc
+                        '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
+                    // Content
+                        '<%= dirs.mainjs %>/modulejs/readMore.js',
+                        '<%= dirs.mainjs %>/modulejs/tableOfContent.js',
+                        '<%= dirs.mainjs %>/modulejs/uploadFile.js',
+                    // Product
                         '<%= dirs.mainjs %>/modulejs/shop.js',
                         '<%= dirs.mainjs %>/modulejs/quantityInput.js',
                         '<%= dirs.mainjs %>/modulejs/initSelectMenu.js',
@@ -114,11 +110,22 @@ module.exports = grunt => {
                         '<%= dirs.mainjs %>/modulejs/wishlistAction.js',
                         '<%= dirs.mainjs %>/modulejs/productSingle.js',
                         '<%= dirs.mainjs %>/modulejs/productSinglePage.js',
-                        '<%= dirs.mainjs %>/modulejs/uploadFile.js',
-                        '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
+                        // '<%= dirs.mainjs %>/modulejs/ratingTooltip.js',
+                    // Plugin
+                        // '<%= dirs.mainjs %>/modulejs/marquee.js',
+                        // '<%= dirs.mainjs %>/modulejs/pageScrollToId.js',
+                        '<%= dirs.mainjs %>/modulejs/preSearch.js',
+                        '<%= dirs.mainjs %>/modulejs/typeWriter.js',
+
+                        '<%= dirs.mainjs %>/modulejs/initFloatingParallax.js',
+                        '<%= dirs.mainjs %>/modulejs/isotopes.js',
+                        '<%= dirs.mainjs %>/modulejs/initNavFilter.js',
+                        
+                        '<%= dirs.mainjs %>/modulejs/setProgressBar.js',
+                        '<%= dirs.mainjs %>/modulejs/countDown.js',
+                        '<%= dirs.mainjs %>/modulejs/countTo.js',
                         '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js',
                         '<%= dirs.mainjs %>/modulejs/notiCustomer.js',
-                        '<%= dirs.mainjs %>/modulejs/draggAble.js',
                         '<%= dirs.mainjs %>/modulejs/ezParallax.js',
                         '<%= dirs.mainjs %>/modulejs/mouseFollow.js'
                     ],

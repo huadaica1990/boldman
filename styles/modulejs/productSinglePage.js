@@ -37,9 +37,9 @@
             if ($this.closest('.review-image-wrap').length) {
                 $images = $this.closest('.review-image-wrap').find('img');
             } else if ($product.find('.product-single-swiper').length) { // single carousel
-                $images = $product.find('.product-single-swiper .swiper-slide:not(.cloned) picture img:not(.zoomImg)');
+                $images = $product.find('.product-single-swiper .swiper-slide:not(.swiper-slide-duplicate) picture img:not(.zoomImg)');
             } else if ($product.find('.product-gallery-carousel').length) { // gallery carousel
-                $images = $product.find('.product-gallery-carousel .swiper-slide:not(.cloned) picture img');
+                $images = $product.find('.product-gallery-carousel .swiper-slide:not(.swiper-slide-duplicate) picture img');
             } else { // simple gallery
                 $images = $product.find('.product-image picture img');
             }
@@ -165,7 +165,7 @@
 
         var $this = $(selector),
             $product = $this.closest('.product-single'),
-            src = $product.find('.product-gallery img').eq(0).attr('data-src'),
+            src = $product.find('.product-gallery img').eq(0).attr('data-src') ? $product.find('.product-gallery img').eq(0).attr('data-src') : $product.find('.product-gallery img').eq(0).attr('src'),
             name = $product.find('.product-details .product-title').text(),
             newPrice = $product.find('.new-price').text(),
             oldPrice = $product.find('.old-price').text(),

@@ -44,8 +44,10 @@
     // Swiper slider
     .swiper.p-relative {
         position: relative;
+        overflow: initial;
         >.swiper-container {
             position: static;
+            overflow: hidden;
             >.swiper-pagination {
                 bottom: -4.5rem;
             }
@@ -438,6 +440,27 @@
     }
     .lazyloaded {
         @include filter($val: blur(0px) opacity(1) !important);
+    }
+    
+    // dropdown-menu
+    .datepicker-dropdown.dropdown-menu {
+        @include border($color: rgba(0,0,0,.15));
+        @include shadow($val: 0 6px 12px rgba(0,0,0,.18));
+        @include border-radius($val: 4px);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: $white-color;
+        background-clip: padding-box;
     }
 /*#endregion*/
 
