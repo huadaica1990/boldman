@@ -6,7 +6,8 @@
 @include set-default( 
     ( 
         navMoible: ( 
-            _heightLogo: 40px, 
+            _heightLogo: 40px,
+            _fontWeight: $font-weight-semibold,
             header: ( 
                 font-size: 1.1rem, 
                 msg: ( 
@@ -385,7 +386,7 @@
             a {
                 @include flex($type: "center", $get: "left");
                 padding: #{get(navMoible, mobileContent, _linkPadding)};
-                font-weight: #{get(header, footer, _fontWeight)};
+                font-weight: #{get(navMoible, _fontWeight)};
                 text-transform: capitalize;
                 width: 100%;
 
@@ -441,7 +442,7 @@
 
                 > a {
                     padding: #{get(navMoible, mobileContent, _linkPadding)};
-                    font-weight: #{get(header, footer, _fontWeight)};
+                    font-weight: #{get(navMoible, _fontWeight)};
                     text-transform: capitalize;
                     width: calc(100% - 45px);
                 }
