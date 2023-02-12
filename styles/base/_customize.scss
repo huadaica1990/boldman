@@ -482,7 +482,18 @@
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/
-    @include mq(xl, "max") {
+    @include mq(xml, 'max') {
+        .padding {
+            &-right-container {
+                padding-right: calc(50% - #{$container-width-xml/2} + 15px);
+            }
+            &-left-container {
+                padding-left: calc(50% - #{$container-width-xml/2} + 15px);
+            }
+        }
+    }
+    
+    @include mq(xl, 'max') {
         [data-toggle="dropdown"] {
             pointer-events: auto;
         }
@@ -500,9 +511,6 @@
                 // display: table-cell;
             }
         }
-    }
-
-    @include mq(xl, "max") {
         .padding {
             &-right-container {
                 padding-right: 15px;
@@ -512,7 +520,8 @@
             }
         }
     }
-    @include mq(lg, "max") {
+
+    @include mq(lg, 'max') {
         body {
             padding-bottom: $nav-mobile-footer_height;
         }
@@ -531,7 +540,8 @@
             }
         }
     }
-    @include mq(md, "max") {
+
+    @include mq(md, 'max') {
         .scroll-tab-item-md {
             display: block !important;
             overflow: auto;
@@ -547,7 +557,8 @@
             }
         }
     }
-    @include mq(sm, "max") {
+
+    @include mq(sm, 'max') {
         .flex-center {
             &.flex-col-xs {
                 -webkit-box-orient: vertical;

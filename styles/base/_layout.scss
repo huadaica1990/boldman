@@ -9,13 +9,6 @@
     margin-right: auto;
 }
 
-@include mq(xs, max) {
-    .container,
-    .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-}
 
 .container-fluid {
     @include css(max-width, base, _container-fluid-width);
@@ -23,4 +16,18 @@
 
 .container {
     @include css(max-width, base, _container-width);
+}
+
+@include mq(xs, 'max') {
+    .container,
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@include mq(xml, 'max') {
+    .container,
+    .container-fluid {
+        @include css(max-width, base, _container-width-xml);
+    }
 }
