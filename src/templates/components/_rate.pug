@@ -12,11 +12,11 @@
             listimg: [
                 {
                     id:101,
-                    src: '/img/gallery1.jpg'
+                    src: '/galleries/gallery1.jpg'
                 },
                 {
                     id:102,
-                    src: '/img/gallery2.jpg'
+                    src: '/galleries/gallery2.jpg'
                 },
             ],
             children: [
@@ -52,11 +52,11 @@
             listimg: [
                 {
                     id:201,
-                    src: '/img/gallery1.jpg'
+                    src: '/galleries/gallery1.jpg'
                 },
                 {
                     id:202,
-                    src: '/img/gallery2.jpg'
+                    src: '/galleries/gallery2.jpg'
                 },
             ],
             children: []
@@ -172,11 +172,11 @@
                     .img-item.br-sm
                         a.img-cmt-js(href='javascript:')
                             i.demo-icon.cus-cancel
-                        img(src='/img/gallery1.jpg' alt='' loading='lazy')
+                        img(src=dist+'/galleries/gallery1.jpg' alt='' loading='lazy')
                     .img-item.br-sm
                         a.img-cmt-js(href='javascript:')
                             i.demo-icon.cus-cancel
-                        img(src='/img/gallery2.jpg' alt='' loading='lazy')
+                        img(src=dist+'/galleries/gallery2.jpg' alt='' loading='lazy')
                 input(type='hidden' name='Gender' value='')
                 input(type='hidden' name='ListImage' value='')
                 input(type='hidden' name='ProductId' value='')
@@ -212,7 +212,7 @@
                         .img-list.flex-container.review-image-wrap
                             each img in rateItem.listimg
                                 a.review-image.br-sm
-                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
+                                    img(src=dist+img.src data-zoom-image=dist+img.src alt='' loading='lazy' width='108' height='100')
                     .comment-action
                         - var rateItemId = '#formreplycontainer'+ rateItem.id;
                         a.btn-rep(href='javascript:' onclick="showreply('"+ rateItemId +"')") #{rateItem.children.length} trả lời

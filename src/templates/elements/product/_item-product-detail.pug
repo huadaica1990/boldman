@@ -19,32 +19,32 @@
             listimg: [
                 {
                     id: 1,
-                    src: '/img/product/product-big1.jpg',
+                    src: '/products/product-big1.jpg',
                     alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
                 },
                 {
                     id: 2,
-                    src: '/img/product/product-big2.jpg',
+                    src: '/products/product-big2.jpg',
                     alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
                 },
                 {
                     id: 3,
-                    src: '/img/product/product-big3.jpg',
+                    src: '/products/product-big3.jpg',
                     alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
                 },
                 {
                     id: 4,
-                    src: '/img/product/product-big4.jpg',
+                    src: '/products/product-big4.jpg',
                     alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
                 },
                 {
                     id: 5,
-                    src: '/img/product/product-big5.jpg',
+                    src: '/products/product-big5.jpg',
                     alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
                 },
                 {
                     id: 6,
-                    src: '/img/product/product-big6.jpg',
+                    src: '/products/product-big6.jpg',
                     alt: 'Máy Khuếch Tán Tinh Dầu MKT-011'
                 }
             ],
@@ -177,7 +177,7 @@
             h2.product-title(itemprop='name')=productSingleDetail.name
             .product-bm-wrapper
                 figure.brand
-                    img(src=productSingleDetail.cat.src alt='Brand' width='102' height='48' loading='lazy')
+                    img(src=dist+productSingleDetail.cat.src alt='Brand' width='102' height='48' loading='lazy')
                 .product-meta
                     .product-categories
                         | Danh mục: 

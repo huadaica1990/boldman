@@ -4,18 +4,18 @@
 -
     let listImg = [
         {
-            src: '/img/slider/slider1.jpg',
-            srcm: '/img/slider/slider1-m.jpg',
+            src: '/sliders/slider1.jpg',
+            srcm: '/sliders/slider1-m.jpg',
             href: ''
         },
         {
-            src: '/img/slider/slider2.jpg',
-            srcm: '/img/slider/slider2-m.jpg',
+            src: '/sliders/slider2.jpg',
+            srcm: '/sliders/slider2-m.jpg',
             href: ''
         },
         {
-            src: '/img/slider/slider3.jpg',
-            srcm: '/img/slider/slider3-m.jpg',
+            src: '/sliders/slider3.jpg',
+            srcm: '/sliders/slider3-m.jpg',
             href: ''
         },
     ];
@@ -37,17 +37,17 @@
                             a.item(href=item.href)
                                 picture
                                     source(media='(max-width:450px)' srcset='' type='image/webp' class='')
-                                    source(media='(max-width:450px)' srcset=item.srcm class='')
+                                    source(media='(max-width:450px)' srcset=dist+item.srcm class='')
                                     source(media='' srcset='' type='image/webp' class='')
-                                    img(src=item.src alt='' class='' width='1920' height='550')
+                                    img(src=dist+item.src alt='' class='' width='1920' height='550')
                     else
                         .swiper-slide
                             a.item(href=item.href)
                                 picture
                                     source.swiper-lazy(media='(max-width:450px)' data-srcset='' type='image/webp')
-                                    source.swiper-lazy(media='(max-width:450px)' data-srcset=item.srcm)
+                                    source.swiper-lazy(media='(max-width:450px)' data-srcset=dist+item.srcm)
                                     source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                                    img.swiper-lazy(data-src=item.src alt='' width='1920' height='550')
+                                    img.swiper-lazy(data-src=dist+item.src alt='' width='1920' height='550')
                                 .swiper-lazy-preloader
             button.swiper-button.swiper-button-prev
             button.swiper-button.swiper-button-next
@@ -66,7 +66,7 @@
                 .swiper-slide.animation-banner.animation-banner-fixed.animation-slide.animation-slide1(style='background-image: url(/img/slider/animation/slide-1.jpg); background-color: #ebeef2;"')
                     .container
                         figure.slide-image.slide-animate.floating-item(data-animation-options=`{ 'name': 'fadeInDownShorter', 'duration': '1s'}` data-options=`{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}` data-child-depth='0.2')
-                            img(src='/img/slider/animation/shoes.png')
+                            img(src=dist+'/sliders/animation/shoes.png')
                         .animation-banner-content.y-50.text-right
                             h5.animation-banner-subtitle.font-weight-normal.text-default.mb-2.slide-animate(data-animation-options=`{'name': 'fadeInRightShorter','duration': '1s','delay': '.2s'}`) Custom <span class="p-relative d-inline-block">Men’s</span>
                             h3.animation-banner-title.font-weight-bold.slide-animate(data-animation-options=`{'name': 'fadeInRightShorter','duration': '1s','delay': '.4s'}`) RUNNING SHOES
@@ -76,7 +76,7 @@
                 .swiper-slide.animation-banner.animation-banner-fixed.animation-slide.animation-slide2(style='background-image: url(/img/slider/animation/slide-2.jpg); background-color: #ebeef2;"')
                     .container
                         figure.slide-image.slide-animate(data-animation-options=`{'name': 'fadeInUpShorter','duration': '1s'}`)
-                            img(src='/img/slider/animation/men.png' data-bottom-top='transform: translateX(10vh);' data-top-bottom='transform: translateX(-10vh);')
+                            img(src=dist+'/sliders/animation/men.png' data-bottom-top='transform: translateX(10vh);' data-top-bottom='transform: translateX(-10vh);')
                         .animation-banner-content.d-inline-block.y-50
                             h5.animation-banner-subtitle.font-weight-normal.text-default.slide-animate(data-animation-options=`{'name': 'fadeInUpShorter','duration': '1s','delay': '.2s'}`) Mountain-<span class="text-secondary">Climbing</span>
                             h3.animation-banner-title.font-weight-bold.text-dark.mb-0.slide-animate(data-animation-options=`{'name': 'fadeInUpShorter','duration': '1s','delay': '.4s'}`) Hot & Packback
@@ -86,7 +86,7 @@
                 .swiper-slide.animation-banner.animation-banner-fixed.animation-slide.animation-slide3(style='background-image: url(/img/slider/animation/slide-3.jpg); background-color: #f0f1f2;"')
                     .container
                         figure.slide-image.slide-animate(data-animation-options=`{'name': 'fadeInDownShorter','duration': '1s'}`)
-                            img(src='/img/slider/animation/skate.png' data-bottom-top='transform: translateY(10vh);' data-top-bottom='transform: translateY(-10vh);')
+                            img(src=dist+'/sliders/animation/skate.png' data-bottom-top='transform: translateY(10vh);' data-top-bottom='transform: translateY(-10vh);')
                         .animation-banner-content.text-right.y-50
                             p.font-weight-normal.text-default.text-uppercase.mb-0.slide-animate(data-animation-options=`{'name': 'fadeInLeftShorter','duration': '1s','delay': '.6s'}`)
                             h5.animation-banner-subtitle.font-weight-normal.text-default.slide-animate(data-animation-options=`{'name': 'fadeInLeftShorter','duration': '1s','delay': '.4s'}`) Trending Collection

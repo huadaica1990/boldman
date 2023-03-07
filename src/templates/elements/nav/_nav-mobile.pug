@@ -49,7 +49,7 @@
                     span
                 .logo
                     a(href=logo[1].href title=logo[1].name)
-                        img(src=logo[1].src alt=logo[1].name width='133' height='52' loading='lazy')
+                        img(src=dist+logo[1].src alt=logo[1].name width='133' height='52' loading='lazy')
             .--right.flex-center
                 if isLogin
                     if isAuthorise
@@ -99,7 +99,7 @@
                             .img-container
                                 picture
                                     source(media='' srcset='' type='image/webp')
-                                    img(src=item.src alt='' width='45' height='45' loading='lazy')
+                                    img(src=dist+item.src alt='' width='45' height='45' loading='lazy')
                             .text-container=item.name
             .search-result-cat
                 .title Danh mục nổi bật
@@ -109,7 +109,7 @@
                             .img-container
                                 picture
                                     source(media='' srcset='' type='image/webp')
-                                    img(src=item.src alt='' width='133' height='80' loading='lazy')
+                                    img(src=dist+item.src alt='' width='133' height='80' loading='lazy')
                             .text-container=item.name
         .search-result-step2
             .search-result-history
@@ -412,9 +412,9 @@
                         .label Ngôn ngữ
                         .lang-wrapper
                             a.active(href='javascript:' title='Việt Nam' onclick='')
-                                img(src='/img/flag-vn.png' alt='' loading="lazy" width='14' height='9')
+                                img(src=dist+'/default/flag-vn.png' alt='' loading="lazy" width='14' height='9')
                             a(href='javascript:' title='English' onclick='')
-                                img(src='/img/flag-usa.png' alt='' loading="lazy" width='14' height='9')
+                                img(src=dist+'/default/flag-usa.png' alt='' loading="lazy" width='14' height='9')
             else
                 .footer-item
                     .label Mạng xã hội
