@@ -1,0 +1,58 @@
+extends layout.pug
+
+block title
+    - let title = 'Trang tĩnh';
+    title #{title}
+block style
+    - let css = '/wwwroot/templates/release/static.min.css';
+    //- Default
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/main.min.css')
+
+block content
+    //- Var
+    - let idPage = 'static';
+    - let h1Title = '@ViewBag.MetaTitle';
+    //- Data
+    -
+        let breadcrumb = [
+            {
+                name: 'Trang chủ',
+                href: '/',
+                isActive: false,
+            },
+            {
+                name: title,
+                href: '',
+                isActive: true,
+            },
+        ];
+    //- Content
+    main.page-wrapper.main(class=`${idPage}-page`)
+        h1.d-none=h1Title
+        
+        .breadcrumb.mb-10
+            .breadcrumb-header.bg-grey.d-flex.align-items-center.justify-content-center
+                .container.text-center.text-capitalize
+                    h2.breadcrumb-title=title
+                    p.breadcrumb-subtitle Page
+            .container
+                .breadcrumb-body
+                    +breadcrumb-list(breadcrumb)
+        
+        section.container.mb-10(class=`${idPage}`)
+            h2.section-header.title.title-center.h1.mb-5=title
+            .section-body.blog-content
+                include components/_blog-content.pug
+
+block script
+    - let js = '/wwwroot/templates/release/static-page.min.js';
+    //- Default
+    script(type='text/javascript' src=`/wwwroot/templates/release/default.min.js` defer)
+    //- Page
+
+    script.
+        addCSS('#{css}')
+        addScript('#{js}')
+        addScript('/wwwroot/templates/release/layout.min.js')
+    

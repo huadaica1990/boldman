@@ -1,0 +1,180 @@
+/* 1. Config */
+@import '../config/variables';
+
+/* 2. Mixins */
+@import '../mixins/breakpoint';
+@import '../mixins/core';
+@import '../mixins/buttons';
+@import '../mixins/mixins';
+
+
+/*#region components,elements*/
+/*#endregion*/
+
+/*#region .item-*/
+/*#endregion*/
+
+// Set variables
+@include set-default((comingSoon: (1920: (),
+      1440: (),
+      1366: (),
+      1280: (),
+      1024: (),
+      768: (),
+      450: (),
+      360: (),
+    ),
+  ));
+
+/*--------------------------------------------
+    Coming Soon Page
+----------------------------------------------*/
+#comingsoon {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(34, 41, 65, 0.45)), to(rgba(46, 55, 86, 0.45))), url('/img/comingsoon.jpg');
+  background: -webkit-linear-gradient(rgba(34, 41, 65, 0.45), rgba(46, 55, 86, 0.45)), url('/img/comingsoon.jpg');
+  background: -moz-linear-gradient(rgba(34, 41, 65, 0.45), rgba(46, 55, 86, 0.45)), url('/img/comingsoon.jpg');
+  background: -o-linear-gradient(rgba(34, 41, 65, 0.45), rgba(46, 55, 86, 0.45)), url('/img/comingsoon.jpg');
+  background: linear-gradient(rgba(34, 41, 65, 0.45), rgba(46, 55, 86, 0.45)), url('/img/comingsoon.jpg');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  .logo-container {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
+  .social-icons {
+    @include e-cen($type: "left");
+    position: absolute;
+    bottom: 30px;
+  }
+
+  .coming-title {
+    margin-bottom: 0rem;
+    font-size: 10rem;
+    font-weight: $font-weight-light;
+    color: $white-color;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 15px;
+  }
+
+  .countdown {
+    margin-top: 4.5rem;
+
+    &-row {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -moz-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -moz-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center
+    }
+
+    &-section {
+      position: relative;
+
+      &:not(:first-child) {
+        margin-left: 3.5rem;
+
+        .countdown-amount {
+          &::before {
+            @include e-cen($type: "top");
+            content: ':';
+            position: absolute;
+            left: -2.2rem;
+            color: $white-color;
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+
+    &-amount {
+      @include border-radius($val: .5rem);
+      display: inline-block;
+      position: relative;
+      width: 125px;
+      height: 125px;
+      text-align: center;
+      font-size: 6rem;
+      font-weight: $font-weight-normal;
+      background-color: $dark-background;
+      color: $white-color;
+      line-height: 125px;
+      margin-bottom: 1rem;
+    }
+
+    &-period {
+      display: block;
+      width: 100%;
+      font-size: 2rem;
+      color: $white-color;
+      text-align: center;
+    }
+  }
+}
+
+/*#region Mobile responsive section styles*/
+@include mq("768px", "max") {
+  #comingsoon {
+    .coming-title {
+      font-size: 7rem;
+    }
+
+    .countdown {
+      &-period {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@include mq("450px", "max") {
+  body {
+    padding-bottom: 0;
+  }
+
+  #comingsoon {
+    .logo-container {
+      @include e-cen($type: "left");
+    }
+
+    .coming-title {
+      font-size: 5rem;
+    }
+
+    .countdown-section:not(:first-child) .countdown-amount::before {
+      font-size: 2rem;
+    }
+
+    .countdown {
+      &-period {
+        font-size: 1.2rem;
+      }
+
+      &-amount {
+        width: 60px;
+        height: 60px;
+        font-size: 3rem;
+        line-height: 60px;
+        margin-bottom: .5rem;
+      }
+    }
+  }
+}
+
+/*#endregion*/
