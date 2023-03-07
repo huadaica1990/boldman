@@ -95,7 +95,7 @@ module.exports = grunt => {
                         'node_modules/webfontloader/webfontloader.js',
                     ],
                     '<%= dirs.dist %>/jquery.min.js': [
-                        'node_modules/jquery/jquery.js',
+                        'node_modules/jquery/dist/jquery.js',
                     ],
                     '<%= dirs.dist %>/instantpage.min.js': [
                         '<%= dirs.plugin %>/instantpage/instantpage.js',
