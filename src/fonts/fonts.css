@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'SVN-Poppins';
-    src: url('/fonts/SVN-PoppinsLight.eot');
-    src: url('/fonts/SVN-PoppinsLight.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/SVN-PoppinsLight.woff2') format('woff2'),
-        url('/fonts/SVN-PoppinsLight.woff') format('woff'),
-        url('/fonts/SVN-PoppinsLight.ttf') format('truetype'),
-        url('/fonts/SVN-PoppinsLight.svg#SVN-PoppinsLight') format('svg');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsLight.eot');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsLight.eot?#iefix') format('embedded-opentype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsLight.woff2') format('woff2'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsLight.woff') format('woff'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsLight.ttf') format('truetype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsLight.svg#SVN-PoppinsLight') format('svg');
     font-weight: 300;
     font-style: normal;
     font-display: fallback;
@@ -13,12 +13,12 @@
 
 @font-face {
     font-family: 'SVN-Poppins';
-    src: url('/fonts/SVN-PoppinsExtraBold.eot');
-    src: url('/fonts/SVN-PoppinsExtraBold.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/SVN-PoppinsExtraBold.woff2') format('woff2'),
-        url('/fonts/SVN-PoppinsExtraBold.woff') format('woff'),
-        url('/fonts/SVN-PoppinsExtraBold.ttf') format('truetype'),
-        url('/fonts/SVN-PoppinsExtraBold.svg#SVN-PoppinsExtraBold') format('svg');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsExtraBold.eot');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsExtraBold.woff2') format('woff2'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsExtraBold.woff') format('woff'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsExtraBold.ttf') format('truetype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsExtraBold.svg#SVN-PoppinsExtraBold') format('svg');
     font-weight: bold;
     font-style: normal;
     font-display: fallback;
@@ -26,12 +26,12 @@
 
 @font-face {
     font-family: 'SVN-Poppins';
-    src: url('/fonts/SVN-PoppinsBold.eot');
-    src: url('/fonts/SVN-PoppinsBold.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/SVN-PoppinsBold.woff2') format('woff2'),
-        url('/fonts/SVN-PoppinsBold.woff') format('woff'),
-        url('/fonts/SVN-PoppinsBold.ttf') format('truetype'),
-        url('/fonts/SVN-PoppinsBold.svg#SVN-PoppinsBold') format('svg');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsBold.eot');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsBold.eot?#iefix') format('embedded-opentype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsBold.woff2') format('woff2'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsBold.woff') format('woff'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsBold.ttf') format('truetype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsBold.svg#SVN-PoppinsBold') format('svg');
     font-weight: bold;
     font-style: normal;
     font-display: fallback;
@@ -40,11 +40,11 @@
 @font-face {
     font-family: 'SVN-Poppins';
     src: url('SVN-PoppinsMedium.eot');
-    src: url('/fonts/SVN-PoppinsMedium.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/SVN-PoppinsMedium.woff2') format('woff2'),
-        url('/fonts/SVN-PoppinsMedium.woff') format('woff'),
-        url('/fonts/SVN-PoppinsMedium.ttf') format('truetype'),
-        url('/fonts/SVN-PoppinsMedium.svg#SVN-PoppinsMedium') format('svg');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsMedium.eot?#iefix') format('embedded-opentype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsMedium.woff2') format('woff2'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsMedium.woff') format('woff'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsMedium.ttf') format('truetype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsMedium.svg#SVN-PoppinsMedium') format('svg');
     font-weight: 500;
     font-style: normal;
     font-display: fallback;
@@ -52,12 +52,12 @@
 
 @font-face {
     font-family: 'SVN-Poppins';
-    src: url('/fonts/SVN-Poppins.eot');
-    src: url('/fonts/SVN-Poppins.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/SVN-Poppins.woff2') format('woff2'),
-        url('/fonts/SVN-Poppins.woff') format('woff'),
-        url('/fonts/SVN-Poppins.ttf') format('truetype'),
-        url('/fonts/SVN-Poppins.svg#SVN-Poppins') format('svg');
+    src: url('/wwwroot/templates/fonts/SVN-Poppins.eot');
+    src: url('/wwwroot/templates/fonts/SVN-Poppins.eot?#iefix') format('embedded-opentype'),
+        url('/wwwroot/templates/fonts/SVN-Poppins.woff2') format('woff2'),
+        url('/wwwroot/templates/fonts/SVN-Poppins.woff') format('woff'),
+        url('/wwwroot/templates/fonts/SVN-Poppins.ttf') format('truetype'),
+        url('/wwwroot/templates/fonts/SVN-Poppins.svg#SVN-Poppins') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
@@ -65,12 +65,12 @@
 
 @font-face {
     font-family: 'SVN-Poppins';
-    src: url('/fonts/SVN-PoppinsSemiBold.eot');
-    src: url('/fonts/SVN-PoppinsSemiBold.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/SVN-PoppinsSemiBold.woff2') format('woff2'),
-        url('/fonts/SVN-PoppinsSemiBold.woff') format('woff'),
-        url('/fonts/SVN-PoppinsSemiBold.ttf') format('truetype'),
-        url('/fonts/SVN-PoppinsSemiBold.svg#SVN-PoppinsSemiBold') format('svg');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsSemiBold.eot');
+    src: url('/wwwroot/templates/fonts/SVN-PoppinsSemiBold.eot?#iefix') format('embedded-opentype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsSemiBold.woff2') format('woff2'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsSemiBold.woff') format('woff'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsSemiBold.ttf') format('truetype'),
+        url('/wwwroot/templates/fonts/SVN-PoppinsSemiBold.svg#SVN-PoppinsSemiBold') format('svg');
     font-weight: 600;
     font-style: normal;
     font-display: fallback;

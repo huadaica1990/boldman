@@ -95,7 +95,7 @@ module.exports = grunt => {
                         'node_modules/webfontloader/webfontloader.js',
                     ],
                     '<%= dirs.dist %>/jquery.min.js': [
-                        'node_modules/jquery/jquery.js',
+                        'node_modules/jquery/dist/jquery.js',
                     ],
                     '<%= dirs.dist %>/instantpage.min.js': [
                         '<%= dirs.plugin %>/instantpage/instantpage.js',
@@ -361,6 +361,9 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-browser-sync');
+    
+    
+    grunt.registerTask('release', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin', 'sprite', 'copy']);
     grunt.registerTask('build', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin']);
     grunt.registerTask('sprite ', ['sprite']);
     grunt.registerTask('copy ', ['copy']);
