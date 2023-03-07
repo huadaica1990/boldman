@@ -361,6 +361,9 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-browser-sync');
+    
+    
+    grunt.registerTask('release', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin', 'sprite', 'copy']);
     grunt.registerTask('build', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin']);
     grunt.registerTask('sprite ', ['sprite']);
     grunt.registerTask('copy ', ['copy']);
