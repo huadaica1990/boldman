@@ -1,0 +1,55 @@
+extends layout.pug
+
+block title
+    - let title = '404';
+    title #{title}
+block style
+    - let css = '/wwwroot/templates/release/error.min.css';
+    //- Default
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/main.min.css')
+
+block content
+    //- Var
+    - let idPage = '404';
+    - let h1Title = '@ViewBag.MetaTitle';
+    //- Data
+    -
+        let breadcrumb = [
+            {
+                name: 'Trang chủ',
+                href: '/',
+                isActive: false,
+            },
+            {
+                name: '404',
+                href: '',
+                isActive: true,
+            },
+        ];
+    //- Content
+    main.page-wrapper.main.error-page(id=`${idPage}-page`)
+        h1.d-none=h1Title
+        section.error.lazyload-bg.bg-grey(id=`${idPage}` data-bg='/img/city-cloud.png')
+            .container
+                .section-header.d-flex.justify-content-center.align-items-center
+                    h2.section-title 404
+                    .section-des
+                        p.title <i class="demo-icon cus-attention"></i> Oops! Trang không tìm thấy.
+                        p Xin lỗi, trang bạn đang tìm kiếm không tồn tại!.
+                        p Bạn có thể trở lại <a>trang chủ</a> hoặc thử sử dụng khung tìm kiếm sau.
+                form.section-body.mt-5.w-50.mx-auto(action='')
+                    input.form-control.br-sm.bg-white(type='search' placeholder='Tìm kiếm sản phẩm bạn ở đây')
+                    button.btn.btn-primary.ecs-icon-search
+
+block script
+    - let js = '/wwwroot/templates/release/error.min.js';
+    //- Default
+    script(type='text/javascript' src=`/wwwroot/templates/release/default.min.js` defer)
+    //- Page
+
+    script.
+        addCSS('#{css}')
+        addScript('#{js}')
+        addScript('/wwwroot/templates/release/layout.min.js')
+    

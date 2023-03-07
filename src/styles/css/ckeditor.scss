@@ -1,0 +1,209 @@
+﻿/* 1. Config */
+@import 'config/variables';
+
+/* 2. Mixins */
+@import 'mixins/breakpoint';
+@import 'mixins/core';
+@import 'mixins/buttons';
+@import 'mixins/mixins';
+//#ccc #aaa #999 #909399 #606266
+.cke_editable {
+    width: 1200px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    @import 'base/grid';
+    @import 'base/typography';
+    /*> *:first-child {
+        margin-top: 0 !important;
+    }*/
+    p,.h {
+        font-size:14px;
+    }
+    .btn-group .btn-default {
+        background-color: #f8f9fa;
+        border-color: #565e64;
+        padding: 3px 10px;
+        font-size: 14px;
+        line-height: 1.42857143;
+
+        &:hover {
+            background-color: #f9fafb;
+            border-color: #565e64;
+        }
+    }
+
+    @import 'components/blogcontent';
+    @import 'components/item-blog';
+    @import 'components/item-product';
+
+    .template-plugin {
+        @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
+        margin-top: 40px;
+        padding: 5px;
+    }
+
+    .bootstrap-tabs {
+        @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
+        margin-top: 40px;
+        padding: 5px;
+
+        .nav-tabs {
+            li {
+                margin-right: 5px;
+
+                a {
+                    border: none;
+                }
+
+                &:first-child {
+                    a {
+                        @include border-radius($val: 0);
+                    }
+                }
+
+                &:last-child {
+                    margin-right: 0;
+
+                    a {
+                        @include border-radius($val: 0);
+                    }
+                }
+
+                &.active {
+                    position: static;
+
+                    a {
+                        border-color: $white-color;
+                        background-color: $grey-background;
+                        color: $dark-color;
+                    }
+
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .tab-body {
+            .tab-pane {
+                opacity: 1;
+                height: auto;
+                visibility: visible;
+                margin-top: 5px;
+
+                .tab-pane-content {
+                    @include border-radius($val: 0);
+                    @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
+                }
+
+                &.active {
+                    .tab-pane-content {
+                        border-color: $border-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .cke_widget_wrapper:hover > .accordion-list,
+    .cke_widget_wrapper:hover > .collapsible-item,
+    .cke_widget_wrapper:hover .collapsible-item-title-link,
+    .cke_widget_wrapper:hover .collapsible-item-body,
+    .cke_widget_wrapper:hover .accordion-list-items {
+        outline: none;
+    }
+
+    .cke_widget_accordionList {
+        margin-top: 40px;
+    }
+
+    .accordion-list {
+        @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
+        outline: none;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+
+        .accordion-list-items {
+            @include border($position: "all", $size:1px, $style:dashed, $color: #aaa);
+            border-radius: 0;
+            box-shadow: none;
+
+            .collapsible-item {
+                @include border($position: "all", $size:1px, $style:dashed, $color: #999);
+                border-radius: 0;
+                margin: 10px 0;
+                padding: 5px;
+                background: transparent;
+                box-shadow: none;
+
+                &::before {
+                    display: none;
+                }
+
+                &::after {
+                    font-size: 10px;
+                    color: #000;
+                    content: "Bootstrap collapsible element";
+                }
+            }
+
+            .collapsible-item-title-link {
+                color: $dark-color;
+                border-bottom: none;
+                padding: 10px 20px;
+            }
+
+            .collapsible-item-title {
+                margin: 0 0 5px 0;
+                background-color: $grey-background;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .collapsible-item-body {
+                @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
+                box-shadow: none;
+                border-radius: 0;
+                padding: 20px;
+
+                > *:first-child {
+                    margin-top: 0;
+                }
+
+                > *:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .collapsible-item-heading {
+                @include border-radius($val:0);
+                background-color: transparent;
+            }
+        }
+
+        .collapsible-item-collapse {
+            border: none;
+        }
+
+        .collapsible-item-heading {
+            border: none;
+
+            .collapsible-item-title {
+                .collapsible-item-title-link {
+                    @include border-radius($val:0);
+                }
+            }
+        }
+    }
+
+    .component-item {
+        @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
+        padding: 5px;
+    }
+}

@@ -5,15 +5,15 @@ module.exports = grunt => {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
-            maincss: 'styles',
-            mainjs: 'styles',
-            modules: 'node_modules',
-            plugin: 'styles/plugins',
-            css: 'styles/pages/css',
-            js: 'styles/pages/scripts',
-            dest: 'release',
-            html: 'templates',
+            js: 'src/styles/js/pages',
+            basejs: 'src/styles/js',
+            css: 'src/styles/css/pages',
+            plugin: 'src/styles/plugins',
+            html: 'src/templates',
+            distcss: 'dist/wwwroot/templates/css',
+            dist: 'dist/wwwroot/templates/release',
         },
+        clean: ['dist'],
         pug: {
             release: {
                 options: {
@@ -23,17 +23,17 @@ module.exports = grunt => {
                     }
                 },
                 files: {
-                    'ajax/login.html': ['<%= dirs.html %>/ajax/login.pug'],
-                    'documentation.html': ['<%= dirs.html %>/documentation.pug'],
-                    'documentationcms.html': ['<%= dirs.html %>/documentationcms.pug'],
-                    'example.html': ['<%= dirs.html %>/example.pug'],
-                    '404.html': ['<%= dirs.html %>/404.pug'],
-                    'comingsoon.html': ['<%= dirs.html %>/comingsoon.pug'],
-                    'static.html': ['<%= dirs.html %>/static.pug'],
-                    'contact.html': ['<%= dirs.html %>/contact.pug'],
+                    'dist/ajax/login.html': ['<%= dirs.html %>/ajax/login.pug'],
+                    'dist/documentation.html': ['<%= dirs.html %>/documentation.pug'],
+                    'dist/documentationcms.html': ['<%= dirs.html %>/documentationcms.pug'],
+                    'dist/example.html': ['<%= dirs.html %>/example.pug'],
+                    'dist/404.html': ['<%= dirs.html %>/404.pug'],
+                    'dist/comingsoon.html': ['<%= dirs.html %>/comingsoon.pug'],
+                    'dist/static.html': ['<%= dirs.html %>/static.pug'],
+                    'dist/contact.html': ['<%= dirs.html %>/contact.pug'],
 
-                    'index.html': ['<%= dirs.html %>/menu.pug'],
-                    'home.html': ['<%= dirs.html %>/home.pug']
+                    'dist/index.html': ['<%= dirs.html %>/menu.pug'],
+                    'dist/home.html': ['<%= dirs.html %>/home.pug']
                 }
             }
         },
@@ -46,15 +46,34 @@ module.exports = grunt => {
                     update: true,
                 },
                 files: {
-                    '<%= dirs.dest %>/document.css': '<%= dirs.maincss %>/document.scss',
-                    '<%= dirs.dest %>/styleckeditor.css': '<%= dirs.css %>/styleckeditor.scss',
-                    '<%= dirs.dest %>/safari.css': '<%= dirs.maincss %>/safari.scss',
-                    '<%= dirs.dest %>/layout-style.css': '<%= dirs.maincss %>/layout-style.scss',
-                    '<%= dirs.dest %>/error-page.css': '<%= dirs.css %>/error-page.scss',
-                    '<%= dirs.dest %>/comingsoon-page.css': '<%= dirs.css %>/comingsoon-page.scss',
-                    '<%= dirs.dest %>/static-page.css': '<%= dirs.css %>/static-page.scss',
+                    '<%= dirs.dist %>/document.css': 'src/styles/css/document.scss',
+                    '<%= dirs.dist %>/safari.css': 'src/styles/css/safari.scss',
+                    '<%= dirs.dist %>/layout.css': 'src/styles/css/layout.scss',
+                    '<%= dirs.dist %>/ckeditor.css': 'src/styles/css/ckeditor.scss',
+                    '<%= dirs.dist %>/error.css': 'src/styles/css/pages/error.scss',
+                    '<%= dirs.dist %>/comingsoon.css': 'src/styles/css/pages/comingsoon.scss',
+                    '<%= dirs.dist %>/static.css': 'src/styles/css/pages/static.scss',
 
-                    '<%= dirs.dest %>/index-page.css': '<%= dirs.css %>/index-page.scss'
+                    '<%= dirs.dist %>/index.css': 'src/styles/css/pages/index.scss'
+                }
+            }
+        },
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['@babel/preset-env']
+            },
+            dist: {
+                files: {
+                    '<%= dirs.dist %>/core.js': '<%= dirs.basejs %>/core.js',
+                    '<%= dirs.dist %>/layout.js': '<%= dirs.basejs %>/layout.js',
+                    '<%= dirs.dist %>/document.js': '<%= dirs.basejs %>/document.js',
+
+                    '<%= dirs.dist %>/comingsoon.js': '<%= dirs.js %>/comingsoon.js',
+                    '<%= dirs.dist %>/error.js': '<%= dirs.js %>/error.js',
+                    '<%= dirs.dist %>/login.js': '<%= dirs.js %>/login.js',
+                    '<%= dirs.dist %>/static.js': '<%= dirs.js %>/static.js',
+                    '<%= dirs.dist %>/index.js': '<%= dirs.js %>/index.js',
                 }
             }
         },
@@ -64,112 +83,121 @@ module.exports = grunt => {
             },
             my_target: {
                 files: {
-                    // '<%= dirs.dest %>/updateFile.js': [
-                    //     '<%= dirs.mainjs %>/modulejs/updateFile.js'
+                    // '<%= dirs.dist %>/updateFile.js': [
+                    //     '<%= dirs.basejs %>/components/updateFile.js'
                     // ],
-                    // Lang
-                    '<%= dirs.dest %>/lang.min.js': [
-                        '<%= dirs.plugin %>/multilanguage/multilang.min.js',
-                        '<%= dirs.mainjs %>/multilang.js'
+                    // Ext
+                    '<%= dirs.dist %>/lang.min.js': [
+                        '<%= dirs.plugin %>/multi-language/multi-language.js',
+                        '<%= dirs.plugin %>/lang.js'
+                    ],
+                    '<%= dirs.dist %>/webfontloader.min.js': [
+                        'node_modules/webfontloader/webfontloader.js',
+                    ],
+                    '<%= dirs.dist %>/jquery.min.js': [
+                        'node_modules/jquery/jquery.js',
+                    ],
+                    '<%= dirs.dist %>/instantpage.min.js': [
+                        '<%= dirs.plugin %>/instantpage/instantpage.js',
                     ],
                     // Core
-                    '<%= dirs.dest %>/core.min.js': [
+                    '<%= dirs.dist %>/core.min.js': [
                     // core
-                        '<%= dirs.mainjs %>/core.js',
-                        '<%= dirs.mainjs %>/modulejs/setTab.js',
-                        '<%= dirs.mainjs %>/modulejs/initDropdownAction.js',
-                        '<%= dirs.mainjs %>/modulejs/initScrollTopButton.js',
-                        '<%= dirs.mainjs %>/modulejs/stickyContent.js',
-                        '<%= dirs.mainjs %>/modulejs/scrollDirection.js',
-                        '<%= dirs.mainjs %>/modulejs/cutomizeSelect.js',
-                        '<%= dirs.mainjs %>/modulejs/accordion.js',
-                        '<%= dirs.mainjs %>/modulejs/stickySidebar.js',
-                        '<%= dirs.mainjs %>/modulejs/zoomImage.js',
-                        '<%= dirs.mainjs %>/modulejs/fancyBox.js',
-                        '<%= dirs.mainjs %>/modulejs/popup.js',
-                        '<%= dirs.mainjs %>/modulejs/initPopup.js',
-                        '<%= dirs.mainjs %>/modulejs/miniPopup.js',
-                        '<%= dirs.mainjs %>/modulejs/togglerMake.js',
-                        '<%= dirs.mainjs %>/modulejs/scrollTo.js',
-                        '<%= dirs.mainjs %>/modulejs/menu.js',
-                        '<%= dirs.mainjs %>/modulejs/slider.js',
-                        '<%= dirs.mainjs %>/modulejs/sideBar.js',
-                        '<%= dirs.mainjs %>/modulejs/draggAble.js',
+                        '<%= dirs.dist %>/core.js',
+                        '<%= dirs.basejs %>/components/setTab.js',
+                        '<%= dirs.basejs %>/components/initDropdownAction.js',
+                        '<%= dirs.basejs %>/components/initScrollTopButton.js',
+                        '<%= dirs.basejs %>/components/stickyContent.js',
+                        '<%= dirs.basejs %>/components/scrollDirection.js',
+                        '<%= dirs.basejs %>/components/cutomizeSelect.js',
+                        '<%= dirs.basejs %>/components/accordion.js',
+                        '<%= dirs.basejs %>/components/stickySidebar.js',
+                        '<%= dirs.basejs %>/components/zoomImage.js',
+                        '<%= dirs.basejs %>/components/fancyBox.js',
+                        '<%= dirs.basejs %>/components/popup.js',
+                        '<%= dirs.basejs %>/components/initPopup.js',
+                        '<%= dirs.basejs %>/components/miniPopup.js',
+                        '<%= dirs.basejs %>/components/togglerMake.js',
+                        '<%= dirs.basejs %>/components/scrollTo.js',
+                        '<%= dirs.basejs %>/components/menu.js',
+                        '<%= dirs.basejs %>/components/slider.js',
+                        '<%= dirs.basejs %>/components/sideBar.js',
+                        '<%= dirs.basejs %>/components/draggAble.js',
                     // Acc
-                        '<%= dirs.mainjs %>/modulejs/initScrollLoad.js',
+                        '<%= dirs.basejs %>/components/initScrollLoad.js',
                     // Content
-                        '<%= dirs.mainjs %>/modulejs/readMore.js',
-                        '<%= dirs.mainjs %>/modulejs/tableOfContent.js',
-                        '<%= dirs.mainjs %>/modulejs/uploadFile.js',
+                        '<%= dirs.basejs %>/components/readMore.js',
+                        '<%= dirs.basejs %>/components/tableOfContent.js',
+                        '<%= dirs.basejs %>/components/uploadFile.js',
                     // Product
-                        '<%= dirs.mainjs %>/modulejs/shop.js',
-                        '<%= dirs.mainjs %>/modulejs/quantityInput.js',
-                        '<%= dirs.mainjs %>/modulejs/initSelectMenu.js',
-                        '<%= dirs.mainjs %>/modulejs/initCheckBoxMenu.js',
-                        '<%= dirs.mainjs %>/modulejs/initSelectSideBar.js',
-                        '<%= dirs.mainjs %>/modulejs/wishlistAction.js',
-                        '<%= dirs.mainjs %>/modulejs/productSingle.js',
-                        '<%= dirs.mainjs %>/modulejs/productSinglePage.js',
-                        // '<%= dirs.mainjs %>/modulejs/ratingTooltip.js',
+                        '<%= dirs.basejs %>/components/shop.js',
+                        '<%= dirs.basejs %>/components/quantityInput.js',
+                        '<%= dirs.basejs %>/components/initSelectMenu.js',
+                        '<%= dirs.basejs %>/components/initCheckBoxMenu.js',
+                        '<%= dirs.basejs %>/components/initSelectSideBar.js',
+                        '<%= dirs.basejs %>/components/wishlistAction.js',
+                        '<%= dirs.basejs %>/components/productSingle.js',
+                        '<%= dirs.basejs %>/components/productSinglePage.js',
+                        // '<%= dirs.basejs %>/components/ratingTooltip.js',
                     // Plugin
-                        // '<%= dirs.mainjs %>/modulejs/marquee.js',
-                        // '<%= dirs.mainjs %>/modulejs/pageScrollToId.js',
-                        '<%= dirs.mainjs %>/modulejs/preSearch.js',
-                        '<%= dirs.mainjs %>/modulejs/typeWriter.js',
+                        // '<%= dirs.basejs %>/components/marquee.js',
+                        // '<%= dirs.basejs %>/components/pageScrollToId.js',
+                        '<%= dirs.basejs %>/components/preSearch.js',
+                        '<%= dirs.basejs %>/components/typeWriter.js',
 
-                        '<%= dirs.mainjs %>/modulejs/initFloatingParallax.js',
-                        '<%= dirs.mainjs %>/modulejs/isotopes.js',
-                        '<%= dirs.mainjs %>/modulejs/initNavFilter.js',
+                        '<%= dirs.basejs %>/components/initFloatingParallax.js',
+                        '<%= dirs.basejs %>/components/isotopes.js',
+                        '<%= dirs.basejs %>/components/initNavFilter.js',
                         
-                        '<%= dirs.mainjs %>/modulejs/setProgressBar.js',
-                        '<%= dirs.mainjs %>/modulejs/countDown.js',
-                        '<%= dirs.mainjs %>/modulejs/countTo.js',
-                        '<%= dirs.mainjs %>/modulejs/fakeLoadMore.js',
-                        '<%= dirs.mainjs %>/modulejs/notiCustomer.js',
-                        '<%= dirs.mainjs %>/modulejs/ezParallax.js',
-                        '<%= dirs.mainjs %>/modulejs/mouseFollow.js'
+                        '<%= dirs.basejs %>/components/setProgressBar.js',
+                        '<%= dirs.basejs %>/components/countDown.js',
+                        '<%= dirs.basejs %>/components/countTo.js',
+                        '<%= dirs.basejs %>/components/fakeLoadMore.js',
+                        '<%= dirs.basejs %>/components/notiCustomer.js',
+                        '<%= dirs.basejs %>/components/ezParallax.js',
+                        '<%= dirs.basejs %>/components/mouseFollow.js'
                     ],
                     // Default all page
-                    '<%= dirs.dest %>/default.min.js': [
-                        '<%= dirs.plugin %>/draggabilly/draggabilly.pkgd.min.js',
-                        '<%= dirs.plugin %>/jquery-validation/jquery.validate.min.js',
-                        '<%= dirs.plugin %>/fancybox/fancybox.min.js',
-                        '<%= dirs.plugin %>/swiper/swiper-bundle.js',
+                    '<%= dirs.dist %>/default.min.js': [
+                        'node_modules/draggabilly/dist/draggabilly.pkgd.min.js',
+                        'node_modules/jquery-validation/dist/jquery.validate.min.js',
+                        'node_modules/fancybox/dist/js/jquery.fancybox.js',
+                        'node_modules/swiper/swiper-bundle.js',
                     ],
-                    '<%= dirs.dest %>/layout-script.min.js': [
-                        '<%= dirs.mainjs %>/layout-script.js',
+                    '<%= dirs.dist %>/layout.min.js': [
+                        '<%= dirs.dist %>/layout.js',
                     ],
                     // Documentation
-                    '<%= dirs.dest %>/document.min.js': [
-                        '<%= dirs.dest %>/core.min.js',
-                        '<%= dirs.mainjs %>/document.js',
+                    '<%= dirs.dist %>/document.min.js': [
+                        '<%= dirs.dist %>/core.min.js',
+                        '<%= dirs.dist %>/document.js',
                     ],
                     // Coming soon
-                    '<%= dirs.dest %>/comingsoon-page.min.js': [
-                        '<%= dirs.plugin %>/jquery.plugin.min.js',
-                        '<%= dirs.plugin %>/kbw-countdown/jquery.countdown.min.js',
-                        '<%= dirs.dest %>/core.min.js',
-                        '<%= dirs.js %>/comingsoon-page.js',
+                    '<%= dirs.dist %>/comingsoon.min.js': [
+                        'node_modules/kbw-countdown/dist/js/jquery.plugin.min.js',
+                        'node_modules/kbw-countdown/dist/js/jquery.countdown.min.js',
+                        '<%= dirs.dist %>/core.min.js',
+                        '<%= dirs.dist %>/comingsoon.js',
                     ],
                     // Error
-                    '<%= dirs.dest %>/error-page.min.js': [
-                        '<%= dirs.dest %>/core.min.js',
-                        '<%= dirs.js %>/error-page.js',
+                    '<%= dirs.dist %>/error.min.js': [
+                        '<%= dirs.dist %>/core.min.js',
+                        '<%= dirs.dist %>/error.js',
                     ],
                     // Login
-                    '<%= dirs.dest %>/login-page.min.js': [
-                        '<%= dirs.js %>/login-page.js',
+                    '<%= dirs.dist %>/login.min.js': [
+                        '<%= dirs.dist %>/login.js',
                     ],
                     // Static page
-                    '<%= dirs.dest %>/static-page.min.js': [
-                        '<%= dirs.dest %>/core.min.js',
-                        '<%= dirs.js %>/static-page.js',
+                    '<%= dirs.dist %>/static.min.js': [
+                        '<%= dirs.dist %>/core.min.js',
+                        '<%= dirs.dist %>/static.js',
                     ],
 
                     // Index
-                    '<%= dirs.dest %>/index-page.min.js': [
-                        '<%= dirs.dest %>/core.min.js',
-                        '<%= dirs.js %>/index-page.js',
+                    '<%= dirs.dist %>/index.min.js': [
+                        '<%= dirs.dist %>/core.min.js',
+                        '<%= dirs.dist %>/index.js',
                     ]
                 }
             },
@@ -181,7 +209,7 @@ module.exports = grunt => {
             //         expand: true,
             //         cwd: 'styles/modulejs',
             //         src: ['*.js'],
-            //         dest: '<%= dirs.dest %>/',
+            //         dest: '<%= dirs.dist %>/',
             //         ext: '.min.js'
             //     }]
             // }
@@ -192,50 +220,91 @@ module.exports = grunt => {
             },
             my_target: {
                 files: [{
-                    // '<%= dirs.dest %>/fancybox.min.css': [
-                    //     '<%= dirs.plugin %>/fancybox/fancybox.css',
-                    // ],
-                    'icons/customize.min.css': [
-                        'icons/customize.css',
+                    'dist/wwwroot/templates/icons/customize.min.css': [
+                        'src/icons/customize.css',
                     ],
                     // Main
-                    '<%= dirs.dest %>/main.min.css': [
+                    '<%= dirs.dist %>/main.min.css': [
                         '<%= dirs.plugin %>/animate/animate.min.css',
-                        '<%= dirs.dest %>/layout-style.css',
+                        '<%= dirs.dist %>/layout.css',
                     ],
                     // Default all page
-                    '<%= dirs.dest %>/default.min.css': [
-                        '<%= dirs.plugin %>/fancybox/fancybox.min.css',
-                        '<%= dirs.plugin %>/swiper/swiper-bundle.css',
+                    '<%= dirs.dist %>/default.min.css': [
+                        'node_modules/fancybox/dist/css/jquery.fancybox.css',
+                        'node_modules/swiper/swiper-bundle.min.css',
                     ],
                     // Documentation
-                    '<%= dirs.dest %>/document.min.css': [
-                        '<%= dirs.dest %>/document.css',
+                    '<%= dirs.dist %>/document.min.css': [
+                        '<%= dirs.dist %>/document.css',
                     ],
                     // Ckeditor
-                    '<%= dirs.dest %>/styleckeditor.min.css': [
-                        '<%= dirs.dest %>/main.min.css',
-                        '<%= dirs.dest %>/styleckeditor.css',
+                    '<%= dirs.dist %>/ckeditor.min.css': [
+                        '<%= dirs.dist %>/main.min.css',
+                        '<%= dirs.dist %>/ckeditor.css',
                     ],
                     // Coming soon
-                    '<%= dirs.dest %>/comingsoon-page.min.css': [
-                        '<%= dirs.dest %>/comingsoon-page.css',
+                    '<%= dirs.dist %>/comingsoon.min.css': [
+                        '<%= dirs.dist %>/comingsoon.css',
                     ],
                     // Error
-                    '<%= dirs.dest %>/error-page.min.css': [
-                        '<%= dirs.dest %>/error-page.css',
+                    '<%= dirs.dist %>/error.min.css': [
+                        '<%= dirs.dist %>/error.css',
                     ],
                     // Static
-                    '<%= dirs.dest %>/static-page.min.css': [
-                        '<%= dirs.dest %>/static-page.css',
+                    '<%= dirs.dist %>/static.min.css': [
+                        '<%= dirs.dist %>/static.css',
                     ],
 
                     // Index
-                    '<%= dirs.dest %>/index-page.min.css': [
-                        '<%= dirs.dest %>/index-page.css',
+                    '<%= dirs.dist %>/index.min.css': [
+                        '<%= dirs.dist %>/index.css',
                     ]
                 }]
             }
+        },
+        sprite:{
+            all: {
+                src: 'src/sprite/*.png',
+                dest: 'dist/wwwroot/templates/images/sprite/sprite.png',
+                destCss: '<%= dirs.dist %>/sprites.min.css'
+            }
+        },
+        copy: {
+            main: {
+                files: [
+                    {
+                        expand: true, 
+                        cwd: 'src/img/',
+                        src: [
+                            '*.{jpg,png,svg}',
+                            '**'
+                        ], 
+                        dest: 'dist/wwwroot/templates/images/', 
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true, 
+                        cwd: 'src/icons/',
+                        src: ['**'], 
+                        dest: 'dist/wwwroot/templates/icons/', 
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true, 
+                        cwd: 'src/fonts/',
+                        src: ['**'],
+                        dest: 'dist/wwwroot/templates/fonts/', 
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true, 
+                        cwd: 'src/plugins/fontawesome-free/',
+                        src: ['**'],
+                        dest: 'dist/wwwroot/templates/plugins/fontawesome-free/', 
+                        filter: 'isFile'
+                    }
+                ],
+            },
         },
         watch: {
             options: {
@@ -247,15 +316,19 @@ module.exports = grunt => {
                 tasks: ['pug']
             },
             sass: {
-                files: ['<%= dirs.css %>/*.scss', '<%= dirs.maincss %>/*.scss', 'styles/components/*.scss', 'styles/config/*.scss', 'styles/elements/*.scss', 'styles/base/*.scss', 'styles/base/footer/*.scss', 'styles/base/header/*.scss'],
+                files: ['<%= dirs.css %>/*.scss', 'src/styles/css/*.scss', 'src/styles/css/components/*.scss', 'src/styles/css/config/*.scss', 'src/styles/css/elements/*.scss', 'src/styles/css/base/*.scss', 'src/styles/css/base/footer/*.scss', 'src/styles/css/base/header/*.scss'],
                 tasks: ['sass']
             },
             cssmin: {
-                files: ['icons/*.css','<%= dirs.css %>/*.scss', '<%= dirs.maincss %>/*.scss', 'styles/components/*.scss', 'styles/config/*.scss', 'styles/elements/*.scss', 'styles/base/*.scss', 'styles/base/footer/*.scss', 'styles/base/header/*.scss'],
+                files: ['src/styles/css/icons/*.css','<%= dirs.css %>/*.scss', 'src/styles/css/*.scss', 'src/styles/css/components/*.scss', 'src/styles/css/config/*.scss', 'src/styles/css/elements/*.scss', 'src/styles/css/base/*.scss', 'src/styles/css/base/footer/*.scss', 'src/styles/css/base/header/*.scss'],
                 tasks: ['cssmin']
             },
+            babel: {
+                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js','src/styles/js/components/*.js'],
+                tasks: ['babel']
+            },
             uglify: {
-                files: ['<%= dirs.js %>/*.js', '<%= dirs.mainjs %>/*.js','styles/modulejs/*.js'],
+                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js','src/styles/js/components/*.js'],
                 tasks: ['uglify']
             },
         },
@@ -263,19 +336,24 @@ module.exports = grunt => {
             dev: {
                 bsFiles: {
                     src: [
-                        '<%= dirs.dest %>/*.css',
-                        '*.html',
-                        '<%= dirs.dest %>/*.js',
+                        '<%= dirs.dist %>/*.css',
+                        'dist/*.html',
+                        '<%= dirs.dist %>/*.js',
                     ]
                 },
                 options: {
                     watchTask: true,
-                    server: './'
+                    baseDir: './dist',
+                    server: './dist'
                 },
             }
         }
 
     });
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-spritesmith');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify-es');
     //grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -283,5 +361,8 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.registerTask('build', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin']);
+    grunt.registerTask('sprite ', ['sprite']);
+    grunt.registerTask('copy ', ['copy']);
     grunt.registerTask('default', ['browserSync', 'watch']);
 };
