@@ -58,6 +58,17 @@ module.exports = grunt => {
                 }
             }
         },
+        autoprefixer: {
+            options: {
+                // We need to `freeze` browsers versions for testing purposes.
+                browsers: ['last 5 versions', 'opera 12', 'ff 15', 'chrome 25', 'iOS 13.2']
+            },
+            multiple_files: {
+                expand: false,
+                flatten: false,
+                src: '<%= dirs.dist %>/*.css',
+            },
+        },
         babel: {
             options: {
                 sourceMap: true,
@@ -352,6 +363,7 @@ module.exports = grunt => {
     });
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify-es');
@@ -363,8 +375,8 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-browser-sync');
     
     
-    grunt.registerTask('release', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin', 'sprite', 'copy']);
-    grunt.registerTask('build', ['clean', 'pug', 'sass', 'babel', 'uglify', 'cssmin']);
+    grunt.registerTask('release', ['clean', 'pug', 'sass', 'autoprefixer', 'babel', 'uglify', 'cssmin', 'sprite', 'copy']);
+    grunt.registerTask('build', ['clean', 'pug', 'sass', 'autoprefixer', 'babel', 'uglify', 'cssmin']);
     grunt.registerTask('sprite ', ['sprite']);
     grunt.registerTask('copy ', ['copy']);
     grunt.registerTask('default', ['browserSync', 'watch']);
