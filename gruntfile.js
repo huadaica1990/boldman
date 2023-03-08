@@ -313,7 +313,13 @@ module.exports = grunt => {
                         src: ['**'],
                         dest: 'dist/wwwroot/templates/plugins/fontawesome-free/', 
                         filter: 'isFile'
-                    }
+                    },
+                    {
+                        expand: false, 
+                        src: ['src/plugins/languages.json'], 
+                        dest: 'dist/wwwroot/templates/release/', 
+                        filter: 'isFile'
+                    },
                 ],
             },
         },
