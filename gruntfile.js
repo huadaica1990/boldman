@@ -349,6 +349,10 @@ module.exports = grunt => {
                 files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js','src/styles/js/components/*.js'],
                 tasks: ['uglify']
             },
+            copy: {
+                files: ['src/img/*/*.*','src/icons/*.*','src/fonts/*.*'],
+                tasks: ['copy']
+            },
         },
         browserSync: {
             dev: {
