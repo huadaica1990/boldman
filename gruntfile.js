@@ -316,8 +316,8 @@ module.exports = grunt => {
                     },
                     {
                         expand: true, 
-                        cwd: 'src/styles/plugins/',
-                        src: ['languages.json'], 
+                        cwd: 'src/styles/js/data/',
+                        src: ['**'], 
                         dest: 'dist/wwwroot/templates/release/', 
                         filter: 'isFile'
                     },
