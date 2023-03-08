@@ -315,8 +315,9 @@ module.exports = grunt => {
                         filter: 'isFile'
                     },
                     {
-                        expand: false, 
-                        src: ['src/plugins/languages.json'], 
+                        expand: true, 
+                        cwd: 'src/styles/plugins/',
+                        src: ['languages.json'], 
                         dest: 'dist/wwwroot/templates/release/', 
                         filter: 'isFile'
                     },
