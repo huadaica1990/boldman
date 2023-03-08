@@ -61,7 +61,7 @@ module.exports = grunt => {
         autoprefixer: {
             options: {
                 // We need to `freeze` browsers versions for testing purposes.
-                browsers: ['last 5 versions', 'opera 12', 'ff 15', 'chrome 25', 'iOS 13.2']
+                browsers: ['last 5 versions', 'opera 12', 'ff 15', 'chrome 25', 'iOS 13.2', 'ie 8', 'ie 9']
             },
             multiple_files: {
                 expand: false,
