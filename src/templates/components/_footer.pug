@@ -131,7 +131,7 @@ if popup
             a.d-block.d-sm-none.facemess(href='https://m.me/' target='_blank' rel='nofollow')
                 span 1
                 div.background-icon
-                //- img.ishow(src='/img/messenger.svg' alt='')  
+                //- img.ishow(src=dist+'/default/messenger.svg' alt='')  
         //- Start of Zalo
         if chatZalo 
             script(type='text/javascript' src='https://sp.zalo.me/plugins/sdk.js' async defer)
@@ -143,7 +143,7 @@ if popup
                                                                                                                                     }`)
                 span
                 div.background-icon
-                //- img.ishow(src='/img/stick_zalo.png' alt='')  
+                //- img.ishow(src=dist+'/default/stick_zalo.png' alt='')  
 
         //- Start of Call Now
         a.callnow.draggable-pc(href='tel:'+phoneDefault data-draggabilly-options=`{

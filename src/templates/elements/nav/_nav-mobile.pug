@@ -37,7 +37,7 @@
             if isLang
                 .dropdown.lang-wrapper
                     a.text-uppercase(href='javascript:' data-toggle='dropdown')
-                        img.dropdown-image(src='/img/flag-vn.png' alt='' loading='lazy')
+                        img.dropdown-image(src=dist+'/default/flag-vn.png' alt='' loading='lazy')
                         .
                             VN
                     .dropdown-box.dropdown-box-lang
@@ -54,7 +54,7 @@
                 if isLogin
                     if isAuthorise
                         a.user(href='')
-                            img.avatar(src='/img/avatar.jpg' alt='' width='25' height='25' loading='lazy')
+                            img.avatar(src=dist+'/default/avatar.jpg' alt='' width='25' height='25' loading='lazy')
                     else
                         a.user.ecs-icon-user.login.sign-in(href='/ajax/login.html')
                 if isCart
@@ -84,7 +84,7 @@
         a(href='')
             picture
                 source(media='' srcset='' type='image/webp')
-                img.w-100(src='/img/menu/search0.jpg' alt='' width='400' height='35' loading='lazy')
+                img.w-100(src=dist+'/menus/search0.jpg' alt='' width='400' height='35' loading='lazy')
         .search-result-step1
             .search-result-history.toggler-wrap.js-viewed-search
                 each item in tags
@@ -137,7 +137,7 @@
                         if isAuthorise
                             li(data-id='')
                                 a.login.font-weight-normal(href='')
-                                    img.avatar(src='/img/avatar.jpg' alt='' width='25' height='25' loading='lazy')
+                                    img.avatar(src=dist+'/default/avatar.jpg' alt='' width='25' height='25' loading='lazy')
                                     span Xin chào Nguyễn Trọng Huy Nguyễn Trọng Huy
                         else
                             li(data-id='')
