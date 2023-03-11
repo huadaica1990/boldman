@@ -22,19 +22,22 @@ module.exports = grunt => {
                         pretty: true
                     }
                 },
-                files: {
-                    'dist/ajax/login.html': ['<%= dirs.html %>/ajax/login.pug'],
-                    'dist/documentation.html': ['<%= dirs.html %>/documentation.pug'],
-                    'dist/documentationcms.html': ['<%= dirs.html %>/documentationcms.pug'],
-                    'dist/example.html': ['<%= dirs.html %>/example.pug'],
-                    'dist/404.html': ['<%= dirs.html %>/404.pug'],
-                    'dist/comingsoon.html': ['<%= dirs.html %>/comingsoon.pug'],
-                    'dist/static.html': ['<%= dirs.html %>/static.pug'],
-                    'dist/contact.html': ['<%= dirs.html %>/contact.pug'],
-
-                    'dist/index.html': ['<%= dirs.html %>/menu.pug'],
-                    'dist/home.html': ['<%= dirs.html %>/home.pug']
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= dirs.html %>/',
+                        src: '*.pug',
+                        ext: '.html',
+                        dest: 'dist/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= dirs.html %>/ajax/',
+                        src: '*.pug',
+                        ext: '.html',
+                        dest: 'dist/ajax/',
+                    }
+                ]
             }
         },
         sass: {
@@ -45,17 +48,16 @@ module.exports = grunt => {
                     lineNumbers: true,
                     update: true,
                 },
-                files: {
-                    '<%= dirs.dist %>/document.css': 'src/styles/css/document.scss',
-                    '<%= dirs.dist %>/safari.css': 'src/styles/css/safari.scss',
-                    '<%= dirs.dist %>/layout.css': 'src/styles/css/layout.scss',
-                    '<%= dirs.dist %>/ckeditor.css': 'src/styles/css/ckeditor.scss',
-                    '<%= dirs.dist %>/error.css': 'src/styles/css/pages/error.scss',
-                    '<%= dirs.dist %>/comingsoon.css': 'src/styles/css/pages/comingsoon.scss',
-                    '<%= dirs.dist %>/static.css': 'src/styles/css/pages/static.scss',
-
-                    '<%= dirs.dist %>/index.css': 'src/styles/css/pages/index.scss'
-                }
+                files: [
+                    {
+                        flatten: true,
+                        expand: true,
+                        cwd: 'src/styles/css/',
+                        src: ['*.scss', 'pages/*.scss'],
+                        ext: '.css',
+                        dest: '<%= dirs.dist %>/'
+                    }
+                ]
             }
         },
         autoprefixer: {
@@ -90,7 +92,7 @@ module.exports = grunt => {
         },
         uglify: {
             options: {
-              beautify: false
+                beautify: false
             },
             my_target: {
                 files: {
@@ -113,7 +115,7 @@ module.exports = grunt => {
                     ],
                     // Core
                     '<%= dirs.dist %>/core.min.js': [
-                    // core
+                        // core
                         '<%= dirs.dist %>/core.js',
                         '<%= dirs.basejs %>/components/setTab.js',
                         '<%= dirs.basejs %>/components/initDropdownAction.js',
@@ -134,13 +136,13 @@ module.exports = grunt => {
                         '<%= dirs.basejs %>/components/slider.js',
                         '<%= dirs.basejs %>/components/sideBar.js',
                         '<%= dirs.basejs %>/components/draggAble.js',
-                    // Acc
+                        // Acc
                         '<%= dirs.basejs %>/components/initScrollLoad.js',
-                    // Content
+                        // Content
                         '<%= dirs.basejs %>/components/readMore.js',
                         '<%= dirs.basejs %>/components/tableOfContent.js',
                         '<%= dirs.basejs %>/components/uploadFile.js',
-                    // Product
+                        // Product
                         '<%= dirs.basejs %>/components/shop.js',
                         '<%= dirs.basejs %>/components/quantityInput.js',
                         '<%= dirs.basejs %>/components/initSelectMenu.js',
@@ -150,7 +152,7 @@ module.exports = grunt => {
                         '<%= dirs.basejs %>/components/productSingle.js',
                         '<%= dirs.basejs %>/components/productSinglePage.js',
                         // '<%= dirs.basejs %>/components/ratingTooltip.js',
-                    // Plugin
+                        // Plugin
                         // '<%= dirs.basejs %>/components/marquee.js',
                         // '<%= dirs.basejs %>/components/pageScrollToId.js',
                         '<%= dirs.basejs %>/components/preSearch.js',
@@ -159,7 +161,7 @@ module.exports = grunt => {
                         '<%= dirs.basejs %>/components/initFloatingParallax.js',
                         '<%= dirs.basejs %>/components/isotopes.js',
                         '<%= dirs.basejs %>/components/initNavFilter.js',
-                        
+
                         '<%= dirs.basejs %>/components/setProgressBar.js',
                         '<%= dirs.basejs %>/components/countDown.js',
                         '<%= dirs.basejs %>/components/countTo.js',
@@ -172,7 +174,7 @@ module.exports = grunt => {
                     '<%= dirs.dist %>/default.min.js': [
                         'node_modules/draggabilly/dist/draggabilly.pkgd.min.js',
                         'node_modules/jquery-validation/dist/jquery.validate.min.js',
-                        'node_modules/fancybox/dist/js/jquery.fancybox.js',
+                        '<%= dirs.plugin %>/fancybox/fancybox.min.js',
                         'node_modules/swiper/swiper-bundle.js',
                     ],
                     '<%= dirs.dist %>/layout.min.js': [
@@ -241,7 +243,7 @@ module.exports = grunt => {
                     ],
                     // Default all page
                     '<%= dirs.dist %>/default.min.css': [
-                        'node_modules/fancybox/dist/css/jquery.fancybox.css',
+                        '<%= dirs.plugin %>/fancybox/fancybox.min.css',
                         'node_modules/swiper/swiper-bundle.min.css',
                     ],
                     // Documentation
@@ -273,7 +275,7 @@ module.exports = grunt => {
                 }]
             }
         },
-        sprite:{
+        sprite: {
             all: {
                 src: 'src/sprite/*.png',
                 dest: 'dist/wwwroot/templates/images/sprite/sprite.png',
@@ -284,41 +286,41 @@ module.exports = grunt => {
             main: {
                 files: [
                     {
-                        expand: true, 
+                        expand: true,
                         cwd: 'src/img/',
                         src: [
                             '*.{jpg,png,svg}',
                             '**'
-                        ], 
-                        dest: 'dist/wwwroot/templates/images/', 
+                        ],
+                        dest: 'dist/wwwroot/templates/images/',
                         filter: 'isFile'
                     },
                     {
-                        expand: true, 
+                        expand: true,
                         cwd: 'src/icons/',
-                        src: ['**'], 
-                        dest: 'dist/wwwroot/templates/icons/', 
+                        src: ['**'],
+                        dest: 'dist/wwwroot/templates/icons/',
                         filter: 'isFile'
                     },
                     {
-                        expand: true, 
+                        expand: true,
                         cwd: 'src/fonts/',
                         src: ['**'],
-                        dest: 'dist/wwwroot/templates/fonts/', 
+                        dest: 'dist/wwwroot/templates/fonts/',
                         filter: 'isFile'
                     },
                     {
-                        expand: true, 
+                        expand: true,
                         cwd: 'src/plugins/fontawesome-free/',
                         src: ['**'],
-                        dest: 'dist/wwwroot/templates/plugins/fontawesome-free/', 
+                        dest: 'dist/wwwroot/templates/plugins/fontawesome-free/',
                         filter: 'isFile'
                     },
                     {
-                        expand: true, 
+                        expand: true,
                         cwd: 'src/styles/js/data/',
-                        src: ['**'], 
-                        dest: 'dist/wwwroot/templates/release/', 
+                        src: ['**'],
+                        dest: 'dist/wwwroot/templates/release/',
                         filter: 'isFile'
                     },
                 ],
@@ -338,19 +340,19 @@ module.exports = grunt => {
                 tasks: ['sass']
             },
             cssmin: {
-                files: ['src/styles/css/icons/*.css','<%= dirs.css %>/*.scss', 'src/styles/css/*.scss', 'src/styles/css/components/*.scss', 'src/styles/css/config/*.scss', 'src/styles/css/elements/*.scss', 'src/styles/css/base/*.scss', 'src/styles/css/base/footer/*.scss', 'src/styles/css/base/header/*.scss'],
+                files: ['src/styles/css/icons/*.css', '<%= dirs.css %>/*.scss', 'src/styles/css/*.scss', 'src/styles/css/components/*.scss', 'src/styles/css/config/*.scss', 'src/styles/css/elements/*.scss', 'src/styles/css/base/*.scss', 'src/styles/css/base/footer/*.scss', 'src/styles/css/base/header/*.scss'],
                 tasks: ['cssmin']
             },
             babel: {
-                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js','src/styles/js/components/*.js'],
+                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js', 'src/styles/js/components/*.js'],
                 tasks: ['babel']
             },
             uglify: {
-                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js','src/styles/js/components/*.js'],
+                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js', 'src/styles/js/components/*.js'],
                 tasks: ['uglify']
             },
             copy: {
-                files: ['src/img/*/*.*','src/icons/*.*','src/fonts/*.*'],
+                files: ['src/img/*', 'src/img/*/*.*', 'src/icons/*.*', 'src/fonts/*.*'],
                 tasks: ['copy']
             },
         },
@@ -384,8 +386,8 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-browser-sync');
-    
-    
+
+
     grunt.registerTask('release', ['clean', 'pug', 'sass', 'autoprefixer', 'babel', 'uglify', 'cssmin', 'sprite', 'copy']);
     grunt.registerTask('build', ['clean', 'pug', 'sass', 'autoprefixer', 'babel', 'uglify', 'cssmin']);
     grunt.registerTask('sprite ', ['sprite']);

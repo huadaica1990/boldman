@@ -1,10 +1,10 @@
-include variables/_function.pug
-include variables/_mixins.pug
-include variables/_variables.pug
+include ../variables/_function.pug
+include ../variables/_mixins.pug
+include ../variables/_variables.pug
 
 doctype html
 html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
-    include components/_header.pug
+    include _header.pug
     block title
     
     //- CSS
@@ -35,12 +35,12 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
         #fb-root
         script(async defer crossorigin='anonymous' src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0' nonce='alK264s0')
 
-        include components/_nav-header.pug
+        include _nav-header.pug
         
         //-Main layout
         block content
 
-        include components/_footer.pug
+        include _footer.pug
 
         #loading
             .loading-content
