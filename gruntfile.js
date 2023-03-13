@@ -351,6 +351,7 @@ module.exports = grunt => {
                 files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js', 'src/styles/js/components/*.js'],
                 tasks: ['uglify']
             },
+            clean: ['dist/wwwroot/templates/images/', 'dist/wwwroot/templates/icons/', 'dist/wwwroot/templates/fonts/'],
             copy: {
                 files: ['src/img/*', 'src/img/*/*.*', 'src/icons/*.*', 'src/fonts/*.*'],
                 tasks: ['copy']
