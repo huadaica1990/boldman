@@ -31,6 +31,7 @@ window.Ecsgroup = {};
  */
 (function ($) {
     Ecsgroup.popupPause = false;
+    Ecsgroup.dist = '/wwwroot/templates/release';
     Ecsgroup.domain = 'localhost:3000';
     Ecsgroup.linkWishList = '/san-pham-yeu-thich';
     Ecsgroup.linkCompare = '/so-sanh';
@@ -383,8 +384,8 @@ window.Ecsgroup = {};
         return Ecsgroup.resizeChanged;
     }
 
-	// debouncing function from John Hann
-	// http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+    // debouncing function from John Hann
+    // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
     Ecsgroup.debounce = function (func, wait = 1000) {
         var timeout;
 
@@ -441,7 +442,7 @@ window.Ecsgroup = {};
             window.localStorage.clear();
         }
     }
-    Ecsgroup.localStorage =  localStorage;
+    Ecsgroup.localStorage = localStorage;
 
     /**
      * Back to url
@@ -499,7 +500,7 @@ window.Ecsgroup = {};
      * confirmDialog
      *
      */
-    
+
 
 
 
@@ -587,7 +588,7 @@ window.Ecsgroup = {};
             temp.remove();
             Ecsgroup.Minipopup.open({
                 productClass: ' success minipopup-center',
-                message: '<p><i class="demo-icon cus-ok-circled"></i>'+core1+'</p>',
+                message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
                 template:
                     '<div class="minipopup-box {{productClass}}">' +
                     '<div class="minipopup-body">' +
@@ -598,24 +599,24 @@ window.Ecsgroup = {};
         });
     };
 
-    
+
     /**
      * Open Share Product
      *
      * @param {String} class
      */
-    Ecsgroup.shareUrl = function(selector) {
-        Ecsgroup.$body.on('click', selector, function(e) {
+    Ecsgroup.shareUrl = function (selector) {
+        Ecsgroup.$body.on('click', selector, function (e) {
             e.preventDefault();
             var $this = $(e.currentTarget);
-            if (navigator.share) { 
+            if (navigator.share) {
                 navigator.share({
                     title: $this.attr('title'),
                     url: $this.attr('href')
                 }).then(() => {
                     console.log('Thanks for sharing!');
                 })
-                .catch((error) => console.log('Sharing failed', error));
+                    .catch((error) => console.log('Sharing failed', error));
             } else {
                 alert(core2);
             }
@@ -650,7 +651,7 @@ window.Ecsgroup = {};
         });
     }
 
-    
+
     /**
      * clean Unicode
      *
@@ -695,7 +696,7 @@ window.Ecsgroup = {};
 
     // Initialize Method after document has been loaded
     Ecsgroup.init = function () {
-    // Do something later...
+        // Do something later...
         Ecsgroup.initPopup();                                                   // Initialize Popup
         Ecsgroup.showHide();                                                    // Initialize Show Hide
         Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
@@ -704,7 +705,7 @@ window.Ecsgroup = {};
         Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
         Ecsgroup.Minipopup.init();                                              // Initialize minipopup
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect    
-    // Core
+        // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
             maxWidth: 768,
@@ -722,15 +723,15 @@ window.Ecsgroup = {};
         // Ecsgroup.stickyContent('.product-sticky-content', Ecsgroup.stickyProductOptions);
         Ecsgroup.menu.init();                                                   // Initialize Menu
         Ecsgroup.initScrollTopButton();                                         // Initialize scroll top button
-    // Side bar
+        // Side bar
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar
         // Ecsgroup.sidebar('right-sidebar');                                   // Initialize Right Sidebar
-    // Product
+        // Product
         // Ecsgroup.shop.init();                                                // Initialize Shop
         // Ecsgroup.productSingle('.single-product-item');                      // Initialize all single products
         // Ecsgroup.initProductSinglePage();                                    // Initialize Single Product Page
         // Ecsgroup.initQtyInput('.quantity');                                  // Initialize Quantity Input
-    // Plugin
+        // Plugin
         Ecsgroup.preSearch('.pre-search');                                      // Initialize Pre search
         Ecsgroup.typeWriter('.typewrite');                                      // Initialize TypeWriter
         Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
@@ -769,7 +770,7 @@ window.Ecsgroup = {};
     document.onreadystatechange = function () {
         if (document.readyState === "complete") {
             if (Ecsgroup.isSafari == true) {
-                addCSS('/release/safari.css')
+                addCSS(Ecsgroup.dist + '/safari.css')
             }
         }
     }
