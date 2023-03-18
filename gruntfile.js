@@ -10,8 +10,7 @@ module.exports = grunt => {
             css: 'src/styles/css/pages',
             plugin: 'src/styles/plugins',
             html: 'src/templates',
-            distcss: 'dist/wwwroot/templates/css',
-            dist: 'dist/wwwroot/templates/release',
+            dist: 'dist/wwwroot/templates',
         },
         clean: ['dist'],
         pug: {
@@ -55,7 +54,7 @@ module.exports = grunt => {
                         cwd: 'src/styles/css/',
                         src: ['*.scss', 'pages/*.scss'],
                         ext: '.css',
-                        dest: '<%= dirs.dist %>/'
+                        dest: '<%= dirs.dist %>/release/'
                     }
                 ]
             }
@@ -68,7 +67,7 @@ module.exports = grunt => {
             multiple_files: {
                 expand: false,
                 flatten: false,
-                src: '<%= dirs.dist %>/*.css',
+                src: '<%= dirs.dist %>/release/*.css',
             },
         },
         babel: {
@@ -78,15 +77,15 @@ module.exports = grunt => {
             },
             dist: {
                 files: {
-                    '<%= dirs.dist %>/core.js': '<%= dirs.basejs %>/core.js',
-                    '<%= dirs.dist %>/layout.js': '<%= dirs.basejs %>/layout.js',
-                    '<%= dirs.dist %>/document.js': '<%= dirs.basejs %>/document.js',
+                    '<%= dirs.dist %>/release/core.js': '<%= dirs.basejs %>/core.js',
+                    '<%= dirs.dist %>/release/layout.js': '<%= dirs.basejs %>/layout.js',
+                    '<%= dirs.dist %>/release/document.js': '<%= dirs.basejs %>/document.js',
 
-                    '<%= dirs.dist %>/comingsoon.js': '<%= dirs.js %>/comingsoon.js',
-                    '<%= dirs.dist %>/error.js': '<%= dirs.js %>/error.js',
-                    '<%= dirs.dist %>/login.js': '<%= dirs.js %>/login.js',
-                    '<%= dirs.dist %>/static.js': '<%= dirs.js %>/static.js',
-                    '<%= dirs.dist %>/index.js': '<%= dirs.js %>/index.js',
+                    '<%= dirs.dist %>/release/comingsoon.js': '<%= dirs.js %>/comingsoon.js',
+                    '<%= dirs.dist %>/release/error.js': '<%= dirs.js %>/error.js',
+                    '<%= dirs.dist %>/release/login.js': '<%= dirs.js %>/login.js',
+                    '<%= dirs.dist %>/release/static.js': '<%= dirs.js %>/static.js',
+                    '<%= dirs.dist %>/release/index.js': '<%= dirs.js %>/index.js',
                 }
             }
         },
@@ -100,23 +99,23 @@ module.exports = grunt => {
                     //     '<%= dirs.basejs %>/components/updateFile.js'
                     // ],
                     // Ext
-                    '<%= dirs.dist %>/lang.min.js': [
+                    '<%= dirs.dist %>/release/lang.min.js': [
                         '<%= dirs.plugin %>/multi-language/multi-language.js',
                         '<%= dirs.plugin %>/lang.js'
                     ],
-                    '<%= dirs.dist %>/webfontloader.min.js': [
+                    '<%= dirs.dist %>/release/webfontloader.min.js': [
                         'node_modules/webfontloader/webfontloader.js',
                     ],
-                    '<%= dirs.dist %>/jquery.min.js': [
+                    '<%= dirs.dist %>/release/jquery.min.js': [
                         'node_modules/jquery/dist/jquery.js',
                     ],
-                    '<%= dirs.dist %>/instantpage.min.js': [
+                    '<%= dirs.dist %>/release/instantpage.min.js': [
                         '<%= dirs.plugin %>/instantpage/instantpage.js',
                     ],
                     // Core
-                    '<%= dirs.dist %>/core.min.js': [
+                    '<%= dirs.dist %>/release/core.min.js': [
                         // core
-                        '<%= dirs.dist %>/core.js',
+                        '<%= dirs.dist %>/release/core.js',
                         '<%= dirs.basejs %>/components/setTab.js',
                         '<%= dirs.basejs %>/components/initDropdownAction.js',
                         '<%= dirs.basejs %>/components/initScrollTopButton.js',
@@ -171,46 +170,46 @@ module.exports = grunt => {
                         '<%= dirs.basejs %>/components/mouseFollow.js'
                     ],
                     // Default all page
-                    '<%= dirs.dist %>/default.min.js': [
+                    '<%= dirs.dist %>/release/default.min.js': [
                         'node_modules/draggabilly/dist/draggabilly.pkgd.min.js',
                         'node_modules/jquery-validation/dist/jquery.validate.min.js',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
                         'node_modules/swiper/swiper-bundle.js',
                     ],
-                    '<%= dirs.dist %>/layout.min.js': [
-                        '<%= dirs.dist %>/layout.js',
+                    '<%= dirs.dist %>/release/layout.min.js': [
+                        '<%= dirs.dist %>/release/layout.js',
                     ],
                     // Documentation
-                    '<%= dirs.dist %>/document.min.js': [
-                        '<%= dirs.dist %>/core.min.js',
-                        '<%= dirs.dist %>/document.js',
+                    '<%= dirs.dist %>/release/document.min.js': [
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.dist %>/release/document.js',
                     ],
                     // Coming soon
-                    '<%= dirs.dist %>/comingsoon.min.js': [
+                    '<%= dirs.dist %>/release/comingsoon.min.js': [
                         'node_modules/kbw-countdown/dist/js/jquery.plugin.min.js',
                         'node_modules/kbw-countdown/dist/js/jquery.countdown.min.js',
-                        '<%= dirs.dist %>/core.min.js',
-                        '<%= dirs.dist %>/comingsoon.js',
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.dist %>/release/comingsoon.js',
                     ],
                     // Error
-                    '<%= dirs.dist %>/error.min.js': [
-                        '<%= dirs.dist %>/core.min.js',
-                        '<%= dirs.dist %>/error.js',
+                    '<%= dirs.dist %>/release/error.min.js': [
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.dist %>/release/error.js',
                     ],
                     // Login
-                    '<%= dirs.dist %>/login.min.js': [
-                        '<%= dirs.dist %>/login.js',
+                    '<%= dirs.dist %>/release/login.min.js': [
+                        '<%= dirs.dist %>/release/login.js',
                     ],
                     // Static page
-                    '<%= dirs.dist %>/static.min.js': [
-                        '<%= dirs.dist %>/core.min.js',
-                        '<%= dirs.dist %>/static.js',
+                    '<%= dirs.dist %>/release/static.min.js': [
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.dist %>/release/static.js',
                     ],
 
                     // Index
-                    '<%= dirs.dist %>/index.min.js': [
-                        '<%= dirs.dist %>/core.min.js',
-                        '<%= dirs.dist %>/index.js',
+                    '<%= dirs.dist %>/release/index.min.js': [
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.dist %>/release/index.js',
                     ]
                 }
             },
@@ -233,44 +232,44 @@ module.exports = grunt => {
             },
             my_target: {
                 files: [{
-                    'dist/wwwroot/templates/icons/customize.min.css': [
+                    '<%= dirs.dist %>/icons/customize.min.css': [
                         'src/icons/customize.css',
                     ],
                     // Main
-                    '<%= dirs.dist %>/main.min.css': [
+                    '<%= dirs.dist %>/release/main.min.css': [
                         '<%= dirs.plugin %>/animate/animate.min.css',
-                        '<%= dirs.dist %>/layout.css',
+                        '<%= dirs.dist %>/release/layout.css',
                     ],
                     // Default all page
-                    '<%= dirs.dist %>/default.min.css': [
+                    '<%= dirs.dist %>/release/default.min.css': [
                         '<%= dirs.plugin %>/fancybox/fancybox.min.css',
                         'node_modules/swiper/swiper-bundle.min.css',
                     ],
                     // Documentation
-                    '<%= dirs.dist %>/document.min.css': [
-                        '<%= dirs.dist %>/document.css',
+                    '<%= dirs.dist %>/release/document.min.css': [
+                        '<%= dirs.dist %>/release/document.css',
                     ],
                     // Ckeditor
-                    '<%= dirs.dist %>/ckeditor.min.css': [
-                        '<%= dirs.dist %>/main.min.css',
-                        '<%= dirs.dist %>/ckeditor.css',
+                    '<%= dirs.dist %>/release/ckeditor.min.css': [
+                        '<%= dirs.dist %>/release/main.min.css',
+                        '<%= dirs.dist %>/release/ckeditor.css',
                     ],
                     // Coming soon
-                    '<%= dirs.dist %>/comingsoon.min.css': [
-                        '<%= dirs.dist %>/comingsoon.css',
+                    '<%= dirs.dist %>/release/comingsoon.min.css': [
+                        '<%= dirs.dist %>/release/comingsoon.css',
                     ],
                     // Error
-                    '<%= dirs.dist %>/error.min.css': [
-                        '<%= dirs.dist %>/error.css',
+                    '<%= dirs.dist %>/release/error.min.css': [
+                        '<%= dirs.dist %>/release/error.css',
                     ],
                     // Static
-                    '<%= dirs.dist %>/static.min.css': [
-                        '<%= dirs.dist %>/static.css',
+                    '<%= dirs.dist %>/release/static.min.css': [
+                        '<%= dirs.dist %>/release/static.css',
                     ],
 
                     // Index
-                    '<%= dirs.dist %>/index.min.css': [
-                        '<%= dirs.dist %>/index.css',
+                    '<%= dirs.dist %>/release/index.min.css': [
+                        '<%= dirs.dist %>/release/index.css',
                     ]
                 }]
             }
@@ -278,8 +277,8 @@ module.exports = grunt => {
         sprite: {
             all: {
                 src: 'src/sprite/*.png',
-                dest: 'dist/wwwroot/templates/images/sprite/sprite.png',
-                destCss: '<%= dirs.dist %>/sprites.min.css'
+                dest: '<%= dirs.dist %>/images/sprite/sprite.png',
+                destCss: '<%= dirs.dist %>/release/sprites.min.css'
             }
         },
         copy: {
@@ -292,35 +291,35 @@ module.exports = grunt => {
                             '*.{jpg,png,svg}',
                             '**'
                         ],
-                        dest: 'dist/wwwroot/templates/images/',
+                        dest: '<%= dirs.dist %>/images/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: 'src/icons/',
                         src: ['**'],
-                        dest: 'dist/wwwroot/templates/icons/',
+                        dest: '<%= dirs.dist %>/icons/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: 'src/fonts/',
                         src: ['**'],
-                        dest: 'dist/wwwroot/templates/fonts/',
+                        dest: '<%= dirs.dist %>/fonts/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: 'src/plugins/fontawesome-free/',
                         src: ['**'],
-                        dest: 'dist/wwwroot/templates/plugins/fontawesome-free/',
+                        dest: '<%= dirs.dist %>/plugins/fontawesome-free/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: 'src/styles/js/data/',
                         src: ['**'],
-                        dest: 'dist/wwwroot/templates/release/',
+                        dest: '<%= dirs.dist %>/release/',
                         filter: 'isFile'
                     },
                 ],
@@ -351,7 +350,7 @@ module.exports = grunt => {
                 files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js', 'src/styles/js/components/*.js'],
                 tasks: ['uglify']
             },
-            clean: ['dist/wwwroot/templates/images/', 'dist/wwwroot/templates/icons/', 'dist/wwwroot/templates/fonts/'],
+            clean: ['<%= dirs.dist %>/images/', '<%= dirs.dist %>/icons/', '<%= dirs.dist %>/fonts/'],
             copy: {
                 files: ['src/img/*', 'src/img/*/*.*', 'src/icons/*.*', 'src/fonts/*.*'],
                 tasks: ['copy']
@@ -361,9 +360,9 @@ module.exports = grunt => {
             dev: {
                 bsFiles: {
                     src: [
-                        '<%= dirs.dist %>/*.css',
+                        '<%= dirs.dist %>/release/*.css',
                         'dist/*.html',
-                        '<%= dirs.dist %>/*.js',
+                        '<%= dirs.dist %>/release/*.js',
                     ]
                 },
                 options: {
