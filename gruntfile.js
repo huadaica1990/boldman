@@ -315,6 +315,13 @@ module.exports = grunt => {
                     },
                     {
                         expand: true,
+                        cwd: 'src/plugins/plyr-master/',
+                        src: ['**'],
+                        dest: '<%= dirs.dist %>/plugins/plyr-master/',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
                         cwd: 'src/styles/js/data/',
                         src: ['**'],
                         dest: '<%= dirs.dist %>/release/',
