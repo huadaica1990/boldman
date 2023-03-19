@@ -5,7 +5,7 @@ include variables/_variables.pug
 - let title = 'Menu';
 - let idPage = 'menu';
 - let h1Title = 'Danh sách trang';
-- let css = '/wwwroot/templates/release/main.min.css';
+- let css = '/wwwroot/templates/website/release/main.min.css';
 -
     let menuPage = [
         {
@@ -320,13 +320,13 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
         WebFontConfig = {
             custom: {
                 families: ['SVN-Poppins'],
-                urls: ['/wwwroot/templates/fonts/fonts.css']
+                urls: ['/wwwroot/templates/website/fonts/fonts.css']
             }
             //google: { families: ['Poppins:400,500,600,700,800'] }
         };
         (function (d) {
             var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '/wwwroot/templates/release/webfontloader.min.js';
+            wf.src = '/wwwroot/templates/website/release/webfontloader.min.js';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);

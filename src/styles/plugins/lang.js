@@ -13,7 +13,7 @@ function getCookieLang (name) {
     return "vi";
 }
 var ECSLanguage = getCookieLang('ECSLanguage');
-var ECSLanguageFile = new MultiLang('/wwwroot/templates/release/languages.json');
+var ECSLanguageFile = new MultiLang('/wwwroot/templates/website/release/languages.json');
 ECSLanguageFile.setLanguage(ECSLanguage);
 console.log(ECSLanguage,ECSLanguageFile.get('langdesc'));
 

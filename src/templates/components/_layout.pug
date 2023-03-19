@@ -13,20 +13,20 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
         WebFontConfig = {
             custom: {
                 families: ['SVN-Poppins'],
-                urls: ['/wwwroot/templates/fonts/fonts.css']
+                urls: ['/wwwroot/templates/website/fonts/fonts.css']
             }
             //google: { families: ['Poppins:400,500,600,700,800'] }
         };
         (function (d) {
             var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '/wwwroot/templates/release/webfontloader.min.js';
+            wf.src = '/wwwroot/templates/website/release/webfontloader.min.js';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);
-    link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/icons/customize.ttf')
-    link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/icons/ecs.ttf')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/icons/customize.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/icons/default.min.css')
+    link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/website/icons/customize.ttf')
+    link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/website/icons/ecs.ttf')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/icons/customize.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/icons/default.min.css')
     //- link(rel='preload stylesheet' as='style' type='text/css' crossorigin='anonymous' href='/release/main.min.css')
     
     block style
@@ -47,9 +47,9 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                 .loader
                     
         //- JavaScript
-        script(type='text/javascript' src='/wwwroot/templates/release/jquery.min.js')
-        script(type='text/javascript' src='/wwwroot/templates/release/lang.min.js')
-        //- script(type='text/javascript' src='/wwwroot/templates/website/plugins/plyr-master/plyr.polyfilled.js')
+        script(type='text/javascript' src='/wwwroot/templates/website/release/jquery.min.js')
+        script(type='text/javascript' src='/wwwroot/templates/website/release/lang.min.js')
+        //- script(type='text/javascript' src='/wwwroot/templates/website/website/plugins/plyr-master/plyr.polyfilled.js')
         script.
             //- new Plyr('.plyr-video');
             function addCSS(filename) {
@@ -78,7 +78,7 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
             if (document.documentElement.clientWidth > 1100) {
                 setTimeout(function () {
                     //addScript('/release/main.min.js')
-                    addScript(`/wwwroot/templates/release/instantpage.min.js`)
+                    addScript(`/wwwroot/templates/website/release/instantpage.min.js`)
                 }, 3000);
             }
             document.addEventListener("DOMContentLoaded", function () {

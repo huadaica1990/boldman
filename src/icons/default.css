@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'ecs';
-  src:  url('/wwwroot/templates/icons/ecs.eot?png09e');
-  src:  url('/wwwroot/templates/icons/ecs.woff?png09e') format('woff'),
-    url('/wwwroot/templates/icons/ecs.eot?png09e#iefix') format('embedded-opentype'),
-    url('/wwwroot/templates/icons/ecs.ttf?png09e') format('truetype'),
-    url('/wwwroot/templates/icons/ecs.svg?png09e#wolmart') format('svg');
+  src:  url('/wwwroot/templates/website/icons/ecs.eot?png09e');
+  src:  url('/wwwroot/templates/website/icons/ecs.woff?png09e') format('woff'),
+    url('/wwwroot/templates/website/icons/ecs.eot?png09e#iefix') format('embedded-opentype'),
+    url('/wwwroot/templates/website/icons/ecs.ttf?png09e') format('truetype'),
+    url('/wwwroot/templates/website/icons/ecs.svg?png09e#wolmart') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

@@ -5,12 +5,11 @@ module.exports = grunt => {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
-            js: 'src/styles/js/pages',
-            basejs: 'src/styles/js',
-            css: 'src/styles/css/pages',
+            js: 'src/styles/js',
+            css: 'src/styles/css',
             plugin: 'src/styles/plugins',
             html: 'src/templates',
-            dist: 'dist/wwwroot/templates',
+            dist: 'dist/wwwroot/templates/website',
         },
         clean: ['dist'],
         pug: {
@@ -76,17 +75,16 @@ module.exports = grunt => {
                 presets: ['@babel/preset-env']
             },
             dist: {
-                files: {
-                    '<%= dirs.dist %>/release/core.js': '<%= dirs.basejs %>/core.js',
-                    '<%= dirs.dist %>/release/layout.js': '<%= dirs.basejs %>/layout.js',
-                    '<%= dirs.dist %>/release/document.js': '<%= dirs.basejs %>/document.js',
-
-                    '<%= dirs.dist %>/release/comingsoon.js': '<%= dirs.js %>/comingsoon.js',
-                    '<%= dirs.dist %>/release/error.js': '<%= dirs.js %>/error.js',
-                    '<%= dirs.dist %>/release/login.js': '<%= dirs.js %>/login.js',
-                    '<%= dirs.dist %>/release/static.js': '<%= dirs.js %>/static.js',
-                    '<%= dirs.dist %>/release/index.js': '<%= dirs.js %>/index.js',
-                }
+                files: [
+                    {
+                        flatten: true,
+                        expand: true,
+                        cwd: 'src/styles/js/',
+                        src: ['*.js', 'pages/*.js'],
+                        ext: '.js',
+                        dest: '<%= dirs.dist %>/release/'
+                    }
+                ]
             }
         },
         uglify: {
@@ -96,7 +94,7 @@ module.exports = grunt => {
             my_target: {
                 files: {
                     // '<%= dirs.dist %>/updateFile.js': [
-                    //     '<%= dirs.basejs %>/components/updateFile.js'
+                    //     '<%= dirs.js %>/components/updateFile.js'
                     // ],
                     // Ext
                     '<%= dirs.dist %>/release/lang.min.js': [
@@ -115,59 +113,59 @@ module.exports = grunt => {
                     // Core
                     '<%= dirs.dist %>/release/core.min.js': [
                         // core
-                        '<%= dirs.dist %>/release/core.js',
-                        '<%= dirs.basejs %>/components/setTab.js',
-                        '<%= dirs.basejs %>/components/initDropdownAction.js',
-                        '<%= dirs.basejs %>/components/initScrollTopButton.js',
-                        '<%= dirs.basejs %>/components/stickyContent.js',
-                        '<%= dirs.basejs %>/components/scrollDirection.js',
-                        '<%= dirs.basejs %>/components/cutomizeSelect.js',
-                        '<%= dirs.basejs %>/components/accordion.js',
-                        '<%= dirs.basejs %>/components/stickySidebar.js',
-                        '<%= dirs.basejs %>/components/zoomImage.js',
-                        '<%= dirs.basejs %>/components/fancyBox.js',
-                        '<%= dirs.basejs %>/components/popup.js',
-                        '<%= dirs.basejs %>/components/initPopup.js',
-                        '<%= dirs.basejs %>/components/miniPopup.js',
-                        '<%= dirs.basejs %>/components/togglerMake.js',
-                        '<%= dirs.basejs %>/components/scrollTo.js',
-                        '<%= dirs.basejs %>/components/menu.js',
-                        '<%= dirs.basejs %>/components/slider.js',
-                        '<%= dirs.basejs %>/components/sideBar.js',
-                        '<%= dirs.basejs %>/components/draggAble.js',
+                        '<%= dirs.js %>/core.js',
+                        '<%= dirs.js %>/components/setTab.js',
+                        '<%= dirs.js %>/components/initDropdownAction.js',
+                        '<%= dirs.js %>/components/initScrollTopButton.js',
+                        '<%= dirs.js %>/components/stickyContent.js',
+                        '<%= dirs.js %>/components/scrollDirection.js',
+                        '<%= dirs.js %>/components/cutomizeSelect.js',
+                        '<%= dirs.js %>/components/accordion.js',
+                        '<%= dirs.js %>/components/stickySidebar.js',
+                        '<%= dirs.js %>/components/zoomImage.js',
+                        '<%= dirs.js %>/components/fancyBox.js',
+                        '<%= dirs.js %>/components/popup.js',
+                        '<%= dirs.js %>/components/initPopup.js',
+                        '<%= dirs.js %>/components/miniPopup.js',
+                        '<%= dirs.js %>/components/togglerMake.js',
+                        '<%= dirs.js %>/components/scrollTo.js',
+                        '<%= dirs.js %>/components/menu.js',
+                        '<%= dirs.js %>/components/slider.js',
+                        '<%= dirs.js %>/components/sideBar.js',
+                        '<%= dirs.js %>/components/draggAble.js',
                         // Acc
-                        '<%= dirs.basejs %>/components/initScrollLoad.js',
+                        '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
-                        '<%= dirs.basejs %>/components/readMore.js',
-                        '<%= dirs.basejs %>/components/tableOfContent.js',
-                        '<%= dirs.basejs %>/components/uploadFile.js',
+                        '<%= dirs.js %>/components/readMore.js',
+                        '<%= dirs.js %>/components/tableOfContent.js',
+                        '<%= dirs.js %>/components/uploadFile.js',
                         // Product
-                        '<%= dirs.basejs %>/components/shop.js',
-                        '<%= dirs.basejs %>/components/quantityInput.js',
-                        '<%= dirs.basejs %>/components/initSelectMenu.js',
-                        '<%= dirs.basejs %>/components/initCheckBoxMenu.js',
-                        '<%= dirs.basejs %>/components/initSelectSideBar.js',
-                        '<%= dirs.basejs %>/components/wishlistAction.js',
-                        '<%= dirs.basejs %>/components/productSingle.js',
-                        '<%= dirs.basejs %>/components/productSinglePage.js',
-                        // '<%= dirs.basejs %>/components/ratingTooltip.js',
+                        '<%= dirs.js %>/components/shop.js',
+                        '<%= dirs.js %>/components/quantityInput.js',
+                        '<%= dirs.js %>/components/initSelectMenu.js',
+                        '<%= dirs.js %>/components/initCheckBoxMenu.js',
+                        '<%= dirs.js %>/components/initSelectSideBar.js',
+                        '<%= dirs.js %>/components/wishlistAction.js',
+                        '<%= dirs.js %>/components/productSingle.js',
+                        '<%= dirs.js %>/components/productSinglePage.js',
+                        // '<%= dirs.js %>/components/ratingTooltip.js',
                         // Plugin
-                        // '<%= dirs.basejs %>/components/marquee.js',
-                        // '<%= dirs.basejs %>/components/pageScrollToId.js',
-                        '<%= dirs.basejs %>/components/preSearch.js',
-                        '<%= dirs.basejs %>/components/typeWriter.js',
+                        // '<%= dirs.js %>/components/marquee.js',
+                        // '<%= dirs.js %>/components/pageScrollToId.js',
+                        '<%= dirs.js %>/components/preSearch.js',
+                        '<%= dirs.js %>/components/typeWriter.js',
 
-                        '<%= dirs.basejs %>/components/initFloatingParallax.js',
-                        '<%= dirs.basejs %>/components/isotopes.js',
-                        '<%= dirs.basejs %>/components/initNavFilter.js',
+                        '<%= dirs.js %>/components/initFloatingParallax.js',
+                        '<%= dirs.js %>/components/isotopes.js',
+                        '<%= dirs.js %>/components/initNavFilter.js',
 
-                        '<%= dirs.basejs %>/components/setProgressBar.js',
-                        '<%= dirs.basejs %>/components/countDown.js',
-                        '<%= dirs.basejs %>/components/countTo.js',
-                        '<%= dirs.basejs %>/components/fakeLoadMore.js',
-                        '<%= dirs.basejs %>/components/notiCustomer.js',
-                        '<%= dirs.basejs %>/components/ezParallax.js',
-                        '<%= dirs.basejs %>/components/mouseFollow.js'
+                        '<%= dirs.js %>/components/setProgressBar.js',
+                        '<%= dirs.js %>/components/countDown.js',
+                        '<%= dirs.js %>/components/countTo.js',
+                        '<%= dirs.js %>/components/fakeLoadMore.js',
+                        '<%= dirs.js %>/components/notiCustomer.js',
+                        '<%= dirs.js %>/components/ezParallax.js',
+                        '<%= dirs.js %>/components/mouseFollow.js'
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.js': [
@@ -177,39 +175,39 @@ module.exports = grunt => {
                         'node_modules/swiper/swiper-bundle.js',
                     ],
                     '<%= dirs.dist %>/release/layout.min.js': [
-                        '<%= dirs.dist %>/release/layout.js',
+                        '<%= dirs.js %>/layout.js',
                     ],
                     // Documentation
                     '<%= dirs.dist %>/release/document.min.js': [
                         '<%= dirs.dist %>/release/core.min.js',
-                        '<%= dirs.dist %>/release/document.js',
+                        '<%= dirs.js %>/document.js',
                     ],
                     // Coming soon
                     '<%= dirs.dist %>/release/comingsoon.min.js': [
                         'node_modules/kbw-countdown/dist/js/jquery.plugin.min.js',
                         'node_modules/kbw-countdown/dist/js/jquery.countdown.min.js',
                         '<%= dirs.dist %>/release/core.min.js',
-                        '<%= dirs.dist %>/release/comingsoon.js',
+                        '<%= dirs.js %>/pages/comingsoon.js',
                     ],
                     // Error
                     '<%= dirs.dist %>/release/error.min.js': [
                         '<%= dirs.dist %>/release/core.min.js',
-                        '<%= dirs.dist %>/release/error.js',
+                        '<%= dirs.js %>/pages/error.js',
                     ],
                     // Login
                     '<%= dirs.dist %>/release/login.min.js': [
-                        '<%= dirs.dist %>/release/login.js',
+                        '<%= dirs.js %>/pages/login.js',
                     ],
                     // Static page
                     '<%= dirs.dist %>/release/static.min.js': [
                         '<%= dirs.dist %>/release/core.min.js',
-                        '<%= dirs.dist %>/release/static.js',
+                        '<%= dirs.js %>/pages/static.js',
                     ],
 
                     // Index
                     '<%= dirs.dist %>/release/index.min.js': [
                         '<%= dirs.dist %>/release/core.min.js',
-                        '<%= dirs.dist %>/release/index.js',
+                        '<%= dirs.js %>/pages/index.js',
                     ]
                 }
             },
@@ -286,7 +284,7 @@ module.exports = grunt => {
                 files: [
                     {
                         expand: true,
-                        cwd: 'src/img/',
+                        cwd: 'src/images/',
                         src: [
                             '*.{jpg,png,svg}',
                             '**'
@@ -331,23 +329,39 @@ module.exports = grunt => {
                 spawn: false
             },
             pug: {
-                files: ['<%= dirs.html %>/*.pug', '<%= dirs.html %>/components/*.pug', '<%= dirs.html %>/variables/*.pug', '<%= dirs.html %>/elements/*.pug', '<%= dirs.html %>/elements/*/*.pug', '<%= dirs.html %>/ajax/*.pug'],
+                files: [
+                '<%= dirs.html %>/*.pug', 
+                '<%= dirs.html %>/*/*.pug', 
+                '<%= dirs.html %>/*/*/*.pug'],
                 tasks: ['pug']
             },
             sass: {
-                files: ['<%= dirs.css %>/*.scss', 'src/styles/css/*.scss', 'src/styles/css/components/*.scss', 'src/styles/css/config/*.scss', 'src/styles/css/elements/*.scss', 'src/styles/css/base/*.scss', 'src/styles/css/base/footer/*.scss', 'src/styles/css/base/header/*.scss'],
-                tasks: ['sass']
+                files: [
+                '<%= dirs.css %>/*.scss',
+                '<%= dirs.css %>/*/*.scss',
+                '<%= dirs.css %>/*/*/*.scss'],
+                tasks: ['sass', 'autoprefixer']
             },
             cssmin: {
-                files: ['src/styles/css/icons/*.css', '<%= dirs.css %>/*.scss', 'src/styles/css/*.scss', 'src/styles/css/components/*.scss', 'src/styles/css/config/*.scss', 'src/styles/css/elements/*.scss', 'src/styles/css/base/*.scss', 'src/styles/css/base/footer/*.scss', 'src/styles/css/base/header/*.scss'],
+                files: [
+                'src/icons/*.css', 
+                '<%= dirs.css %>/*.scss', 
+                '<%= dirs.css %>/*/*.scss', 
+                '<%= dirs.css %>/*/*/*.scss'],
                 tasks: ['cssmin']
             },
             babel: {
-                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js', 'src/styles/js/components/*.js'],
+                files: [
+                '<%= dirs.js %>/*.js', 
+                '<%= dirs.js %>/pages/*.js', 
+                '<%= dirs.js %>/components/*.js'],
                 tasks: ['babel']
             },
             uglify: {
-                files: ['<%= dirs.js %>/*.js', '<%= dirs.basejs %>/*.js', 'src/styles/js/components/*.js'],
+                files: [
+                '<%= dirs.js %>/*.js', 
+                '<%= dirs.js %>/pages/*.js', 
+                '<%= dirs.js %>/components/*.js'],
                 tasks: ['uglify']
             },
             clean: ['<%= dirs.dist %>/images/', '<%= dirs.dist %>/icons/', '<%= dirs.dist %>/fonts/'],
