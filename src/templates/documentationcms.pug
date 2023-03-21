@@ -18,7 +18,7 @@ block content
     //- Data
     //- Content
     main.page-wrapper.main(id=`${idPage}-page`)
-        .page-header(style='background-image: url(/wwwroot/templates/website/images/default/documentation-header.jpg);')
+        .page-header(style=`background-image: url${dist}/default/documentation-header.jpg);`)
             .container
                 h1.page-title EcsGroup Docs
                 p How Can We Help You?
@@ -2383,7 +2383,7 @@ block content
 block script
     - let js = '/wwwroot/templates/website/release/document.min.js';
     //- Default
-    script(type='text/javascript' src=`/wwwroot/templates/website/release/default.min.js` defer)
+    script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
     //- Page
 
     script.

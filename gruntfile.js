@@ -189,6 +189,11 @@ module.exports = grunt => {
                         '<%= dirs.dist %>/release/core.min.js',
                         '<%= dirs.js %>/pages/comingsoon.js',
                     ],
+                    // Cart
+                    '<%= dirs.dist %>/release/cart.min.js': [
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.js %>/pages/cart.js',
+                    ],
                     // Error
                     '<%= dirs.dist %>/release/error.min.js': [
                         '<%= dirs.dist %>/release/core.min.js',
@@ -256,6 +261,10 @@ module.exports = grunt => {
                     '<%= dirs.dist %>/release/comingsoon.min.css': [
                         '<%= dirs.dist %>/release/comingsoon.css',
                     ],
+                    // Cart
+                    '<%= dirs.dist %>/release/cart.min.css': [
+                        '<%= dirs.dist %>/release/cart.css',
+                    ],
                     // Error
                     '<%= dirs.dist %>/release/error.min.css': [
                         '<%= dirs.dist %>/release/error.css',
@@ -308,16 +317,9 @@ module.exports = grunt => {
                     },
                     {
                         expand: true,
-                        cwd: 'src/plugins/fontawesome-free/',
+                        cwd: 'src/styles/plugins/fontawesome-free/',
                         src: ['**'],
                         dest: '<%= dirs.dist %>/plugins/fontawesome-free/',
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'src/plugins/plyr-master/',
-                        src: ['**'],
-                        dest: '<%= dirs.dist %>/plugins/plyr-master/',
                         filter: 'isFile'
                     },
                     {
@@ -327,6 +329,13 @@ module.exports = grunt => {
                         dest: '<%= dirs.dist %>/release/',
                         filter: 'isFile'
                     },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/plyr/dist/',
+                        src: ['**'],
+                        dest: '<%= dirs.dist %>/plugins/plyr/',
+                        filter: 'isFile'
+                    }
                 ],
             },
         },
@@ -337,38 +346,38 @@ module.exports = grunt => {
             },
             pug: {
                 files: [
-                '<%= dirs.html %>/*.pug', 
-                '<%= dirs.html %>/*/*.pug', 
-                '<%= dirs.html %>/*/*/*.pug'],
+                    '<%= dirs.html %>/*.pug',
+                    '<%= dirs.html %>/*/*.pug',
+                    '<%= dirs.html %>/*/*/*.pug'],
                 tasks: ['pug']
             },
             sass: {
                 files: [
-                '<%= dirs.css %>/*.scss',
-                '<%= dirs.css %>/*/*.scss',
-                '<%= dirs.css %>/*/*/*.scss'],
+                    '<%= dirs.css %>/*.scss',
+                    '<%= dirs.css %>/*/*.scss',
+                    '<%= dirs.css %>/*/*/*.scss'],
                 tasks: ['sass', 'autoprefixer']
             },
             cssmin: {
                 files: [
-                'src/icons/*.css', 
-                '<%= dirs.css %>/*.scss', 
-                '<%= dirs.css %>/*/*.scss', 
-                '<%= dirs.css %>/*/*/*.scss'],
+                    'src/icons/*.css',
+                    '<%= dirs.css %>/*.scss',
+                    '<%= dirs.css %>/*/*.scss',
+                    '<%= dirs.css %>/*/*/*.scss'],
                 tasks: ['cssmin']
             },
             babel: {
                 files: [
-                '<%= dirs.js %>/*.js', 
-                '<%= dirs.js %>/pages/*.js', 
-                '<%= dirs.js %>/components/*.js'],
+                    '<%= dirs.js %>/*.js',
+                    '<%= dirs.js %>/pages/*.js',
+                    '<%= dirs.js %>/components/*.js'],
                 tasks: ['babel']
             },
             uglify: {
                 files: [
-                '<%= dirs.js %>/*.js', 
-                '<%= dirs.js %>/pages/*.js', 
-                '<%= dirs.js %>/components/*.js'],
+                    '<%= dirs.js %>/*.js',
+                    '<%= dirs.js %>/pages/*.js',
+                    '<%= dirs.js %>/components/*.js'],
                 tasks: ['uglify']
             },
             clean: ['<%= dirs.dist %>/images/', '<%= dirs.dist %>/icons/', '<%= dirs.dist %>/fonts/'],
