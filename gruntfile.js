@@ -335,6 +335,24 @@ module.exports = grunt => {
                         src: ['**'],
                         dest: '<%= dirs.dist %>/plugins/plyr/',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/html2canvas/dist/',
+                        src: [
+                            '*.{js,map}',
+                        ],
+                        dest: '<%= dirs.dist %>/plugins/html2canvas/',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/file-saver/dist/',
+                        src: [
+                            '*.{js,map}',
+                        ],
+                        dest: '<%= dirs.dist %>/plugins/file-saver/',
+                        filter: 'isFile'
                     }
                 ],
             },
