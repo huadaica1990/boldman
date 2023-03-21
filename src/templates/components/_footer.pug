@@ -33,7 +33,7 @@ footer.footer.appear-animate(itemscope itemtype='http://schema.org/LocalBusiness
                     .widget.widget-about
                         .logo-wrapper
                             a(href=logo[2].href title=logo[2].name itemprop='url')
-                                img(src=logo[2].src alt=logo[2].name width='133' height='52' itemprop='logo' loading='lazy')
+                                img(src=dist+logo[2].src alt=logo[2].name width='133' height='52' itemprop='logo' loading='lazy')
                         .widget-body
                             p.widget-about-title Liên hệ 24/7
                             .widget-about-desc
@@ -67,11 +67,11 @@ footer.footer.appear-animate(itemscope itemtype='http://schema.org/LocalBusiness
             .footer-footer-right
                 span.payment-label.mr-lg-8 Phương thức thanh toán
                 .payment.flex-center
-                    img(src='/img/payment1.png' alt='payment' width='45' height='28' loading='lazy')
-                    img(src='/img/payment2.png' alt='payment' width='45' height='28' loading='lazy')
-                    img(src='/img/payment3.png' alt='payment' width='45' height='28' loading='lazy')
-                    img(src='/img/payment4.png' alt='payment' width='45' height='28' loading='lazy')
-                    img(src='/img/payment5.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src=dist+'/default/payment1.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src=dist+'/default/payment2.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src=dist+'/default/payment3.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src=dist+'/default/payment4.png' alt='payment' width='45' height='28' loading='lazy')
+                    img(src=dist+'/default/payment5.png' alt='payment' width='45' height='28' loading='lazy')
 
 //- Popup
 if popup
@@ -80,9 +80,9 @@ if popup
             a(href='' title='')
                 picture
                     source(media='(max-width:450px)' srcset='' type='image/webp')
-                    source(media='(max-width:450px)' srcset=imgPopup.srcm)
+                    source(media='(max-width:450px)' srcset=dist+imgPopup.srcm)
                     source(media='' srcset='' type='image/webp')
-                    img(src=imgPopup.src alt='' loading='lazy' width='1200' height='625')
+                    img(src=dist+imgPopup.src alt='' loading='lazy' width='1200' height='625')
             .form-checkbox.d-flex.align-items-center.justify-content-end
                 input#hide-newsletter-popup.custom-checkbox(type='checkbox' name='hide-newsletter-popup')
                 label.font-size-sm(for='hide-newsletter-popup') Không hiện lại popup
@@ -131,7 +131,7 @@ if popup
             a.d-block.d-sm-none.facemess(href='https://m.me/' target='_blank' rel='nofollow')
                 span 1
                 div.background-icon
-                //- img.ishow(src='/img/messenger.svg' alt='')  
+                //- img.ishow(src=dist+'/default/messenger.svg' alt='')  
         //- Start of Zalo
         if chatZalo 
             script(type='text/javascript' src='https://sp.zalo.me/plugins/sdk.js' async defer)
@@ -143,7 +143,7 @@ if popup
                                                                                                                                     }`)
                 span
                 div.background-icon
-                //- img.ishow(src='/img/stick_zalo.png' alt='')  
+                //- img.ishow(src=dist+'/default/stick_zalo.png' alt='')  
 
         //- Start of Call Now
         a.callnow.draggable-pc(href='tel:'+phoneDefault data-draggabilly-options=`{

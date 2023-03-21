@@ -1,13 +1,13 @@
-extends layout.pug
+extends components/_layout.pug
 
 block title
     - let title = 'Trang chủ';
     title #{title}
 block style
-    - let css = '/wwwroot/templates/release/index.min.css';
+    - let css = '/wwwroot/templates/website/release/index.min.css';
     //- Default
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/default.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/main.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/main.min.css')
 
 block content
     //- Var
@@ -19,15 +19,15 @@ block content
         h1.d-none=h1Title
         include components/_main-slider.pug
 block script
-    - let js = '/wwwroot/templates/release/index.min.js';
+    - let js = '/wwwroot/templates/website/release/index.min.js';
     //- Default
-    script(type='text/javascript' src=`/wwwroot/templates/release/default.min.js` defer)
+    script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
     //- Page
 
     script.
         addCSS('#{css}')
         addScript('#{js}')
-        addScript('/wwwroot/templates/release/layout.min.js')
+        addScript('/wwwroot/templates/website/release/layout.min.js')
     
 
     

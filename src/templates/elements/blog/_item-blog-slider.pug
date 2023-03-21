@@ -3,7 +3,7 @@
         a.img(href=item.href title='')
             picture
                 source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                img.swiper-lazy(data-src=item.src alt='' itemprop='thumbnail' width='300' height='210')
+                img.swiper-lazy(data-src=dist+item.src alt='' itemprop='thumbnail' width='300' height='210')
             .swiper-lazy-preloader
         .post-calendar
             span.post-day=item.day

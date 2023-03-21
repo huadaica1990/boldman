@@ -7,8 +7,8 @@
  *
  *
  */
- 
- /*--------------------------------
+
+/*--------------------------------
     Addon
         - Call Now
             @HTML
@@ -23,465 +23,507 @@
             @HTML
             a.zalocall(href=`https://zalo.me/${phoneDefault}` target='_blank' rel='nofollow')
               span
-              img(src='/img/stick_zalo.png' alt='')
+              img(src='/wwwroot/templates/images/default/stick_zalo.png' alt='')
         - Face Chat
 --------------------------------*/
 
 // Set variables
-@include set-default(
-  (
-    addOn: (
-        _left: 15px,
-        _right: 15px,
-        1920: (),
-        1440: (),
-        1366: (),
-        1280: (),
-        1024: (),
-        768: (),
-        450: (),
-        360: (),
+@include set-default((addOn: (_left: 15px,
+      _right: 15px,
+      1920: (),
+      1440: (),
+      1366: (),
+      1280: (),
+      1024: (),
+      768: (),
+      450: (),
+      360: (),
     ),
-  )
-);
+  ));
 
 /*#region #Common*/
-    .chat-scroll-backdrop {
-      @include visible($active: false, $zindex: 88);
-      position:fixed;
-      top:0;
-      left:0;
-      height: 100%;
-      width: 100%;
-      background:rgba(0,0,0,0);
-      &.show {
-        @include visible($active: true, $zindex: 88);
-      }
+.chat-scroll-backdrop {
+  @include visible($active: false, $zindex: 88);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+
+  &.show {
+    @include visible($active: true, $zindex: 88);
+  }
+}
+
+// Call Now
+@include keyframes($animation-name: "callnow") {
+  0% {
+    @include transform($args: scale(1));
+  }
+
+  15% {
+    @include shadow($val: 0 0 0 5px rgba(72, 95, 237, 0.4));
+  }
+
+  25% {
+    @include shadow($val: (0 0 0 10px 0 0 0 5px rgba(72, 95, 237, 0.4), 0 0 0 20px 0 0 0 5px rgba(72, 95, 237, 0.2)));
+  }
+
+  25% {
+    @include shadow($val: (0 0 0 15px rgba(72, 95, 237, 0.4), 0 0 0 30px rgba(72, 95, 237, 0.2)));
+  }
+}
+
+.callnow {
+  opacity: .8;
+  display: block;
+  position: fixed;
+  text-align: center;
+  z-index: 89;
+  width: 50px;
+  height: 50px;
+  bottom: 15px;
+  left: #{get(addOn, _left)};
+
+  i {
+    @include shadow($val: 0px 0px 0px 0px rgba(72, 95, 237, .5));
+    @include border-radius($val: 50%);
+    @include transform-origin($args: 50% 50%);
+    @include use-keyframes($args: "callnow" 2s infinite ease);
+    background: -webkit-gradient(linear, right top, left top, from(#485fed), to(rgba(255, 44, 118, 0.25))), #485fed;
+    background: -webkit-linear-gradient(right, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
+    background: -moz-linear-gradient(right, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
+    background: -o-linear-gradient(right, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
+    background: linear-gradient(to left, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
+    display: block;
+    height: 100%;
+    font-size: 25px;
+    line-height: 50px;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    color: $white-color;
+  }
+
+  span {
+    @include e-cen($type: "top");
+    @include border-radius($val: 0 5px 5px 0);
+    @include shadow($val: (rgba(0, 0, 0, 0.1) 0px 1px 6px, rgba(0, 0, 0, 0.2) 0px 2px 24px));
+    background: $white-color;
+    color: $dark-color;
+    display: block;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    left: 40px;
+    padding: 5px 10px 5px 15px;
+    position: absolute;
+    z-index: 1;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.--right {
+    left: auto;
+    right: #{get(addOn, _left)};
+
+    span {
+      left: auto;
+      right: 40px;
+      padding: 5px 15px 5px 10px;
     }
-    // Call Now
-    @include keyframes($animation-name: "callnow") {
-      0% {
-        @include transform($args: scale(1));
-      }
+  }
+}
 
-      15% {
-        @include shadow($val: 0 0 0 5px rgba(72,95,237,0.4));
-      }
+// Scroll Top
+.scroll-top {
+  @include animation($customize: true) {
+    -ms-transition: bottom 0.3s, opacity 0.3s, visibility .3s;
+    -webkit-transition: bottom 0.3s, opacity 0.3s, visibility .3s;
+    -moz-transition: bottom 0.3s, opacity 0.3s, visibility .3s;
+    -o-transition: bottom 0.3s, opacity 0.3s, visibility .3s;
+    transition: bottom 0.3s, opacity 0.3s, visibility .3s;
+  }
 
-      25% {
-        @include shadow($val: (0 0 0 10px 0 0 0 5px rgba(72,95,237,0.4), 0 0 0 20px 0 0 0 5px rgba(72,95,237,0.2)));
-      }
+  ;
+  @include flex($type: "center");
+  position: fixed;
+  right: #{get(addOn, _right)};
+  bottom: -4rem;
+  width: 4.6rem;
+  height: 4.6rem;
+  z-index: 89;
+  font-size: 1.4rem;
+  font-weight: $font-weight-bold;
+  color: #222;
+  visibility: hidden;
+  opacity: 0;
 
-      25% {
-        @include shadow($val: (0 0 0 15px rgba(72,95,237,0.4), 0 0 0 30px rgba(72,95,237,0.2)));
-      }
+  &.show {
+    bottom: 98px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:hover {
+    color: $primary-color;
+    opacity: .8
+  }
+
+  &:before {
+    @include border-radius($val: 50%);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    color: $white-color;
+    background-color: #333;
+    border: 2px solid #333;
+    z-index: 1;
+  }
+
+  svg {
+    @include border-radius($val: 50%);
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 1px;
+    left: 1px;
+    z-index: -1;
+
+    circle {
+      stroke: #2C67E7;
+      stroke-width: 4px;
+      stroke-linecap: round;
+      stroke-dasharray: 1, 400;
     }
-    .callnow {
-      opacity: .8;
-      display: block;
-      position: fixed;
-      text-align: center;
-      z-index: 89;
-      width: 50px;
-      height: 50px;
-      bottom: 15px;
-      left: #{get(addOn, _left)};
-      i {
-          @include shadow($val: 0px 0px 0px 0px rgba(72,95,237,.5));
-          @include border-radius($val: 50%);
-          @include transform-origin($args: 50% 50%);
-          @include use-keyframes($args: "callnow" 2s infinite ease);
-          background: -webkit-gradient(linear, right top, left top, from(#485fed), to(rgba(255, 44, 118, 0.25))), #485fed;
-          background: -webkit-linear-gradient(right, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
-          background: -moz-linear-gradient(right, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
-          background: -o-linear-gradient(right, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
-          background: linear-gradient(to left, #485fed, rgba(255, 44, 118, 0.25)), #485fed;
-          display: block;
-          height: 100%;
-          font-size: 25px;
-          line-height: 50px;
-          position: relative;
-          width: 100%;
-          z-index: 2;
-          color:$white-color;
-      }
-      span {
-          @include e-cen($type: "top");
-          @include border-radius($val: 0 5px 5px 0);
-          @include shadow($val: (rgba(0, 0, 0, 0.1) 0px 1px 6px, rgba(0, 0, 0, 0.2) 0px 2px 24px));
-          background:$white-color;
-          color:$dark-color;
-          display: block;
-          font-size: 14px;
-          font-weight:$font-weight-bold;
-          left: 40px;
-          padding: 5px 10px 5px 15px;
-          position: absolute;
-          z-index: 1;
-          white-space: nowrap;
-          width: auto;
-      }
-      &:hover {
-        opacity: 1;
-      }
-      &.--right {
-          left: auto;
-          right: #{get(addOn, _left)};
+  }
+}
 
-          span {
-              left: auto;
-              right: 40px;
-              padding: 5px 15px 5px 10px;
-          }
-      }
-    }
-    
-    // Scroll Top
-    .scroll-top {
-      @include animation($customize: true) {
-          -ms-transition: bottom 0.3s,opacity 0.3s,visibility .3s;
-          -webkit-transition: bottom 0.3s,opacity 0.3s,visibility .3s;
-          -moz-transition: bottom 0.3s,opacity 0.3s,visibility .3s;
-          -o-transition: bottom 0.3s,opacity 0.3s,visibility .3s;
-          transition: bottom 0.3s,opacity 0.3s,visibility .3s;
-      };
-      @include flex($type: "center");
-      position: fixed;
-      right: #{get(addOn, _right)};
-      bottom: -4rem;
-      width: 4.6rem;
-      height: 4.6rem;
-      z-index: 89;
-      font-size: 1.4rem;
-      font-weight: $font-weight-bold;
-      color: #222;
-      visibility: hidden;
-      opacity: 0;
-      &.show {
-          bottom: 98px;
-          visibility: visible;
-          opacity: 1;
-      }
-      &:hover {
-        color: $primary-color;
-        opacity: .8
-      }
-      &:before {
-        @include border-radius($val: 50%);
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-            -moz-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-            -moz-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        width: 3.6rem;
-        height: 3.6rem;
-        color: $white-color;
-        background-color: #333;
-        border: 2px solid #333;
-        z-index: 1;
-      }
-      svg {
-        @include border-radius($val: 50%);
-        position: absolute;
-        width: 44px;
-        height: 44px;
-        top: 1px;
-        left: 1px;
-        z-index: -1;
-        circle {
-          stroke: #2C67E7;
-          stroke-width: 4px;
-          stroke-linecap: round;
-          stroke-dasharray: 1,400;
-        }
-      }
-    }
+// Zalo
+@include keyframes($animation-name: "growzalo") {
+  0% {
+    @include transform($args: scale(.1));
+    @include filter($val: alpha(opacity=0));
+    opacity: 0;
+  }
 
-    // Zalo
-    @include keyframes($animation-name: "growzalo") {
-      0% {
-          @include transform($args: scale(.1));
-          @include filter($val: alpha(opacity=0));
-          opacity: 0;
-      }
+  50% {
+    @include filter($val: alpha(opacity=100));
+    opacity: 1;
+  }
 
-      50% { 
-          @include filter($val: alpha(opacity=100));
-          opacity: 1;
-      }
+  to {
+    @include transform($args: scale(1.8));
+    @include filter($val: alpha(opacity=0));
+    opacity: 0;
+  }
+}
 
-      to {
-          @include transform($args: scale(1.8));
-          @include filter($val: alpha(opacity=0));
-          opacity: 0;
-      }
-    }
-    .zalo-chat-widget {
-        bottom: calc(50px + 30px) !important;
-        left: 0 !important;
-        right: inherit !important;
-    }
-    .zalocall {
-        position: fixed;
-        bottom: calc(50px + 30px);
-        left: #{get(addOn, _left)};
-        z-index: 89;
-        display: block;
-        opacity: .8;
-        &:before, &:after {
-            @include border-radius($val: 50%);
-            @include use-keyframes($args: "growzalo" 1.5s infinite linear);
-            position: absolute;
-            left: 8px;
-            top: 8px;
-            content: "";
-            width: 32px;
-            height: 32px;
-        }
+.zalo-chat-widget {
+  bottom: calc(50px + 30px) !important;
+  left: 0 !important;
+  right: inherit !important;
+}
 
-        &:before {
-            @include shadow($val: 0 0 8px 4px #ff5d5d);
-        }
+.zalocall {
+  position: fixed;
+  bottom: calc(50px + 30px);
+  left: #{get(addOn, _left)};
+  z-index: 89;
+  display: block;
+  opacity: .8;
 
-        &:after {
-            @include shadow($val: inset 0 0 6px 2px #ff5d5d);
-        }
+  &:before,
+  &:after {
+    @include border-radius($val: 50%);
+    @include use-keyframes($args: "growzalo" 1.5s infinite linear);
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    content: "";
+    width: 32px;
+    height: 32px;
+  }
 
-        span {
-            @include border($position: "all", $size:1px, $style:solid, $color: $white-color);
-            @include border-radius($val: 50%);
-            position: absolute;
-            top: 0;
-            right: 5px;
-            width: 10px;
-            height: 10px;
-            background-color: #7ed321;
-            z-index: 10;
-        }
-        .background-icon,
-        img {
-            width: 48px;
-            height: 48px;
-            position: relative;
-            z-index: 1;
-            background-position: -5px -5px;
-        }
-        &:hover {
-          opacity: 1;
-        }
-        &.--right {
-            left: auto;
-            right: #{get(addOn, _left)};
-        }
-    }
+  &:before {
+    @include shadow($val: 0 0 8px 4px #ff5d5d);
+  }
 
-    // Face Chat
-    .facemess {
-      @include border-radius($val: 50%);
-      @include shadow($val: 0 2px 4px 0 rgba(152,165,185,.4));
-      opacity: .8;
-      background: $white-color;
-      cursor: pointer;
-      position: fixed;
-      text-align: center;
-      width: 50px;
-      height: 50px;
-      bottom: calc(40px + 15px);
-      right: #{get(addOn, _right)};
-      z-index: 9;
+  &:after {
+    @include shadow($val: inset 0 0 6px 2px #ff5d5d);
+  }
 
-      span {
-          @include border($position: "all", $size:2px, $style:solid, $color: $white-color);
-          @include border-radius($val: 50%);
-          position: absolute;
-          top: 0;
-          right: 0px;
-          width: 20px;
-          height: 20px;
-          background-color: #f02849;
-          z-index: 10;
-          font-size: 10px;
-          line-height: 17px;
-          font-weight: $font-weight-semibold;
-          color:$white-color;
-      }
-      
-      img {
-        width: 35px;
-        margin: 7.5px auto;
-      }
-      &:hover {
-        opacity: 1;
-      }
-    }
+  span {
+    @include border($position: "all", $size: 1px, $style: solid, $color: $white-color);
+    @include border-radius($val: 50%);
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #7ed321;
+    z-index: 10;
+  }
+
+  .background-icon,
+  img {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    z-index: 1;
+    background-position: -5px -5px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.--right {
+    left: auto;
+    right: #{get(addOn, _left)};
+  }
+}
+
+// Face Chat
+.facemess {
+  @include border-radius($val: 50%);
+  @include shadow($val: 0 2px 4px 0 rgba(152, 165, 185, .4));
+  opacity: .8;
+  background: $white-color;
+  cursor: pointer;
+  position: fixed;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  bottom: calc(40px + 15px);
+  right: #{get(addOn, _right)};
+  z-index: 9;
+
+  span {
+    @include border($position: "all", $size: 2px, $style: solid, $color: $white-color);
+    @include border-radius($val: 50%);
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    background-color: #f02849;
+    z-index: 10;
+    font-size: 10px;
+    line-height: 17px;
+    font-weight: $font-weight-semibold;
+    color: $white-color;
+  }
+
+  img {
+    width: 35px;
+    margin: 7.5px auto;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
 
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/
-  @include mq('lg', 'max') {
-    .callnow {
-      bottom: calc(15px + 58px);
-    }
-    .zalocall {
-      bottom: calc(50px + 30px + 58px);
-    }
+@include mq('lg', 'max') {
+  .callnow {
+    bottom: calc(15px + 58px);
   }
-  @include mq('md', 'max') {
-    #scroll-top {
-      display: none;
+
+  .zalocall {
+    bottom: calc(50px + 30px + 58px);
+  }
+}
+
+@include mq('md', 'max') {
+  #scroll-top {
+    display: none;
+  }
+
+  #chat-scroll-block {
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    z-index: 89;
+
+    .--header {
+      @include animation($customize: true) {
+        -ms-transition: transform .3s, opacity .3s;
+        -webkit-transition: transform .3s, opacity .3s;
+        -moz-transition: transform .3s, opacity .3s;
+        -o-transition: transform .3s, opacity .3s;
+        transition: transform .3s, opacity .3s;
+      }
+
+      ;
+      @include border-radius($val: 50%);
+      @include shadow($val: 0 4px 8px 0 rgba(48, 56, 70, .2));
+      @include transform($args: scale(1));
+      display: block;
+      background:rgba(0, 128, 255, .8);
+      color:$white-color;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      line-height:40px;
+      font-size: 16px;
+      text-align: center;
+      opacity: 1;
+      visibility: visible;
     }
-    #chat-scroll-block {
-      position: fixed;
-      bottom: 70px;
-      right: 10px;
-      z-index: 89;
-      .--header {
-        @include animation($customize: true) {
-          -ms-transition: transform .3s, opacity .3s;
-          -webkit-transition: transform .3s, opacity .3s;
-          -moz-transition: transform .3s, opacity .3s;
-          -o-transition: transform .3s, opacity .3s;
-          transition: transform .3s, opacity .3s;
-        };
+
+    .--body {
+      @include animation($customize: true) {
+        -ms-transition: transform .3s, opacity .3s;
+        -webkit-transition: transform .3s, opacity .3s;
+        -moz-transition: transform .3s, opacity .3s;
+        -o-transition: transform .3s, opacity .3s;
+        transition: transform .3s, opacity .3s;
+      }
+
+      ;
+      @include visible($active: false, $zindex: 1);
+      @include transform($args: scale(0));
+      position:absolute;
+      bottom:0;
+      left:0;
+
+      >* {
         @include border-radius($val: 50%);
-        @include shadow($val: 0 4px 8px 0 rgba(48,56,70,.2));
-        @include transform($args: scale(1));
-        display: block;
-        background:rgba(0,128,255,.8);
-        color:$white-color;
+        opacity: .8;
         width: 40px;
         height: 40px;
-        border: 0;
-        line-height:40px;
-        font-size: 16px;
-        text-align: center;
-        opacity: 1;
-        visibility: visible;
-      }
-      .--body {
-        @include animation($customize: true) {
-          -ms-transition: transform .3s, opacity .3s;
-          -webkit-transition: transform .3s, opacity .3s;
-          -moz-transition: transform .3s, opacity .3s;
-          -o-transition: transform .3s, opacity .3s;
-          transition: transform .3s, opacity .3s;
-        };
-        @include visible($active: false, $zindex: 1);
-        @include transform($args: scale(0));
-        position:absolute;
-        bottom:0;
-        left:0;
-        > * {
-          @include border-radius($val: 50%);
-          opacity: .8;
-          width: 40px;
-          height: 40px;
-          position: relative;
-          bottom: auto;
-          left: auto;
-          right: auto;
-          margin-bottom: 8px;
-          &:last-child {
-            margin-bottom: 0;
-          }
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
         }
-        .zalocall {
-          @include flex($type: "center");
-          @include shadow($val: 0 2px 4px 0 rgba(152,165,185,.4));
+      }
+
+      .zalocall {
+        @include flex($type: "center");
+        @include shadow($val: 0 2px 4px 0 rgba(152, 165, 185, .4));
+        @include use-keyframes($args: initial);
+        background: $white-color;
+
+        span {
+          top: 5px;
+        }
+
+        .background-icon,
+        img {
+          width: 28px;
+          background-position: -5px -63px;
+          height: 28px;
+        }
+
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+
+      .callnow {
+        i {
+          @include transform($args: rotateZ(-90deg));
+          @include shadow($val: 0 2px 4px 0 rgba(152, 165, 185, 1));
           @include use-keyframes($args: initial);
           background: $white-color;
-          span {
-            top:5px;
-          }
-          .background-icon,
-          img {
-            width: 28px;
-            background-position: -5px -63px;
-            height: 28px;
-          }
-          &:before,&:after {
-            display:none;
-          }
+          font-size: 21px;
+          line-height: 40px;
+          //color: #0080ff;
+          color: $primary-color;
+          text-align: center;
         }
-        .callnow {
-          i {
-            @include transform($args: rotateZ(-90deg));
-            @include shadow($val: 0 2px 4px 0 rgba(152,165,185,1));
-            @include use-keyframes($args: initial);
-            background: $white-color;
-            font-size: 21px;
-            line-height: 40px;
-            //color: #0080ff;
-            color: $primary-color;
-            text-align: center;
-          }
-          span {
-            @include border-radius($val: 5px 0 0 5px);
-            right: 30px;
-            left:auto;
-            padding:5px 15px 5px 10px;
-          }
-        }
-        .facemess {
-          span {
-            @include border($position: "all", $size:1px, $style:solid, $color: $white-color);
-            font-size: 9px;
-            width: 15px;
-            height: 15px;
-            line-height: 15px;
-          }
-          .background-icon,
-          img {
-            @include transform($args: translateY(6px));
-            background-position: -63px -5px;
-            width: 28px;
-            height: 28px;
-            margin: 0px auto;
-          }
+
+        span {
+          @include border-radius($val: 5px 0 0 5px);
+          right: 30px;
+          left: auto;
+          padding: 5px 15px 5px 10px;
         }
       }
-      &.show {
-        .--header {
-          @include transform($args: scale(0));
-          opacity: 0;
-          visibility: hidden;
+
+      .facemess {
+        span {
+          @include border($position: "all", $size: 1px, $style: solid, $color: $white-color);
+          font-size: 9px;
+          width: 15px;
+          height: 15px;
+          line-height: 15px;
         }
-        .--body {
-          @include visible($active: true, $zindex: 1);
-          @include transform($args: scale(1));
+
+        .background-icon,
+        img {
+          @include transform($args: translateY(6px));
+          background-position: -63px -5px;
+          width: 28px;
+          height: 28px;
+          margin: 0px auto;
         }
       }
     }
+
+    &.show {
+      .--header {
+        @include transform($args: scale(0));
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .--body {
+        @include visible($active: true, $zindex: 1);
+        @include transform($args: scale(1));
+      }
+    }
   }
+}
+
 /*#endregion*/
 
 /*#region Style fix all browser*/
-  /*#region Safari*/
-    @include only-for-retina($pixel-ratio : 1.5){
-      // #callnow span {width:auto;}
-      // #chat-scroll-block {
-      //   .--header {
-      //     line-height: 43px;
-      //   }
-      //   .--body {
-      //     .callnow i {
-      //       line-height: 55px;
-      //     }
-      //     .facemess i {
-      //       line-height: 45px;
-      //     }
-      //   }
-      // }
-    }
-  /*#endregion*/
+/*#region Safari*/
+@include only-for-retina($pixel-ratio : 1.5) {
+  // #callnow span {width:auto;}
+  // #chat-scroll-block {
+  //   .--header {
+  //     line-height: 43px;
+  //   }
+  //   .--body {
+  //     .callnow i {
+  //       line-height: 55px;
+  //     }
+  //     .facemess i {
+  //       line-height: 45px;
+  //     }
+  //   }
+  // }
+}
+
+/*#endregion*/
 /*#endregion*/

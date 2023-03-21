@@ -1,13 +1,13 @@
-extends layout_blank.pug
+extends components/_layout-blank.pug
 
 block title
     - let title = 'Coming Soon';
     title #{title}
 block style
-    - let css = '/wwwroot/templates/release/comingsoon.min.css';
+    - let css = '/wwwroot/templates/website/release/comingsoon.min.css';
     //- Default
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/default.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/main.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/main.min.css')
 
 block content
     //- Var
@@ -33,20 +33,20 @@ block content
         section.flex-center(id=`${idPage}`)
             .logo-container
                 a(href='/')
-                    img(src='/img/logo.png' alt='' loading='lazy' width='133' height='52')
+                    img(src=dist+'/default/logo.png' alt='' loading='lazy' width='133' height='52')
             .container.text-center
                 h2.coming-title Coming Soon
                 .countdown.countdown-coming(data-until='+10d' data-format='DHMS' data-compact='false' data-labels-short='Năm, Tháng, Tuần, Ngày, Giờ, Phút, Giây' data-relative='true')
             .social-icons.social-icons-colored.w-100.flex-center
                 +social-list
 block script
-    - let js = '/wwwroot/templates/release/comingsoon.min.js';
+    - let js = '/wwwroot/templates/website/release/comingsoon.min.js';
     //- Default
-    script(type='text/javascript' src=`/release/default.min.js` defer)
+    script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
     //- Page
 
     script.
         addCSS('#{css}')
         addScript('#{js}')
-        addScript('/wwwroot/templates/release/layout.min.js')
+        addScript('/wwwroot/templates/website/release/layout.min.js')
     

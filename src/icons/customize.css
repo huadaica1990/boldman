@@ -1,12 +1,12 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'customize';
-  src: url('/icons/customize.eot?46690396');
-  src: url('/icons/customize.eot?46690396#iefix') format('embedded-opentype'),
-       url('/icons/customize.woff2?46690396') format('woff2'),
-       url('/icons/customize.woff?46690396') format('woff'),
-       url('/icons/customize.ttf?46690396') format('truetype'),
-       url('/icons/customize.svg?46690396#customize') format('svg');
+  src: url('/wwwroot/templates/website/icons/customize.eot?46690396');
+  src: url('/wwwroot/templates/website/icons/customize.eot?46690396#iefix') format('embedded-opentype'),
+       url('/wwwroot/templates/website/icons/customize.woff2?46690396') format('woff2'),
+       url('/wwwroot/templates/website/icons/customize.woff?46690396') format('woff'),
+       url('/wwwroot/templates/website/icons/customize.ttf?46690396') format('truetype'),
+       url('/wwwroot/templates/website/icons/customize.svg?46690396#customize') format('svg');
   font-weight: normal;
   font-style: normal;
 }

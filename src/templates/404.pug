@@ -1,13 +1,13 @@
-extends layout.pug
+extends components/_layout.pug
 
 block title
     - let title = '404';
     title #{title}
 block style
-    - let css = '/wwwroot/templates/release/error.min.css';
+    - let css = '/wwwroot/templates/website/release/error.min.css';
     //- Default
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/default.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/main.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/main.min.css')
 
 block content
     //- Var
@@ -30,7 +30,7 @@ block content
     //- Content
     main.page-wrapper.main.error-page(id=`${idPage}-page`)
         h1.d-none=h1Title
-        section.error.lazyload-bg.bg-grey(id=`${idPage}` data-bg='/img/city-cloud.png')
+        section.error.lazyload-bg.bg-grey(id=`${idPage}` data-bg=dist+'/default/city-cloud.png')
             .container
                 .section-header.d-flex.justify-content-center.align-items-center
                     h2.section-title 404
@@ -43,13 +43,13 @@ block content
                     button.btn.btn-primary.ecs-icon-search
 
 block script
-    - let js = '/wwwroot/templates/release/error.min.js';
+    - let js = '/wwwroot/templates/website/release/error.min.js';
     //- Default
-    script(type='text/javascript' src=`/wwwroot/templates/release/default.min.js` defer)
+    script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
     //- Page
 
     script.
         addCSS('#{css}')
         addScript('#{js}')
-        addScript('/wwwroot/templates/release/layout.min.js')
+        addScript('/wwwroot/templates/website/release/layout.min.js')
     

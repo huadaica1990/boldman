@@ -10,7 +10,7 @@ header.d-none.d-lg-block.d-md-none
                 if isLang
                     .dropdown.lang-wrapper.p-relative
                         a.text-uppercase(href='javascript:' title='' data-toggle='dropdown')
-                            img.dropdown-image(src='/img/flag-vn.png' alt='' loading='lazy' width='14' height='9')
+                            img.dropdown-image(src='/wwwroot/templates/images/default/flag-vn.png' alt='' loading='lazy' width='14' height='9')
                             | VN
                         .dropdown-box.dropdown-box-lang
                             +lang-list
@@ -18,7 +18,7 @@ header.d-none.d-lg-block.d-md-none
                     .user.d-flex.p-relative
                         if isAuthorise
                             a.login.d-flex(href='' title='')
-                                img.avatar.br-50(src='/img/avatar.jpg' alt='' width='25' height='25' loading='lazy')
+                                img.avatar.br-50(src='/wwwroot/templates/images/default/avatar.jpg' alt='' width='25' height='25' loading='lazy')
                                 span Xin chào Nguyễn Trọng Huy Nguyễn Trọng Huy
                         else
                             a.login.d-flex.sign-in.sign-in-ajax(href='/ajax/login.html' data-no-instant title="Login")
@@ -31,7 +31,7 @@ header.d-none.d-lg-block.d-md-none
                 .container.d-flex.justify-content-between.align-items-center
                     .header-body-left.logo-wrapper
                         a(href=logo[0].href title=logo[0].name)
-                            img(src=logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
+                            img(src=dist+logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
                     .header-body-center.search.search-pc.pre-search
                         .search-container
                             form.flex-center.search-border.bg-white.zindex-20(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
@@ -41,7 +41,7 @@ header.d-none.d-lg-block.d-md-none
                                 a(href='')
                                     picture
                                         source(media='' srcset='' type='image/webp')
-                                        img(src='/img/menu/search0.jpg' alt='' loading='lazy' width='554' height='50')
+                                        img(src=dist+'/menus/search0.jpg' alt='' loading='lazy' width='554' height='50')
                                 .search-result-step1
                                     .search-result-history.toggler-wrap.js-viewed-search
                                         each item in tags
@@ -57,7 +57,7 @@ header.d-none.d-lg-block.d-md-none
                                                     .img-container
                                                         picture
                                                             source(media='' srcset='' type='image/webp')
-                                                            img(src=item.src alt='' loading='lazy' width='45' height='45')
+                                                            img(src=dist+item.src alt='' loading='lazy' width='45' height='45')
                                                     .text-container=item.name
                                     .search-result-cat
                                         .title Danh mục nổi bật
@@ -67,7 +67,7 @@ header.d-none.d-lg-block.d-md-none
                                                     .img-container
                                                         picture
                                                             source(media='' srcset='' type='image/webp')
-                                                            img(src=item.src alt='' loading='lazy' width='100' height='100')
+                                                            img(src=dist+item.src alt='' loading='lazy' width='100' height='100')
                                                     | #{item.name}
                                 .search-result-step2
                                     .search-result-history
@@ -118,7 +118,7 @@ header.d-none.d-lg-block.d-md-none
                 .container.d-flex.justify-content-between.align-items-center
                     .header-body-left.logo-wrapper
                         a(href=logo[0].href title=logo[0].name)
-                            img(src=logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
+                            img(src=dist+logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
                     .header-body-right
                         nav#nav-pc.nav-pc(role='navigation' itemscope itemtype='http://www.schema.org/SiteNavigationElement')
                             ul.menu.nav-pc-body.nav.flex-container.menulanding
@@ -132,7 +132,7 @@ header.d-none.d-lg-block.d-md-none
                 .container.d-flex.justify-content-between.align-items-center
                     .header-body-left.logo-wrapper
                         a(href=logo[0].href title=logo[0].name)
-                            img(src=logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
+                            img(src=dist+logo[0].src alt=logo[0].name width='133' height='52' loading='lazy')
                     .header-body-center.search.search-pc.pre-search
                         .search-container
                             form.flex-center.search-border.bg-white.zindex-20(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
@@ -142,7 +142,7 @@ header.d-none.d-lg-block.d-md-none
                                 a(href='')
                                     picture
                                         source(media='' srcset='' type='image/webp')
-                                        img(src='/img/menu/search0.jpg' alt='' loading='lazy' width='554' height='50')
+                                        img(src=dist+'/menus/search0.jpg' alt='' loading='lazy' width='554' height='50')
                                 .search-result-step1
                                     .search-result-history.toggler-wrap.js-viewed-search
                                         each item in tags
@@ -158,7 +158,7 @@ header.d-none.d-lg-block.d-md-none
                                                     .img-container
                                                         picture
                                                             source(media='' srcset='' type='image/webp')
-                                                            img(src=item.src alt='' loading='lazy' width='45' height='45')
+                                                            img(src=dist+item.src alt='' loading='lazy' width='45' height='45')
                                                     .text-container=item.name
                                     .search-result-cat
                                         .title Danh mục nổi bật
@@ -168,7 +168,7 @@ header.d-none.d-lg-block.d-md-none
                                                     .img-container
                                                         picture
                                                             source(media='' srcset='' type='image/webp')
-                                                            img(src=item.src alt='' loading='lazy' width='100' height='100')
+                                                            img(src=dist+item.src alt='' loading='lazy' width='100' height='100')
                                                     | #{item.name}
                                 .search-result-step2
                                     .search-result-history

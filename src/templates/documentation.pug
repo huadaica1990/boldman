@@ -1,15 +1,15 @@
-extends layout_blank.pug
+extends components/_layout-blank.pug
 
 block title
     - let title = 'Documentation';
     title #{title}
 block style
-    - let css = '/wwwroot/templates/release/document.min.css';
+    - let css = '/wwwroot/templates/website/release/document.min.css';
     //- Default
     
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/styles/plugins/fontawesome-free/css/all.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/default.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/release/main.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/styles/plugins/fontawesome-free/css/all.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/release/main.min.css')
 
 block content
     //- Var
@@ -18,7 +18,7 @@ block content
     //- Data
     //- Content
     main.page-wrapper.main(id=`${idPage}-page`)
-        .page-header(style='background-image: url(/img/documentation-header.jpg);')
+        .page-header(style=`background-image: url(${dist}/default/documentation-header.jpg);`)
             .container
                 h1.page-title EcsGroup Docs
                 p How Can We Help You?
@@ -2381,9 +2381,9 @@ block content
                             p Best Regards. -Ecsgroup Team-
 
 block script
-    - let js = '/wwwroot/templates/release/document.min.js';
+    - let js = '/wwwroot/templates/website/release/document.min.js';
     //- Default
-    script(type='text/javascript' src=`/wwwroot/templates/release/default.min.js` defer)
+    script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
     //- Page
 
     script.

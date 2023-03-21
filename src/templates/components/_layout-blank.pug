@@ -1,10 +1,10 @@
-include variables/_function.pug
-include variables/_mixins.pug
-include variables/_variables.pug
+include ../variables/_function.pug
+include ../variables/_mixins.pug
+include ../variables/_variables.pug
 
 doctype html
 html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
-    include components/_header.pug
+    include _header.pug
     block title
     
     //- CSS
@@ -26,32 +26,26 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
     link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/icons/customize.ttf')
     link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/icons/ecs.ttf')
     link(rel='stylesheet' type='text/css' href='/wwwroot/templates/icons/customize.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/icons/icon-default.min.css')
+    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/icons/default.min.css')
     //- link(rel='preload stylesheet' as='style' type='text/css' crossorigin='anonymous' href='/release/main.min.css')
     
     block style
     body
-        //-Facebook plugin
-        #fb-root
-        script(async defer crossorigin='anonymous' src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0' nonce='alK264s0')
-
-        include components/_nav-header.pug
-        
         //-Main layout
         block content
-
-        include components/_footer.pug
 
         #loading
             .loading-content
                 .loader
-                    
+        //- Start of Scroll Top
+        a#scroll-top.scroll-top.demo-icon.cus-up-open-big(href='#top' title='Top' role='button')
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+                <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35" r="34" style="stroke-dasharray: 214, 400;"></circle>
+            </svg>
+            
         //- JavaScript
         script(type='text/javascript' src='/wwwroot/templates/release/jquery.min.js')
-        script(type='text/javascript' src='/wwwroot/templates/release/lang.min.js')
-        //- script(type='text/javascript' src='/wwwroot/templates/website/plugins/plyr-master/plyr.polyfilled.js')
         script.
-            //- new Plyr('.plyr-video');
             function addCSS(filename) {
                 let head = document.getElementsByTagName('head')[0],
                     style = document.createElement('link');
@@ -69,12 +63,6 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                 script.id = id;
                 document.body.appendChild(script, document.getElementsByTagName("script")[0]);
             }
-            function getSearchFocus(obj) {
-                document.getElementById(obj).focus();
-                setTimeout(function() {
-                    document.getElementById(obj).focus();
-                }, 250);
-            }
             if (document.documentElement.clientWidth > 1100) {
                 setTimeout(function () {
                     //addScript('/release/main.min.js')
@@ -83,8 +71,7 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
             }
             document.addEventListener("DOMContentLoaded", function () {
                 var lazyBackgrounds = [].slice.call(document.querySelectorAll(".lazyload-bg"));
-                var lazyIframes = [].slice.call(document.querySelectorAll(".lazyload-iframe"));
-                var lazyVideos = [].slice.call(document.querySelectorAll(".lazyload-video"));
+                var lazyIframe = [].slice.call(document.querySelectorAll(".lazyload-iframe"));
                 if ("IntersectionObserver" in window) {
                     let lazyBackgroundObserver = new IntersectionObserver(function (entries, observer) {
                         entries.forEach(function (entry) {
@@ -106,31 +93,12 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                             }
                         });
                     });
-                    let lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting) {
-                                for (var source in entry.target.children) {
-                                    var videoSource = entry.target.children[source];
-                                    if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
-                                        videoSource.src = videoSource.dataset.src;
-                                    }
-                                }
-                                entry.target.load();
-                                entry.target.classList.remove("lazyload-video");
-                                entry.target.classList.add("ls-is-cached", "lazyloaded");
-                                lazyVideoObserver.unobserve(entry.target);
-                            }
-                        });
-                    });
 
                     lazyBackgrounds.forEach(function (lazyBackground) {
                         lazyBackgroundObserver.observe(lazyBackground);
                     });
-                    lazyIframes.forEach(function (lazyIframe) {
+                    lazyIframe.forEach(function (lazyIframe) {
                         lazyIframeObserver.observe(lazyIframe);
-                    });
-                    lazyVideos.forEach(function (lazyVideo) {
-                        lazyVideoObserver.observe(lazyVideo);
                     });
                 }
             });
