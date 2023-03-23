@@ -577,10 +577,6 @@
         }
     }
 
-    .rates-header-border {
-        padding: 0 10px 20px 10px;
-    }
-
     #rate {
         
         .comment-form {
@@ -598,6 +594,14 @@
             .text {
                 width: auto;
             }
+        }
+    }
+
+    .rates-header-border {
+        padding: 0 10px 20px 10px;
+
+        .comment-form {
+            margin-left: 0 !important;
         }
     }
     /*#endregion*/
