@@ -283,7 +283,7 @@ module.exports = grunt => {
         },
         sprite: {
             all: {
-                src: 'src/sprite/*.png',
+                src: 'src/images/sprite/*.png',
                 dest: '<%= dirs.dist %>/images/sprite/sprite.png',
                 destCss: '<%= dirs.dist %>/release/sprites.min.css'
             }
@@ -400,7 +400,7 @@ module.exports = grunt => {
             },
             clean: ['<%= dirs.dist %>/images/', '<%= dirs.dist %>/icons/', '<%= dirs.dist %>/fonts/'],
             copy: {
-                files: ['src/img/*', 'src/img/*/*.*', 'src/icons/*.*', 'src/fonts/*.*'],
+                files: ['src/images/*', 'src/images/*/*.*', 'src/icons/*.*', 'src/fonts/*.*'],
                 tasks: ['copy']
             },
         },
