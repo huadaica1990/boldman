@@ -5,7 +5,7 @@
  * @requires page-scroll-to-id
  * @param {String} selector
  */
-function scrolToIdEcs(selector) {
+function scrolToIdEcs(selector, option) {
     if ($.fn.mPageScroll2id) {
         var scrollToIOptions = {
                 highlightClass: 'active',
@@ -15,7 +15,7 @@ function scrolToIdEcs(selector) {
                 }
             },
             $this = $(selector),
-            settings = $.extend(true, {}, scrollToIOptions, Ecsgroup.parseOptions($this.attr('data-scrollto-options')));
+            settings = $.extend(true, {}, scrollToIOptions, option);
         $(selector).mPageScroll2id(settings);
         $this.on('click', function() {
             var liTarget = $(this).closest('li');
@@ -35,6 +35,6 @@ function scrolToIdEcs(selector) {
 
     }
 };
-Ecsgroup.pageScrollToId = function (selector) {
+Ecsgroup.pageScrollToId = function (selector, option) {
     return new scrolToIdEcs(selector);
 };

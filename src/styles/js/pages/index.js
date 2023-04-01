@@ -13,7 +13,7 @@
       Ecsgroup.countDown('.countdown,.product-countdown');                        // Initialize CountDown
       Ecsgroup.shop.init();
     // Menu landing
-      // Ecsgroup.pageScrollToId("a[rel='m_PageScroll2id']")
+      // Ecsgroup.pageScrollToId("a[rel='m_PageScroll2id']", {})
     // Default
       Ecsgroup.slider('.swiper-container');                            // Initialize Slider
       Ecsgroup.call(Ecsgroup.slider.pgToggle);
