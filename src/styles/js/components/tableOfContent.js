@@ -5,15 +5,16 @@
  */
  Ecsgroup.tableOfContent = function() {
     var domTableOfContent = Ecsgroup.byId('widget-toc-fixed'),
+        toc = Ecsgroup.$('.blog-content > .widget-toc').offset().top + Ecsgroup.$('.blog-content > .widget-toc').outerHeight(),
         stickyHeader = $('.sticky-header').height() + 30;
     if($('.widget-toc').length != false && domTableOfContent != null) {
         var refreshTableOfContent = function () {
             if($('.readmore-js.open').length > 0) {
                 domTableOfContent.classList.remove('show');
             }
-            else if (window.pageYOffset > (Ecsgroup.$('.widget-toc').offset().top + Ecsgroup.$('.widget-toc').outerHeight())) {
+            else if (window.pageYOffset > toc) {
                 domTableOfContent.classList.add('show');
-                if (!Ecsgroup.isMobile) domTableOfContent.style.top = stickyHeader + 'px';
+                if (!Ecsgroup.isMobile) domTableOfContent.style.top = $('.sticky-header.fixed').height() + 30 + 'px';
             } else {
                 domTableOfContent.classList.remove('show');
             }
