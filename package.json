@@ -47,6 +47,7 @@
     "lodash": "^4.17.21",
     "magnific-popup": "^1.1.0",
     "moment": "^2.29.4",
+    "multiple-select": "^1.5.2",
     "page-scroll-to-id": "^1.6.8",
     "plyr": "^3.7.3",
     "readmore-js": "^2.2.1",
