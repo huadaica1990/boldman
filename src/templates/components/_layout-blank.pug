@@ -5,31 +5,31 @@ include ../variables/_variables.pug
 doctype html
 html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
     include _header.pug
-    block title
-    
-    //- CSS
-        //- WebFont.js
-    script.
-        WebFontConfig = {
-            custom: {
-                families: ['SVN-Poppins'],
-                urls: ['/wwwroot/templates/website/fonts/fonts.css']
-            }
-            //google: { families: ['Poppins:400,500,600,700,800'] }
-        };
-        (function (d) {
-            var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '/wwwroot/templates/website/release/webfontloader.min.js';
-            wf.async = true;
-            s.parentNode.insertBefore(wf, s);
-        })(document);
-    link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/website/icons/customize.ttf')
-    link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/website/icons/ecs.ttf')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/icons/customize.min.css')
-    link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/icons/default.min.css')
-    //- link(rel='preload stylesheet' as='style' type='text/css' crossorigin='anonymous' href='/release/main.min.css')
-    
-    block style
+        block title
+        
+        //- CSS
+            //- WebFont.js
+        script.
+            WebFontConfig = {
+                custom: {
+                    families: ['SVN-Poppins'],
+                    urls: ['/wwwroot/templates/website/fonts/fonts.css']
+                }
+                //google: { families: ['Poppins:400,500,600,700,800'] }
+            };
+            (function (d) {
+                var wf = d.createElement('script'), s = d.scripts[0];
+                wf.src = '/wwwroot/templates/website/release/webfontloader.min.js';
+                wf.async = true;
+                s.parentNode.insertBefore(wf, s);
+            })(document);
+        link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/website/icons/customize.ttf')
+        link(rel='preload' as='font' type='font/ttf' crossorigin='anonymous' href='/wwwroot/templates/website/icons/ecs.ttf')
+        link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/icons/customize.min.css')
+        link(rel='stylesheet' type='text/css' href='/wwwroot/templates/website/icons/default.min.css')
+        //- link(rel='preload stylesheet' as='style' type='text/css' crossorigin='anonymous' href='/release/main.min.css')
+        
+        block style
     body
         //-Main layout
         block content
