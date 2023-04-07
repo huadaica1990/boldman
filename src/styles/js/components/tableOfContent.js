@@ -5,7 +5,7 @@
  */
  Ecsgroup.tableOfContent = function() {
     var domTableOfContent = Ecsgroup.byId('widget-toc-fixed'),
-        toc = Ecsgroup.$('.blog-content > .widget-toc').offset().top + Ecsgroup.$('.blog-content > .widget-toc').outerHeight(),
+        toc = (Ecsgroup.$('.blog-content > .widget-toc').offset() ? Ecsgroup.$('.blog-content > .widget-toc').offset().top : 0) + Ecsgroup.$('.blog-content > .widget-toc').outerHeight(),
         stickyHeader = $('.sticky-header').height() + 30;
     if($('.widget-toc').length != false && domTableOfContent != null) {
         var refreshTableOfContent = function () {
