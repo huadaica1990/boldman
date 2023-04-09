@@ -40,6 +40,7 @@
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.6.3",
+    "jquery-countto": "^1.2.0",
     "jquery-validation": "^1.19.5",
     "jquery.cookie": "^1.4.1",
     "jquery.easing": "^1.4.1",
