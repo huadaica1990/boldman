@@ -235,7 +235,7 @@ module.exports = grunt => {
             },
             my_target: {
                 files: [{
-                    '<%= dirs.dist %>/icons/customize.min.css': [
+                    'src/icons/customize.min.css': [
                         'src/icons/customize.css',
                     ],
                     // Main
