@@ -1625,6 +1625,7 @@ function validateForm(btn, idform) {
     });
 }
 function validateFormMini(btn, idform) {
+    var submitted = true;
     var form = $(idform).validate({
         focusInvalid: true,
         errorPlacement: function (error, element) { return false; },
