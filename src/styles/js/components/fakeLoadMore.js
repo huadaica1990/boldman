@@ -32,7 +32,7 @@ Ecsgroup.fakeLoadMore = function (container, pagesize = 4) {
             for (let index = 0; index < pagesize * count; ++index) {
                 $(itemChild[index]).css('display', 'block');
             }
-            if (itemTotal < pagesize * count) {
+            if (itemTotal <= pagesize * count) {
                 if (href == null) btn.remove();
                 btn.find('a').text(text).on('click', () => { window.location.href = href })
             }

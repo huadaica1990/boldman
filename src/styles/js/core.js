@@ -37,6 +37,10 @@ window.Ecsgroup = {};
     Ecsgroup.linkCompare = '/so-sanh';
     Ecsgroup.accInfo = '/thong-tin-tai-khoan';
     Ecsgroup.cartLink = '/gio-hang';
+    // Function
+    Ecsgroup.isWishList = true;
+    Ecsgroup.isCountDown = true;
+    Ecsgroup.isCompare = true;
     // $ = jQuery;
     /**
      * jQuery Window Handle

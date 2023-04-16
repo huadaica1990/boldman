@@ -232,9 +232,9 @@
 
                 // Functions for shop page
                 //initProductCartAction();
-                initWishlistAction();
+                if (Ecsgroup.isWishList) initWishlistAction();
                 initProductQuickview();
-                initCompare();
+                if (Ecsgroup.isCompare) initCompare();
 
             },
             //initProductType: function (type) {
@@ -282,11 +282,11 @@
                         btnCart = product.find('.btn-cart'),
                         btnCall = product.find('.btn-call');
                     btnCart.data('id', productId);
-                    productCountDown.countdown('destroy');
+                    if (Ecsgroup.isCountDown) productCountDown.countdown('destroy');
                     if (productPromo != null) {
                         product.find('.product-countdown-container').removeClass('d-none');
                         productCountDown.data('until', productPromo);
-                        Ecsgroup.countDown(productCountDown);
+                        if (Ecsgroup.isCountDown) Ecsgroup.countDown(productCountDown);
                     }
                     else product.find('.product-countdown-container').addClass('d-none');
 

@@ -1,8 +1,5 @@
 var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class="loader"></div></div></div>',
-    errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>',
-    cartWishList = true,
-    cartCountDown = true,
-    cartCompare = true;
+    errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>';
 // Effect
 $('.input-group-effect input').focus(function(event) {
     $(this).parent().addClass('focus');
@@ -707,8 +704,8 @@ function initHeart(selector) {
     $(selector + ' .btn-quickview').removeClass('disabled');
 }
 setTimeout(function () {
-    if (cartWishList) initHeart('body');
-    if (cartCompare) initCompare('body');
+    if (Ecsgroup.isWishList) initHeart('body');
+    if (Ecsgroup.isCompare) initCompare('body');
 }, 3000);
 // Sku
 function selectSku(selector, viewname) {
@@ -732,7 +729,7 @@ function selectSku(selector, viewname) {
             urlprodut += (i == 0 ? '' : 'v') + v.ProductAttributeId + '-' + v.ProductAttributeValueId;
         }
     });
-    if (cartCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'GET',
@@ -757,9 +754,9 @@ function selectSku(selector, viewname) {
                 $(htmlresult).html(result.Data.viewsrc).find('.product-url').attr('href', urlprodut);
                 setTimeout(function () {
                     Ecsgroup.productSingle(htmlresult);
-                    if (cartCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                    if (cartWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                    if (cartCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
                     if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
                     if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
                 }, 500);
@@ -805,7 +802,7 @@ function selectSkuDetail(obj) {
         }
     });
     $('#product-info').css('height', $('#product-info').height() + 'px');
-    if (cartCountDown) $('#product-info .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $('#product-info .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'POST',
@@ -832,9 +829,9 @@ function selectSkuDetail(obj) {
                 })
                 window.history.pushState({ state: urlbuilder, rand: Math.random() }, document.title, urlbuilder);
                 setTimeout(function () {
-                    if (cartCountDown) Ecsgroup.countDown('#product-info .product-countdown');
-                    if (cartWishList) $('#product-info .btn-wishlist').removeClass('disabled');
-                    if (cartCompare) $('#product-info .btn-compare').removeClass('disabled');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#product-info .product-countdown');
+                    if (Ecsgroup.isWishList) $('#product-info .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.isCompare) $('#product-info .btn-compare').removeClass('disabled');
                     if (iswishlist > 0) $('#product-info .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
                     if (iscomparelist > 0) $('#product-info .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
                 }, 1000);
@@ -950,17 +947,17 @@ function openProductPopup(btn) {
                             done: () => {
                                 Ecsgroup.productSingle(htmlresult);
                                 setTimeout(function () {
-                                    if (cartCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
                                     $this.removeClass('load-more-overlay loading');
-                                    if (cartWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                                    if (cartCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
                                     if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
                                     if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
                                     $(htmlresult).removeClass('shimmer-container');
                                 }, 500);
                             },
                             closing: () => {
-                                if (cartCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+                                if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
                             }
                         },
                     }, 'quickview');
@@ -1129,7 +1126,7 @@ function loadmoreFilterProduct() {
 function getFilterResultProduct(type) {
     var form = $('#filterform'),
         paramlist = ['page', 'pp', 'bp', 'pr', 'sort'];
-    if (cartCountDown) $('#list-filter .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $('#list-filter .product-countdown').countdown('destroy');
     if (type === 'loadmore') {
         var top = $('#list-filter-loadmore > *').last().offset().top;
         $.ajax({
@@ -1149,8 +1146,8 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (cartCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (cartWishList) initHeart('#list-filter');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.isWishList) initHeart('#list-filter');
                 }, 1000);
                 totalitem = '1-' + $('#list-filter-loadmore > *').length + '/' + result.TotalItemCount;
                 $('.readmore-count').text('(' + result.itemremaining + ')');
@@ -1191,9 +1188,9 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (cartCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (cartWishList) initHeart('#list-filter');
-                    if (cartCompare) initCompare('#list-filter');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.isWishList) initHeart('#list-filter');
+                    if (Ecsgroup.isCompare) initCompare('#list-filter');
                 }, 1000);
                 $('.totalitem').text(totalitem);
                 Ecsgroup.hideLoading();
@@ -1445,7 +1442,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
         stringVal = id.split('|'),
         targetType = stringVal[0],
         targetId = stringVal[1];
-    if (cartCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     switch (targetType) {
         case 'productgroup':
             $.ajax({
@@ -1476,9 +1473,9 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                             $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                         })
                         setTimeout(function () {
-                            if (cartCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                            if (cartWishList) initHeart(htmlresult);
-                            if (cartCompare) initCompare(htmlresult);
+                            if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                            if (Ecsgroup.isWishList) initHeart(htmlresult);
+                            if (Ecsgroup.isCompare) initCompare(htmlresult);
                         }, 1000);
                         //Ecsgroup.shop.init();
                     }
