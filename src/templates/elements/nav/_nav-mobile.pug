@@ -49,7 +49,7 @@
                     span
                 .logo
                     a(href=logo[1].href title=logo[1].name)
-                        img(src=dist+logo[1].src alt=logo[1].name width='133' height='52' loading='lazy')
+                        img(src=logo[1].src alt=logo[1].name width='133' height='52' loading='lazy')
             .--right.flex-center
                 if isLogin
                     if isAuthorise
@@ -99,7 +99,7 @@
                             .img-container
                                 picture
                                     source(media='' srcset='' type='image/webp')
-                                    img(src=dist+item.src alt='' width='45' height='45' loading='lazy')
+                                    img(src=item.src alt='' width='45' height='45' loading='lazy')
                             .text-container=item.name
             .search-result-cat
                 .title Danh mục nổi bật
@@ -109,7 +109,7 @@
                             .img-container
                                 picture
                                     source(media='' srcset='' type='image/webp')
-                                    img(src=dist+item.src alt='' width='133' height='80' loading='lazy')
+                                    img(src=item.src alt='' width='133' height='80' loading='lazy')
                             .text-container=item.name
         .search-result-step2
             .search-result-history

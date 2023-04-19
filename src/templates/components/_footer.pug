@@ -33,7 +33,7 @@ footer.footer.appear-animate(itemscope itemtype='http://schema.org/LocalBusiness
                     .widget.widget-about
                         .logo-wrapper
                             a(href=logo[2].href title=logo[2].name itemprop='url')
-                                img(src=dist+logo[2].src alt=logo[2].name width='133' height='52' itemprop='logo' loading='lazy')
+                                img(src=logo[2].src alt=logo[2].name width='133' height='52' itemprop='logo' loading='lazy')
                         .widget-body
                             p.widget-about-title Liên hệ 24/7
                             .widget-about-desc
@@ -80,9 +80,9 @@ if popup
             a(href='' title='')
                 picture
                     source(media='(max-width:450px)' srcset='' type='image/webp')
-                    source(media='(max-width:450px)' srcset=dist+imgPopup.srcm)
+                    source(media='(max-width:450px)' srcset=imgPopup.srcm)
                     source(media='' srcset='' type='image/webp')
-                    img(src=dist+imgPopup.src alt='' loading='lazy' width='1200' height='625')
+                    img(src=imgPopup.src alt='' loading='lazy' width='1200' height='625')
             .form-checkbox.d-flex.align-items-center.justify-content-end
                 input#hide-newsletter-popup.custom-checkbox(type='checkbox' name='hide-newsletter-popup')
                 label.font-size-sm(for='hide-newsletter-popup') Không hiện lại popup

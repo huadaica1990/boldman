@@ -133,7 +133,7 @@
                         .img-list.flex-container
                             each img in cmtItem.listimg
                                 a.review-image.br-sm
-                                    img(src=dist+img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
+                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
                     .comment-action
                         - var cmtItemId = '#formreplycontainer'+ cmtItem.id;
                         a.btn-rep(href='javascript:' onclick="showreply('"+ cmtItemId +"')") trả lời
@@ -144,7 +144,7 @@
                                 .item--comment__header
                                     .avatar
                                         if cmtItem_child.job != null
-                                            img(src=dist+cmtItem_child.avatar alt='' width='25' height='25' loading='lazy')
+                                            img(src=cmtItem_child.avatar alt='' width='25' height='25' loading='lazy')
                                         else
                                             =cmtItem_child.avatar
                                     h3.h5.font-weight-semibold=cmtItem_child.name
@@ -203,7 +203,7 @@
                         .img-list.flex-container
                             each img in cmtItem.listimg
                                 a.review-image.br-sm
-                                    img(src=dist+img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
+                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
                     .comment-action
                         - var cmtItemId = '#formreplycontainer'+ cmtItem.id;
                         a.btn-rep(href='javascript:' onclick="showreply('"+ cmtItemId +"')") trả lời

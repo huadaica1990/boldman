@@ -212,7 +212,7 @@
                         .img-list.flex-container.review-image-wrap
                             each img in rateItem.listimg
                                 a.review-image.br-sm
-                                    img(src=dist+img.src data-zoom-image=dist+img.src alt='' loading='lazy' width='108' height='100')
+                                    img(src=img.src data-zoom-image=img.src alt='' loading='lazy' width='108' height='100')
                     .comment-action
                         - var rateItemId = '#formreplycontainer'+ rateItem.id;
                         a.btn-rep(href='javascript:' onclick="showreply('"+ rateItemId +"')") #{rateItem.children.length} trả lời

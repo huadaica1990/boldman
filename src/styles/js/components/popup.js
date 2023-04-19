@@ -12,7 +12,7 @@ Popup.defaults = {
     dragToClose: false,
     on: {
         init: ()=> {
-            $('html').css('overflow-y', 'hidden');
+            // $('html').css('overflow-y', 'hidden');
             $('body').css('overflow-x', 'visible');
             $('.mfp-wrap').css('overflow', 'hidden auto');
             $('.sticky-header.fixed').css('padding-right', window.innerWidth - document.body.clientWidth);
