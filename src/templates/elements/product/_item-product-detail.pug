@@ -130,19 +130,14 @@
 .product.product-single.row
     .col-md-6.mb-4.mb-md-8
       .product-gallery.product-gallery-sticky
-        .swiper.swiper-container.product-single-swiper.swiper-theme.nav-inner(data-swiper-options=`{
-                                                                            'navigation': {
-                                                                                'nextEl': '.swiper-button-next',
-                                                                                'prevEl': '.swiper-button-prev'
-                                                                            }
-                                                                        }`)
+        .swiper.swiper-container.product-single-swiper.swiper-theme.nav-inner(data-swiper-options=`{'lazy': true,'navigation': {'nextEl': '.swiper-button-next','prevEl': '.swiper-button-prev'}}`)
             .swiper-wrapper.row.cols-1.gutter-no
                 each item in productSingleDetail.listimg
                     .swiper-slide
                         figure.product-image
                             picture
-                                source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                                img.swiper-lazy(data-src=item.src data-zoom-image=item.src alt=item.alt width='800' height='900' itemprop='image')
+                                source(media='' srcset='' type='image/webp')
+                                img(src=item.src data-zoom-image=item.src alt=item.alt width='800' height='900' itemprop='image' loading='lazy')
                             .swiper-lazy-preloader
             //- Add Arrows
             button.swiper-button.swiper-button-next
@@ -150,19 +145,13 @@
             .product-gallery-btn-wrap
                 a.product-gallery-btn.product-video-viewer.ecs-icon-movie(href='javascript:' data-src='https://www.youtube.com/watch?v=ATd0zK5yRxQ')
                 a.product-gallery-btn.product-image-full.ecs-icon-zoom(href='javascript:')
-        .swiper.product-thumbs-wrap.swiper-container(data-swiper-options=`{
-                                                'slidesPerView': 5,
-                                                'navigation': {
-                                                    'nextEl': '.swiper-button-next',
-                                                    'prevEl': '.swiper-button-prev'
-                                                }
-                                            }`)
+        .swiper.product-thumbs-wrap.swiper-container(data-swiper-options=`{'slidesPerView': 5,'navigation': {'nextEl': '.swiper-button-next','prevEl': '.swiper-button-prev'}}`)
             .product-thumbs.swiper-wrapper.row.cols-4.gutter-sm
                 each item in productSingleDetail.listimg
                     .product-thumb.swiper-slide
                         picture
-                            source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                            img.swiper-lazy(data-src=item.src alt='' width='103' height='116')
+                            source.swiper-lazy(media='' srcset='' type='image/webp')
+                            img(src=item.src alt='' width='103' height='116' loading='lazy')
                         .swiper-lazy-preloader
             button.swiper-button.swiper-button-next
             button.swiper-button.swiper-button-prev
@@ -177,7 +166,7 @@
             h2.product-title(itemprop='name')=productSingleDetail.name
             .product-bm-wrapper
                 figure.brand
-                    img(src=productSingleDetail.cat.src alt='Brand' width='102' height='48' loading='lazy')
+                    img(src=dist+productSingleDetail.cat.src alt='Brand' width='102' height='48' loading='lazy')
                 .product-meta
                     .product-categories
                         | Danh mục: 
