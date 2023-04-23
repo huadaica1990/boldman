@@ -578,6 +578,7 @@ function showCartInfo() {
     var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> '+ text5 +'</p><a class="ishow btn" href="'+Ecsgroup.cartLink+'" title= "'+ text5 +'">'+ text6 +'</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
     $('.js-cart-info').html(cartInfo);
     $('body').append('<div class="cart-info-backdrop cart-info-close show"></div>');
+    $('html, body').animate({ scrollTop: 0 }, 600);
     Ecsgroup.$body.on('click', '.cart-info-close', function (e) {
         $('.cart-info-backdrop').remove();
         $('.cart-info').remove();
