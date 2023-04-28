@@ -1518,7 +1518,7 @@ $.extend($.validator.messages, {
     max: $.validator.format(validate16),
     min: $.validator.format(validate17)
 });
-function validateForm(btn, idform) {
+function validateForm(btn, idform, layout = 'default') {
     var submitted = true,
         formError = $(idform).find('.error-lst');
     var form = $(idform).validate({
@@ -1527,21 +1527,42 @@ function validateForm(btn, idform) {
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                var summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
-                $.each(errorList, function () {
-                    summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
-                });
-                formError.html(summary);
+                let summary;
+                switch (layout) {
+                    case 'mini':
+                        summary = text1 + this.numberOfInvalids() + text2 + '<br>';
+                        $.each(errorList, function () {
+                            summary += this.message + $(this.element).data('name') + '<br>';
+                        });
+                        $('#error-modal p').html(summary);
+                        break;
+                    default:
+                        summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
+                        $.each(errorList, function () {
+                            summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
+                        });
+                        formError.html(summary);
+                }
                 submitted = false;
             }
             this.defaultShowErrors();
         },
         invalidHandler: function (event, validator) {
             // 'this' refers to the form
-            if (validator.numberOfInvalids()) {
-                formError.show();
-            } else {
-                formError.hide();
+            switch (layout) {
+                case 'mini':
+                    if (validator.numberOfInvalids()) {
+                        Ecsgroup.popup(
+                            [{
+                                src: '#error-modal',
+                                type: "inline"
+                            }],
+                            {}, 'error');
+                    } else Fancybox.getInstance().close();
+                    break;
+                default:
+                    if (validator.numberOfInvalids()) formError.show();
+                    else formError.hide();
             }
             submitted = true;
         },
@@ -1587,25 +1608,50 @@ function validateForm(btn, idform) {
                 },
                 success: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    if (!result.Ok) {
-                        formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
+                    switch (layout) {
+                        case 'mini':
+                            if (!result.Ok) {
+                                $('#error-modal p').text(result.Msg);
+                                Ecsgroup.popup(
+                                    [{
+                                        src: '#error-modal',
+                                        type: "inline"
+                                    }],
+                                    {}, 'error');
+                            }
+                            else {
+                                sendMail(result.Data.id, '/aj/Shared/SendEmail');
+                                Ecsgroup.Minipopup.open({
+                                    productClass: ' success minipopup-center',
+                                    message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
+                                    template:
+                                        '<div class="minipopup-box {{productClass}}">' +
+                                        '<div class="minipopup-body">' +
+                                        '<div class="minipopup-content">{{message}}</div>' +
+                                        '</div>' +
+                                        '</div>',
+                                });
+                                $(idform).trigger('reset');
+                            }
+                            return false;
+                            break;
+                        default:
+                            if (!result.Ok) formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
+                            else {
+                                sendMail(result.Data.id, '/aj/Shared/SendEmail');
+                                formError.hide();
+                                $('#success-modal p').text(note);
+                                Ecsgroup.popup(
+                                    [{
+                                        src: '#success-modal',
+                                        type: "inline"
+                                    }],
+                                    {}, 'error');
+                                $(idform).trigger('reset');
+                                if (typeof fileCurrent !== 'undefined') fileCurrent._removeChips()
+                            }
+                            return false;
                     }
-                    else {
-                        sendMail(result.Data.id, '/aj/Shared/SendEmail');
-                        formError.hide();
-                        $('#success-modal p').text(note);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#success-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
-                        $(idform).trigger('reset');
-                        if (typeof fileCurrent !== 'undefined') {
-                            fileCurrent._removeChips()
-                        }
-                    }
-                    return false;
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
