@@ -189,6 +189,12 @@ module.exports = grunt => {
                         '<%= dirs.dist %>/release/core.min.js',
                         '<%= dirs.js %>/pages/comingsoon.js',
                     ],
+                    // Account
+                    '<%= dirs.dist %>/release/account.min.js': [
+                        '<%= dirs.plugin %>/sticky/sticky.min.js',
+                        '<%= dirs.dist %>/release/core.min.js',
+                        '<%= dirs.js %>/pages/account.js',
+                    ],
                     // Cart
                     '<%= dirs.dist %>/release/cart.min.js': [
                         '<%= dirs.dist %>/release/core.min.js',
@@ -260,6 +266,10 @@ module.exports = grunt => {
                     // Coming soon
                     '<%= dirs.dist %>/release/comingsoon.min.css': [
                         '<%= dirs.dist %>/release/comingsoon.css',
+                    ],
+                    // Account
+                    '<%= dirs.dist %>/release/account.min.css': [
+                        '<%= dirs.dist %>/release/account.css',
                     ],
                     // Cart
                     '<%= dirs.dist %>/release/cart.min.css': [

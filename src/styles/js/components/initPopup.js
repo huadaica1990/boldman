@@ -54,7 +54,7 @@ function popupEcs (options, preset) {
                     {
                         on: {
                             load: () => {
-                                if ($('#loginjs').length == 0) addScript('/release/login-page.min.js', 'text/javascript', 'loginjs', false);
+                                if ($('#loginjs').length == 0) addScript('/wwwroot/templates/website/release/login-page.min.js', 'text/javascript', 'loginjs', false);
                             },
                             reveal: (fancybox, slide) => {
                                 if ($('#loginjs').length != 0) $('#login-popup').removeClass('load-more-overlay loading');
@@ -75,7 +75,7 @@ function popupEcs (options, preset) {
                     {
                         on: {
                             load: () => {
-                                if ($('#loginjs').length == 0) addScript('/release/login-page.min.js', 'text/javascript', 'loginjs', false);
+                                if ($('#loginjs').length == 0) addScript('/wwwroot/templates/website/release/login-page.min.js', 'text/javascript', 'loginjs', false);
                             },
                             reveal: (fancybox,slide) => {
                                 $(slide.$content).find('.login-pane').removeClass('active');

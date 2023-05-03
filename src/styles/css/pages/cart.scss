@@ -18,24 +18,26 @@
 /*#endregion*/
 
 // Set variables
-@include set-default((cart: (_linkColor:rgb(13, 92, 182),
-            _greyColor: rgb(120, 120, 120),
-            _redColor: rgb(255, 66, 78),
-            _borderColor: rgb(221, 221, 221),
-            _greenColor: rgb(8, 145, 72),
-            _widthItem: calc(100% - 70px - 31px),
-            1920: (),
-            1440: (),
-            1366: (),
-            1280: (),
-            1024: (),
-            768: (),
-            450: (),
-            360: (),
-        ),
-    ));
-
-/*background: background: rgba(0, 0, 0, 0) linear-gradient(119.64deg, rgb(11, 190, 229) 9.56%, rgb(56, 86, 243) 73.79%) repeat scroll 0% 0%;*/
+@include set-default(
+  (
+    cart: (
+      _linkColor:rgb(13, 92, 182),
+      _greyColor: rgb(120, 120, 120),
+      _redColor: rgb(255, 66, 78),
+      _borderColor:  rgb(221, 221, 221),
+      _greenColor: rgb(8, 145, 72),
+      _widthItem: calc(100% - 70px - 31px),
+      1920: (),
+      1440: (),
+      1366: (),
+      1280: (),
+      1024: (),
+      768: (),
+      450: (),
+      360: (),
+    ),
+  )
+);
 /*--------------------------------------------
     Cart Page
 ----------------------------------------------*/
@@ -71,7 +73,7 @@
         width: calc(100% - 165px);
         display: block;
 
-        >*:first-child {
+        > *:first-child {
             font-size: 13px;
             color: #{get(cart, _greyColor)};
         }
@@ -96,7 +98,7 @@
     display: none;
 
     .paymentopt2-item:not(:last-child) {
-        @include border($position: "bot", $size: 1px, $style: dashed, $color: #{get(cart, _borderColor)});
+        @include border($position: "bot", $size:1px, $style: dashed, $color: #{get(cart, _borderColor)});
         padding-bottom: 1rem;
         margin-bottom: 1rem;
     }
@@ -127,28 +129,6 @@
 
     &:hover {
         opacity: .9;
-    }
-}
-
-#cart-page {
-    background-color: rgb(245, 245, 250) !important;
-}
-
-.js-addaddressinline-form {
-    .form-control {
-        @include border-radius($val: .5rem);
-        padding: 0.75em 2.7rem 0.75em 1.4rem;
-        font-size: 1.2rem;
-        line-height: normal;
-        min-height: auto;
-    }
-
-    .form-group-wrapper {
-        .form-group:nth-child(1) {
-            .custom-control-label {
-                padding-left: 2.5rem;
-            }
-        }
     }
 }
 
@@ -187,11 +167,11 @@
     }
 
     .btn-buy-confirm {
-        @include border($position: "all", $size: 1px, $style: solid, $color: rgb(172, 34, 39));
-        padding: 0px 12px;
+        @include border($position: "all", $size:1px, $style: solid, $color: rgb(172, 34, 39));
+        padding: 4px 12px;
         width: 360px;
         height: 50px;
-        line-height: 50px;
+        line-height: 2;
         color: rgb(255, 255, 255);
         font-size: 18px;
         outline-color: rgb(204, 204, 204);
@@ -228,6 +208,14 @@
 
         &-body {
             margin-bottom: 0;
+
+            input.form-control {
+                border-radius: .5rem;
+                height: 35.59px;
+                min-height: 35.59px;
+                padding: .75em 2.7rem .75em 1.4rem;
+                font-size: 1.2rem;
+            }
         }
 
         &-title {
@@ -235,7 +223,7 @@
             border: none;
             margin-bottom: 1rem;
 
-            >* {
+            > * {
                 font-size: 13px;
                 font-weight: $font-weight-normal;
             }
@@ -268,18 +256,17 @@
             }
 
             textarea {
-                font-size: 12px;
+                font-size: 1.2rem;
                 min-height: 100px;
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
+                padding: .75em 2.7rem .75em 1.4rem;
             }
         }
 
         &-cart-coupon {
-
-            button,
-            .btn {
+            button, .btn {
                 border: none;
                 position: absolute;
                 background-color: #{get(cart, _linkColor)};
@@ -354,7 +341,7 @@
         }
 
         &-cart-total {
-            @include border($position: "all", $size: 1px, $style: solid, $color: #{get(cart, _borderColor)});
+            @include border($position: "all", $size:1px, $style: solid, $color: #{get(cart, _borderColor)});
 
             .total-item {
                 @include flex($type: "container");
@@ -374,7 +361,7 @@
                     margin-bottom: 1rem
                 }
 
-                >* {
+                > * {
                     &:first-child {
                         font-size: 13px;
                         color: #{get(cart, _greyColor)};
@@ -382,9 +369,9 @@
 
                     &:last-child {
                         text-align: right;
-                        width: calc(100% - 85px);
+                        width: calc(100% - 80px);
 
-                        >* {
+                        > * {
                             display: block;
                         }
                     }
@@ -407,7 +394,7 @@
         }
 
         &-cart-item-header {
-            @include border($position: "bot", $size: 1px, $style: solid, $color: $border-color);
+            @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
             padding-bottom: 1rem;
             margin-bottom: 1rem;
             font-size: 13px;
@@ -426,7 +413,7 @@
                     }
 
                     ;
-                    @include transform($args: translateY(-0px));
+                    @include transform($args:translateY(-0px));
                     display: inline-block;
                     right: -10px;
                     position: absolute;
@@ -441,7 +428,7 @@
         }
 
         &-cart-item-body {
-            @include border($position: "bot", $size: 1px, $style: solid, $color: $border-color);
+            @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
             padding-bottom: 1rem;
             margin-bottom: 1rem;
             display: none;
@@ -496,7 +483,7 @@
             }
 
             &-des-header {
-                @include transform($args: translateY(5px));
+                @include transform($args:translateY(5px));
                 position: relative;
                 padding-bottom: 10px;
 
@@ -516,9 +503,9 @@
             }
 
             &-des-content {
-                @include border($position: "all", $size: 1px, $style: solid, $color: $border-color);
+                @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
                 @include border-radius($val: .5rem);
-                @include shadow($val: 0 4px 20px -8px rgba(0, 0, 0, .3));
+                @include shadow($val: 0 4px 20px -8px rgba(0,0,0,.3));
                 padding: 15px 0;
                 background-color: $white-color;
                 width: 100%;
@@ -532,8 +519,7 @@
                 font-size: 12px;
                 color: $dark-color;
 
-                ul,
-                ol {
+                ul {
                     padding-left: 1.5rem;
                 }
 
@@ -549,14 +535,14 @@
                     background-color: rgb(250, 250, 250);
                 }
 
-                >* {
+                > * {
                     :first-child {
                         color: #{get(cart, _greyColor)};
                     }
                 }
 
                 &:last-child {
-                    >* {
+                    > * {
                         width: 100%;
 
                         &:not(:last-child) {
@@ -669,10 +655,8 @@
             }
 
             &-check {
-
-                &:before,
-                &:after {
-                    @include border($position: "all", $size: 1px, $style: solid, $color: #ccc);
+                &:before, &:after {
+                    @include border($position: "all", $size:1px, $style: solid, $color: #ccc);
                     content: '';
                     position: absolute;
                     width: 15px;
@@ -689,7 +673,7 @@
                 }
 
                 &:after {
-                    background-image: url(/wwwroot/templates/website/images/default/check-ok.svg);
+                    background-image: url(/img/check-ok.svg);
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-color: rgb(214, 250, 223);
@@ -714,7 +698,7 @@
 .billing-page {
     .widget-cart-total .widget-footer {
         .total-item {
-            >*:first-child {
+            > *:first-child {
                 font-weight: $font-weight-bold;
             }
 
@@ -736,7 +720,7 @@
 
 
     #paymentopt2-des {
-        @include border($position: "all", $size: 1px, $style: solid, $color: rgb(194, 225, 255));
+        @include border($position: "all", $size:1px, $style: solid, $color: rgb(194, 225, 255));
         padding: 1rem;
         margin: 0;
         background-color: rgb(240, 248, 255);
@@ -767,7 +751,7 @@
             &:last-child {
                 text-align: center;
 
-                >* {
+                > * {
                     width: 100%;
 
                     &:first-child {
@@ -785,9 +769,7 @@
 }
 
 .cart {
-
-    .section-header,
-    .section-body {
+    .section-header, .section-body {
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -857,21 +839,9 @@
         }
 
         &-title {
+            @include overtext($row: 2, $h: auto);
             width: #{get(cart, _widthItem)};
-
-            a {
-                @include overtext($row: 2, $h: auto);
-                white-space: initial;
-            }
-        }
-
-        &-point {
-            @include border-radius($val: 4px);
-            background: rgb(242, 240, 254) none repeat scroll 0% 0%;
-            padding: 2px 6px;
-            color: rgb(64, 45, 161);
-            font-size: 11px;
-            font-weight: $font-weight-semibold;
+            white-space: initial;
         }
 
         &-price {
@@ -901,86 +871,10 @@
         padding: 2rem 15px;
     }
 
-    .section-promogift {
-        padding: 2rem 15px;
-
-        &-title {
-            label {
-                position: relative;
-                overflow: hidden;
-                display: inline-block;
-                padding: 2px 0;
-
-                span {
-                    @include border-radius($val: 4px);
-                    @include border($color: rgb(13, 92, 182));
-                    background: rgb(230, 238, 247);
-                    padding: 2px 10px;
-
-                    &:after,
-                    &:before {
-                        @include border-radius($val: 50%);
-                        @include border($color: rgb(13, 92, 182));
-                        @include e-cen($type: "top", $option: translate(-50%, -50%));
-                        content: "";
-                        position: absolute;
-                        width: 10px;
-                        height: 10px;
-                        background-color: $white-color;
-                    }
-
-                    &:before {
-                        left: -5px;
-                    }
-
-                    &:after {
-                        right: -5px;
-                    }
-                }
-            }
-        }
-
-        &-body {
-            ul {
-                padding: 0;
-                margin: 0;
-            }
-
-            .promogift-thumbnail {
-                @include center-img($hover: false, $type: "scale");
-                height: 70px;
-                width: 60px;
-            }
-
-            .promogift-price {
-                margin-left: auto;
-                font-size: 1.2rem;
-                line-height: normal;
-                color: $dark-color;
-                font-weight: $font-weight-semibold;
-
-                .new-price {
-                    text-decoration: none;
-
-                    &:not(:last-child) {
-                        margin-right: .5rem;
-                    }
-                }
-
-                .old-price {
-                    font-weight: $font-weight-light;
-                    color: #aaa;
-                }
-            }
-        }
-    }
-
     .points {
         a {
             color: #{get(cart,_linkColor)}
-        }
-
-        ;
+        };
 
         p {
             margin-left: 3.5rem;
@@ -996,7 +890,7 @@
                 height: 2.5rem;
             }
 
-            .custom-control-input:checked~.custom-control-label::after {
+            .custom-control-input:checked ~ .custom-control-label::after {
                 padding-left: 7px
             }
         }
@@ -1018,7 +912,7 @@
         }
 
         &-item {
-            @include border($position: "all", $size: 1px, $style: solid, $color: $border-color);
+            @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
             @include flex-option($type: justify-content, $value: flex-start);
             @include flex-option($type: align-items, $value: flex-start);
             padding: 1rem;
@@ -1066,13 +960,6 @@
     }
 
     &-content {
-        .short-desc {
-            i {
-                @include transform($args: translateY(-2px));
-                margin-right: .5rem;
-            }
-        }
-
         .bg-white {
             position: relative;
             z-index: 2;
@@ -1080,15 +967,6 @@
     }
 
     &-info {
-        .btn {
-            border-width: 1px;
-        }
-
-        .btn-error {
-            background-color: #{get(cart, _redColor)};
-            border-color: #{get(cart, _redColor)};
-        }
-
         a:not(.btn) {
             color: #{get(cart, _linkColor)};
             text-decoration: underline;
@@ -1114,7 +992,7 @@
             color: #{get(cart, _linkColor)}
         }
 
-        >* {
+        > * {
             width: calc(100% - 101px);
             padding-left: 15px;
 
@@ -1126,7 +1004,7 @@
         }
 
         &:not(:last-child) {
-            @include border($position: "bot", $size: 1px, $style: solid, $color: $border-color);
+            @include border($position: "bot", $size:1px, $style: solid, $color: $border-color);
         }
     }
 }
@@ -1150,7 +1028,7 @@
         margin-bottom: 2rem;
 
         .address-item {
-            @include border($position: "all", $size: 1px, $style: solid, $color: #{get(cart, _borderColor)});
+            @include border($position: "all", $size:1px, $style: solid, $color: #{get(cart, _borderColor)});
             @include border-radius($val: .5rem);
             cursor: pointer;
             padding: 15px;
@@ -1188,7 +1066,7 @@
             opacity: 0;
             z-index: -1;
 
-            &.isdefault~.address-item {
+            &.isdefault ~ .address-item {
                 position: relative;
 
                 &::before {
@@ -1202,7 +1080,7 @@
                 }
             }
 
-            &.active~.address-item {
+            &.active ~ .address-item {
                 border-color: $primary-color;
                 position: relative;
                 border-style: solid;
@@ -1223,12 +1101,12 @@
         }
 
         .form-group {
-            >*:first-child {
+            > *:first-child {
                 width: 150px;
                 max-width: 150px;
             }
 
-            >*:last-child {
+            > *:last-child {
                 width: calc(100% - 150px);
             }
         }
@@ -1254,7 +1132,6 @@
 /*#region Mobile responsive section styles*/
 
 @include mq("1024px", "max") {
-
     .cart-page .widget .coupon-des-body,
     .cart-page .widget .coupon-dropdown:not(.show):hover .coupon-des-body {
         right: auto;
@@ -1263,7 +1140,6 @@
 
     .cart-page {
         .widget {
-
             .dropdown:not(.show):hover .coupon-des-header:after,
             .dropdown:hover .coupon-des-header:after,
             .dropdown.show .coupon-des-header:after,
@@ -1334,14 +1210,11 @@
 
         .mfp-close {
             @include transform($args: none);
-            position: absolute;
-            top: 0;
             width: 100%;
             height: 55px;
             top: 0;
             left: 0;
             background-color: $primary-color;
-            border: 0;
 
             &::after {
                 display: none;
@@ -1350,7 +1223,6 @@
             &::before {
                 @include e-cen($type: "top", $option: translate(-50%, -50%));
                 left: 20px;
-                font-size: 28px;
                 content: '\e806';
                 color: $white-color;
                 font-family: customize;
@@ -1428,13 +1300,11 @@
                     -ms-flex-wrap: wrap;
                     flex-wrap: wrap;
 
-                    .form-control,
-                    .input-wrapper-inline,
-                    .custom-select {
+                    .form-control, .input-wrapper-inline, .custom-select {
                         margin-top: .5rem;
                     }
 
-                    >* {
+                    > * {
                         width: 100%;
                         max-width: 100%;
                     }
@@ -1487,9 +1357,7 @@
     }
 
     .cart-page {
-
-        .btn-buy-cart.w-100,
-        .btn-buy-confirm {
+        .btn-buy-cart.w-100, .btn-buy-confirm {
             max-width: calc(100% - 30px);
             margin-left: 15px;
         }
@@ -1554,7 +1422,7 @@
 
             &.active {
                 .process-link {
-                    >* {
+                    > * {
                         display: none;
                     }
 
@@ -1597,7 +1465,6 @@
     }
 
     .cart {
-
         .section-body,
         .section-header {
             @include border-radius($val: 0 !important);
@@ -1624,7 +1491,7 @@
             }
 
             &:nth-child(2) {
-                margin-top: -35px;
+                margin-top: -40px;
                 pointer-events: none;
                 width: #{get(cart, _widthItem)};
                 padding-left: 23px;
@@ -1632,6 +1499,7 @@
             }
 
             &:nth-child(3) {
+                margin-top: -5px;
                 margin-left: calc(70px + 31px + 10px);
             }
         }
@@ -1675,11 +1543,6 @@
 
         .product {
             &-title {
-                text-align: right;
-
-                a {
-                    text-align: left;
-                }
             }
 
             &-price .new-price,
@@ -1748,7 +1611,7 @@
         &-item {
             display: block;
 
-            >* {
+            > * {
                 width: 100%;
 
                 &:not(:first-child) {
@@ -1758,5 +1621,4 @@
         }
     }
 }
-
 /*#endregion*/
