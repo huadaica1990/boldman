@@ -37,6 +37,10 @@ window.Ecsgroup = {};
     Ecsgroup.linkCompare = '/so-sanh';
     Ecsgroup.accInfo = '/thong-tin-tai-khoan';
     Ecsgroup.cartLink = '/gio-hang';
+    // Function
+    Ecsgroup.isWishList = true;
+    Ecsgroup.isCountDown = true;
+    Ecsgroup.isCompare = true;
     // $ = jQuery;
     /**
      * jQuery Window Handle
@@ -80,8 +84,7 @@ window.Ecsgroup = {};
      */
     Ecsgroup.isEdge = navigator.userAgent.indexOf('Edge') >= 0;
     Ecsgroup.isSafari = navigator.userAgent.indexOf('Safari') >= 0 && navigator.userAgent.indexOf('Chrome') < 0 && navigator.userAgent.indexOf('FxiOS') < 0;
-
-    Ecsgroup.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mozilla/i.test(navigator.userAgent);
+    Ecsgroup.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(navigator.userAgent);
 
     /**
      * Make a macro task

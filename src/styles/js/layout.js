@@ -1,8 +1,5 @@
 var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class="loader"></div></div></div>',
-    errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>',
-    cartWishList = true,
-    cartCountDown = true,
-    cartCompare = true;
+    errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>';
 // Effect
 $('.input-group-effect input').focus(function(event) {
     $(this).parent().addClass('focus');
@@ -581,6 +578,7 @@ function showCartInfo() {
     var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> '+ text5 +'</p><a class="ishow btn" href="'+Ecsgroup.cartLink+'" title= "'+ text5 +'">'+ text6 +'</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
     $('.js-cart-info').html(cartInfo);
     $('body').append('<div class="cart-info-backdrop cart-info-close show"></div>');
+    $('html, body').animate({ scrollTop: 0 }, 600);
     Ecsgroup.$body.on('click', '.cart-info-close', function (e) {
         $('.cart-info-backdrop').remove();
         $('.cart-info').remove();
@@ -707,8 +705,8 @@ function initHeart(selector) {
     $(selector + ' .btn-quickview').removeClass('disabled');
 }
 setTimeout(function () {
-    if (cartWishList) initHeart('body');
-    if (cartCompare) initCompare('body');
+    if (Ecsgroup.isWishList) initHeart('body');
+    if (Ecsgroup.isCompare) initCompare('body');
 }, 3000);
 // Sku
 function selectSku(selector, viewname) {
@@ -732,7 +730,7 @@ function selectSku(selector, viewname) {
             urlprodut += (i == 0 ? '' : 'v') + v.ProductAttributeId + '-' + v.ProductAttributeValueId;
         }
     });
-    if (cartCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'GET',
@@ -757,9 +755,9 @@ function selectSku(selector, viewname) {
                 $(htmlresult).html(result.Data.viewsrc).find('.product-url').attr('href', urlprodut);
                 setTimeout(function () {
                     Ecsgroup.productSingle(htmlresult);
-                    if (cartCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                    if (cartWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                    if (cartCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
                     if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
                     if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
                 }, 500);
@@ -805,7 +803,7 @@ function selectSkuDetail(obj) {
         }
     });
     $('#product-info').css('height', $('#product-info').height() + 'px');
-    if (cartCountDown) $('#product-info .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $('#product-info .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'POST',
@@ -832,9 +830,9 @@ function selectSkuDetail(obj) {
                 })
                 window.history.pushState({ state: urlbuilder, rand: Math.random() }, document.title, urlbuilder);
                 setTimeout(function () {
-                    if (cartCountDown) Ecsgroup.countDown('#product-info .product-countdown');
-                    if (cartWishList) $('#product-info .btn-wishlist').removeClass('disabled');
-                    if (cartCompare) $('#product-info .btn-compare').removeClass('disabled');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#product-info .product-countdown');
+                    if (Ecsgroup.isWishList) $('#product-info .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.isCompare) $('#product-info .btn-compare').removeClass('disabled');
                     if (iswishlist > 0) $('#product-info .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
                     if (iscomparelist > 0) $('#product-info .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
                 }, 1000);
@@ -950,17 +948,17 @@ function openProductPopup(btn) {
                             done: () => {
                                 Ecsgroup.productSingle(htmlresult);
                                 setTimeout(function () {
-                                    if (cartCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
                                     $this.removeClass('load-more-overlay loading');
-                                    if (cartWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                                    if (cartCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
                                     if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
                                     if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
                                     $(htmlresult).removeClass('shimmer-container');
                                 }, 500);
                             },
                             closing: () => {
-                                if (cartCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+                                if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
                             }
                         },
                     }, 'quickview');
@@ -1129,7 +1127,7 @@ function loadmoreFilterProduct() {
 function getFilterResultProduct(type) {
     var form = $('#filterform'),
         paramlist = ['page', 'pp', 'bp', 'pr', 'sort'];
-    if (cartCountDown) $('#list-filter .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $('#list-filter .product-countdown').countdown('destroy');
     if (type === 'loadmore') {
         var top = $('#list-filter-loadmore > *').last().offset().top;
         $.ajax({
@@ -1149,8 +1147,8 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (cartCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (cartWishList) initHeart('#list-filter');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.isWishList) initHeart('#list-filter');
                 }, 1000);
                 totalitem = '1-' + $('#list-filter-loadmore > *').length + '/' + result.TotalItemCount;
                 $('.readmore-count').text('(' + result.itemremaining + ')');
@@ -1191,9 +1189,9 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (cartCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (cartWishList) initHeart('#list-filter');
-                    if (cartCompare) initCompare('#list-filter');
+                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.isWishList) initHeart('#list-filter');
+                    if (Ecsgroup.isCompare) initCompare('#list-filter');
                 }, 1000);
                 $('.totalitem').text(totalitem);
                 Ecsgroup.hideLoading();
@@ -1445,7 +1443,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
         stringVal = id.split('|'),
         targetType = stringVal[0],
         targetId = stringVal[1];
-    if (cartCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     switch (targetType) {
         case 'productgroup':
             $.ajax({
@@ -1476,9 +1474,9 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                             $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                         })
                         setTimeout(function () {
-                            if (cartCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                            if (cartWishList) initHeart(htmlresult);
-                            if (cartCompare) initCompare(htmlresult);
+                            if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                            if (Ecsgroup.isWishList) initHeart(htmlresult);
+                            if (Ecsgroup.isCompare) initCompare(htmlresult);
                         }, 1000);
                         //Ecsgroup.shop.init();
                     }
@@ -1520,7 +1518,7 @@ $.extend($.validator.messages, {
     max: $.validator.format(validate16),
     min: $.validator.format(validate17)
 });
-function validateForm(btn, idform) {
+function validateForm(btn, idform, layout = 'default') {
     var submitted = true,
         formError = $(idform).find('.error-lst');
     var form = $(idform).validate({
@@ -1529,21 +1527,42 @@ function validateForm(btn, idform) {
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                var summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
-                $.each(errorList, function () {
-                    summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
-                });
-                formError.html(summary);
+                let summary;
+                switch (layout) {
+                    case 'mini':
+                        summary = text1 + this.numberOfInvalids() + text2 + '<br>';
+                        $.each(errorList, function () {
+                            summary += this.message + $(this.element).data('name') + '<br>';
+                        });
+                        $('#error-modal p').html(summary);
+                        break;
+                    default:
+                        summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
+                        $.each(errorList, function () {
+                            summary += '<div class="alert-test"><div class="alert-title ecs-icon-times-circle"></div> ' + this.message + $(this.element).data('name') + '</div>';
+                        });
+                        formError.html(summary);
+                }
                 submitted = false;
             }
             this.defaultShowErrors();
         },
         invalidHandler: function (event, validator) {
             // 'this' refers to the form
-            if (validator.numberOfInvalids()) {
-                formError.show();
-            } else {
-                formError.hide();
+            switch (layout) {
+                case 'mini':
+                    if (validator.numberOfInvalids()) {
+                        Ecsgroup.popup(
+                            [{
+                                src: '#error-modal',
+                                type: "inline"
+                            }],
+                            {}, 'error');
+                    } else Fancybox.getInstance().close();
+                    break;
+                default:
+                    if (validator.numberOfInvalids()) formError.show();
+                    else formError.hide();
             }
             submitted = true;
         },
@@ -1589,25 +1608,50 @@ function validateForm(btn, idform) {
                 },
                 success: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    if (!result.Ok) {
-                        formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
+                    switch (layout) {
+                        case 'mini':
+                            if (!result.Ok) {
+                                $('#error-modal p').text(result.Msg);
+                                Ecsgroup.popup(
+                                    [{
+                                        src: '#error-modal',
+                                        type: "inline"
+                                    }],
+                                    {}, 'error');
+                            }
+                            else {
+                                sendMail(result.Data.id, '/aj/Shared/SendEmail');
+                                Ecsgroup.Minipopup.open({
+                                    productClass: ' success minipopup-center',
+                                    message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
+                                    template:
+                                        '<div class="minipopup-box {{productClass}}">' +
+                                        '<div class="minipopup-body">' +
+                                        '<div class="minipopup-content">{{message}}</div>' +
+                                        '</div>' +
+                                        '</div>',
+                                });
+                                $(idform).trigger('reset');
+                            }
+                            return false;
+                            break;
+                        default:
+                            if (!result.Ok) formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
+                            else {
+                                sendMail(result.Data.id, '/aj/Shared/SendEmail');
+                                formError.hide();
+                                $('#success-modal p').text(note);
+                                Ecsgroup.popup(
+                                    [{
+                                        src: '#success-modal',
+                                        type: "inline"
+                                    }],
+                                    {}, 'error');
+                                $(idform).trigger('reset');
+                                if (typeof fileCurrent !== 'undefined') fileCurrent._removeChips()
+                            }
+                            return false;
                     }
-                    else {
-                        sendMail(result.Data.id, '/aj/Shared/SendEmail');
-                        formError.hide();
-                        $('#success-modal p').text(note);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#success-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
-                        $(idform).trigger('reset');
-                        if (typeof fileCurrent !== 'undefined') {
-                            fileCurrent._removeChips()
-                        }
-                    }
-                    return false;
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
@@ -1625,6 +1669,7 @@ function validateForm(btn, idform) {
     });
 }
 function validateFormMini(btn, idform) {
+    var submitted = true;
     var form = $(idform).validate({
         focusInvalid: true,
         errorPlacement: function (error, element) { return false; },

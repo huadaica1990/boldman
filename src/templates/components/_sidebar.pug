@@ -255,7 +255,7 @@ if sideBarProduct
                         .img
                             picture 
                                 source(media='' srcset='' type='image/webp')
-                                img(src=dist+products[i].listimg[0].src alt='' width='80' height='90' loading='lazy')
+                                img(src=products[i].listimg[0].src alt='' width='80' height='90' loading='lazy')
                     .product-details
                         h4.product-title=products[i].name
                         .ratings-container
@@ -286,7 +286,7 @@ if sideBarBlog
                                     .img
                                         picture
                                             source(media='' srcset='' type='image/webp')
-                                            img(src=dist+item.src alt='' width='80' height='80' loading='lazy')
+                                            img(src=item.src alt='' width='80' height='80' loading='lazy')
                                 .post-details
                                     .post-meta #{item.day}/#{item.month}/#{item.year}
                                     h3.post-title.text-bold=item.name

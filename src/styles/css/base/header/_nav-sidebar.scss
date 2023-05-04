@@ -155,6 +155,9 @@
                 position: relative;
                 &.top {
                     position: static;
+                    > .nav, > .has-submenu-body {
+                        height:100%;
+                    }
                 }
                 > .has-submenu-title > a {
                     position: relative;

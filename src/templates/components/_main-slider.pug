@@ -4,18 +4,18 @@
 -
     let listImg = [
         {
-            src: '/sliders/slider1.jpg',
-            srcm: '/sliders/slider1-m.jpg',
+            src: dist+'/sliders/slider1.jpg',
+            srcm: dist+'/sliders/slider1-m.jpg',
             href: ''
         },
         {
-            src: '/sliders/slider2.jpg',
-            srcm: '/sliders/slider2-m.jpg',
+            src: dist+'/sliders/slider2.jpg',
+            srcm: dist+'/sliders/slider2-m.jpg',
             href: ''
         },
         {
-            src: '/sliders/slider3.jpg',
-            srcm: '/sliders/slider3-m.jpg',
+            src: dist+'/sliders/slider3.jpg',
+            srcm: dist+'/sliders/slider3-m.jpg',
             href: ''
         },
     ];
@@ -37,17 +37,17 @@
                             a.item(href=item.href)
                                 picture
                                     source(media='(max-width:450px)' srcset='' type='image/webp' class='')
-                                    source(media='(max-width:450px)' srcset=dist+item.srcm class='')
+                                    source(media='(max-width:450px)' srcset=item.srcm class='')
                                     source(media='' srcset='' type='image/webp' class='')
-                                    img(src=dist+item.src alt='' class='' width='1920' height='550')
+                                    img(src=item.src alt='' class='' width='1920' height='550')
                     else
                         .swiper-slide
                             a.item(href=item.href)
                                 picture
                                     source.swiper-lazy(media='(max-width:450px)' data-srcset='' type='image/webp')
-                                    source.swiper-lazy(media='(max-width:450px)' data-srcset=dist+item.srcm)
+                                    source.swiper-lazy(media='(max-width:450px)' data-srcset=item.srcm)
                                     source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                                    img.swiper-lazy(data-src=dist+item.src alt='' width='1920' height='550')
+                                    img.swiper-lazy(data-src=item.src alt='' width='1920' height='550')
                                 .swiper-lazy-preloader
             button.swiper-button.swiper-button-prev
             button.swiper-button.swiper-button-next
