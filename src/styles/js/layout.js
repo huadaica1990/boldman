@@ -1519,9 +1519,9 @@ $.extend($.validator.messages, {
     min: $.validator.format(validate17)
 });
 function validateForm(btn, idform, layout = 'default') {
-    var submitted = true,
+    let submitted = true,
         formError = $(idform).find('.error-lst');
-    var form = $(idform).validate({
+    let form = $(idform).validate({
         focusCleanup: true,
         focusInvalid: false,
         errorPlacement: function (error, element) { return false; },
@@ -1669,8 +1669,8 @@ function validateForm(btn, idform, layout = 'default') {
     });
 }
 function validateFormMini(btn, idform) {
-    var submitted = true;
-    var form = $(idform).validate({
+    let submitted = true;
+    let form = $(idform).validate({
         focusInvalid: true,
         errorPlacement: function (error, element) { return false; },
         //rules: {

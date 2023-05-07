@@ -126,7 +126,9 @@ strong {
 
 .disabled {
     cursor: no-drop;
-    pointer-events: none;
+    &-hover {
+        pointer-events: none;
+    }
 }
 
 .progress {

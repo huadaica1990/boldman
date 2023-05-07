@@ -25,7 +25,7 @@ $(document.body).on('click', '.showhidetab-js', function (e) {
 
 
 function validateLogin(btn, idform, callback) {
-    var submitted = true,
+    let submitted = true,
         formError = $(idform).find('.error-lst');
     var form = $(idform).validate({
         focusCleanup: true,
@@ -89,7 +89,7 @@ function validateLogin(btn, idform, callback) {
                     }
                     return false;
                 },
-                error: function () {
+                error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
                     formError.html(errorTemplate.replace('ERROR_MSG', result.Msg)).show();
                     return false;

@@ -293,7 +293,9 @@ module.exports = grunt => {
         },
         sprite: {
             all: {
-                src: 'src/images/sprite/*.png',
+                padding: 5,
+                src: 'src/images/sprite/*.{jpg,png}',
+                imgPath: '/assets/images/sprite/sprite.png',
                 dest: '<%= dirs.dist %>/images/sprite/sprite.png',
                 destCss: '<%= dirs.dist %>/release/sprites.min.css'
             }
