@@ -1602,7 +1602,7 @@ function validateForm(btn, idform, layout = 'default') {
                 dataType: "json",
                 method: "POST",
                 /*data: { modal: modal, extentionfield: arr },*/
-                data: $(idform).serialize() + '&extentionfield=' + JSON.stringify(arr),
+                data: $(idform).serialize() + '&ext=' + JSON.stringify(arr),
                 beforeSend: function () {
                     $(btn).addClass('load-more-overlay loading');
                 },
@@ -1709,6 +1709,24 @@ function validateFormMini(btn, idform) {
             submitted = true;
         },
         submitHandler: function (form) {
+            submitted = true;
+            var arr = [];
+            $(idform).find('.get-value').each(function (e) {
+                var check = $(this).attr('name');
+                var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
+                if (!arrayCheck.includes(check)) {
+                    var type = $(this).data('type');
+                    var title = $(this).data('name');
+                    var val = $(this).val();
+                    var code = $(this).prop('name');
+                    if (type === 6 || type === 7) {
+                        if ($(this).is(':checked') === false) {
+                            val = null;
+                        }
+                    }
+                    arr.push({ "Name": title, "Value": val, "Tag": type, "Code": code });
+                }
+            });
             //var modal = {
             //    name: $(idform).find("*[name='name']").val(),
             //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
@@ -1724,7 +1742,7 @@ function validateFormMini(btn, idform) {
                 dataType: "json",
                 method: "POST",
                 /*data: { modal: modal, extentionfield: null },*/
-                data: $(idform).serialize() + '&extentionfield=' ,
+                data: $(idform).serialize() + '&ext=' + JSON.stringify(arr),
                 beforeSend: function () {
                     $(btn).addClass('load-more-overlay loading');
                 },
