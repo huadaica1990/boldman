@@ -31,7 +31,7 @@ window.Ecsgroup = {};
  */
 (function ($) {
     Ecsgroup.popupPause = false;
-    Ecsgroup.dist = '/wwwroot/templates/release';
+    Ecsgroup.dist = '/wwwroot/templates/website/release';
     Ecsgroup.domain = 'localhost:3000';
     Ecsgroup.linkWishList = '/san-pham-yeu-thich';
     Ecsgroup.linkCompare = '/so-sanh';
