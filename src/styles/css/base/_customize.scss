@@ -233,13 +233,19 @@ strong {
         opacity: 0;
     }
 }
-
 .img {
     &-white {
         @include filter($val: brightness(0) invert(1));
     }
-}
 
+    &-decode {
+        display: block;
+        overflow:hidden;
+        > img {
+            transform:scale(1.04)
+        }
+    }
+}
 /*#endregion*/
 
 /*#region 2. Tool*/

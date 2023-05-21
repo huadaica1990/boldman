@@ -1075,11 +1075,27 @@
         left: 35px;
     }
 
-    i {
+    .ecs-icon-search {
         @include e-cen($type: "top");
         position: absolute;
         font-size: 1.6rem;
         line-height: 0;
+        border: 0;
+        padding: 0;
+    }
+    &.search-container {
+        padding: 0;
+        input {
+            position: relative;
+            min-height: 4rem;
+            padding: .85px 12px .85px 35px;
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        button {
+            left: 13px;
+            font-weight: normal;
+        }
     }
 }
 // Effect
