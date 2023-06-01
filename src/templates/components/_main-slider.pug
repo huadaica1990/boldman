@@ -1,5 +1,4 @@
 //- Var
-- let isLazy = false;
 - let animation = false;
 -
     let listImg = [
@@ -32,23 +31,13 @@
                                                                                         }`)
             .swiper-wrapper
                 each item in listImg
-                    if !isLazy
-                        .swiper-slide
-                            a.item(href=item.href)
-                                picture
-                                    source(media='(max-width:450px)' srcset='' type='image/webp' class='')
-                                    source(media='(max-width:450px)' srcset=item.srcm class='')
-                                    source(media='' srcset='' type='image/webp' class='')
-                                    img(src=item.src alt='' class='' width='1920' height='550')
-                    else
-                        .swiper-slide
-                            a.item(href=item.href)
-                                picture
-                                    source.swiper-lazy(media='(max-width:450px)' data-srcset='' type='image/webp')
-                                    source.swiper-lazy(media='(max-width:450px)' data-srcset=item.srcm)
-                                    source.swiper-lazy(media='' data-srcset='' type='image/webp')
-                                    img.swiper-lazy(data-src=item.src alt='' width='1920' height='550')
-                                .swiper-lazy-preloader
+                    .swiper-slide
+                        a.item(href=item.href)
+                            picture
+                                source(media='(max-width:450px)' srcset='' type='image/webp' class='')
+                                source(media='(max-width:450px)' srcset=item.srcm class='')
+                                source(media='' srcset='' type='image/webp' class='')
+                                img(src=item.src alt='' class='' width='1920' height='550')
             button.swiper-button.swiper-button-prev
             button.swiper-button.swiper-button-next
             .swiper-pagination
