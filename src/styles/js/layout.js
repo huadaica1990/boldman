@@ -469,7 +469,7 @@ function addToCart(selector, quantityclass, url) {
         producttype = $this.data('producttype'),
         quantity = $this.parent().find(quantityclass).val();
     $this.addClass('load-more-overlay loading').html(loadingdot);
-    cartList.splice(cartList.findIndex(e => e.quantity <= 0), 1);
+    if (cartList.findIndex(e => e.quantity <= 0) > 0) cartList.splice(cartList.findIndex(e => e.quantity <= 0), 1);
     var cartListUpdate = cartList.find((elem, index) => {
         return elem.id === productid;
     });

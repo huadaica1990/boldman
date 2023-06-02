@@ -398,6 +398,15 @@ input {
         text-align: center;
     }
 }
+    
+.custom-checkbox[disabled="disabled"] {
+    ~ label {
+        cursor: not-allowed;
+        &::before {
+            background: #ddd;
+        }
+    }
+}
 
 .custom-input {
     position: relative;
