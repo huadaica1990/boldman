@@ -775,7 +775,7 @@
 @include mq("768px", "max") {
     .account-page {
         .sidebar:not(.right-sidebar) {
-            .widget-body li:last-child {
+            .widget-footer {
                 margin-left: 12px;
                 margin-right: 12px;
             }

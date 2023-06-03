@@ -25,10 +25,9 @@
 		"body": [
 			".item",
 			"	figure.item-media",
-			"		picture(style='display:block;overflow:hidden;')",
-			"			source(media='' srcset='?w=&h=&decoder=webp' type='image/webp')",
-			"			img(style='scale: 1.01' src=`${item}?w=&h=` src='' alt='' loading='lazy' width='' height='')",
-			"		.swiper-lazy-preloader",
+			"		picture.img-decode",
+			"			source(media='' srcset=dist+'/default/ABC.JPG?w=&h=&decoder=webp' type='image/webp')",
+			"			img(src=dist+`${item}?w=&h=` alt='' loading='lazy' width='' height='')",
 			"	.item-details",
 			"		h3.item-title",
 			"			a(href='' title='') NAME",
@@ -43,12 +42,11 @@
 		"prefix": "pug-pic",
 		"body": [
 			"figure",
-			"	picture",
+			"	picture.img-decode",
 			"		source(media='(max-width:450px)' srcset='' type='image/webp')",
 			"		source(media='(max-width:450px)' srcset='')",
-			"		source(media='' srcset='?w=&h=&decoder=webp' type='image/webp')",
-			"		img(style='scale: 1.01' src=`${item}?w=&h=` alt='' width='' height='' loading='lazy')",
-			"	.swiper-lazy-preloader",
+			"		source(media='' srcset=dist+'/default/ABC.JPG?w=&h=&decoder=webp' type='image/webp')",
+			"		img(src=dist+`${item}?w=&h=` alt='' width='' height='' loading='lazy')"
 		],
 		"description": "Tạo mới picture"
 	},
@@ -120,12 +118,11 @@
 			"		.swiper-slide",
 			"			figure",
 			"				a.item(href='' title='')",
-			"					picture",
+			"					picture.img-decode",
 			"						source(media='(max-width:450px)' srcset='' type='image/webp')",
 			"						source(media='(max-width:450px)' srcset='')",
-			"						source(media='' srcset='?w=&h=&decoder=webp' type='image/webp')",
-			"						img(style='scale: 1.01' src=`${item}?w=&h=` alt='' width='' height='' loading='lazy')",
-			"					.swiper-lazy-preloader",
+			"						source(media='' srcset=dist+'/default/ABC.JPG?w=&h=&decoder=webp' type='image/webp')",
+			"						img(src=dist+`${item}?w=&h=` alt='' width='' height='' loading='lazy')",
 			"	//- Add Arrows",
 			"	button.swiper-button-next.swiper-button",
 			"	button.swiper-button-prev.swiper-button",
@@ -175,9 +172,9 @@
 		"body": [
 			".item.figure",
             "   a.img(data-fancybox='gallery' data-src='' data-caption='')",
-            "       picture",
-            "           source(media='' srcset=`${item}?w=&h=&decoder=webp` type='image/webp')",
-            "           img(src=`${item}?w=&h=` alt='' width='' height='' loading='lazy')"
+            "       picture.img-decode",
+            "           source(media='' srcset=dist+`${item}?w=&h=&decoder=webp` type='image/webp')",
+            "           img(src=dist+`${item}?w=&h=` alt='' width='' height='' loading='lazy')"
 		],
 		"description": "Tạo Fancy Box"
 	},

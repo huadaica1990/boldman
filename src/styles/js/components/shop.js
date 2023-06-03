@@ -305,13 +305,16 @@
                         }, 1000);
                         selectThumbSku(product,$this.data('id'), $this.data('url'));
                     }
+                    productQuantity.text(quantity);
+                    if (quantity > 0 && quantity <= 11) {
+                        btnCall.addClass('d-invisible');
+                        btnCart.removeClass('d-invisible');
+                        productStatus.removeClass('d-invisible');
+                    }
                     if (quantity <= 0) {
                         btnCart.addClass('d-invisible');
                         btnCall.removeClass('d-invisible');
-                    }
-                    else {
-                        btnCall.addClass('d-invisible');
-                        btnCart.removeClass('d-invisible');
+                        productStatus.addClass('d-invisible');
                     }
                     //else {
                     //    $image.attr('src', $image.data('image-src'));

@@ -269,7 +269,7 @@
             $("#recommendproduct").val(JSON.stringify(listproduct));
         },
         rsRecommend: function () {
-            $('#recommend-product .bought-together-center .product input[type="checkbox"]').each(function () {
+            $('#recommend-product .product input[type="checkbox"]').each(function () {
                 $(this).prop('checked', false);
             })
             this.recommendItems();

@@ -8,21 +8,21 @@ var draggAbillyOptions = {
     autoLock: false
 };
 function autoLockListener(target, dragXDefault) {
-    target.on( 'dragEnd', function(){
+    target.on('dragEnd', function () {
         var draggie = target.data('draggabilly'),
-        withContainer = $('body').width()/2;
-        if(draggie.position.x > withContainer) {
-            target.draggabilly( 'setPosition', 0, draggie.position.y );
+            withContainer = $('body').width() / 2;
+        if (draggie.position.x < withContainer) {
+            target.draggabilly('setPosition', 0, draggie.position.y);
             $(this).css({
                 left: 'auto',
                 right: dragXDefault
-            }).addClass('--right');
+            }).removeClass('--right');
         }
         else {
-            target.draggabilly( 'setPosition', dragXDefault, draggie.position.y );
+            target.draggabilly('setPosition', dragXDefault, draggie.position.y);
             $(this).css({
                 right: 'auto'
-            }).removeClass('--right');
+            }).addClass('--right');
         }
     });
 }
@@ -34,9 +34,9 @@ function draggAbillyEcs(selector) {
                 autoLock = settings.autoLock;
             var $draggable = $this.draggabilly(settings);
             var dragXDefault = $draggable.data('draggabilly').startPosition.x;
-            if(settings.autoLock === true) autoLockListener($draggable, dragXDefault);
-            if(selector == '.draggable-pc' && document.documentElement.clientWidth < 1199) $draggable.draggabilly('destroy');
-            if(selector == '.draggable-mobile' && document.documentElement.clientWidth > 1199)  $draggable.draggabilly('destroy');
+            if (settings.autoLock === true) autoLockListener($draggable, dragXDefault);
+            if (selector == '.draggable-pc' && document.documentElement.clientWidth < 1199) $draggable.draggabilly('destroy');
+            if (selector == '.draggable-mobile' && document.documentElement.clientWidth > 1199) $draggable.draggabilly('destroy');
         });
     }
 };

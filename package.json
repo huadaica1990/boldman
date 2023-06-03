@@ -55,6 +55,7 @@
     "plyr": "^3.7.3",
     "readmore-js": "^2.2.1",
     "skrollr": "^0.6.26",
+    "smooth-scrollbar": "^8.8.3",
     "sticky-sidebar": "^3.3.1",
     "swiper": "^9.1.0",
     "typewriter-effect": "^2.19.0",
