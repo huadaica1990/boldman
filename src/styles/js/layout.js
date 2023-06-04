@@ -520,6 +520,7 @@ function addToCartList(obj, listid, url) {
         updateCart();
         setTimeout(function () {
             $this.html(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
+            showCartInfo();
         }, 1000);
         setTimeout(function () {
             $this.html(oldtext).css('pointer-events', 'auto');
