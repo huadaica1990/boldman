@@ -37,6 +37,10 @@ h6,.h6 {
 	line-height: $line-height;
 	color: $dark-color;
 	letter-spacing: 0;
+	&.des-title * {
+		font-size: inherit;
+		line-height: inherit;
+	}
 }
 
 h1,.h1 {
