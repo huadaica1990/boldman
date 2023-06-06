@@ -253,12 +253,14 @@ input {
             border-width: 1px;
         }
         @include css(color, form, inputGroup, color);
-        &:hover, &:focus {
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
+        &:not([type='number']) {
+            &:hover, &:focus {
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                }
             }
         }
         &:focus {
