@@ -38,9 +38,6 @@ strong {
     }
 }
 
-.img-white {
-    @include filter($val: brightness(100) contrast(100) grayscale(100%));
-}
 
 // input::placeholder {color: #00C851;}
 // input::-webkit-input-placeholder {color: #00C851;}

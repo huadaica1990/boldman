@@ -1,7 +1,7 @@
 var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class="loader"></div></div></div>',
     errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>';
 // Effect
-$('.input-group-effect input').focus(function(event) {
+$('.input-group-effect .form-control').focus(function(event) {
     $(this).parent().addClass('focus');
 }).blur(function(event) {
     if($(this).val() === '') $(this).parent().removeClass('focus');

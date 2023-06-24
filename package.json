@@ -36,6 +36,7 @@
     "draggabilly": "^3.0.0",
     "easy-pie-chart": "^2.1.7",
     "file-saver": "^2.0.5",
+    "gsap": "^3.12.1",
     "html2canvas": "^1.4.1",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
