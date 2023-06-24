@@ -10,6 +10,7 @@ function scrolToIdEcs(selector, option) {
         var scrollToIOptions = {
                 highlightClass: 'active',
                 highlightSelectorParent: true,
+                singleHighlight: true,
                 onStart:function(){
                     closeMenu();
                 }
@@ -21,6 +22,13 @@ function scrolToIdEcs(selector, option) {
             var liTarget = $(this).closest('li');
             liTarget.addClass('active').siblings().removeClass('active');
         });
+        if (settings.singleHighlight) {
+            window.addEventListener('scroll', function () {
+                var idLink = $('.mPS2id-target').attr('id');
+                $('a[href="#' + idLink + '"]').closest('li').addClass('active').siblings().removeClass('active');
+                console.log(idLink);
+            });
+        }
         function closeMenu(){
             if(Ecsgroup.$body.hasClass('mmenu-active')) {
                 //$(this).removeClass('show');
@@ -36,5 +44,5 @@ function scrolToIdEcs(selector, option) {
     }
 };
 Ecsgroup.pageScrollToId = function (selector, option) {
-    return new scrolToIdEcs(selector);
+    return new scrolToIdEcs(selector, option);
 };

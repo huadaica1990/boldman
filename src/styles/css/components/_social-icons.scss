@@ -9,24 +9,15 @@
 // Default Style
 .social-icons {
     @include flex-option($type: align-items, $value: "center");
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -moz-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;   
-        -webkit-flex-wrap: wrap;   
-            -ms-flex-wrap: wrap;   
-                flex-wrap: wrap;
+    display: inline-flex;
+    flex-wrap: wrap;
 }
 
 .social-icon {
     @include animation($customize: true) {
-        -ms-transition: color .4s, border .4s, background-color .4s, box-shadow .4s;
-        -webkit-transition: color .4s, border .4s, background-color .4s, box-shadow .4s;
-        -moz-transition: color .4s, border .4s, background-color .4s, box-shadow .4s;
-        -o-transition: color .4s, border .4s, background-color .4s, box-shadow .4s;
         transition: color .4s, border .4s, background-color .4s, box-shadow .4s;
     }
+
     @include border-radius($val: 50%);
     @include border($position: "all", $size:2px, $style:solid, $color: $white-color);
     font-size: 1.4rem;
@@ -36,10 +27,12 @@
     line-height: 28px;
     color: inherit;
     text-align: center;
+
     .border-thin & {
         border-width: 1px;
         line-height: 3rem;
     }
+
     &:last-child {
         margin-right: 0;
     }
@@ -63,126 +56,170 @@
     &.social-pinterest {
         color: $social-pinterest;
     }
+
     &.social-google {
         color: $social-google;
     }
+
     &.social-linkedin {
         color: $social-linkedin;
     }
+
     &.social-email {
         color: $social-email;
     }
+
     &.social-whatsapp {
         color: $social-whatsapp;
     }
+
     &.social-zalo {
         color: $social-zalo;
         font-size: 1.3rem;
+    }
+
+    &.social-shopee {
+        color: $social-shopee;
+        font-size: 2rem;
     }
 }
 
 .social-icons-colored {
     .social-icon {
         color: $white-color;
+
         &.social-facebook {
             border-color: $social-facebook;
             background-color: $social-facebook;
         }
+
         &.social-twitter {
             border-color: $social-twitter;
             background-color: $social-twitter;
         }
+
         &.social-instagram {
             border-color: $social-instagram;
             background-color: $social-instagram;
         }
+
         &.social-youtube {
             border-color: $social-youtube;
             background-color: $social-youtube;
         }
+
         &.social-pinterest {
             border-color: $social-pinterest;
             background-color: $social-pinterest;
         }
+
         &.social-google {
             border-color: $social-google;
             background-color: $social-google;
         }
+
         &.social-linkedin {
             border-color: $social-linkedin;
             background-color: $social-linkedin;
         }
+
         &.social-email {
             border-color: $social-email;
             background-color: $social-email
         }
+
         &.social-whatsapp {
             border-color: $social-whatsapp;
             background-color: $social-whatsapp;
         }
+
         &.social-zalo {
             border-color: $social-zalo;
             background-color: $social-zalo;
         }
+
+        &.social-shopee {
+            border-color: $social-shopee;
+            background-color: $social-shopee;
+        }
+
         &:hover {
             @include box-shadow($number: "1");
         }
     }
 }
+
 .social-no-color {
     .social-icon {
         border-color: #cdcdcd;
         color: $grey-color;
+
         &:hover, &:focus {
             color: $primary-color;
+
             &.social-facebook {
                 background-color: $social-facebook;
                 border-color: $social-facebook;
                 color: $white-color;
             }
+
             &.social-twitter {
                 background-color: $social-twitter;
                 border-color: $social-twitter;
                 color: $white-color;
             }
+
             &.social-instagram {
                 background-color: $social-instagram;
                 border-color: $social-instagram;
                 color: $white-color;
             }
+
             &.social-youtube {
                 background-color: $social-youtube;
                 border-color: $social-youtube;
                 color: $white-color;
             }
+
             &.social-pinterest {
                 background-color: $social-pinterest;
                 border-color: $social-pinterest;
                 color: $white-color;
             }
+
             &.social-google {
                 border-color: $social-google;
                 background-color: $social-google;
                 color: $white-color;
             }
+
             &.social-linkedin {
                 border-color: $social-linkedin;
                 background-color: $social-linkedin;
                 color: $white-color;
             }
+
             &.social-email {
                 border-color: $social-email;
                 background-color: $social-email;
                 color: $white-color;
             }
+
             &.social-whatsapp {
                 border-color: $social-whatsapp;
                 background-color: $social-whatsapp;
                 color: $white-color;
             }
+
             &.social-zalo {
                 border-color: $social-zalo;
                 background-color: $social-zalo;
+                color: $white-color;
+            }
+
+            &.social-shopee {
+                border-color: $social-shopee;
+                background-color: $social-shopee;
                 color: $white-color;
             }
         }
@@ -193,77 +230,107 @@
     .social-icon {
         background-color: $white-color;
         border-width: 1px;
+
         &.social-facebook {
             color: $social-facebook;
             border-color: $social-facebook;
         }
+
         &.social-twitter {
             color: $social-twitter;
             border-color: $social-twitter;
         }
+
         &.social-instagram {
             color: $social-instagram;
             border-color: $social-instagram;
         }
+
         &.social-youtube {
             color: $social-youtube;
             border-color: $social-youtube;
         }
+
         &.social-pinterest {
             color: $social-pinterest;
             border-color: $social-pinterest;
         }
+
         &.social-google {
             border-color: $social-google;
             color: $social-google;
         }
+
         &.social-linkedin {
             border-color: $social-linkedin;
             color: $social-linkedin;
         }
+
         &.social-email {
             border-color: $social-email;
             color: $social-email
         }
+
         &.social-whatsapp {
             border-color: $social-whatsapp;
             color: $social-whatsapp;
         }
+
         &.social-zalo {
             border-color: $social-zalo;
             color: $social-zalo;
         }
+
+        &.social-shopee {
+            border-color: $social-shopee;
+            color: $social-shopee;
+        }
+
         &:hover {
             color: $white-color;
+
             &.social-facebook {
                 background-color: $social-facebook;
             }
+
             &.social-twitter {
                 background-color: $social-twitter;
             }
+
             &.social-instagram {
                 background-color: $social-instagram;
             }
+
             &.social-youtube {
                 background-color: $social-youtube;
             }
+
             &.social-pinterest {
                 background-color: $social-pinterest;
             }
+
             &.social-google {
                 background-color: $social-google;
             }
+
             &.social-linkedin {
                 background-color: $social-linkedin;
             }
+
             &.social-email {
                 background-color: $social-email
             }
+
             &.social-whatsapp {
                 background-color: $social-whatsapp;
             }
+
             &.social-zalo {
                 background-color: $social-zalo;
+            }
+
+            &.social-shopee {
+                background-color: $social-shopee;
             }
         }
     }
