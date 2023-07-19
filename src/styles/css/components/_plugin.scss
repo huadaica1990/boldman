@@ -361,7 +361,7 @@
         margin: -20px;
         padding: 20px;
     }
-    @include mq("sm", "max") {
+    @include mq(lg, 'max') {
         .shadow-swiper {
             margin: -15px;
             padding: 15px;
