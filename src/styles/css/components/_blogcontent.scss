@@ -219,12 +219,15 @@ h6 {
     line-height: 1.2;
     word-break: break-word;
 }
+
 > * {
     margin: 0 0 2rem;
 }
+
 a {
     @include border($position: "bot", $style: dotted, $color: #336699);
     color: #336699;
+
     &:hover {
         @include border($position: "bot", $size:1px, $style: solid, $color: #336699);
     }
@@ -234,12 +237,14 @@ p {
     word-break: break-word;
     line-height: 1.86;
 }
+
 p.first-letter:first-letter {
     font-size: 200%;
     color: $primary-color;
     font-weight: $font-weight-bold;
     line-height: 0;
 }
+
 p.first-cap:first-letter {
     color: $primary-color;
     float: left;
@@ -247,9 +252,10 @@ p.first-cap:first-letter {
     line-height: 0.7;
     padding-right: 10px;
     font-weight: $font-weight-bold;
-    margin:0;
+    margin: 0;
     //initial-letter: 4;
 }
+
 .blog-summary {
     font-size: 20px;
     line-height: $line-height;
@@ -258,17 +264,19 @@ p.first-cap:first-letter {
 /*#endregion*/
 
 /*#region img*/
-  img[loading="lazy"] {
-      text-align: center;
-      // display: block;
-      height: auto !important;
-      display: -webkit-box;
-  }
-  .blog-img {
+img[loading="lazy"] {
+    text-align: center;
+    // display: block;
+    height: auto !important;
+    display: -webkit-box;
+}
+
+.blog-img {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
     margin: 0 auto 2rem auto;
+
     img[loading="lazy"] {
         margin: 0 auto;
     }
@@ -286,9 +294,11 @@ p.first-cap:first-letter {
         opacity: .7;
         padding: 3px 12px;
     }
-  }
-  .videodetector {
-    position:relative;
+}
+
+.videodetector {
+    position: relative;
+
     .cap {
         text-align: center;
         width: 100%;
@@ -302,68 +312,83 @@ p.first-cap:first-letter {
         opacity: .7;
         padding: 3px 12px;
     }
-  }
+}
 /*#endregion*/
 
 /*#region ele*/
-  ul {
+ul {
     padding: 0 0 0 1.5em;
+
     li {
         line-height: 2;
-        margin:0;
+        margin: 0;
+
         &:last-child {
             margin-bottom: 0;
         }
     }
-  }
-  blockquote {
-      padding: 4.2rem 5rem;
-      position: relative;
-      background-color: #f8f8f8;
-      max-width: 100%;
-      >* {
-          margin: 0 0 1rem 0;
-          &:last-child {
-              margin-bottom: 0;
-          }
-      }
-      &:before {
+}
+
+blockquote {
+    padding: 4.2rem 5rem;
+    position: relative;
+    background-color: #f8f8f8;
+    max-width: 100%;
+
+    > * {
+        margin: 0 0 1rem 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &:before {
         position: absolute;
         content: '"';
         top: 75px;
         left: 5px;
         font-size: 150px;
         line-height: 0;
-        color:$primary-color;
+        color: $primary-color;
         opacity: .8;
-      }
-  }
-  .table-responsive {
-      margin-bottom:0;
-      table {
-          margin:0;
-      }
-      & + * {
-          margin-top: 2rem
-      }
-  }
-  table {
-      border:none;
-      border-collapse: collapse;
-      //table-layout: fixed;
-      width: 100%;
-      max-width: 100%;
-      margin: 0 0 2rem;
-      position: relative;
-      caption {
+    }
+}
+
+.table-responsive {
+    margin-bottom: 0;
+
+    table {
+        margin: 0;
+    }
+
+    & + * {
+        margin-top: 2rem
+    }
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+    //table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 2rem;
+    position: relative;
+
+    caption {
         font-size: 1.5rem;
         margin: 0 0 0.75rem;
         font-weight: $font-weight-bold;
-      }
-      td,
-      th {
-          background-color: $white-color;
-      }
+    }
+
+    td,
+    th {
+
+        p:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
     //   tbody:hover {
     //       td {
     //         color: transparent;
@@ -374,69 +399,87 @@ p.first-cap:first-letter {
     //         text-shadow: 0 1px 0 #fff;
     //       }
     //   }
-        thead {
-            @include border($position: "all", $size:1px, $style: solid, $color: #c4dbed);
-            position: sticky;
-            z-index: 1;
-            top:-1px;
-            left:0;
-            tr th {
-                vertical-align: bottom;
-                background-color:#c9dff0;
-                color: $dark-color;
-                display: table-cell;
-            }
+    thead {
+        @include border($position: "all", $size:1px, $style: solid, $color: #c4dbed);
+        position: sticky;
+        z-index: 1;
+        top: -1px;
+        left: 0;
+
+        tr th {
+            vertical-align: bottom;
+            background-color: #c9dff0;
+            color: $dark-color;
+            display: table-cell;
         }
-      tbody {
+    }
+
+    tbody {
         @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+
         tr {
             @include border($position: "top", $size:1px, $style: solid, $color: $border-color);
+
             td {
                 text-align: left;
+
+                &:not(:last-child) {
+                    @include border($position: "right", $size:1px, $style: solid, $color: $border-color);
+                }
             }
+
             &:hover {
                 background: $grey-background;
+
                 td {
                     background: $grey-background;
                 }
             }
+
             &:first-child {
                 border-top: none;
             }
-          }
-      }
 
-      tfoot {
+            &:nth-child(odd) {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+
+    tfoot {
         @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
         border-top: none;
-      }
-      >thead,
-      >tbody,
-      >tfoot {
-          >tr {
-              >th,
-              >td {
-                  border: none;
-                  padding: 8px;
-                  line-height: 1.86;
-                  vertical-align: top;
-              }
-          }
-      }
-      >tbody+tbody {
-          border-top: 2px solid $border-color;
-      }
-      >caption+thead,
-      >colgroup+thead,
-      >thead:first-child {
-          >tr:first-child {
-              >th,
-              >td {
-                  border-top: 0;
-              }
-          }
-      }
-  }
+    }
+
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                border: none;
+                padding: 8px;
+                line-height: 1.86;
+                vertical-align: top;
+            }
+        }
+    }
+
+    > tbody + tbody {
+        border-top: 2px solid $border-color;
+    }
+
+    > caption + thead,
+    > colgroup + thead,
+    > thead:first-child {
+        > tr:first-child {
+            > th,
+            > td {
+                border-top: 0;
+            }
+        }
+    }
+}
 
 .recommend {
     &-title {
@@ -461,6 +504,7 @@ p.first-cap:first-letter {
         }
     }
 }
+
 .component-item {
     width: calc((100% - 31px)/3);
     margin-right: 15px;
@@ -484,16 +528,19 @@ p.first-cap:first-letter {
     }
 
     a {
-        color:$dark-color;
+        color: $dark-color;
         border: none;
+
         &:hover {
-            color:$primary-color;
+            color: $primary-color;
         }
     }
 }
+
 [data-component-item]:nth-of-type(3n) {
     margin-right: 0;
 }
+
 p + [data-component-item]:nth-of-type(3n) {
     margin-right: 15px;
 }
@@ -510,34 +557,35 @@ p + [data-component-item]:nth-of-type(3n) {
         font-size: 1.6rem;
         font-weight: $font-weight-bold;
         color: $dark-color;
+
         .label {
             display: -webkit-box;
             display: -webkit-flex;
             display: -moz-box;
             display: -ms-flexbox;
             display: flex;
-            
             -webkit-box-align: center;
             -webkit-align-items: center;
-               -moz-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
             -webkit-box-pack: start;
             -webkit-justify-content: flex-start;
-                -moz-box-pack: start;
-                -ms-flex-pack: start;
-                    justify-content: flex-start;
+            -moz-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
             padding: 6px 2.5rem;
             max-width: 100%;
             width: 100%;
+
             &:after {
                 display: none;
             }
+
             svg {
                 height: 25px;
                 margin-right: 10px;
-                fill:#666;
+                fill: #666;
             }
         }
     }
@@ -583,9 +631,11 @@ p + [data-component-item]:nth-of-type(3n) {
 
     .toggle-btn {
         width: 100%;
+
         svg {
             display: none;
         }
+
         &:after, &:before {
             @include transform($args: translateY(-50%));
             left: auto;
@@ -612,234 +662,256 @@ p + [data-component-item]:nth-of-type(3n) {
         }
     }
 }
-  #widget-toc-fixed {
-      @include border-radius($val: 5px);
-      @include shadow($val: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)));
-      @include border();
-      overflow: hidden;
-      @include transform($args: translateX(-55px));
-      display: none;
-      z-index: 91;
-      .widget-toc {
+
+#widget-toc-fixed {
+    @include border-radius($val: 5px);
+    @include shadow($val: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)));
+    @include border();
+    overflow: hidden;
+    @include transform($args: translateX(-55px));
+    display: none;
+    z-index: 91;
+
+    .widget-toc {
         border: none;
         width: auto;
-      }
-      .toc-title {
+    }
+
+    .toc-title {
         height: 40px;
+
         .label {
             display: none;
         }
+
         &.collapsed {
             width: 40px;
         }
-      }
-      .widget-collapsible .toggle-btn {
-          @include transform($args: none);
-          display: block;
-          position: static;
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          padding: 8px;
-          svg {
-              display: block;
-              height: 100%;
-              fill: #666;
-              margin-right: 0;
-          }
-          &:before {
+    }
+
+    .widget-collapsible .toggle-btn {
+        @include transform($args: none);
+        display: block;
+        position: static;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        padding: 8px;
+
+        svg {
+            display: block;
+            height: 100%;
+            fill: #666;
+            margin-right: 0;
+        }
+
+        &:before {
             @include e-cen($type: "all", $option: translate(-50%, -50%));
             font-family: "ecs";
             content: "\e95b";
             font-weight: $font-weight-bold;
             font-size: 2rem;
-            border:none;
+            border: none;
             width: auto;
             height: auto;
             right: auto;
-            color:$white-color;
+            color: $white-color;
             display: none;
-          }
-          &:after {
-              display: none;
-          }
-      }
-      .collapsible-body {
-          @include border($position: "top");
-          background-color:$white-color;
-          width: 400px;
-          max-height: 400px;
-          max-width: 100%;
-      }
-      &.show {
-          display: block;
-          position:fixed;
-          top: 75px;
-      }
-  }
+        }
+
+        &:after {
+            display: none;
+        }
+    }
+
+    .collapsible-body {
+        @include border($position: "top");
+        background-color: $white-color;
+        width: 400px;
+        max-height: 400px;
+        max-width: 100%;
+    }
+
+    &.show {
+        display: block;
+        position: fixed;
+        top: 75px;
+    }
+}
 /*#endregion*/
 
 /*#region addon*/
-    .remove-videodetector {
-      display: none;
+.remove-videodetector {
+    display: none;
+}
+
+.tab {
+    .nav-tabs {
+        padding: 0;
     }
-    .tab {
-        .nav-tabs {
-            padding: 0;
-        }
-        .nav-item:not(:last-child) {
-            margin-right: 0;
-        }
-        .nav-link {
-            @include border($position: "all", $size:1px, $style: solid, $color: transparent);
-            border-bottom: none;
-            color:inherit;
-            &.active {
-                background-color:transparent;
-                border-color: $primary-color;
-            }
-        }
-        .tab-pane {
-            @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
-            padding: 1.3rem 2rem 0;
-            > * {
-                margin: 0 0 2rem;
-            }
-            &.active {
-                border-color: $primary-color;
-            }
+
+    .nav-item:not(:last-child) {
+        margin-right: 0;
+    }
+
+    .nav-link {
+        @include border($position: "all", $size:1px, $style: solid, $color: transparent);
+        border-bottom: none;
+        color: inherit;
+
+        &.active {
+            background-color: transparent;
+            border-color: $primary-color;
         }
     }
-    .accordion-header {
-        a {
-            border:none;
-            &.collapse {
-                background-color:$primary-color;
-                color:white;
-                &:after {
-                    color:white;
-                }
-            }
-            &.expand {
-                background-color: $grey-color-light;
-            }
-        }
-    }
-    .accordion-body {
+
+    .tab-pane {
         @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
-        @include animation($customize: true) {
-            -ms-transition:border-color .5s;
-            -webkit-transition:border-color .5s;
-            -moz-transition:border-color .5s;
-            -o-transition:border-color .5s;
-            transition:border-color .5s;
-        };
-        border-top: 0;
+        padding: 1.3rem 2rem 0;
+
+        > * {
+            margin: 0 0 2rem;
+        }
+
+        &.active {
+            border-color: $primary-color;
+        }
     }
-    .accordion-body.expanded {
-        border-color:$primary-color;
+}
+
+.accordion-header {
+    a {
+        border: none;
+
+        &.collapse {
+            background-color: $primary-color;
+            color: white;
+
+            &:after {
+                color: white;
+            }
+        }
+
+        &.expand {
+            background-color: $grey-color-light;
+        }
     }
+}
+
+.accordion-body {
+    @include border($position: "all", $size:1px, $style: solid, $color: $border-color);
+
+    @include animation($customize: true) {
+        transition: border-color .5s;
+    }
+    border-top: 0;
+}
+
+.accordion-body.expanded {
+    border-color: $primary-color;
+}
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/
-    @include mq("1366px", "max") {
-        #widget-toc-fixed {
-            @include transform($args: none);
-            left: 0;
+@include mq("1366px", "max") {
+    #widget-toc-fixed {
+        @include transform($args: none);
+        left: 0;
+    }
+}
+
+@include mq("768px", "max") {
+    img {
+        height: auto !important;
+        max-width: 100%;
+    }
+}
+
+@include mq("450px", "max") {
+    table {
+        caption {
+            text-align: left;
+            max-width: calc(100vw - 30px);
+        }
+
+        > thead > tr > th {
+            min-width: calc((100vw - 30px)/2);
         }
     }
 
-    @include mq("768px", "max") {
-        img {
-            height: auto !important;
-            max-width: 100%;
-        }
+    #widget-toc-fixed {
+        max-width: 100%;
     }
 
-    @include mq("450px", "max") {
-        table {
-            caption {
-                text-align: left;
-                max-width: calc(100vw - 30px);
-            }
-            >thead>tr>th {
-                min-width: calc((100vw - 30px)/2);
-            }
-        }
-        #widget-toc-fixed  {
-            max-width: 100%;
-        }
-        .component-item {
-            width: calc((100% - 8px) / 2);
-            margin-right: 7.5px;
-        }
-        
-        p + [data-component-item]:nth-of-type(3n),
-        [data-component-item]:nth-of-type(3n) {
-            margin-right: 7.5px;
-        }
-        [data-component-item]:nth-of-type(2n) {
-            margin-right: 0;
-        }
-      // table, thead, tbody, th, td, tr { 
-      //     display: block; 
-      // }
-      // table {
-      //     /* Hide table headers (but not display: none;, for accessibility) */
-      //     thead tr { 
-      //         position: absolute;
-      //         top: -9999px;
-      //         left: -9999px;
-      //     }
+    .component-item {
+        width: calc((100% - 8px) / 2);
+        margin-right: 7.5px;
+    }
 
-      //     tr { border: 1px solid #ccc; }
+    p + [data-component-item]:nth-of-type(3n),
+    [data-component-item]:nth-of-type(3n) {
+        margin-right: 7.5px;
+    }
 
-      //     td { 
-      //         /* Behave  like a "row" */
-      //         border: none;
-      //         border-bottom: 1px solid #eee; 
-      //         position: relative;
-      //         padding-left: 50%; 
-      //     }
+    [data-component-item]:nth-of-type(2n) {
+        margin-right: 0;
+    }
+    // table, thead, tbody, th, td, tr {
+    //     display: block;
+    // }
+    // table {
+    //     /* Hide table headers (but not display: none;, for accessibility) */
+    //     thead tr {
+    //         position: absolute;
+    //         top: -9999px;
+    //         left: -9999px;
+    //     }
+    //     tr { border: 1px solid #ccc; }
+    //     td {
+    //         /* Behave  like a "row" */
+    //         border: none;
+    //         border-bottom: 1px solid #eee;
+    //         position: relative;
+    //         padding-left: 50%;
+    //     }
+    //     td:before {
+    //         /* Now like a table header */
+    //         position: absolute;
+    //         /* Top/left values mimic padding */
+    //         top: 6px;
+    //         left: 6px;
+    //         width: 45%;
+    //         padding-right: 10px;
+    //         white-space: nowrap;
+    //     }
+    //     /*
+    //     Label the data
+    //     */
+    //     // td:nth-of-type(1):before { content: "First Name"; }
+    //     // td:nth-of-type(2):before { content: "Last Name"; }
+    //     // td:nth-of-type(3):before { content: "Job Title"; }
+    //     // td:nth-of-type(4):before { content: "Favorite Color"; }
+    //     // td:nth-of-type(5):before { content: "Wars of Trek?"; }
+    //     // td:nth-of-type(6):before { content: "Secret Alias"; }
+    //     // td:nth-of-type(7):before { content: "Date of Birth"; }
+    //     // td:nth-of-type(8):before { content: "Dream Vacation City"; }
+    //     // td:nth-of-type(9):before { content: "GPA"; }
+    //     // td:nth-of-type(10):before { content: "Arbitrary Data"; }
+    // }
+    .bootstrap-tabs .nav-tabs {
+        display: block;
+        overflow: auto;
+        white-space: nowrap;
+        overscroll-behavior-x: contain;
+        -webkit-scroll-snap-type: x mandatory;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
 
-      //     td:before { 
-      //         /* Now like a table header */
-      //         position: absolute;
-      //         /* Top/left values mimic padding */
-      //         top: 6px;
-      //         left: 6px;
-      //         width: 45%; 
-      //         padding-right: 10px; 
-      //         white-space: nowrap;
-      //     }
-
-      //     /*
-      //     Label the data
-      //     */
-      //     // td:nth-of-type(1):before { content: "First Name"; }
-      //     // td:nth-of-type(2):before { content: "Last Name"; }
-      //     // td:nth-of-type(3):before { content: "Job Title"; }
-      //     // td:nth-of-type(4):before { content: "Favorite Color"; }
-      //     // td:nth-of-type(5):before { content: "Wars of Trek?"; }
-      //     // td:nth-of-type(6):before { content: "Secret Alias"; }
-      //     // td:nth-of-type(7):before { content: "Date of Birth"; }
-      //     // td:nth-of-type(8):before { content: "Dream Vacation City"; }
-      //     // td:nth-of-type(9):before { content: "GPA"; }
-      //     // td:nth-of-type(10):before { content: "Arbitrary Data"; }
-      // }
-        .bootstrap-tabs .nav-tabs {
-            display: block;
-            overflow: auto;
-            white-space: nowrap;
-            overscroll-behavior-x: contain;
-            -webkit-scroll-snap-type: x mandatory;
-            -ms-scroll-snap-type: x mandatory;
-                scroll-snap-type: x mandatory;
-            >* {
-                scroll-snap-align: start;
-                display: inline-block;
-                // display: table-cell;
-            }
+        > * {
+            scroll-snap-align: start;
+            display: inline-block;
+            // display: table-cell;
         }
     }
+}
 /*#endregion*/
