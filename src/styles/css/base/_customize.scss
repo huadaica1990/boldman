@@ -653,6 +653,15 @@ marquee {
             // display: table-cell;
         }
     }
+    .padding {
+        &-right-container {
+            padding-left: 15px;
+        }
+
+        &-left-container {
+            padding-right: 15px;
+        }
+    }
 }
 
 @include mq(sm, 'max') {
