@@ -75,7 +75,7 @@
         a.mobile-menu-btn.mobile-menu-open(href='javascript:')
             span
         form.input-wrap(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
-            input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword')
+            input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"])')
             button.btn.ecs-icon-search(type='submit')
         if isCart
             a.cart-wrapper.ecs-icon-cart(href='')
