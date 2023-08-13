@@ -105,22 +105,34 @@ mixin loading()
 mixin pagination
     .pagination-container
         ul.pagination
-            li.page-item.prev.disabled
-                a.page-link.ecs-icon-angle-left(aria-label='Previous')
-            //- li.disabled.PagedList-ellipses
-            //-     a …
-            li.page-item
-                a.page-link 2
-            li.page-item
-                a.page-link 3
-            li.page-item.active
-                a.page-link 4
+            li.page-item.page-text.page-first
+                a.page-link Đầu
+            li.page-item.page-prev
+                a.page-link
+                    i.ecs-icon-angle-left
+            li.page-item.disabled.page-dots
+                a.page-link
             li.page-item
                 a.page-link 5
             li.page-item
                 a.page-link 6
-            li.page-item.next
-                a.page-link.ecs-icon-angle-right(aria-label='Next')
+            li.page-item.active
+                a.page-link 7
+            li.page-item
+                a.page-link 8
+            li.page-item.disabled.page-dots
+                a.page-link
+            li.page-item.page-next
+                a.page-link
+                    i.ecs-icon-angle-right
+            li.page-item.page-text.page-last
+                a.page-link Cuối
+        .d-block.d-lg-none.mt-1
+            ul.pagination.pagination-mobile.justify-content-between
+                li.page-item.page-text.page-first
+                    a.page-link Đầu
+                li.page-item.page-text.page-last
+                    a.page-link Cuối
 
 -
     const selectList = [
