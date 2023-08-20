@@ -43,11 +43,11 @@
                     .dropdown-box.dropdown-box-lang
                         +lang-list
     .nav-header.pt-2.pb-2.sticky-content.fix-top.sticky-header-mobile.nav-hidden(class=bgBody)
-        .container.d-flex
+        .container.d-flex.flex-wrap
             .--left.d-flex.align-items-center.justify-content-start
                 a.mobile-menu-toggle.mobile-menu-btn
                     span
-                .logo
+                .logo-wrapper
                     a(href=logo[1].href title=logo[1].name)
                         img(src=logo[1].src alt=logo[1].name width='133' height='52' loading='lazy')
             .--right.flex-center
@@ -75,7 +75,7 @@
         a.mobile-menu-btn.mobile-menu-open(href='javascript:')
             span
         form.input-wrap(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
-            input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword')
+            input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"])')
             button.btn.ecs-icon-search(type='submit')
         if isCart
             a.cart-wrapper.ecs-icon-cart(href='')

@@ -79,23 +79,11 @@
     @include mq("1024px", "max") {
         #dropdown-mobile-wrapper {
             @include animation($customize: true) {
-              -ms-transition: transform .5s ease;
-              -webkit-transition: transform .5s ease;
-              -moz-transition: transform .5s ease;
-              -o-transition: transform .5s ease;
               transition: transform .5s ease;
             };
             @include transform($args: translateY(0%));
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -moz-box;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-            -webkit-align-content: flex-end;
-            -ms-flex-line-pack: end;
             align-content: flex-end;
             position: fixed;
             width: 100%;
@@ -124,7 +112,7 @@
                     }
                     &.active,&:hover {
                         img {
-                            @include filter(grayscale(100%) brightness(.5))
+                            @include filter(grayscale(0%))
                         }
                     }
                 }

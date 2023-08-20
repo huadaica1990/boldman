@@ -225,7 +225,7 @@
         }
     }
 
-    .logo {
+    .logo-wrapper {
         height: #{get(navMoible, _heightLogo)};
 
         a {
@@ -1084,7 +1084,7 @@
         padding: 0;
     }
     &.search-container {
-        padding: 0;
+        padding: 0 !important;
         input {
             position: relative;
             min-height: 4rem;

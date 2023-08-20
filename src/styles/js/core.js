@@ -229,17 +229,30 @@ window.Ecsgroup = {};
      * @param {HTMLElement} el
      * @return {boolean}
      */
-    Ecsgroup.isOnScreen = function (el) {
-        var a = window.pageXOffset,
-            b = window.pageYOffset,
-            o = el.getBoundingClientRect(),
-            x = o.left + a,
-            y = o.top + b;
-        return y + o.height >= b &&
-            y <= b + window.innerHeight &&
-            x + o.width >= a &&
-            x <= a + window.innerWidth;
+    
+    Ecsgroup.isOnScreen = function(element, fullyInView) {
+        var pageTop = $(window).scrollTop(),
+            pageBottom = pageTop + $(window).height(),
+            elementTop = $(element).offset().top,
+            elementBottom = elementTop + $(element).height();
+
+        if (fullyInView === true) {
+            return ((pageTop < elementTop) && (pageBottom > elementBottom));
+        } else {
+            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+        }
     }
+    // Ecsgroup.isOnScreen = function (el) {
+    //     var a = window.pageXOffset,
+    //         b = window.pageYOffset,
+    //         o = el.getBoundingClientRect(),
+    //         x = o.left + a,
+    //         y = o.top + b;
+    //     return y + o.height >= b &&
+    //         y <= b + window.innerHeight &&
+    //         x + o.width >= a &&
+    //         x <= a + window.innerWidth;
+    // }
     // Ecsgroup.isOnScreen = new IntersectionObserver(function(entries) {
     //     if(entries[0].isIntersecting === true) {}
     // }, { threshold: [0] });

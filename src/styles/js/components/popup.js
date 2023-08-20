@@ -66,7 +66,7 @@ Popup.presets = {
         showClass: "fancybox-fadeInUp",
         hideClass: "fancybox-fadeOutDown",
         closeButton: false,
-        click: false,
+        // click: false,
     },
     'modal': {
         mainClass: "fancybox-modal-popup fancybox-wrapper fancybox-modal-close",

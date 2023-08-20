@@ -35,7 +35,7 @@ header.d-none.d-lg-block.d-md-none
                     .header-body-center.search.search-pc.pre-search
                         .search-container
                             form.flex-center.search-border.bg-white.zindex-20(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
-                                input.form-control(type='search' name='keyword' placeholder=placeholderSearch[0])
+                                input.form-control(type='search' name='keyword' placeholder=placeholderSearch[0] value='@(Request["keyword"])')
                                 button.btn.btn-search.ecs-icon-search(type='submit')
                             #search-result-pc.search-result.zindex-20
                                 a(href='')
@@ -136,7 +136,7 @@ header.d-none.d-lg-block.d-md-none
                     .header-body-center.search.search-pc.pre-search
                         .search-container
                             form.flex-center.search-border.bg-white.zindex-20(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
-                                input.form-control(type='search' name='keyword' placeholder=placeholderSearch[0])
+                                input.form-control(type='search' name='keyword' placeholder=placeholderSearch[0] value='@(Request["keyword"])')
                                 button.btn.btn-search.ecs-icon-search(type='submit')
                             #search-result-pc.search-result.zindex-20
                                 a(href='')

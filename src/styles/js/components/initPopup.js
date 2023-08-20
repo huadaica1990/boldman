@@ -58,6 +58,12 @@ function popupEcs (options, preset) {
                             },
                             reveal: (fancybox, slide) => {
                                 if ($('#loginjs').length != 0) $('#login-popup').removeClass('load-more-overlay loading');
+                            },
+                            shouldClose: () => {
+                                if ($('#sign-up').hasClass('active') == true) {
+                                    var message = core3;
+                                    if (!confirm(message)) return false;
+                                }
                             }
                         }
                     }, 'login')

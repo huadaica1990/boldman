@@ -12,6 +12,7 @@ function scrollTopEcs () {
     });
 
     var refreshScrollTop = function () {
+        
         if (window.pageYOffset > 400) {
             domScrollTop.classList.add('show');
 
@@ -25,8 +26,20 @@ function scrollTopEcs () {
             if ($('#progress-indicator').length > 0) {
                 $('#progress-indicator').css('stroke-dasharray', perc + ', 400');
             }
-        } else {
+        }
+        else {
             domScrollTop.classList.remove('show');
+        }
+        if(Ecsgroup.byId('scroll-top-hold') != null) {
+            let check = Ecsgroup.isOnScreen('#scroll-top-hold');
+            if (check) {
+                domScrollTop.classList.add('hold');
+                domScrollTop.style.bottom = $('footer').height() - 22 + 'px';
+            }
+            else {
+                domScrollTop.classList.remove('hold');
+                domScrollTop.style.bottom = '98px';
+            }
         }
     }
     Ecsgroup.call(refreshScrollTop, 500);

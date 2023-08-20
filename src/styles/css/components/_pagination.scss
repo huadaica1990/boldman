@@ -3,87 +3,131 @@
 ---------------------------------*/
 
 .pagination {
-    @include flex($type: "container");
+    display: flex;
+    flex-wrap: wrap;
     font-size: 1.2rem;
     color: $grey-color;
-
     > * {
         font-size: 1.4rem;
     }
-
     a {
         color: inherit;
     }
-
-    .page-item {
-        margin-right: 10px;
-
-        i {
-            font-weight: $font-weight-bold;
+    .page {
+        &-item {
+            margin: 8px;
+            i {
+                font-weight: $font-weight-bold;
+            }
+            &:hover:not(.disabled) > a {
+                background-color: transparentize($color: $primary-color, $amount: 0.2);
+                color: $white-color;
+            }
+            &.active:not(.disabled) > a {
+                background-color: $primary-color;
+                color: $white-color;
+            }
+            &.disabled a {
+                cursor: not-allowed;
+                color: #aaa;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
         }
-
-        &:hover:not(.disabled) > a {
-            background-color: transparentize($color: $primary-color, $amount: 0.2);
-            color: $white-color;
+        &-link {
+            @include border-radius($val: 50%);
+            @include animation($customize: true) {
+                transition: background-color .4s, color .4s;
+            };
+            display:block;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            line-height: 40px;
+            background-color: rgba(109,124,144,.1);
         }
-
-        &.active:not(.disabled) > a {
-            background-color: $primary-color;
-            color: $white-color;
+        &-dots {
+            white-space: nowrap;
+            position: relative;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            > a {
+                background-color: transparent;
+                padding-top: 3px;
+                &::before {
+                    content: '...';
+                    font-weight: $font-weight-semibold;
+                    font-size: 2rem;
+                    letter-spacing: 1px;
+                    line-height: normal;
+                    display: block;
+                }
+            }
         }
-
-        &.disabled a {
-            cursor: not-allowed;
-            color: #aaa;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-
         &-text {
+            white-space: nowrap;
             &:hover:not(.disabled) > a,
             > a {
+                width: auto;
                 background-color: transparent;
                 color: $dark-color;
             }
         }
-    }
-
-    .next {
-        i {
-            margin-left: 2px;
+        &-next {
+            i {
+                margin-left: 2px;
+            }
         }
     }
 }
-.page-link {
-    @include border-radius($val: 50%);
-    @include animation($customize: true) {
-        -ms-transition: background-color .4s, color .4s;
-        -webkit-transition: background-color .4s, color .4s;
-        -moz-transition: background-color .4s, color .4s;
-        -o-transition: background-color .4s, color .4s;
-        transition: background-color .4s, color .4s;
-    };
-    display:block;
-    text-align: center;
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    line-height: 30px;
-}
-.page-item-dots {
-    white-space: nowrap;
-    &::before {
-        content: '...';
-        display: inline-block;
-        vertical-align: middle;
-        font-size: .9rem;
-        font-weight: $font-weight-semibold;
-        margin-right: .1rem;
-        margin-top: -6px;
+
+/*#region Mobile responsive section styles*/
+@include mq(md, 'max') {
+    .pagination {
+        .page {
+            &-item {
+                margin: 5px;
+                &.page-prev {
+                    margin-left: 0;
+                }
+                &.page-next {
+                    margin-right: 0;
+                }
+            }
+            &-dots {
+                > a {
+                    padding-top: 8px;
+                    width: 25px;
+                    &::before {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            &-first,
+            &-last {
+                >  a {
+                    border-radius: .5rem;
+                    padding: 8px 20px;
+                    background-color: rgba(109,124,144,.1);
+                    line-height: normal;
+                    height: auto;
+                }
+            }
+        }
+        &:not(.pagination-mobile) {
+            .page-first,
+            .page-last {
+                display: none;
+            }
+        }
     }
 }
+/*#endregion*/
 
 /*#region Style fix all browser*/
     /*#region Safari*/
