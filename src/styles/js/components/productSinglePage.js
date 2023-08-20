@@ -175,7 +175,7 @@
                                             <img src="'+ src + '" alt="Product" width="85" height="85" />\
                                             </figure>\
                                             <div class="product-details pt-0 pl-2 pr-2">\
-                                            <h4 class="product-name font-weight-normal mb-1">'+ name + '</h4>\
+                                            <div class="product-title font-weight-normal mb-1">'+ name + '</div>\
                                             <div class="product-price mb-0">\
                                             <ins class="new-price">'+ newPrice + '</ins><del class="old-price">' + oldPrice + '</del><div class="product-label label-discount">'+sale+'</div></div>\
                                             </div></div>';
@@ -185,7 +185,7 @@
                                             <img src="'+ src + '" alt="Product" width="85" height="85" />\
                                             </figure>\
                                             <div class="product-details pt-0 pl-2 pr-2">\
-                                            <h4 class="product-name font-weight-normal mb-1">'+ name + '</h4>\
+                                            <div class="product-title font-weight-normal mb-1">'+ name + '</div>\
                                             <div class="product-price mb-0">\
                                             <ins class="new-price">'+ newPrice + '</ins></div>\
                                             </div></div>';
