@@ -978,7 +978,7 @@ function openProductPopup(btn) {
 }
 // Filter news
 function refreshFilterNews() {
-    var form = $('#filterform');
+    var form = $(Ecsgroup.byId('filterform'));
     form.find('input[name="sort"]').val($('#sortdropdown').val());
     form.find('input[name="page"]').val(1);
     getFilterResultNews();
@@ -1057,7 +1057,7 @@ function getFilterResultNews(type) {
 }
 // Filter product
 function refreshFilterProduct() {
-    var form = $('#filterform');
+    var form = $(Ecsgroup.byId('filterform'));
     //Lấy thuộc tính thả vào hidden field
     var pp = [];
     $('#filter input[name="attr"]:checked').each(function () {
@@ -1278,7 +1278,7 @@ function resetFilterStore() {
     form.find('input[name="page"]').val(1);
 }
 function refreshFilterStore() {
-    var form = $('#filterform'),
+    var form = $(Ecsgroup.byId('filterform')),
         formstore = $('#search-store-from');
         form.find('input[name="sort"]').val($('#sortdropdown').val());
 
