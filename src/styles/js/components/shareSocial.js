@@ -8,16 +8,13 @@ var linkShare = {
     sms: 'sms:?body=',
     pinterest: 'https://www.pinterest.com/pin/create/button/?description=&media=&url=',
     tumblr: 'https://www.tumblr.com/share?t=&u=&v=3'
-    h
-    
-    
-
-}https://twitter.com/i/flow/login?redirect_after_login=%2Fintent%2Ftweet%3Ftext%3DMua%2520gi%25CC%2580%25202019%253F%26url%3Dhttp%253A%252F%252Flocalhost%253A51593%252Ftin-chi-tiet%252Fmua-gi%2525CC%252580-2019%2523
+}
 var ShareSocial = {
     init: function () {
         this.shareUrl('.btn-shareurl');
         this.shareZalo('.btn-sharezalo');
         this.sharePopup('.btn-sharesocial');
+        this.copyUrl('.btn-copy');
     },
     shareZalo: function() {
          setTimeout(() => { 
@@ -64,5 +61,47 @@ var ShareSocial = {
             }
         });
     },
+    copyUrl: function (selector) {
+        $(document.body).on('click', selector, function (e) {
+            e.preventDefault();
+            var $this = $(e.currentTarget),
+                val = $this.attr('href') ?? $this.data('text');
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(val)
+                    .then(() => {
+                       Ecsgroup.Minipopup.open({
+                            productClass: ' success minipopup-center',
+                            message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
+                            template:
+                                '<div class="minipopup-box {{productClass}}">' +
+                                '<div class="minipopup-body">' +
+                                '<div class="minipopup-content">{{message}}</div>' +
+                                '</div>' +
+                                '</div>',
+                        });
+                })
+                .catch((error) => {
+                    console.log('Something went wrong', error);
+                })
+            }
+            else {
+                var temp = $('<input style="opacity:0;position absolute;z-index:-1;">');
+                $("body").append(temp);
+                temp.val(val).select();
+                document.execCommand("copy");
+                temp.remove();
+                Ecsgroup.Minipopup.open({
+                    productClass: ' success minipopup-center',
+                    message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
+                    template:
+                        '<div class="minipopup-box {{productClass}}">' +
+                        '<div class="minipopup-body">' +
+                        '<div class="minipopup-content">{{message}}</div>' +
+                        '</div>' +
+                        '</div>',
+                });
+            }
+        });
+    }
 }
 Ecsgroup.shareSocial = ShareSocial;
