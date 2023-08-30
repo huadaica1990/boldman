@@ -6,7 +6,12 @@ $('.input-group-effect .form-control').focus(function(event) {
 }).blur(function(event) {
     if($(this).val() === '') $(this).parent().removeClass('focus');
 });
-
+$(document).ajaxSend(function(e, xhr, options) {
+    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
+        var token = $('form').find("input[name='__RequestVerificationToken']").val();
+        xhr.setRequestHeader("RequestVerificationToken", token);
+    }
+});
 // View count
 function updateViewCount(targetId, action) {
     $.ajax({
