@@ -126,12 +126,12 @@ Ecsgroup.stickyContent = (function () {
                     $el.addClass('fixed');
                     this.onFixed && this.onFixed();
                     // for only sticky cart form.
-                    $el.hasClass('product-sticky-content') && Ecsgroup.$body.addClass('addtocart-fixed');
+                    $el.hasClass('product-sticky-content') && Ecsgroup.$body.addClass('addtocart-fixed').css('margin-bottom', this.height +'px');
                 } else {
                     $el.removeClass('fixed').css('margin-top', '').css('margin-bottom', '');
                     this.onUnfixed && this.onUnfixed();
                     // for only sticky cart form.
-                    $el.hasClass('product-sticky-content') && Ecsgroup.$body.removeClass('addtocart-fixed');
+                    $el.hasClass('product-sticky-content') && Ecsgroup.$body.removeClass('addtocart-fixed').css('margin-bottom', '0');
                 }
                 this.scrollPos = pageYOffset;
             } else {

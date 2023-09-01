@@ -1,7 +1,7 @@
 var linkShare = {
     facebook: 'https://www.facebook.com/sharer.php?t=&u=',
     messengerM: 'fb-messenger://share/?link=',
-    messagePc: 'https://www.facebook.com/dialog/send?link=&app_id=&redirect_uri='
+    messagePc: 'https://www.facebook.com/dialog/send?link=&app_id=&redirect_uri=',
     linkedin: 'https://www.linkedin.com/shareArticle?title=&url=',
     twitter: 'https://twitter.com/intent/tweet?url=&text=',
     email: 'mailto:?subject=&body=',
@@ -12,14 +12,15 @@ var linkShare = {
 var ShareSocial = {
     init: function () {
         this.shareUrl('.btn-shareurl');
+        this.shareNormal('.btn-share');
         this.shareZalo('.btn-sharezalo');
         this.sharePopup('.btn-sharesocial');
         this.copyUrl('.btn-copy');
     },
     shareZalo: function() {
-         setTimeout(() => { 
-            document.getElementById("trigger_zalo").click() 
-        }, 500)
+        // setTimeout(() => { 
+        //    document.getElementById("trigger_zalo").click() 
+        //}, 500)
         //div#trigger_zalo(data-href='URL' data-oaid='' data-layout='2' data-color='blue' data-customize='true' title='Chia sẻ Zalo')
     },
     sharePopup: function(selector) {
@@ -54,8 +55,7 @@ var ShareSocial = {
                     url: $this.attr('href')
                 }).then(() => {
                     console.log('Thanks for sharing!');
-                })
-                    .catch((error) => console.log('Sharing failed', error));
+                }).catch((error) => console.log('Sharing failed', error));
             } else {
                 alert(core2);
             }
@@ -65,7 +65,7 @@ var ShareSocial = {
         $(document.body).on('click', selector, function (e) {
             e.preventDefault();
             var $this = $(e.currentTarget),
-                val = $this.attr('href') ?? $this.data('text');
+                val = $this.attr('href') != null ? $this.attr('href') : $this.data('text');
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(val)
                     .then(() => {
@@ -100,6 +100,23 @@ var ShareSocial = {
                         '</div>' +
                         '</div>',
                 });
+            }
+        });
+    },
+    shareNormal: function (selector) {
+        Ecsgroup.$body.on('click', selector, function (e) {
+            e.preventDefault();
+            var $this = $(e.currentTarget);
+            if (navigator.share) {
+                navigator.share({
+                    title: $this.attr('title'),
+                    url: $this.attr('href')
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                    .catch((error) => console.log('Sharing failed', error));
+            } else {
+                alert(core2);
             }
         });
     }

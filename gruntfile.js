@@ -133,6 +133,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/slider.js',
                         '<%= dirs.js %>/components/sideBar.js',
                         '<%= dirs.js %>/components/draggAble.js',
+                        '<%= dirs.js %>/components/shareSocial.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
@@ -148,6 +149,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/wishlistAction.js',
                         '<%= dirs.js %>/components/productSingle.js',
                         '<%= dirs.js %>/components/productSinglePage.js',
+                        '<%= dirs.js %>/components/shoppingCart.js',
                         // '<%= dirs.js %>/components/ratingTooltip.js',
                         // Plugin
                         // '<%= dirs.js %>/components/marquee.js',

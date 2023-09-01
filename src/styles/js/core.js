@@ -743,6 +743,7 @@ window.Ecsgroup = {};
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar
         // Ecsgroup.sidebar('right-sidebar');                                   // Initialize Right Sidebar
         // Product
+        Ecsgroup.shoppingCart;                                                  // Initialize add to cart
         // Ecsgroup.shop.init();                                                // Initialize Shop
         // Ecsgroup.productSingle('.single-product-item');                      // Initialize all single products
         // Ecsgroup.initProductSinglePage();                                    // Initialize Single Product Page
