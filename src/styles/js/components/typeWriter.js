@@ -13,7 +13,7 @@ var typeWriterOptions = {
     autoStart: true
 };
 function typeWriterEcs(selector) {
-    if (typeof Fancybox !== 'undefined') {
+    if (typeof Typewriter !== 'undefined') {
         Ecsgroup.$(selector).each(function () {
             var $this = $(this);
             typeWriterOptions.strings = Ecsgroup.parseOptions($this.attr('data-typewriter-value'));
