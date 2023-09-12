@@ -386,10 +386,10 @@
             }
 
             .widget-footer {
-                width: calc(100% + 30px);
-                margin-left: -15px;
-                padding-left: 15px;
-                padding-right: 15px;
+                width: calc(100% + 20px);
+                margin-left: -10px;
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
 
@@ -849,6 +849,7 @@
             line-height: normal;
 
             .new-price {
+                font-size:inherit;
                 &:not(:last-child) {
                     margin-right: .5rem;
                 }
@@ -856,6 +857,9 @@
                 &.price-promoprice {
                     color: initial;
                 }
+            }
+            .old-price {
+                font-size: inherit;
             }
         }
 
