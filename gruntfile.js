@@ -134,6 +134,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/sideBar.js',
                         '<%= dirs.js %>/components/draggAble.js',
                         '<%= dirs.js %>/components/shareSocial.js',
+                        '<%= dirs.js %>/components/tippy.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
@@ -171,6 +172,8 @@ module.exports = grunt => {
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.js': [
+                        'node_modules/@popperjs/core/dist/umd/popper.min.js',
+                        'node_modules/tippy.js/dist/tippy.umd.min.js',
                         'node_modules/draggabilly/dist/draggabilly.pkgd.min.js',
                         'node_modules/jquery-validation/dist/jquery.validate.min.js',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
@@ -254,6 +257,7 @@ module.exports = grunt => {
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.css': [
+                        'node_modules/tippy.js/dist/tippy.css',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.css',
                         'node_modules/swiper/swiper-bundle.min.css',
                     ],

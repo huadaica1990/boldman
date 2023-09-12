@@ -568,7 +568,13 @@ marquee {
         pointer-events: none;
     }
 }
-
+.tippy {
+    &-content {
+        font-size: 1rem;
+        max-width: 200px;
+        padding: 6px 12px;
+    }
+}
 /*#endregion*/
 
 /*#region Mobile responsive section styles*/
