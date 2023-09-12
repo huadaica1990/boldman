@@ -55,6 +55,10 @@
         color: $social-facebook;
     }
 
+    &.social-facebook-chat {
+        color: $social-facebook-msg;
+    }
+
     &.social-twitter {
         color: $social-twitter;
     }
@@ -111,6 +115,11 @@
         &.social-facebook {
             border-color: $social-facebook;
             background-color: $social-facebook;
+        }
+
+        &.social-facebook-chat {
+            border-color: $social-facebook-msg;
+            background-color: $social-facebook-msg;
         }
 
         &.social-twitter {
@@ -185,6 +194,12 @@
             &.social-facebook {
                 background-color: $social-facebook;
                 border-color: $social-facebook;
+                color: $white-color;
+            }
+
+            &.social-facebook-chat {
+                background-color: $social-facebook-msg;
+                border-color: $social-facebook-msg;
                 color: $white-color;
             }
 
@@ -266,6 +281,11 @@
             border-color: $social-facebook;
         }
 
+        &.social-facebook-chat {
+            color: $social-facebook-msg;
+            border-color: $social-facebook-msg;
+        }
+
         &.social-twitter {
             color: $social-twitter;
             border-color: $social-twitter;
@@ -325,6 +345,10 @@
 
             &.social-facebook {
                 background-color: $social-facebook;
+            }
+
+            &.social-facebook-chat {
+                background-color: $social-facebook-msg;
             }
 
             &.social-twitter {
