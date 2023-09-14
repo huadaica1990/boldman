@@ -1,15 +1,16 @@
 var linkShare = {
-    facebook: 'https://www.facebook.com/sharer.php?t=&u=',
+    facebook: 'https://www.facebook.com/sharer.php?app_id=&display=popup&href=',
     messengerM: 'fb-messenger://share/?link=',
-    messagePc: 'https://www.facebook.com/dialog/send?link=&app_id=&redirect_uri=',
+    messagePc: 'http://www.facebook.com/dialog/send?app_id=&link=&redirect_uri=',
     linkedin: 'https://www.linkedin.com/shareArticle?title=&url=',
     twitter: 'https://twitter.com/intent/tweet?url=&text=',
     email: 'mailto:?subject=&body=',
     sms: 'sms:?body=',
     pinterest: 'https://www.pinterest.com/pin/create/button/?description=&media=&url=',
-    tumblr: 'https://www.tumblr.com/share?t=&u=&v=3'
+    tumblr: 'https://www.tumblr.com/share?t=&u=&v=3',
+    telegram: 'https://telegram.me/share/url?url=&text='
 }
-var ShareSocial = {
+var ShareSocialEcs = {
     init: function () {
         this.shareUrl('.btn-shareurl');
         this.shareNormal('.btn-share');
@@ -121,4 +122,4 @@ var ShareSocial = {
         });
     }
 }
-Ecsgroup.shareSocial = ShareSocial;
+Ecsgroup.shareSocial = ShareSocialEcs;
