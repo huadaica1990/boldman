@@ -9,15 +9,12 @@
         stickyHeader = $('.sticky-header').height() + 30;
     if($('.widget-toc').length != false && domTableOfContent != null) {
         var refreshTableOfContent = function () {
-            if($('.readmore-js.open').length > 0) {
-                domTableOfContent.classList.remove('show');
-            }
-            else if (window.pageYOffset > toc) {
+            if($('.readmore-js.open').length > 0) domTableOfContent.classList.remove('show');
+            else if (window.pageYOffset > toc && Ecsgroup.isOnScreen('.blog-content')) {
                 domTableOfContent.classList.add('show');
                 if (!Ecsgroup.isMobile) domTableOfContent.style.top = $('.sticky-header.fixed').height() + 30 + 'px';
-            } else {
-                domTableOfContent.classList.remove('show');
             }
+            else domTableOfContent.classList.remove('show');
         }
         Ecsgroup.$('.widget-toc').clone().appendTo('#widget-toc-fixed');
         Ecsgroup.$('#widget-toc-fixed').find('.collapsible-title').addClass('collapsed');
