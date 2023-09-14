@@ -615,30 +615,6 @@ window.Ecsgroup = {};
         });
     };
 
-
-    /**
-     * Open Share Product
-     *
-     * @param {String} class
-     */
-    Ecsgroup.shareUrl = function (selector) {
-        Ecsgroup.$body.on('click', selector, function (e) {
-            e.preventDefault();
-            var $this = $(e.currentTarget);
-            if (navigator.share) {
-                navigator.share({
-                    title: $this.attr('title'),
-                    url: $this.attr('href')
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                })
-                    .catch((error) => console.log('Sharing failed', error));
-            } else {
-                alert(core2);
-            }
-        });
-    };
-
     /**
      * appearAnimate
      *
