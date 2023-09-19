@@ -329,9 +329,8 @@ p.first-cap:first-letter {
   ul,ol {
     padding: 0;
     li {
-        line-height: 2;
-        margin-left: 3em;
-        padding-left: 0.5em;
+        margin-left: 5rem;
+        padding-left: 1rem;
         &:not(:last-child) {
             margin-bottom: 1rem;
         }
@@ -786,6 +785,12 @@ p + [data-component-item]:nth-of-type(3n) {
     }
 
     @include mq(md, 'max') {
+        >h1,>h2,>h3 {
+            margin-top: 3rem;
+        }
+        >h1+*, >h2+*, >h3+*, >h4+*, >h5+*, >h6+* {
+            margin-top: 2rem;
+        }
         table {
             caption {
                 text-align: left;
@@ -841,7 +846,12 @@ p + [data-component-item]:nth-of-type(3n) {
             width: calc((100% - 8px) / 2);
             margin-right: 7.5px;
         }
-        
+        ol,ul {
+            li {
+                margin-left: 2rem;
+                padding-left: .5rem;
+            }
+        }
         p + [data-component-item]:nth-of-type(3n),
         [data-component-item]:nth-of-type(3n) {
             margin-right: 7.5px;
