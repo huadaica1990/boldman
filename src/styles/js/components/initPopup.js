@@ -1,4 +1,4 @@
-﻿/**
+/**
  * initPopup
  *
  */
@@ -100,7 +100,7 @@ function popupEcs (options, preset) {
         // Modal
         Ecsgroup.$body.on('click', '[data-modal]', function (e) {
             e.preventDefault();
-            var modalId = $(e.currentTarget).data('target'),
+            var modalId = $(e.currentTarget).data('target') != null ? $(e.currentTarget).data('target') : $(e.currentTarget).attr('href'),
                 title = $(e.currentTarget).data('title');
             if (title != null) $(modalId).find('input[name="Title"]').val(title);
             if (document.documentElement.clientWidth < 576 && $(modalId).find('form') != null) {
@@ -111,7 +111,7 @@ function popupEcs (options, preset) {
             else {
                 Ecsgroup.popup(
                     [{
-                        src: $(e.currentTarget).data('target'),
+                        src: modalId,
                         type: 'inline'
                     }],
                     {}, 'modal')
