@@ -1501,7 +1501,7 @@ function validateForm(btn, idform, layout = 'default') {
             $(idform).find('.get-value').each(function (e) {
                 var check = $(this).attr('name');
                 var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
-                if (!arrayCheck.includes(check)) {
+                if (!arrayCheck.includes(check) && $(this).prop('readonly') != true) {
                     var type = $(this).data('type');
                     var title = $(this).data('name');
                     var val = $(this).val();
@@ -1642,7 +1642,7 @@ function validateFormMini(btn, idform) {
             $(idform).find('.get-value').each(function (e) {
                 var check = $(this).attr('name');
                 var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
-                if (!arrayCheck.includes(check)) {
+                if (!arrayCheck.includes(check) && $(this).prop('readonly') != true) {
                     var type = $(this).data('type');
                     var title = $(this).data('name');
                     var val = $(this).val();
