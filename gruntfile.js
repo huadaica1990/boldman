@@ -168,7 +168,8 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/fakeLoadMore.js',
                         '<%= dirs.js %>/components/notiCustomer.js',
                         '<%= dirs.js %>/components/ezParallax.js',
-                        '<%= dirs.js %>/components/mouseFollow.js'
+                        '<%= dirs.js %>/components/mouseFollow.js',
+                        '<%= dirs.js %>/components/flatpickr.js',
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.js': [
