@@ -242,6 +242,32 @@ strong {
             transform:scale(1.04)
         }
     }
+    &-zoom {
+        position: relative;
+        &:after {  
+            font-family: 'ecs';
+            speak: never;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: absolute;
+            content: '\e937';
+            top: 1rem;
+            right: 1rem;
+            opacity: 0;
+            font-size: 2rem;
+            background: rgba(0,0,0,.5);
+            padding: 5px;
+            color: #fff;
+        }
+        &:hover:after {
+            opacity: 1;
+        }
+    }
 }
 /*#endregion*/
 

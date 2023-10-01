@@ -263,9 +263,11 @@
                 opacity: 1;
                 visibility: visible;
             }
+            &:hover >.swiper-button-prev,
             >.swiper-button-prev {
                 left: 1rem;
             }
+            &:hover >.swiper-button-next,
             >.swiper-button-next {
                 right: 1rem;
             }
