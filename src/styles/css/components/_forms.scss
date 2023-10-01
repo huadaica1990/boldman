@@ -537,8 +537,9 @@ input {
 
     label.required {
         &:after {
-            content: "*";
+            content: attr(data-text);
             color: #cc0001;
+            margin-left: .5rem;
         }
     }
 
