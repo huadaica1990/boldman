@@ -402,20 +402,17 @@ window.Ecsgroup = {};
 
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-    Ecsgroup.debounce = function (func, wait = 1000) {
-        var timeout;
-
-        return function () {
-            var context = this,
-                args = arguments;
-
-            var executeFunction = function () {
-                func.apply(context, args);
-            };
-
-            clearTimeout(timeout);
-            timeout = setTimeout(executeFunction, wait);
-        };
+    Ecsgroup.debounce = function (fn, ms = 1000) {
+        let timer;
+        return function() {
+            // Nhận các đối số
+            const args = arguments;
+            const context = this;
+            if(timer) clearTimeout(timer);
+            timer = setTimeout(() => {
+                fn.apply(context, args);
+            }, ms)
+        }
     };
     /**
      * alert
