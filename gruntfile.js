@@ -135,6 +135,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/draggAble.js',
                         '<%= dirs.js %>/components/shareSocial.js',
                         '<%= dirs.js %>/components/tippy.js',
+                        '<%= dirs.js %>/components/flatpickr.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
@@ -169,7 +170,6 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/notiCustomer.js',
                         '<%= dirs.js %>/components/ezParallax.js',
                         '<%= dirs.js %>/components/mouseFollow.js',
-                        '<%= dirs.js %>/components/flatpickr.js',
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.js': [
@@ -179,6 +179,7 @@ module.exports = grunt => {
                         'node_modules/jquery-validation/dist/jquery.validate.min.js',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
                         'node_modules/swiper/swiper-bundle.js',
+                        'node_modules/flatpickr/dist/flatpickr.min.js',
                     ],
                     '<%= dirs.dist %>/release/layout.min.js': [
                         '<%= dirs.js %>/layout.js',
@@ -261,6 +262,7 @@ module.exports = grunt => {
                         'node_modules/tippy.js/dist/tippy.css',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.css',
                         'node_modules/swiper/swiper-bundle.min.css',
+                        'node_modules/flatpickr/dist/flatpickr.min.css',
                     ],
                     // Documentation
                     '<%= dirs.dist %>/release/document.min.css': [

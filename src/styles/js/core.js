@@ -726,6 +726,7 @@ window.Ecsgroup = {};
         Ecsgroup.typeWriter('.typewrite');                                      // Initialize TypeWriter
         Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
         Ecsgroup.tippy('.tooltips');                                            // Initialize Tool tips
+        Ecsgroup.flatpickr('.flatpickr');                                       // Initialize Flatpickr
         // Ecsgroup.parallax('.parallax');                                      // Initialize Parallax
         // Ecsgroup.skrollrParallax();                                          // Initialize Skrollr Parallax
         // Ecsgroup.initFloatingParallax();                                     // Initialize Floating Parallax
