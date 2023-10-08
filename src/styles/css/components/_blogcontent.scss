@@ -205,6 +205,9 @@
 //       font-size: 16px;
 //       line-height: $line-height;
 //   }
+> *:first-child {
+    margin-top: 0;
+}
 .accordion-body > *,
 .tab-content>.tab-pane>*,
 > .blog-img,
