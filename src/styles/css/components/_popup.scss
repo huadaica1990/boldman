@@ -674,6 +674,13 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     .cookie {
         &-content {
             font-size: 1.6rem;
+            a {
+                color: #4070f4;
+                &:hover {
+                    text-decoration: underline;
+                    color: #4070f4;
+                }
+            }
         }
     }
     @include mq(md, 'max') {
