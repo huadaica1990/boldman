@@ -11,18 +11,19 @@ function autoLockListener(target, dragXDefault) {
     target.on('dragEnd', function () {
         var draggie = target.data('draggabilly'),
             withContainer = $('body').width() / 2;
-        if (draggie.position.x < withContainer) {
+        console.log(draggie.position.x, withContainer);
+        if (draggie.position.x > withContainer) {
             target.draggabilly('setPosition', 0, draggie.position.y);
             $(this).css({
                 left: 'auto',
                 right: dragXDefault
-            }).removeClass('--right');
+            }).addClass('--right');
         }
         else {
             target.draggabilly('setPosition', dragXDefault, draggie.position.y);
             $(this).css({
                 right: 'auto'
-            }).addClass('--right');
+            }).removeClass('--right');
         }
     });
 }
