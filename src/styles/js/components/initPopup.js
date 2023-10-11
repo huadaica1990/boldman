@@ -19,9 +19,14 @@ function popupEcs (options, preset) {
                         {
                             mainClass: 'fancybox-modal-popup fancybox-wrapper',
                             on: {
+                                done: function() {
+                                    Ecsgroup.popupPause = true;
+                                },
                                 closing: function () {
+                                    Ecsgroup.popupPause = false;
                                     // if "do not show" is checked
                                     $('#hide-newsletter-popup')[0].checked && Ecsgroup.setCookie('EcsHidePopup', true, 7);
+                                    if (Ecsgroup.byId('cookie-popup') && Ecsgroup.getCookie('EcsAllowCookie') !== 'true') callCookie(7500);
                                 }
                             },
                         }
@@ -29,6 +34,33 @@ function popupEcs (options, preset) {
                 }
             }, 7500);
         }
+        // Cookie popup
+        let callCookie = function(timeout) {
+            setTimeout(function () {
+                if (!Ecsgroup.popupPause) {
+                    Ecsgroup.popup(
+                        [{
+                            src: '#cookie-popup',
+                            type: 'inline',
+                        }],
+                        {
+                            closeButton: false,
+                            mainClass: 'fancybox-modal-popup fancybox-modal-cookie fancybox-wrapper',
+                            on: {
+                                done: (fancybox, slide)=> {
+                                    $('#btn-acceptcookie').on('click', function() {
+                                        Ecsgroup.setCookie('EcsAllowCookie', true, 30);
+                                        Fancybox.getInstance().close();
+                                    });
+                                },
+                                closing: function () {}
+                            },
+                        }
+                    );
+                }
+            }, timeout);
+        }
+        if (Ecsgroup.$main.hasClass(popupOptions.classHome) && Ecsgroup.byId('cookie-popup') && Ecsgroup.byId('cookie-popup').classList.contains('fancybox__content') && Ecsgroup.getCookie('EcsAllowCookie') !== 'true') callCookie(8000);
 
         // Video popup
         Ecsgroup.$body.on('click', '.btn-iframe', function (e) {

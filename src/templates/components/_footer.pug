@@ -87,6 +87,17 @@ if popup
                 input#hide-newsletter-popup.custom-checkbox(type='checkbox' name='hide-newsletter-popup')
                 label.font-size-sm(for='hide-newsletter-popup') Không hiện lại popup
 
+//- Allow Cookie
+if cookie
+    #cookie-popup.fancybox-fade.fancybox-hide.br-sm
+        .cookie-body.mb-4
+            .cookie-title.font-weight-bold.h4.mb-1 🍪 Cookie Notice
+            .cookie-content.title-des
+                p This website use cookies to help you have a superior and more relevant browsing experience on the website. <a>Read more...</a> 
+        .cookie-footer.d-flex.display.justify-content-end
+            button.btn.btn-primary.btn-outline.btn-sm.mr-2 Decline
+            button#btn-acceptcookie.btn.btn-primary.btn-sm Accept
+
 //- Modal
 #contact-modal.modal.modal-form.modal-popup.fancybox-fade.fancybox-hide
     .modal-body
