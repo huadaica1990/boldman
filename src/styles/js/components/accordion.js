@@ -40,13 +40,13 @@ function accordionEcs(selector) {
     var toggleSlide = function ($wrap, cb) {
         var $header = $wrap.closest(accordionOption.classItem).find(selector);
         if ($wrap.hasClass('expanded')) {
-            $header.removeClass('collapse').addClass('expand');
+            $header.first().removeClass('collapse').addClass('expand');
             $wrap.addClass('collapsing').slideUp(300, function () {
                 $wrap.removeClass('expanded collapsing').addClass('collapsed');
                 cb && cb();
             });
         } else if ($wrap.hasClass("collapsed")) {
-            $header.removeClass("expand").addClass("collapse");
+            $header.first().removeClass("expand").addClass("collapse");
             $wrap.addClass("expanding").slideDown(300, function () {
                 $wrap.removeClass("collapsed expanding").addClass("expanded");
                 cb && cb();
