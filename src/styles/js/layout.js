@@ -1446,12 +1446,26 @@ $.extend($.validator.messages, {
     max: $.validator.format(validate16),
     min: $.validator.format(validate17)
 });
+jQuery.validator.addMethod("formattel", function (value, element, params) {
+    $(element).val(intlTelVal.getNumber());
+    return intlTelVal.isValidNumber();
+}, validate19);
 function validateForm(btn, idform, layout = 'default') {
     let submitted = true,
         formError = $(idform).find('.error-lst');
     let form = $(idform).validate({
         focusCleanup: true,
         focusInvalid: false,
+        rules: {
+            phonenumber: {
+                formattel: true
+            }
+        },
+        messages: {
+            phonenumber: {
+                formattel: validate19,
+            }
+        },
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
@@ -1601,6 +1615,16 @@ function validateFormMini(btn, idform) {
     let form = $(idform).validate({
         focusInvalid: true,
         errorPlacement: function (error, element) { return false; },
+        rules: {
+            phonenumber: {
+                formattel: true
+            }
+        },
+        messages: {
+            phonenumber: {
+                formattel: validate19,
+            }
+        },
         //rules: {
         //    email: {
         //        required: true,
