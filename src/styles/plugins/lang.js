@@ -68,7 +68,8 @@ var core1 = 'Copy thành công',
     validate15 = 'Vui lòng nhập giá trị từ {0} đến {1} ở trường ',
     validate16 = 'Vui lòng nhập giá trị nhỏ hơn hoặc bằng {0} ở trường ',
     validate17 = 'Vui lòng nhập giá trị lớn hơn hoặc bằng {0} ở trường ',
-    validate18 = 'Vui lòng điền đầy đủ thông tin ở trường email.';
+    validate18 = 'Vui lòng điền đầy đủ thông tin ở trường email.',
+    validate19 = 'Vui lòng điền đúng định dạng số điện thoại.';
 
 setTimeout(function () {
     console.log(ECSLanguage, ECSLanguageFile.get('langdesc'));
@@ -124,7 +125,8 @@ setTimeout(function () {
         validate15 = ECSLanguageFile.get('validate15'),
         validate16 = ECSLanguageFile.get('validate16'),
         validate17 = ECSLanguageFile.get('validate17'),
-        validate18 = ECSLanguageFile.get('validate18');
+        validate18 = ECSLanguageFile.get('validate18'),
+        validate19 = ECSLanguageFile.get('validate19');
     }
 }, 500);
 

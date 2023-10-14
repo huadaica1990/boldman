@@ -84,6 +84,7 @@ window.Ecsgroup = {};
      */
     Ecsgroup.isEdge = navigator.userAgent.indexOf('Edge') >= 0;
     Ecsgroup.isSafari = navigator.userAgent.indexOf('Safari') >= 0 && navigator.userAgent.indexOf('Chrome') < 0 && navigator.userAgent.indexOf('FxiOS') < 0;
+    Ecsgroup.isFirefox = navigator.userAgent.indexOf('Firefox') >= 0 && navigator.userAgent.indexOf('Chrome') < 0 && navigator.userAgent.indexOf('Safari') < 0;
     Ecsgroup.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(navigator.userAgent);
 
     /**
@@ -763,6 +764,9 @@ window.Ecsgroup = {};
         if (document.readyState === "complete") {
             if (Ecsgroup.isSafari == true) {
                 addCSS(Ecsgroup.dist + '/safari.css')
+            }
+            if (Ecsgroup.isFirefox == true) {
+                addCSS(Ecsgroup.dist + '/firefox.css')
             }
         }
     }

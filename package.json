@@ -43,6 +43,7 @@
     "gsap": "^3.12.1",
     "html2canvas": "^1.4.1",
     "imagesloaded": "^5.0.0",
+    "intl-tel-input": "^18.2.1",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.6.3",
     "jquery-countto": "^1.2.0",
