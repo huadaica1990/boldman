@@ -6,12 +6,24 @@ $('.input-group-effect .form-control').focus(function(event) {
 }).blur(function(event) {
     if($(this).val() === '') $(this).parent().removeClass('focus');
 });
+function previewImg (event) {
+    let reader = new FileReader(),
+        imgWrap = $(event.target).closest('.preview-wrapper').find('.image-preview-wrapper');
+    reader.onload = function(){
+        if(reader.result != null) {
+            imgWrap.find('img').attr('src', reader.result);
+            imgWrap.addClass('preview-result');
+        }
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
 $(document).ajaxSend(function(e, xhr, options) {
     if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
         var token = $('form').find("input[name='__RequestVerificationToken']").val();
         xhr.setRequestHeader("RequestVerificationToken", token);
     }
 });
+
 // View count
 function updateViewCount(targetId, action) {
     $.ajax({
