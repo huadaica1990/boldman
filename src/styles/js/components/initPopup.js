@@ -60,7 +60,7 @@ function popupEcs (options, preset) {
                 }
             }, timeout);
         }
-        if (Ecsgroup.$main.hasClass(popupOptions.classHome) && Ecsgroup.byId('cookie-popup') && Ecsgroup.byId('cookie-popup').classList.contains('fancybox__content') && Ecsgroup.getCookie('EcsAllowCookie') !== 'true') callCookie(8000);
+        if (Ecsgroup.$main.hasClass(popupOptions.classHome) && Ecsgroup.byId('cookie-popup') && !Ecsgroup.byId('cookie-popup').classList.contains('fancybox__content') && Ecsgroup.getCookie('EcsAllowCookie') !== 'true') callCookie(8000);
 
         // Video popup
         Ecsgroup.$body.on('click', '.btn-iframe', function (e) {
