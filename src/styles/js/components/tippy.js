@@ -6,9 +6,10 @@
 */
 var tippyOptions = {
     allowHTML: true,
+    placement: 'top'
 };
 function tippyEcs(selector) {
-    if (typeof Fancybox !== 'undefined') {
+    if (typeof tippy !== 'undefined') {
         Ecsgroup.$(selector).each(function () {
             var $this = $(this),
                 settings = $.extend(true, {}, tippyOptions, Ecsgroup.parseOptions($this.attr('data-tippy-options')));
