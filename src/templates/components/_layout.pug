@@ -60,14 +60,33 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                 style.rel = 'stylesheet';
                 head.appendChild(style);
             }
-            function addScript(filename , type = 'text/javascript', id = Date.now(), async = true) {
-                let script = document.createElement('script');
-                script.src = filename;
-                script.type = type;
-                script.async = async;
-                script.id = id;
-                document.body.appendChild(script, document.getElementsByTagName("script")[0]);
-            }
+            function addScript(filename, type = "text/javascript",id = Date.now(), async = true) {
+                return new Promise((resolve, reject) => {
+                    try {
+                        let script = document.createElement("script");
+                        script.src = filename;
+                        script.type = type;
+                        script.async = async;
+                        script.id = id;
+                        script.addEventListener("load", () => {
+                            resolve({
+                                loaded: true,
+                                error: false
+                            });
+                        });
+                        script.addEventListener("error", () => {
+                            reject({
+                                loaded: false,
+                                error: true,
+                                message: `Failed to load script with src ${filename}`,
+                            });
+                        });
+                        document.body.appendChild(script, document.getElementsByTagName("script")[0]);
+                    } catch (error) {
+                        reject(error);
+                    }
+                })
+            };
             function getSearchFocus(obj) {
                 document.getElementById(obj).focus();
                 setTimeout(function() {

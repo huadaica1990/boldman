@@ -26,8 +26,9 @@ block script
 
     script.
         addCSS('#{css}')
-        addScript('#{js}')
-        addScript('/wwwroot/templates/website/release/layout.min.js')
+        addScript('#{js}').then(function() {
+            addScript('/wwwroot/templates/website/release/layout.min.js');
+        });
     
 
     
