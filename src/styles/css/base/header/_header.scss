@@ -352,7 +352,7 @@
 		}
 	}
 	
-	@include mq(md, 'max') {
+	@include mq(lg, 'max') {
 		.cart-info-m .cart-info {
 			@include shadow($val: none);
 			@include border-radius($val: 0%);

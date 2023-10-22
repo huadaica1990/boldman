@@ -1135,7 +1135,7 @@
 
 /*#region Mobile responsive section styles*/
 
-@include mq("1024px", "max") {
+@include mq(xl, 'max') {
     .cart-page .widget .coupon-des-body,
     .cart-page .widget .coupon-dropdown:not(.show):hover .coupon-des-body {
         right: auto;
@@ -1178,7 +1178,7 @@
     }
 }
 
-@include mq("768px", "max") {
+@include mq(lg, 'max') {
     #sidebar {
         margin-top: 4rem;
     }
@@ -1195,7 +1195,7 @@
     }
 }
 
-@include mq("450px", "max") {
+@include mq(md, 'max') {
     #chat-scroll-block {
         bottom: 15vh;
     }
@@ -1433,6 +1433,13 @@
                     .process-success {
                         display: block;
                     }
+                }
+            }
+
+            &-link {
+                .process-success {
+                    @include visible($active: true, $zindex: 1);
+                    display: block !important;
                 }
             }
         }
