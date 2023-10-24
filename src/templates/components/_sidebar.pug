@@ -243,6 +243,13 @@ if sideBarCat
                                                             li(data-id='' class=item_child_child.isActive ? 'active' : '')
                                                                 a(href=item_child_child.href)=item_child_child.name
 
+if sideSearch
+    .widget.widget-search-form
+        .widget-body
+            form.d-flex(method='get' autocomplete='off' novalidate='novalidate' action='@Url.RouteUrl("tim-kiem")')
+                input.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"]);')
+                button.btn.btn-search.ecs-icon-search(type='submit')
+                
 if sideBarProduct
     .widget.widget-products
         h4.widget-title.text-uppercase.title-2underline
