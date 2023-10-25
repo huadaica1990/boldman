@@ -79,6 +79,16 @@
             }
         }
     }
+    @include mq(md, 'max') {
+        .gutter-xl {
+            margin-left: -10px;
+            margin-right: -10px;
+            > * {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    }
     
     @for $i from 1 through 8 {
         .cols-#{$i} > * {
