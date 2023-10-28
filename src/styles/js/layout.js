@@ -57,26 +57,14 @@ function search(value) {
         beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
-                $('#error-modal p').text(result.msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
                 $('.search-result-step2 .search-result-history').html(result.Data.viewsrc);
             }
         },
         error: function (result) {
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -149,13 +137,7 @@ function addRating(btn, idform) {
                 },
                 error: function (result) {
                     Ecsgroup.hideLoading($this);
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.msg);
                     return false;
                 }
             });
@@ -183,13 +165,7 @@ function loadmorerating(obj, proid, pagesize) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -269,13 +245,7 @@ function addComment(btn, idform) {
                 },
                 error: function (result) {
                     Ecsgroup.hideLoading($this);
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.msg);
                     return false;
                 }
             });
@@ -305,13 +275,7 @@ function loadmorecomment(obj, newsid, pagesize) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -369,13 +333,7 @@ function removecmtimg(obj) {
             success: function (result) {
                 Ecsgroup.hideLoading();
                 if (!result.Ok) {
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.msg);
                 }
                 else {
                     obj._chipContainer.insertAdjacentHTML("beforeend", chipTemplate);
@@ -396,13 +354,7 @@ function removecmtimg(obj) {
             },
             error: function (result) {
                 Ecsgroup.hideLoading();
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     };
@@ -432,13 +384,7 @@ function removecmtimg(obj) {
             success: function (result) {
                 Ecsgroup.hideLoading();
                 if (!result.Ok) {
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.msg);
                 }
                 else {
                     var html = '<div class="img-item br-sm"><a href="javascript:" class="img-cmt-js" data-target="' + target + '" data-src="' + result.Data + '" onclick="removecmtimg(this)"><i class="demo-icon cus-cancel"></i></a><img src="' + result.Data + '" alt="" width="150" height="100" loading="lazy"></div>';
@@ -462,13 +408,7 @@ function removecmtimg(obj) {
                 }
             },
             error: function (result) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     };
@@ -566,13 +506,7 @@ function updateWishLst(selector, productId) {
         success: function (result) {
             if (!result.Ok) {
                 $this.removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             } else {
                 $this.removeClass('load-more-overlay loading');
                 $('body .btn-wishlist[data-id="' + productId + '"]')
@@ -594,13 +528,7 @@ function updateWishLst(selector, productId) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -683,13 +611,7 @@ function selectSku(selector, viewname) {
             if (htmlresult != '#product-popup-ajax') $(htmlresult).removeClass('preload-container').remove('.pre-load');
             else $(htmlresult).removeClass('shimmer-container');
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
                 $(htmlresult).html(result.Data.viewsrc).find('.product-url').attr('href', urlprodut);
@@ -712,13 +634,7 @@ function selectSku(selector, viewname) {
         error: function (result) {
             if (htmlresult != '#product-popup-ajax') $(htmlresult).removeClass('preload-container').remove('.pre-load');
             else $(htmlresult).removeClass('shimmer-container');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -754,13 +670,7 @@ function selectSkuDetail(obj) {
         success: function (result) {
             $('#product-info').removeClass('shimmer-container');
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
                 $('#product-info').html(result.Data.viewsrc).css('height', 'auto');
@@ -789,13 +699,7 @@ function selectSkuDetail(obj) {
         },
         error: function (result) {
             $('#product-info').removeClass('shimmer-container');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -812,13 +716,7 @@ function selectThumbSku(selector, id, url) {
         success: function (result) {
             $this.removeClass('shimmer-container');
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
                 if (result.Data.listedprice != 0) {
@@ -843,13 +741,7 @@ function selectThumbSku(selector, id, url) {
         },
         error: function (result) {
             $this.removeClass('shimmer-container');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -868,13 +760,7 @@ function openProductPopup(btn) {
         beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
-                $('#error-modal p').text(result.msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
                 $(htmlresult).html(result.Data.viewsrc);
@@ -905,13 +791,7 @@ function openProductPopup(btn) {
             }
         },
         error: function (result) {
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -958,13 +838,7 @@ function getFilterResultNews(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     }
@@ -983,13 +857,7 @@ function getFilterResultNews(type) {
             },
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     }
@@ -1101,13 +969,7 @@ function getFilterResultProduct(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     }
@@ -1140,13 +1002,7 @@ function getFilterResultProduct(type) {
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
                 Ecsgroup.hideLoading();
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     }
@@ -1157,13 +1013,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
         $("#btn-near-location").addClass('active');
     } else {
-        $('#error-modal p').text(text4);
-        Ecsgroup.popup(
-            [{
-                src: '#error-modal',
-                type: "inline"
-            }],
-            {}, 'error');
+        Ecsgroup.resultDialog('error', text4);
     }
 }
 function showPosition(position) {
@@ -1195,12 +1045,7 @@ function refreshDistrictList() {
         },
         error: function (result) {
             Ecsgroup.hideLoading();
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }
@@ -1275,13 +1120,7 @@ function getFilterResultStore(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     }
@@ -1300,13 +1139,7 @@ function getFilterResultStore(type) {
             },
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
         });
     }
@@ -1399,13 +1232,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                     if (!result.Ok) {
                         $this.removeClass('load-more-overlay loading');
                         $(htmlresult).removeClass('shimmer-container');
-                        $('#error-modal p').text(result.Msg);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#error-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
+                        Ecsgroup.resultDialog('error', result.msg);
                     }
                     else {
                         $this.removeClass('load-more-overlay loading');
@@ -1424,13 +1251,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                 error: function (result) {
                     $this.removeClass('load-more-overlay loading');
                     $(htmlresult).removeClass('shimmer-container');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.msg);
                 }
             });
             break;
@@ -1465,6 +1286,7 @@ jQuery.validator.addMethod("formattel", function (value, element, params) {
 function validateForm(btn, idform, layout = 'default') {
     let submitted = true,
         formError = $(idform).find('.error-lst');
+    let summary;
     let form = $(idform).validate({
         focusCleanup: true,
         focusInvalid: false,
@@ -1481,14 +1303,12 @@ function validateForm(btn, idform, layout = 'default') {
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                let summary;
                 switch (layout) {
                     case 'mini':
                         summary = text1 + this.numberOfInvalids() + text2 + '<br>';
                         $.each(errorList, function () {
                             summary += this.message + $(this.element).data('name') + '<br>';
                         });
-                        $('#error-modal p').html(summary);
                         break;
                     default:
                         summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
@@ -1506,12 +1326,7 @@ function validateForm(btn, idform, layout = 'default') {
             switch (layout) {
                 case 'mini':
                     if (validator.numberOfInvalids()) {
-                        Ecsgroup.popup(
-                            [{
-                                src: '#error-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
+                        Ecsgroup.resultDialog('error', summary);
                     } else Fancybox.getInstance().close();
                     break;
                 default:
@@ -1565,13 +1380,7 @@ function validateForm(btn, idform, layout = 'default') {
                     switch (layout) {
                         case 'mini':
                             if (!result.Ok) {
-                                $('#error-modal p').text(result.Msg);
-                                Ecsgroup.popup(
-                                    [{
-                                        src: '#error-modal',
-                                        type: "inline"
-                                    }],
-                                    {}, 'error');
+                                Ecsgroup.resultDialog('error', result.msg);
                             }
                             else {
                                 sendMail(result.Data.id, '/aj/Shared/SendEmail');
@@ -1594,13 +1403,7 @@ function validateForm(btn, idform, layout = 'default') {
                             else {
                                 sendMail(result.Data.id, '/aj/Shared/SendEmail');
                                 formError.hide();
-                                $('#success-modal p').text(note);
-                                Ecsgroup.popup(
-                                    [{
-                                        src: '#success-modal',
-                                        type: "inline"
-                                    }],
-                                    {}, 'error');
+                                Ecsgroup.resultDialog('success', note);
                                 $(idform).trigger('reset');
                                 if (typeof fileCurrent !== 'undefined') fileCurrent._removeChips()
                             }
@@ -1609,149 +1412,126 @@ function validateForm(btn, idform, layout = 'default') {
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.msg);
                     return false;
                 }
             });
         }
     });
 }
-function validateFormMini(btn, idform) {
-    let submitted = true;
-    let form = $(idform).validate({
-        focusInvalid: true,
-        errorPlacement: function (error, element) { return false; },
-        rules: {
-            phonenumber: {
-                formattel: true
-            }
-        },
-        messages: {
-            phonenumber: {
-                formattel: validate19,
-            }
-        },
-        //rules: {
-        //    email: {
-        //        required: true,
-        //    }
-        //},
-        //messages: {
-        //    email: {
-        //        required: validate18,
-        //    }
-        //},
-        showErrors: function (errorMap, errorList) {
-            if (submitted) {
-                var summary = text1 + this.numberOfInvalids() + text2 + '<br>';
-                $.each(errorList, function () {
-                    summary += this.message + $(this.element).data('name') + '<br>';
-                });
-                $('#error-modal p').html(summary);
-                submitted = false;
-            }
-            this.defaultShowErrors();
-        },
-        invalidHandler: function (event, validator) {
-            // 'this' refers to the form
-            if (validator.numberOfInvalids()) {
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
-            } else {
-                Fancybox.getInstance().close();
-            }
-            submitted = true;
-        },
-        submitHandler: function (form) {
-            submitted = true;
-            var arr = [];
-            $(idform).find('.get-value').each(function (e) {
-                var check = $(this).attr('name');
-                var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
-                if (!arrayCheck.includes(check) && $(this).prop('readonly') != true) {
-                    var type = $(this).data('type');
-                    var title = $(this).data('name');
-                    var val = $(this).val();
-                    var code = $(this).prop('name');
-                    if (type === 6 || type === 7) {
-                        if ($(this).is(':checked') === false) {
-                            val = null;
-                        }
-                    }
-                    arr.push({ "Name": title, "Value": val, "Tag": type, "Code": code });
-                }
-            });
-            //var modal = {
-            //    name: $(idform).find("*[name='name']").val(),
-            //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
-            //    email: $(idform).find("*[name='email']").val(),
-            //    body: $(idform).find("*[name='body']").val(),
-            //    file: $(idform).find("*[name='file']").val(),
-            //    Title: $(idform).find("*[name='Title']").val(),
-            //    ContactType: $(idform).find("*[name='ContactType']").val(),
-            //    Action: $(idform).find("*[name='Action']").val()
-            //};
-            $.ajax({
-                url: $(idform).attr('action'),
-                dataType: "json",
-                method: "POST",
-                /*data: { modal: modal, extentionfield: null },*/
-                data: $(idform).serialize() + '&ext=' + JSON.stringify(arr),
-                beforeSend: function () {
-                    $(btn).addClass('load-more-overlay loading');
-                },
-                success: function (result) {
-                    $(btn).removeClass('load-more-overlay loading');
-                    if (!result.Ok) {
-                        $('#error-modal p').text(result.Msg);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#error-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
-                    }
-                    else {
-                        sendMail(result.Data.id, '/aj/Shared/SendEmail');
-                        Ecsgroup.Minipopup.open({
-                            productClass: ' success minipopup-center',
-                            message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
-                            template:
-                                '<div class="minipopup-box {{productClass}}">' +
-                                '<div class="minipopup-body">' +
-                                '<div class="minipopup-content">{{message}}</div>' +
-                                '</div>' +
-                                '</div>',
-                        });
-                        $(idform).trigger('reset');
-                    }
-                    return false;
-                },
-                error: function (result) {
-                    $(btn).removeClass('load-more-overlay loading');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
-                    return false;
-                }
-            });
-        }
-    });
-}
+// function validateFormMini(btn, idform) {
+//     let submitted = true;
+//     let form = $(idform).validate({
+//         focusInvalid: true,
+//         errorPlacement: function (error, element) { return false; },
+//         rules: {
+//             phonenumber: {
+//                 formattel: true
+//             }
+//         },
+//         messages: {
+//             phonenumber: {
+//                 formattel: validate19,
+//             }
+//         },
+//         //rules: {
+//         //    email: {
+//         //        required: true,
+//         //    }
+//         //},
+//         //messages: {
+//         //    email: {
+//         //        required: validate18,
+//         //    }
+//         //},
+//         showErrors: function (errorMap, errorList) {
+//             if (submitted) {
+//                 var summary = text1 + this.numberOfInvalids() + text2 + '<br>';
+//                 $.each(errorList, function () {
+//                     summary += this.message + $(this.element).data('name') + '<br>';
+//                 });
+//                 $('#error-modal p').html(summary);
+//                 submitted = false;
+//             }
+//             this.defaultShowErrors();
+//         },
+//         invalidHandler: function (event, validator) {
+//             // 'this' refers to the form
+//             if (validator.numberOfInvalids()) {
+//                Ecsgroup.resultDialog('error', null);
+//             } else {
+//                 Fancybox.getInstance().close();
+//             }
+//             submitted = true;
+//         },
+//         submitHandler: function (form) {
+//             submitted = true;
+//             var arr = [];
+//             $(idform).find('.get-value').each(function (e) {
+//                 var check = $(this).attr('name');
+//                 var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
+//                 if (!arrayCheck.includes(check) && $(this).prop('readonly') != true) {
+//                     var type = $(this).data('type');
+//                     var title = $(this).data('name');
+//                     var val = $(this).val();
+//                     var code = $(this).prop('name');
+//                     if (type === 6 || type === 7) {
+//                         if ($(this).is(':checked') === false) {
+//                             val = null;
+//                         }
+//                     }
+//                     arr.push({ "Name": title, "Value": val, "Tag": type, "Code": code });
+//                 }
+//             });
+//             //var modal = {
+//             //    name: $(idform).find("*[name='name']").val(),
+//             //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
+//             //    email: $(idform).find("*[name='email']").val(),
+//             //    body: $(idform).find("*[name='body']").val(),
+//             //    file: $(idform).find("*[name='file']").val(),
+//             //    Title: $(idform).find("*[name='Title']").val(),
+//             //    ContactType: $(idform).find("*[name='ContactType']").val(),
+//             //    Action: $(idform).find("*[name='Action']").val()
+//             //};
+//             $.ajax({
+//                 url: $(idform).attr('action'),
+//                 dataType: "json",
+//                 method: "POST",
+//                 /*data: { modal: modal, extentionfield: null },*/
+//                 data: $(idform).serialize() + '&ext=' + JSON.stringify(arr),
+//                 beforeSend: function () {
+//                     $(btn).addClass('load-more-overlay loading');
+//                 },
+//                 success: function (result) {
+//                     $(btn).removeClass('load-more-overlay loading');
+//                     if (!result.Ok) {
+//                         Ecsgroup.resultDialog('error', result.msg);
+//                     }
+//                     else {
+//                         sendMail(result.Data.id, '/aj/Shared/SendEmail');
+//                         Ecsgroup.Minipopup.open({
+//                             productClass: ' success minipopup-center',
+//                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
+//                             template:
+//                                 '<div class="minipopup-box {{productClass}}">' +
+//                                 '<div class="minipopup-body">' +
+//                                 '<div class="minipopup-content">{{message}}</div>' +
+//                                 '</div>' +
+//                                 '</div>',
+//                         });
+//                         $(idform).trigger('reset');
+//                     }
+//                     return false;
+//                 },
+//                 error: function (result) {
+//                     $(btn).removeClass('load-more-overlay loading');
+//                      Ecsgroup.resultDialog('error', result.msg);
+//                     return false;
+//                 }
+//             });
+//         }
+//     });
+// }
 
 function sendMail(targetId, action) {
     $.ajax({
@@ -1851,13 +1631,7 @@ function validateFormApi(btn, idform, source) {
                     else {
                         sendMailApi(result.Data.id, 'https://boldman.vn/aj/staticpage/SendEmailApi', emailto);
                         formError.hide();
-                        $('#success-modal p').text(note);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#success-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
+                        Ecsgroup.resultDialog('success', note);
                         $(idform).trigger('reset');
                         if (typeof fileCurrent !== 'undefined') {
                             fileCurrent._removeChips()
@@ -1867,13 +1641,7 @@ function validateFormApi(btn, idform, source) {
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                                        Ecsgroup.resultDialog('error', result.msg);
                     return false;
                 }
             });
@@ -1892,14 +1660,17 @@ function sendMailApi(targetId, action, emailto) {
 }
 
 function choselang(lang) {
-    $.post("/aj/shared/CreateCookie",
-        { lang: lang },
-        function (data) {
-            if (!data.Ok) {
-                location.reload();
-            }
-            else {
-                alert("Lỗi");
-            }
-        });
+    $.ajax({
+        url: '/aj/shared/CreateCookie',
+        type: 'POST',
+        data: { lang: lang},
+        beforeSend: function () {
+            Ecsgroup.showLoading($this);
+        },
+        success: function (data) {
+            if (!data.Ok) location.reload();
+            else alert("Lỗi");
+        },
+        error: function () { }
+    });
 }

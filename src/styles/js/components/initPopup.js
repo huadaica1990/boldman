@@ -5,6 +5,20 @@
 var popupOptions = {
     classHome: 'home'
 };
+var popupTemplateOptions = {
+    error: {
+        msg: err12,
+        html: '<div class="alert alert-error alert-bg alert-button alert-block text-right"><button class="btn btn-link btn-close popup-close" aria-label="button"><i class="close-icon"></i></button><div class="alert-title text-left"><i class="ecs-icon-exclamation-triangle"></i>'+text9+'</div><p class="text-left">MSG</p><a class="btn btn-sm btn-primary btn-rounded popup-close" href="javascript:">Đóng</a></div>'
+    },
+    success: {
+        msg: err13,
+        html: '<div class="alert alert-success alert-bg alert-button alert-block text-right"><button class="btn btn-link btn-close popup-close" aria-label="button"><i class="close-icon"></i></button><div class="alert-title text-left"><i class="demo-icon cus-ok"></i>'+text10+'</div><p class="text-left">MSG</p><a class="popup-close" href="javascript:">'+text11+'</a><span class="text-grey mr-1 ml-1">'+text12+' </span><a class="text-lowercase text-underline text-primary" href="/">'+text13+'</a></div>'
+    },
+    requireLogin: {
+        msg: err14,
+        html: '<div class="alert alert-error alert-bg alert-button alert-block text-right"><button class="btn btn-link btn-close popup-close" aria-label="button"><i class="close-icon"></i></button><div class="alert-title text-left"><i class="ecs-icon-exclamation-triangle"></i>'+text9+'</div><p class="text-left">MSG</p><a class="btn btn-sm btn-default btn-rounded popup-close" href="javascript:">'+text11+'</a><a class="btn btn-sm btn-primary btn-rounded" href="'+Ecsgroup.accInfo+'">'+text14+'</a></div>'
+    }
+};
 function popupEcs (options, preset) {
     if (typeof Fancybox !== 'undefined') {
         // Newsletter popup
@@ -167,7 +181,19 @@ function popupEcs (options, preset) {
             $('html').removeAttr('style');
             $("#fb-root").show();
         });
-
+        Ecsgroup.resultDialog = function (template, message) {
+            let opt = popupTemplateOptions[template],
+                html = opt.html,
+                msg = opt.msg;
+            if (message != null) msg = message;
+            $('#result-modal .modal-body').html(html.replace('MSG', msg));
+            Ecsgroup.popup(
+                [{
+                    src: '#result-modal',
+                    type: 'inline'
+                }],
+                {}, "modal")
+        }
         Ecsgroup.confirmDialog = function (message, func, value) {
             $('#confirm-modal p').text(message);
             Ecsgroup.popup(

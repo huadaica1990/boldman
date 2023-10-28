@@ -54,13 +54,7 @@ function RemoveWishItem(productId) {
         success: function (result) {
             Ecsgroup.hideLoading();
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
                 Ecsgroup.Minipopup.open({
@@ -79,13 +73,7 @@ function RemoveWishItem(productId) {
         },
         error: function (result) {
             Ecsgroup.hideLoading();
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }

@@ -472,6 +472,13 @@ table {
         height: 100%;
         width: 100%;
     }
+    .loader-precent {
+        @include e-cen($type: "all", $option: translate(-50%, -50%));
+        position: absolute;
+        &:empty {
+            display: none;
+        }
+    }
     .loader {
         @include use-keyframes($args: preloadpage 1s linear infinite);
         width: 50px;

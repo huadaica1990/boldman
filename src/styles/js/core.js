@@ -562,6 +562,44 @@ window.Ecsgroup = {};
         if (!selector) $(selector).removeClass('load-more-overlay loading');
         Ecsgroup.byId('loading').style.display = 'none';
     }
+    Ecsgroup.pageLoading = function () {
+        let width = 100,
+            perfData = window.performance.timing,
+            EstimatedTime = -(perfData.domContentLoadedEventEnd - perfData.navigationStart),
+            time = parseInt((EstimatedTime/1000)%60)*100;
+
+        // $(".loadbar").animate({
+        //     width: width + "%"
+        // }, time);
+        // $(".glow").animate({
+        //     width: width + "%"
+        // }, time);
+    
+        let PercentageID = $(".loader-precent"),
+            start = 0,
+            end = 100,
+            durataion = time;
+            animateValue(PercentageID, start, end, durataion);
+        function animateValue(id, start, end, duration) {
+    
+            let range = end - start,
+                current = start,
+                increment = end > start? 1 : -1,
+                stepTime = Math.abs(Math.floor(duration / range)),
+                obj = $(id);
+            let timer = setInterval(function() {
+                current += increment;
+                $(obj).text(current + "%");
+                if (current == end) {
+                    clearInterval(timer);
+                    setTimeout(function () {
+                        Ecsgroup.byId('loading').style.display = 'none';
+                    }, 100);
+                    
+                }
+            }, stepTime);
+        }
+    }
 
     /**
      * Show/hide element
@@ -672,7 +710,7 @@ window.Ecsgroup = {};
 
     // Initialize Method while document is being loaded
     Ecsgroup.prepare = function () {
-        Ecsgroup.showLoading();
+        Ecsgroup.pageLoading();
         // Ecsgroup.$body.hasClass('with-flex-container') && window.innerWidth >= 1200 &&
         //     Ecsgroup.$body.addClass('sidebar-active');
     };
@@ -784,6 +822,6 @@ window.Ecsgroup = {};
         Ecsgroup.call(Ecsgroup.initPage);
         Ecsgroup.status = 'complete';
         Ecsgroup.$window.trigger('Ecsgroup_complete');
-        Ecsgroup.hideLoading();
+        //Ecsgroup.hideLoading();
     }
 })(jQuery);
