@@ -45,7 +45,9 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
             
         //- JavaScript
         script(type='text/javascript' src='/wwwroot/templates/website/release/jquery.min.js')
+        script(type='text/javascript' src='/wwwroot/templates/website/release/lang.min.js')
         script.
+            //- new Plyr('.plyr-video');
             function addCSS(filename) {
                 let head = document.getElementsByTagName('head')[0],
                     style = document.createElement('link');
@@ -55,13 +57,38 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                 style.rel = 'stylesheet';
                 head.appendChild(style);
             }
-            function addScript(filename , type = 'text/javascript', id = Date.now(), async = true) {
-                let script = document.createElement('script');
-                script.src = filename;
-                script.type = type;
-                script.async = async;
-                script.id = id;
-                document.body.appendChild(script, document.getElementsByTagName("script")[0]);
+            function addScript(filename, type = "text/javascript",id = Date.now(), async = true) {
+                return new Promise((resolve, reject) => {
+                    try {
+                        let script = document.createElement("script");
+                        script.src = filename;
+                        script.type = type;
+                        script.async = async;
+                        script.id = id;
+                        script.addEventListener("load", () => {
+                            resolve({
+                                loaded: true,
+                                error: false
+                            });
+                        });
+                        script.addEventListener("error", () => {
+                            reject({
+                                loaded: false,
+                                error: true,
+                                message: `Failed to load script with src ${filename}`,
+                            });
+                        });
+                        document.body.appendChild(script, document.getElementsByTagName("script")[0]);
+                    } catch (error) {
+                        reject(error);
+                    }
+                })
+            };
+            function getSearchFocus(obj) {
+                document.getElementById(obj).focus();
+                setTimeout(function() {
+                    document.getElementById(obj).focus();
+                }, 250);
             }
             if (document.documentElement.clientWidth > 1100) {
                 setTimeout(function () {
@@ -71,7 +98,8 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
             }
             document.addEventListener("DOMContentLoaded", function () {
                 var lazyBackgrounds = [].slice.call(document.querySelectorAll(".lazyload-bg"));
-                var lazyIframe = [].slice.call(document.querySelectorAll(".lazyload-iframe"));
+                var lazyIframes = [].slice.call(document.querySelectorAll(".lazyload-iframe"));
+                var lazyVideos = [].slice.call(document.querySelectorAll(".lazyload-video"));
                 if ("IntersectionObserver" in window) {
                     let lazyBackgroundObserver = new IntersectionObserver(function (entries, observer) {
                         entries.forEach(function (entry) {
@@ -93,12 +121,31 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                             }
                         });
                     });
+                    let lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                for (var source in entry.target.children) {
+                                    var videoSource = entry.target.children[source];
+                                    if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                                        videoSource.src = videoSource.dataset.src;
+                                    }
+                                }
+                                entry.target.load();
+                                entry.target.classList.remove("lazyload-video");
+                                entry.target.classList.add("ls-is-cached", "lazyloaded");
+                                lazyVideoObserver.unobserve(entry.target);
+                            }
+                        });
+                    });
 
                     lazyBackgrounds.forEach(function (lazyBackground) {
                         lazyBackgroundObserver.observe(lazyBackground);
                     });
-                    lazyIframe.forEach(function (lazyIframe) {
+                    lazyIframes.forEach(function (lazyIframe) {
                         lazyIframeObserver.observe(lazyIframe);
+                    });
+                    lazyVideos.forEach(function (lazyVideo) {
+                        lazyVideoObserver.observe(lazyVideo);
                     });
                 }
             });

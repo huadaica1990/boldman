@@ -186,7 +186,6 @@ module.exports = grunt => {
                     ],
                     // Documentation
                     '<%= dirs.dist %>/release/document.min.js': [
-                        'node_modules/typewriter-effect/dist/core.js',
                         '<%= dirs.dist %>/release/core.min.js',
                         '<%= dirs.js %>/document.js',
                     ],
