@@ -556,6 +556,7 @@ window.Ecsgroup = {};
      */
     Ecsgroup.showLoading = function (selector) {
         if (!selector) $(selector).addClass('load-more-overlay loading');
+        $(".loader-precent").text('');
         Ecsgroup.byId('loading').style.display = 'block';
     }
     Ecsgroup.hideLoading = function (selector) {

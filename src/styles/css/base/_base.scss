@@ -288,6 +288,7 @@ table {
 //         }
 //     }
 // }
+
 .scrollnotable {
     overflow: hidden !important;
 }
@@ -308,11 +309,18 @@ table {
         // -webkit-transition: background-color 0.3s;
         // transition: background-color 0.3s;
     }
-   
+    &:hover::-webkit-scrollbar-thumb {
+    //.sidebar-content:hover::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.25);
+    }
 }
-
-.scrollable-light::-webkit-scrollbar-thumb {
-    background: rgba($white-color,0.2);
+.scrollable-light {
+    &::-webkit-scrollbar-thumb {
+        background: rgba($white-color,0.2);
+    }
+    &:hover::-webkit-scrollbar-thumb {
+        background: rgba($white-color,0.2);
+    }
 }
 
 .scrollable:hover::-webkit-scrollbar-thumb {
