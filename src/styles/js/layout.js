@@ -1279,10 +1279,10 @@ $.extend($.validator.messages, {
     max: $.validator.format(validate16),
     min: $.validator.format(validate17)
 });
-jQuery.validator.addMethod("formattel", function (value, element, params) {
-    $(element).val(intlTelVal.getNumber());
-    return intlTelVal.isValidNumber();
-}, validate19);
+// jQuery.validator.addMethod("formattel", function (value, element, params) {
+//     $(element).val(intlTelVal.getNumber());
+//     return intlTelVal.isValidNumber();
+// }, validate19);
 function validateForm(btn, idform, layout = 'default') {
     let submitted = true,
         formError = $(idform).find('.error-lst');
@@ -1290,16 +1290,16 @@ function validateForm(btn, idform, layout = 'default') {
     let form = $(idform).validate({
         focusCleanup: true,
         focusInvalid: false,
-        rules: {
-            phonenumber: {
-                formattel: true
-            }
-        },
-        messages: {
-            phonenumber: {
-                formattel: validate19,
-            }
-        },
+        // rules: {
+        //     phonenumber: {
+        //         formattel: true
+        //     }
+        // },
+        // messages: {
+        //     phonenumber: {
+        //         formattel: validate19,
+        //     }
+        // },
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
@@ -1309,6 +1309,9 @@ function validateForm(btn, idform, layout = 'default') {
                         $.each(errorList, function () {
                             summary += this.message + $(this.element).data('name') + '<br>';
                         });
+                        setTimeout(() => {
+                            $('#result-modal .modal-body p').html(summary);
+                        }, 100);
                         break;
                     default:
                         summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
