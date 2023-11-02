@@ -68,30 +68,29 @@ strong {
 }
 
 .box-shadow {
-    @include box-shadow();
-
-    &--1 {
-        @include box-shadow($number: "1");
+    @include box-shadow($number: 0);
+    &-1 {
+        @include box-shadow($number: 1);
     }
 
-    &--2 {
-        @include box-shadow($number: "2");
+    &-2 {
+        @include box-shadow($number: 2);
     }
 
-    &--3 {
-        @include box-shadow($number: "3");
+    &-3 {
+        @include box-shadow($number: 3);
     }
 
-    &--4 {
-        @include box-shadow($number: "4");
+    &-4 {
+        @include box-shadow($number: 4);
     }
 
-    &--5 {
-        @include box-shadow($number: "5");
+    &-5 {
+        @include box-shadow($number: 5);
     }
 
-    &--6 {
-        @include box-shadow($number: "6");
+    &-6 {
+        @include box-shadow($number: 6);
     }
 }
 

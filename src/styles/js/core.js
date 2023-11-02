@@ -733,7 +733,8 @@ window.Ecsgroup = {};
         Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
         Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
         Ecsgroup.Minipopup.init();                                              // Initialize minipopup
-        Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect    
+        Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
+        Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                      // Initialize Srcoll Tab Active
         // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
