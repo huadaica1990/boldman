@@ -953,6 +953,9 @@
     @include flex($type: "center", $get: "bot");
     width: #{get(navMoible, header, btnMenu, _width)};
     height: #{get(navMoible, header, btnMenu, _width)};
+    padding: 0;
+    background: transparent;
+    border: 0;
 
     span {
         @include border-radius($val:4px);
