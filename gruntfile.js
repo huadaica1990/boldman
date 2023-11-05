@@ -137,6 +137,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/tippy.js',
                         '<%= dirs.js %>/components/flatpickr.js',
                         '<%= dirs.js %>/components/srcollTabActive.js',
+                        '<%= dirs.js %>/components/activeMenu.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content

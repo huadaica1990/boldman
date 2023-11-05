@@ -734,7 +734,8 @@ window.Ecsgroup = {};
         Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
         Ecsgroup.Minipopup.init();                                              // Initialize minipopup
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
-        Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                      // Initialize Srcoll Tab Active
+        Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                   // Initialize Srcoll Tab Active
+        Ecsgroup.activeMenu('.nav-js');                                         // Initialize Active Menu
         // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,

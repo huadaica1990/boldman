@@ -159,7 +159,7 @@ if isSearchInline
                 
                 case menuStyle
                     when 'landing'
-                        ul.vertical-menu.nav.mobile-menu.menulanding
+                        ul.vertical-menu.nav.mobile-menu.menulanding.nav-js
                             each item in menuLanding
                                 if item.isShow
                                     li(class=item.isActive ? 'active' : '' data-id='')
@@ -171,7 +171,7 @@ if isSearchInline
                                                 =item.name
 
                     default
-                        ul.vertical-menu.nav.mobile-menu
+                        ul.vertical-menu.nav.mobile-menu.nav-js
                             each item in menu
                                 if item.children == null
                                     if item.isShow
