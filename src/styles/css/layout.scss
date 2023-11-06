@@ -76,7 +76,12 @@
   // Product
   // Blog
 /*#endregion*/
-
+:root {
+  --percent: 1;
+  @include mq(md, 'max') {
+    --percent: 1;
+  }
+}
 
 /*#region Mobile responsive section styles*/
   @include mq("1920px") {}

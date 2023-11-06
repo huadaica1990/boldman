@@ -18,16 +18,20 @@
     @include css(max-width, base, _container-width);
 }
 
+@include mq(xml, 'max') {
+    .container {
+        @include css(max-width, base, _container-width-xml);
+    }
+    .container-fluid {
+        width: 100%;
+        max-width: initial;
+    }
+}
+
 @include mq(xs, 'max') {
     .container,
     .container-fluid {
         padding-left: 15px;
         padding-right: 15px;
-    }
-}
-@include mq(xml, 'max') {
-    .container,
-    .container-fluid {
-        @include css(max-width, base, _container-width-xml);
     }
 }
