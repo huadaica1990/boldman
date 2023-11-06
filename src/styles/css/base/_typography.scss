@@ -45,22 +45,22 @@ h6,.h6 {
 }
 
 h1,.h1 {
-	font-size: calc(4rem*var(--percent));
+	font-size: calc(4rem*#{$percent});
 }
 h2,.h2 {
-	font-size: calc(3rem*var(--percent));;
+	font-size: calc(3rem*#{$percent});
 }
 h3,.h3 {
-	font-size: calc(2.4rem*var(--percent));
+	font-size: calc(2.4rem*#{$percent});
 }
 h4,.h4 {
-	font-size: calc(1.8rem*var(--percent));
+	font-size: calc(1.8rem*#{$percent});
 }
 h5,.h5 {
-	font-size: calc(1.5rem*var(--percent));
+	font-size: calc(1.5rem*#{$percent});
 }
 h6,.h6 {
-	font-size: calc(1.3rem*var(--percent));
+	font-size: calc(1.3rem*#{$percent});
 }
 p,.h {
 	font-size: $font-size;
