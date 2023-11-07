@@ -45,13 +45,13 @@ h6,.h6 {
 }
 
 h1,.h1 {
-	font-size: calc(4rem*#{$percent});
+	font-size: clamp(calc(3.5rem*#{$percent}), 3vw ,calc(4rem*#{$percent}));
 }
 h2,.h2 {
-	font-size: calc(3rem*#{$percent});
+	font-size: clamp(calc(2.6rem*#{$percent}), 2vw ,calc(3rem*#{$percent}));
 }
 h3,.h3 {
-	font-size: calc(2.4rem*#{$percent});
+	font-size: clamp(calc(2.2rem*#{$percent}), 2vw ,calc(2.4rem*#{$percent}));
 }
 h4,.h4 {
 	font-size: calc(1.8rem*#{$percent});
