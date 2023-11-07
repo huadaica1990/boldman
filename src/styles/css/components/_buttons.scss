@@ -93,6 +93,15 @@
     }
 }
 
+.btn-a {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    &:hover {
+        color: $primary-color
+    }
+}
 // Outlined Button
 .btn-outline {
     background-color: transparent;
