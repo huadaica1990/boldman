@@ -7,37 +7,15 @@
 // Variables
 @include set-default(
     (
-        slider: (
-            img: (
-                _height: 60vh,
-      
-                1920: (),
-                1440: (
-                    _height: 70vh,
-                ),
-                1366: (
-                    _height: 80vh,
-                    ),
-                1280: (
-                    _height: 85vh,
-                ),
-                1024: (
-                    _height: 40vh,
-                ),
-                768: (),
-                450: (
-                    _height: 50vh,
-                ),
-                360: (),
-            )
-        )
+        slider: ()
     )
 );
 .main-slider {
+    --sliderH: 60vh;
     .slider-fixedheight {
         .item {
             @include center-img($hover: false, $type: "scale");
-            height: #{get(slider, img, _height)}
+            height: var(--sliderH)
         }
     }
     .swiper-button-prev, .swiper-button-next {
@@ -202,11 +180,9 @@
 }
 
 /*#region Mobile responsive section styles*/
-    @include mq("1440px", "max") {
+    @include mq('1440px', 'max') {
         .main-slider {
-            .slider-fixedheight .item {
-                height: #{get(slider, img, 1440, _height)};
-            }
+            --sliderH: 70vh;
             .swiper-button-next {
                 right: 0px;
             }
@@ -223,11 +199,10 @@
             }
         }
     }
+
     @include mq("1366px", "max") {
         .main-slider {
-            .slider-fixedheight .item {
-                height: #{get(slider, img, 1366, _height)};
-            }
+            --sliderH: 80vh;
             .swiper-container:hover {
                 .swiper-button-next {
                     right: 5px;
@@ -238,11 +213,10 @@
             }
         }
     }
-    @include mq("1280px", "max") {
+
+    @include mq('1280px', 'max') {
         .main-slider {
-            .slider-fixedheight .item {
-                height: #{get(slider, img, 1280, _height)};
-            }
+            --sliderH: 85vh;
             .swiper-container:hover {
                 .swiper-button-next {
                     right: 0px;
@@ -253,16 +227,16 @@
             }
         }
     }
-    @include mq("1024px", "max") {
-        .main-slider .slider-fixedheight .item {
-            height: #{get(slider, img, 1024, _height)};
+
+    @include mq(xl, 'max') {
+        .main-slider {
+            --sliderH: 40vh;
         }
     }
-    @include mq("450px", "max") {
+
+    @include mq(md, 'max') {
         .main-slider {
-            .slider-fixedheight .item {
-                height: #{get(slider, img, 450, _height)};
-            }
+            --sliderH: 45vh;
             .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
             .swiper-container .swiper-pagination-bullet {
                 @include border-radius($val: 0px);
