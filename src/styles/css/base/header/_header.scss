@@ -173,10 +173,6 @@
 			color: #{get(header, _linkColor)};
 			i {
 				@include animation($customize: true) {
-					-ms-transition: inherit;
-					-webkit-transition: inherit;
-					-moz-transition: inherit;
-					-o-transition: inherit;
 					transition: inherit;
 				};
 			}
