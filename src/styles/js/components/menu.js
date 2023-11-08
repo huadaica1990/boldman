@@ -145,14 +145,8 @@ var Menu = {
                     top = $this.offset().top,
                     outerHeight = $this.outerHeight(),
                     offset = (top + outerHeight) - window.innerHeight;
-                if (offset > 0) {
-                    targetParent.addClass('top');
-                    targetMain.addClass('top');
-                }
-                else {
-                    targetParent.removeClass('top');
-                    targetMain.addClass('top');
-                }
+                if (offset > 0) $this.addClass('right');
+                else $this.removeClass('right');
             });
         };
         calcPos();

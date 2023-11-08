@@ -26,7 +26,7 @@
 			".item",
 			"	figure.item-media",
 			"		picture.img-decode",
-			"			source(media='' srcset=dist+'/default/ABC.JPG?w=&h=&crop=auto&format=webp' type='image/webp')",
+			"			source(media='' srcset=dist+'/desgin/ABC.JPG?w=&h=&crop=auto&format=webp' type='image/webp')",
 			"			img(src=dist+`${item}?w=&h=` alt='' loading='lazy' width='' height='')",
 			"	.item-details",
 			"		h3.item-title",
@@ -45,7 +45,7 @@
 			"	picture.img-decode",
 			"		source(media='(max-width:450px)' srcset='' type='image/webp')",
 			"		source(media='(max-width:450px)' srcset='')",
-			"		source(media='' srcset=dist+'/default/ABC.JPG?w=&h=&crop=auto&format=webp' type='image/webp')",
+			"		source(media='' srcset=dist+'/desgin/ABC.JPG?w=&h=&crop=auto&format=webp' type='image/webp')",
 			"		img(src=dist+`${item}?w=&h=` alt='' width='' height='' loading='lazy')"
 		],
 		"description": "Tạo mới picture"
@@ -121,7 +121,7 @@
 			"					picture.img-decode",
 			"						source(media='(max-width:450px)' srcset='' type='image/webp')",
 			"						source(media='(max-width:450px)' srcset='')",
-			"						source(media='' srcset=dist+'/default/ABC.JPG?w=&h=&crop=auto&format=webp' type='image/webp')",
+			"						source(media='' srcset=dist+'/desgin/ABC.JPG?w=&h=&crop=auto&format=webp' type='image/webp')",
 			"						img(src=dist+`${item}?w=&h=` alt='' width='' height='' loading='lazy')",
 			"	//- Add Arrows",
 			"	button.swiper-button-next.swiper-button",

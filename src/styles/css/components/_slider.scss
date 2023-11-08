@@ -18,21 +18,21 @@
             height: var(--sliderH)
         }
     }
-    .swiper-button-prev, .swiper-button-next {
+    .swiper-button {
         font-size: 2.5rem;
         width: 40px;
         height: 40px;
-    }
-    .swiper-container:hover {
-        .swiper-button-prev.swiper-button-disabled, .swiper-button-nex.swiper-button-disabled {
-            opacity: .6;
-        }
     }
     .swiper-container {
         .swiper-button-prev:not(.swiper-button-disabled):hover,
         .swiper-button-next:not(.swiper-button-disabled):hover { 
             color: $white-color; 
             background-color: $dark-color;
+        }
+        &:hover {
+            .swiper-button-prev.swiper-button-disabled, .swiper-button-nex.swiper-button-disabled {
+                opacity: .6;
+            }
         }
     }
 }
