@@ -12,7 +12,7 @@
             if($('.readmore-js.open').length > 0) domTableOfContent.classList.remove('show');
             else if (window.pageYOffset > toc && Ecsgroup.isOnScreen('.blog-content')) {
                 domTableOfContent.classList.add('show');
-                if (!Ecsgroup.isMobile) domTableOfContent.style.top = $('.sticky-header.fixed').height() + 30 + 'px';
+                if (!Ecsgroup.isMobile) domTableOfContent.style.top = $('.sticky-header.fixed').outerHeight() + 30 + 'px';
             }
             else domTableOfContent.classList.remove('show');
         }
