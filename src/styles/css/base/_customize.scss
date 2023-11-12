@@ -126,7 +126,10 @@ strong {
         pointer-events: none;
     }
 }
-
+[data-submitting] button {
+    opacity: 0.8;
+    cursor: no-drop;
+}
 .progress {
     cursor: progress
 }

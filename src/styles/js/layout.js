@@ -23,6 +23,17 @@ $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader("RequestVerificationToken", token);
     }
 });
+form.addEventListener('submit', function (event) {
+    // Don't let the form reload the page
+    event.preventDefault();
+    // If the form is already submitting, do nothing
+    if (form.hasAttribute('data-submitting')) return;
+    // Add the [data-submitting] attribute to stop multiple submissions
+    form.setAttribute('data-submitting', '');
+    // Do more form stuff...
+    // Remove the [data-submitting] attribute
+    form.removeAttribute('data-submitting');
+});
 
 // View count
 function updateViewCount(targetId, action) {
