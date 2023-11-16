@@ -30,6 +30,7 @@
     "load-grunt-tasks": "^5.1.0"
   },
   "dependencies": {
+    "@animxyz/core": "^0.6.6",
     "@fancyapps/ui": "^5.0.6",
     "@fingerprintjs/fingerprintjs": "^4.1.0",
     "@popperjs/core": "^2.11.8",
@@ -62,6 +63,7 @@
     "plyr": "^3.7.3",
     "push.js": "^1.0.12",
     "readmore-js": "^2.2.1",
+    "skeleton-elements": "^4.0.1",
     "skrollr": "^0.6.26",
     "smooth-scrollbar": "^8.8.3",
     "sticky-sidebar": "^3.3.1",
