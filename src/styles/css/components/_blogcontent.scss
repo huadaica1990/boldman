@@ -238,7 +238,7 @@ h6 {
     margin-top: 4rem;
 }
 
-a:not(.btn):not(.nav-link):not(.collapse):not(.expand) {
+a:not(.btn):not(.nav-link):not(.collapse):not(.expand):not(.simple-button-plugin) {
     background-image: linear-gradient(45deg,#8f42ec,#ff4a9e 30%,#3776ff);
     background-position: 0 100%;
     background-repeat: repeat-x;

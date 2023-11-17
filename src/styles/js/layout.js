@@ -68,14 +68,14 @@ function search(value) {
         beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $('.search-result-step2 .search-result-history').html(result.Data.viewsrc);
             }
         },
         error: function (result) {
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -148,7 +148,7 @@ function addRating(btn, idform) {
                 },
                 error: function (result) {
                     Ecsgroup.hideLoading($this);
-                    Ecsgroup.resultDialog('error', result.msg);
+                    Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
@@ -176,7 +176,7 @@ function loadmorerating(obj, proid, pagesize) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -256,7 +256,7 @@ function addComment(btn, idform) {
                 },
                 error: function (result) {
                     Ecsgroup.hideLoading($this);
-                    Ecsgroup.resultDialog('error', result.msg);
+                    Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
@@ -286,7 +286,7 @@ function loadmorecomment(obj, newsid, pagesize) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -344,7 +344,7 @@ function removecmtimg(obj) {
             success: function (result) {
                 Ecsgroup.hideLoading();
                 if (!result.Ok) {
-                    Ecsgroup.resultDialog('error', result.msg);
+                    Ecsgroup.resultDialog('error', result.Msg);
                 }
                 else {
                     obj._chipContainer.insertAdjacentHTML("beforeend", chipTemplate);
@@ -365,7 +365,7 @@ function removecmtimg(obj) {
             },
             error: function (result) {
                 Ecsgroup.hideLoading();
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     };
@@ -395,7 +395,7 @@ function removecmtimg(obj) {
             success: function (result) {
                 Ecsgroup.hideLoading();
                 if (!result.Ok) {
-                    Ecsgroup.resultDialog('error', result.msg);
+                    Ecsgroup.resultDialog('error', result.Msg);
                 }
                 else {
                     var html = '<div class="img-item br-sm"><a href="javascript:" class="img-cmt-js" data-target="' + target + '" data-src="' + result.Data + '" onclick="removecmtimg(this)"><i class="demo-icon cus-cancel"></i></a><img src="' + result.Data + '" alt="" width="150" height="100" loading="lazy"></div>';
@@ -419,7 +419,7 @@ function removecmtimg(obj) {
                 }
             },
             error: function (result) {
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     };
@@ -517,7 +517,7 @@ function updateWishLst(selector, productId) {
         success: function (result) {
             if (!result.Ok) {
                 $this.removeClass('load-more-overlay loading');
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             } else {
                 $this.removeClass('load-more-overlay loading');
                 $('body .btn-wishlist[data-id="' + productId + '"]')
@@ -539,7 +539,7 @@ function updateWishLst(selector, productId) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -622,7 +622,7 @@ function selectSku(selector, viewname) {
             if (htmlresult != '#product-popup-ajax') $(htmlresult).removeClass('preload-container').remove('.pre-load');
             else $(htmlresult).removeClass('shimmer-container');
             if (!result.Ok) {
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $(htmlresult).html(result.Data.viewsrc).find('.product-url').attr('href', urlprodut);
@@ -645,7 +645,7 @@ function selectSku(selector, viewname) {
         error: function (result) {
             if (htmlresult != '#product-popup-ajax') $(htmlresult).removeClass('preload-container').remove('.pre-load');
             else $(htmlresult).removeClass('shimmer-container');
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -681,7 +681,7 @@ function selectSkuDetail(obj) {
         success: function (result) {
             $('#product-info').removeClass('shimmer-container');
             if (!result.Ok) {
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $('#product-info').html(result.Data.viewsrc).css('height', 'auto');
@@ -710,7 +710,7 @@ function selectSkuDetail(obj) {
         },
         error: function (result) {
             $('#product-info').removeClass('shimmer-container');
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -727,7 +727,7 @@ function selectThumbSku(selector, id, url) {
         success: function (result) {
             $this.removeClass('shimmer-container');
             if (!result.Ok) {
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 if (result.Data.listedprice != 0) {
@@ -752,7 +752,7 @@ function selectThumbSku(selector, id, url) {
         },
         error: function (result) {
             $this.removeClass('shimmer-container');
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -771,7 +771,7 @@ function openProductPopup(btn) {
         beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $(htmlresult).html(result.Data.viewsrc);
@@ -802,7 +802,7 @@ function openProductPopup(btn) {
             }
         },
         error: function (result) {
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -849,7 +849,7 @@ function getFilterResultNews(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -868,7 +868,7 @@ function getFilterResultNews(type) {
             },
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -980,7 +980,7 @@ function getFilterResultProduct(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1013,7 +1013,7 @@ function getFilterResultProduct(type) {
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
                 Ecsgroup.hideLoading();
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1056,7 +1056,7 @@ function refreshDistrictList() {
         },
         error: function (result) {
             Ecsgroup.hideLoading();
-            Ecsgroup.resultDialog('error', result.msg);
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -1131,7 +1131,7 @@ function getFilterResultStore(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1150,7 +1150,7 @@ function getFilterResultStore(type) {
             },
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
-                Ecsgroup.resultDialog('error', result.msg);
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1243,7 +1243,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                     if (!result.Ok) {
                         $this.removeClass('load-more-overlay loading');
                         $(htmlresult).removeClass('shimmer-container');
-                        Ecsgroup.resultDialog('error', result.msg);
+                        Ecsgroup.resultDialog('error', result.Msg);
                     }
                     else {
                         $this.removeClass('load-more-overlay loading');
@@ -1262,7 +1262,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                 error: function (result) {
                     $this.removeClass('load-more-overlay loading');
                     $(htmlresult).removeClass('shimmer-container');
-                    Ecsgroup.resultDialog('error', result.msg);
+                    Ecsgroup.resultDialog('error', result.Msg);
                 }
             });
             break;
@@ -1394,7 +1394,7 @@ function validateForm(btn, idform, layout = 'default') {
                     switch (layout) {
                         case 'mini':
                             if (!result.Ok) {
-                                Ecsgroup.resultDialog('error', result.msg);
+                                Ecsgroup.resultDialog('error', result.Msg);
                             }
                             else {
                                 sendMail(result.Data.id, '/aj/Shared/SendEmail');
@@ -1428,7 +1428,7 @@ function validateForm(btn, idform, layout = 'default') {
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    Ecsgroup.resultDialog('error', result.msg);
+                    Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
@@ -1521,7 +1521,7 @@ function validateForm(btn, idform, layout = 'default') {
 //                 success: function (result) {
 //                     $(btn).removeClass('load-more-overlay loading');
 //                     if (!result.Ok) {
-//                         Ecsgroup.resultDialog('error', result.msg);
+//                         Ecsgroup.resultDialog('error', result.Msg);
 //                     }
 //                     else {
 //                         sendMail(result.Data.id, '/aj/Shared/SendEmail');
@@ -1541,7 +1541,7 @@ function validateForm(btn, idform, layout = 'default') {
 //                 },
 //                 error: function (result) {
 //                     $(btn).removeClass('load-more-overlay loading');
-//                      Ecsgroup.resultDialog('error', result.msg);
+//                      Ecsgroup.resultDialog('error', result.Msg);
 //                     return false;
 //                 }
 //             });
@@ -1657,7 +1657,7 @@ function validateFormApi(btn, idform, source) {
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                                        Ecsgroup.resultDialog('error', result.msg);
+                                        Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
