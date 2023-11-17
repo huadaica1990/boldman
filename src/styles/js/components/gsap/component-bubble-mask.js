@@ -1,6 +1,6 @@
 const BubbleMaskTemplate = document.createElement("template");
 // component-bubble-mask(imagesrc='https://www.bostonbeer.com' renderwidth='800' renderheight='600' speed='0.001' numberofpoints='8' range='10' minradius='80' maxradius='90' anim='1' animstop='')
-<component-bubble-mask ></component-bubble-mask>
+
 class BubbleMask extends HTMLElement {
   constructor() {
     super();
