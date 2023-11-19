@@ -637,9 +637,10 @@ p + [data-component-item]:nth-of-type(3n) {
         @include box-shadow($number: 1);
         margin: 0;
         display: none;
-        z-index: 91;
+        z-index: 90;
         border: none;
         border-radius: .5rem;
+        max-width: 100%;
         .widget-toc {
             border-radius:0;
             .tableofcontent>ol:first-child {
@@ -818,7 +819,7 @@ p + [data-component-item]:nth-of-type(3n) {
                 font-size: 1.1rem;
             }
         }
-        #widget-toc-fixed  {
+        #widget-toc-fixed.toc-fullwidth  {
             width: 100%;
             border-radius: 1rem 1rem 0;
             .toc-title {
