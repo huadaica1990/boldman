@@ -701,6 +701,30 @@ window.Ecsgroup = {};
         str = str.replace(/-+-/g, "-");
         return str;
     };
+    
+    /**
+    * Track transitions
+    *
+    * @param {Obj} element
+    */
+    Ecsgroup.trackTransition = function (element) {
+        element.addEventListener('transitionstart', (event) => {
+            $(element).trigger('transition_start'); 
+            console.log('transitionstart');
+        });
+        element.addEventListener('transitionrun', (event) => {
+            $(element).trigger('transition_run'); 
+          console.log('transitionrun');
+        });
+        element.addEventListener('transitionend', (event) => {
+            $(element).trigger('transition_end'); 
+            console.log('transitionend');
+        });
+        element.addEventListener('transitioncancel', (event) => {
+            $(element).trigger('transition_cancel'); 
+            console.log('transitioncancel');
+        });
+    };
 
 })(jQuery);
 

@@ -27,7 +27,7 @@
     }
     &::before {
         @include visible($active: false, $zindex: 99);
-        bottom: -10px;
+        bottom: 0px;
         right: 1rem;
         content: '';
         position: absolute;
@@ -188,10 +188,15 @@
                 }
             }
         }
-        .dropdown:not(.show):hover {
-            &::before,
-            .dropdown-box {
-                @include visible($active: false, $zindex: 99);
+        .dropdown {
+            &::before {
+                bottom:-10px;
+            }
+            &:not(.show):hover {
+                &::before,
+                .dropdown-box {
+                    @include visible($active: false, $zindex: 99);
+                }
             }
         }
     }
