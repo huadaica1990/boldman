@@ -11,7 +11,6 @@ function autoLockListener(target, dragXDefault) {
     target.on('dragEnd', function () {
         var draggie = target.data('draggabilly'),
             withContainer = $('body').width() / 2;
-        console.log(draggie.position.x, withContainer);
         if (draggie.position.x > withContainer) {
             target.draggabilly('setPosition', 0, draggie.position.y);
             $(this).css({

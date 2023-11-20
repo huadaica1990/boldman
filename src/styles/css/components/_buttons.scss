@@ -273,7 +273,7 @@
 .btn-primary {
     @include button-variant($primary-color);
 }
-.btn-secondary {
+.btn-second {
     @include button-variant($secondary-color);
 }
 .btn-success {

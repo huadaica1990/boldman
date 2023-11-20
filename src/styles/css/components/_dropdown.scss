@@ -25,6 +25,7 @@
             }
         }
     }
+    &.show,
     &:not(.show):hover {
         .dropdown-box {
             @include visible($active: true, $zindex: 99);
@@ -181,9 +182,7 @@
                 }
             }
         }
-        .dropdown:not(.show):hover .dropdown-box,
-        .dropdown.show:hover .dropdown-box,
-        .dropdown.show .dropdown-box {
+        .dropdown:not(.show):hover .dropdown-box {
             @include visible($active: false, $zindex: 99);
         }
     }

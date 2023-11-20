@@ -75,8 +75,8 @@ var showChat = function (e) {
 var Menu = {
     init: function () {
         this.initMenu();
-        this.initCategoryMenu();
         this.initMobileMenu();
+        this.initCategoryMenu();
         this.initMobileSearch();
         this.initFilterMenu();
         this.initCollapsibleWidget();
