@@ -1427,7 +1427,6 @@ function validateForm(btn, idform, layout = 'default') {
                                 formError.hide();
                                 Ecsgroup.resultDialog('success', note);
                                 $(idform).trigger('reset');
-                                if (Fancybox.getInstance() != null) Fancybox.getInstance().close();
                                 if (typeof fileCurrent !== 'undefined') fileCurrent._removeChips()
                             }
                             return false;
