@@ -8,10 +8,10 @@
                         img(src=itemver.srcbig alt='' itemprop='thumbnail' loading='lazy' width='234' height='263')
         else
             .img.product-images.img-fixed-height
-                each itemimg in item.listimg
+                each img in item.listimg
                     picture
                         source(media='' srcset='' type='image/webp')
-                        img(src=itemimg.src alt='' itemprop='thumbnail' loading='lazy' width='234' height='263')
+                        img(src=img alt='' itemprop='thumbnail' loading='lazy' width='234' height='263')
         .product-label-group
             //- if item.percent
             //-     label.product-label.label-discount=item.percent

@@ -6,6 +6,13 @@ $('.input-group-effect .form-control').focus(function(event) {
 }).blur(function(event) {
     if($(this).val() === '') $(this).parent().removeClass('focus');
 });
+
+function getAffiliate () {
+    var affiliate = location.search.split('affiliate=')[1];
+    if (affiliate !== null && affiliate !== '' && affiliate !== undefined && Ecsgroup.getCookie('affiliate') !== '' && Ecsgroup.getCookie('affiliate') !== null && Ecsgroup.getCookie('affiliate') !== undefined) Ecsgroup.setCookie('affiliate', affiliate, 7);
+}
+getAffiliate();
+
 function previewImg (event) {
     let reader = new FileReader(),
         imgWrap = $(event.target).closest('.preview-wrapper').find('.image-preview-wrapper');

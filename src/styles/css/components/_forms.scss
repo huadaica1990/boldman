@@ -325,10 +325,6 @@ input {
         &::after {
             @include transform($args: translateY(-50%));
             @include animation($customize: true) {
-                -ms-transition: color .3s, background-color .3s, content .3s, border .3s;
-                -webkit-transition: color .3s, background-color .3s, content .3s, border .3s;
-                -moz-transition: color .3s, background-color .3s, content .3s, border .3s;
-                -o-transition: color .3s, background-color .3s, content .3s, border .3s;
                 transition: color .3s, background-color .3s, content .3s, border .3s;
             };
             @include border-radius($val: 2px);
@@ -358,7 +354,7 @@ input {
             content: '\e809';
             background-color: $primary-color;
             color: $white-color;
-            border: 2px solid $primary-color;
+            border: 1px solid $primary-color;
             padding-left: 3px;
         }
         &.color-dark {
