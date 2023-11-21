@@ -48,9 +48,6 @@ window.Ecsgroup = {};
         },
         initPopup: {
             allowCookie_stt: true
-        },
-        menu: {
-            
         }
     };
     // $ = jQuery;
@@ -651,7 +648,7 @@ window.Ecsgroup = {};
             temp.val(val).select();
             document.execCommand("copy");
             temp.remove();
-            Ecsgroup.Minipopup.open({
+            Ecsgroup.miniPopup.core.open({
                 productClass: ' success minipopup-center',
                 message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
                 template:
@@ -768,7 +765,7 @@ window.Ecsgroup = {};
         Ecsgroup.appearAnimate('.appear-animate');                              // Run appear animation
         Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
         Ecsgroup.initDropdownAction;                                          // Initialize Dropdown
-        Ecsgroup.Minipopup.init();                                              // Initialize minipopup
+        Ecsgroup.miniPopup.init();                                              // Initialize minipopup
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
         Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                   // Initialize Srcoll Tab Active
         Ecsgroup.activeMenu('.nav-js');                                         // Initialize Active Menu
@@ -788,7 +785,7 @@ window.Ecsgroup = {};
         // });                                                                  // Initialize Sticky Footer
         // Ecsgroup.stickyContent('.sticky-toolbox', Ecsgroup.stickyToolboxOptions);
         // Ecsgroup.stickyContent('.product-sticky-content', Ecsgroup.stickyProductOptions);
-        Ecsgroup.menu.init();                                                   // Initialize Menu
+        Ecsgroup.menu;                                                   // Initialize Menu
         Ecsgroup.initScrollTopButton;                                         // Initialize scroll top button
         // Side bar
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar

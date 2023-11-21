@@ -24,7 +24,7 @@
         //         setTimeout(function () {
         //             $this.removeClass('load-more-overlay loading');
         //             Ecsgroup.showHide(null, '.cart-info', 'show');
-        //             // Ecsgroup.Minipopup.open({
+        //             // Ecsgroup.miniPopup.core.open({
         //             //     productClass: ' product-cart',
         //             //     name: $product.find('.product-name, .product-title').text(),
         //             //     nameLink: $product.find('.product-name > a, .product-title > a').attr('href'),

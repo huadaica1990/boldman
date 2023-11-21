@@ -71,14 +71,14 @@
                         input.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"]);')
                         button.btn.ecs-icon-search(type='submit')
                 else
-                    .form-control.mobile-search-toggle(onclick='getSearchFocus("input-search-mobile")')
+                    .form-control.mobile-search-toggle.mobile-search-btn-toggle(onclick='("input-search-mobile")')
                         .mobile-search-placeholder=placeholderSearch[0]
                         i.ecs-icon-search
 
-if isSearchInline
+if !isSearchInline
     #nav-mobile-search.pre-search.search-mobile.d-block.d-lg-none
         .--header.bg-primary.flex-center(action='')
-            a.mobile-search-toggle-close.ecs-icon-angle-left(href='javascript:')
+            a.mobile-search-toggle-close.mobile-search-btn-close.ecs-icon-angle-left(href='javascript:')
             button.mobile-menu-btn.mobile-menu-open(type='button')
                 span
             form.input-wrap(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
@@ -135,7 +135,7 @@ if isSearchInline
                     input.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"]);')
                     button.btn.ecs-icon-search(type='submit')
             else
-                .form-control.mobile-search-toggle.text-dark.bg-white(onclick='getSearchFocus("input-search-mobile")')
+                .form-control.mobile-search-toggle.mobile-search-btn-toggle.text-dark.bg-white(onclick='getSearchFocus("input-search-mobile")')
                     .mobile-search-placeholder=placeholderSearch[0]
                     i.ecs-icon-search
             if isCart

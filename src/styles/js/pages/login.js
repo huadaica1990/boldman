@@ -69,7 +69,7 @@ function validateLogin(btn, idform, callback) {
                     }
                     else {
                         formError.hide();
-                        Ecsgroup.Minipopup.open({
+                        Ecsgroup.miniPopup.core.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>Gửi thành công</p>',
                             template:

@@ -140,7 +140,7 @@ function addRating(btn, idform) {
                         $('.rating-stars a').removeClass('active');
                         formImgLst.html('');
                         $(idform).find('input[name="ListImage"]').val('[]');
-                        Ecsgroup.Minipopup.open({
+                        Ecsgroup.miniPopup.core.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                             template:
@@ -248,7 +248,7 @@ function addComment(btn, idform) {
                         $(idform).trigger('reset');
                         formImgLst.html('');
                         $(idform).find('input[name="ListImage"]').val('[]');
-                        Ecsgroup.Minipopup.open({
+                        Ecsgroup.miniPopup.core.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                             template:
@@ -357,7 +357,7 @@ function removecmtimg(obj) {
                     obj._chipContainer.insertAdjacentHTML("beforeend", chipTemplate);
                     obj._toggleNoFile();
                     $(obj._realvalueInput).val(result.Data[0]);
-                    Ecsgroup.Minipopup.open({
+                    Ecsgroup.miniPopup.core.open({
                         productClass: ' success minipopup-center',
                         message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                         template:
@@ -413,7 +413,7 @@ function removecmtimg(obj) {
                         valueimg.push(valsrc);
                     });
                     $(target).find('input[name="' + input + '"]').val(JSON.stringify(valueimg));
-                    Ecsgroup.Minipopup.open({
+                    Ecsgroup.miniPopup.core.open({
                         productClass: ' success minipopup-center',
                         message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                         template:
@@ -531,7 +531,7 @@ function updateWishLst(selector, productId) {
                     .removeClass('ecs-icon-heart')
                     .addClass('added ecs-icon-heart-full')
                     .attr('href', Ecsgroup.options.links.linkWishList);
-                Ecsgroup.Minipopup.open({
+                Ecsgroup.miniPopup.core.open({
                     productClass: ' success minipopup-center',
                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                     template:
@@ -1405,7 +1405,7 @@ function validateForm(btn, idform, layout = 'default') {
                             }
                             else {
                                 sendMail(result.Data.id, '/aj/Shared/SendEmail');
-                                Ecsgroup.Minipopup.open({
+                                Ecsgroup.miniPopup.core.open({
                                     productClass: ' success minipopup-center',
                                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                                     template:
@@ -1531,7 +1531,7 @@ function validateForm(btn, idform, layout = 'default') {
 //                     }
 //                     else {
 //                         sendMail(result.Data.id, '/aj/Shared/SendEmail');
-//                         Ecsgroup.Minipopup.open({
+//                         Ecsgroup.miniPopup.core.open({
 //                             productClass: ' success minipopup-center',
 //                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
 //                             template:

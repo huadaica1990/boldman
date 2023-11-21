@@ -129,7 +129,7 @@ const popupEcs = {
                                         Ecsgroup.popupPause = false;
                                         // if "do not show" is checked
                                         $('#hide-newsletter-popup')[0].checked && Ecsgroup.setCookie('EcsHidePopup', true, 7);
-                                        if (Ecsgroup.options.initPopup.allowCookie_stt && Ecsgroup.byId(popupOptions.allowCookie.id) && Ecsgroup.getCookie('EcsAllowCookie') !== 'true') popupEcs.core.allowcookie(popupOptions.newsLetter.timeOut);
+                                        if (Ecsgroup.options.initPopup.allowCookie_stt && Ecsgroup.byId(popupOptions.allowCookie.id) && Ecsgroup.getCookie('EcsAllowCookie') !== 'true') popupEcs.core.allowCookie(popupOptions.newsLetter.timeOut);
                                     }
                                 },
                             }

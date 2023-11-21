@@ -70,7 +70,7 @@ var ShareSocialEcs = {
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(val)
                     .then(() => {
-                       Ecsgroup.Minipopup.open({
+                       Ecsgroup.miniPopup.core.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
                             template:
@@ -91,7 +91,7 @@ var ShareSocialEcs = {
                 temp.val(val).select();
                 document.execCommand("copy");
                 temp.remove();
-                Ecsgroup.Minipopup.open({
+                Ecsgroup.miniPopup.core.open({
                     productClass: ' success minipopup-center',
                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
                     template:
