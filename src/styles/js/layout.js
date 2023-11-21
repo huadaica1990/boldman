@@ -493,7 +493,7 @@ function initCompare(selector) {
             $(selector + ' .btn-compare[data-id="' + item.id + '"]')
                 .removeClass('ecs-icon-compare')
                 .addClass('added ecs-icon-check-solid')
-                .attr('href', Ecsgroup.linkCompare);
+                .attr('href', Ecsgroup.options.links.linkCompare);
         });
     }
     else {
@@ -530,7 +530,7 @@ function updateWishLst(selector, productId) {
                 $('body .btn-wishlist[data-id="' + productId + '"]')
                     .removeClass('ecs-icon-heart')
                     .addClass('added ecs-icon-heart-full')
-                    .attr('href', Ecsgroup.linkWishList);
+                    .attr('href', Ecsgroup.options.links.linkWishList);
                 Ecsgroup.Minipopup.open({
                     productClass: ' success minipopup-center',
                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
@@ -561,7 +561,7 @@ function initHeart(selector) {
             $(selector + ' .btn-wishlist[data-id="' + value + '"]')
                 .removeClass('ecs-icon-heart')
                 .addClass('added ecs-icon-heart-full')
-                .attr('href', Ecsgroup.linkWishList);
+                .attr('href', Ecsgroup.options.links.linkWishList);
         });
         console.log("initHeart complete");
     }
@@ -576,7 +576,7 @@ function initHeart(selector) {
                         $(selector + ' .btn-wishlist[data-id="' + value + '"]')
                             .removeClass('ecs-icon-heart')
                             .addClass('added ecs-icon-heart-full')
-                            .attr('href', Ecsgroup.linkWishList);
+                            .attr('href', Ecsgroup.options.links.linkWishList);
                     });
                     window.localStorage.setItem('wishlist', JSON.stringify(result.Data));
                     console.log("initHeart complete");
@@ -591,8 +591,8 @@ function initHeart(selector) {
     $(selector + ' .btn-quickview').removeClass('disabled');
 }
 setTimeout(function () {
-    if (Ecsgroup.isWishList) initHeart('body');
-    if (Ecsgroup.isCompare) initCompare('body');
+    if (Ecsgroup.options.func.isWishList) initHeart('body');
+    if (Ecsgroup.options.func.isCompare) initCompare('body');
 }, 3000);
 // Sku
 function selectSku(selector, viewname) {
@@ -616,7 +616,7 @@ function selectSku(selector, viewname) {
             urlprodut += (i == 0 ? '' : 'v') + v.ProductAttributeId + '-' + v.ProductAttributeValueId;
         }
     });
-    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'GET',
@@ -635,11 +635,11 @@ function selectSku(selector, viewname) {
                 $(htmlresult).html(result.Data.viewsrc).find('.product-url').attr('href', urlprodut);
                 setTimeout(function () {
                     Ecsgroup.productSingle(htmlresult);
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
-                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
-                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.options.func.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.options.links.linkWishList);
+                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.options.links.linkCompare);
                 }, 500);
                 if (htmlresult != '#product-popup-ajax') {
                     $('html, body').animate({
@@ -677,7 +677,7 @@ function selectSkuDetail(obj) {
         }
     });
     $('#product-info').css('height', $('#product-info').height() + 'px');
-    if (Ecsgroup.isCountDown) $('#product-info .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $('#product-info .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'POST',
@@ -698,11 +698,11 @@ function selectSkuDetail(obj) {
                 })
                 window.history.pushState({ state: urlbuilder, rand: Math.random() }, document.title, urlbuilder);
                 setTimeout(function () {
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#product-info .product-countdown');
-                    if (Ecsgroup.isWishList) $('#product-info .btn-wishlist').removeClass('disabled');
-                    if (Ecsgroup.isCompare) $('#product-info .btn-compare').removeClass('disabled');
-                    if (iswishlist > 0) $('#product-info .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
-                    if (iscomparelist > 0) $('#product-info .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown('#product-info .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) $('#product-info .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.options.func.isCompare) $('#product-info .btn-compare').removeClass('disabled');
+                    if (iswishlist > 0) $('#product-info .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.options.links.linkWishList);
+                    if (iscomparelist > 0) $('#product-info .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.options.links.linkCompare);
                 }, 1000);
                 $('html, body').animate({
                     scrollTop: $('#product-info').offset().top - 80
@@ -792,17 +792,17 @@ function openProductPopup(btn) {
                             done: () => {
                                 Ecsgroup.productSingle(htmlresult);
                                 setTimeout(function () {
-                                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
                                     $this.removeClass('load-more-overlay loading');
-                                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
-                                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
-                                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
+                                    if (Ecsgroup.options.func.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                                    if (Ecsgroup.options.func.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.options.links.linkWishList);
+                                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.options.links.linkCompare);
                                     $(htmlresult).removeClass('shimmer-container');
                                 }, 500);
                             },
                             closing: () => {
-                                if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+                                if (Ecsgroup.options.func.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
                             }
                         },
                     }, 'quickview');
@@ -953,7 +953,7 @@ function loadmoreFilterProduct() {
 function getFilterResultProduct(type) {
     var form = $('#filterform'),
         paramlist = ['page', 'pp', 'bp', 'pr', 'sort'];
-    if (Ecsgroup.isCountDown) $('#list-filter .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $('#list-filter .product-countdown').countdown('destroy');
     if (type === 'loadmore') {
         var top = $('#list-filter-loadmore > *').last().offset().top;
         $.ajax({
@@ -973,8 +973,8 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (Ecsgroup.isWishList) initHeart('#list-filter');
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) initHeart('#list-filter');
                 }, 1000);
                 totalitem = '1-' + $('#list-filter-loadmore > *').length + '/' + result.TotalItemCount;
                 $('.readmore-count').text('(' + result.itemremaining + ')');
@@ -1009,9 +1009,9 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (Ecsgroup.isWishList) initHeart('#list-filter');
-                    if (Ecsgroup.isCompare) initCompare('#list-filter');
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) initHeart('#list-filter');
+                    if (Ecsgroup.options.func.isCompare) initCompare('#list-filter');
                 }, 1000);
                 $('.totalitem').text(totalitem);
                 Ecsgroup.hideLoading();
@@ -1234,7 +1234,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
         stringVal = id.split('|'),
         targetType = stringVal[0],
         targetId = stringVal[1];
-    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     switch (targetType) {
         case 'productgroup':
             $.ajax({
@@ -1259,9 +1259,9 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                             $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                         })
                         setTimeout(function () {
-                            if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                            if (Ecsgroup.isWishList) initHeart(htmlresult);
-                            if (Ecsgroup.isCompare) initCompare(htmlresult);
+                            if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                            if (Ecsgroup.options.func.isWishList) initHeart(htmlresult);
+                            if (Ecsgroup.options.func.isCompare) initCompare(htmlresult);
                         }, 1000);
                         //Ecsgroup.shop.init();
                     }

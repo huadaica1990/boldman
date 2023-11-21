@@ -30,17 +30,29 @@ window.Ecsgroup = {};
  * Ecsgroup Base
  */
 (function ($) {
+    Ecsgroup.performance = {};
     Ecsgroup.popupPause = false;
-    Ecsgroup.dist = '/wwwroot/templates/website/release';
-    Ecsgroup.domain = 'localhost:3000';
-    Ecsgroup.linkWishList = '/san-pham-yeu-thich';
-    Ecsgroup.linkCompare = '/so-sanh';
-    Ecsgroup.accInfo = '/thong-tin-tai-khoan';
-    Ecsgroup.cartLink = '/gio-hang';
-    // Function
-    Ecsgroup.isWishList = true;
-    Ecsgroup.isCountDown = true;
-    Ecsgroup.isCompare = true;
+    Ecsgroup.options = {
+        func: {
+            isWishList: true,
+            isCountDown: true,
+            isCompare: true,
+        },
+        links: {
+            domain: 'localhost:3000',
+            dist: '/wwwroot/templates/website/release',
+            linkWishList: '/san-pham-yeu-thich',
+            linkCompare: '/so-sanh',
+            accInfo: '/thong-tin-tai-khoan',
+            cartLink: '/gio-hang'
+        },
+        initPopup: {
+            allowCookie_stt: true
+        },
+        menu: {
+            
+        }
+    };
     // $ = jQuery;
     /**
      * jQuery Window Handle
@@ -469,7 +481,7 @@ window.Ecsgroup = {};
         Ecsgroup.$body.on('click', selector, function (e) {
             e.preventDefault();
             var prevUrl = document.referrer;
-            if (!document.referrer && /Ecsgroup.domain/.test(document.referrer) == true) location.href = prevUrl;
+            if (!document.referrer && /Ecsgroup.options.links.domain/.test(document.referrer) == true) location.href = prevUrl;
             else location.href = '/';
         })
     }
@@ -755,7 +767,7 @@ window.Ecsgroup = {};
         Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
         Ecsgroup.appearAnimate('.appear-animate');                              // Run appear animation
         Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
-        Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
+        Ecsgroup.initDropdownAction;                                          // Initialize Dropdown
         Ecsgroup.Minipopup.init();                                              // Initialize minipopup
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
         Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                   // Initialize Srcoll Tab Active
@@ -777,7 +789,7 @@ window.Ecsgroup = {};
         // Ecsgroup.stickyContent('.sticky-toolbox', Ecsgroup.stickyToolboxOptions);
         // Ecsgroup.stickyContent('.product-sticky-content', Ecsgroup.stickyProductOptions);
         Ecsgroup.menu.init();                                                   // Initialize Menu
-        Ecsgroup.initScrollTopButton();                                         // Initialize scroll top button
+        Ecsgroup.initScrollTopButton;                                         // Initialize scroll top button
         // Side bar
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar
         // Ecsgroup.sidebar('right-sidebar');                                   // Initialize Right Sidebar
@@ -828,10 +840,10 @@ window.Ecsgroup = {};
     document.onreadystatechange = function () {
         if (document.readyState === "complete") {
             if (Ecsgroup.isSafari == true) {
-                addCSS(Ecsgroup.dist + '/safari.css')
+                addCSS(Ecsgroup.options.links.dist + '/safari.css')
             }
             if (Ecsgroup.isFirefox == true) {
-                addCSS(Ecsgroup.dist + '/firefox.css')
+                addCSS(Ecsgroup.options.links.dist + '/firefox.css')
             }
         }
     }

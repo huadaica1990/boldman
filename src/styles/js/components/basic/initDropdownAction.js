@@ -9,11 +9,13 @@ let dropdownOptions = {
 };
 const dropdowEcs = {
     init: function () {
-        this.core.open();
-        this.core.close();
+        let startPerformanceTime = performance.now();
+        this.core.start();
+        let endPerformanceTime = performance.now();
+        Ecsgroup.performance.initDropdownAction = endPerformanceTime - startPerformanceTime + 'ms';
     },
     core: {
-        'open': function () {
+        start: function () {
             let hook = this.hook;
             if (Ecsgroup.isMobile) {
                 Ecsgroup.$body.on('click', '[data-toggle="dropdown"]', function (e) {
@@ -64,12 +66,20 @@ const dropdowEcs = {
                     Ecsgroup.$body.append('<div style="z-index:90" class="dropdown-backdrop backdrop dropdown-remove transparent"></div>');
                 })
             }
+            Ecsgroup.$body.on('click', function (e) {
+                if ($(e.target).hasClass('backdrop')) {
+                    dropdowEcs.core.close();
+                }
+            });
+            Ecsgroup.$window.on('resize', function () {
+                dropdowEcs.core.close();
+            });
         },
-        'close': function () {
+        close: function () {
             $('.dropdown.show').removeClass('show');
             Ecsgroup.$body.removeClass('dropdown-active').find('.dropdown-remove').remove();
         },
-        'hook':  function(target) {
+        hook:  function(target) {
             target.on('transition_start', function () {
                 target.addClass('transition_start');
             });
@@ -94,12 +104,4 @@ const dropdowEcs = {
 //     }
 // };
 // dropdowEcs.register(extendPlugin);
-Ecsgroup.$body.on('click', function (e) {
-    if ($(e.target).hasClass('backdrop')) {
-        dropdowEcs.core.close();
-    }
-})
-Ecsgroup.$window.on('resize', function () {
-    dropdowEcs.core.close();
-});
-Ecsgroup.initDropdownAction = dropdowEcs;
+Ecsgroup.initDropdownAction = dropdowEcs.init();

@@ -113,7 +113,7 @@ var ShoppingCart = (function () {
 
     // Show cart
     obj.showCartInfo = function() {
-        var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> ' + text5 + '</p><a class="ishow btn" href="' + Ecsgroup.cartLink + '" title= "' + text5 + '">' + text6 + '</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
+        var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> ' + text5 + '</p><a class="ishow btn" href="' + Ecsgroup.options.links.cartLink + '" title= "' + text5 + '">' + text6 + '</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
         $('.js-cart-info').html(cartInfo);
         $('body').append('<div class="cart-info-backdrop cart-info-close show"></div>');
         if (document.documentElement.clientWidth > 1000) {

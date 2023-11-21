@@ -418,7 +418,8 @@ module.exports = grunt => {
                 files: [
                     '<%= dirs.js %>/*.js',
                     '<%= dirs.js %>/pages/*.js',
-                    '<%= dirs.js %>/components/*.js'],
+                    '<%= dirs.js %>/components/*.js',
+                    '<%= dirs.js %>/components/*/*.js'],
                 tasks: ['uglify']
             },
             clean: ['<%= dirs.dist %>/images/', '<%= dirs.dist %>/icons/', '<%= dirs.dist %>/fonts/'],
