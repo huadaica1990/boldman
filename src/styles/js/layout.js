@@ -1687,7 +1687,7 @@ function choselang(lang) {
         type: 'POST',
         data: { lang: lang},
         beforeSend: function () {
-            Ecsgroup.showLoading($this);
+            Ecsgroup.showLoading();
         },
         success: function (data) {
             if (!data.Ok) location.reload();
