@@ -22,7 +22,8 @@ const flatpickrEcs = {
             Ecsgroup.$(selector).each(function () {
                 let $this = $(this);
                 let settings = $.extend(true, {}, flatpickrOptions, Ecsgroup.parseOptions($this.attr('data-flatpickr-options')));
-                $this.flatpickr(settings);
+                let ele = $this.flatpickr(settings);
+                $(ele.input).prop('readonly', false);
             });
         }
     },
