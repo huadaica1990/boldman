@@ -8,8 +8,9 @@ $('.input-group-effect .form-control').focus(function(event) {
 });
 
 function getAffiliate () {
-    var affiliate = location.search.split('affiliate=')[1];
-    if (affiliate !== null && affiliate !== '' && affiliate !== undefined && Ecsgroup.getCookie('affiliate') !== '' && Ecsgroup.getCookie('affiliate') !== null && Ecsgroup.getCookie('affiliate') !== undefined) Ecsgroup.setCookie('affiliate', affiliate, 7);
+    let affiliate = location.search.split('affiliate=')[1];
+    let check = Boolean(affiliate);
+    if(Boolean(Ecsgroup.getCookie('affiliate')) === false && Boolean(affiliate) === true) Ecsgroup.setCookie('affiliate', affiliate, 90);
 }
 getAffiliate();
 

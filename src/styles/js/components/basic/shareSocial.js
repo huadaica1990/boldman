@@ -10,7 +10,7 @@ var linkShare = {
     tumblr: 'https://www.tumblr.com/share?t=&u=&v=3',
     telegram: 'https://telegram.me/share/url?url=&text='
 }
-const ShareSocialEcs = {
+const shareSocialEcs = {
     init: function () {
         let startPerformanceTime = performance.now();
         this.core.shareUrl('.btn-shareurl');
@@ -133,4 +133,4 @@ const ShareSocialEcs = {
     }
 }
 
-Ecsgroup.shareSocial = ShareSocialEcs.init();
+Ecsgroup.shareSocial = shareSocialEcs.init();

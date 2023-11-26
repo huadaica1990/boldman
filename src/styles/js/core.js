@@ -734,6 +734,25 @@ window.Ecsgroup = {};
             console.log('transitioncancel');
         });
     };
+    
+    Ecsgroup.addOrUpdateUrlParam = function (url, name, value) {
+        let result, 
+            href = url != null ? url : window.location.href,
+            regex = new RegExp("[&\\?]" + name + "=");
+        if(regex.test(href))
+        {
+            regex = new RegExp("([&\\?])" + name + "=\\d+");
+            result = href.replace(regex, "$1" + name + "=" + value);
+        }
+        else
+        {
+            if(href.indexOf("?") > -1)
+                result = href + "&" + name + "=" + value;
+            else
+                result = href + "?" + name + "=" + value;
+        }
+        return result;
+    };
 
 })(jQuery);
 
