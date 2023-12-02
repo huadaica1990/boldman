@@ -13,7 +13,7 @@ const tippyEcs = {
     init: function (selector) {
         if (typeof tippy !== 'undefined') {
             let startPerformanceTime = performance.now();
-            this.core.start(selector, classactive);
+            this.core.start(selector);
             let endPerformanceTime = performance.now();
             Ecsgroup.performance.tippy = endPerformanceTime - startPerformanceTime + 'ms';
         }

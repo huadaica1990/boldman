@@ -4,7 +4,7 @@
  * 
  * @param {String} selector 
  */
-const accordionEcs = {
+const countDownEcs = {
     init: function(selector) {
         if ($.fn.countdown) {
             let startPerformanceTime = performance.now();
@@ -58,5 +58,5 @@ const accordionEcs = {
     }
 };
 Ecsgroup.countDown = function (selector) {
-    return countDownEcs.init(selector);
+    return c.init(selector);
 };

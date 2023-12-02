@@ -64,6 +64,11 @@ const dropdowEcs = {
                     let dropdown = $(this).closest('.dropdown');
                     dropdown.toggleClass('show');
                     Ecsgroup.$body.append('<div style="z-index:90" class="dropdown-backdrop backdrop dropdown-remove transparent"></div>');
+                });
+                Ecsgroup.$body.on('focus', '[data-toggle="dropdown"] + .dropdown-box input', function (e) {
+                    let dropdown = $(this).closest('.dropdown');
+                    dropdown.addClass('show');
+                    if($('.dropdown-backdrop').length == 0) Ecsgroup.$body.append('<div style="z-index:90" class="dropdown-backdrop backdrop dropdown-remove transparent"></div>');
                 })
             }
             Ecsgroup.$body.on('click', function (e) {
