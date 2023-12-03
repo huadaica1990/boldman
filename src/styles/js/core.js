@@ -788,6 +788,9 @@ window.Ecsgroup = {};
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
         Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                   // Initialize Srcoll Tab Active
         Ecsgroup.activeMenu('.nav-js');                                         // Initialize Active Menu
+        Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
+        Ecsgroup.tippy('.tooltips');                                            // Initialize Tool tips
+        Ecsgroup.flatpickr('.flatpickr');                                       // Initialize Flatpickr
         // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
@@ -818,9 +821,6 @@ window.Ecsgroup = {};
         // Plugin
         Ecsgroup.preSearch('.pre-search');                                      // Initialize Pre search
         Ecsgroup.typeWriter('.typewrite');                                      // Initialize TypeWriter
-        Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
-        Ecsgroup.tippy('.tooltips');                                            // Initialize Tool tips
-        Ecsgroup.flatpickr('.flatpickr');                                       // Initialize Flatpickr
         // Ecsgroup.parallax('.parallax');                                      // Initialize Parallax
         // Ecsgroup.skrollrParallax();                                          // Initialize Skrollr Parallax
         // Ecsgroup.initFloatingParallax();                                     // Initialize Floating Parallax

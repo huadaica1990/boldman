@@ -138,6 +138,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/basic/flatpickr.js',
                         '<%= dirs.js %>/components/basic/srcollTabActive.js',
                         '<%= dirs.js %>/components/basic/activeMenu.js',
+                        '<%= dirs.js %>/components/basic/fakeLoadMore.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
@@ -168,7 +169,6 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/setProgressBar.js',
                         '<%= dirs.js %>/components/countDown.js',
                         '<%= dirs.js %>/components/countTo.js',
-                        '<%= dirs.js %>/components/fakeLoadMore.js',
                         '<%= dirs.js %>/components/notiCustomer.js',
                         '<%= dirs.js %>/components/ezParallax.js',
                         '<%= dirs.js %>/components/mouseFollow.js',

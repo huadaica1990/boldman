@@ -6,7 +6,7 @@
  */
 
 const fakeLoadMoreEcs = {
-    init: function() {
+    init: function(selector, pagesize) {
         let startPerformanceTime = performance.now();
         this.core.start(selector, pagesize);
         let endPerformanceTime = performance.now();

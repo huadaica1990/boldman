@@ -1,0 +1,396 @@
+-
+    const products = [
+        {
+            // Basic
+            id: 1,
+            cat: 'Quisuito',
+            name: 'Black Co-ord Off Shoulder Top',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product1.jpg',dist+'/fashion/product0.jpg'],
+            quantity: 11,
+            price: '£409.00',
+            promoprice: '£309.00',
+            percent: '10%',
+            label: [
+                {
+                    id: 1,
+                    name: 'new',
+                    color: '#336699'
+                },
+                {
+                    id: 2,
+                    name: 'sale',
+                    color: '#cc0001'
+                }
+            ],
+            // Advanced
+            des: '<p>Chiếc áo phao lông vũ cao cấp ấm áp và nhẹ của chúng tôi luôn cập nhật những điều mới. Lớp vải mỏng nhẹ và ấm áp để bạn có thể tạo kiểu theo cách riêng của mình.</p>',
+            sku: 'BL120',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 5,
+            count: 19834,
+            ver: null
+        },
+        {
+            // Basic
+            id: 2,
+            cat: 'Quisuito',
+            name: 'Black Lace Sleeve Pleat Top',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product2.jpg'],
+            quantity: 0,
+            price: '£159.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>UV protection on the go. Crisp, textured fabric with a water-repellent finish. UPF50+..</p>',
+            sku: 'TXT244',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 5,
+            count: 19834,
+            ver: null
+        },
+        {
+            // Basic
+            id: 3,
+            cat: 'Iguera',
+            name: 'Black Lace Trim Tee',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product3.jpg'],
+            quantity: 10,
+            price: '£139.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>Lớp hoàn thiện ở bề mặt chống thấm nước bền bỉ để bảo vệ bạn khỏi thời tiết mưa. Với công nghệ chống tia cực tím.</p>',
+            sku: 'TXN458',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 3,
+            count: 140,
+            ver: null
+        },
+        {
+            // Basic
+            id: 4,
+            cat: 'Dumark',
+            name: 'Black Linen Blend T-Shirt Dress',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product4.jpg'],
+            quantity: 23,
+            price: '£129.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>Nhẹ nhàng mà ấm cúng. Lông cừu dày dặn, có độ đàn hồi.</p>',
+            sku: 'TXN460',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 2,
+            count: 34,
+            ver: null
+        },
+        {
+            // Basic
+            id: 5,
+            cat: 'Zenuro',
+            name: 'Black Linen Blend Tapered Trousers',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product5.jpg'],
+            quantity: 23,
+            price: '£99.00',
+            promoprice: '£79.00',
+            percent: 20,
+            label: null,
+            // Advanced
+            des: '<p>Thiết kế cổ áo vải nhung và họa tiết kẻ sọc tinh tế. Tay áo raglan thoải mái.</p>',
+            sku: 'TXN461',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 1,
+            count: 2,
+            ver: null
+        },
+        {
+            // Basic
+            id: 6,
+            cat: 'Dumark',
+            name: 'Black Off The Shoulder Dress',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product6.jpg'],
+            quantity: 98,
+            price: '£149.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>Một lớp khoác ngoài với kiểu dáng vai rũ. Gói gọn trong một thiết kế đầy tinh tế.</p>',
+            sku: 'TXN384',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 1,
+            count: 2,
+            ver: null
+        },
+        {
+            // Basic
+            id: 7,
+            cat: 'Zenuro',
+            name: 'Black Skinny Trousers',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product7.jpg'],
+            quantity: 98,
+            price: '£129.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>Một lớp khoác ngoài với kiểu dáng vai rũ. Gói gọn trong một thiết kế đầy tinh tế.</p>',
+            sku: 'TXT231',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 0,
+            count: 0,
+            ver: null
+        },
+        {
+            // Basic
+            id: 8,
+            cat: 'Guarajo',
+            name: 'Blue Leopard Print Frill Maxi Dress',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product8.jpg'],
+            quantity: 98,
+            price: '£1159.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>UV protection on the go. Crisp, textured fabric with a water-repellent finish. UPF50+..</p>',
+            sku: 'TXT235',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 0,
+            count: 0,
+            ver: null
+        },
+        {
+            // Basic
+            id: 9,
+            cat: 'Guarajo',
+            name: 'Blue Stripe Grandad Overhead Top',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product9.jpg'],
+            quantity: 98,
+            price: '£129.00',
+            promoprice: '£109.00',
+            percent: 16,
+            label: null,
+            // Advanced
+            des: '<p>UV protection on the go. Crisp, textured fabric with a water-repellent finish. UPF50+..</p>',
+            sku: 'TXN539',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 0,
+            count: 0,
+            ver: null
+        },
+        {
+            // Basic
+            id: 10,
+            cat: 'Iguera',
+            name: 'Blue Stripe Light Cotton Overhead Blouse',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product10.jpg'],
+            quantity: 98,
+            price: '£129.00',
+            promoprice: null,
+            percent: null,
+            label: null,
+            // Advanced
+            des: '<p>Đã cập nhật chất liệu vải phù hợp cho các hoạt động thể thao, hoạt động ngoài trời và trang phục hàng ngày.UPF40.</p>',
+            sku: 'TXN547',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 0,
+            count: 0,
+            ver: null
+        },
+        {
+            // Basic
+            id: 11,
+            cat: 'Iguera',
+            name: 'Blue/White Emma Willis Stripe Shirt',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product11.jpg'],
+            quantity: 98,
+            price: '£119.00',
+            promoprice: '£99.00',
+            percent: 17,
+            label: null,
+            // Advanced
+            des: '<p>Hai phong cách trong một chiếc áo. Áo parka không thấm nước để bảo vệ chống lại các yếu tố thời tiết.</p>',
+            sku: 'TXN538',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 0,
+            count: 0,
+            ver: null
+        },
+        {
+            // Basic
+            id: 12,
+            cat: 'Cerveo',
+            name: 'Coral Paisley Linen Blend Shift Dress',
+            href: '/productdetail.html',
+            listimg: [dist+'/fashion/product11.jpg'],
+            quantity: 98,
+            price: '£149.00',
+            promoprice: '£99.00',
+            percent: 34,
+            label: null,
+            // Advanced
+            des: '<p>Một parka hiệu suất cao để bảo vệ khỏi các yếu tố. Thích hợp cho tất cả các mùa.</p>',
+            sku: 'VI138',
+            brand: null,
+            //promodate: '2022, 1, 10', //-Y,M,D
+            star: 0,
+            count: 0,
+            ver: null
+        }
+    ];
+
+-
+    const productDetail = {
+        id: 1,
+        cat: 'Zenuro',
+        name: 'Black Paradise Slogan T-Shirt',
+        href: '/productdetail.html',
+        listimg: [dist+'/fashion/product1.jpg',dist+'/fashion/product1_1.jpg',dist+'/fashion/product1_2.jpg',dist+'/fashion/product4.jpg',dist+'/fashion/product5.jpg',dist+'/fashion/product6.jpg',dist+'/fashion/product7.jpg',dist+'/fashion/product8.jpg'],
+        quantity: 10,
+        price: '£409.00',
+        promoprice: '£309.00',
+        percent: '10%',
+        label: [
+            {
+                id: 1,
+                name: 'new',
+                color: '#336699'
+            },
+            {
+                id: 2,
+                name: 'sale',
+                color: '#cc0001'
+            }
+        ],
+        // Advanced
+        des: '<p>Proactively communicate corporate process improvements via corporate scenarios. Progressively aggregate proactive data after diverse users. Rapidiously redefine front-end interfaces before go forward process improvements.</p>',
+        sku: 'BL120',
+        brand: null,
+        //promodate: '2022, 1, 10', //-Y,M,D
+        star: 5,
+        count: 19834,
+        ver: [
+            {
+                name: 'Color',
+                listatt: [
+                    {
+                        id: 1,
+                        name: 'Yellow',
+                        value: '#ffcc01',
+                        src: dist+'/fashion/product1.jpg',
+                        isActive: true,
+                        isShow: true
+                    },
+                    {
+                        id: 2,
+                        name: 'Brown',
+                        value: '#ca6d00',
+                        src: dist+'/fashion/product2.jpg',
+                        isActive: false,
+                        isShow: true
+                    },
+                    {
+                        id: 3,
+                        name: 'Blue',
+                        value: '#1c93cb',
+                        src: dist+'/fashion/product3.jpg',
+                        isActive: false,
+                        isShow: false
+                    }
+                ]
+            },
+            {
+                name: 'Size',
+                listatt: [
+                    {
+                        id: 1,
+                        name: 'Small',
+                        value: 'S',
+                        isActive: true,
+                        isShow: true
+                    },
+                    {
+                        id: 2,
+                        name: 'Medium',
+                        value: 'M',
+                        isActive: false,
+                        isShow: true
+                    },
+                    {
+                        id: 3,
+                        name: 'Large',
+                        value: 'L',
+                        isActive: false,
+                        isShow: true
+                    },
+                    {
+                        id: 4,
+                        name: 'Extra Large',
+                        value: 'XL',
+                        isActive: false,
+                        isShow: true
+                    }
+                ]
+            }
+        ]
+    };
+
+-
+    const productDetailInfo = [
+        {
+            id: 1,
+            name: 'Weight',
+            value: '1.20 kg'
+        },
+        {
+            id: 2,
+            name: 'Dimensions',
+            value: '20 × 10 × 50 cm'
+        },
+        {
+            size: 3,
+            name: 'Size',
+            value: 'XS, S, M, L, XL, XXL'
+        },
+        {
+            id: 4,
+            name: 'Material',
+            value: 'Polyester'
+        },
+        {
+            id: 5,
+            name: 'Color',
+            value: 'Oranges'
+        },
+        {
+            id: 6,
+            name: 'Brand',
+            value: 'Quisuito'
+        }
+    ]

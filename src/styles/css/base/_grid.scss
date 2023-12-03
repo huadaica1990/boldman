@@ -60,6 +60,14 @@
     }
 
     @include mq("xl", "max") {
+        .gutter-xl {
+            margin-left: -10px;
+            margin-right: -10px;
+            > * {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
         .gutter-lg {
             margin-left: -10px;
             margin-right: -10px;
@@ -76,16 +84,6 @@
             > * {
                 padding-left: 7.5px;
                 padding-right: 7.5px;
-            }
-        }
-    }
-    @include mq(md, 'max') {
-        .gutter-xl {
-            margin-left: -10px;
-            margin-right: -10px;
-            > * {
-                padding-left: 10px;
-                padding-right: 10px;
             }
         }
     }
