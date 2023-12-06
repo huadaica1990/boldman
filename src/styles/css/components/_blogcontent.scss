@@ -287,6 +287,7 @@ p.first-cap:first-letter {
       display: -webkit-box;
   }
   .blog-img {
+    max-width: 100%;
     img[loading="lazy"] {
         margin: 0 auto;
     }
