@@ -155,6 +155,9 @@ strong {
     left: 0;
     z-index: 90;
     pointer-events: auto;
+}
+.backdrop,
+.fancybox__viewport {
     cursor: url(/wwwroot/templates/website/images/default/close.svg) 16 16,pointer;
 }
 

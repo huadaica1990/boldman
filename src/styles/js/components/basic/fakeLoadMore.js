@@ -33,7 +33,7 @@ const fakeLoadMoreEcs = {
                 }
                 else {
                     $(itemChild).css('display', 'block');
-                    if (href == null) btn.remove();
+                    if (href == null || itemTotal <= pagesize) btn.remove();
                 };
                 btn.on('click', function (event) {
                     event.preventDefault();

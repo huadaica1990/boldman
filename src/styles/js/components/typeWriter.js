@@ -4,25 +4,35 @@
  * @param {string, Object} selector
  * @param {Object} options
  */
-function TypeWriter($el) {
-    return this.init($el);
-}
-// Public Properties
-var typeWriterOptions = {
+let typeWriterOptions = {
     loop: true,
     autoStart: true
 };
-function typeWriterEcs(selector) {
-    if (typeof Typewriter !== 'undefined') {
-        Ecsgroup.$(selector).each(function () {
-            var $this = $(this);
-            typeWriterOptions.strings = Ecsgroup.parseOptions($this.attr('data-typewriter-value'));
-            var settings = $.extend(true, {}, typeWriterOptions, Ecsgroup.parseOptions($this.attr('data-typewriter-options')), Ecsgroup.parseOptions());
-            console.log(typeWriterOptions);
-            var $typeWriter = new Typewriter(this, settings);
-        });
+const typeWriterEcs = {
+    init: function(selector) {
+        if (typeof Typewriter !== 'undefined') {
+            let startPerformanceTime = performance.now();
+            this.core.start(selector);
+            let endPerformanceTime = performance.now();
+            Ecsgroup.performance.typeWriter = endPerformanceTime - startPerformanceTime + 'ms';
+        }
+    },
+    core: {
+        start: function(selector) {
+            Ecsgroup.$(selector).each(function () {
+                let $this = $(this);
+                typeWriterOptions.strings = Ecsgroup.parseOptions($this.attr('data-typewriter-value'));
+                let settings = $.extend(true, {}, typeWriterOptions, Ecsgroup.parseOptions($this.attr('data-typewriter-options')), Ecsgroup.parseOptions());
+                new Typewriter(this, settings);
+            });
+        },
+    },
+    plugins: {},
+    register(plugin) {
+        const { name, exec } = plugin;
+        this.plugins[name] = exec;
     }
 };
 Ecsgroup.typeWriter = function (selector) {
-    return new typeWriterEcs(selector);
+    return typeWriterEcs.init(selector);
 };

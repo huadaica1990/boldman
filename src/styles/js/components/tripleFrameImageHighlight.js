@@ -2,128 +2,148 @@
  * Ecsgroup Triple Frame Image Highlight
  * 
  */
-Ecsgroup.tripleFrameImage = function (selector) {
-    var s, r, m, l, f, e = Ecsgroup.$(selector);
-    console.log('asda');
-    e.length && (s = function (e, n, t) {
-        e.css("z-index", 30),
-            n.css("z-index", 20),
-            t.css("z-index", 20)
+const tripleFrameImageEcs = {
+    init: function() {
+        let startPerformanceTime = performance.now();
+        this.core.start(selector);
+        let endPerformanceTime = performance.now();
+        Ecsgroup.performance.tripleFrameImage = endPerformanceTime - startPerformanceTime + 'ms';
     },
-        r = function (e, n) {
-            e.find('div[class*="trigger"]').width(Math.round(n.position().left))
-        },
-        m = function (e, n) {
-            var t = e.find(".image-l"),
-                a = e.find(".image-r"),
-                e = e.find(".image-c"),
-                n = n.position().left + window.innerWidth / 12.5;
-            t.css({
-                visibility: "visible",
-                transform: "matrix(.68,0,0,.68,-" + n + ",0)"
-            }),
-                a.css({
-                    visibility: "visible",
-                    transform: "matrix(.68,0,0,.68," + n + ",0)"
-                }),
-                e.css({
-                    transform: "matrix(1, 0, 0, 1, 0, 0)"
-                })
-        },
-        l = function (e, n, t) {
-            var a, o, d;
-            e.data("animating", !0),
-                "left" == t ? (a = e.find(".image-l"),
-                    o = e.find(".image-c"),
-                    (d = e.find(".image-r")).removeClass("image-r").addClass("image-l"),
-                    o.removeClass("image-c").addClass("image-r"),
-                    a.removeClass("image-l").addClass("image-c")) : (a = e.find(".image-r"),
-                        o = e.find(".image-c"),
-                        (d = e.find(".image-l")).removeClass("image-l").addClass("image-r"),
-                        o.removeClass("image-c").addClass("image-l"),
-                        a.removeClass("image-r").addClass("image-c")),
-                d.css({
-                    "z-index": 15,
-                    transition: "transform .5s, transform-origin .5s"
-                }),
-                o.css({
-                    "z-index": 25,
-                    transition: "transform 1s cubic-bezier(0.19, 1, 0.22, 1) .2s"
-                }),
-                a.css({
-                    "z-index": 20,
-                    transition: "transform .75s cubic-bezier(0.86, 0, 0.07, 1) .5s"
-                }),
-                e.find("a").css("pointer-events", "none"),
-                setTimeout(function () {
-                    e.find("a").css("pointer-events", "auto"),
-                        s(a, d, o)
-                }, 500),
-                a.one(Ecsgroup.transitionEnd, function () {
-                    e.data("animating", !1),
-                        clearInterval(e.data("autoplay")),
-                        e.data("autoplay", setInterval(function () {
-                            f(e, n)
-                        }, 3e3))
-                })
-        },
-        f = function (e, n, t) {
-            var a, o = !1;
-            if (void 0 !== t)
-                switch (t.target.className) {
-                    case "image-left-trigger":
-                        a = "left";
-                        break;
-                    case "image-right-trigger":
-                        a = "right";
-                        break;
-                    case "image-link":
-                        e.data("animating", !(o = !0)),
-                            clearInterval(e.data("autoplay"))
-                }
-            else
-                a = "right";
-            o || (l(e, n, a),
-                m(e, n))
-        },
-        e.each(function () {
-            var e, n, t = $(this),
-                a = t.find(".image-inner"), o =
-                    t.find(".centered-image-holder"),
-                d = t.find(".left-image-holder"),
-                i = t.find(".right-image-holder");
-            t.data("animating", !1).data("autoplay", !1),
-                e = d,
-                n = i,
-                o.addClass("image-c"),
-                e.addClass("image-l"),
-                n.addClass("image-r"),
-                s(o, d, i),
-                r(t, a),
-                m(t, a),
-                t.data("autoplay", setInterval(function () {
-                    f(t, a)
-                }, 3e3))
-            t.on("click", function (e) {
-                t.data("animating") || (clearInterval(t.data("autoplay")),
-                    f(t, a, e))
-            }),
-                t.parent().hasClass("triple-with-nav") && (d = t.parent().find(".triple-left"),
-                    i = t.parent().find(".triple-right"),
-                    d.on("click", function () {
-                        t.data("animating") || (l(t, a, "left"),
-                            m(t, a))
+    core: {
+        start: function(selector) {
+            var s, r, m, l, f, e = Ecsgroup.$(selector);
+            e.length && (s = function (e, n, t) {
+                e.css("z-index", 30),
+                    n.css("z-index", 20),
+                    t.css("z-index", 20)
+            },
+                r = function (e, n) {
+                    e.find('div[class*="trigger"]').width(Math.round(n.position().left))
+                },
+                m = function (e, n) {
+                    var t = e.find(".image-l"),
+                        a = e.find(".image-r"),
+                        e = e.find(".image-c"),
+                        n = n.position().left + window.innerWidth / 12.5;
+                    t.css({
+                        visibility: "visible",
+                        transform: "matrix(.68,0,0,.68,-" + n + ",0)"
                     }),
-                    i.on("click", function () {
-                        t.data("animating") || (l(t, a, "right"),
-                            m(t, a))
-                    })),
-                $(window).on("resize", function () {
-                    m(t, a),
+                        a.css({
+                            visibility: "visible",
+                            transform: "matrix(.68,0,0,.68," + n + ",0)"
+                        }),
+                        e.css({
+                            transform: "matrix(1, 0, 0, 1, 0, 0)"
+                        })
+                },
+                l = function (e, n, t) {
+                    var a, o, d;
+                    e.data("animating", !0),
+                        "left" == t ? (a = e.find(".image-l"),
+                            o = e.find(".image-c"),
+                            (d = e.find(".image-r")).removeClass("image-r").addClass("image-l"),
+                            o.removeClass("image-c").addClass("image-r"),
+                            a.removeClass("image-l").addClass("image-c")) : (a = e.find(".image-r"),
+                                o = e.find(".image-c"),
+                                (d = e.find(".image-l")).removeClass("image-l").addClass("image-r"),
+                                o.removeClass("image-c").addClass("image-l"),
+                                a.removeClass("image-r").addClass("image-c")),
+                        d.css({
+                            "z-index": 15,
+                            transition: "transform .5s, transform-origin .5s"
+                        }),
+                        o.css({
+                            "z-index": 25,
+                            transition: "transform 1s cubic-bezier(0.19, 1, 0.22, 1) .2s"
+                        }),
+                        a.css({
+                            "z-index": 20,
+                            transition: "transform .75s cubic-bezier(0.86, 0, 0.07, 1) .5s"
+                        }),
+                        e.find("a").css("pointer-events", "none"),
+                        setTimeout(function () {
+                            e.find("a").css("pointer-events", "auto"),
+                                s(a, d, o)
+                        }, 500),
+                        a.one(Ecsgroup.transitionEnd, function () {
+                            e.data("animating", !1),
+                                clearInterval(e.data("autoplay")),
+                                e.data("autoplay", setInterval(function () {
+                                    f(e, n)
+                                }, 3e3))
+                        })
+                },
+                f = function (e, n, t) {
+                    var a, o = !1;
+                    if (void 0 !== t)
+                        switch (t.target.className) {
+                            case "image-left-trigger":
+                                a = "left";
+                                break;
+                            case "image-right-trigger":
+                                a = "right";
+                                break;
+                            case "image-link":
+                                e.data("animating", !(o = !0)),
+                                    clearInterval(e.data("autoplay"))
+                        }
+                    else
+                        a = "right";
+                    o || (l(e, n, a),
+                        m(e, n))
+                },
+                e.each(function () {
+                    var e, n, t = $(this),
+                        a = t.find(".image-inner"), o =
+                            t.find(".centered-image-holder"),
+                        d = t.find(".left-image-holder"),
+                        i = t.find(".right-image-holder");
+                    t.data("animating", !1).data("autoplay", !1),
+                        e = d,
+                        n = i,
+                        o.addClass("image-c"),
+                        e.addClass("image-l"),
+                        n.addClass("image-r"),
+                        s(o, d, i),
                         r(t, a),
-                        a.find(">div").css("transition", "none")
-                })
-        }))
+                        m(t, a),
+                        t.data("autoplay", setInterval(function () {
+                            f(t, a)
+                        }, 3e3))
+                    t.on("click", function (e) {
+                        t.data("animating") || (clearInterval(t.data("autoplay")),
+                            f(t, a, e))
+                    }),
+                        t.parent().hasClass("triple-with-nav") && (d = t.parent().find(".triple-left"),
+                            i = t.parent().find(".triple-right"),
+                            d.on("click", function () {
+                                t.data("animating") || (l(t, a, "left"),
+                                    m(t, a))
+                            }),
+                            i.on("click", function () {
+                                t.data("animating") || (l(t, a, "right"),
+                                    m(t, a))
+                            })),
+                        $(window).on("resize", function () {
+                            m(t, a),
+                                r(t, a),
+                                a.find(">div").css("transition", "none")
+                        })
+            }))
+        },
+    },
+    plugins: {},
+    register(plugin) {
+        const { name, exec } = plugin;
+        this.plugins[name] = exec;
+    }
+};
+Ecsgroup.tripleFrameImage = function (selector) {
+    return tripleFrameImageEcs.init(selector);
+};
+
+Ecsgroup.tripleFrameImage = function (selector) {
 };
 
 /*HTML

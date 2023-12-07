@@ -51,7 +51,7 @@ input[type=search]::-webkit-search-results-decoration {
     border-radius: 0;
     box-shadow: none;
     outline: 0;
-
+    caret-color:$primary-color;
     &[required="required"] {
         color: $dark-color;
 

@@ -1310,14 +1310,14 @@ function validateForm(btn, idform, layout = 'default') {
         focusCleanup: true,
         focusInvalid: false,
         rules: {
-            phonenumber: {
-                formattel: true
-            }
+            // phonenumber: {
+            //     formattel: true
+            // }
         },
         messages: {
-            phonenumber: {
-                formattel: validate19,
-            }
+            // phonenumber: {
+            //     formattel: validate19,
+            // }
         },
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {

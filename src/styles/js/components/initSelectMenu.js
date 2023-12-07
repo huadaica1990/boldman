@@ -2,11 +2,6 @@
 * Ecsgroup Plugin - initSelectMenu
 * @function initSelectMenu
 */
-
-let blankOption = {
-    classParent: '.accordion',
-    classItem: '.accordion-item'
-};
 const initSelectMenuEcs = {
     init: function() {
         let startPerformanceTime = performance.now();
