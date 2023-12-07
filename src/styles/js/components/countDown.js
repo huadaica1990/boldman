@@ -58,5 +58,5 @@ const countDownEcs = {
     }
 };
 Ecsgroup.countDown = function (selector) {
-    return c.init(selector);
+    return countDownEcs.init(selector);
 };
