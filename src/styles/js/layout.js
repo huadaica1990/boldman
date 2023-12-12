@@ -1,9 +1,9 @@
 var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class="loader"></div></div></div>',
     errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>';
 // Effect
-$('.input-group-effect .form-control').focus(function(event) {
+Ecsgroup.$body.on('focus', '.input-group-effect .form-control', function (event) {
     $(this).parent().addClass('focus');
-}).blur(function(event) {
+}).on('blur', '.input-group-effect .form-control',function (event) {
     if($(this).val() === '') $(this).parent().removeClass('focus');
 });
 
@@ -1201,12 +1201,7 @@ function loadmoreSrcoll() {
             }
         },
         error: function (result) {
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup({
-                items: {
-                    src: '#error-modal'
-                },
-            }, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -1279,25 +1274,27 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
     }
 }
 // Contact
-$.extend($.validator.messages, {
-    required: validate1,
-    remote: validate2,
-    email: validate3,
-    url: validate4,
-    date: validate5,
-    dateISO: validate6,
-    number: validate7,
-    digits: validate8,
-    creditcard: validate9,
-    equalTo: validate10,
-    accept: validate11,
-    maxlength: $.validator.format(validate12),
-    minlength: $.validator.format(validate13),
-    rangelength: $.validator.format(validate14),
-    range: $.validator.format(validate15),
-    max: $.validator.format(validate16),
-    min: $.validator.format(validate17)
-});
+setTimeout(function () {
+    $.extend($.validator.messages, {
+        required: validate1,
+        remote: validate2,
+        email: validate3,
+        url: validate4,
+        date: validate5,
+        dateISO: validate6,
+        number: validate7,
+        digits: validate8,
+        creditcard: validate9,
+        equalTo: validate10,
+        accept: validate11,
+        maxlength: $.validator.format(validate12),
+        minlength: $.validator.format(validate13),
+        rangelength: $.validator.format(validate14),
+        range: $.validator.format(validate15),
+        max: $.validator.format(validate16),
+        min: $.validator.format(validate17)
+    });
+}, 500);
 jQuery.validator.addMethod("formattel", function (value, element, params) {
     $(element).val(intlTelVal.getNumber());
     return intlTelVal.isValidNumber();
