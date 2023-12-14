@@ -61,7 +61,7 @@ const sideBarEcs = {
             // if fixed sidebar
             if (window.innerWidth >= minwidth && self.$sidebar.hasClass('sidebar-fixed')) {
                 // is closed ?
-                // var isClosed = self.$sidebar.hasClass('closed');
+                // let isClosed = self.$sidebar.hasClass('closed');
                 // if navigation style's sidebar
                 // if (self.isNavigation) {
                 //     isClosed || self.$sidebar.find('.filter-clean').hide();
@@ -82,7 +82,7 @@ const sideBarEcs = {
                 // If shop sidebar
                 // if (self.$sidebar.hasClass('shop-sidebar')) {
                 //     // change column
-                //     var $wrapper = $('.main-content .product-wrapper');
+                //     let $wrapper = $('.main-content .product-wrapper');
                 //     if ($wrapper.length) {
                 //         if ($wrapper.hasClass('product-lists')) {
                 //             // if list type, toggle 2 cols or 1 col

@@ -1,4 +1,4 @@
-var linkShare = {
+const linkShare = {
     facebook: 'https://www.facebook.com/sharer.php?app_id=&display=popup&href=',
     messengerM: 'fb-messenger://share/?link=',
     messagePc: 'http://www.facebook.com/dialog/send?app_id=&link=&redirect_uri=',
@@ -53,7 +53,7 @@ const shareSocialEcs = {
         shareUrl: function (selector) {
             Ecsgroup.$body.on('click', selector, function (e) {
                 e.preventDefault();
-                var $this = $(e.currentTarget);
+                let $this = $(e.currentTarget);
                 if (navigator.share) {
                     navigator.share({
                         title: $this.attr('title'),
@@ -69,7 +69,7 @@ const shareSocialEcs = {
         copyUrl: function (selector) {
             $(document.body).on('click', selector, function (e) {
                 e.preventDefault();
-                var $this = $(e.currentTarget),
+                let $this = $(e.currentTarget),
                     val = $this.attr('href') != null ? $this.attr('href') : $this.data('text');
                 if (navigator.clipboard) {
                     navigator.clipboard.writeText(val)
@@ -90,7 +90,7 @@ const shareSocialEcs = {
                     })
                 }
                 else {
-                    var temp = $('<input style="opacity:0;position absolute;z-index:-1;">');
+                    let temp = $('<input style="opacity:0;position absolute;z-index:-1;">');
                     $("body").append(temp);
                     temp.val(val).select();
                     document.execCommand("copy");
@@ -111,7 +111,7 @@ const shareSocialEcs = {
         shareNormal: function (selector) {
             Ecsgroup.$body.on('click', selector, function (e) {
                 e.preventDefault();
-                var $this = $(e.currentTarget);
+                let $this = $(e.currentTarget);
                 if (navigator.share) {
                     navigator.share({
                         title: $this.attr('title'),

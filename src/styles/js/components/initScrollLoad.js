@@ -7,7 +7,7 @@
  */
 
 const scrollLoadEcs = {
-    init: function() {
+    init: function(selector, callback) {
         let startPerformanceTime = performance.now();
         this.core.start(selector, callback);
         let endPerformanceTime = performance.now();

@@ -7,12 +7,12 @@
  */
 
 const initNavFilterEcs = {
-    init: function() {
+    init: function(selector) {
         if ($.fn.isotope) {
             let startPerformanceTime = performance.now();
             this.core.start(selector);
             let endPerformanceTime = performance.now();
-            Ecsgroup.performance.blank = endPerformanceTime - startPerformanceTime + 'ms';
+            Ecsgroup.performance.initNavFilter = endPerformanceTime - startPerformanceTime + 'ms';
         }
     },
     core: {

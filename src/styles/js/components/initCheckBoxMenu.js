@@ -4,7 +4,7 @@
 */
 
 const checkBoxEcs = {
-    init: function() {
+    init: function(callback) {
         let startPerformanceTime = performance.now();
         this.core.start(callback);
         let endPerformanceTime = performance.now();
@@ -47,7 +47,7 @@ const checkBoxEcs = {
             $('.selected-items .filter-clean').on('click', function (e) {
                 let $clean = $(this);
                 $clean.siblings().each(function () {
-                    var $link = $(this).data('id');
+                    let $link = $(this).data('id');
                     //$link && $link.removeClass( 'active' );
                 });
                 $clean.parent().fadeOut(function () {
@@ -64,7 +64,7 @@ const checkBoxEcs = {
 
             Ecsgroup.$body.on('click', '.selected-item i', function (e) {
                 $(e.currentTarget).parent().fadeOut(function () {
-                    var $this = $(this),
+                    let $this = $(this),
                         $link = $this.data('id');
                     $('#' + $link).prop('checked', false);
                     $this.remove();

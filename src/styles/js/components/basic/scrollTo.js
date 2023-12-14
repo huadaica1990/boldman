@@ -17,7 +17,7 @@ const scrollToEcs = {
                     return;
                 }
                 let offset = $target.offset().top;
-                //var $wpToolbar = $('#wp-toolbar');
+                //let $wpToolbar = $('#wp-toolbar');
                 //window.innerWidth > 600 && $wpToolbar.length && (offset -= $wpToolbar.parent().outerHeight());
                 $('.sticky-content.fix-top.fixed').each(function () {
                     offset -= this.offsetHeight;

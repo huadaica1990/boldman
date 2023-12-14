@@ -35,7 +35,7 @@ timerId = false,
 timerInterval = 200,
 timerClock = function () {
     if (isPaused)  return;
-    for (var i = 0; i < timers.length; ++i) {
+    for (let i = 0; i < timers.length; ++i) {
         (timers[i] -= timerInterval) <= 0 && this.close(i--);
     }
 };
@@ -59,13 +59,13 @@ const minipopupEcs = {
             timerClock = timerClock.bind(this);
         },
         open: function (options, callback) {
-            var self = this,
+            let self = this,
                 settings = $.extend(true, {}, minipopupOption, options),
                 $box;
             $box = $(Ecsgroup.parseTemplate(settings.template, settings));
             self.space = settings.space;
             // open
-            var $img = $box.appendTo($area).css('top', - offset).find('img');
+            let $img = $box.appendTo($area).css('top', - offset).find('img');
             offset += $box[0].offsetHeight + self.space;
             $box.addClass('show');
             if ($box.offset().top - window.pageYOffset < 0) {
@@ -91,12 +91,12 @@ const minipopupEcs = {
             // $img.length && $img.on('load', function () {});
         },
         close: function (indexToClose) {
-            var self = this,
+            let self = this,
                 index = ('undefined' === typeof indexToClose) ? 0 : indexToClose,
                 $box = boxes.splice(index, 1)[0];
             // remove timer
             timers.splice(index, 1)[0];
-            var height = $box[0].offsetHeight;
+            let height = $box[0].offsetHeight;
             // remove box
             offset -= height + self.space;
             $box.removeClass('show');

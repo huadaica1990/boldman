@@ -95,7 +95,7 @@ const popupEcs = {
                                     /*Fancybox.getInstance().close();*/
                                     $(document).off('keydown', keydownHandler);
                                 });
-                                var keydownHandler = function (e) {
+                                let keydownHandler = function (e) {
                                     if (e.keyCode == 13) {
                                         $(slide.$content).find('.popup-confirm').click();
                                         return false;
@@ -196,7 +196,7 @@ const popupEcs = {
                             },
                             shouldClose: () => {
                                 if ($('#sign-up').hasClass('active') == true) {
-                                    var message = core3;
+                                    let message = core3;
                                     if (!confirm(message)) return false;
                                 }
                             }
@@ -223,7 +223,7 @@ const popupEcs = {
                             },
                             shouldClose: () => {
                                 if ($('#sign-up').hasClass('active') == true) {
-                                    var message = core3;
+                                    let message = core3;
                                     if (!confirm(message)) return false;
                                 }
                             },
@@ -234,7 +234,7 @@ const popupEcs = {
         modal: function() {
             Ecsgroup.$body.on('click', '[data-modal]', function (e) {
                 e.preventDefault();
-                var modalId = $(e.currentTarget).data('target') != null ? $(e.currentTarget).data('target') : $(e.currentTarget).attr('href'),
+                let modalId = $(e.currentTarget).data('target') != null ? $(e.currentTarget).data('target') : $(e.currentTarget).attr('href'),
                     title = $(e.currentTarget).data('title');
                 if (title != null) $(modalId).find('input[name="Title"]').val(title);
                 if (document.documentElement.clientWidth < 576 && $(modalId).find('form') != null) {

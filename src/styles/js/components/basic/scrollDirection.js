@@ -32,7 +32,7 @@ const scrollDirectionEcs = {
                 }
             });
             function autoHideHeader() {
-                var currentTop = Ecsgroup.$window.scrollTop();
+                let currentTop = Ecsgroup.$window.scrollTop();
                 checkSimpleNavigation(currentTop)
                 previousTop = currentTop;
                 scrolling = false;

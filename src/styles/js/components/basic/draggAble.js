@@ -20,11 +20,11 @@ const draggAbillyEcs = {
         start: function(selector) {
             let autoLockListener = draggAbillyEcs.core.autoLockListener;
             Ecsgroup.$(selector).each(function () {
-                var $this = $(this),
+                let $this = $(this),
                     settings = $.extend(true, {}, draggAbillyOptions, Ecsgroup.parseOptions($this.attr('data-draggabilly-options'))),
                     autoLock = settings.autoLock;
-                var $draggable = $this.draggabilly(settings);
-                var dragXDefault = $draggable.data('draggabilly').startPosition.x;
+                let $draggable = $this.draggabilly(settings);
+                let dragXDefault = $draggable.data('draggabilly').startPosition.x;
                 if (settings.autoLock === true) autoLockListener($draggable, dragXDefault);
                 if (selector == '.draggable-pc' && document.documentElement.clientWidth < 1199) $draggable.draggabilly('destroy');
                 if (selector == '.draggable-mobile' && document.documentElement.clientWidth > 1199) $draggable.draggabilly('destroy');
@@ -32,7 +32,7 @@ const draggAbillyEcs = {
         },
         autoLockListener: function(target, dragXDefault) {
             target.on('dragEnd', function () {
-                var draggie = target.data('draggabilly'),
+                let draggie = target.data('draggabilly'),
                     withContainer = $('body').width() / 2;
                 if (draggie.position.x > withContainer) {
                     target.draggabilly('setPosition', 0, draggie.position.y);

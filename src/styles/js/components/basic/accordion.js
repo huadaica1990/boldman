@@ -21,7 +21,7 @@ const accordionEcs = {
             let toggleSlide = accordionEcs.core.toggleSlide;
             Ecsgroup.$body.on('click', selector, function (e) {
                 e.preventDefault();
-                var $this = $(this),
+                let $this = $(this),
                     eleBody = $this.closest(accordionOption.classItem).find($this.attr('href')),
                     eleParent = $this.closest(accordionOption.classParent);
                 if (0 === eleParent.find(".collapsing").length && 0 === eleParent.find(".expanding").length) {

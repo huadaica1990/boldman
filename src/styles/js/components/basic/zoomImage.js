@@ -42,7 +42,7 @@ const zoomImageEcs = {
         zoomImageOnResize: function () {
             zoomImageEcs.zoomImageObjects.forEach(function ($img) {
                 $img.each(function () {
-                    var zoom = $(this).data('zoom');
+                    let zoom = $(this).data('zoom');
                     zoom && zoom.refresh();
                 })
             });
