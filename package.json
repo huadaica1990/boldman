@@ -61,6 +61,7 @@
     "magnific-popup": "^1.1.0",
     "moment": "^2.29.4",
     "multiple-select": "^1.5.2",
+    "nice-select2": "^2.1.0",
     "page-scroll-to-id": "^1.6.8",
     "plyr": "^3.7.3",
     "push.js": "^1.0.12",

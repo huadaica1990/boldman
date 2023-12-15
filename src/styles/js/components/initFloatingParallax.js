@@ -7,7 +7,7 @@
  */
 
 const floatingParallaxEcs = {
-    init: function() {
+    init: function(selector) {
         if ($.fn.parallax) {
             let startPerformanceTime = performance.now();
             this.core.start(selector);

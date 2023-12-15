@@ -139,6 +139,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/basic/srcollTabActive.js',
                         '<%= dirs.js %>/components/basic/activeMenu.js',
                         '<%= dirs.js %>/components/basic/fakeLoadMore.js',
+                        '<%= dirs.js %>/components/basic/niceSelect2.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
@@ -182,6 +183,7 @@ module.exports = grunt => {
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
                         'node_modules/swiper/swiper-bundle.js',
                         'node_modules/flatpickr/dist/flatpickr.min.js',
+                        'node_modules/nice-select2/dist/js/nice-select2.js',
                     ],
                     '<%= dirs.dist %>/release/layout.min.js': [
                         '<%= dirs.js %>/layout.js',
@@ -264,6 +266,7 @@ module.exports = grunt => {
                         '<%= dirs.plugin %>/fancybox/fancybox.min.css',
                         'node_modules/swiper/swiper-bundle.min.css',
                         'node_modules/flatpickr/dist/flatpickr.min.css',
+                        'node_modules/nice-select2/dist/css/nice-select2.css',
                     ],
                     // Documentation
                     '<%= dirs.dist %>/release/document.min.css': [

@@ -21,7 +21,7 @@ const tippyEcs = {
     core: {
         start: function (selector) {
             Ecsgroup.$(selector).each(function () {
-                var $this = $(this),
+                let $this = $(this),
                     settings = $.extend(true, {}, tippyOptions, Ecsgroup.parseOptions($this.attr('data-tippy-options')));
                 tippy(this, settings);
             });

@@ -17,7 +17,7 @@ const menuEcs = {
     core: {
         collapsibleWidget: function() {
             $('.collapsible .toggle-btn').on('click', function (e) {
-                var $this = $(this).parent(),
+                let $this = $(this).parent(),
                     $body = $this.siblings('.collapsible-body');
                 $this.hasClass('collapsed') || $body.css('display', 'block');
                 if (Ecsgroup.isMobile) $body.stop().toggle();
@@ -99,11 +99,11 @@ const menuEcs = {
                 });
             };
             calcPos();
-            var $menu = $('#nav-sidebar');
+            let $menu = $('#nav-sidebar');
             if ($menu.length) {
-                var $box = $menu.find('.dropdown-box');
+                let $box = $menu.find('.dropdown-box');
                 if ($box.length) {
-                    var top = $('.main').offset().top + $box[0].offsetHeight;
+                    let top = $('.main').offset().top + $box[0].offsetHeight;
                     if (window.pageYOffset <= top || window.innerWidth < 992) {
                         $menu.removeClass('show');
                     }
@@ -131,7 +131,7 @@ const menuEcs = {
                     })
                 }
                 // if ($menu.hasClass('with-sidebar')) {
-                //     var sidebar = Ecsgroup.byClass('sidebar');
+                //     let sidebar = Ecsgroup.byClass('sidebar');
                 //     if (sidebar.length) {
                 //         $menu.find('.dropdown-box').css('width', sidebar[0].offsetWidth - 20);
 
@@ -149,7 +149,7 @@ const menuEcs = {
         filterMenu: function() {
             $('.search-ul li').each(function () {
                 if (this.lastElementChild && this.lastElementChild.tagName === 'UL') {
-                    var i = document.createElement('i');
+                    let i = document.createElement('i');
                     i.className = "la la-angle-down";
                     this.classList.add('with-ul');
                     this.firstElementChild.appendChild(i);

@@ -3,8 +3,8 @@
  * @param {String} selector
 */
 
-const blankEcs = {
-    init: function() {
+const ezParallaxEcs = {
+    init: function(selector, parallaxJson) {
         let startPerformanceTime = performance.now();
         this.core.start(selector, parallaxJson);
         let endPerformanceTime = performance.now();

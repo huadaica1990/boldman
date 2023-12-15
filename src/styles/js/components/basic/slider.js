@@ -335,7 +335,7 @@ Ecsgroup.slider = function (selector, options = {}, createDirectly = false) {
 }
 Ecsgroup.slider.pgToggle = function () {
     $(".swiper-container:not([class*='pg-']) .swiper-pagination").each(function () {
-        var $this = $(this);
+        let $this = $(this);
         if ($this.find('*').length <= 1)
             $this.css('display', 'none');
         else

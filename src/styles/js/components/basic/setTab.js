@@ -20,7 +20,7 @@ const setTabEcs = {
             let $this = $(this);
             e.preventDefault();
             if (!$this.hasClass("active")) {
-                var $panel = $($this.attr('href'));
+                let $panel = $($this.attr('href'));
                 $panel.siblings('.active').removeClass('in active');
                 $panel.addClass('active in');
                 $this.parent().parent().find('.active').removeClass('active');
@@ -28,7 +28,7 @@ const setTabEcs = {
             }
         },
         linkToTab: function(e) {
-            var selector = $(e.currentTarget).attr('href'),
+            let selector = $(e.currentTarget).attr('href'),
             $tab = $(selector),
             $nav = $tab.parent().siblings('.nav');
             e.preventDefault();

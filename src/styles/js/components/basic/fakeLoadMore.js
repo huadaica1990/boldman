@@ -23,7 +23,7 @@ const fakeLoadMoreEcs = {
                     text = $(this).data('text'),
                     href = $(this).data('href');
                 itemChild.each((index) => {
-                    var ele = itemChild[index];
+                    let ele = itemChild[index];
                     if(index >= pagesize) $(ele).hide();
                 });
                 if (itemTotal > pagesize) {

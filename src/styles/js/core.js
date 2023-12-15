@@ -783,7 +783,7 @@ window.Ecsgroup = {};
         Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
         Ecsgroup.appearAnimate('.appear-animate');                              // Run appear animation
         Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
-        Ecsgroup.initDropdownAction;                                          // Initialize Dropdown
+        Ecsgroup.initDropdownAction;                                            // Initialize Dropdown
         Ecsgroup.miniPopup.init();                                              // Initialize minipopup
         Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
         Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                   // Initialize Srcoll Tab Active
@@ -791,6 +791,7 @@ window.Ecsgroup = {};
         Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
         Ecsgroup.tippy('.tooltips');                                            // Initialize Tool tips
         Ecsgroup.flatpickr('.flatpickr');                                       // Initialize Flatpickr
+        Ecsgroup.niceSelect2('.nice-select');                                       // Initialize Flatpickr
         // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
