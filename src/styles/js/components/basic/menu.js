@@ -7,7 +7,7 @@ const menuEcs = {
         this.core.collapsibleWidget();
         this.core.menu();
         this.core.mobileMenu();
-        this.core.mobileSearch();
+        if (document.getElementById("#nav-mobile-search") != null) this.core.mobileSearch();
         this.core.categoryMenu();
         this.core.filterMenu();
         this.core.showChat();
