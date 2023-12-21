@@ -36,10 +36,8 @@ Ecsgroup.$body.on('click', '.btn-update', function () {
         getSearchFocus(input);
     }
 })
-var offset = $("#acc-order-scroll").find(".active").offset();
-if (offset != null) {
-    $('#acc-order-scroll').scrollLeft(offset.left - 20);
-}
+let offsetAcc = $("#acc-order-scroll").find(".active").offset();
+if (offsetAcc != null)  $('#acc-order-scroll').scrollLeft(offsetAcc.left - 20);
 
 Ecsgroup.$body.on('click', '.btn-remove-wishlist', function () {
     var productId = $(this).data('id');
@@ -54,16 +52,10 @@ function RemoveWishItem(productId) {
         success: function (result) {
             Ecsgroup.hideLoading();
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.msg);
             }
             else {
-                Ecsgroup.Minipopup.open({
+                Ecsgroup.miniPopup.core.open({
                     productClass: ' success minipopup-center',
                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                     template:
@@ -79,13 +71,7 @@ function RemoveWishItem(productId) {
         },
         error: function (result) {
             Ecsgroup.hideLoading();
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.msg);
         }
     });
 }

@@ -51,7 +51,7 @@ input[type=search]::-webkit-search-results-decoration {
     border-radius: 0;
     box-shadow: none;
     outline: 0;
-
+    caret-color:$primary-color;
     &[required="required"] {
         color: $dark-color;
 
@@ -170,7 +170,26 @@ input {
         top: 50%;
     }
 }
-
+.select-wrap {
+    height: 4.7rem;
+    background: #fff;
+    position: relative;
+    select {
+        min-height: initial;
+        height: 100%;
+        appearance: none;
+    }
+    &:after {
+        @include e-cen($type: "top");
+        font-family: "customize";
+        color: #000;
+        content: '\e805';
+        pointer-events: none;
+        position: absolute;
+        right: 1rem;
+        font-size: 1.8rem;
+    }
+}
 .select-box option {
     font-size: 1.2rem;
 }
@@ -306,10 +325,6 @@ input {
         &::after {
             @include transform($args: translateY(-50%));
             @include animation($customize: true) {
-                -ms-transition: color .3s, background-color .3s, content .3s, border .3s;
-                -webkit-transition: color .3s, background-color .3s, content .3s, border .3s;
-                -moz-transition: color .3s, background-color .3s, content .3s, border .3s;
-                -o-transition: color .3s, background-color .3s, content .3s, border .3s;
                 transition: color .3s, background-color .3s, content .3s, border .3s;
             };
             @include border-radius($val: 2px);
@@ -339,7 +354,7 @@ input {
             content: '\e809';
             background-color: $primary-color;
             color: $white-color;
-            border: 2px solid $primary-color;
+            border: 1px solid $primary-color;
             padding-left: 3px;
         }
         &.color-dark {
@@ -537,8 +552,9 @@ input {
 
     label.required {
         &:after {
-            content: "*";
+            content: attr(data-text);
             color: #cc0001;
+            margin-left: .5rem;
         }
     }
 

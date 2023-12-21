@@ -10,6 +10,7 @@
             // max-width of '.container-fluid'
             _container-fluid-width: $container-fluid-width,
             // grid spaces
+            _gutter-xl: 20px,
             _gutter-lg: 15px,
             _gutter-md: 10px,
             _gutter-sm: 5px,
@@ -287,6 +288,7 @@ table {
 //         }
 //     }
 // }
+
 .scrollnotable {
     overflow: hidden !important;
 }
@@ -307,11 +309,18 @@ table {
         // -webkit-transition: background-color 0.3s;
         // transition: background-color 0.3s;
     }
-   
+    &:hover::-webkit-scrollbar-thumb {
+    //.sidebar-content:hover::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.25);
+    }
 }
-
-.scrollable-light::-webkit-scrollbar-thumb {
-    background: rgba($white-color,0.2);
+.scrollable-light {
+    &::-webkit-scrollbar-thumb {
+        background: rgba($white-color,0.2);
+    }
+    &:hover::-webkit-scrollbar-thumb {
+        background: rgba($white-color,0.2);
+    }
 }
 
 .scrollable:hover::-webkit-scrollbar-thumb {
@@ -470,6 +479,13 @@ table {
         @include flex-option($type: flex-direction, $value:"column");
         height: 100%;
         width: 100%;
+    }
+    .loader-precent {
+        @include e-cen($type: "all", $option: translate(-50%, -50%));
+        position: absolute;
+        &:empty {
+            display: none;
+        }
     }
     .loader {
         @include use-keyframes($args: preloadpage 1s linear infinite);

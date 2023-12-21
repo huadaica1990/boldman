@@ -31,11 +31,10 @@
             display: block;
             width: 100%;
             height: auto;
+            img {
+                width: 100%;
+            }
             @include animation($customize: true) {
-                -ms-transition: opacity .4s;
-                -webkit-transition: opacity .4s;
-                -moz-transition: opacity .4s;
-                -o-transition: opacity .4s;
                 transition: opacity .4s;
             };
             &:nth-of-type(2) {
@@ -46,7 +45,6 @@
                     right: 0;
                     bottom: 0;
                     top: 0;
-                    -o-object-fit: cover;
                     object-fit: cover;
                 }
             }

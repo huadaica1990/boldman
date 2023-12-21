@@ -125,14 +125,18 @@
                         }
                     }
                 }
-                > .nav.right {
-                    left:auto;
-                    right:0;
-                    .level3  {
-                        @include transform($args: translateX(#{get(navPc, _translate)}));
-                        left:-100%;
-                    }
-                }
+                // > .nav.right {
+                //     left:auto;
+                //     right:0;
+                //     .level2  {
+                //         @include transform($args: translateX(#{get(navPc, _translate)}));
+                //         left:-100%;
+                //     }
+                //     .level3  {
+                //         @include transform($args: translateX(#{get(navPc, _translate)}));
+                //         left:-100%;
+                //     }
+                // }
                 .has-submenu {
                     > .has-submenu-title {
                         > a {
@@ -163,6 +167,10 @@
                             @include transform($args: translateX(0rem));
                         }
                     }
+                }
+                .submenu.right {
+                    @include transform($args: translateX(#{get(navPc, _translate)}));
+                    left:-100%;
                 }
             }
             &.mega-menu {

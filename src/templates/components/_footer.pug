@@ -87,7 +87,25 @@ if popup
                 input#hide-newsletter-popup.custom-checkbox(type='checkbox' name='hide-newsletter-popup')
                 label.font-size-sm(for='hide-newsletter-popup') Không hiện lại popup
 
+//- Allow Cookie
+if cookie
+    #cookie-popup.fancybox-fade.fancybox-hide.br-sm
+        .cookie-body.mb-4
+            .cookie-title.font-weight-bold.h4.mb-1 🍪 Cookie Notice
+            .cookie-content.title-des
+                p This website use cookies to help you have a superior and more relevant browsing experience on the website. <a>Read more...</a> 
+        .cookie-footer.d-flex.display.justify-content-end
+            button.btn.btn-primary.btn-outline.btn-sm.mr-2 Decline
+            button#btn-acceptcookie.btn.btn-primary.btn-sm Accept
+
 //- Modal
+button.btn-svg-close
+    svg.svg-icon-close(role='img' viewBox='0 0 110 110')
+        g(stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='square')
+            path(d='M4.79541854,4.29541854 L104.945498,104.445498 L4.79541854,4.29541854 Z' stroke='currentColor' stroke-width='12px')
+            path(d="M4.79541854,104.704581 L104.945498,4.55450209 L4.79541854,104.704581 Z" stroke="currentColor" stroke-width='12px')
+    svg.svg-icon-arrow(aria-hidden='true' role='img' viewBox='0 0 16 16')
+        polygon(fill='currentColor' points='8 0 6.6 1.4 12.2 7 0 7 0 9 12.2 9 6.6 14.6 8 16 16 8')
 #contact-modal.modal.modal-form.modal-popup.fancybox-fade.fancybox-hide
     .modal-body
         .title.h4 Hãy liên hệ với chúng tôi đễ được hỗ trợ nhanh chóng
@@ -161,41 +179,9 @@ a#scroll-top.scroll-top.demo-icon.cus-up-open-big(href='#top' title='Top' role='
     </svg>
 
 //- Error
-#error-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
-    .modal-body
-        .alert.alert-error.alert-bg.alert-button.alert-block.text-right
-            button.btn.btn-link.btn-close.popup-close(aria-label='button')
-                i.close-icon
-            .alert-title.text-left
-                i.ecs-icon-exclamation-triangle
-                | Thông báo lỗi
-            p.text-left Hệ thống gặp sự cố kỹ thuật vui lòng thử lại sau...
-            a.btn.btn-sm.btn-primary.btn-rounded.popup-close(href='javascript:') Đóng
 
-#success-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
+#result-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
     .modal-body
-        .alert.alert-success.alert-bg.alert-button.alert-block.text-right
-            button.btn.btn-link.btn-close.popup-close(aria-label='button')
-                i.close-icon
-            .alert-title.text-left
-                i.demo-icon.cus-ok
-                | Thành công!!!
-            p.text-left Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất.
-            a.popup-close(href='javascript:') Đóng
-            span.text-grey.mr-1.ml-1 hoặc 
-            a.text-lowercase.text-underline.text-primary(href='/') Quay về trang chủ
-
-#require-login-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
-    .modal-body
-        .alert.alert-error.alert-bg.alert-button.alert-block.text-right
-            button.btn.btn-link.btn-close.popup-close(aria-label='button')
-                i.close-icon
-            .alert-title.text-left
-                i.ecs-icon-exclamation-triangle
-                | Thông báo lỗi
-            p.text-left Vui lòng đăng nhập/đăng ký để sử dụng chức năng này.
-            a.btn.btn-sm.btn-default.btn-rounded.popup-close(href='javascript:') Đóng
-            a.btn.btn-sm.btn-primary.btn-rounded(href='') Đăng nhập
 
 #confirm-modal.modal.modal-error.modal-popup.fancybox-fade.fancybox-hide
     .modal-body

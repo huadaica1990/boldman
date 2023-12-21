@@ -17,6 +17,9 @@
 - const linkJs = '/styles/plugins/';
 - const menuStyle = 'default'; //- navsidebar, landing
 - const popup = true;
+- const cookie = true;
+
+include _fashion.pug
 
 - 
     const logo = [
@@ -248,7 +251,59 @@
             src: dist+'/partners/partner15.png',
         }
     ]
-    
+
+-
+    const galleries = [
+        {
+            id: 1,
+            src: dist+'/galleries/gallery1.jpg',
+        },
+        {
+            id: 2,
+            src: dist+'/galleries/gallery2.jpg',
+        },
+        {
+            id: 3,
+            src: dist+'/galleries/gallery3.jpg',
+        },
+        {
+            id: 4,
+            src: dist+'/galleries/gallery4.jpg',
+        },
+        {
+            id: 5,
+            src: dist+'/galleries/gallery5.jpg',
+        },
+        {
+            id: 6,
+            src: dist+'/galleries/gallery6.jpg',
+        },
+        {
+            id: 7,
+            src: dist+'/galleries/gallery7.jpg',
+        },
+        {
+            id: 8,
+            src: dist+'/galleries/gallery8.jpg',
+        },
+        {
+            id: 9,
+            src: dist+'/galleries/gallery9.jpg',
+        },
+        {
+            id: 10,
+            src: dist+'/galleries/gallery10.jpg',
+        },
+        {
+            id: 11,
+            src: dist+'/galleries/gallery11.jpg',
+        },
+        {
+            id: 12,
+            src: dist+'/galleries/gallery12.jpg',
+        }
+    ]
+
 -
     const testimonials = [
         {
@@ -457,420 +512,13 @@
             href: ''
         }
     ];
--
-    const products = [
-        {
-            id: 1,
-            name: 'Balo khoá scrunchies',
-            href: '/productdetail.html',
-            sku: 'BL120',
-            brand: null,
-            quantity: 10,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Balo kiểu dáng đơn giản, khóa scrunchies nổi bật. Bên trong có một ngăn lớn rộng, đựng được nhiều vận dụng cần thiết và phối khóa kéo tiện dụng. Chất liệu da tổng hợp cao cấp bền đẹp, dễ vệ sinh, sử dụng nhiều dịp: đi làm, dạo phố</p>',
-            listimg: [dist+'/products/product-md1.jpg'],
-            price: '839.000₫',
-            promoprice: '539.000₫',
-            percent: '10%',
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 5,
-            count: 19834,
-            label: [
-                {
-                    id: 1,
-                    name: 'new',
-                    color: '#336699'
-                },
-                {
-                    id: 2,
-                    name: 'sale',
-                    color: '#cc0001'
-                }
-            ],
-            ver: null
-        },
-        {
-            id: 2,
-            name: 'Túi xách trung the maze',
-            href: '/productdetail.html',
-            sku: 'TXT244',
-            brand: null,
-            quantity: 10,
-            cat: 'Túi cỡ trung',
-            des: '<p>Túi xách trung kiểu dáng sang trọng. Nắp phối viền màu và gắn thêm charm mang lại sự nổi bật và bắt mắt. Chất liệu da tổng hợp cao cấp, phù hợp với đi làm, đi chơi và đi dự tiệc.</p>',
-            listimg: [dist+'/products/product-md2.jpg'],
-            price: '839.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 4,
-            count: 1273,
-            label: null,
-            ver: null
-        },
-        {
-            id: 3,
-            name: 'Túi Xách Nhỏ Phối Màu Color-Block',
-            href: '/productdetail.html',
-            sku: 'TXN458',
-            brand: null,
-            quantity: 0,
-            cat: 'Túi cỡ trung',
-            des: '<p>Túi xách nhỏ phối màu color block. Thiết kế với một ngăn lớn đựng đồ cùng vẻ ngoài sang trọng, phù hợp cho môi trường công sở đi lam, đi chơi và tham dự tiệc. Chất liệu da tổng hợp cao cấp, phối màu tinh tế.</p>',
-            listimg: [dist+'/products/product-md3.jpg'],
-            price: '741.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 3,
-            count: 140,
-            label: null,
-            ver: null
-        },
-        {
-            id: 4,
-            name: 'Túi Xách Nhỏ Multi-Bag Nắp Tuck-In',
-            href: '/productdetail.html',
-            sku: 'TXN460',
-            brand: null,
-            quantity: 5,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi xách theo xu hướng Double Bag với nắp khóa cách điệu lạ mắt. Chiếc túi với phom dáng thể thao năng động. Phần dây đeo đính kèm túi mini có thể tháo rời. Túi có 3 sự lựa chọn về màu sắc, dễ sử dụng và phối đồ. Bên trong gồm 1 ngăn lớn có khóa kéo và 2 ngăn nhỏ. Túi kèm dây đeo da có thể điều chỉnh độ dài. Chất liệu da tổng hợp cao cấp, phù hợp mang nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
-            listimg: [dist+'/products/product-md4.jpg',dist+'/products/product-md4_1.jpg'],
-            price: '682.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 2,
-            count: 34,
-            label: null,
-            ver: [
-                {
-                    id: 1,
-                    listimg: [dist+'/products/product-md4.jpg'],
-                    src: dist+'/products/product-md4_va1.jpg',
-                    isActive: true,
-                    isShow: true
-                },
-                {
-                    id: 2,
-                    listimg: [dist+'/products/product-md4_1.jpg'],
-                    src: dist+'/products/product-md4_va2.jpg',
-                    isActive: false,
-                    isShow: false
-                }
-            ]
-        },
-        {
-            id: 5,
-            name: 'Túi Xách Nhỏ Nhỏ Nắp Tuck-In',
-            href: '/productdetail.html',
-            sku: 'TXN461',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi xách nhỏ nắp cách điệu lạ mắt. Chiếc túi độc đáo với kiểu dáng mới dễ sử dụng. Nắp túi được cách điệu vô cùng thú vị. Túi có 3 sự lựa chọn về màu sắc, dễ phối đồ. Bên trong gồm 1 ngăn lớn và 1 ngăn có khóa kéo. Túi kèm dây đeo da có thể điều chỉnh độ dài. Chất liệu da tổng hợp cao cấp, phù hợp mang nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
-            listimg: [dist+'/products/product-md5.jpg',dist+'/products/product-md5_1.jpg'],
-            price: '643.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 1,
-            count: 2,
-            label: null,
-            ver: [
-                {
-                    id: 1,
-                    listimg: [dist+'/products/product-md5.jpg'],
-                    src: dist+'/products/product-md5_va1.jpg',
-                    isActive: true,
-                    isShow: true
-                },
-                {
-                    id: 2,
-                    listimg: [dist+'/products/product-md5_1.jpg'],
-                    src: dist+'/products/product-md5_va2.jpg',
-                    isActive: false,
-                    isShow: true
-                }
-            ]
-        },
-        {
-            id: 6,
-            name: 'Túi Xách Nhỏ Tay Cầm Cách Điệu',
-            href: '/productdetail.html',
-            sku: 'TXN384',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi hộp hình học phối khóa vân đá lạ mắt, thanh lịch. Thiết kế tối giản nên rất dễ phối đồ. Bên trong gồm 01 ngăn lớn rộng rãi kèm khóa kéo tiện dụng. Đi kèm với quai bản vừa duyên dáng, hiện đại để đeo chéo. Chất liệu da tổng hợp cao cấp. Túi phù hợp để đi làm, dạo phố hay đi tiệc</p>',
-            listimg: [dist+'/products/product-md6.jpg'],
-            price: '741.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 1,
-            count: 2,
-            label: null,
-            ver: null
-        },
-        {
-            id: 7,
-            name: 'Túi Xách Trung Gắn Khóa Trang Trí',
-            href: '/productdetail.html',
-            sku: 'TXT231',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi xách trung khóa uốn lượn độc quyền, thời thượng. Bề mặt tối giản phối màu đậm nhạt. Điểm nhấn khóa tròn dạng xoắn lạ mắt. Bên trong gồm 01 ngăn lớn có khóa kéo. Tặng kèm dây đeo dài. Chất liệu da tổng hợp cao cấp, phù hợp mang nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
-            listimg: [dist+'/products/product-md7.jpg'],
-            price: '741.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 0,
-            count: 0,
-            label: null,
-            ver: null
-        },
-        {
-            id: 8,
-            name: 'Túi Xách Trung Tote Trung Nắp Cách Điệu',
-            href: '/productdetail.html',
-            sku: 'TXT235',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ lớn',
-            des: '<p>Túi xách cỡ trung nắp cách điệu ấn tượng. Với bề ngoài đơn giản về màu sắc toát lên vẻ thanh lịch, túi xách còn có 3 sự lựa chọn về màu sắc phổ biến, dễ sử dụng. Điểm nhấn nằm ở phần tay cầm có nắp cách điệu ấn tượng, lạ mắt. Bên trong gồm 1 ngăn lớn có khóa kéo. Tặng kèm dây da có thể điều chỉnh độ dài. Chất liệu da tổng hợp cao cấp, phù hợp nhiều dịp: đi làm, dạo phố, dự tiệc</p>',
-            listimg: [dist+'/products/product-md8.jpg',dist+'/products/product-md8_1.jpg'],
-            price: '839.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 0,
-            count: 0,
-            label: null,
-            ver: null
-        },
-        {
-            id: 9,
-            name: 'Túi Xách Nhỏ Cắt Lazer Charm Trang Trí',
-            href: '/productdetail.html',
-            sku: 'TXN539',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi xách nhỏ nắp gập, họa tiết cắt lazer charm trang trí xinh xắn, nổi bật. Thiết kế túi kèm dây đeo tiện dụng, bên trong có một ngăn lớn cho bạn thoải mái mang theo đồ cần thiết. Có nhiều sự lựa chọn về màu sắc để nàng thoải mái phối đồ và tạo phong cách mới</p>',
-            listimg: [dist+'/products/product-md9.jpg'],
-            price: '682.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 0,
-            count: 0,
-            label: null,
-            ver: null
-        },
-        {
-            id: 10,
-            name: 'Túi Xách Nhỏ Khóa Marble',
-            href: '/productdetail.html',
-            sku: 'TXN547',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi xách nhỏ nắp gập khóa marble nổi bật, sang trọng. Thiết kế túi kèm dây đeo tiện dụng, bên trong có 01 ngăn lớn cho bạn thoải mái mang theo đồ cần thiết. Có nhiều sự lựa chọn về màu sắc để nàng thoải mái phối đồ và tạo phong cách mới</p>',
-            listimg: [dist+'/products/product-md10.jpg',dist+'/products/product-md10_1.jpg'],
-            price: '741.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 0,
-            count: 0,
-            label: null,
-            ver: [
-                {
-                    id: 1,
-                    listimg: [dist+'/products/product-md10.jpg'],
-                    src: dist+'/products/product-md10_va1.jpg',
-                    isActive: true,
-                    isShow: true
-                },
-                {
-                    id: 2,
-                    listimg: [dist+'/products/product-md10_1.jpg'],
-                    src: dist+'/products/product-md10_va2.jpg',
-                    isActive: false,
-                    isShow: true
-                }
-            ]
-        },
-        {
-            id: 11,
-            name: 'Túi Xách Nhỏ Snapshot Cắt Lazer Charm Trang Trí',
-            href: '/productdetail.html',
-            sku: 'TXN538',
-            brand: null,
-            quantity: 98,
-            cat: 'Túi cỡ nhỏ',
-            des: '<p>Túi xách nhỏ dáng hộp xinh xắn, họa tiết cắt lazer và phối charm trang trí tạo điểm nhấn nổi bật. Thiết kế túi kèm dây đeo tiện dụng, có 02 ngăn lớn cho bạn thoải mái mang theo đồ cần thiết. Có nhiều sự lựa chọn về màu sắc để nàng thoải mái phối đồ và tạo phong cách mới</p>',
-            listimg: [dist+'/products/product-md11.jpg'],
-            price: '741.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 0,
-            count: 0,
-            label: null,
-            ver: null
-        },
-        {
-            id: 12,
-            name: 'Ví Phối Hiệu Ứng',
-            href: '/productdetail.html',
-            sku: 'VI138',
-            brand: null,
-            quantity: 98,
-            cat: 'Ví - Clutch',
-            des: '<p>Ví và túi xách nhỏ 2 trong 1 thời thượng. Điểm nhấn khóa kim loại sang trọng. Quai dài dạng xích mảnh đi kèm theo ví để nàng có thể phối hợp đeo chéo hay gập đôi đeo sát nách như một chiếc túi nhỏ. Ngoài ra, nàng có thể tháo quai, cầm tay như ví đi tiệc. Chất liệu da tổng hợp cao cấp. Ví dùng như ví tiền hàng ngày hoặc biến tấu thành túi dạo phố, clutch đi tiệc</p>',
-            listimg: [dist+'/products/product-md12.jpg',dist+'/products/product-md12_1.jpg'],
-            price: '486.000₫',
-            promoprice: null,
-            percent: null,
-            //- Y,M,D
-            //promodate: '2022, 1, 10',
-            promodate: null,
-            star: 0,
-            count: 0,
-            label: null,
-            ver: null
-        }
-    ];
--
-    const productDetail = {
-        id: 1,
-        name: 'Túi Dập Hiệu Ứng Princess Diamond',
-        sku: 'TXT226',
-        brand: null,
-        quantity: 10,
-        cat: 'Túi cỡ nhỏ',
-        des: '<p>Túi xách dáng hộp dập nổi hình kim cương thanh lịch, sang trọng. Bề mặt phối hai màu trẻ trung. Bên trong có 1 ngăn lớn kèm khóa kéo tiện dụng và ngăn nhỏ. Tặng kèm quai đeo dài. Chất liệu da tổng hợp cao cấp, phù hợp với dịp đi làm, dạo phố hay đi tiệc</p>',
-        listimg: [dist+'/products/product1.jpg',dist+'/products/product2.jpg',dist+'/products/product3.jpg',dist+'/products/product4.jpg',dist+'/products/product5.jpg',dist+'/products/product6.jpg'],
-        price: '780.000₫',
-        promoprice: '539.000₫',
-        percent: '-10%',
-        //- Y,M,D
-        //promodate: '2022, 1, 10',
-        promodate: null,
-        star: 4,
-        count: 1983,
-        label: [
-            {
-                id: 1,
-                name: 'new',
-                color: '#336699'
-            },
-            {
-                id: 2,
-                name: 'sale',
-                color: '#cc0001'
-            }
-        ],
-        ver: [
-            {
-                name: 'Color',
-                listatt: [
-                    {
-                        id: 1,
-                        name: 'Yellow',
-                        value: '#ffcc01',
-                        src: dist+'/products/product_detail_sku1.jpg',
-                        isActive: true,
-                        isShow: true
-                    },
-                    {
-                        id: 2,
-                        name: 'Brown',
-                        value: '#ca6d00',
-                        src: dist+'/products/product_detail_sku2.jpg',
-                        isActive: false,
-                        isShow: true
-                    },
-                    {
-                        id: 3,
-                        name: 'Blue',
-                        value: '#1c93cb',
-                        src: dist+'/products/product_detail_sku3.jpg',
-                        isActive: false,
-                        isShow: false
-                    }
-                ]
-            },
-            {
-                name: 'Size',
-                listatt: [
-                    {
-                        id: 1,
-                        name: 'Small',
-                        value: 'S',
-                        isActive: true,
-                        isShow: true
-                    },
-                    {
-                        id: 2,
-                        name: 'Medium',
-                        value: 'M',
-                        isActive: false,
-                        isShow: true
-                    },
-                    {
-                        id: 3,
-                        name: 'Large',
-                        value: 'L',
-                        isActive: false,
-                        isShow: true
-                    },
-                    {
-                        id: 4,
-                        name: 'Extra Large',
-                        value: 'XL',
-                        isActive: false,
-                        isShow: true
-                    }
-                ]
-            }
-        ]
-    };
-
 
 -
     const menu = [
         {
             id:1,
             name: 'Trang chủ',
-            href: '/',
+            href: '/home.html',
             isActive: false,
             isShow: true,
             type: null,
@@ -880,8 +528,8 @@
         {
             id:2,
             name: 'Sản phẩm',
-            href: '',
-            isActive: true,
+            href: '/productcat.html',
+            isActive: false,
             isShow: true,
             type: 'mega-menu',
             icon: 'ecs-icon-category',
@@ -889,7 +537,7 @@
                 {
                     id:1,
                     name: 'Shop pages',
-                    href: '',
+                    href: '/productdetai.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -898,8 +546,8 @@
                         {
                             id:1,
                             name: 'Banner With Sidebar',
-                            href: '',
-                            isActive: true,
+                            href: '/productdetai.html',
+                            isActive: false,
                             isShow: true,
                             type: null,
                             icon: null,
@@ -908,7 +556,7 @@
                         {
                             id:2,
                             name: 'Boxed Banner',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -918,7 +566,7 @@
                         {
                             id:3,
                             name: 'Full Width Banner',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -928,7 +576,7 @@
                         {
                             id:4,
                             name: 'Horizontal Filter',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -938,7 +586,7 @@
                         {
                             id:5,
                             name: 'Off Canvas Sidebar',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -948,7 +596,7 @@
                         {
                             id:6,
                             name: 'Infinite Ajax Scroll',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -958,7 +606,7 @@
                         {
                             id:7,
                             name: 'Right Sidebar',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -968,7 +616,7 @@
                         {
                             id:8,
                             name: 'Both Sidebar',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -980,7 +628,7 @@
                 {
                     id:2,
                     name: 'Shop layouts',
-                    href: '',
+                    href: '/productcat.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -989,7 +637,7 @@
                         {
                             id:1,
                             name: '3 Columns Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -999,7 +647,7 @@
                         {
                             id:2,
                             name: '4 Columns Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1009,7 +657,7 @@
                         {
                             id:3,
                             name: '5 Columns Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1019,7 +667,7 @@
                         {
                             id:4,
                             name: '6 Columns Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1029,7 +677,7 @@
                         {
                             id:5,
                             name: '7 Columns Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1039,7 +687,7 @@
                         {
                             id:6,
                             name: '8 Columns Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1049,7 +697,7 @@
                         {
                             id:7,
                             name: 'List Mode',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1059,7 +707,7 @@
                         {
                             id:8,
                             name: 'List Mode With Sidebar',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1071,7 +719,7 @@
                 {
                     id:3,
                     name: 'Product pages',
-                    href: '',
+                    href: '/productcat.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1080,7 +728,7 @@
                         {
                             id:1,
                             name: 'Variable Product',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1090,7 +738,7 @@
                         {
                             id:2,
                             name: 'Featured & Sale',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1100,7 +748,7 @@
                         {
                             id:3,
                             name: 'Data In Accordion',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1110,7 +758,7 @@
                         {
                             id:4,
                             name: 'Data In Sections',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1120,7 +768,7 @@
                         {
                             id:5,
                             name: 'Image Swatch',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1130,7 +778,7 @@
                         {
                             id:6,
                             name: 'Extended Info',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1140,7 +788,7 @@
                         {
                             id:7,
                             name: 'Without Sidebar',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1150,7 +798,7 @@
                         {
                             id:8,
                             name: '360° & Video',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1162,7 +810,7 @@
                 {
                     id:4,
                     name: 'Product layouts',
-                    href: '',
+                    href: '/productcat.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1171,7 +819,7 @@
                         {
                             id:1,
                             name: 'Default',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1181,7 +829,7 @@
                         {
                             id:2,
                             name: 'Vertical Thumbs',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1191,7 +839,7 @@
                         {
                             id:3,
                             name: 'Grid Images',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1201,7 +849,7 @@
                         {
                             id:4,
                             name: 'Masonry',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1211,7 +859,7 @@
                         {
                             id:5,
                             name: 'Gallery',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1221,7 +869,7 @@
                         {
                             id:6,
                             name: 'Sticky Info',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1231,7 +879,7 @@
                         {
                             id:7,
                             name: 'Sticky Thumbs',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1241,7 +889,7 @@
                         {
                             id:8,
                             name: 'Sticky Both',
-                            href: '',
+                            href: '/productdetai.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1255,8 +903,8 @@
         {
             id:3,
             name: 'Đối tác',
-            href: '',
-            isActive: true,
+            href: '/static.html',
+            isActive: false,
             isShow: true,
             type: null,
             icon: 'ecs-icon-bag',
@@ -1264,8 +912,8 @@
                 {
                     id:1,
                     name: 'Store Listing',
-                    href: '',
-                    isActive: true,
+                    href: '/static.html',
+                    isActive: false,
                     isShow: true,
                     type: null,
                     icon: null,
@@ -1273,7 +921,7 @@
                         {
                             id:1,
                             name: 'Store listing 1',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1283,7 +931,7 @@
                         {
                             id:2,
                             name: 'Store listing 2',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1293,7 +941,7 @@
                         {
                             id:3,
                             name: 'Store listing 3',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1303,7 +951,7 @@
                         {
                             id:4,
                             name: 'Store listing 4',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1316,7 +964,7 @@
                 {
                     id:2,
                     name: 'Vendor Store',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1325,7 +973,7 @@
                         {
                             id:1,
                             name: 'Vendor Store 1',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1335,7 +983,7 @@
                         {
                             id:2,
                             name: 'Vendor Store 2',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1345,7 +993,7 @@
                         {
                             id:3,
                             name: 'Vendor Store 3',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1355,7 +1003,7 @@
                         {
                             id:4,
                             name: 'Vendor Store 4',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1369,8 +1017,8 @@
         {
             id:4,
             name: 'Tin tức',
-            href: '',
-            isActive: true,
+            href: '/blogcat.html',
+            isActive: false,
             isShow: false,
             type: null,
             icon: 'ecs-icon-comment',
@@ -1378,7 +1026,7 @@
                 {
                     id:1,
                     name: 'Classic',
-                    href: '',
+                    href: '/blogdetail.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1388,7 +1036,7 @@
                 {
                     id:2,
                     name: 'Listing',
-                    href: '',
+                    href: '/blogdetail.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1398,7 +1046,7 @@
                 {
                     id:3,
                     name: 'Grid',
-                    href: '',
+                    href: '/blogdetail.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1407,7 +1055,7 @@
                         {
                             id:1,
                             name: 'Grid 2 columns',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1417,7 +1065,7 @@
                         {
                             id:2,
                             name: 'Grid 3 columns',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1427,7 +1075,7 @@
                         {
                             id:3,
                             name: 'Grid 4 columns',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1437,7 +1085,7 @@
                         {
                             id:4,
                             name: 'Grid sidebar',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1449,7 +1097,7 @@
                 {
                     id:4,
                     name: 'Masonry',
-                    href: '',
+                    href: '/blogdetail.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1458,7 +1106,7 @@
                         {
                             id:1,
                             name: 'Masonry 2 columns',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1468,7 +1116,7 @@
                         {
                             id:2,
                             name: 'Masonry 3 columns',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1478,7 +1126,7 @@
                         {
                             id:3,
                             name: 'Masonry 4 columns',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1488,7 +1136,7 @@
                         {
                             id:4,
                             name: 'Masonry sidebar',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1500,7 +1148,7 @@
                 {
                     id:5,
                     name: 'Mask',
-                    href: '',
+                    href: '/blogdetail.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1509,7 +1157,7 @@
                         {
                             id:1,
                             name: 'Blog mask grid',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1519,7 +1167,7 @@
                         {
                             id:2,
                             name: 'Blog mask masonry',
-                            href: '',
+                            href: '/blogdetail.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1531,7 +1179,7 @@
                 {
                     id:6,
                     name: 'Single Post',
-                    href: '',
+                    href: '/blogdetail.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1543,7 +1191,7 @@
         {
             id:5,
             name: 'Trang tĩnh',
-            href: '',
+            href: '/static.html',
             isActive: false,
             isShow: true,
             type: null,
@@ -1552,7 +1200,7 @@
                 {
                     id:1,
                     name: 'About Us',
-                    href: '',
+                    href: '/about.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1561,7 +1209,7 @@
                         {
                             id:1,
                             name: 'Coming Soon',
-                            href: '',
+                            href: '/commingsoon.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1570,7 +1218,7 @@
                                 {
                                     id:1,
                                     name: 'Compare',
-                                    href: '',
+                                    href: '/static.html',
                                     isActive: false,
                                     isShow: true,
                                     type: null,
@@ -1582,7 +1230,7 @@
                         {
                             id:2,
                             name: 'Wishlist',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1592,7 +1240,7 @@
                         {
                             id:3,
                             name: 'Cart',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1602,7 +1250,7 @@
                         {
                             id:4,
                             name: 'Checkout',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             isShow: true,
@@ -1613,7 +1261,7 @@
                         {
                             id:5,
                             name: 'My Account',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1625,7 +1273,7 @@
                 {
                     id:2,
                     name: 'Become A Vendor',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1635,7 +1283,7 @@
                 {
                     id:3,
                     name: 'Contact Us',
-                    href: '',
+                    href: '/contact.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1645,7 +1293,7 @@
                 {
                     id:4,
                     name: 'FAQs',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1655,7 +1303,7 @@
                 {
                     id:5,
                     name: 'Error 404',
-                    href: '',
+                    href: '/404.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1667,7 +1315,7 @@
         {
             id:6,
             name: 'Hỗ trợ',
-            href: '',
+            href: '/static.html',
             isActive: false,
             isShow: true,
             type: 'collapse-menu',
@@ -1676,7 +1324,7 @@
                 {
                     id:1,
                     name: 'Accordions',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1685,7 +1333,7 @@
                         {
                             id:1,
                             name: 'Products',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1694,7 +1342,7 @@
                                 {
                                     id:1,
                                     name: 'Titles',
-                                    href: '',
+                                    href: '/static.html',
                                     isActive: false,
                                     isShow: true,
                                     type: null,
@@ -1704,7 +1352,7 @@
                                 {
                                     id:2,
                                     name: 'Typography',
-                                    href: '',
+                                    href: '/static.html',
                                     isActive: false,
                                     isShow: true,
                                     type: null,
@@ -1714,7 +1362,7 @@
                                 {
                                     id:3,
                                     name: 'Vendors',
-                                    href: '',
+                                    href: '/static.html',
                                     isActive: false,
                                     isShow: true,
                                     type: null,
@@ -1726,7 +1374,7 @@
                         {
                             id:2,
                             name: 'Tabs',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1736,7 +1384,7 @@
                         {
                             id:3,
                             name: 'Testimonials',
-                            href: '',
+                            href: '/static.html',
                             isActive: false,
                             isShow: true,
                             type: null,
@@ -1748,7 +1396,7 @@
                 {
                     id:2,
                     name: 'Alert & Notification',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1758,7 +1406,7 @@
                 {
                     id:3,
                     name: 'Blog Posts',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1768,7 +1416,7 @@
                 {
                     id:4,
                     name: 'Buttons',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1778,7 +1426,7 @@
                 {
                     id:5,
                     name: 'Call to Action',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1788,7 +1436,7 @@
                 {
                     id:6,
                     name: 'Icons',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1798,7 +1446,7 @@
                 {
                     id:7,
                     name: 'Icon Boxes',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1808,7 +1456,7 @@
                 {
                     id:8,
                     name: 'Instagrams',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1818,7 +1466,7 @@
                 {
                     id:9,
                     name: 'Product Category',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1830,7 +1478,7 @@
         {
             id:7,
             name: 'Liên hệ',
-            href: '',
+            href: '/contact.html',
             isActive: false,
             isShow: true,
             type: null,
@@ -1851,7 +1499,7 @@
                 {
                     id:1,
                     name: 'About Us',
-                    href: '',
+                    href: '/about.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1860,7 +1508,7 @@
                 {
                     id:2,
                     name: 'Team Member',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1869,7 +1517,7 @@
                 {
                     id:3,
                     name: 'Career',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1878,7 +1526,7 @@
                 {
                     id:4,
                     name: 'Contact Us',
-                    href: '',
+                    href: '/contact.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1887,7 +1535,7 @@
                 {
                     id:5,
                     name: 'Affilate',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1896,7 +1544,7 @@
                 {
                     id:6,
                     name: 'Order History',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1915,7 +1563,7 @@
                 {
                     id:1,
                     name: 'Track My Order',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1924,7 +1572,7 @@
                 {
                     id:2,
                     name: 'View Cart',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1933,7 +1581,7 @@
                 {
                     id:3,
                     name: 'Sign In',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1942,7 +1590,7 @@
                 {
                     id:4,
                     name: 'Help',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1951,7 +1599,7 @@
                 {
                     id:5,
                     name: 'My Wishlist',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1960,7 +1608,7 @@
                 {
                     id:6,
                     name: 'Privacy Policy',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1979,7 +1627,7 @@
                 {
                     id:1,
                     name: 'Payment Methods',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1988,7 +1636,7 @@
                 {
                     id:2,
                     name: 'Money-back guarantee!',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -1997,7 +1645,7 @@
                 {
                     id:3,
                     name: 'Product Returns',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -2006,7 +1654,7 @@
                 {
                     id:4,
                     name: 'Support Center',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -2015,7 +1663,7 @@
                 {
                     id:5,
                     name: 'Shipping',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,
@@ -2024,7 +1672,7 @@
                 {
                     id:6,
                     name: 'Term and Conditions',
-                    href: '',
+                    href: '/static.html',
                     isActive: false,
                     isShow: true,
                     type: null,

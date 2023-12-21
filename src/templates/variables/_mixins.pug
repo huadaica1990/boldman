@@ -60,18 +60,18 @@ mixin share-social-list(social = socialList)
         {
             name: 'Việt Nam',
             isActive: true,
-            icon: '/wwwroot/templates/images/default/flag-vn.png',
+            icon: '/default/flag-vn.png',
         },
         {
             name: 'English',
             isActive: false,
-            icon: '/wwwroot/templates/images/default/flag-usa.png',
+            icon: '/default/flag-usa.png',
         },
     ];
 mixin lang-list
     each item in langList
         a(href='javascript:' title=item.name class=item.isActive ? 'active' : '' onclick='')
-            img.dropdown-image(src=item.icon alt=''  loading='lazy' width='14' height='9')
+            img.dropdown-image(src=dist+item.icon alt=''  loading='lazy' width='14' height='9')
             .
                 #{item.name}
             

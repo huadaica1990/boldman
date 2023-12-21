@@ -386,10 +386,10 @@
             }
 
             .widget-footer {
-                width: calc(100% + 30px);
-                margin-left: -15px;
-                padding-left: 15px;
-                padding-right: 15px;
+                width: calc(100% + 20px);
+                margin-left: -10px;
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
 
@@ -673,7 +673,7 @@
                 }
 
                 &:after {
-                    background-image: url(/img/check-ok.svg);
+                    background-image: url(/wwwroot/templates/website/images/default/check-ok.svg);
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-color: rgb(214, 250, 223);
@@ -849,6 +849,7 @@
             line-height: normal;
 
             .new-price {
+                font-size:inherit;
                 &:not(:last-child) {
                     margin-right: .5rem;
                 }
@@ -856,6 +857,9 @@
                 &.price-promoprice {
                     color: initial;
                 }
+            }
+            .old-price {
+                font-size: inherit;
             }
         }
 
@@ -1105,7 +1109,7 @@
                 width: 150px;
                 max-width: 150px;
             }
-
+            .custom-select,
             > *:last-child {
                 width: calc(100% - 150px);
             }
@@ -1131,7 +1135,7 @@
 
 /*#region Mobile responsive section styles*/
 
-@include mq("1024px", "max") {
+@include mq(xl, 'max') {
     .cart-page .widget .coupon-des-body,
     .cart-page .widget .coupon-dropdown:not(.show):hover .coupon-des-body {
         right: auto;
@@ -1174,7 +1178,7 @@
     }
 }
 
-@include mq("768px", "max") {
+@include mq(lg, 'max') {
     #sidebar {
         margin-top: 4rem;
     }
@@ -1191,7 +1195,7 @@
     }
 }
 
-@include mq("450px", "max") {
+@include mq(md, 'max') {
     #chat-scroll-block {
         bottom: 15vh;
     }
@@ -1429,6 +1433,13 @@
                     .process-success {
                         display: block;
                     }
+                }
+            }
+
+            &-link {
+                .process-success {
+                    @include visible($active: true, $zindex: 1);
+                    display: block !important;
                 }
             }
         }

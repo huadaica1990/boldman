@@ -37,10 +37,15 @@ var core1 = 'Copy thành công',
     err6 = 'Lỗi',
     err7 = '<p>Chuyển tới trang thanh toán MoMo sau <b style=\"color:red\" id=\"time-down\">3s</b></p>',
     err7_1 = '<p>Chuyển tới trang thanh toán Ngân Lượng sau <b style=\"color:red\" id=\"time-down\">3s</b></p>',
+    err7_2 = '<p>Chuyển tới trang thanh toán PayPal sau <b style=\"color:red\" id=\"time-down\">3s</b></p>',
+    err7_3 = '<p>Chuyển tới trang thanh toán OnePay sau <b style=\"color:red\" id=\"time-down\">3s</b></p>',
     err8 = 'Thông báo',
     err9 = 'Giỏ hàng hết hiệu lực',
     err10 = 'Vui lòng điền mã khuyến mãi',
     err11 = 'Thành công',
+    err12 = 'Hệ thống gặp sự cố kỹ thuật vui lòng thử lại sau...',
+    err13 = 'Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất.',
+    err14 = 'Vui lòng đăng nhập/đăng ký để sử dụng chức năng này.',
 
     text1 = 'Có ',
     text2 = ' lỗi, xem chi tiết bên dưới.',
@@ -50,6 +55,12 @@ var core1 = 'Copy thành công',
     text6 = 'Xem giỏ hàng và thanh toán',
     text7 = 'Bạn có chắc chắn muốn xóa sản phẩm này khỏi danh sách yêu thích của mình?',
     text8 = 'Gửi thành công',
+    text9 = 'Thông báo lỗi',
+    text10 = 'Thành công!!!',
+    text11 = 'Đóng',
+    text12 = 'hoặc',
+    text13 = 'Quay về trang chủ',
+    text14 = 'Đăng nhập',
 
     validate1 = 'Vui lòng điền đầy đủ thông tin ở trường ',
     validate2 = 'Vui lòng sửa phạm vi này.',
@@ -68,7 +79,8 @@ var core1 = 'Copy thành công',
     validate15 = 'Vui lòng nhập giá trị từ {0} đến {1} ở trường ',
     validate16 = 'Vui lòng nhập giá trị nhỏ hơn hoặc bằng {0} ở trường ',
     validate17 = 'Vui lòng nhập giá trị lớn hơn hoặc bằng {0} ở trường ',
-    validate18 = 'Vui lòng điền đầy đủ thông tin ở trường email.';
+    validate18 = 'Vui lòng điền đầy đủ thông tin ở trường email.',
+    validate19 = 'Vui lòng điền đúng định dạng số điện thoại.';
 
 setTimeout(function () {
     console.log(ECSLanguage, ECSLanguageFile.get('langdesc'));
@@ -93,10 +105,14 @@ setTimeout(function () {
         err6 = ECSLanguageFile.get('err6'),
         err7 = ECSLanguageFile.get('err7'),
         err7_1 = ECSLanguageFile.get('err7_1'),
+        err7_2 = ECSLanguageFile.get('err7_2'),
         err8 = ECSLanguageFile.get('err8'),
         err9 = ECSLanguageFile.get('err9'),
         err10 = ECSLanguageFile.get('err10'),
         err11 = ECSLanguageFile.get('err11'),
+        err12 = ECSLanguageFile.get('err12'),
+        err13 = ECSLanguageFile.get('err13'),
+        err14 = ECSLanguageFile.get('err14'),
 
         text1 = ECSLanguageFile.get('text1'),
         text2 = ECSLanguageFile.get('text2'),
@@ -106,6 +122,12 @@ setTimeout(function () {
         text6 = ECSLanguageFile.get('text6'),
         text7 = ECSLanguageFile.get('text7'),
         text8 = ECSLanguageFile.get('text8'),
+        text9 = ECSLanguageFile.get('text9'),
+        text10 = ECSLanguageFile.get('text10'),
+        text11 = ECSLanguageFile.get('text11'),
+        text12 = ECSLanguageFile.get('text12'),
+        text13 = ECSLanguageFile.get('text13'),
+        text14 = ECSLanguageFile.get('text14'),
 
         validate1 = ECSLanguageFile.get('validate1'),
         validate2 = ECSLanguageFile.get('validate2'),
@@ -124,7 +146,8 @@ setTimeout(function () {
         validate15 = ECSLanguageFile.get('validate15'),
         validate16 = ECSLanguageFile.get('validate16'),
         validate17 = ECSLanguageFile.get('validate17'),
-        validate18 = ECSLanguageFile.get('validate18');
+        validate18 = ECSLanguageFile.get('validate18'),
+        validate19 = ECSLanguageFile.get('validate19');
     }
 }, 500);
 

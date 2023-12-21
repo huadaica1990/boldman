@@ -22,10 +22,15 @@
 		"err6": "Error",
 		"err7": "<p>Go to the following MoMo payment page <b style=\"color:red\" id=\"time-down\">3s</b></p>",
 		"err7_1": "<p>Go to the following Ngan Luong payment page <b style=\"color:red\" id=\"time-down\">3s</b></p>",
+		"err7_2": "<p>Go to the following PayPal payment page <b style=\"color:red\" id=\"time-down\">3s</b></p>",
+		"err7_3": "<p>Go to the following OnePay payment page <b style=\"color:red\" id=\"time-down\">3s</b></p>",
 		"err8": "Notify",
 		"err9": "Expired shopping cart",
 		"err10": "Please enter promo code",
 		"err11": "Successful",
+		"err12": "The system is having technical problems, please try again later...",
+		"err13": "Thank you for contacting us. We will contact you as soon as possible.",
+		"err14": "Please log in/register to use this function.",
 
 		"text1": "Have ",
 		"text2": " error, see details below.",
@@ -35,6 +40,13 @@
 		"text6": "View cart and checkout",
 		"text7": "Are you sure you want to remove this product from your favorites list?",
 		"text8": "Submitted successfully",
+		"text9": "Error message",
+		"text10": "Success!!!",
+		"text11": "Close",
+		"text12": "or",
+		"text13": "Return to home page",
+		"text14": "Log in",
+	
 
 		"validate1": "Please fill out the information at the field ",
 		"validate2": "Please correct this range.",
@@ -53,8 +65,8 @@
 		"validate15": "Please enter a value from {0} to {1} in the field ",
 		"validate16": "Please enter a value less than or equal to {0} in the field ",
 		"validate17": "Please enter a value greater than or equal to {0} in the field ",
-		"validate18": "Please complete the information in the email field."
-
+		"validate18": "Please complete the information in the email field.",
+		"validate19": "Please fill in the correct phone number format."
 	},
 	"vi": {
 		"langdesc": "Việt Nam",
@@ -79,10 +91,15 @@
 		"err6": "Lỗi",
 		"err7": "<p>Chuyển tới trang thanh toán MoMo sau <b style=\"color:red\" id=\"time-down\">3s</b></p>",
 		"err7_1": "<p>Chuyển tới trang thanh toán Ngân Lượng sau <b style=\"color:red\" id=\"time-down\">3s</b></p>",
+		"err7_2": "<p>Chuyển tới trang thanh toán PayPal sau <b style=\"color:red\" id=\"time-down\">3s</b></p>",
+		"err7_3": "<p>Chuyển tới trang thanh toán OnePay sau <b style=\"color:red\" id=\"time-down\">3s</b></p>",
 		"err8": "Thông báo",
 		"err9": "Giỏ hàng hết hiệu lực",
 		"err10": "Vui lòng điền mã khuyến mãi",
 		"err11": "Thành công",
+		"err12": "Hệ thống gặp sự cố kỹ thuật vui lòng thử lại sau...",
+		"err13": "Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất.",
+		"err14": "Vui lòng đăng nhập/đăng ký để sử dụng chức năng này.",
 
 		"text1": "Có ",
 		"text2": " lỗi, xem chi tiết bên dưới.",
@@ -92,6 +109,13 @@
 		"text6": "Xem giỏ hàng và thanh toán",
 		"text7": "Bạn có chắc chắn muốn xóa sản phẩm này khỏi danh sách yêu thích của mình?",
 		"text8": "Gửi thành công",
+		"text9": "Thông báo lỗi",
+		"text10": "Thành công!!!",
+		"text11": "Đóng",
+		"text12": "hoặc",
+		"text13": "Quay về trang chủ",
+		"text14": "Đăng nhập",
+	
 
 		"validate1": "Vui lòng điền đầy đủ thông tin ở trường ",
 		"validate2": "Vui lòng sửa phạm vi này.",
@@ -110,6 +134,7 @@
 		"validate15": "Vui lòng nhập giá trị từ {0} đến {1} ở trường ",
 		"validate16": "Vui lòng nhập giá trị nhỏ hơn hoặc bằng {0} ở trường ",
 		"validate17": "Vui lòng nhập giá trị lớn hơn hoặc bằng {0} ở trường ",
-		"validate18": "Vui lòng điền đầy đủ thông tin ở trường email."
+		"validate18": "Vui lòng điền đầy đủ thông tin ở trường email.",
+		"validate19": "Vui lòng điền đúng định dạng số điện thoại."
 	}
 }

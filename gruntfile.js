@@ -114,25 +114,32 @@ module.exports = grunt => {
                     '<%= dirs.dist %>/release/core.min.js': [
                         // core
                         '<%= dirs.js %>/core.js',
-                        '<%= dirs.js %>/components/setTab.js',
-                        '<%= dirs.js %>/components/initDropdownAction.js',
-                        '<%= dirs.js %>/components/initScrollTopButton.js',
-                        '<%= dirs.js %>/components/stickyContent.js',
-                        '<%= dirs.js %>/components/scrollDirection.js',
-                        '<%= dirs.js %>/components/cutomizeSelect.js',
-                        '<%= dirs.js %>/components/accordion.js',
-                        '<%= dirs.js %>/components/stickySidebar.js',
-                        '<%= dirs.js %>/components/zoomImage.js',
-                        '<%= dirs.js %>/components/fancyBox.js',
-                        '<%= dirs.js %>/components/popup.js',
-                        '<%= dirs.js %>/components/initPopup.js',
-                        '<%= dirs.js %>/components/miniPopup.js',
-                        '<%= dirs.js %>/components/togglerMake.js',
-                        '<%= dirs.js %>/components/scrollTo.js',
-                        '<%= dirs.js %>/components/menu.js',
-                        '<%= dirs.js %>/components/slider.js',
-                        '<%= dirs.js %>/components/sideBar.js',
-                        '<%= dirs.js %>/components/draggAble.js',
+                        '<%= dirs.js %>/components/basic/setTab.js',
+                        '<%= dirs.js %>/components/basic/initDropdownAction.js',
+                        '<%= dirs.js %>/components/basic/initScrollTopButton.js',
+                        '<%= dirs.js %>/components/basic/stickyContent.js',
+                        '<%= dirs.js %>/components/basic/scrollDirection.js',
+                        '<%= dirs.js %>/components/basic/cutomizeSelect.js',
+                        '<%= dirs.js %>/components/basic/accordion.js',
+                        '<%= dirs.js %>/components/basic/stickySidebar.js',
+                        '<%= dirs.js %>/components/basic/zoomImage.js',
+                        '<%= dirs.js %>/components/basic/fancyBox.js',
+                        '<%= dirs.js %>/components/basic/popup.js',
+                        '<%= dirs.js %>/components/basic/initPopup.js',
+                        '<%= dirs.js %>/components/basic/miniPopup.js',
+                        '<%= dirs.js %>/components/basic/togglerMake.js',
+                        '<%= dirs.js %>/components/basic/scrollTo.js',
+                        '<%= dirs.js %>/components/basic/menu.js',
+                        '<%= dirs.js %>/components/basic/slider.js',
+                        '<%= dirs.js %>/components/basic/sideBar.js',
+                        '<%= dirs.js %>/components/basic/draggAble.js',
+                        '<%= dirs.js %>/components/basic/shareSocial.js',
+                        '<%= dirs.js %>/components/basic/tippy.js',
+                        '<%= dirs.js %>/components/basic/flatpickr.js',
+                        '<%= dirs.js %>/components/basic/srcollTabActive.js',
+                        '<%= dirs.js %>/components/basic/activeMenu.js',
+                        '<%= dirs.js %>/components/basic/fakeLoadMore.js',
+                        '<%= dirs.js %>/components/basic/niceSelect2.js',
                         // Acc
                         '<%= dirs.js %>/components/initScrollLoad.js',
                         // Content
@@ -148,6 +155,7 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/wishlistAction.js',
                         '<%= dirs.js %>/components/productSingle.js',
                         '<%= dirs.js %>/components/productSinglePage.js',
+                        '<%= dirs.js %>/components/shoppingCart.js',
                         // '<%= dirs.js %>/components/ratingTooltip.js',
                         // Plugin
                         // '<%= dirs.js %>/components/marquee.js',
@@ -162,24 +170,26 @@ module.exports = grunt => {
                         '<%= dirs.js %>/components/setProgressBar.js',
                         '<%= dirs.js %>/components/countDown.js',
                         '<%= dirs.js %>/components/countTo.js',
-                        '<%= dirs.js %>/components/fakeLoadMore.js',
                         '<%= dirs.js %>/components/notiCustomer.js',
                         '<%= dirs.js %>/components/ezParallax.js',
-                        '<%= dirs.js %>/components/mouseFollow.js'
+                        '<%= dirs.js %>/components/mouseFollow.js',
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.js': [
+                        'node_modules/@popperjs/core/dist/umd/popper.min.js',
+                        'node_modules/tippy.js/dist/tippy.umd.min.js',
                         'node_modules/draggabilly/dist/draggabilly.pkgd.min.js',
                         'node_modules/jquery-validation/dist/jquery.validate.min.js',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.js',
                         'node_modules/swiper/swiper-bundle.js',
+                        'node_modules/flatpickr/dist/flatpickr.min.js',
+                        'node_modules/nice-select2/dist/js/nice-select2.js',
                     ],
                     '<%= dirs.dist %>/release/layout.min.js': [
                         '<%= dirs.js %>/layout.js',
                     ],
                     // Documentation
                     '<%= dirs.dist %>/release/document.min.js': [
-                        'node_modules/typewriter-effect/dist/core.js',
                         '<%= dirs.dist %>/release/core.min.js',
                         '<%= dirs.js %>/document.js',
                     ],
@@ -252,8 +262,11 @@ module.exports = grunt => {
                     ],
                     // Default all page
                     '<%= dirs.dist %>/release/default.min.css': [
+                        'node_modules/tippy.js/dist/tippy.css',
                         '<%= dirs.plugin %>/fancybox/fancybox.min.css',
                         'node_modules/swiper/swiper-bundle.min.css',
+                        'node_modules/flatpickr/dist/flatpickr.min.css',
+                        'node_modules/nice-select2/dist/css/nice-select2.css',
                     ],
                     // Documentation
                     '<%= dirs.dist %>/release/document.min.css': [
@@ -408,7 +421,9 @@ module.exports = grunt => {
                 files: [
                     '<%= dirs.js %>/*.js',
                     '<%= dirs.js %>/pages/*.js',
-                    '<%= dirs.js %>/components/*.js'],
+                    '<%= dirs.js %>/components/*.js',
+                    '<%= dirs.js %>/components/*/*.js',
+                    '<%= dirs.plugin %>/*.js'],
                 tasks: ['uglify']
             },
             clean: ['<%= dirs.dist %>/images/', '<%= dirs.dist %>/icons/', '<%= dirs.dist %>/fonts/'],

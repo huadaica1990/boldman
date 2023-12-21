@@ -24,7 +24,7 @@
         //         setTimeout(function () {
         //             $this.removeClass('load-more-overlay loading');
         //             Ecsgroup.showHide(null, '.cart-info', 'show');
-        //             // Ecsgroup.Minipopup.open({
+        //             // Ecsgroup.miniPopup.core.open({
         //             //     productClass: ' product-cart',
         //             //     name: $product.find('.product-name, .product-title').text(),
         //             //     nameLink: $product.find('.product-name > a, .product-title > a').attr('href'),
@@ -56,7 +56,7 @@
                                     <li></li><li></li><li></li><li></li>\
                                 </ul>\
                                 <a href="javascript:" class="btn btn-clean">'+core5+'</a>\
-                                <a href="'+ Ecsgroup.linkCompare +'" class="btn btn-dark btn-rounded">'+core6+'</a>\
+                                <a href="'+ Ecsgroup.options.links.linkCompare +'" class="btn btn-dark btn-rounded">'+core6+'</a>\
                             </div>\
                       </div>\
                       <div class="compare-popup-overlay"></div>';
@@ -81,7 +81,7 @@
                 setTimeout(function () {
                     $this.removeClass('load-more-overlay loading');
                     //$this.toggleClass('ecs-icon-compare').toggleClass('ecs-icon-check-solid');
-                    //$this.attr('href', Ecsgroup.linkCompare);
+                    //$this.attr('href', Ecsgroup.options.links.linkCompare);
                     $compare.addClass('show');
                 }, 500);
                 var src = $this.closest('.product').find('img').eq(0).attr('src'),
@@ -106,7 +106,7 @@
                     $('body .btn-compare[data-id="' + item.id + '"]')
                         .removeClass('ecs-icon-compare')
                         .addClass('added ecs-icon-check-solid')
-                        .attr('href', Ecsgroup.linkCompare);
+                        .attr('href', Ecsgroup.options.links.linkCompare);
                 });
             
             $('.compare-popup li').each(function (i) {
@@ -232,9 +232,9 @@
 
                 // Functions for shop page
                 //initProductCartAction();
-                if (Ecsgroup.isWishList) initWishlistAction();
+                if (Ecsgroup.options.func.isWishList) initWishlistAction();
                 initProductQuickview();
-                if (Ecsgroup.isCompare) initCompare();
+                if (Ecsgroup.options.func.isCompare) initCompare();
 
             },
             //initProductType: function (type) {
@@ -282,11 +282,11 @@
                         btnCart = product.find('.btn-cart'),
                         btnCall = product.find('.btn-call');
                     btnCart.data('id', productId);
-                    if (Ecsgroup.isCountDown) productCountDown.countdown('destroy');
+                    if (Ecsgroup.options.func.isCountDown) productCountDown.countdown('destroy');
                     if (productPromo != null) {
                         product.find('.product-countdown-container').removeClass('d-none');
                         productCountDown.data('until', productPromo);
-                        if (Ecsgroup.isCountDown) Ecsgroup.countDown(productCountDown);
+                        if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(productCountDown);
                     }
                     else product.find('.product-countdown-container').addClass('d-none');
 

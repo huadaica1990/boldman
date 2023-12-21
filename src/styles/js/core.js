@@ -30,17 +30,26 @@ window.Ecsgroup = {};
  * Ecsgroup Base
  */
 (function ($) {
+    Ecsgroup.performance = {};
     Ecsgroup.popupPause = false;
-    Ecsgroup.dist = '/wwwroot/templates/website/release';
-    Ecsgroup.domain = 'localhost:3000';
-    Ecsgroup.linkWishList = '/san-pham-yeu-thich';
-    Ecsgroup.linkCompare = '/so-sanh';
-    Ecsgroup.accInfo = '/thong-tin-tai-khoan';
-    Ecsgroup.cartLink = '/gio-hang';
-    // Function
-    Ecsgroup.isWishList = true;
-    Ecsgroup.isCountDown = true;
-    Ecsgroup.isCompare = true;
+    Ecsgroup.options = {
+        func: {
+            isWishList: true,
+            isCountDown: true,
+            isCompare: true,
+        },
+        links: {
+            domain: 'localhost:3000',
+            dist: '/wwwroot/templates/website/release',
+            linkWishList: '/san-pham-yeu-thich',
+            linkCompare: '/so-sanh',
+            accInfo: '/thong-tin-tai-khoan',
+            cartLink: '/gio-hang'
+        },
+        initPopup: {
+            allowCookie_stt: true
+        }
+    };
     // $ = jQuery;
     /**
      * jQuery Window Handle
@@ -84,6 +93,7 @@ window.Ecsgroup = {};
      */
     Ecsgroup.isEdge = navigator.userAgent.indexOf('Edge') >= 0;
     Ecsgroup.isSafari = navigator.userAgent.indexOf('Safari') >= 0 && navigator.userAgent.indexOf('Chrome') < 0 && navigator.userAgent.indexOf('FxiOS') < 0;
+    Ecsgroup.isFirefox = navigator.userAgent.indexOf('Firefox') >= 0 && navigator.userAgent.indexOf('Chrome') < 0 && navigator.userAgent.indexOf('Safari') < 0;
     Ecsgroup.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(navigator.userAgent);
 
     /**
@@ -402,19 +412,16 @@ window.Ecsgroup = {};
 
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-    Ecsgroup.debounce = function (func, wait = 1000) {
-        var timeout;
-
-        return function () {
-            var context = this,
-                args = arguments;
-
-            var executeFunction = function () {
-                func.apply(context, args);
-            };
-
-            clearTimeout(timeout);
-            timeout = setTimeout(executeFunction, wait);
+    Ecsgroup.debounce = function (func, delay = 1000) {
+        let timeout;
+        return function executedFunc(...args) {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(() => {
+                func(...args);
+                timeout = null;
+            }, delay);
         };
     };
     /**
@@ -471,7 +478,7 @@ window.Ecsgroup = {};
         Ecsgroup.$body.on('click', selector, function (e) {
             e.preventDefault();
             var prevUrl = document.referrer;
-            if (!document.referrer && /Ecsgroup.domain/.test(document.referrer) == true) location.href = prevUrl;
+            if (!document.referrer && /Ecsgroup.options.links.domain/.test(document.referrer) == true) location.href = prevUrl;
             else location.href = '/';
         })
     }
@@ -558,11 +565,50 @@ window.Ecsgroup = {};
      */
     Ecsgroup.showLoading = function (selector) {
         if (!selector) $(selector).addClass('load-more-overlay loading');
+        $(".loader-precent").text('');
         Ecsgroup.byId('loading').style.display = 'block';
     }
     Ecsgroup.hideLoading = function (selector) {
         if (!selector) $(selector).removeClass('load-more-overlay loading');
         Ecsgroup.byId('loading').style.display = 'none';
+    }
+    Ecsgroup.pageLoading = function () {
+        let width = 100,
+            perfData = window.performance.timing,
+            EstimatedTime = -(perfData.domContentLoadedEventEnd - perfData.navigationStart),
+            time = parseInt((EstimatedTime/1000)%60)*100;
+
+        // $(".loadbar").animate({
+        //     width: width + "%"
+        // }, time);
+        // $(".glow").animate({
+        //     width: width + "%"
+        // }, time);
+    
+        let PercentageID = $(".loader-precent"),
+            start = 0,
+            end = 100,
+            durataion = time;
+            animateValue(PercentageID, start, end, durataion);
+        function animateValue(id, start, end, duration) {
+    
+            let range = end - start,
+                current = start,
+                increment = end > start? 1 : -1,
+                stepTime = Math.abs(Math.floor(duration / range)),
+                obj = $(id);
+            let timer = setInterval(function() {
+                current += increment;
+                $(obj).text(current + "%");
+                if (current == end) {
+                    clearInterval(timer);
+                    setTimeout(function () {
+                        Ecsgroup.byId('loading').style.display = 'none';
+                    }, 100);
+                    
+                }
+            }, stepTime);
+        }
     }
 
     /**
@@ -602,7 +648,7 @@ window.Ecsgroup = {};
             temp.val(val).select();
             document.execCommand("copy");
             temp.remove();
-            Ecsgroup.Minipopup.open({
+            Ecsgroup.miniPopup.core.open({
                 productClass: ' success minipopup-center',
                 message: '<p><i class="demo-icon cus-ok-circled"></i>' + core1 + '</p>',
                 template:
@@ -612,30 +658,6 @@ window.Ecsgroup = {};
                     '</div>' +
                     '</div>',
             });
-        });
-    };
-
-
-    /**
-     * Open Share Product
-     *
-     * @param {String} class
-     */
-    Ecsgroup.shareUrl = function (selector) {
-        Ecsgroup.$body.on('click', selector, function (e) {
-            e.preventDefault();
-            var $this = $(e.currentTarget);
-            if (navigator.share) {
-                navigator.share({
-                    title: $this.attr('title'),
-                    url: $this.attr('href')
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                })
-                    .catch((error) => console.log('Sharing failed', error));
-            } else {
-                alert(core2);
-            }
         });
     };
 
@@ -688,6 +710,49 @@ window.Ecsgroup = {};
         str = str.replace(/-+-/g, "-");
         return str;
     };
+    
+    /**
+    * Track transitions
+    *
+    * @param {Obj} element
+    */
+    Ecsgroup.trackTransition = function (element) {
+        element.addEventListener('transitionstart', (event) => {
+            $(element).trigger('transition_start'); 
+            console.log('transitionstart');
+        });
+        element.addEventListener('transitionrun', (event) => {
+            $(element).trigger('transition_run'); 
+          console.log('transitionrun');
+        });
+        element.addEventListener('transitionend', (event) => {
+            $(element).trigger('transition_end'); 
+            console.log('transitionend');
+        });
+        element.addEventListener('transitioncancel', (event) => {
+            $(element).trigger('transition_cancel'); 
+            console.log('transitioncancel');
+        });
+    };
+    
+    Ecsgroup.addOrUpdateUrlParam = function (url, name, value) {
+        let result, 
+            href = url != null ? url : window.location.href,
+            regex = new RegExp("[&\\?]" + name + "=");
+        if(regex.test(href))
+        {
+            regex = new RegExp("([&\\?])" + name + "=\\d+");
+            result = href.replace(regex, "$1" + name + "=" + value);
+        }
+        else
+        {
+            if(href.indexOf("?") > -1)
+                result = href + "&" + name + "=" + value;
+            else
+                result = href + "?" + name + "=" + value;
+        }
+        return result;
+    };
 
 })(jQuery);
 
@@ -698,7 +763,7 @@ window.Ecsgroup = {};
 
     // Initialize Method while document is being loaded
     Ecsgroup.prepare = function () {
-        Ecsgroup.showLoading();
+        Ecsgroup.pageLoading();
         // Ecsgroup.$body.hasClass('with-flex-container') && window.innerWidth >= 1200 &&
         //     Ecsgroup.$body.addClass('sidebar-active');
     };
@@ -718,9 +783,15 @@ window.Ecsgroup = {};
         Ecsgroup.accordion('.accordion-header > a')                             // Initialize Accordion
         Ecsgroup.appearAnimate('.appear-animate');                              // Run appear animation
         Ecsgroup.setTab('.nav-tabs-js');                                        // Initialize Tab
-        Ecsgroup.initDropdownAction();                                          // Initialize Dropdown
-        Ecsgroup.Minipopup.init();                                              // Initialize minipopup
-        Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect    
+        Ecsgroup.initDropdownAction;                                            // Initialize Dropdown
+        Ecsgroup.miniPopup.init();                                              // Initialize minipopup
+        Ecsgroup.cutomizeSelect('.custom-select');                              // Initialize cutomizeSelect
+        Ecsgroup.srcollTabActive('.scroll-tab-js','.active');                   // Initialize Srcoll Tab Active
+        Ecsgroup.activeMenu('.nav-js');                                         // Initialize Active Menu
+        Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
+        Ecsgroup.tippy('.tooltips');                                            // Initialize Tool tips
+        Ecsgroup.flatpickr('.flatpickr');                                       // Initialize Flatpickr
+        Ecsgroup.niceSelect2('.nice-select');                                       // Initialize Flatpickr
         // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,
@@ -737,12 +808,13 @@ window.Ecsgroup = {};
         // });                                                                  // Initialize Sticky Footer
         // Ecsgroup.stickyContent('.sticky-toolbox', Ecsgroup.stickyToolboxOptions);
         // Ecsgroup.stickyContent('.product-sticky-content', Ecsgroup.stickyProductOptions);
-        Ecsgroup.menu.init();                                                   // Initialize Menu
-        Ecsgroup.initScrollTopButton();                                         // Initialize scroll top button
+        Ecsgroup.menu;                                                   // Initialize Menu
+        Ecsgroup.initScrollTopButton;                                         // Initialize scroll top button
         // Side bar
         // Ecsgroup.sidebar('sidebar');                                         // Initialize Sidebar
         // Ecsgroup.sidebar('right-sidebar');                                   // Initialize Right Sidebar
         // Product
+        Ecsgroup.shoppingCart;                                                  // Initialize add to cart
         // Ecsgroup.shop.init();                                                // Initialize Shop
         // Ecsgroup.productSingle('.single-product-item');                      // Initialize all single products
         // Ecsgroup.initProductSinglePage();                                    // Initialize Single Product Page
@@ -750,7 +822,6 @@ window.Ecsgroup = {};
         // Plugin
         Ecsgroup.preSearch('.pre-search');                                      // Initialize Pre search
         Ecsgroup.typeWriter('.typewrite');                                      // Initialize TypeWriter
-        Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
         // Ecsgroup.parallax('.parallax');                                      // Initialize Parallax
         // Ecsgroup.skrollrParallax();                                          // Initialize Skrollr Parallax
         // Ecsgroup.initFloatingParallax();                                     // Initialize Floating Parallax
@@ -786,7 +857,10 @@ window.Ecsgroup = {};
     document.onreadystatechange = function () {
         if (document.readyState === "complete") {
             if (Ecsgroup.isSafari == true) {
-                addCSS(Ecsgroup.dist + '/safari.css')
+                addCSS(Ecsgroup.options.links.dist + '/safari.css')
+            }
+            if (Ecsgroup.isFirefox == true) {
+                addCSS(Ecsgroup.options.links.dist + '/firefox.css')
             }
         }
     }
@@ -804,6 +878,6 @@ window.Ecsgroup = {};
         Ecsgroup.call(Ecsgroup.initPage);
         Ecsgroup.status = 'complete';
         Ecsgroup.$window.trigger('Ecsgroup_complete');
-        Ecsgroup.hideLoading();
+        //Ecsgroup.hideLoading();
     }
 })(jQuery);

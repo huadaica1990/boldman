@@ -173,10 +173,6 @@
 			color: #{get(header, _linkColor)};
 			i {
 				@include animation($customize: true) {
-					-ms-transition: inherit;
-					-webkit-transition: inherit;
-					-moz-transition: inherit;
-					-o-transition: inherit;
 					transition: inherit;
 				};
 			}
@@ -352,7 +348,7 @@
 		}
 	}
 	
-	@include mq(md, 'max') {
+	@include mq(lg, 'max') {
 		.cart-info-m .cart-info {
 			@include shadow($val: none);
 			@include border-radius($val: 0%);

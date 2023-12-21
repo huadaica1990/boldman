@@ -609,14 +609,15 @@
     }
     
     .lang-wrapper {
+        button,
         a {
             margin: 0 10px 2px 0;
+            max-width: 30px;
             &:last-child {
                 margin-right: 0;
             }
             img {
-                height: 34px;
-                width: auto;
+                width: 100%;
             }
             &:not(.active) {
                 @include filter($val: grayscale(1));
@@ -627,14 +628,8 @@
 
 #nav-mobile-search {
     @include animation($customize: true) {
-        -ms-transition: transform .5s, visibility .5s;
-        -webkit-transition: transform .5s, visibility .5s;
-        -moz-transition: transform .5s, visibility .5s;
-        -o-transition: transform .5s, visibility .5s;
         transition: transform .5s, visibility .5s;
     }
-
-    ;
     @include transform($args: translateX(100%));
     //opacity: 0;
     z-index: 99;
@@ -953,6 +948,9 @@
     @include flex($type: "center", $get: "bot");
     width: #{get(navMoible, header, btnMenu, _width)};
     height: #{get(navMoible, header, btnMenu, _width)};
+    padding: 0;
+    background: transparent;
+    border: 0;
 
     span {
         @include border-radius($val:4px);

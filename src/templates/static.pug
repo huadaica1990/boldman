@@ -44,7 +44,22 @@ block content
             h2.section-header.title.title-center.h1.mb-5=title
             .section-body.blog-content
                 include components/_blog-content.pug
-
+            .section-footer.mt-10
+                .d-none.d-lg-block.d-md-none
+                    .social-links.social-icons.social-icons-colored.mt-5
+                        label.mr-2.font-weight-bold.text-uppercase Chia sẻ:
+                        a.social-icon.social-facebook.ecs-icon-facebook.btn-sharesocial
+                        a.social-icon.social-facebook.demo-icon.cus-messenger.btn-sharesocial.d-block.d-xl-none
+                        a.social-icon.social-facebook.demo-icon.cus-messenger.btn-sharesocial.d-none.d-xl-block.d-lg-none.d-md-none
+                        a.social-icon.social-email.demo-icon.cus-mail-alt
+                        a.social-icon.social-link.demo-icon.cus-link.btn-copy
+                .d-block.d-lg-none
+                    .social-links.social-icons.social-icons-colored.mt-5
+                        label.mr-2.font-weight-bold.text-uppercase Chia sẻ:
+                        a.social-icon.social-facebook.demo-icon.cus-messenger.btn-sharesocial
+                        a.social-icon.social-share.demo-icon.cus-share.btn-share
+                        a.social-icon.social-link.demo-icon.cus-link.btn-copy
+                        
 block script
     - let js = '/wwwroot/templates/website/release/static.min.js';
     //- Default
@@ -53,6 +68,7 @@ block script
 
     script.
         addCSS('#{css}')
-        addScript('#{js}')
-        addScript('/wwwroot/templates/website/release/layout.min.js')
+        addScript('#{js}').then(function() {
+            addScript('/wwwroot/templates/website/release/layout.min.js');
+        });
     

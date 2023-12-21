@@ -41,28 +41,29 @@ h6,.h6 {
 .des-title * {
 	font-size: inherit;
 	line-height: inherit;
+	font-weight: inherit;
 }
 
 h1,.h1 {
-	font-size: 4rem;
+	font-size: clamp(calc(3.5rem*#{$percent}), 3vw ,calc(4rem*#{$percent}));
 }
 h2,.h2 {
-	font-size: 3rem;
+	font-size: clamp(calc(2.6rem*#{$percent}), 2vw ,calc(3rem*#{$percent}));
 }
 h3,.h3 {
-	font-size: 2.4rem;
+	font-size: clamp(calc(2.2rem*#{$percent}), 2vw ,calc(2.4rem*#{$percent}));
 }
 h4,.h4 {
-	font-size: 1.8rem;
+	font-size: calc(1.8rem*#{$percent});
 }
 h5,.h5 {
-	font-size: 1.5rem;
+	font-size: calc(1.5rem*#{$percent});
 }
 h6,.h6 {
-	font-size: 1.3rem;
+	font-size: calc(1.3rem*#{$percent});
 }
 p,.h {
-	font-size: 1.4rem;
+	font-size: $font-size;
 	line-height: $line-height;
 }
 

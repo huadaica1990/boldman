@@ -80,10 +80,6 @@
     .swiper-button-next,
     .swiper-button-prev {
         @include animation($customize: true) {
-            -ms-transition: all .3s;
-            -webkit-transition: all .3s;
-            -moz-transition: all .3s;
-            -o-transition: all .3s;
             transition: all .3s;
         };
         padding: 0;
@@ -152,10 +148,6 @@
         .swiper-button-prev,
         .swiper-button-next {
             @include animation($customize: true) {
-                -ms-transition: all .3s ease;
-                -webkit-transition: all .3s ease;
-                -moz-transition: all .3s ease;
-                -o-transition: all .3s ease;
                 transition: all .3s ease;
             };
             @include transform($args: translateY(-50%));
@@ -186,10 +178,10 @@
             }
         }
         .swiper-button-prev {
-            left: -40px;
+            left: -80px;
         }
         .swiper-button-next {
-            right: -40px;
+            right: -80px;
         }
         >.swiper-pagination {
             .swiper-pagination-bullet {
@@ -205,6 +197,14 @@
             .swiper-pagination-bullet-active {
                 @include border-radius($val: 9rem);
                 width: 18px;
+            }
+        }
+        &:hover {
+            .swiper-button-prev {
+                left: 0px;
+            }
+            .swiper-button-next {
+                right: 0px;
             }
         }
     }
@@ -263,9 +263,11 @@
                 opacity: 1;
                 visibility: visible;
             }
+            &:hover >.swiper-button-prev,
             >.swiper-button-prev {
                 left: 1rem;
             }
+            &:hover >.swiper-button-next,
             >.swiper-button-next {
                 right: 1rem;
             }
@@ -802,7 +804,16 @@
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 1;
+        z-index: 90;
+        &.black {
+            background-color: rgba(0,0,0,.5);
+        }
+        &.transparent {
+            background-color: transparent;
+        }
+        &.white {
+            background-color: rgba(255,255,255,.5);
+        }
     }
 /*#endregion*/
 

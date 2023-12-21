@@ -29,7 +29,7 @@ function notiCustomerEcs(pagesize, timeNewArray) {
             notiList = JSON.parse(window.localStorage.getItem("notiList"));
         }
         let notiItem = notiList[Math.floor(Math.random() * notiList.length)];
-        Ecsgroup.Minipopup.open({
+        Ecsgroup.miniPopup.core.open({
             productClass: 'minipopup-noti-customer minipopup-bottom-left',
             message: notiItem.Body,
             name: notiItem.Name,

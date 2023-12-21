@@ -1,0 +1,19 @@
+/* 1. Config */
+@import 'config/variables';
+
+/* 2. Mixins */
+@import 'mixins/breakpoint';
+@import 'mixins/core';
+@import 'mixins/buttons';
+@import 'mixins/mixins';
+
+
+/*#region _item-product.scss*/
+.product-media picture {
+    @include animation($customize: true) {
+        transition: opacity 0s;
+    };
+}
+/*#endregion*/
+
+

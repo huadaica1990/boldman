@@ -2,6 +2,7 @@
 - let bgBody =  'bg-white';
 - let preSearch = true;
 - let isTool = true;
+- let isSearchInline = false;
 -
     let msg = [
         {
@@ -45,7 +46,7 @@
     .nav-header.pt-2.pb-2.sticky-content.fix-top.sticky-header-mobile.nav-hidden(class=bgBody)
         .container.d-flex.flex-wrap
             .--left.d-flex.align-items-center.justify-content-start
-                a.mobile-menu-toggle.mobile-menu-btn
+                button.mobile-menu-toggle.mobile-menu-btn(type='button')
                     span
                 .logo-wrapper
                     a(href=logo[1].href title=logo[1].name)
@@ -65,67 +66,78 @@
                             span.cart-count-txt 10
             .--center.search
                 a.ecs-icon-home.search-icon(href='/' title='')
-                .form-control.mobile-search-toggle(onclick='getSearchFocus("input-search-mobile")')
-                    .mobile-search-placeholder=placeholderSearch[0]
-                    i.ecs-icon-search
+                if isSearchInline
+                    form.search-container.mobile-search-toggle.bg-white(method='get' autocomplete='off' novalidate='novalidate' action='@Url.RouteUrl("tim-kiem")')
+                        input.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"]);')
+                        button.btn.ecs-icon-search(type='submit')
+                else
+                    .form-control.mobile-search-toggle.mobile-search-btn-toggle(onclick='("input-search-mobile")')
+                        .mobile-search-placeholder=placeholderSearch[0]
+                        i.ecs-icon-search
 
-#nav-mobile-search.pre-search.search-mobile.d-block.d-lg-none
-    .--header.bg-primary.flex-center(action='')
-        a.mobile-search-toggle-close.ecs-icon-angle-left(href='javascript:')
-        a.mobile-menu-btn.mobile-menu-open(href='javascript:')
-            span
-        form.input-wrap(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
-            input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"])')
-            button.btn.ecs-icon-search(type='submit')
-        if isCart
-            a.cart-wrapper.ecs-icon-cart(href='')
-                span.cart-count-txt 10
-    #search-result-mobile.--body.search-result.zindex-max.scrollable
-        a(href='')
-            picture
-                source(media='' srcset='' type='image/webp')
-                img.w-100(src=dist+'/menus/search0.jpg' alt='' width='400' height='35' loading='lazy')
-        .search-result-step1
-            .search-result-history.toggler-wrap.js-viewed-search
-                each item in tags
-                    a.toggler-item.demo-icon.cus-clock-1(href=item.href)
-                        span.overtext=item.name
-                .toggler-wrap-btn
-            .search-result-hotkey
-                .title.demi-icon.cus-stat Tìm Kiếm Phổ Biến
-                .search-result-hotkey-content.flex-container
+if !isSearchInline
+    #nav-mobile-search.pre-search.search-mobile.d-block.d-lg-none
+        .--header.bg-primary.flex-center(action='')
+            a.mobile-search-toggle-close.mobile-search-btn-close.ecs-icon-angle-left(href='javascript:')
+            button.mobile-menu-btn.mobile-menu-open(type='button')
+                span
+            form.input-wrap(method='get' autocomplete='off' novalidate='novalidate' action=urlsearch)
+                input#input-search-mobile.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"])')
+                button.btn.ecs-icon-search(type='submit')
+            if isCart
+                a.cart-wrapper.ecs-icon-cart(href='')
+                    span.cart-count-txt 10
+        #search-result-mobile.--body.search-result.zindex-max.scrollable
+            a(href='')
+                picture
+                    source(media='' srcset='' type='image/webp')
+                    img.w-100(src=dist+'/menus/search0.jpg' alt='' width='400' height='35' loading='lazy')
+            .search-result-step1
+                .search-result-history.toggler-wrap.js-viewed-search
                     each item in tags
-                        a.item(href=item.href) 
-                            .img-container
-                                picture
-                                    source(media='' srcset='' type='image/webp')
-                                    img(src=item.src alt='' width='45' height='45' loading='lazy')
-                            .text-container=item.name
-            .search-result-cat
-                .title Danh mục nổi bật
-                .search-result-cat-content.flex-container
-                    each item in productCats
-                        a.item(href=item.href) 
-                            .img-container
-                                picture
-                                    source(media='' srcset='' type='image/webp')
-                                    img(src=item.src alt='' width='133' height='80' loading='lazy')
-                            .text-container=item.name
-        .search-result-step2
-            .search-result-history
-                each item in tags
-                    a.demo-icon.cus-search(href=item.href)
-                        span.overtext=item.name
+                        a.toggler-item.demo-icon.cus-clock-1(href=item.href)
+                            span.overtext=item.name
+                    .toggler-wrap-btn
+                .search-result-hotkey
+                    .title.demi-icon.cus-stat Tìm Kiếm Phổ Biến
+                    .search-result-hotkey-content.flex-container
+                        each item in tags
+                            a.item(href=item.href) 
+                                .img-container
+                                    picture
+                                        source(media='' srcset='' type='image/webp')
+                                        img(src=item.src alt='' width='45' height='45' loading='lazy')
+                                .text-container=item.name
+                .search-result-cat
+                    .title Danh mục nổi bật
+                    .search-result-cat-content.flex-container
+                        each item in productCats
+                            a.item(href=item.href) 
+                                .img-container
+                                    picture
+                                        source(media='' srcset='' type='image/webp')
+                                        img(src=item.src alt='' width='133' height='80' loading='lazy')
+                                .text-container=item.name
+            .search-result-step2
+                .search-result-history
+                    each item in tags
+                        a.demo-icon.cus-search(href=item.href)
+                            span.overtext=item.name
 
 #nav-mobile-content.d-block.d-lg-none
     .flex-container
         .--header.bg-primary.d-flex.align-items-center
-            a.mobile-menu-btn.mobile-menu-close.text-white(href='javascript:')
+            button.mobile-menu-btn.mobile-menu-close.text-white(type='button')
                 span
             a.ecs-icon-home.search-icon(href='/' title='')
-            .form-control.mobile-search-toggle.text-dark.bg-white(onclick='getSearchFocus("input-search-mobile")')
-                .mobile-search-placeholder=placeholderSearch[0]
-                i.ecs-icon-search
+            if isSearchInline
+                form.search-container.mobile-search-toggle.bg-white(method='get' autocomplete='off' novalidate='novalidate' action='@Url.RouteUrl("tim-kiem")')
+                    input.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"]);')
+                    button.btn.ecs-icon-search(type='submit')
+            else
+                .form-control.mobile-search-toggle.mobile-search-btn-toggle.text-dark.bg-white(onclick='getSearchFocus("input-search-mobile")')
+                    .mobile-search-placeholder=placeholderSearch[0]
+                    i.ecs-icon-search
             if isCart
                 a.cart-wrapper.ecs-icon-cart(href='')
                     span.cart-count-txt 10
@@ -147,7 +159,7 @@
                 
                 case menuStyle
                     when 'landing'
-                        ul.vertical-menu.nav.mobile-menu.menulanding
+                        ul.vertical-menu.nav.mobile-menu.menulanding.nav-js
                             each item in menuLanding
                                 if item.isShow
                                     li(class=item.isActive ? 'active' : '' data-id='')
@@ -159,7 +171,7 @@
                                                 =item.name
 
                     default
-                        ul.vertical-menu.nav.mobile-menu
+                        ul.vertical-menu.nav.mobile-menu.nav-js
                             each item in menu
                                 if item.children == null
                                     if item.isShow
@@ -410,7 +422,7 @@
                             +social-list
                     .footer-item.ml-auto
                         .label Ngôn ngữ
-                        .lang-wrapper
+                        .lang-wrapper.d-flex.flex-wrap
                             a.active(href='javascript:' title='Việt Nam' onclick='')
                                 img(src=dist+'/default/flag-vn.png' alt='' loading="lazy" width='14' height='9')
                             a(href='javascript:' title='English' onclick='')

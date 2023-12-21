@@ -17,7 +17,36 @@ block content
     
     main.page-wrapper.main.home(id=`${idPage}-page`)
         h1.d-none=h1Title
+        <select class="nice-select">
+            <option data-display="Select">Nothing</option>
+            <option value="1">Some option</option>
+            <option value="2">Another option</option>
+            <option value="3" disabled>A disabled option</option>
+            <option value="4">Potato</option>
+        </select>
+        .select-menu-filter(data-text='TITLE')
+            .select-menu-header
+                span.text TITLE
+                i.icon
+            .select-menu-body
+                .select-menu-search.p-relative
+                    input.form-control(type='search' placeholder='')
+                    i.icon
+                ul.nav.select-menu-content.scrollable.nav-js
+                    li
+                        a(href='' title='') NAME
+            .select-menu-info(style='display:none')
+            
+        h1 Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
+        h2 Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
+        h3 Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
+        h4 Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
+        h5 Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
+        h6 Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
+        p Lễ cưới Puka - Gin Tuấn Kiệt tại TP.HCM: 4 sao Việt mở màn, chú rể chứng minh độ cưng chiều vợ số 1
         include components/_main-slider.pug
+
+
 block script
     - let js = '/wwwroot/templates/website/release/index.min.js';
     //- Default
@@ -26,8 +55,9 @@ block script
 
     script.
         addCSS('#{css}')
-        addScript('#{js}')
-        addScript('/wwwroot/templates/website/release/layout.min.js')
+        addScript('#{js}').then(function() {
+            addScript('/wwwroot/templates/website/release/layout.min.js');
+        });
     
 
     

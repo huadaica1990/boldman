@@ -654,6 +654,43 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     }
 }
 
+// Popup - Cookie modal
+.fancybox-modal-cookie {
+    .fancybox__slide {
+        justify-content: flex-end;
+    }
+    .fancybox__content {
+        padding: 2.5rem 2rem 3rem;
+        width: 400px;
+        max-width: 100%;
+    }
+    #cookie-popup {
+        order: 3;
+        .btn {
+            border-width: 1px;
+            font-weight: normal;
+            text-transform: none;
+        }
+    }
+    .cookie {
+        &-content {
+            font-size: 1.6rem;
+            a {
+                color: #4070f4;
+                &:hover {
+                    text-decoration: underline;
+                    color: #4070f4;
+                }
+            }
+        }
+    }
+    @include mq(md, 'max') {
+        .fancybox__slide {
+            padding: 1.5rem;
+        }
+    }
+}
+
 /*#region Mobile responsive section styles*/
 @include breakpoint("xl", "xxl") {
     .newsletter-popup.newsletter-img {

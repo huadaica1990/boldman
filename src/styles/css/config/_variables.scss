@@ -48,6 +48,7 @@
 
 /*#region 3. Social Link Color*/
 	$social-facebook: #1b4f9b;
+	$social-facebook-msg: #0695FF;
 	$social-twitter: #00adef;
 	$social-instagram: #cc0001;
 	$social-youtube: #ff0000;
@@ -65,12 +66,13 @@
 /*#endregion*/
 
 /*#region 4. Orther*/
+	$percent: var(--percent) !default;
 	$line-height: 1.6 !default;
 	$border-radius: .5rem !default;
 	$cubic: cubic-bezier(0.215, 0.61, 0.355, 1) !default;
-	$font-size: 1.4rem !default;
-	$container-width: 1280px !default;
-	$container-width-xml: 1200px !default;
+	$font-size: calc(1.4rem*#{$percent}) !default;
+	$container-width: calc(1280px*#{$percent}) !default;
+	$container-width-xml: calc(1200px*#{$percent}) !default;
 	$container-fluid-width: 1820px !default;
 	$font-weight-light: 300 !default;
 	$font-weight-normal: normal !default;

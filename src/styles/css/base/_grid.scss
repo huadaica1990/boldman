@@ -18,6 +18,14 @@
             padding-left: #{get(base, _gutter-md)};
         }
     }
+    .gutter-xl {
+        margin-left: -#{get(base, _gutter-xl)};
+        margin-right: -#{get(base, _gutter-xl)};
+        > * {
+            padding-left: #{get(base, _gutter-xl)};
+            padding-right: #{get(base, _gutter-xl)};
+        }
+    }
     .gutter-lg {
         margin-left: -#{get(base, _gutter-lg)};
         margin-right: -#{get(base, _gutter-lg)};
@@ -52,6 +60,14 @@
     }
 
     @include mq("xl", "max") {
+        .gutter-xl {
+            margin-left: -10px;
+            margin-right: -10px;
+            > * {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
         .gutter-lg {
             margin-left: -10px;
             margin-right: -10px;

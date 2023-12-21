@@ -1,11 +1,47 @@
 var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class="loader"></div></div></div>',
     errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>';
 // Effect
-$('.input-group-effect .form-control').focus(function(event) {
+Ecsgroup.$body.on('focus', '.input-group-effect .form-control', function (event) {
     $(this).parent().addClass('focus');
-}).blur(function(event) {
+}).on('blur', '.input-group-effect .form-control',function (event) {
     if($(this).val() === '') $(this).parent().removeClass('focus');
 });
+
+function getAffiliate () {
+    let affiliate = location.search.split('affiliate=')[1];
+    let check = Boolean(affiliate);
+    if(Boolean(Ecsgroup.getCookie('affiliate')) === false && Boolean(affiliate) === true) Ecsgroup.setCookie('affiliate', affiliate, 90);
+}
+getAffiliate();
+
+function previewImg (event) {
+    let reader = new FileReader(),
+        imgWrap = $(event.target).closest('.preview-wrapper').find('.image-preview-wrapper');
+    reader.onload = function(){
+        if(reader.result != null) {
+            imgWrap.find('img').attr('src', reader.result);
+            imgWrap.addClass('preview-result');
+        }
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+$(document).ajaxSend(function(e, xhr, options) {
+    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
+        var token = $('form').find("input[name='__RequestVerificationToken']").val();
+        xhr.setRequestHeader("RequestVerificationToken", token);
+    }
+});
+// form.addEventListener('submit', function (event) {
+//     // Don't let the form reload the page
+//     event.preventDefault();
+//     // If the form is already submitting, do nothing
+//     if (form.hasAttribute('data-submitting')) return;
+//     // Add the [data-submitting] attribute to stop multiple submissions
+//     form.setAttribute('data-submitting', '');
+//     // Do more form stuff...
+//     // Remove the [data-submitting] attribute
+//     form.removeAttribute('data-submitting');
+// });
 
 // View count
 function updateViewCount(targetId, action) {
@@ -40,26 +76,14 @@ function search(value) {
         beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
-                $('#error-modal p').text(result.msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $('.search-result-step2 .search-result-history').html(result.Data.viewsrc);
             }
         },
         error: function (result) {
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -117,7 +141,7 @@ function addRating(btn, idform) {
                         $('.rating-stars a').removeClass('active');
                         formImgLst.html('');
                         $(idform).find('input[name="ListImage"]').val('[]');
-                        Ecsgroup.Minipopup.open({
+                        Ecsgroup.miniPopup.core.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                             template:
@@ -132,13 +156,7 @@ function addRating(btn, idform) {
                 },
                 error: function (result) {
                     Ecsgroup.hideLoading($this);
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
@@ -166,13 +184,7 @@ function loadmorerating(obj, proid, pagesize) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -237,7 +249,7 @@ function addComment(btn, idform) {
                         $(idform).trigger('reset');
                         formImgLst.html('');
                         $(idform).find('input[name="ListImage"]').val('[]');
-                        Ecsgroup.Minipopup.open({
+                        Ecsgroup.miniPopup.core.open({
                             productClass: ' success minipopup-center',
                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                             template:
@@ -252,13 +264,7 @@ function addComment(btn, idform) {
                 },
                 error: function (result) {
                     Ecsgroup.hideLoading($this);
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
@@ -288,13 +294,7 @@ function loadmorecomment(obj, newsid, pagesize) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -352,19 +352,13 @@ function removecmtimg(obj) {
             success: function (result) {
                 Ecsgroup.hideLoading();
                 if (!result.Ok) {
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.Msg);
                 }
                 else {
                     obj._chipContainer.insertAdjacentHTML("beforeend", chipTemplate);
                     obj._toggleNoFile();
                     $(obj._realvalueInput).val(result.Data[0]);
-                    Ecsgroup.Minipopup.open({
+                    Ecsgroup.miniPopup.core.open({
                         productClass: ' success minipopup-center',
                         message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                         template:
@@ -379,13 +373,7 @@ function removecmtimg(obj) {
             },
             error: function (result) {
                 Ecsgroup.hideLoading();
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     };
@@ -415,13 +403,7 @@ function removecmtimg(obj) {
             success: function (result) {
                 Ecsgroup.hideLoading();
                 if (!result.Ok) {
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.Msg);
                 }
                 else {
                     var html = '<div class="img-item br-sm"><a href="javascript:" class="img-cmt-js" data-target="' + target + '" data-src="' + result.Data + '" onclick="removecmtimg(this)"><i class="demo-icon cus-cancel"></i></a><img src="' + result.Data + '" alt="" width="150" height="100" loading="lazy"></div>';
@@ -432,7 +414,7 @@ function removecmtimg(obj) {
                         valueimg.push(valsrc);
                     });
                     $(target).find('input[name="' + input + '"]').val(JSON.stringify(valueimg));
-                    Ecsgroup.Minipopup.open({
+                    Ecsgroup.miniPopup.core.open({
                         productClass: ' success minipopup-center',
                         message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                         template:
@@ -445,22 +427,16 @@ function removecmtimg(obj) {
                 }
             },
             error: function (result) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     };
     // End upload file
 // Cart
-updateCart();
+// Cart
 function addToCart(selector, quantityclass, url) {
-    var cartList = new Array()
-    if (window.localStorage.getItem("cartlist") != null) cartList = JSON.parse(window.localStorage.getItem("cartlist"));
+    //var cartList = new Array()
+    //if (window.localStorage.getItem("cartlist") != null) cartList = JSON.parse(window.localStorage.getItem("cartlist"));
     var $this = $(selector),
         productid = $this.data('id'),
         oldtext = $this.data('current-text'),
@@ -469,24 +445,14 @@ function addToCart(selector, quantityclass, url) {
         producttype = $this.data('producttype'),
         quantity = $this.parent().find(quantityclass).val();
     $this.addClass('load-more-overlay loading').html(loadingdot);
-    if (cartList.findIndex(e => e.quantity <= 0) > 0) cartList.splice(cartList.findIndex(e => e.quantity <= 0), 1);
-    var cartListUpdate = cartList.find((elem, index) => {
-        return elem.id === productid;
-    });
-    if (cartListUpdate != null) cartListUpdate.quantity += parseInt(quantity);
-    else {
-        var cartItem = { id: productid, quantity: parseInt(quantity), type: producttype, displayorder: cartList.length + 1 };
-        cartList.push(cartItem);
-    }
-    window.localStorage.setItem('cartlist', JSON.stringify(cartList));
+    Ecsgroup.shoppingCart.addItemToCart(productid, parseInt(quantity), producttype);
     if (url != null) {
         window.location.href = url;
     }
     else {
-        updateCart();
         setTimeout(function () {
             $this.html(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
-            showCartInfo();
+            Ecsgroup.shoppingCart.showCartInfo();
         }, 1000);
         setTimeout(function () {
             $this.html(oldtext).css('pointer-events', 'auto');
@@ -494,8 +460,6 @@ function addToCart(selector, quantityclass, url) {
     }
 }
 function addToCartList(obj, listid, url) {
-    var cartList = new Array();
-    if (window.localStorage.getItem("cartlist") != null) cartList = JSON.parse(window.localStorage.getItem("cartlist"));
     var $this = $(obj),
         oldtext = $this.data('current-text'),
         loadingtext = $this.data('loading-text'),
@@ -503,88 +467,22 @@ function addToCartList(obj, listid, url) {
         listProduct = JSON.parse($(listid).val());
     $this.addClass('load-more-overlay loading').html(loadingdot);
     listProduct.forEach(function (elem) {
-        var cartListUpdate = cartList.find((item, index) => {
-            return item.id === elem.ProductId;
-        });
-        if (cartListUpdate != null) cartListUpdate.quantity += parseInt(elem.Quantity);
-        else {
-            var cartItem = { id: elem.ProductId, quantity: parseInt(elem.Quantity), type: elem.Type, displayorder: cartList.length + 1 };
-            cartList.push(cartItem);
-        }
+        Ecsgroup.shoppingCart.addItemToCart(elem.ProductId, parseInt(elem.Quantity), elem.Type);
     });
-    window.localStorage.setItem('cartlist', JSON.stringify(cartList));
     if (url != null) {
         window.location.href = url;
     }
     else {
-        updateCart();
         setTimeout(function () {
             $this.html(loadingtext).css('pointer-events', 'none').removeClass('load-more-overlay loading');
-            showCartInfo();
+            Ecsgroup.shoppingCart.showCartInfo();
         }, 1000);
         setTimeout(function () {
             $this.html(oldtext).css('pointer-events', 'auto');
         }, 2000);
     }
-    //$.ajax({
-    //    url: '/aj/order/addtocartlist',
-    //    type: 'POST',
-    //    data: { listproductId: listproduct},
-    //    beforeSend: function () {
-    //        $this.addClass('load-more-overlay loading').text('...');
-    //    },
-    //    success: function (result) {
-    //        Ecsgroup.initProductSinglePage.rsRecommend();
-    //        if (!result.Ok) {
-    //            $this.html(oldtext).removeClass('load-more-overlay loading');
-    //            $('#error-modal p').text(result.Msg);
-    //            Ecsgroup.popup({
-    //                items: {
-    //                    src: '#error-modal'
-    //                },
-    //            }, 'error');
-    //        }
-    //        else {
-    //            $this.text(loadingtext).removeClass('load-more-overlay loading');
-    //            $('.cart-count-txt').text(result.Data.TotalCount);
-    //            $('.cart-money').text(result.Data.TotalAmount);
-    //            Ecsgroup.showHide(null, '.cart-info', 'show');
-    //            setTimeout(function () {
-    //                $this.html(oldtext);
-    //            }, 3000);
-    //            if (url != null) {
-    //                window.location.href = url;
-    //            }
-    //        }
-    //    },
-    //    error: function (result) {
-    //        $this.html(oldtext).removeClass('load-more-overlay loading');
-    //        Ecsgroup.initProductSinglePage.rsRecommend();
-    //        $('#error-modal p').text(result.msg);
-    //        Ecsgroup.popup({
-    //            items: {
-    //                src: '#error-modal'
-    //            },
-    //        }, 'error');
-    //    }
-    //});
 }
-function updateCart() {
-    var cartList = new Array();
-    if (window.localStorage.getItem("cartlist") != null) cartList = JSON.parse(window.localStorage.getItem("cartlist"));
-    $('.cart-count-txt').text(cartList.length);
-    //$('.cart-money').text(result.Data.TotalAmount);
-}
-function showCartInfo() {
-    var cartInfo = '<div class="cart-info show"><p class="ishow"><i class="demo-icon cus-attention-circled"></i> '+ text5 +'</p><a class="ishow btn" href="'+Ecsgroup.cartLink+'" title= "'+ text5 +'">'+ text6 +'</a><a class="close ecs-icon-times-solid cart-info-close" href="javascript:"></a></div>';
-    $('.js-cart-info').html(cartInfo);
-    $('body').append('<div class="cart-info-backdrop cart-info-close show"></div>');
-    $('html, body').animate({ scrollTop: 0 }, 600);
-    Ecsgroup.$body.on('click', '.cart-info-close', function (e) {
-        $('.cart-info-backdrop').remove();
-        $('.cart-info').remove();
-    });
-}
+
 // Compare list
 function initCompare(selector) {
     var compareList = new Array();
@@ -596,7 +494,7 @@ function initCompare(selector) {
             $(selector + ' .btn-compare[data-id="' + item.id + '"]')
                 .removeClass('ecs-icon-compare')
                 .addClass('added ecs-icon-check-solid')
-                .attr('href', Ecsgroup.linkCompare);
+                .attr('href', Ecsgroup.options.links.linkCompare);
         });
     }
     else {
@@ -627,20 +525,14 @@ function updateWishLst(selector, productId) {
         success: function (result) {
             if (!result.Ok) {
                 $this.removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             } else {
                 $this.removeClass('load-more-overlay loading');
                 $('body .btn-wishlist[data-id="' + productId + '"]')
                     .removeClass('ecs-icon-heart')
                     .addClass('added ecs-icon-heart-full')
-                    .attr('href', Ecsgroup.linkWishList);
-                Ecsgroup.Minipopup.open({
+                    .attr('href', Ecsgroup.options.links.linkWishList);
+                Ecsgroup.miniPopup.core.open({
                     productClass: ' success minipopup-center',
                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                     template:
@@ -655,13 +547,7 @@ function updateWishLst(selector, productId) {
         },
         error: function (result) {
             $this.removeClass('load-more-overlay loading');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -676,7 +562,7 @@ function initHeart(selector) {
             $(selector + ' .btn-wishlist[data-id="' + value + '"]')
                 .removeClass('ecs-icon-heart')
                 .addClass('added ecs-icon-heart-full')
-                .attr('href', Ecsgroup.linkWishList);
+                .attr('href', Ecsgroup.options.links.linkWishList);
         });
         console.log("initHeart complete");
     }
@@ -691,7 +577,7 @@ function initHeart(selector) {
                         $(selector + ' .btn-wishlist[data-id="' + value + '"]')
                             .removeClass('ecs-icon-heart')
                             .addClass('added ecs-icon-heart-full')
-                            .attr('href', Ecsgroup.linkWishList);
+                            .attr('href', Ecsgroup.options.links.linkWishList);
                     });
                     window.localStorage.setItem('wishlist', JSON.stringify(result.Data));
                     console.log("initHeart complete");
@@ -706,8 +592,8 @@ function initHeart(selector) {
     $(selector + ' .btn-quickview').removeClass('disabled');
 }
 setTimeout(function () {
-    if (Ecsgroup.isWishList) initHeart('body');
-    if (Ecsgroup.isCompare) initCompare('body');
+    if (Ecsgroup.options.func.isWishList) initHeart('body');
+    if (Ecsgroup.options.func.isCompare) initCompare('body');
 }, 3000);
 // Sku
 function selectSku(selector, viewname) {
@@ -731,7 +617,7 @@ function selectSku(selector, viewname) {
             urlprodut += (i == 0 ? '' : 'v') + v.ProductAttributeId + '-' + v.ProductAttributeValueId;
         }
     });
-    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'GET',
@@ -744,23 +630,17 @@ function selectSku(selector, viewname) {
             if (htmlresult != '#product-popup-ajax') $(htmlresult).removeClass('preload-container').remove('.pre-load');
             else $(htmlresult).removeClass('shimmer-container');
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $(htmlresult).html(result.Data.viewsrc).find('.product-url').attr('href', urlprodut);
                 setTimeout(function () {
                     Ecsgroup.productSingle(htmlresult);
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
-                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
-                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.options.func.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.options.links.linkWishList);
+                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.options.links.linkCompare);
                 }, 500);
                 if (htmlresult != '#product-popup-ajax') {
                     $('html, body').animate({
@@ -773,13 +653,7 @@ function selectSku(selector, viewname) {
         error: function (result) {
             if (htmlresult != '#product-popup-ajax') $(htmlresult).removeClass('preload-container').remove('.pre-load');
             else $(htmlresult).removeClass('shimmer-container');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -804,7 +678,7 @@ function selectSkuDetail(obj) {
         }
     });
     $('#product-info').css('height', $('#product-info').height() + 'px');
-    if (Ecsgroup.isCountDown) $('#product-info .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $('#product-info .product-countdown').countdown('destroy');
     $.ajax({
         url: url,
         type: 'POST',
@@ -815,13 +689,7 @@ function selectSkuDetail(obj) {
         success: function (result) {
             $('#product-info').removeClass('shimmer-container');
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $('#product-info').html(result.Data.viewsrc).css('height', 'auto');
@@ -831,11 +699,11 @@ function selectSkuDetail(obj) {
                 })
                 window.history.pushState({ state: urlbuilder, rand: Math.random() }, document.title, urlbuilder);
                 setTimeout(function () {
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#product-info .product-countdown');
-                    if (Ecsgroup.isWishList) $('#product-info .btn-wishlist').removeClass('disabled');
-                    if (Ecsgroup.isCompare) $('#product-info .btn-compare').removeClass('disabled');
-                    if (iswishlist > 0) $('#product-info .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
-                    if (iscomparelist > 0) $('#product-info .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown('#product-info .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) $('#product-info .btn-wishlist').removeClass('disabled');
+                    if (Ecsgroup.options.func.isCompare) $('#product-info .btn-compare').removeClass('disabled');
+                    if (iswishlist > 0) $('#product-info .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.options.links.linkWishList);
+                    if (iscomparelist > 0) $('#product-info .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.options.links.linkCompare);
                 }, 1000);
                 $('html, body').animate({
                     scrollTop: $('#product-info').offset().top - 80
@@ -850,13 +718,7 @@ function selectSkuDetail(obj) {
         },
         error: function (result) {
             $('#product-info').removeClass('shimmer-container');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -873,13 +735,7 @@ function selectThumbSku(selector, id, url) {
         success: function (result) {
             $this.removeClass('shimmer-container');
             if (!result.Ok) {
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 if (result.Data.listedprice != 0) {
@@ -904,13 +760,7 @@ function selectThumbSku(selector, id, url) {
         },
         error: function (result) {
             $this.removeClass('shimmer-container');
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -929,13 +779,7 @@ function openProductPopup(btn) {
         beforeSend: function () { },
         success: function (result) {
             if (!result.Ok) {
-                $('#error-modal p').text(result.msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
             else {
                 $(htmlresult).html(result.Data.viewsrc);
@@ -949,36 +793,30 @@ function openProductPopup(btn) {
                             done: () => {
                                 Ecsgroup.productSingle(htmlresult);
                                 setTimeout(function () {
-                                    if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
                                     $this.removeClass('load-more-overlay loading');
-                                    if (Ecsgroup.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
-                                    if (Ecsgroup.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
-                                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.linkWishList);
-                                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.linkCompare);
+                                    if (Ecsgroup.options.func.isWishList) $(htmlresult + ' .btn-wishlist').removeClass('disabled');
+                                    if (Ecsgroup.options.func.isCompare) $(htmlresult + ' .btn-compare').removeClass('disabled');
+                                    if (iswishlist > 0) $(htmlresult + ' .btn-wishlist').removeClass('ecs-icon-heart').addClass('added ecs-icon-heart-full').attr('href', Ecsgroup.options.links.linkWishList);
+                                    if (iscomparelist > 0) $(htmlresult + ' .btn-compare').removeClass('ecs-icon-compare').addClass('added ecs-icon-check-solid').attr('href', Ecsgroup.options.links.linkCompare);
                                     $(htmlresult).removeClass('shimmer-container');
                                 }, 500);
                             },
                             closing: () => {
-                                if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+                                if (Ecsgroup.options.func.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
                             }
                         },
                     }, 'quickview');
             }
         },
         error: function (result) {
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
 // Filter news
 function refreshFilterNews() {
-    var form = $('#filterform');
+    var form = $(Ecsgroup.byId('filterform'));
     form.find('input[name="sort"]').val($('#sortdropdown').val());
     form.find('input[name="page"]').val(1);
     getFilterResultNews();
@@ -1019,13 +857,7 @@ function getFilterResultNews(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1044,20 +876,14 @@ function getFilterResultNews(type) {
             },
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
 }
 // Filter product
 function refreshFilterProduct() {
-    var form = $('#filterform');
+    var form = $(Ecsgroup.byId('filterform'));
     //Lấy thuộc tính thả vào hidden field
     var pp = [];
     $('#filter input[name="attr"]:checked').each(function () {
@@ -1128,7 +954,7 @@ function loadmoreFilterProduct() {
 function getFilterResultProduct(type) {
     var form = $('#filterform'),
         paramlist = ['page', 'pp', 'bp', 'pr', 'sort'];
-    if (Ecsgroup.isCountDown) $('#list-filter .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $('#list-filter .product-countdown').countdown('destroy');
     if (type === 'loadmore') {
         var top = $('#list-filter-loadmore > *').last().offset().top;
         $.ajax({
@@ -1148,8 +974,8 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (Ecsgroup.isWishList) initHeart('#list-filter');
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) initHeart('#list-filter');
                 }, 1000);
                 totalitem = '1-' + $('#list-filter-loadmore > *').length + '/' + result.TotalItemCount;
                 $('.readmore-count').text('(' + result.itemremaining + ')');
@@ -1162,13 +988,7 @@ function getFilterResultProduct(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1190,9 +1010,9 @@ function getFilterResultProduct(type) {
                     $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                 })
                 setTimeout(function () {
-                    if (Ecsgroup.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
-                    if (Ecsgroup.isWishList) initHeart('#list-filter');
-                    if (Ecsgroup.isCompare) initCompare('#list-filter');
+                    if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown('#list-filter .product-countdown');
+                    if (Ecsgroup.options.func.isWishList) initHeart('#list-filter');
+                    if (Ecsgroup.options.func.isCompare) initCompare('#list-filter');
                 }, 1000);
                 $('.totalitem').text(totalitem);
                 Ecsgroup.hideLoading();
@@ -1201,13 +1021,7 @@ function getFilterResultProduct(type) {
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
                 Ecsgroup.hideLoading();
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1218,13 +1032,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
         $("#btn-near-location").addClass('active');
     } else {
-        $('#error-modal p').text(text4);
-        Ecsgroup.popup(
-            [{
-                src: '#error-modal',
-                type: "inline"
-            }],
-            {}, 'error');
+        Ecsgroup.resultDialog('error', text4);
     }
 }
 function showPosition(position) {
@@ -1256,12 +1064,7 @@ function refreshDistrictList() {
         },
         error: function (result) {
             Ecsgroup.hideLoading();
-            Ecsgroup.popup(
-                [{
-                    src: '#error-modal',
-                    type: "inline"
-                }],
-                {}, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -1278,7 +1081,7 @@ function resetFilterStore() {
     form.find('input[name="page"]').val(1);
 }
 function refreshFilterStore() {
-    var form = $('#filterform'),
+    var form = $(Ecsgroup.byId('filterform')),
         formstore = $('#search-store-from');
         form.find('input[name="sort"]').val($('#sortdropdown').val());
 
@@ -1336,13 +1139,7 @@ function getFilterResultStore(type) {
             error: function (result) {
                 $('#list-filter-loadmore').removeClass('shimmer-container');
                 $('#loadmore').removeClass('load-more-overlay loading');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1361,13 +1158,7 @@ function getFilterResultStore(type) {
             },
             error: function (result) {
                 $('#list-filter').removeClass('shimmer-container');
-                $('#error-modal p').text(result.Msg);
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
+                Ecsgroup.resultDialog('error', result.Msg);
             }
         });
     }
@@ -1410,12 +1201,7 @@ function loadmoreSrcoll() {
             }
         },
         error: function (result) {
-            $('#error-modal p').text(result.Msg);
-            Ecsgroup.popup({
-                items: {
-                    src: '#error-modal'
-                },
-            }, 'error');
+            Ecsgroup.resultDialog('error', result.Msg);
         }
     });
 }
@@ -1444,7 +1230,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
         stringVal = id.split('|'),
         targetType = stringVal[0],
         targetId = stringVal[1];
-    if (Ecsgroup.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
+    if (Ecsgroup.options.func.isCountDown) $(htmlresult + ' .product-countdown').countdown('destroy');
     switch (targetType) {
         case 'productgroup':
             $.ajax({
@@ -1460,13 +1246,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                     if (!result.Ok) {
                         $this.removeClass('load-more-overlay loading');
                         $(htmlresult).removeClass('shimmer-container');
-                        $('#error-modal p').text(result.Msg);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#error-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
+                        Ecsgroup.resultDialog('error', result.Msg);
                     }
                     else {
                         $this.removeClass('load-more-overlay loading');
@@ -1475,9 +1255,9 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                             $(this).css('background-image', 'url(' + $(this).data("bg") + ')').removeClass('lazyload-bg').addClass('ls-is-cached lazyloaded');
                         })
                         setTimeout(function () {
-                            if (Ecsgroup.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
-                            if (Ecsgroup.isWishList) initHeart(htmlresult);
-                            if (Ecsgroup.isCompare) initCompare(htmlresult);
+                            if (Ecsgroup.options.func.isCountDown) Ecsgroup.countDown(htmlresult + ' .product-countdown');
+                            if (Ecsgroup.options.func.isWishList) initHeart(htmlresult);
+                            if (Ecsgroup.options.func.isCompare) initCompare(htmlresult);
                         }, 1000);
                         //Ecsgroup.shop.init();
                     }
@@ -1485,13 +1265,7 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
                 error: function (result) {
                     $this.removeClass('load-more-overlay loading');
                     $(htmlresult).removeClass('shimmer-container');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.Msg);
                 }
             });
             break;
@@ -1500,42 +1274,60 @@ function ajaxProduct(obj, id, viewname, htmlresult) {
     }
 }
 // Contact
-$.extend($.validator.messages, {
-    required: validate1,
-    remote: validate2,
-    email: validate3,
-    url: validate4,
-    date: validate5,
-    dateISO: validate6,
-    number: validate7,
-    digits: validate8,
-    creditcard: validate9,
-    equalTo: validate10,
-    accept: validate11,
-    maxlength: $.validator.format(validate12),
-    minlength: $.validator.format(validate13),
-    rangelength: $.validator.format(validate14),
-    range: $.validator.format(validate15),
-    max: $.validator.format(validate16),
-    min: $.validator.format(validate17)
-});
+setTimeout(function () {
+    $.extend($.validator.messages, {
+        required: validate1,
+        remote: validate2,
+        email: validate3,
+        url: validate4,
+        date: validate5,
+        dateISO: validate6,
+        number: validate7,
+        digits: validate8,
+        creditcard: validate9,
+        equalTo: validate10,
+        accept: validate11,
+        maxlength: $.validator.format(validate12),
+        minlength: $.validator.format(validate13),
+        rangelength: $.validator.format(validate14),
+        range: $.validator.format(validate15),
+        max: $.validator.format(validate16),
+        min: $.validator.format(validate17)
+    });
+}, 500);
+jQuery.validator.addMethod("formattel", function (value, element, params) {
+    $(element).val(intlTelVal.getNumber());
+    return intlTelVal.isValidNumber();
+}, validate19);
 function validateForm(btn, idform, layout = 'default') {
     let submitted = true,
         formError = $(idform).find('.error-lst');
+    let summary;
     let form = $(idform).validate({
         focusCleanup: true,
         focusInvalid: false,
+        rules: {
+            // phonenumber: {
+            //     formattel: true
+            // }
+        },
+        messages: {
+            // phonenumber: {
+            //     formattel: validate19,
+            // }
+        },
         errorPlacement: function (error, element) { return false; },
         showErrors: function (errorMap, errorList) {
             if (submitted) {
-                let summary;
                 switch (layout) {
                     case 'mini':
                         summary = text1 + this.numberOfInvalids() + text2 + '<br>';
                         $.each(errorList, function () {
                             summary += this.message + $(this.element).data('name') + '<br>';
                         });
-                        $('#error-modal p').html(summary);
+                        setTimeout(() => {
+                            $('#result-modal .modal-body p').html(summary);
+                        }, 100);
                         break;
                     default:
                         summary = '<div>' + text1 + this.numberOfInvalids() + text2 + '</div>';
@@ -1553,12 +1345,7 @@ function validateForm(btn, idform, layout = 'default') {
             switch (layout) {
                 case 'mini':
                     if (validator.numberOfInvalids()) {
-                        Ecsgroup.popup(
-                            [{
-                                src: '#error-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
+                        Ecsgroup.resultDialog('error', summary);
                     } else Fancybox.getInstance().close();
                     break;
                 default:
@@ -1574,7 +1361,7 @@ function validateForm(btn, idform, layout = 'default') {
             $(idform).find('.get-value').each(function (e) {
                 var check = $(this).attr('name');
                 var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
-                if (!arrayCheck.includes(check)) {
+                if (!arrayCheck.includes(check) && $(this).prop('readonly') != true) {
                     var type = $(this).data('type');
                     var title = $(this).data('name');
                     var val = $(this).val();
@@ -1612,17 +1399,11 @@ function validateForm(btn, idform, layout = 'default') {
                     switch (layout) {
                         case 'mini':
                             if (!result.Ok) {
-                                $('#error-modal p').text(result.Msg);
-                                Ecsgroup.popup(
-                                    [{
-                                        src: '#error-modal',
-                                        type: "inline"
-                                    }],
-                                    {}, 'error');
+                                Ecsgroup.resultDialog('error', result.Msg);
                             }
                             else {
                                 sendMail(result.Data.id, '/aj/Shared/SendEmail');
-                                Ecsgroup.Minipopup.open({
+                                Ecsgroup.miniPopup.core.open({
                                     productClass: ' success minipopup-center',
                                     message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
                                     template:
@@ -1633,6 +1414,7 @@ function validateForm(btn, idform, layout = 'default') {
                                         '</div>',
                                 });
                                 $(idform).trigger('reset');
+                                if (Fancybox.getInstance() != null) Fancybox.getInstance().close();
                             }
                             return false;
                             break;
@@ -1641,13 +1423,7 @@ function validateForm(btn, idform, layout = 'default') {
                             else {
                                 sendMail(result.Data.id, '/aj/Shared/SendEmail');
                                 formError.hide();
-                                $('#success-modal p').text(note);
-                                Ecsgroup.popup(
-                                    [{
-                                        src: '#success-modal',
-                                        type: "inline"
-                                    }],
-                                    {}, 'error');
+                                Ecsgroup.resultDialog('success', note);
                                 $(idform).trigger('reset');
                                 if (typeof fileCurrent !== 'undefined') fileCurrent._removeChips()
                             }
@@ -1656,139 +1432,126 @@ function validateForm(btn, idform, layout = 'default') {
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                    Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
         }
     });
 }
-function validateFormMini(btn, idform) {
-    let submitted = true;
-    let form = $(idform).validate({
-        focusInvalid: true,
-        errorPlacement: function (error, element) { return false; },
-        //rules: {
-        //    email: {
-        //        required: true,
-        //    }
-        //},
-        //messages: {
-        //    email: {
-        //        required: validate18,
-        //    }
-        //},
-        showErrors: function (errorMap, errorList) {
-            if (submitted) {
-                var summary = text1 + this.numberOfInvalids() + text2 + '<br>';
-                $.each(errorList, function () {
-                    summary += this.message + $(this.element).data('name') + '<br>';
-                });
-                $('#error-modal p').html(summary);
-                submitted = false;
-            }
-            this.defaultShowErrors();
-        },
-        invalidHandler: function (event, validator) {
-            // 'this' refers to the form
-            if (validator.numberOfInvalids()) {
-                Ecsgroup.popup(
-                    [{
-                        src: '#error-modal',
-                        type: "inline"
-                    }],
-                    {}, 'error');
-            } else {
-                Fancybox.getInstance().close();
-            }
-            submitted = true;
-        },
-        submitHandler: function (form) {
-            submitted = true;
-            var arr = [];
-            $(idform).find('.get-value').each(function (e) {
-                var check = $(this).attr('name');
-                var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
-                if (!arrayCheck.includes(check)) {
-                    var type = $(this).data('type');
-                    var title = $(this).data('name');
-                    var val = $(this).val();
-                    var code = $(this).prop('name');
-                    if (type === 6 || type === 7) {
-                        if ($(this).is(':checked') === false) {
-                            val = null;
-                        }
-                    }
-                    arr.push({ "Name": title, "Value": val, "Tag": type, "Code": code });
-                }
-            });
-            //var modal = {
-            //    name: $(idform).find("*[name='name']").val(),
-            //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
-            //    email: $(idform).find("*[name='email']").val(),
-            //    body: $(idform).find("*[name='body']").val(),
-            //    file: $(idform).find("*[name='file']").val(),
-            //    Title: $(idform).find("*[name='Title']").val(),
-            //    ContactType: $(idform).find("*[name='ContactType']").val(),
-            //    Action: $(idform).find("*[name='Action']").val()
-            //};
-            $.ajax({
-                url: $(idform).attr('action'),
-                dataType: "json",
-                method: "POST",
-                /*data: { modal: modal, extentionfield: null },*/
-                data: $(idform).serialize() + '&ext=' + JSON.stringify(arr),
-                beforeSend: function () {
-                    $(btn).addClass('load-more-overlay loading');
-                },
-                success: function (result) {
-                    $(btn).removeClass('load-more-overlay loading');
-                    if (!result.Ok) {
-                        $('#error-modal p').text(result.Msg);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#error-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
-                    }
-                    else {
-                        sendMail(result.Data.id, '/aj/Shared/SendEmail');
-                        Ecsgroup.Minipopup.open({
-                            productClass: ' success minipopup-center',
-                            message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
-                            template:
-                                '<div class="minipopup-box {{productClass}}">' +
-                                '<div class="minipopup-body">' +
-                                '<div class="minipopup-content">{{message}}</div>' +
-                                '</div>' +
-                                '</div>',
-                        });
-                        $(idform).trigger('reset');
-                    }
-                    return false;
-                },
-                error: function (result) {
-                    $(btn).removeClass('load-more-overlay loading');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
-                    return false;
-                }
-            });
-        }
-    });
-}
+// function validateFormMini(btn, idform) {
+//     let submitted = true;
+//     let form = $(idform).validate({
+//         focusInvalid: true,
+//         errorPlacement: function (error, element) { return false; },
+//         rules: {
+//             phonenumber: {
+//                 formattel: true
+//             }
+//         },
+//         messages: {
+//             phonenumber: {
+//                 formattel: validate19,
+//             }
+//         },
+//         //rules: {
+//         //    email: {
+//         //        required: true,
+//         //    }
+//         //},
+//         //messages: {
+//         //    email: {
+//         //        required: validate18,
+//         //    }
+//         //},
+//         showErrors: function (errorMap, errorList) {
+//             if (submitted) {
+//                 var summary = text1 + this.numberOfInvalids() + text2 + '<br>';
+//                 $.each(errorList, function () {
+//                     summary += this.message + $(this.element).data('name') + '<br>';
+//                 });
+//                 $('#error-modal p').html(summary);
+//                 submitted = false;
+//             }
+//             this.defaultShowErrors();
+//         },
+//         invalidHandler: function (event, validator) {
+//             // 'this' refers to the form
+//             if (validator.numberOfInvalids()) {
+//                Ecsgroup.resultDialog('error', null);
+//             } else {
+//                 Fancybox.getInstance().close();
+//             }
+//             submitted = true;
+//         },
+//         submitHandler: function (form) {
+//             submitted = true;
+//             var arr = [];
+//             $(idform).find('.get-value').each(function (e) {
+//                 var check = $(this).attr('name');
+//                 var arrayCheck = ['name', 'email', 'phonenumber', 'body', 'file'];
+//                 if (!arrayCheck.includes(check) && $(this).prop('readonly') != true) {
+//                     var type = $(this).data('type');
+//                     var title = $(this).data('name');
+//                     var val = $(this).val();
+//                     var code = $(this).prop('name');
+//                     if (type === 6 || type === 7) {
+//                         if ($(this).is(':checked') === false) {
+//                             val = null;
+//                         }
+//                     }
+//                     arr.push({ "Name": title, "Value": val, "Tag": type, "Code": code });
+//                 }
+//             });
+//             //var modal = {
+//             //    name: $(idform).find("*[name='name']").val(),
+//             //    phonenumber: $(idform).find("*[name='phonenumber']").val(),
+//             //    email: $(idform).find("*[name='email']").val(),
+//             //    body: $(idform).find("*[name='body']").val(),
+//             //    file: $(idform).find("*[name='file']").val(),
+//             //    Title: $(idform).find("*[name='Title']").val(),
+//             //    ContactType: $(idform).find("*[name='ContactType']").val(),
+//             //    Action: $(idform).find("*[name='Action']").val()
+//             //};
+//             $.ajax({
+//                 url: $(idform).attr('action'),
+//                 dataType: "json",
+//                 method: "POST",
+//                 /*data: { modal: modal, extentionfield: null },*/
+//                 data: $(idform).serialize() + '&ext=' + JSON.stringify(arr),
+//                 beforeSend: function () {
+//                     $(btn).addClass('load-more-overlay loading');
+//                 },
+//                 success: function (result) {
+//                     $(btn).removeClass('load-more-overlay loading');
+//                     if (!result.Ok) {
+//                         Ecsgroup.resultDialog('error', result.Msg);
+//                     }
+//                     else {
+//                         sendMail(result.Data.id, '/aj/Shared/SendEmail');
+//                         Ecsgroup.miniPopup.core.open({
+//                             productClass: ' success minipopup-center',
+//                             message: '<p><i class="demo-icon cus-ok-circled"></i>' + result.Msg + '</p>',
+//                             template:
+//                                 '<div class="minipopup-box {{productClass}}">' +
+//                                 '<div class="minipopup-body">' +
+//                                 '<div class="minipopup-content">{{message}}</div>' +
+//                                 '</div>' +
+//                                 '</div>',
+//                         });
+//                         $(idform).trigger('reset');
+//                     }
+//                     return false;
+//                 },
+//                 error: function (result) {
+//                     $(btn).removeClass('load-more-overlay loading');
+//                      Ecsgroup.resultDialog('error', result.Msg);
+//                     return false;
+//                 }
+//             });
+//         }
+//     });
+// }
 
 function sendMail(targetId, action) {
     $.ajax({
@@ -1888,13 +1651,7 @@ function validateFormApi(btn, idform, source) {
                     else {
                         sendMailApi(result.Data.id, 'https://boldman.vn/aj/staticpage/SendEmailApi', emailto);
                         formError.hide();
-                        $('#success-modal p').text(note);
-                        Ecsgroup.popup(
-                            [{
-                                src: '#success-modal',
-                                type: "inline"
-                            }],
-                            {}, 'error');
+                        Ecsgroup.resultDialog('success', note);
                         $(idform).trigger('reset');
                         if (typeof fileCurrent !== 'undefined') {
                             fileCurrent._removeChips()
@@ -1904,13 +1661,7 @@ function validateFormApi(btn, idform, source) {
                 },
                 error: function (result) {
                     $(btn).removeClass('load-more-overlay loading');
-                    $('#error-modal p').text(result.Msg);
-                    Ecsgroup.popup(
-                        [{
-                            src: '#error-modal',
-                            type: "inline"
-                        }],
-                        {}, 'error');
+                                        Ecsgroup.resultDialog('error', result.Msg);
                     return false;
                 }
             });
@@ -1929,14 +1680,17 @@ function sendMailApi(targetId, action, emailto) {
 }
 
 function choselang(lang) {
-    $.post("/aj/shared/CreateCookie",
-        { lang: lang },
-        function (data) {
-            if (!data.Ok) {
-                location.reload();
-            }
-            else {
-                alert("Lỗi");
-            }
-        });
+    $.ajax({
+        url: '/aj/shared/CreateCookie',
+        type: 'POST',
+        data: { lang: lang},
+        beforeSend: function () {
+            Ecsgroup.showLoading();
+        },
+        success: function (data) {
+            if (!data.Ok) location.reload();
+            else alert("Lỗi");
+        },
+        error: function () { }
+    });
 }
