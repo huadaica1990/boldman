@@ -6,12 +6,12 @@
 const tableOfContentEcs = {
     init: function() {
         let startPerformanceTime = performance.now();
-        this.core.start(selector);
+        this.core.start();
         let endPerformanceTime = performance.now();
         Ecsgroup.performance.tableOfContent = endPerformanceTime - startPerformanceTime + 'ms';
     },
     core: {
-        start: function(selector) {
+        start: function() {
             let domTableOfContent = Ecsgroup.byId('widget-toc-fixed'),
                 toc = (Ecsgroup.$('.blog-content > .widget-toc').offset() ? Ecsgroup.$('.blog-content > .widget-toc').offset().top : 0) + Ecsgroup.$('.blog-content > .widget-toc').outerHeight(),
                 stickyHeader = $('.sticky-header').height() + 30;
@@ -29,22 +29,22 @@ const tableOfContentEcs = {
                         target = Ecsgroup.$(link);
                     Ecsgroup.$('#widget-toc-fixed').find('.collapsible-title').addClass('collapsed');
                     Ecsgroup.scrollTo(target.offset().top - stickyHeader, 600);
-                })
-                window.addEventListener('scroll', tableOfContentEcs.core.refreshTableOfContent(domTableOfContent));
+                });
+                var refreshTableOfContent = function () {
+                    if($('.readmore-js.open').length > 0) domTableOfContent.classList.remove('show');
+                    else if (window.pageYOffset > toc && Ecsgroup.isOnScreen('.blog-content')) {
+                        domTableOfContent.classList.add('show');
+                        if (!Ecsgroup.isMobile) domTableOfContent.style.top = $('.sticky-header.fixed').outerHeight() + 30 + 'px';
+                    }
+                    else domTableOfContent.classList.remove('show');
+                }
+                document.addEventListener('scroll', refreshTableOfContent);
                 Ecsgroup.$body.on('click', function (e) {
                     if (!$(e.target).closest('#widget-toc-fixed').length) {
                         Ecsgroup.$('#widget-toc-fixed').find('.collapsible-title').addClass('collapsed');
                     }
                 })
             }
-        },
-        refreshTableOfContent: function (domTableOfContent) {
-            if($('.readmore-js.open').length > 0) domTableOfContent.classList.remove('show');
-            else if (window.pageYOffset > toc && Ecsgroup.isOnScreen('.blog-content')) {
-                domTableOfContent.classList.add('show');
-                if (!Ecsgroup.isMobile) domTableOfContent.style.top = $('.sticky-header.fixed').outerHeight() + 30 + 'px';
-            }
-            else domTableOfContent.classList.remove('show');
         }
     },
     plugins: {},
@@ -53,9 +53,6 @@ const tableOfContentEcs = {
         this.plugins[name] = exec;
     }
 };
-Ecsgroup.tableOfContent = function (selector) {
-    return tableOfContentEcs.init(selector);
+Ecsgroup.tableOfContent = function () {
+    return tableOfContentEcs.init();
 };
-
- Ecsgroup.tableOfContent = function() {
-}

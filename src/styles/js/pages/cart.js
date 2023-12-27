@@ -40,3 +40,21 @@ function checkboxes(source, groupname) {
     }
     $('.cart-current-count').text($('[name="' + groupname+'"]:checked').length);
 };
+Number.prototype.formatMoney = function (c, d, t, f) {
+    var n = this,
+        c = isNaN(c = Math.abs(c)) ? 0 : c,
+        d = d == undefined ? "," : d,
+        t = t == undefined ? "." : t,
+        s = n < 0 ? "-" : "",
+        f = f == undefined ? "₫" : f,
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "") + f;
+};
+Number.prototype.formatMoneyUSD = function () {
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+    return formatter.format(this);
+};
