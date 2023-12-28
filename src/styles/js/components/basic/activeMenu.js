@@ -15,13 +15,13 @@ const activeMenuEcs = {
     },
     core: {
         start: function(selector) {
-            let url = window.location.pathname, 
-                urlRegExp = new RegExp(url.replace(/\/$/,'') + "$");
+            let url = window.location.pathname; 
+                // urlRegExp = new RegExp(url.replace(/\/$/,'') + "$");
             if (url == '/') $(selector + ' a[href="/"]').closest('li').addClass('active');
             else {
                 $(selector + ' a').each(function(){
-                    let thisUrl = this.href.replace(/\/$/,'');
-                    if(urlRegExp.test(thisUrl) && hrefRegExp.test(thisUrl)){
+                    let thisUrl = this.href.replace(/^.*\/\/[^\/]+/, '');
+                    if(url.search(thisUrl) > -1 && hrefRegExp.test(thisUrl)){
                         $(this).closest('li').addClass('active');
                         $(this).parents('li').each(function(){
                             $(this).addClass('active');
