@@ -386,6 +386,13 @@ module.exports = grunt => {
                         src: ['**'],
                         dest: '<%= dirs.dist %>/plugins/pwa-install/',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/workbox-sw/build/',
+                        src: ['**'],
+                        dest: '<%= dirs.dist %>/plugins/workbox-sw/',
+                        filter: 'isFile'
                     }
                 ],
             },
