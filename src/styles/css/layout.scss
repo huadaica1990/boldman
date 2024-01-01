@@ -92,6 +92,7 @@
   @include mq("768px", "max") {}
   @include mq("450px", "max") {}
   @include mq("360px", "max") {}
+  @media all and (display-mode: standalone) {}
 /*#endregion*/
 
 /*#region Style fix all browser*/

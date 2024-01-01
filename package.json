@@ -33,6 +33,7 @@
     "@animxyz/core": "^0.6.6",
     "@fancyapps/ui": "^5.0.6",
     "@fingerprintjs/fingerprintjs": "^4.1.0",
+    "@khmyznikov/pwa-install": "^0.2.7",
     "@popperjs/core": "^2.11.8",
     "animejs": "^3.2.1",
     "custom-cursor.js": "^1.3.9",

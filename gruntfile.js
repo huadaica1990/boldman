@@ -379,6 +379,13 @@ module.exports = grunt => {
                         ],
                         dest: '<%= dirs.dist %>/plugins/file-saver/',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/@khmyznikov/pwa-install/dist/',
+                        src: ['**'],
+                        dest: '<%= dirs.dist %>/plugins/pwa-install/',
+                        filter: 'isFile'
                     }
                 ],
             },
