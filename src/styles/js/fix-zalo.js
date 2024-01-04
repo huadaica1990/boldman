@@ -64,44 +64,42 @@ function devvnCheckLinkAvailability(link, successCallback, errorCallback) {
     );
     hiddenIframe.contentWindow.location.href = link;
 }
-if (typeof zalo_acc == 'undefined') {
-    Object.keys(zalo_acc).map(function (sdt, index) {
-        let qrcode = zalo_acc[sdt];
-        const zaloLinks = document.querySelectorAll('a[href*="zalo.me/' + sdt + '"]');
-        zaloLinks.forEach((zalo) => {
-            zalo.addEventListener("click", (event) => {
-                event.preventDefault();
-                const userAgent = navigator.userAgent.toLowerCase();
-                const isIOS = /iphone|ipad|ipod/.test(userAgent);
-                const isAndroid = /android/.test(userAgent);
-                let redirectURL = null;
-                if (isIOS) {
-                    redirectURL = 'zalo://qr/p/' + qrcode;
-                    window.location.href = redirectURL;
-                } else if (isAndroid) {
-                    redirectURL = 'zalo://zaloapp.com/qr/p/' + qrcode;
-                    window.location.href = redirectURL;
-                } else {
-                    redirectURL = 'zalo://conversation?phone=' + sdt;
-                    zalo.classList.add("zalo_loading");
-                    devvnCheckLinkAvailability(
-                        redirectURL,
-                        function (result) {
-                            zalo.classList.remove("zalo_loading");
-                        },
-                        function (error) {
-                            zalo.classList.remove("zalo_loading");
-                            redirectURL = 'https://chat.zalo.me/?phone=' + sdt;
-                            window.location.href = redirectURL;
-                        }
-                    );
-                }
-            });
+Object.keys(zalo_acc).map(function (sdt, index) {
+    let qrcode = zalo_acc[sdt];
+    const zaloLinks = document.querySelectorAll('a[href*="zalo.me/' + sdt + '"]');
+    zaloLinks.forEach((zalo) => {
+        zalo.addEventListener("click", (event) => {
+            event.preventDefault();
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isIOS = /iphone|ipad|ipod/.test(userAgent);
+            const isAndroid = /android/.test(userAgent);
+            let redirectURL = null;
+            if (isIOS) {
+                redirectURL = 'zalo://qr/p/' + qrcode;
+                window.location.href = redirectURL;
+            } else if (isAndroid) {
+                redirectURL = 'zalo://zaloapp.com/qr/p/' + qrcode;
+                window.location.href = redirectURL;
+            } else {
+                redirectURL = 'zalo://conversation?phone=' + sdt;
+                zalo.classList.add("zalo_loading");
+                devvnCheckLinkAvailability(
+                    redirectURL,
+                    function (result) {
+                        zalo.classList.remove("zalo_loading");
+                    },
+                    function (error) {
+                        zalo.classList.remove("zalo_loading");
+                        redirectURL = 'https://chat.zalo.me/?phone=' + sdt;
+                        window.location.href = redirectURL;
+                    }
+                );
+            }
         });
     });
-    //Thêm css vào site để lúc ấn trên pc trong lúc chờ check chuyển hướng sẽ không ấn vào thẻ a đó được nữa
-    let styleElement = document.createElement("style"),
-        cssCode = ".zalo_loading { pointer-events: none; }";
-    styleElement.innerHTML = cssCode;
-    document.head.appendChild(styleElement);
-}
+});
+//Thêm css vào site để lúc ấn trên pc trong lúc chờ check chuyển hướng sẽ không ấn vào thẻ a đó được nữa
+let styleElement = document.createElement("style"),
+    cssCode = ".zalo_loading { pointer-events: none; }";
+styleElement.innerHTML = cssCode;
+document.head.appendChild(styleElement);
