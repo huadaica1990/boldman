@@ -122,4 +122,9 @@
 /*#endregion*/
 
 
+@media all and (display-mode: standalone) {
+  #nav-mobile-footer .--header{
+    padding-bottom: 2rem;
+  }
+}
 //@import 'config/cus_custom';
