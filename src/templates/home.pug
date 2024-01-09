@@ -17,6 +17,14 @@ block content
     
     main.page-wrapper.main.home(id=`${idPage}-page`)
         h1.d-none=h1Title
+        
+        button.btn-svg-close
+            svg.svg-icon-close(role='img' viewBox='0 0 110 110')
+                g(stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='square')
+                    path(d='M4.79541854,4.29541854 L104.945498,104.445498 L4.79541854,4.29541854 Z' stroke='currentColor' stroke-width='12px')
+                    path(d="M4.79541854,104.704581 L104.945498,4.55450209 L4.79541854,104.704581 Z" stroke="currentColor" stroke-width='12px')
+            svg.svg-icon-arrow(aria-hidden='true' role='img' viewBox='0 0 16 16')
+                polygon(fill='currentColor' points='8 0 6.6 1.4 12.2 7 0 7 0 9 12.2 9 6.6 14.6 8 16 16 8')
         <select class="nice-select">
             <option data-display="Select">Nothing</option>
             <option value="1">Some option</option>

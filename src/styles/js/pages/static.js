@@ -2,7 +2,7 @@
     Ecsgroup.initLayout = function () {};
     Ecsgroup.initPage = function () {
       // Page
-        Ecsgroup.shareSocial.init();
+        Ecsgroup.shareSocial;
         Ecsgroup.tableOfContent();
       // Default
         Ecsgroup.slider('.swiper-container');// Initialize Slider

@@ -18,26 +18,7 @@
 /*#endregion*/
 
 // Set variables
-@include set-default(
-  (
-    cart: (
-      _linkColor:rgb(13, 92, 182),
-      _greyColor: rgb(120, 120, 120),
-      _redColor: rgb(255, 66, 78),
-      _borderColor:  rgb(221, 221, 221),
-      _greenColor: rgb(8, 145, 72),
-      _widthItem: calc(100% - 70px - 31px),
-      1920: (),
-      1440: (),
-      1366: (),
-      1280: (),
-      1024: (),
-      768: (),
-      450: (),
-      360: (),
-    ),
-  )
-);
+@include set-default( ( cart: ( _linkColor:rgb(13, 92, 182), _greyColor: rgb(120, 120, 120), _redColor: rgb(255, 66, 78), _borderColor: rgb(221, 221, 221), _greenColor: rgb(8, 145, 72), _widthItem: calc(100% - 70px - 31px), 1920: (), 1440: (), 1366: (), 1280: (), 1024: (), 768: (), 450: (), 360: (), ), ) );
 /*--------------------------------------------
     Cart Page
 ----------------------------------------------*/
@@ -842,6 +823,7 @@
             @include overtext($row: 2, $h: auto);
             width: #{get(cart, _widthItem)};
             white-space: initial;
+            min-height: inherit;
         }
 
         &-price {
@@ -849,7 +831,8 @@
             line-height: normal;
 
             .new-price {
-                font-size:inherit;
+                font-size: inherit;
+
                 &:not(:last-child) {
                     margin-right: .5rem;
                 }
@@ -858,6 +841,7 @@
                     color: initial;
                 }
             }
+
             .old-price {
                 font-size: inherit;
             }
@@ -878,7 +862,9 @@
     .points {
         a {
             color: #{get(cart,_linkColor)}
-        };
+        }
+
+        ;
 
         p {
             margin-left: 3.5rem;
@@ -1109,7 +1095,7 @@
                 width: 150px;
                 max-width: 150px;
             }
-            .custom-select,
+
             > *:last-child {
                 width: calc(100% - 150px);
             }
@@ -1219,7 +1205,9 @@
             top: 0;
             left: 0;
             background-color: $primary-color;
-
+            position: absolute;
+            border: 0;
+            font-size: 28px;
             &::after {
                 display: none;
             }
@@ -1298,12 +1286,14 @@
         }
 
         #add-address-form {
+            .form-group-wrapper > div:not(.form-group) {
+                .form-group {
+                    flex-wrap: wrap;
+                }
+            }
             .form-group {
                 &:not(:first-child) {
-                    -webkit-flex-wrap: wrap;
-                    -ms-flex-wrap: wrap;
                     flex-wrap: wrap;
-
                     .form-control, .input-wrapper-inline, .custom-select {
                         margin-top: .5rem;
                     }
@@ -1321,6 +1311,17 @@
 
             .btn {
                 width: 100%;
+            }
+            .form-control {
+                height: 45px;
+            }
+            .custom-select-header {
+                height: 45px;
+                display: flex;
+                align-items: center;
+                &::before {
+                    top: 16px;
+                }
             }
         }
     }
@@ -1382,7 +1383,19 @@
 
         .widget {
             @include border-radius($val: 0);
-
+            &-body {
+                input.form-control {
+                    height: 45px;
+                }
+                .custom-select-header {
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    &::before {
+                        top: 16px;
+                    }
+                }
+            }
             &-cart-coupon {
                 .coupon-success {
                     max-width: 100%;

@@ -7,10 +7,11 @@ const menuEcs = {
         this.core.collapsibleWidget();
         this.core.menu();
         this.core.mobileMenu();
-        if (document.getElementById("#nav-mobile-search") != null) this.core.mobileSearch();
+        if (document.getElementById("nav-mobile-search") != null) this.core.mobileSearch();
         this.core.categoryMenu();
         this.core.filterMenu();
         this.core.showChat();
+        this.core.FBChat();
         let endPerformanceTime = performance.now();
         Ecsgroup.performance.menu = endPerformanceTime - startPerformanceTime + 'ms';
     },
@@ -167,6 +168,38 @@ const menuEcs = {
                 $(this).remove();
             });
         },
+        FBChat: function() {
+            $('.btn-show-fbchat').css('opacity', '0');
+            setTimeout(function () {
+                FB.Event.subscribe('customerchat.load', function () {
+                    $('.btn-show-fbchat').css('opacity', '1');
+                    FB.Event.subscribe('customerchat.dialogShow', function() {
+                        $('body').append('<div class="chat-scroll-backdrop chat-scroll-close show"></div>')
+                    });
+                    FB.Event.subscribe('customerchat.dialogHide', function() {
+                        $('.chat-scroll-backdrop').remove();
+                    });
+                    $('.btn-show-fbchat').on('click', function(e){
+                        e.preventDefault();
+                        FB.CustomerChat.showDialog();
+                    });
+                    if (document.documentElement.clientWidth < 767) {
+                        FB.CustomerChat.hide();
+                        FB.Event.subscribe('customerchat.dialogHide', function() {
+                            if($('.chat-scroll-backdrop').length > 0) $('.chat-scroll-backdrop').remove();
+                            FB.CustomerChat.hide();
+                        });
+                    }
+                    else {
+                        Ecsgroup.$body.on('click', '.chat-scroll-close', function (e) {
+                            $('#chat-scroll-block').removeClass('show');
+                            $(this).remove();
+                            FB.CustomerChat.hideDialog();
+                        });
+                    }
+                });
+            }, 3000);
+        }
     },
     methods: {
         toggleMobileMenu: function(e) {
