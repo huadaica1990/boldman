@@ -108,17 +108,13 @@ block script
 
     script.
         addCSS('#{css}')
-        window.addEventListener("scroll", (event) => {
-            if (window.scrollY > 0) {
-                if (checkPreloadJs == false) {
-                    window.requestAnimationFrame(() => {
-                        addScript('/wwwroot/templates/website/release/default.min.js', false, true).then(function () {
-                            addScript('#{js}');
-                            addScript('/wwwroot/templates/website/release/layout.min.js');
-                        });
-                        checkPreloadJs = true;
-                    });
-                }
+        $(window).bind('scroll touchstart', function (e) {
+            if (checkPreloadJs == false) {
+                checkPreloadJs = true;
+                addScript('/wwwroot/templates/website/release/default.min.js', false, true).then(function () {
+                    addScript('#{js}');
+                    addScript('/wwwroot/templates/website/release/layout.min.js');
+                });
             }
         });
     
