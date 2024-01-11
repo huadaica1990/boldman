@@ -55,7 +55,7 @@ const popupEcs = {
                 else {
                     $('.fancyboxshow__backdrop').remove();
                     $(".fancybox-show").addClass('fancybox-hide').removeClass('fancybox-show');
-                    $('html').removeAttr('style');
+                    $('body').removeAttr('style');
                     $("#fb-root").show();
                 }
             });
@@ -239,7 +239,7 @@ const popupEcs = {
                 if (title != null) $(modalId).find('input[name="Title"]').val(title);
                 if (document.documentElement.clientWidth < 576 && $(modalId).find('form') != null) {
                     $(modalId).toggleClass('fancybox-hide').toggleClass('fancybox-show');
-                    $('html').append('<div class="fancyboxshow__backdrop"></div>').css('overflow-y', 'hidden');
+                    $('body').append('<div class="fancyboxshow__backdrop"></div>').css('overflow-y', 'hidden');
                     $("#fb-root").hide();
                 }
                 else {

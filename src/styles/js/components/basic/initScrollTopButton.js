@@ -8,10 +8,12 @@ let scrollTopOptions = {
 elemTarget = Ecsgroup.byId('scroll-top');
 const scrollTopEcs = {
     init: function () {
-        let startPerformanceTime = performance.now();
-        this.core.start();
-        let endPerformanceTime = performance.now();
-        Ecsgroup.performance.initScrollTopButton = endPerformanceTime - startPerformanceTime + 'ms';
+        if (elemTarget != null) {
+            let startPerformanceTime = performance.now();
+            this.core.start();
+            let endPerformanceTime = performance.now();
+            Ecsgroup.performance.initScrollTopButton = endPerformanceTime - startPerformanceTime + 'ms';
+        }
     },
     core: {
         start: function () {
