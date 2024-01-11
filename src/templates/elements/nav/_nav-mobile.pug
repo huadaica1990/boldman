@@ -71,7 +71,7 @@
                         input.form-control(type='search' placeholder=placeholderSearch[0] name='keyword' value='@(Request["keyword"]);')
                         button.btn.ecs-icon-search(type='submit')
                 else
-                    .form-control.mobile-search-toggle.mobile-search-btn-toggle(onclick='("input-search-mobile")')
+                    .form-control.mobile-search-toggle.mobile-search-btn-toggle(onclick="getSearchFocus('input-search-mobile')")
                         .mobile-search-placeholder=placeholderSearch[0]
                         i.ecs-icon-search
 
