@@ -902,3 +902,5 @@ window.Ecsgroup = {};
         }
     }, 1000);
 })(jQuery);
+// Delay load google tag
+//<script>(function(){try{window.setTimeout(function(){dataLayer.push({event:"afterLoad"})},3E3)}catch(a){}})();</script>
