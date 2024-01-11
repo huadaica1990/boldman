@@ -41,17 +41,19 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
 
         include _footer.pug
 
-        #loading
+        #loading(style='display:none')
             .loading-content
                 .loader-precent 0%
                 .loader
                     
         //- JavaScript
         script(type='text/javascript' src='/wwwroot/templates/website/release/jquery.min.js')
-        script(type='text/javascript' src='/wwwroot/templates/website/release/lang.min.js')
+        script(type='text/javascript' src='/wwwroot/templates/website/release/lang-vi.min.js')
         //- script(type='text/javascript' src='/wwwroot/templates/website/website/plugins/plyr-master/plyr.polyfilled.js')
         script.
             //- new Plyr('.plyr-video');
+            var RequestUrl = '@Request.Url',
+                checkPreloadJs = false;
             function addCSS(filename) {
                 let head = document.getElementsByTagName('head')[0],
                     style = document.createElement('link');
@@ -61,13 +63,14 @@ html(lang='vi-VN' itemscope itemtype='http://schema.org/website' class='no-js')
                 style.rel = 'stylesheet';
                 head.appendChild(style);
             }
-            function addScript(filename, type = "text/javascript", async = true, id = Date.now()) {
+            function addScript(filename, async = true, defer = false, type = "text/javascript", id = Date.now()) {
                 return new Promise((resolve, reject) => {
                     try {
                         let script = document.createElement("script");
                         script.src = filename;
                         script.type = type;
                         script.async = async;
+                        script.defer = defer;
                         script.id = id;
                         script.addEventListener("load", () => {
                             resolve({

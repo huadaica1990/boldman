@@ -97,9 +97,11 @@ module.exports = grunt => {
                     //     '<%= dirs.js %>/components/updateFile.js'
                     // ],
                     // Ext
-                    '<%= dirs.dist %>/release/lang.min.js': [
-                        '<%= dirs.plugin %>/multi-language/multi-language.js',
-                        '<%= dirs.plugin %>/lang.js'
+                    '<%= dirs.dist %>/release/lang-en.min.js': [
+                        '<%= dirs.plugin %>/multi-language/lang-en.js'
+                    ],
+                    '<%= dirs.dist %>/release/lang-vi.min.js': [
+                        '<%= dirs.plugin %>/multi-language/lang-vi.js'
                     ],
                     '<%= dirs.dist %>/release/webfontloader.min.js': [
                         'node_modules/webfontloader/webfontloader.js',

@@ -11,7 +11,7 @@ const menuEcs = {
         this.core.categoryMenu();
         this.core.filterMenu();
         this.core.showChat();
-        this.core.FBChat();
+        if (Ecsgroup.options.social.facebook) this.core.FBChat();
         let endPerformanceTime = performance.now();
         Ecsgroup.performance.menu = endPerformanceTime - startPerformanceTime + 'ms';
     },
