@@ -60,7 +60,8 @@ body {
     &.sidebar-active,
     &.msearch-active,
     &.mmenu-active,
-    &.dropdown-active  {
+    &.dropdown-active,
+    &.modal-active  {
         height: 0vh;
         overflow-y: hidden;
         pointer-events: none;

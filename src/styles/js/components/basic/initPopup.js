@@ -57,6 +57,7 @@ const popupEcs = {
                     $(".fancybox-show").addClass('fancybox-hide').removeClass('fancybox-show');
                     $('body').removeAttr('style');
                     $("#fb-root").show();
+                    Ecsgroup.$body.removeClass('modal-active');
                 }
             });
             Ecsgroup.resultDialog = function (template, message) {
@@ -241,6 +242,7 @@ const popupEcs = {
                     $(modalId).toggleClass('fancybox-hide').toggleClass('fancybox-show');
                     $('body').append('<div class="fancyboxshow__backdrop"></div>').css('overflow-y', 'hidden');
                     $("#fb-root").hide();
+                    Ecsgroup.$body.addClass('modal-active');
                 }
                 else {
                     Ecsgroup.popup(
