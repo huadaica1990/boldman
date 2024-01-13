@@ -34,10 +34,10 @@
                     .swiper-slide
                         a.item(href=item.href)
                             picture
-                                source(media='(max-width:450px)' srcset='' type='image/webp' class='')
-                                source(media='(max-width:450px)' srcset=item.srcm class='')
-                                source(media='' srcset='' type='image/webp' class='')
-                                img(src=item.src alt='' class='' width='1920' height='550')
+                                source(media='(max-width:450px)' srcset='' type='image/webp' class='' width='500' height='500')
+                                source(media='(max-width:450px)' srcset=item.srcm class='' width='500' height='500')
+                                source(media='' srcset='' type='image/webp' class='' width='1920' height='550')
+                                img(fetchpriority='high' src=item.src alt='' class='' width='1920' height='550')
             button.swiper-button.swiper-button-prev
             button.swiper-button.swiper-button-next
             .swiper-pagination

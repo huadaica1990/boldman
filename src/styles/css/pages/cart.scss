@@ -70,6 +70,9 @@
             color: #{get(cart, _redColor)};
         }
     }
+    &.hidden {
+        display: none !important;
+    }
 }
 
 #paymentopt2-des {
@@ -1182,9 +1185,16 @@
 }
 
 @include mq(md, 'max') {
+    #nav-mobile-footer {
+        display: none !important;
+    }
     body.modal-active {
-        height: 100svh;
+        height: 0vh;
         overflow-y: hidden;
+        pointer-events: none;
+        main {
+            pointer-events: auto;
+        }
     }
     
     #chat-scroll-block {
@@ -1249,8 +1259,10 @@
             background-color: $primary-color;
             color: $white-color;
             height: 55px;
-            position: relative;
-            z-index: 1;
+            position: sticky;
+            top:0;
+            width: 100%;
+            z-index: 3;
             font-size: 16px;
 
             i {

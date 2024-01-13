@@ -41,12 +41,17 @@ const scrollDirectionEcs = {
                 if (previousTop - currentTop > scrollDelta || previousTop == 0) {
                     //if scrolling up...
                     $this.removeClass(elClassHidden);
+                    Ecsgroup.options.scroll.scrollEnd = false;
                 }
                 else if (currentTop - previousTop > scrollDelta && currentTop > scrollOffset) {
                     //if scrolling down...
                     $this.addClass(elClassHidden);
                     if (currentTop + wHeight + 200 >= dHeight && $this.hasClass(elClassHidden)) {
                         $this.removeClass(elClassHidden);
+                        Ecsgroup.options.scroll.scrollEnd = true;
+                    }
+                    else {
+                        Ecsgroup.options.scroll.scrollEnd = false;
                     }
                     // else {
                     //     $this.addClass(elClassHidden);
