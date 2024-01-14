@@ -660,7 +660,7 @@
                 background-color: $white-color;
             }
         }
-
+        button,
         a {
             @include flex($type: "center");
             font-size: #{get(navMoible, footer, icon, _fontSize)};
