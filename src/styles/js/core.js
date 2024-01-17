@@ -51,6 +51,9 @@ window.Ecsgroup = {};
         },
         social: {
             facebook: false
+        },
+        scroll: {
+            scrollEnd: false
         }
     };
     // $ = jQuery;
@@ -480,8 +483,9 @@ window.Ecsgroup = {};
     Ecsgroup.backToUrl = function (selector) {
         Ecsgroup.$body.on('click', selector, function (e) {
             e.preventDefault();
-            var prevUrl = document.referrer;
-            if (!document.referrer && /Ecsgroup.options.links.domain/.test(document.referrer) == true) location.href = prevUrl;
+            var prevUrl = document.referrer,
+                urlDomain = /Ecsgroup.domain/;
+            if (!document.referrer && urlDomain.test(document.referrer) == true) location.href = window.history.back();
             else location.href = '/';
         })
     }
