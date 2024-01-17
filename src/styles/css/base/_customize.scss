@@ -567,7 +567,40 @@ marquee {
         }
     }
 }
+.marquee-wrapper {
+    width: 1600px;
+    height: 40px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    .marquee-track {
+        will-change: transform;
+        animation: marquee-container, marquee-container-us 30s linear infinite;
+    }
+     @keyframes marquee-container {
+        from {
+            transform: translateX(0);
+        }
 
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes marquee-container-us {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-132%);
+        }
+    }
+
+}
 @include keyframes($animation-name: "blinkcaret") {
 
     from,
@@ -605,6 +638,14 @@ marquee {
 
 [data-toggle="dropdown"] * {
     pointer-events: none;
+}
+[data-countto] {
+    &:after {
+        content: attr(data-after);
+    }
+    &::before {
+        content: attr(data-before);
+    }
 }
 
 // Icon Close

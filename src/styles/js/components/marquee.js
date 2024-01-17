@@ -34,5 +34,5 @@ const marqueeEcs = {
     }
 };
 Ecsgroup.marquee = function (selector) {
-    return marqueeEcs(selector);
+    return marqueeEcs.init(selector);
 };
