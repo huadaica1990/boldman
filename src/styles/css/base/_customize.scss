@@ -719,9 +719,11 @@ marquee {
     -webkit-scroll-snap-type: x mandatory;
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 
     >* {
         scroll-snap-align: start;
+        scroll-snap-stop: always; 
         display: inline-block;
         // display: table-cell;
     }
