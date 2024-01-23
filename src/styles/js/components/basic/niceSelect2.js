@@ -21,9 +21,6 @@ const niceSelect2Ecs = {
                 let _this = this;
                 let settings = $.extend(true, {}, niceSelectOption, Ecsgroup.parseOptions($(_this).attr('data-niceselect-options')));
                 let select = NiceSelect.bind(_this, settings);
-                _this.addEventListener('change', function () {
-                    select.update();
-                });
                 if (select.config.getImage == true) {
                     let listImg = [],
                         elSelect = select.el,
