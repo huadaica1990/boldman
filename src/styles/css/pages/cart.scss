@@ -116,6 +116,16 @@
     }
 }
 
+#checkpolicy-wrapper {
+    a {
+        color: rgb(10, 88, 202);
+        text-decoration: underline;
+    }
+    &.error {
+        border: 1px dotted red;
+    }
+}
+
 .cart-page {
 
     .address-label {
@@ -1188,6 +1198,7 @@
     #nav-mobile-footer {
         display: none !important;
     }
+    
     body.modal-active {
         height: 0vh;
         overflow-y: hidden;
@@ -1199,6 +1210,11 @@
     
     #chat-scroll-block {
         bottom: 15vh;
+    }
+
+    #checkpolicy-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .modal.modal-address {

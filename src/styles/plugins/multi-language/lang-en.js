@@ -27,6 +27,7 @@ var core1 = 'Copy successful',
     err12 = 'The system is having technical problems, please try again later...',
     err13 = 'Thank you for contacting us. We will contact you as soon as possible.',
     err14 = 'Please log in/register to use this function.',
+    err15 = 'Please agree to our Terms of Use.',
 
     text1 = 'Have ',
     text2 = ' error, see details below.',

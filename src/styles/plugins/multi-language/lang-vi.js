@@ -27,6 +27,7 @@ var core1 = 'Copy thành công',
     err12 = 'Hệ thống gặp sự cố kỹ thuật vui lòng thử lại sau...',
     err13 = 'Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất.',
     err14 = 'Vui lòng đăng nhập/đăng ký để sử dụng chức năng này.',
+    err15 = 'Vui lòng đồng ý với các Điều khoản sử dụng của chúng tôi.',
 
     text1 = 'Có ',
     text2 = ' lỗi, xem chi tiết bên dưới.',
