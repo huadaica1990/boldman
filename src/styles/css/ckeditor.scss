@@ -7,6 +7,11 @@
 @import 'mixins/buttons';
 @import 'mixins/mixins';
 //#ccc #aaa #999 #909399 #606266
+
+.jsplus_ui_dialog.jsplus_ui_dialog--widget .jsplus_ui_dialog__content.jsplus_ui_dialog--actions-shown .jsplus_ui_dialog__actions_bg .jsplus_ui_actions {
+    overflow: auto !important;
+    height: calc(100% - 30px) !important;
+}
 .cke_editable {
     width: 1200px;
     max-width: 100%;
@@ -44,70 +49,6 @@
         padding: 5px;
     }
 
-    .bootstrap-tabs {
-        @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
-        margin-top: 40px;
-        padding: 5px;
-
-        .nav-tabs {
-            li {
-                margin-right: 5px;
-
-                a {
-                    border: none;
-                }
-
-                &:first-child {
-                    a {
-                        @include border-radius($val: 0);
-                    }
-                }
-
-                &:last-child {
-                    margin-right: 0;
-
-                    a {
-                        @include border-radius($val: 0);
-                    }
-                }
-
-                &.active {
-                    position: static;
-
-                    a {
-                        border-color: $white-color;
-                        background-color: $grey-background;
-                        color: $dark-color;
-                    }
-
-                    &:after {
-                        display: none;
-                    }
-                }
-            }
-        }
-
-        .tab-body {
-            .tab-pane {
-                opacity: 1;
-                height: auto;
-                visibility: visible;
-                margin-top: 5px;
-
-                .tab-pane-content {
-                    @include border-radius($val: 0);
-                    @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
-                }
-
-                &.active {
-                    .tab-pane-content {
-                        border-color: $border-color;
-                    }
-                }
-            }
-        }
-    }
-
     .cke_widget_wrapper:hover > .accordion-list,
     .cke_widget_wrapper:hover > .collapsible-item,
     .cke_widget_wrapper:hover .collapsible-item-title-link,
@@ -119,91 +60,99 @@
     .cke_widget_accordionList {
         margin-top: 40px;
     }
-
-    .accordion-list {
-        @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
-        outline: none;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
-
-        .accordion-list-items {
-            @include border($position: "all", $size:1px, $style:dashed, $color: #aaa);
-            border-radius: 0;
-            box-shadow: none;
-
-            .collapsible-item {
-                @include border($position: "all", $size:1px, $style:dashed, $color: #999);
-                border-radius: 0;
-                margin: 10px 0;
-                padding: 5px;
-                background: transparent;
-                box-shadow: none;
-
-                &::before {
-                    display: none;
-                }
-
-                &::after {
-                    font-size: 10px;
-                    color: #000;
-                    content: "Bootstrap collapsible element";
-                }
-            }
-
-            .collapsible-item-title-link {
-                color: $dark-color;
-                border-bottom: none;
-                padding: 10px 20px;
-            }
-
-            .collapsible-item-title {
-                margin: 0 0 5px 0;
-                background-color: $grey-background;
-                border-radius: 0;
-                border: none;
-                box-shadow: none;
-                padding: 0;
-            }
-
-            .collapsible-item-body {
-                @include border($position: "all", $size:1px, $style:solid, $color: $border-color);
-                box-shadow: none;
-                border-radius: 0;
-                padding: 20px;
-
-                > *:first-child {
-                    margin-top: 0;
-                }
-
-                > *:last-child {
-                    margin-bottom: 0;
-                }
-            }
-
-            .collapsible-item-heading {
-                @include border-radius($val:0);
-                background-color: transparent;
-            }
-        }
-
-        .collapsible-item-collapse {
-            border: none;
-        }
-
-        .collapsible-item-heading {
-            border: none;
-
-            .collapsible-item-title {
-                .collapsible-item-title-link {
-                    @include border-radius($val:0);
-                }
-            }
-        }
-    }
-
     .component-item {
         @include border($position: "all", $size:1px, $style:dashed, $color: #ccc);
         padding: 5px;
+    }
+    
+    .bootstrap-tabs {
+        border: 1px dashed #ccc;
+        margin-top: 40px;
+        padding: 5px;
+        .tab-pane {
+            opacity: 1;
+            height: auto;
+            visibility: visible;
+            margin-top: 5px;
+            position: static;
+            padding: 0;
+            margin: 0;
+            .tab-pane-content {
+                margin: 0;
+                padding: 6px 12px;
+                min-height: 100px;
+            }
+            &:not(:last-child) {
+                margin-bottom: 3rem;
+            }
+        }
+    }
+    .accordion-item {
+        margin: 0;
+        padding: 5px;
+        border: 1px dashed #ccc;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+        .accordion-header a {
+            font-size: 1.4rem;
+        }
+        .accordion-body {
+            padding: 0;
+            background-color: transparent;
+            border: 1px solid #eee;
+        }
+        .collapsible-item-body {
+            margin: 0;
+            padding: 6px 12px;
+            min-height: 100px;
+            border: 0;
+            box-shadow: none;
+        }
+    }
+    .accordion-list {
+        padding: 5px;
+        border: 1px dashed #ccc;
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        .accordion-list-items {
+            border: 1px dashed #ccc;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 5px 5px 30px 5px;
+        }
+        .accordion-body.collapsed {
+            display: block;
+        }
+        .collapsible-item::before {
+            display: none;
+        }
+        
+    }
+
+
+
+
+    
+    .tab .tab-pane.active {
+        border-color: #eee;
+    }
+    .accordion-header a,
+    .tab-js .nav-item .nav-link {
+        color: #000 !important;
+        background-color: #f5f5f5 !important;
+        border-color: #f5f5f5 !important;
+        &:hover {
+            color: #fff !important;
+            background-color: #3776ff !important;
+            border-color: #3776ff !important;
+        }
+    }
+    table {
+        th:not(:last-child),
+        td:not(:last-child) {
+            border-right: 1px solid #000;
+        }
     }
 }

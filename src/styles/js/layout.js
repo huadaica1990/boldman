@@ -1689,7 +1689,12 @@ function choselang(lang) {
             Ecsgroup.showLoading();
         },
         success: function (data) {
-            if (!data.Ok) location.reload();
+            if (!data.Ok) {
+                if(typeof UrlLang != 'undefined') {
+                    window.location.replace(UrlLang);
+                }
+                else location.reload(true);
+            }
             else alert("Lỗi");
         },
         error: function () { }
