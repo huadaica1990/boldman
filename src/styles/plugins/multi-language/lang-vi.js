@@ -62,4 +62,5 @@ var core1 = 'Copy thành công',
     validate16 = 'Vui lòng nhập giá trị nhỏ hơn hoặc bằng {0} ở trường ',
     validate17 = 'Vui lòng nhập giá trị lớn hơn hoặc bằng {0} ở trường ',
     validate18 = 'Vui lòng điền đầy đủ thông tin ở trường email.',
-    validate19 = 'Vui lòng điền đúng định dạng số điện thoại.';
+    validate19 = 'Vui lòng điền đúng định dạng số điện thoại.',
+    validate20 = 'Vui lòng nhập ít nhất {0} từ có nghĩa ở trường ';

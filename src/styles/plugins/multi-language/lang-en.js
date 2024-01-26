@@ -63,4 +63,5 @@ var core1 = 'Copy successful',
     validate16 = 'Please enter a value less than or equal to {0} in the field ',
     validate17 = 'Please enter a value greater than or equal to {0} in the field ',
     validate18 = 'Please complete the information in the email field.',
-    validate19 = 'Please fill in the correct phone number format.';
+    validate19 = 'Please fill in the correct phone number format.',
+    validate20 = 'Please enter at least {0} words that make sense in the field ';

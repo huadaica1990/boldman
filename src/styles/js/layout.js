@@ -1300,6 +1300,9 @@ jQuery.validator.addMethod("formattel", function (value, element, params) {
     $(element).val(intlTelVal.getNumber());
     return intlTelVal.isValidNumber();
 }, validate19);
+jQuery.validator.addMethod("checkMaxCharacter", function(value, element, params) {
+    return this.optional(element) || value.split(' ').length > params[0];
+}, validate20);
 function validateForm(btn, idform, layout = 'default') {
     let submitted = true,
         formError = $(idform).find('.error-lst');
@@ -1310,6 +1313,9 @@ function validateForm(btn, idform, layout = 'default') {
         rules: {
             // phonenumber: {
             //     formattel: true
+            // },
+            // comment: {
+            //     checkMaxCharacter: [10]
             // }
         },
         messages: {
