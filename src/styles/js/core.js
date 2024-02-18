@@ -798,7 +798,7 @@ window.Ecsgroup = {};
         Ecsgroup.draggAbilly('.draggable-pc');                                  // Initialize draggAbilly
         Ecsgroup.tippy('.tooltips');                                            // Initialize Tool tips
         Ecsgroup.flatpickr('.flatpickr');                                       // Initialize Flatpickr
-        Ecsgroup.niceSelect2('.nice-select');                                       // Initialize Flatpickr
+        Ecsgroup.niceSelect2('.nice-select');                                   // Initialize Nice Select 2
         // Core
         Ecsgroup.stickyContent('.sticky-header-mobile', {                       // Initialize Sticky Header Mobile
             minWidth: 0,

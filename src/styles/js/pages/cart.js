@@ -59,6 +59,6 @@ Number.prototype.formatMoneyUSD = function () {
     return formatter.format(this);
 };
 document.addEventListener("scroll", (event) => {
-  if (Ecsgroup.scrollEnd == true) $('#nav-mobile-cart').addClass('hidden');
+  if (Ecsgroup.options.scroll.scrollEnd == true) $('#nav-mobile-cart').addClass('hidden');
   else $('#nav-mobile-cart').removeClass('hidden');
 });

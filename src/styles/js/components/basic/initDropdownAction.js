@@ -50,7 +50,7 @@ const dropdowEcs = {
                         });
                         if(dropdown.hasClass('show')) {
                             dropdown.removeClass('show');
-                            Ecsgroup.$body.find('.dropdown-remove').remove();
+                            Ecsgroup.$body.removeClass('dropdown-active').find('.dropdown-remove').remove();
                         }
                         else dropdown.addClass('show');
                         Ecsgroup.trackTransition(dropdownBox[0]);

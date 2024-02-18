@@ -1,6 +1,13 @@
 var preloadTemplate = '<div class="pre-load"><div class="flex-center"><div class="loader"></div></div></div>',
     errorTemplate = '<div class="alert-test"><div class="alert-title ecs-icon-times-circle" ></div > ERROR_MSG</div>';
 var dataLayer = window.dataLayer || [];
+// function getCaptchaId(elementId) {
+//     const recaptchaBoxes = document.querySelectorAll('.g-recaptcha');
+//     const targetBox = document.querySelector(`#${elementId}`);
+//     for (let i = 0; i < recaptchaBoxes.length; i++) {
+//         if (recaptchaBoxes[i].id === targetBox.id) return i;
+//     }
+// }
 // Effect
 Ecsgroup.$body.on('focus', '.input-group-effect .form-control', function (event) {
     $(this).parent().addClass('focus');

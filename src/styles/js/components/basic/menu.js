@@ -206,7 +206,9 @@ const menuEcs = {
             $(this).toggleClass('show');
             menuEcs.methods.hideMobileAllSubMenu();
             menuEcs.methods.hideMobileSearch();
-            Ecsgroup.$body.toggleClass('mmenu-active');
+            setTimeout(function () {
+                Ecsgroup.$body.toggleClass('mmenu-active');
+            }, 150);
             $("#fb-root").hide();
             e.preventDefault();
         },
