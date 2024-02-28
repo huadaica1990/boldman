@@ -718,6 +718,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
         position: fixed !important;
         bottom: 0;
         z-index: 1050;
+        pointer-events: auto;
         &::before {
             @include border-radius($val: 50px);
             @include e-cen($type: "left");
@@ -737,6 +738,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
         left: 0;
         right: 0;
         bottom: 0;
+        pointer-events: auto;
     }
     .fancybox-fadeInUp {
         -webkit-animation: 0.25s ease both fadeInUp;
