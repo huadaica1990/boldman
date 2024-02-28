@@ -63,18 +63,11 @@ block content
 block script
     - let js = '/wwwroot/templates/website/release/static.min.js';
     //- Default
-    //- script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
+    script(type='text/javascript' src='/wwwroot/templates/website/release/default.min.js' defer)
     //- Page
-
     script.
         addCSS('#{css}')
-        $(window).bind('scroll touchstart', function (e) {
-            if (checkPreloadJs == false) {
-                checkPreloadJs = true;
-                addScript('/wwwroot/templates/website/release/default.min.js', false, true).then(function () {
-                    addScript('#{js}');
-                    addScript('/wwwroot/templates/website/release/layout.min.js');
-                });
-            }
+        addScript('#{js}').then(function () {
+            addScript('/wwwroot/templates/website/release/layout.min.js');
         });
     
