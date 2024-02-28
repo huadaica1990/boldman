@@ -871,7 +871,7 @@ window.Ecsgroup = {};
             }
         }
     }
-    $(window).on('load', function() {
+    window.onload = function () {
         // Canvas Size
         Ecsgroup.canvasWidth = window.innerWidth;
         Ecsgroup.resizeTimeStamp = 0;
@@ -886,25 +886,7 @@ window.Ecsgroup = {};
         Ecsgroup.$window.trigger('Ecsgroup_complete');
         Ecsgroup.hideLoading();
         console.log("On load done");
-    });
-    setTimeout(() => {
-        if (Ecsgroup.status != 'complete') {
-            // Canvas Size
-            Ecsgroup.canvasWidth = window.innerWidth;
-            Ecsgroup.resizeTimeStamp = 0;
-            Ecsgroup.resizeChanged = false;
-            // loaded
-            Ecsgroup.status = 'loaded';
-            document.body.classList.add('loaded');
-            Ecsgroup.call(Ecsgroup.initLayout);
-            Ecsgroup.call(Ecsgroup.init);
-            Ecsgroup.call(Ecsgroup.initPage);
-            Ecsgroup.status = 'complete';
-            Ecsgroup.$window.trigger('Ecsgroup_complete');
-            Ecsgroup.hideLoading();
-            console.log("Time out done");
-        }
-    }, 1000);
+    }
 })(jQuery);
 // Delay load google tag
 //<script>(function(){try{window.setTimeout(function(){dataLayer.push({event:"afterLoad"})},3E3)}catch(a){}})();</script>
