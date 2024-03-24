@@ -109,6 +109,9 @@ module.exports = grunt => {
                     '<%= dirs.dist %>/release/jquery.min.js': [
                         'node_modules/jquery/dist/jquery.js',
                     ],
+                    '<%= dirs.dist %>/release/jquery-lite.min.js': [
+                        'node_modules/jquery-lite/dist/jquery.js',
+                    ],
                     '<%= dirs.dist %>/release/instantpage.min.js': [
                         '<%= dirs.plugin %>/instantpage/instantpage.js',
                     ],

@@ -433,43 +433,44 @@ if !isSearchInline
                     .social-icons.social-icons-colored
                         +social-list
 
-#nav-mobile-footer.d-block.d-lg-none.sticky-footer
-    ul.--header.nav
-        li.item.active
-            a
-                i.ecs-icon-home
-                p Trang chủ
-        li.item.call
-            a
-                i.ecs-icon-call
-                p 24/7
-        //- li.item
-        //-     a
-        //-         i.ecs-icon-envelop-closed
-        //-         p Email
-        //- li.item
-        //-     a
-        //-         i.ecs-icon-comment
-        //-         p SMS
-        li.item
-            a
-                i.ecs-icon-category
-                p Danh mục
-        if isLogin
+if isTool
+    #nav-mobile-footer.d-block.d-lg-none.sticky-footer
+        ul.--header.nav
+            li.item.active
+                a
+                    i.ecs-icon-home
+                    p Trang chủ
+            li.item.call
+                a
+                    i.ecs-icon-call
+                    p 24/7
+            //- li.item
+            //-     a
+            //-         i.ecs-icon-envelop-closed
+            //-         p Email
+            //- li.item
+            //-     a
+            //-         i.ecs-icon-comment
+            //-         p SMS
             li.item
                 a
-                    i.ecs-icon-account
-                    p Tài khoản
-        //- li.item
-        //-     a
-        //-         i.ecs-icon-map-marker
-        //-         p Liên hệ
-        if isCart
-            li.item.cart-wrapper
-                a
-                    i.ecs-icon-cart
-                    p Giỏ hàng
-                    span.cart-count-txt 10
+                    i.ecs-icon-category
+                    p Danh mục
+            if isLogin
+                li.item
+                    a
+                        i.ecs-icon-account
+                        p Tài khoản
+            //- li.item
+            //-     a
+            //-         i.ecs-icon-map-marker
+            //-         p Liên hệ
+            if isCart
+                li.item.cart-wrapper
+                    a
+                        i.ecs-icon-cart
+                        p Giỏ hàng
+                        span.cart-count-txt 10
 if isCart
     .js-cart-info.d-block.d-lg-none.cart-info-m
 

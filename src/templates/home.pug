@@ -17,6 +17,13 @@ block content
     
     main.page-wrapper.main.home(id=`${idPage}-page`)
         h1.d-none=h1Title
+
+        .dropdown
+            button.btn.btn-a.ecs-icon-search(type='button' data-toggle='dropdown' data-dropdown-options="{'clone':false,'scrollTop':true,'classBackdrop':'transparent'}")
+            .dropdown-box
+                form.search-container.bg-white(method='get' autocomplete='off' novalidate='novalidate' action='')
+                    input.form-control(type='search' placeholder='' name='keyword')
+                    button.btn(type='submit') Tìm kiếm
         .marquee-wrapper
             .marquee-track
                 <img src="https://assets-global.website-files.com/651c9c4f94a73afac7bbb014/651c9c4f94a73afac7bbb5fc_wuffes.svg" loading="lazy" alt="">

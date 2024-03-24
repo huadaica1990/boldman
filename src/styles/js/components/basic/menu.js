@@ -166,6 +166,7 @@ const menuEcs = {
             Ecsgroup.$body.on('click', '.chat-scroll-close', function (e) {
                 $('#chat-scroll-block').removeClass('show');
                 $(this).remove();
+                Ecsgroup.$body.removeClass('chat-active');
             });
         },
         FBChat: function() {
@@ -261,8 +262,9 @@ const menuEcs = {
         },
         
         showChat: function() {
-            $('#chat-scroll-block').addClass('show');
-            $('body').append('<div class="chat-scroll-backdrop chat-scroll-close show"></div>')
+            $('#chat-scroll-block').toggleClass('show');
+            Ecsgroup.$body.toggleClass('chat-active');
+            if($('.chat-scroll-backdrop').length == 0) $('body').append('<div class="chat-scroll-backdrop chat-scroll-close show"></div>')
         },
         hideChat: function() {
             $("#chat-scroll-block").removeClass('show');

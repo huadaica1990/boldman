@@ -61,14 +61,18 @@ const dropdowEcs = {
             else {
                 Ecsgroup.$body.on('click', '[data-toggle="dropdown"]', function (e) {
                     e.preventDefault();
-                    let dropdown = $(this).closest('.dropdown');
-                    dropdown.toggleClass('show');
-                    Ecsgroup.$body.append('<div style="z-index:90" class="dropdown-backdrop backdrop dropdown-remove transparent"></div>');
+                    let elem = $(e.target);
+                    let settings = $.extend(true, {}, dropdownOptions, Ecsgroup.parseOptions(elem.attr('data-dropdown-options'))),
+                        dropdown = $(this).closest('.dropdown');
+                        dropdown.toggleClass('show');
+                        Ecsgroup.$body.append('<div style="z-index:'+ settings.zIndex +'" class="dropdown-backdrop backdrop dropdown-remove '+ settings.classBackdrop +'"></div>');
                 });
                 Ecsgroup.$body.on('focus', '[data-toggle="dropdown"] + .dropdown-box input', function (e) {
-                    let dropdown = $(this).closest('.dropdown');
+                    let elem = $(e.target).closest('.dropdown').find('[data-toggle="dropdown"]');
+                    let settings = $.extend(true, {}, dropdownOptions, Ecsgroup.parseOptions(elem.attr('data-dropdown-options'))),
+                        dropdown = $(this).closest('.dropdown');
                     dropdown.addClass('show');
-                    if($('.dropdown-backdrop').length == 0) Ecsgroup.$body.append('<div style="z-index:90" class="dropdown-backdrop backdrop dropdown-remove transparent"></div>');
+                    if($('.dropdown-backdrop').length == 0) Ecsgroup.$body.append('<div style="z-index:'+ settings.zIndex +'" class="dropdown-backdrop backdrop dropdown-remove '+ settings.classBackdrop +'"></div>');
                 })
             }
             Ecsgroup.$body.on('click', function (e) {
