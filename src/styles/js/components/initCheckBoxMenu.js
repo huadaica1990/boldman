@@ -6,7 +6,7 @@
 const checkBoxEcs = {
     init: function(callback) {
         let startPerformanceTime = performance.now();
-        this.core.start(callback);
+        this.core.init(callback);
         let endPerformanceTime = performance.now();
         Ecsgroup.performance.initCheckBoxMenu = endPerformanceTime - startPerformanceTime + 'ms';
     },
