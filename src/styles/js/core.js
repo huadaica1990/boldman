@@ -24,6 +24,10 @@ $.extend($.easing, {
 /**
  * Ecsgroup Object
  */
+var docReady = function docReady(fn) {
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+  else setTimeout(fn, 1);
+};
 window.Ecsgroup = {};
 
 /**
