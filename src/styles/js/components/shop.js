@@ -281,7 +281,7 @@
                         image = product.find('.product-media .img'),
                         btnCart = product.find('.btn-cart'),
                         btnCall = product.find('.btn-call');
-                    btnCart.data('id', productId);
+                    btnCart.attr('data-id', productId);
                     if (Ecsgroup.options.func.isCountDown) productCountDown.countdown('destroy');
                     if (productPromo != null) {
                         product.find('.product-countdown-container').removeClass('d-none');
@@ -297,7 +297,7 @@
                     if ($this.hasClass('active')) {
                         var htmlImg = '';
                         productListImg.forEach(function(ele){
-                            htmlImg += '<picture><img src="'+ele+'" loading="lazy"></picture>';
+                            htmlImg += '<picture class="img-decode"><img src="'+ele+'" loading="lazy"></picture>';
                         });
                         image.css('filter','blur(5px)').html(htmlImg);
                         setTimeout(function() {
